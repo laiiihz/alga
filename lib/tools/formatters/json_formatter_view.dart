@@ -46,7 +46,6 @@ class _JsonFormatterViewState extends State<JsonFormatterView> {
   }
 
   _convert() {
-    final _t = DateTime.now();
     Map<String, dynamic> jsonMap = {};
     try {
       jsonMap = json.decode(_editingController.text);
