@@ -1,8 +1,9 @@
 import 'dart:convert';
 
-import 'package:devtoys/tools/formatters/formatter_json_view.dart';
+import '../abstract/formatter_base.dart';
+import 'formatter_json_view.dart';
 
-import 'abstract/formatter_base.dart';
+
 
 class JsonFormatterBase extends FormatterBase<Map<String, dynamic>> {
   @override

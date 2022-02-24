@@ -1,8 +1,8 @@
-import 'package:devtoys/tools/formatters/json_formatter_base.dart';
 import 'package:fluent_ui/fluent_ui.dart';
 
-import 'abstract/formatter_base_view.dart';
-import 'abstract/formatter_config.dart';
+import '../abstract/formatter_base_view.dart';
+import '../abstract/formatter_config.dart';
+import 'json_formatter_base.dart';
 
 enum JsonIndentType {
   space2,

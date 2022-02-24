@@ -1,6 +1,7 @@
-import 'package:devtoys/tools/formatters/formatter_json_view.dart';
 import 'package:devtoys/views/settings_view.dart';
 import 'package:fluent_ui/fluent_ui.dart';
+
+import 'tools/formatters/json_formatter/formatter_json_view.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
