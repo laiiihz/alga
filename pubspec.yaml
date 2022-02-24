@@ -36,6 +36,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   fluent_ui: ^3.9.0
   archive: ^3.2.1
+  dart_style: ^2.2.1
 
 dev_dependencies:
   flutter_test:

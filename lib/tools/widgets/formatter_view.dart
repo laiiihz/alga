@@ -1,66 +1,67 @@
+import 'package:devtoys/tools/formatters/formatter_abstract.dart';
 import 'package:fluent_ui/fluent_ui.dart';
 import 'package:flutter/services.dart';
 
 import '../../../widgets/toolbar_view.dart';
-import 'formatter_base.dart';
 
-class FormatterBaseView<T extends FormatterBase> extends StatefulWidget {
-  final T base;
+class FormatterView extends StatefulWidget {
+  final Widget title;
   final List<Widget> configs;
-  const FormatterBaseView({Key? key, required this.base, required this.configs})
+  final FormatResult Function(String text) onChanged;
+  const FormatterView(
+      {Key? key,
+      required this.title,
+      required this.configs,
+      required this.onChanged})
       : super(key: key);
 
   @override
-  State<FormatterBaseView> createState() => _FormatterBaseViewState();
+  State<FormatterView> createState() => FormatterViewState();
 }
 
-class _FormatterBaseViewState extends State<FormatterBaseView> {
-  @override
-  void initState() {
-    super.initState();
-  }
+class FormatterViewState extends State<FormatterView> {
+  final _inputController = TextEditingController();
+  final _outputController = TextEditingController();
 
   @override
   void dispose() {
-    widget.base.dispose();
+    _inputController.dispose();
+    _outputController.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     return ScaffoldPage.withPadding(
-      header: PageHeader(
-        title: Text(widget.base.title),
-      ),
+      header: PageHeader(title: widget.title),
       content: ToolbarView(
         configs: widget.configs,
         inputWidget: TextBox(
           minLines: 80,
           maxLines: 100,
-          controller: widget.base.inputController,
+          controller: _inputController,
           onChanged: (text) {
-            try {
-              widget.base.convertIt();
-            } catch (e) {}
+            _outputController.text = widget.onChanged(text).result;
           },
         ),
         outputWidget: TextBox(
           minLines: 80,
           maxLines: 100,
-          controller: widget.base.outputController,
+          controller: _outputController,
         ),
         inputActions: [
           Button(
             child: const Text('paste'),
             onPressed: () async {
               final rawText = await Clipboard.getData('text/plain');
-              widget.base.inputController.text = rawText?.text ?? '';
+              _inputController.text = rawText?.text ?? '';
             },
           ),
           Button(
             child: const Text('clear'),
             onPressed: () {
-              widget.base.clearAll();
+              _inputController.clear();
+              _outputController.clear();
             },
           ),
         ],
@@ -69,7 +70,7 @@ class _FormatterBaseViewState extends State<FormatterBaseView> {
             child: const Text('copy'),
             onPressed: () async {
               await Clipboard.setData(
-                ClipboardData(text: widget.base.outputController.text),
+                ClipboardData(text: _outputController.text),
               );
               showDialog(
                   context: context,

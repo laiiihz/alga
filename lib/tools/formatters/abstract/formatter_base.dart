@@ -4,6 +4,8 @@ typedef ConfigBuilder<T> = String Function(T typedData, String raw);
 
 /// [T] is midware type
 abstract class FormatterBase<T> {
+  String title = '';
+
   TextEditingController inputController = TextEditingController();
   TextEditingController outputController = TextEditingController();
 
