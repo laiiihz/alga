@@ -30,7 +30,7 @@ class ToolbarView extends StatelessWidget {
             title: 'input',
             actions: inputActions.sep(const SizedBox(width: 4)),
           ),
-          const SizedBox(width: 8),
+          const SizedBox(height: 8),
           Expanded(child: inputWidget),
         ],
       ),
@@ -73,14 +73,14 @@ class ToolbarView extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             _input,
-            if (midWidgets.isNotEmpty) const SizedBox(height: 8),
+            if (midWidgets.isNotEmpty) const SizedBox(height: 4),
             midWidgets.isEmpty
                 ? const SizedBox(height: 8)
                 : Row(
                     children: midWidgets.sep(const SizedBox(width: 4)),
                     mainAxisAlignment: MainAxisAlignment.center,
                   ),
-            if (midWidgets.isNotEmpty) const SizedBox(height: 8),
+            if (midWidgets.isNotEmpty) const SizedBox(height: 4),
             _output,
           ],
         );

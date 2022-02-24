@@ -1,4 +1,5 @@
-import 'package:devtoys/tools/formatters/json_formatter_view.dart';
+import 'package:devtoys/tools/formatters/formatter_json_view.dart';
+import 'package:devtoys/views/settings_view.dart';
 import 'package:fluent_ui/fluent_ui.dart';
 
 class HomePage extends StatefulWidget {
@@ -66,7 +67,8 @@ class _HomePageState extends State<HomePage> {
       content: NavigationBody.builder(
         index: _currentIndex,
         itemBuilder: (context, index) {
-          if (index == 5) return const JsonFormatterView();
+          if (index == 5) return const FormatterJsonView();
+          if (index == 6) return const SettingsView();
           return const SizedBox.shrink();
         },
       ),
