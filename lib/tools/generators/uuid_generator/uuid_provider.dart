@@ -20,14 +20,14 @@ extension UUIDExt on UUIDVersion {
 
 class UUIDProvider extends ChangeNotifier {
   final uuid = const Uuid();
-  bool _hypens = false;
+  bool _hypens = true;
   bool get hypens => _hypens;
   set hypens(bool state) {
     _hypens = state;
     notifyListeners();
   }
 
-  bool _upperCase = false;
+  bool _upperCase = true;
   bool get upperCase => _upperCase;
   set upperCase(bool state) {
     _upperCase = state;
