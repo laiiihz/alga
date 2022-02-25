@@ -27,6 +27,7 @@ class _UUIDGeneratorViewState extends State<UUIDGeneratorView> {
   @override
   void dispose() {
     _provider.removeListener(update);
+    _provider.dispose();
     super.dispose();
   }
 

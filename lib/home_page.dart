@@ -1,5 +1,6 @@
 import 'package:devtoys/tools/formatters/dart_formatter/dart_formatter_view.dart';
 import 'package:devtoys/tools/formatters/json_formatter/json_formatter_view.dart';
+import 'package:devtoys/tools/generators/hash_generator/hash_generator_view.dart';
 import 'package:devtoys/tools/generators/uuid_generator/uuid_generator.dart';
 import 'package:devtoys/views/settings_view.dart';
 import 'package:fluent_ui/fluent_ui.dart';
@@ -67,6 +68,10 @@ class _HomePageState extends State<HomePage> {
             icon: const Icon(FluentIcons.i_d_badge),
             title: const Text('UUID generator'),
           ),
+          PaneItem(
+            icon: const Icon(FluentIcons.completed),
+            title: const Text('Hash generator'),
+          ),
         ],
         footerItems: [
           PaneItem(
@@ -81,7 +86,8 @@ class _HomePageState extends State<HomePage> {
           if (index == 5) return const JsonFormtterView();
           if (index == 6) return const DartFormtterView();
           if (index == 7) return const UUIDGeneratorView();
-          if (index == 7) return const SettingsView();
+          if (index == 8) return const HashGeneratorView();
+          if (index == 9) return const SettingsView();
           return const SizedBox.shrink();
         },
       ),

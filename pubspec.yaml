@@ -38,6 +38,7 @@ dependencies:
   archive: ^3.2.1
   dart_style: ^2.2.1
   uuid: ^3.0.6
+  crypto: ^3.0.1
 
 dev_dependencies:
   flutter_test:
