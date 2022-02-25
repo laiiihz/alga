@@ -6,17 +6,6 @@ import 'package:flutter/services.dart';
 
 import '../encoder_decoder_type.dart';
 
-extension EncodeDecodeTypeExt on EncodeDecodeType {
-  String get value {
-    switch (this) {
-      case EncodeDecodeType.encode:
-        return 'encode'.padRight(8);
-      case EncodeDecodeType.decode:
-        return 'decode'.padRight(8);
-    }
-  }
-}
-
 class Base64Provider extends ChangeNotifier {
   EncodeDecodeType _type = EncodeDecodeType.encode;
   EncodeDecodeType get type => _type;

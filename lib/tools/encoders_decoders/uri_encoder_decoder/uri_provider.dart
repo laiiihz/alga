@@ -12,6 +12,17 @@ class UriProvider extends ChangeNotifier {
     notifyListeners();
   }
 
+  convert() {
+    switch (_type) {
+      case EncodeDecodeType.encode:
+        outputController.text = Uri.encodeFull(inputController.text);
+        break;
+      case EncodeDecodeType.decode:
+        outputController.text = Uri.decodeFull(inputController.text);
+        break;
+    }
+  }
+
   @override
   void dispose() {
     inputController.dispose();
