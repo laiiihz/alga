@@ -3,6 +3,7 @@ import 'package:devtoys/tools/formatters/json_formatter/json_formatter_view.dart
 import 'package:devtoys/tools/generators/hash_generator/hash_generator_view.dart';
 import 'package:devtoys/tools/generators/uuid_generator/uuid_generator.dart';
 import 'package:devtoys/views/settings_view.dart';
+import 'package:devtoys/widgets/svg_asset_icon.dart';
 import 'package:fluent_ui/fluent_ui.dart';
 
 class HomePage extends StatefulWidget {
@@ -56,20 +57,20 @@ class _HomePageState extends State<HomePage> {
           ),
           PaneItemHeader(header: const Text('Formatter')),
           PaneItem(
-            icon: const Icon(FluentIcons.accept),
+            icon: const SvgAssetIcon('assets/icons/JsonFormatter.svg'),
             title: const Text('JSON'),
           ),
           PaneItem(
-            icon: const Icon(FluentIcons.accept),
+            icon: const SvgAssetIcon('assets/icons/dart.svg', colorIcon: true),
             title: const Text('Dart'),
           ),
           PaneItemHeader(header: const Text('Generator')),
           PaneItem(
-            icon: const Icon(FluentIcons.i_d_badge),
+            icon: const SvgAssetIcon('assets/icons/Guid.svg'),
             title: const Text('UUID generator'),
           ),
           PaneItem(
-            icon: const Icon(FluentIcons.completed),
+            icon: const Icon(FluentIcons.fingerprint),
             title: const Text('Hash generator'),
           ),
         ],
