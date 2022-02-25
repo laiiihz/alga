@@ -1,7 +1,14 @@
 import 'package:devtoys/home_page.dart';
 import 'package:fluent_ui/fluent_ui.dart';
+import 'package:window_manager/window_manager.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await windowManager.ensureInitialized();
+  windowManager.waitUntilReadyToShow().then((_) async {
+    windowManager.center();
+    windowManager.setAsFrameless();
+  });
   runApp(const MyApp());
 }
 
@@ -17,6 +24,7 @@ class MyApp extends StatelessWidget {
       darkTheme: ThemeData.dark(),
       themeMode: ThemeMode.system,
       home: const HomePage(),
+      debugShowCheckedModeBanner: false,
     );
   }
 }

@@ -6,6 +6,7 @@ import 'package:devtoys/tools/generators/hash_generator/hash_generator_view.dart
 import 'package:devtoys/tools/generators/uuid_generator/uuid_generator.dart';
 import 'package:devtoys/views/settings_view.dart';
 import 'package:devtoys/widgets/svg_asset_icon.dart';
+import 'package:devtoys/widgets/window_tool_widget.dart';
 import 'package:fluent_ui/fluent_ui.dart';
 
 class HomePage extends StatefulWidget {
@@ -19,7 +20,7 @@ class _HomePageState extends State<HomePage> {
   int _currentIndex = 0;
   @override
   Widget build(BuildContext context) {
-    return NavigationView(
+    Widget child = NavigationView(
       appBar: NavigationAppBar(
         title: const Text('DevToys'),
         automaticallyImplyLeading: true,
@@ -97,5 +98,7 @@ class _HomePageState extends State<HomePage> {
         },
       ),
     );
+
+    return WindowToolWidget(child: child);
   }
 }

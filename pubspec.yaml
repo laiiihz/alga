@@ -18,6 +18,7 @@ dependencies:
   uuid: ^3.0.6
   crypto: ^3.0.1
   flutter_svg: ^1.0.3
+  window_manager: ^0.1.7
 
 dev_dependencies:
   flutter_test:
