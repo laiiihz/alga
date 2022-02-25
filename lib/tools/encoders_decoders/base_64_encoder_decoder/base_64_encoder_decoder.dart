@@ -4,6 +4,8 @@ import 'package:devtoys/widgets/tool_view.dart';
 import 'package:devtoys/widgets/tool_view_config.dart';
 import 'package:fluent_ui/fluent_ui.dart';
 
+import '../encoder_decoder_type.dart';
+
 class Base64EncoderDecoderView extends StatefulWidget {
   const Base64EncoderDecoderView({Key? key}) : super(key: key);
 

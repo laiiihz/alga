@@ -4,10 +4,7 @@ import 'dart:typed_data';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-enum EncodeDecodeType {
-  encode,
-  decode,
-}
+import '../encoder_decoder_type.dart';
 
 extension EncodeDecodeTypeExt on EncodeDecodeType {
   String get value {

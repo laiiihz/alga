@@ -1,0 +1,4 @@
+enum EncodeDecodeType {
+  encode,
+  decode,
+}
