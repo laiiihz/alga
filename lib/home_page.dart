@@ -1,3 +1,4 @@
+import 'package:devtoys/tools/encoders_decoders/base_64_encoder_decoder/base_64_encoder_decoder.dart';
 import 'package:devtoys/tools/formatters/dart_formatter/dart_formatter_view.dart';
 import 'package:devtoys/tools/formatters/json_formatter/json_formatter_view.dart';
 import 'package:devtoys/tools/generators/hash_generator/hash_generator_view.dart';
@@ -52,7 +53,7 @@ class _HomePageState extends State<HomePage> {
             title: const Text('URL'),
           ),
           PaneItem(
-            icon: const Icon(FluentIcons.code),
+            icon: const SvgAssetIcon('assets/icons/Base64.svg'),
             title: const Text('Base64'),
           ),
           PaneItemHeader(header: const Text('Formatter')),
@@ -84,6 +85,7 @@ class _HomePageState extends State<HomePage> {
       content: NavigationBody.builder(
         index: _currentIndex,
         itemBuilder: (context, index) {
+          if (index == 4) return const Base64EncoderDecoderView();
           if (index == 5) return const JsonFormtterView();
           if (index == 6) return const DartFormtterView();
           if (index == 7) return const UUIDGeneratorView();
