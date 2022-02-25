@@ -1,3 +1,4 @@
+import 'package:devtoys/extension/list_ext.dart';
 import 'package:fluent_ui/fluent_ui.dart';
 
 class AppTitle extends StatelessWidget {
@@ -12,7 +13,7 @@ class AppTitle extends StatelessWidget {
       children: [
         Text(title),
         const Spacer(),
-        ...actions,
+        ...actions.sep(const SizedBox(width: 4)),
       ],
     );
   }
