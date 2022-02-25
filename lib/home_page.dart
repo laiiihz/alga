@@ -1,5 +1,6 @@
 import 'package:devtoys/tools/formatters/dart_formatter/dart_formatter_view.dart';
 import 'package:devtoys/tools/formatters/json_formatter/json_formatter_view.dart';
+import 'package:devtoys/tools/generators/uuid_generator/uuid_generator.dart';
 import 'package:devtoys/views/settings_view.dart';
 import 'package:fluent_ui/fluent_ui.dart';
 
@@ -61,6 +62,11 @@ class _HomePageState extends State<HomePage> {
             icon: const Icon(FluentIcons.accept),
             title: const Text('Dart'),
           ),
+          PaneItemHeader(header: const Text('Generator')),
+          PaneItem(
+            icon: const Icon(FluentIcons.i_d_badge),
+            title: const Text('UUID generator'),
+          ),
         ],
         footerItems: [
           PaneItem(
@@ -74,6 +80,7 @@ class _HomePageState extends State<HomePage> {
         itemBuilder: (context, index) {
           if (index == 5) return const JsonFormtterView();
           if (index == 6) return const DartFormtterView();
+          if (index == 7) return const UUIDGeneratorView();
           if (index == 7) return const SettingsView();
           return const SizedBox.shrink();
         },
