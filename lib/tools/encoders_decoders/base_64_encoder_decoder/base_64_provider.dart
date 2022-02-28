@@ -1,52 +1,46 @@
 import 'dart:convert';
 import 'dart:typed_data';
 
+import 'package:devtoys/utils/clipboard_util.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-
-import '../encoder_decoder_type.dart';
 
 class Base64Provider extends ChangeNotifier {
-  EncodeDecodeType _type = EncodeDecodeType.encode;
-  EncodeDecodeType get type => _type;
+  bool _isEncode = true;
+  bool get isEncode => _isEncode;
+  set isEncode(bool state) {
+    _isEncode = state;
+    notifyListeners();
+  }
 
   final inputController = TextEditingController();
   final outputController = TextEditingController();
 
-  set type(EncodeDecodeType state) {
-    _type = state;
-    notifyListeners();
-  }
-
-  clearAll() {
+  clear() {
     inputController.clear();
     outputController.clear();
   }
 
   paste() async {
-    final clipRes = await Clipboard.getData('text/plain');
-    inputController.text = clipRes?.text ?? '';
+    inputController.text = await ClipboardUtil.paste();
+    convert();
   }
 
   copy() async {
-    Clipboard.setData(ClipboardData(text: outputController.text));
+    ClipboardUtil.copy(outputController.text);
   }
 
   convert() {
-    switch (_type) {
-      case EncodeDecodeType.encode:
-        final result =
-            const Base64Encoder().convert(inputController.text.codeUnits);
-        outputController.text = result;
-        break;
-      case EncodeDecodeType.decode:
-        try {
-          Uint8List result = base64.decode(inputController.text);
-          outputController.text = String.fromCharCodes(result);
-        } catch (e) {
-          print(e);
-        }
-        break;
+    if (_isEncode) {
+      final result =
+          const Base64Encoder().convert(inputController.text.codeUnits);
+      outputController.text = result;
+    } else {
+      try {
+        Uint8List result = base64.decode(inputController.text);
+        outputController.text = String.fromCharCodes(result);
+      } catch (e) {
+        print(e);
+      }
     }
   }
 

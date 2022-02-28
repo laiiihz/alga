@@ -1,26 +1,35 @@
-import 'package:devtoys/tools/encoders_decoders/encoder_decoder_type.dart';
+import 'package:devtoys/utils/clipboard_util.dart';
 import 'package:flutter/material.dart';
 
 class UriProvider extends ChangeNotifier {
   final inputController = TextEditingController();
   final outputController = TextEditingController();
 
-  EncodeDecodeType _type = EncodeDecodeType.encode;
-  EncodeDecodeType get type => _type;
-  set type(EncodeDecodeType state) {
-    _type = state;
+  bool _isEncode = true;
+  bool get isEncode => _isEncode;
+  set isEncode(bool state) {
+    _isEncode = state;
     notifyListeners();
   }
 
+  clear() {
+    inputController.clear();
+    outputController.clear();
+  }
+
+  paste() async {
+    inputController.text = await ClipboardUtil.paste();
+    convert();
+  }
+
+  copy() async {
+    await ClipboardUtil.copy(outputController.text);
+  }
+
   convert() {
-    switch (_type) {
-      case EncodeDecodeType.encode:
-        outputController.text = Uri.encodeFull(inputController.text);
-        break;
-      case EncodeDecodeType.decode:
-        outputController.text = Uri.decodeFull(inputController.text);
-        break;
-    }
+    outputController.text = _isEncode
+        ? Uri.encodeFull(inputController.text)
+        : Uri.decodeFull(inputController.text);
   }
 
   @override

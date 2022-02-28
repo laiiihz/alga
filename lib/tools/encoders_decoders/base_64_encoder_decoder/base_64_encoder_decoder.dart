@@ -4,8 +4,6 @@ import 'package:devtoys/widgets/tool_view.dart';
 import 'package:devtoys/widgets/tool_view_config.dart';
 import 'package:fluent_ui/fluent_ui.dart';
 
-import '../encoder_decoder_type.dart';
-
 class Base64EncoderDecoderView extends StatefulWidget {
   const Base64EncoderDecoderView({Key? key}) : super(key: key);
 
@@ -41,21 +39,23 @@ class _Base64EncoderDecoderViewState extends State<Base64EncoderDecoderView> {
       children: [
         const AppTitle(title: 'Config'),
         ToolViewConfig(
-          leading: const Icon(FluentIcons.switch_widget),
-          title: const Text('type'),
-          trailing: Combobox(
-            items: EncodeDecodeType.values
-                .map((e) => ComboboxItem(
-                      child: Text(e.value),
-                      value: e,
-                    ))
-                .toList(),
-            value: _provider.type,
-            onChanged: (EncodeDecodeType? value) {
-              _provider.type = value ?? EncodeDecodeType.encode;
-            },
-          ),
-        ),
+            leading: const Icon(FluentIcons.switch_widget),
+            title: const Text('Conversion'),
+            subtitle:
+                const Text('Select whitch conversion mode you want to use'),
+            trailing: Row(
+              children: [
+                _provider.isEncode
+                    ? const Text('Encode')
+                    : const Text('Decode'),
+                ToggleSwitch(
+                  checked: _provider.isEncode,
+                  onChanged: (state) {
+                    _provider.isEncode = state;
+                  },
+                ),
+              ],
+            )),
         AppTitleWrapper(
           title: 'input',
           actions: [
@@ -87,7 +87,7 @@ class _Base64EncoderDecoderViewState extends State<Base64EncoderDecoderView> {
             Button(
               child: const Icon(FluentIcons.clear),
               onPressed: () {
-                _provider.clearAll();
+                _provider.clear();
               },
             ),
           ],
