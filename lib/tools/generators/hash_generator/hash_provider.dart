@@ -84,6 +84,13 @@ class HashProvider extends ChangeNotifier {
     notifyListeners();
   }
 
+  bool _showHmac = false;
+  bool get showHmac => _showHmac;
+  set showHmac(bool state) {
+    _showHmac = state;
+    notifyListeners();
+  }
+
   setInputFormClipboard() async {
     final res = await Clipboard.getData('text/plain');
     if (res?.text == null) return;
@@ -91,25 +98,39 @@ class HashProvider extends ChangeNotifier {
   }
 
   generate() {
-    for (var item in controllers) {
-      String result = item.convert(inputController.text).toString();
-      if (_upperCase) {
-        result = result.toUpperCase();
+    if (_showHmac) {
+      for (var item in hmacControllers) {
+        String result = item
+            .convertWithSecret(
+              inputController.text,
+              optionalController.text,
+            )
+            .toString();
+        if (_upperCase) {
+          result = result.toUpperCase();
+        }
+        item.controller.text = result;
       }
-      item.controller.text = result;
+    } else {
+      for (var item in controllers) {
+        String result = item.convert(inputController.text).toString();
+        if (_upperCase) {
+          result = result.toUpperCase();
+        }
+        item.controller.text = result;
+      }
+    }
+  }
+
+  clear() {
+    for (var item in controllers) {
+      item.controller.clear();
     }
     for (var item in hmacControllers) {
-      String result = item
-          .convertWithSecret(
-            inputController.text,
-            optionalController.text,
-          )
-          .toString();
-      if (_upperCase) {
-        result = result.toUpperCase();
-      }
-      item.controller.text = result;
+      item.controller.clear();
     }
+    inputController.clear();
+    optionalController.clear();
   }
 
   @override

@@ -69,6 +69,16 @@ class _HashGeneratorViewState extends State<HashGeneratorView> {
             },
           ),
         ),
+        ToolViewConfig(
+          title: const Text('HMAC'),
+          trailing: ToggleSwitch(
+            checked: _provider.showHmac,
+            onChanged: (value) {
+              _provider.showHmac = value;
+              _provider.generate();
+            },
+          ),
+        ),
         AppTitle(
           title: S.of(context).input,
           actions: [
@@ -94,18 +104,20 @@ class _HashGeneratorViewState extends State<HashGeneratorView> {
             _provider.generate();
           },
         ),
-        TextBox(
-          minLines: 12,
-          maxLines: 12,
-          controller: _provider.optionalController,
-          placeholder: 'Optional',
-          header: 'secret',
-          onChanged: (text) {
-            _provider.generate();
-          },
-        ),
-        ...controllers2Widgets(_provider.controllers),
-        ...controllers2Widgets(_provider.hmacControllers),
+        if (_provider.showHmac)
+          TextBox(
+            minLines: 12,
+            maxLines: 12,
+            controller: _provider.optionalController,
+            placeholder: 'Optional',
+            header: 'secret',
+            onChanged: (text) {
+              _provider.generate();
+            },
+          ),
+        if (!_provider.showHmac) ...controllers2Widgets(_provider.controllers),
+        if (_provider.showHmac)
+          ...controllers2Widgets(_provider.hmacControllers),
       ],
     );
   }
