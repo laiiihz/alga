@@ -1,3 +1,4 @@
+import 'package:devtoys/l10n/l10n.dart';
 import 'package:devtoys/tools/encoders_decoders/uri_encoder_decoder/uri_provider.dart';
 import 'package:devtoys/widgets/app_title.dart';
 import 'package:devtoys/widgets/tool_view.dart';
@@ -35,11 +36,11 @@ class _UriEncoderDecoderViewState extends State<UriEncoderDecoderView> {
     return ToolView.scrollVertical(
       title: const Text('Uri Encoder/Decoder'),
       children: [
-        const AppTitle(title: 'Config'),
+        AppTitle(title: S.of(context).configuration),
         ToolViewConfig(
           leading: const Icon(FluentIcons.switch_widget),
-          title: const Text('Conversion'),
-          subtitle: const Text('Select whitch conversion mode you want to use'),
+          title: Text(S.of(context).conversion),
+          subtitle: Text(S.of(context).selectConversion),
           trailing: Row(
             mainAxisSize: MainAxisSize.min,
             children: [
@@ -54,7 +55,7 @@ class _UriEncoderDecoderViewState extends State<UriEncoderDecoderView> {
           ),
         ),
         AppTitleWrapper(
-          title: 'input',
+          title: S.of(context).input,
           actions: [
             Button(
               child: const Icon(FluentIcons.paste),
@@ -75,7 +76,7 @@ class _UriEncoderDecoderViewState extends State<UriEncoderDecoderView> {
           ),
         ),
         AppTitleWrapper(
-          title: 'output',
+          title: S.of(context).output,
           actions: [
             Button(
               child: const Icon(FluentIcons.copy),

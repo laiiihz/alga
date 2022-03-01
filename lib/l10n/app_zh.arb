@@ -1,0 +1,10 @@
+{
+  "appName": "DevToys",
+  "configuration": "配置",
+  "conversion": "转换",
+  "selectConversion": "选择您想使用的转换格式",
+  "encode": "编码",
+  "decode": "解码",
+  "input": "输入",
+  "output": "输出"
+}

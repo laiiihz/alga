@@ -51,14 +51,14 @@ class FormatterViewState extends State<FormatterView> {
         ),
         inputActions: [
           Button(
-            child: const Text('paste'),
+            child: const Icon(FluentIcons.paste),
             onPressed: () async {
               final rawText = await Clipboard.getData('text/plain');
               _inputController.text = rawText?.text ?? '';
             },
           ),
           Button(
-            child: const Text('clear'),
+            child: const Icon(FluentIcons.clear),
             onPressed: () {
               _inputController.clear();
               _outputController.clear();
@@ -67,7 +67,7 @@ class FormatterViewState extends State<FormatterView> {
         ],
         outputActions: [
           Button(
-            child: const Text('copy'),
+            child: const Icon(FluentIcons.copy),
             onPressed: () async {
               await Clipboard.setData(
                 ClipboardData(text: _outputController.text),

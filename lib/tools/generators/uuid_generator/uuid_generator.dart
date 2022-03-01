@@ -1,3 +1,4 @@
+import 'package:devtoys/l10n/l10n.dart';
 import 'package:devtoys/tools/generators/uuid_generator/uuid_provider.dart';
 import 'package:devtoys/widgets/app_title.dart';
 import 'package:devtoys/widgets/tool_view.dart';
@@ -36,7 +37,7 @@ class _UUIDGeneratorViewState extends State<UUIDGeneratorView> {
     return ToolView.scrollVertical(
       title: const Text('UUID Generator'),
       children: [
-        const AppTitle(title: 'Config'),
+        AppTitle(title: S.of(context).configuration),
         ToolViewConfig(
           title: const Text('Hypens'),
           trailing: ToggleSwitch(

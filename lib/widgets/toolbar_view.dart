@@ -2,6 +2,8 @@ import 'package:devtoys/extension/list_ext.dart';
 import 'package:devtoys/widgets/app_title.dart';
 import 'package:fluent_ui/fluent_ui.dart';
 
+import '../l10n/l10n.dart';
+
 class ToolbarView extends StatelessWidget {
   final List<Widget> configs;
   final Widget inputWidget;
@@ -27,7 +29,7 @@ class ToolbarView extends StatelessWidget {
       child: Column(
         children: [
           AppTitle(
-            title: 'input',
+            title: S.of(context).input,
             actions: inputActions.sep(const SizedBox(width: 4)),
           ),
           const SizedBox(height: 8),
@@ -39,7 +41,7 @@ class ToolbarView extends StatelessWidget {
       child: Column(
         children: [
           AppTitle(
-            title: 'output',
+            title: S.of(context).output,
             actions: outputActions.sep(const SizedBox(width: 4)),
           ),
           const SizedBox(height: 8),

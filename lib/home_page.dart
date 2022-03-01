@@ -1,4 +1,6 @@
+import 'package:devtoys/l10n/l10n.dart';
 import 'package:devtoys/models/tool_items.dart';
+import 'package:devtoys/views/settings_view.dart';
 import 'package:devtoys/widgets/window_tool_widget.dart';
 import 'package:fluent_ui/fluent_ui.dart';
 
@@ -16,7 +18,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     Widget child = NavigationView(
       appBar: NavigationAppBar(
-        title: const Text('DevToys'),
+        title: Text(S.of(context).appName),
         automaticallyImplyLeading: true,
         leading: Image.asset('assets/logo/256x256.webp'),
       ),
@@ -43,7 +45,9 @@ class _HomePageState extends State<HomePage> {
           if (index < naviUtil.realItems.length) {
             return naviUtil.realItems[index].page;
           }
-          return const SizedBox.shrink();
+
+          // return const SizedBox.shrink();
+          return const SettingsView();
         },
       ),
     );

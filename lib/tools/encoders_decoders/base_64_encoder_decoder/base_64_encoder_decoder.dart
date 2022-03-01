@@ -1,3 +1,4 @@
+import 'package:devtoys/l10n/l10n.dart';
 import 'package:devtoys/tools/encoders_decoders/base_64_encoder_decoder/base_64_provider.dart';
 import 'package:devtoys/widgets/app_title.dart';
 import 'package:devtoys/widgets/tool_view.dart';
@@ -37,17 +38,16 @@ class _Base64EncoderDecoderViewState extends State<Base64EncoderDecoderView> {
     return ToolView.scrollVertical(
       title: const Text('Base 64 Encoder/Decoder'),
       children: [
-        const AppTitle(title: 'Config'),
+        AppTitle(title: S.of(context).configuration),
         ToolViewConfig(
             leading: const Icon(FluentIcons.switch_widget),
-            title: const Text('Conversion'),
-            subtitle:
-                const Text('Select whitch conversion mode you want to use'),
+            title: Text(S.of(context).conversion),
+            subtitle: Text(S.of(context).selectConversion),
             trailing: Row(
               children: [
                 _provider.isEncode
-                    ? const Text('Encode')
-                    : const Text('Decode'),
+                    ? Text(S.of(context).encode)
+                    : Text(S.of(context).decode),
                 ToggleSwitch(
                   checked: _provider.isEncode,
                   onChanged: (state) {
@@ -57,12 +57,18 @@ class _Base64EncoderDecoderViewState extends State<Base64EncoderDecoderView> {
               ],
             )),
         AppTitleWrapper(
-          title: 'input',
+          title: S.of(context).input,
           actions: [
             Button(
               child: const Icon(FluentIcons.paste),
               onPressed: () {
                 _provider.paste();
+              },
+            ),
+            Button(
+              child: const Icon(FluentIcons.clear),
+              onPressed: () {
+                _provider.clear();
               },
             ),
           ],
@@ -76,18 +82,12 @@ class _Base64EncoderDecoderViewState extends State<Base64EncoderDecoderView> {
           ),
         ),
         AppTitleWrapper(
-          title: 'output',
+          title: S.of(context).output,
           actions: [
             Button(
               child: const Icon(FluentIcons.copy),
               onPressed: () {
                 _provider.paste();
-              },
-            ),
-            Button(
-              child: const Icon(FluentIcons.clear),
-              onPressed: () {
-                _provider.clear();
               },
             ),
           ],

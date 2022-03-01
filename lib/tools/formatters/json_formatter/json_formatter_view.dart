@@ -25,6 +25,7 @@ class _JsonFormtterViewState extends State<JsonFormtterView> {
   @override
   void dispose() {
     provider.removeListener(update);
+    provider.dispose();
     super.dispose();
   }
 

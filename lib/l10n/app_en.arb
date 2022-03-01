@@ -1,0 +1,13 @@
+{
+  "appName": "DevToys",
+  "@appName": {
+    "description": "name of app"
+  },
+  "configuration": "configuration",
+  "conversion": "Conversion",
+  "selectConversion": "Select whitch conversion mode you want to use",
+  "encode": "Encode",
+  "decode": "Decode",
+  "input": "input",
+  "output": "output"
+}

@@ -1,3 +1,4 @@
+import 'package:devtoys/l10n/l10n.dart';
 import 'package:devtoys/tools/generators/hash_generator/hash_provider.dart';
 import 'package:devtoys/widgets/app_title.dart';
 import 'package:devtoys/widgets/tool_view.dart';
@@ -37,7 +38,7 @@ class _HashGeneratorViewState extends State<HashGeneratorView> {
     return ToolView.scrollVertical(
       title: const Text('Hash Genergator'),
       children: [
-        const AppTitle(title: 'Config'),
+        AppTitle(title: S.of(context).configuration),
         ToolViewConfig(
           title: const Text('UpperCase'),
           trailing: ToggleSwitch(
@@ -48,7 +49,7 @@ class _HashGeneratorViewState extends State<HashGeneratorView> {
           ),
         ),
         AppTitle(
-          title: 'Input',
+          title: S.of(context).input,
           actions: [
             Button(
               child: const Icon(FluentIcons.paste),

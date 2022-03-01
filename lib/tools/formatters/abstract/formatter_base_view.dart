@@ -41,7 +41,9 @@ class _FormatterBaseViewState extends State<FormatterBaseView> {
           onChanged: (text) {
             try {
               widget.base.convertIt();
-            } catch (e) {}
+            } catch (e) {
+              print(e);
+            }
           },
         ),
         outputWidget: TextBox(
@@ -51,14 +53,14 @@ class _FormatterBaseViewState extends State<FormatterBaseView> {
         ),
         inputActions: [
           Button(
-            child: const Text('paste'),
+            child: const Icon(FluentIcons.paste),
             onPressed: () async {
               final rawText = await Clipboard.getData('text/plain');
               widget.base.inputController.text = rawText?.text ?? '';
             },
           ),
           Button(
-            child: const Text('clear'),
+            child: const Icon(FluentIcons.clear),
             onPressed: () {
               widget.base.clearAll();
             },
@@ -66,7 +68,7 @@ class _FormatterBaseViewState extends State<FormatterBaseView> {
         ],
         outputActions: [
           Button(
-            child: const Text('copy'),
+            child: const Icon(FluentIcons.copy),
             onPressed: () async {
               await Clipboard.setData(
                 ClipboardData(text: widget.base.outputController.text),
