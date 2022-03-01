@@ -20,6 +20,27 @@ class _HashGeneratorViewState extends State<HashGeneratorView> {
     setState(() {});
   }
 
+  List<Widget> controllers2Widgets(List<HashTypeWrapper> controllers) {
+    return controllers.map((e) {
+      return AppTitleWrapper(
+        title: e.title,
+        actions: const [],
+        child: Row(
+          children: [
+            Expanded(child: TextBox(controller: e.controller)),
+            const SizedBox(width: 8),
+            Button(
+              child: const Icon(FluentIcons.copy),
+              onPressed: () {
+                e.copy();
+              },
+            ),
+          ],
+        ),
+      );
+    }).toList();
+  }
+
   @override
   void initState() {
     super.initState();
@@ -73,24 +94,18 @@ class _HashGeneratorViewState extends State<HashGeneratorView> {
             _provider.generate();
           },
         ),
-        ..._provider.controllers.map((e) {
-          return AppTitleWrapper(
-            title: e.title,
-            actions: const [],
-            child: Row(
-              children: [
-                Expanded(child: TextBox(controller: e.controller)),
-                const SizedBox(width: 8),
-                Button(
-                  child: const Icon(FluentIcons.copy),
-                  onPressed: () {
-                    e.copy();
-                  },
-                ),
-              ],
-            ),
-          );
-        }).toList(),
+        TextBox(
+          minLines: 12,
+          maxLines: 12,
+          controller: _provider.optionalController,
+          placeholder: 'Optional',
+          header: 'secret',
+          onChanged: (text) {
+            _provider.generate();
+          },
+        ),
+        ...controllers2Widgets(_provider.controllers),
+        ...controllers2Widgets(_provider.hmacControllers),
       ],
     );
   }
