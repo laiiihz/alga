@@ -9,5 +9,14 @@
   "encode": "Encode",
   "decode": "Decode",
   "input": "input",
-  "output": "output"
+  "output": "output",
+  "encodersDecoders": "Encoders/Decoders",
+  "encoderDecoderBase64": "Base64 Encoder/Decoder",
+  "encoderDecoderURL": "URL Encoder/Decoder",
+  "formatters": "Formatters",
+  "formatterJson": "JSON formatter",
+  "formatterDart": "Dart formatter",
+  "generators": "Generators",
+  "generatorHash": "Hash Generator",
+  "generatorUUID": "UUID Generator"
 }

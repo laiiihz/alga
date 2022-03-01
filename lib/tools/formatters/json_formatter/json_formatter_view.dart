@@ -1,3 +1,4 @@
+import 'package:devtoys/l10n/l10n.dart';
 import 'package:devtoys/tools/formatters/abstract/formatter_config.dart';
 import 'package:devtoys/tools/formatters/json_formatter/json_enums.dart';
 import 'package:devtoys/tools/formatters/json_formatter/json_provider.dart';
@@ -32,10 +33,10 @@ class _JsonFormtterViewState extends State<JsonFormtterView> {
   @override
   Widget build(BuildContext context) {
     return FormatterView(
-      title: const Text('Json Formatter'),
+      title: Text(S.of(context).formatterJson),
       configs: [
         FormatterConfig(
-          title: 'title',
+          title: 'indent',
           trailing: Combobox<JsonIndentType>(
             items: JsonIndentType.values
                 .map((e) => ComboboxItem(child: Text(e.name), value: e))

@@ -36,7 +36,7 @@ class _Base64EncoderDecoderViewState extends State<Base64EncoderDecoderView> {
   @override
   Widget build(BuildContext context) {
     return ToolView.scrollVertical(
-      title: const Text('Base 64 Encoder/Decoder'),
+      title: Text(S.of(context).encoderDecoderBase64),
       children: [
         AppTitle(title: S.of(context).configuration),
         ToolViewConfig(

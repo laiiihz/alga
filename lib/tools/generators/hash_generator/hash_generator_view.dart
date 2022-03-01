@@ -71,6 +71,7 @@ class _HashGeneratorViewState extends State<HashGeneratorView> {
         ),
         ToolViewConfig(
           title: const Text('HMAC'),
+          subtitle: const Text('Keyed-hash message authentication code'),
           trailing: ToggleSwitch(
             checked: _provider.showHmac,
             onChanged: (value) {

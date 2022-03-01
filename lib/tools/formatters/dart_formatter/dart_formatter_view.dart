@@ -1,3 +1,4 @@
+import 'package:devtoys/l10n/l10n.dart';
 import 'package:devtoys/tools/formatters/dart_formatter/dart_provider.dart';
 import 'package:fluent_ui/fluent_ui.dart';
 
@@ -15,7 +16,7 @@ class _DartFormtterViewState extends State<DartFormtterView> {
   @override
   Widget build(BuildContext context) {
     return FormatterView(
-      title: const Text('Dart Formatter'),
+      title: Text(S.of(context).formatterDart),
       configs: const [],
       onChanged: provider.onChanged,
     );

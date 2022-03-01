@@ -6,5 +6,14 @@
   "encode": "编码",
   "decode": "解码",
   "input": "输入",
-  "output": "输出"
+  "output": "输出",
+  "encodersDecoders": "编码/解码",
+  "encoderDecoderBase64": "Base64 编码/解码",
+  "encoderDecoderURL": "URL 编码/解码",
+  "formatters": "格式化",
+  "formatterJson": "JSON 格式化",
+  "formatterDart": "Dart 格式化",
+  "generators": "生成器",
+  "generatorHash": "Hash 生成器",
+  "generatorUUID": "UUID 生成器"
 }

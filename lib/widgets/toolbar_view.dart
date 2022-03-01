@@ -92,7 +92,7 @@ class ToolbarView extends StatelessWidget {
     if (configs.isNotEmpty) {
       result = Column(
         children: [
-          const AppTitle(title: 'Config'),
+          AppTitle(title: S.of(context).configuration),
           const SizedBox(height: 8),
           ...configs.sep(const SizedBox(height: 4)),
           const SizedBox(height: 8),

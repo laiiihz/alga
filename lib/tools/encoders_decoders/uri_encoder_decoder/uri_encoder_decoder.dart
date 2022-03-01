@@ -34,7 +34,7 @@ class _UriEncoderDecoderViewState extends State<UriEncoderDecoderView> {
   @override
   Widget build(BuildContext context) {
     return ToolView.scrollVertical(
-      title: const Text('Uri Encoder/Decoder'),
+      title: Text(S.of(context).encoderDecoderURL),
       children: [
         AppTitle(title: S.of(context).configuration),
         ToolViewConfig(
@@ -44,7 +44,9 @@ class _UriEncoderDecoderViewState extends State<UriEncoderDecoderView> {
           trailing: Row(
             mainAxisSize: MainAxisSize.min,
             children: [
-              _provider.isEncode ? const Text('Encode') : const Text('Decode'),
+              _provider.isEncode
+                  ? Text(S.of(context).encode)
+                  : Text(S.of(context).decode),
               ToggleSwitch(
                 checked: _provider.isEncode,
                 onChanged: (state) {

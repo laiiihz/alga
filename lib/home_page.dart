@@ -13,7 +13,14 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   int _currentIndex = 0;
-  final naviUtil = NaviUtil();
+  late NaviUtil naviUtil;
+
+  @override
+  void didChangeDependencies() {
+    naviUtil = NaviUtil(context);
+    super.didChangeDependencies();
+  }
+
   @override
   Widget build(BuildContext context) {
     Widget child = NavigationView(
