@@ -5,22 +5,22 @@ class ZhFluentLocalization implements FluentLocalizations {
   const ZhFluentLocalization();
 
   @override
-  String get backButtonTooltip => 'Back';
+  String get backButtonTooltip => '返回';
 
   @override
-  String get closeButtonLabel => 'Close';
+  String get closeButtonLabel => '关闭';
 
   @override
-  String get searchLabel => 'Search';
+  String get searchLabel => '搜索';
 
   @override
-  String get closeNavigationTooltip => 'Close Navigation';
+  String get closeNavigationTooltip => '关闭导航栏';
 
   @override
-  String get openNavigationTooltip => 'Open Navigation';
+  String get openNavigationTooltip => '打开导航栏';
 
   @override
-  String get clickToSearch => 'Click to search';
+  String get clickToSearch => '点击搜索';
 
   @override
   String get modalBarrierDismissLabel => 'Dismiss';
@@ -32,28 +32,28 @@ class ZhFluentLocalization implements FluentLocalizations {
   String get restoreWindowTooltip => 'Restore';
 
   @override
-  String get closeWindowTooltip => 'Close';
+  String get closeWindowTooltip => '关闭';
 
   @override
-  String get dialogLabel => 'Dialog';
+  String get dialogLabel => '对话框';
 
   @override
-  String get cutButtonLabel => 'Cut';
+  String get cutButtonLabel => '剪切';
 
   @override
-  String get copyButtonLabel => 'Copy';
+  String get copyButtonLabel => '复制';
 
   @override
-  String get pasteButtonLabel => 'Paste';
+  String get pasteButtonLabel => '粘贴';
 
   @override
-  String get selectAllButtonLabel => 'Select all';
+  String get selectAllButtonLabel => '全选';
 
   @override
-  String get newTabLabel => 'Add new tab';
+  String get newTabLabel => '添加新标签页';
 
   @override
-  String get closeTabLabel => 'Close tab (Ctrl+F4)';
+  String get closeTabLabel => '关闭标签页 (Ctrl+F4)';
 
   @override
   String get scrollTabBackwardLabel => 'Scroll tab list backward';

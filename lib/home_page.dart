@@ -36,7 +36,14 @@ class _HomePageState extends State<HomePage> {
             _currentIndex = index;
           });
         },
-        autoSuggestBox: const AutoSuggestBox(items: []),
+        autoSuggestBox: AutoSuggestBox(
+          items: naviUtil.suggestItems,
+          onSelected: (data) {
+            int index = naviUtil.suggestGetIndex(data);
+            _currentIndex = index;
+            setState(() {});
+          },
+        ),
         autoSuggestBoxReplacement: const Icon(FluentIcons.search),
         items: [...naviUtil.displayItems],
         footerItems: [

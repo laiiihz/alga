@@ -63,6 +63,8 @@ class NaviUtil {
   late List<NavigationPaneItem> displayItems;
   late List<ToolItem> realItems;
 
+  List<String> get suggestItems => realItems.map((e) => e.text).toList();
+
   NaviUtil(BuildContext context) {
     toolGroups = _genToolItems(context);
     var _displayItems = <NavigationPaneItem>[];
@@ -75,5 +77,11 @@ class NaviUtil {
     }
     displayItems = _displayItems;
     realItems = _realItems;
+  }
+
+  int suggestGetIndex(String data) {
+    int index = suggestItems.indexOf(data);
+    if (index == -1) return 0;
+    return index;
   }
 }
