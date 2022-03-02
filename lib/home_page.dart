@@ -14,11 +14,18 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   int _currentIndex = 0;
   late NaviUtil naviUtil;
+  final _suggestController = TextEditingController();
 
   @override
   void didChangeDependencies() {
     naviUtil = NaviUtil(context);
     super.didChangeDependencies();
+  }
+
+  @override
+  void dispose() {
+    _suggestController.dispose();
+    super.dispose();
   }
 
   @override
@@ -37,6 +44,8 @@ class _HomePageState extends State<HomePage> {
           });
         },
         autoSuggestBox: AutoSuggestBox(
+          controller: _suggestController,
+          clearButtonEnabled: true,
           items: naviUtil.suggestItems,
           onSelected: (data) {
             int index = naviUtil.suggestGetIndex(data);
@@ -49,7 +58,7 @@ class _HomePageState extends State<HomePage> {
         footerItems: [
           PaneItem(
             icon: const Icon(FluentIcons.settings),
-            title: const Text('Settings'),
+            title: Text(S.of(context).settings),
           ),
         ],
       ),

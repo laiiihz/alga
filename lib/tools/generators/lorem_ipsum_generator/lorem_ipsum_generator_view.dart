@@ -36,7 +36,7 @@ class _LoremIpsumGeneratorViewState extends State<LoremIpsumGeneratorView> {
   @override
   Widget build(BuildContext context) {
     return ToolView.scrollVertical(
-      title: const Text('Lorem Ipsum Generator'),
+      title: Text(S.of(context).generatorLoremIpsum),
       children: [
         AppTitle(title: S.of(context).configuration),
         ToolViewConfig(

@@ -3,6 +3,8 @@
   "@appName": {
     "description": "name of app"
   },
+  "settings":"Settings",
+  "about":"About",
   "configuration": "configuration",
   "conversion": "Conversion",
   "selectConversion": "Select whitch conversion mode you want to use",
@@ -18,5 +20,8 @@
   "formatterDart": "Dart formatter",
   "generators": "Generators",
   "generatorHash": "Hash Generator",
-  "generatorUUID": "UUID Generator"
+  "generatorUUID": "UUID Generator",
+  "generatorLoremIpsum":"Lorem Ipsum Generator",
+  "textTool":"Text",
+  "markdownPreview":"Markdown Preview"
 }

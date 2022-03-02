@@ -1,5 +1,6 @@
 import 'package:devtoys/l10n/l10n.dart';
 import 'package:devtoys/models/tool_item.dart';
+import 'package:devtoys/tools/all_tools_view.dart';
 import 'package:devtoys/tools/encoders_decoders/base_64_encoder_decoder/base_64_encoder_decoder.dart';
 import 'package:devtoys/tools/encoders_decoders/uri_encoder_decoder/uri_encoder_decoder.dart';
 import 'package:devtoys/tools/formatters/dart_formatter/dart_formatter_view.dart';
@@ -12,6 +13,16 @@ import 'package:fluent_ui/fluent_ui.dart';
 import '../widgets/svg_asset_icon.dart';
 
 List<ToolGroup> _genToolItems(BuildContext context) => [
+      ToolGroup(
+        title: const Text('All Tools'),
+        items: [
+          ToolItem(
+            icon: const Icon(FluentIcons.home),
+            title: const Text('All Tools'),
+            page: const AllToolsView(),
+          ),
+        ],
+      ),
       ToolGroup(
         title: Text(S.of(context).encodersDecoders),
         items: [
@@ -57,8 +68,18 @@ List<ToolGroup> _genToolItems(BuildContext context) => [
           ),
           ToolItem(
             icon: const SvgAssetIcon('assets/icons/LoremIpsum.svg'),
-            title: const Text('Lorem Ipsum'),
+            title: Text(S.of(context).generatorLoremIpsum),
             page: const LoremIpsumGeneratorView(),
+          ),
+        ],
+      ),
+      ToolGroup(
+        title: Text(S.of(context).textTool),
+        items: [
+          ToolItem(
+            icon: const Icon(FluentIcons.mark_down_language),
+            title: Text(S.of(context).markdownPreview),
+            page: const SizedBox.shrink(),
           ),
         ],
       ),

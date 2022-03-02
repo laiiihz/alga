@@ -1,4 +1,5 @@
 import 'package:devtoys/constants/import_helper.dart';
+import 'package:devtoys/widgets/app_title.dart';
 
 class SettingsView extends StatefulWidget {
   const SettingsView({Key? key}) : super(key: key);
@@ -11,22 +12,15 @@ class _SettingsViewState extends State<SettingsView> {
   @override
   Widget build(BuildContext context) {
     return ScaffoldPage.withPadding(
-      header: const PageHeader(
-        title: Text('Settings'),
-      ),
-      content: GridView.builder(
-        gridDelegate:
-            SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 8),
-        itemBuilder: (context, index) {
-          final item = FluentIcons.allIcons.entries.toList()[index];
-          return Column(
-            children: [
-              Icon(item.value),
-              Text(item.key),
-            ],
-          );
-        },
-        itemCount: FluentIcons.allIcons.length,
+      header: PageHeader(title: Text(S.of(context).settings)),
+      content: ListView(
+        children: [
+          AppTitle(title: S.of(context).about),
+          ListTile(
+            leading: Image.asset('assets/logo/256x256.webp'),
+            title: Text(S.of(context).appName),
+          ),
+        ],
       ),
     );
   }

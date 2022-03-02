@@ -1,5 +1,7 @@
 {
   "appName": "DevToys",
+  "settings":"设置",
+  "about":"关于",
   "configuration": "配置",
   "conversion": "转换",
   "selectConversion": "选择您想使用的转换格式",
@@ -15,5 +17,8 @@
   "formatterDart": "Dart 格式化",
   "generators": "生成器",
   "generatorHash": "Hash 生成器",
-  "generatorUUID": "UUID 生成器"
+  "generatorUUID": "UUID 生成器",
+  "generatorLoremIpsum":"乱数假文 生成器",
+  "textTool":"文本",
+  "markdownPreview":"Markdown 预览"
 }
