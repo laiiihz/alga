@@ -21,6 +21,7 @@ class _AllToolsViewState extends State<AllToolsView> {
 
   @override
   Widget build(BuildContext context) {
+    bool isDark = FluentTheme.of(context).brightness == Brightness.dark;
     return ToolView(
       title: const Text('All Tools'),
       content: GridView.builder(
@@ -37,14 +38,14 @@ class _AllToolsViewState extends State<AllToolsView> {
               homeProvider.currentIndex = _naviUtil.getIndex(item);
             },
             child: Container(
-              color: Colors.grey[160],
+              color: isDark ? Colors.grey[160] : Colors.grey[20],
               child: Column(
                 children: [
                   Expanded(
                     child: AspectRatio(
                       aspectRatio: 1,
                       child: Container(
-                        color: Colors.grey[150],
+                        color: isDark ? Colors.grey[150] : Colors.grey[30],
                         margin: const EdgeInsets.all(12),
                         padding: const EdgeInsets.all(12),
                         child: item.icon,

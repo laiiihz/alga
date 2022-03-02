@@ -15,13 +15,15 @@ class ToolViewConfig extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    bool isDark = FluentTheme.of(context).brightness == Brightness.dark;
     return ListTile(
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4)),
       title: title,
       subtitle: subtitle,
       leading: leading,
       trailing: trailing,
-      tileColor: Colors.grey[160],
+      isThreeLine: true,
+      tileColor: isDark ? Colors.grey[160] : Colors.grey[20],
     );
   }
 }

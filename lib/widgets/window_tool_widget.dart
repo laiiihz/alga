@@ -10,6 +10,7 @@ class WindowToolWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    return child;
     Widget result = child;
     if (kIsWeb) return result;
     if (Platform.isAndroid || Platform.isIOS) return result;

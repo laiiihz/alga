@@ -10,7 +10,6 @@ void main() async {
   await windowManager.ensureInitialized();
   windowManager.waitUntilReadyToShow().then((_) async {
     windowManager.center();
-    windowManager.setAsFrameless();
   });
   runApp(const MyApp());
 }
