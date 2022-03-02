@@ -1,8 +1,11 @@
+import 'package:devtoys/home_provider.dart';
 import 'package:devtoys/l10n/l10n.dart';
 import 'package:devtoys/models/tool_items.dart';
 import 'package:devtoys/views/settings_view.dart';
 import 'package:devtoys/widgets/window_tool_widget.dart';
 import 'package:fluent_ui/fluent_ui.dart';
+
+final homeProvider = HomeProvider();
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -12,9 +15,18 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  int _currentIndex = 0;
   late NaviUtil naviUtil;
   final _suggestController = TextEditingController();
+
+  update() {
+    setState(() {});
+  }
+
+  @override
+  void initState() {
+    homeProvider.addListener(update);
+    super.initState();
+  }
 
   @override
   void didChangeDependencies() {
@@ -25,6 +37,8 @@ class _HomePageState extends State<HomePage> {
   @override
   void dispose() {
     _suggestController.dispose();
+    homeProvider.removeListener(update);
+    homeProvider.dispose();
     super.dispose();
   }
 
@@ -37,11 +51,9 @@ class _HomePageState extends State<HomePage> {
         leading: Image.asset('assets/logo/256x256.webp'),
       ),
       pane: NavigationPane(
-        selected: _currentIndex,
+        selected: homeProvider.currentIndex,
         onChanged: (index) {
-          setState(() {
-            _currentIndex = index;
-          });
+          homeProvider.currentIndex = index;
         },
         autoSuggestBox: AutoSuggestBox(
           controller: _suggestController,
@@ -49,7 +61,7 @@ class _HomePageState extends State<HomePage> {
           items: naviUtil.suggestItems,
           onSelected: (data) {
             int index = naviUtil.suggestGetIndex(data);
-            _currentIndex = index;
+            homeProvider.currentIndex = index;
             setState(() {});
           },
         ),
@@ -63,13 +75,11 @@ class _HomePageState extends State<HomePage> {
         ],
       ),
       content: NavigationBody.builder(
-        index: _currentIndex,
+        index: homeProvider.currentIndex,
         itemBuilder: (context, index) {
           if (index < naviUtil.realItems.length) {
             return naviUtil.realItems[index].page;
           }
-
-          // return const SizedBox.shrink();
           return const SettingsView();
         },
       ),

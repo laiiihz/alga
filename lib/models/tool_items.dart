@@ -111,4 +111,8 @@ class NaviUtil {
     if (index == -1) return 0;
     return index;
   }
+
+  getIndex(ToolItem item) {
+    return realItems.indexOf(item);
+  }
 }

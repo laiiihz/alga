@@ -1,4 +1,5 @@
 import 'package:devtoys/constants/import_helper.dart';
+import 'package:devtoys/home_page.dart';
 import 'package:devtoys/models/tool_items.dart';
 import 'package:devtoys/widgets/tool_view.dart';
 
@@ -31,23 +32,28 @@ class _AllToolsViewState extends State<AllToolsView> {
         ),
         itemBuilder: (context, index) {
           final item = _naviUtil.realItems[index];
-          return Container(
-            color: Colors.grey[160],
-            child: Column(
-              children: [
-                Expanded(
-                  child: AspectRatio(
-                    aspectRatio: 1,
-                    child: Container(
-                      color: Colors.grey[150],
-                      margin: const EdgeInsets.all(12),
-                      padding: const EdgeInsets.all(12),
-                      child: item.icon,
+          return GestureDetector(
+            onTap: () {
+              homeProvider.currentIndex = _naviUtil.getIndex(item);
+            },
+            child: Container(
+              color: Colors.grey[160],
+              child: Column(
+                children: [
+                  Expanded(
+                    child: AspectRatio(
+                      aspectRatio: 1,
+                      child: Container(
+                        color: Colors.grey[150],
+                        margin: const EdgeInsets.all(12),
+                        padding: const EdgeInsets.all(12),
+                        child: item.icon,
+                      ),
                     ),
                   ),
-                ),
-                Expanded(child: Center(child: item.title)),
-              ],
+                  Expanded(child: Center(child: item.title)),
+                ],
+              ),
             ),
           );
         },
