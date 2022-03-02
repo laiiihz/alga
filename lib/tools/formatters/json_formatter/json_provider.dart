@@ -16,7 +16,7 @@ class JsonProvider extends ChangeNotifier implements FormatterAbstract {
 
   @override
   FormatResult onChanged(String text) {
-    if (_type == JsonIndentType.zip) {
+    if (_type == JsonIndentType.minified) {
       return FormatResult(text.trim().replaceAll('\n', ''));
     }
     const decoder = JsonDecoder();

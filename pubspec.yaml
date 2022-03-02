@@ -15,13 +15,16 @@ dependencies:
   intl: ^0.17.0
 
   cupertino_icons: ^1.0.2
-  fluent_ui: ^3.9.0
+  fluent_ui: ^3.9.1
   archive: ^3.2.1
   dart_style: ^2.2.1
   uuid: ^3.0.6
   crypto: ^3.0.1
   flutter_svg: ^1.0.3
   window_manager: ^0.1.7
+  fluentui_system_icons: ^1.1.161
+  lorem_ipsum:
+    path: ./packages/lorem_ipsum
 
 dev_dependencies:
   flutter_test:
@@ -40,3 +43,4 @@ flutter:
     - assets/icons/JsonFormatter.svg
     - assets/icons/dart.svg
     - assets/icons/Guid.svg
+    - assets/icons/LoremIpsum.svg

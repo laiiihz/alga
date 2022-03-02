@@ -5,6 +5,7 @@ import 'package:devtoys/tools/encoders_decoders/uri_encoder_decoder/uri_encoder_
 import 'package:devtoys/tools/formatters/dart_formatter/dart_formatter_view.dart';
 import 'package:devtoys/tools/formatters/json_formatter/json_formatter_view.dart';
 import 'package:devtoys/tools/generators/hash_generator/hash_generator_view.dart';
+import 'package:devtoys/tools/generators/lorem_ipsum_generator/lorem_ipsum_generator_view.dart';
 import 'package:devtoys/tools/generators/uuid_generator/uuid_generator.dart';
 import 'package:fluent_ui/fluent_ui.dart';
 
@@ -53,6 +54,11 @@ List<ToolGroup> _genToolItems(BuildContext context) => [
             icon: const Icon(FluentIcons.fingerprint),
             title: Text(S.of(context).generatorHash),
             page: const HashGeneratorView(),
+          ),
+          ToolItem(
+            icon: const SvgAssetIcon('assets/icons/LoremIpsum.svg'),
+            title: const Text('Lorem Ipsum'),
+            page: const LoremIpsumGeneratorView(),
           ),
         ],
       ),

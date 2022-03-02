@@ -38,18 +38,6 @@ class ZhFluentLocalization implements FluentLocalizations {
   String get dialogLabel => '对话框';
 
   @override
-  String get cutButtonLabel => '剪切';
-
-  @override
-  String get copyButtonLabel => '复制';
-
-  @override
-  String get pasteButtonLabel => '粘贴';
-
-  @override
-  String get selectAllButtonLabel => '全选';
-
-  @override
   String get newTabLabel => '添加新标签页';
 
   @override
@@ -63,6 +51,49 @@ class ZhFluentLocalization implements FluentLocalizations {
 
   @override
   String get noResultsFoundLabel => '找不到结果';
+
+  @override
+  String get copyActionLabel => '复制';
+
+  @override
+  String get copyActionTooltip => '复制';
+
+  @override
+  String get copyShortcut => '';
+
+  @override
+  String get cutActionLabel => '';
+
+  @override
+  String get cutActionTooltip => '';
+
+  @override
+  // TODO: implement cutShortcut
+  String get cutShortcut => '';
+
+  @override
+  // TODO: implement pasteActionLabel
+  String get pasteActionLabel => '';
+
+  @override
+  // TODO: implement pasteActionTooltip
+  String get pasteActionTooltip => '';
+
+  @override
+  // TODO: implement pasteShortcut
+  String get pasteShortcut => '';
+
+  @override
+  // TODO: implement selectAllActionLabel
+  String get selectAllActionLabel => '';
+
+  @override
+  // TODO: implement selectAllActionTooltip
+  String get selectAllActionTooltip => '';
+
+  @override
+  // TODO: implement selectAllShortcut
+  String get selectAllShortcut => '';
 
   /// Creates an object that provides US English resource values for the material
   /// library widgets.

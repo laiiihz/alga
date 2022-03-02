@@ -2,7 +2,8 @@ import 'package:devtoys/l10n/l10n.dart';
 import 'package:devtoys/tools/formatters/abstract/formatter_config.dart';
 import 'package:devtoys/tools/formatters/json_formatter/json_enums.dart';
 import 'package:devtoys/tools/formatters/json_formatter/json_provider.dart';
-import 'package:fluent_ui/fluent_ui.dart';
+import 'package:fluent_ui/fluent_ui.dart' hide FluentIcons;
+import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 
 import '../../widgets/formatter_view.dart';
 
@@ -36,7 +37,8 @@ class _JsonFormtterViewState extends State<JsonFormtterView> {
       title: Text(S.of(context).formatterJson),
       configs: [
         FormatterConfig(
-          title: 'indent',
+          leading: const Icon(FluentIcons.spacebar_24_regular),
+          title: 'indentation',
           trailing: Combobox<JsonIndentType>(
             items: JsonIndentType.values
                 .map((e) => ComboboxItem(child: Text(e.name), value: e))

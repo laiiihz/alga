@@ -1,9 +1,9 @@
-import 'package:devtoys/l10n/l10n.dart';
 import 'package:devtoys/tools/generators/hash_generator/hash_provider.dart';
 import 'package:devtoys/widgets/app_title.dart';
 import 'package:devtoys/widgets/tool_view.dart';
-import 'package:fluent_ui/fluent_ui.dart';
+import 'package:fluentui_system_icons/fluentui_system_icons.dart' as f_icons;
 
+import '../../../constants/import_helper.dart';
 import '../../../widgets/tool_view_config.dart';
 
 class HashGeneratorView extends StatefulWidget {
@@ -30,7 +30,7 @@ class _HashGeneratorViewState extends State<HashGeneratorView> {
             Expanded(child: TextBox(controller: e.controller)),
             const SizedBox(width: 8),
             Button(
-              child: const Icon(FluentIcons.copy),
+              child: const Icon(f_icons.FluentIcons.copy_24_regular),
               onPressed: () {
                 e.copy();
               },
@@ -61,6 +61,7 @@ class _HashGeneratorViewState extends State<HashGeneratorView> {
       children: [
         AppTitle(title: S.of(context).configuration),
         ToolViewConfig(
+          leading: const Icon(FluentIcons.upper_case),
           title: const Text('UpperCase'),
           trailing: ToggleSwitch(
             checked: _provider.upperCase,

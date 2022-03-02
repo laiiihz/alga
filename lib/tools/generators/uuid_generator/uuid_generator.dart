@@ -4,6 +4,7 @@ import 'package:devtoys/widgets/app_title.dart';
 import 'package:devtoys/widgets/tool_view.dart';
 import 'package:devtoys/widgets/tool_view_config.dart';
 import 'package:fluent_ui/fluent_ui.dart';
+import 'package:fluentui_system_icons/fluentui_system_icons.dart' as f_icons;
 import 'package:flutter/services.dart';
 
 class UUIDGeneratorView extends StatefulWidget {
@@ -39,6 +40,7 @@ class _UUIDGeneratorViewState extends State<UUIDGeneratorView> {
       children: [
         AppTitle(title: S.of(context).configuration),
         ToolViewConfig(
+          leading: const Icon(f_icons.FluentIcons.line_horizontal_1_20_regular),
           title: const Text('Hypens'),
           trailing: ToggleSwitch(
             checked: _provider.hypens,
@@ -48,6 +50,7 @@ class _UUIDGeneratorViewState extends State<UUIDGeneratorView> {
           ),
         ),
         ToolViewConfig(
+          leading: const Icon(FluentIcons.upper_case),
           title: const Text('Upper case'),
           trailing: ToggleSwitch(
             checked: _provider.upperCase,
@@ -57,7 +60,10 @@ class _UUIDGeneratorViewState extends State<UUIDGeneratorView> {
           ),
         ),
         ToolViewConfig(
-          title: const Text('version'),
+          leading: const Icon(FluentIcons.version_control_push),
+          title: const Text('UUID Version'),
+          subtitle:
+              const Text('Choose the version of UUID version to generate'),
           trailing: Combobox(
             items: UUIDVersion.values.map((e) {
               return ComboboxItem(child: Text(e.value), value: e);

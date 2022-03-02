@@ -11,9 +11,9 @@ extension UUIDExt on UUIDVersion {
   String get value {
     switch (this) {
       case UUIDVersion.v1:
-        return 'v1'.padRight(8);
+        return '1'.padRight(10);
       case UUIDVersion.v4:
-        return 'v4'.padRight(8);
+        return '4 (GUID)'.padRight(10);
     }
   }
 }
