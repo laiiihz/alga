@@ -77,7 +77,7 @@ List<ToolGroup> _genToolItems(BuildContext context) => [
         title: Text(S.of(context).textTool),
         items: [
           ToolItem(
-            icon: const Icon(FluentIcons.mark_down_language),
+            icon: const SvgAssetIcon('assets/icons/MarkdownPreview.svg'),
             title: Text(S.of(context).markdownPreview),
             page: const SizedBox.shrink(),
           ),
