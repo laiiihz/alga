@@ -28,7 +28,20 @@ class _JsonYamlConverterViewState extends State<JsonYamlConverterView> {
             Expanded(
               child: AppTitleWrapper(
                 title: 'JSON',
-                actions: [],
+                actions: [
+                  Button(
+                    child: const Icon(FluentIcons.copy),
+                    onPressed: _provider.copyJson,
+                  ),
+                  Button(
+                    child: const Icon(FluentIcons.paste),
+                    onPressed: _provider.pasteJson,
+                  ),
+                  Button(
+                    child: const Icon(FluentIcons.clear),
+                    onPressed: _provider.clear,
+                  ),
+                ],
                 child: TextBox(
                   minLines: 12,
                   maxLines: 12,
@@ -43,7 +56,20 @@ class _JsonYamlConverterViewState extends State<JsonYamlConverterView> {
             Expanded(
               child: AppTitleWrapper(
                 title: 'YAML',
-                actions: [],
+                actions: [
+                  Button(
+                    child: const Icon(FluentIcons.copy),
+                    onPressed: _provider.copyYaml,
+                  ),
+                  Button(
+                    child: const Icon(FluentIcons.paste),
+                    onPressed: _provider.pasteYaml,
+                  ),
+                  Button(
+                    child: const Icon(FluentIcons.clear),
+                    onPressed: _provider.clear,
+                  ),
+                ],
                 child: TextBox(
                   minLines: 12,
                   maxLines: 12,

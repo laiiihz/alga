@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:devtoys/constants/import_helper.dart';
+import 'package:devtoys/utils/clipboard_util.dart';
 import 'package:json2yaml/json2yaml.dart' as json_2_yaml;
 import 'package:yaml/yaml.dart';
 
@@ -28,6 +29,31 @@ class JsonYamlConverterProvider extends ChangeNotifier {
     } catch (e) {
       print(e);
     }
+  }
+
+  clear() {
+    jsonController.clear();
+    yamlController.clear();
+  }
+
+  copyJson() {
+    ClipboardUtil.copy(jsonController.text);
+  }
+
+  copyYaml() {
+    ClipboardUtil.copy(yamlController.text);
+  }
+
+  Future pasteJson() async {
+    String value = await ClipboardUtil.paste();
+    jsonController.text = value;
+    json2yaml();
+  }
+
+  Future pasteYaml() async {
+    String value = await ClipboardUtil.paste();
+    yamlController.text = value;
+    yaml2json();
   }
 
   formatJson(Map map) {
