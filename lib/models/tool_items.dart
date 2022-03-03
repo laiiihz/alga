@@ -12,6 +12,7 @@ import 'package:devtoys/tools/formatters/json_formatter/json_formatter_view.dart
 import 'package:devtoys/tools/generators/hash_generator/hash_generator_view.dart';
 import 'package:devtoys/tools/generators/lorem_ipsum_generator/lorem_ipsum_generator_view.dart';
 import 'package:devtoys/tools/generators/uuid_generator/uuid_generator.dart';
+import 'package:devtoys/tools/text_tools/markdown_preview/markdown_preview_view.dart';
 import 'package:fluent_ui/fluent_ui.dart';
 
 import '../widgets/svg_asset_icon.dart';
@@ -108,7 +109,7 @@ List<ToolGroup> _genToolItems(BuildContext context) => [
           ToolItem(
             icon: const SvgAssetIcon('assets/icons/MarkdownPreview.svg'),
             title: Text(S.of(context).markdownPreview),
-            page: const SizedBox.shrink(),
+            page: const MarkdownPreviewView(),
           ),
         ],
       ),

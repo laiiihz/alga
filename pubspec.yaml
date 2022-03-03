@@ -27,6 +27,7 @@ dependencies:
     path: ./packages/lorem_ipsum
   yaml: ^3.1.0
   json2yaml: ^3.0.0
+  flutter_markdown: ^0.6.9
 
 dev_dependencies:
   flutter_test:
