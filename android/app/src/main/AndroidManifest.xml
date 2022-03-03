@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.devtoys">
+    package="tech.laihz.devtoys">
    <application
         android:label="devtoys"
         android:name="${applicationName}"

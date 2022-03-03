@@ -1,4 +1,4 @@
-package com.example.devtoys
+package tech.laihz.devtoys
 
 import io.flutter.embedding.android.FlutterActivity
 
