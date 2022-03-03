@@ -1,16 +1,13 @@
 import 'package:devtoys/home_page.dart';
 import 'package:devtoys/l10n/fluent_localization.dart';
 import 'package:devtoys/l10n/l10n.dart';
+import 'package:devtoys/utils/windows_util.dart';
 import 'package:fluent_ui/fluent_ui.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:window_manager/window_manager.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await windowManager.ensureInitialized();
-  windowManager.waitUntilReadyToShow().then((_) async {
-    windowManager.center();
-  });
+  await WindowsUtil.init();
   runApp(const MyApp());
 }
 
