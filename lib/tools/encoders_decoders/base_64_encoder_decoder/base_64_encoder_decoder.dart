@@ -40,22 +40,23 @@ class _Base64EncoderDecoderViewState extends State<Base64EncoderDecoderView> {
       children: [
         AppTitle(title: S.of(context).configuration),
         ToolViewConfig(
-            leading: const Icon(FluentIcons.switch_widget),
-            title: Text(S.of(context).conversion),
-            subtitle: Text(S.of(context).selectConversion),
-            trailing: Row(
-              children: [
-                _provider.isEncode
-                    ? Text(S.of(context).encode)
-                    : Text(S.of(context).decode),
-                ToggleSwitch(
-                  checked: _provider.isEncode,
-                  onChanged: (state) {
-                    _provider.isEncode = state;
-                  },
-                ),
-              ],
-            )),
+          leading: const Icon(FluentIcons.switch_widget),
+          title: Text(S.of(context).conversion),
+          subtitle: Text(S.of(context).selectConversion),
+          trailing: Row(
+            children: [
+              _provider.isEncode
+                  ? Text(S.of(context).encode)
+                  : Text(S.of(context).decode),
+              ToggleSwitch(
+                checked: _provider.isEncode,
+                onChanged: (state) {
+                  _provider.isEncode = state;
+                },
+              ),
+            ],
+          ),
+        ),
         AppTitleWrapper(
           title: S.of(context).input,
           actions: [
