@@ -1,6 +1,7 @@
 import 'package:devtoys/l10n/l10n.dart';
 import 'package:devtoys/models/tool_item.dart';
 import 'package:devtoys/tools/all_tools_view.dart';
+import 'package:devtoys/tools/converters/json_yaml_converter/json_yaml_converter_view.dart';
 import 'package:devtoys/tools/encoders_decoders/base_64_encoder_decoder/base_64_encoder_decoder.dart';
 import 'package:devtoys/tools/encoders_decoders/uri_encoder_decoder/uri_encoder_decoder.dart';
 import 'package:devtoys/tools/formatters/dart_formatter/dart_formatter_view.dart';
@@ -20,6 +21,16 @@ List<ToolGroup> _genToolItems(BuildContext context) => [
             icon: const Icon(FluentIcons.home),
             title: const Text('All Tools'),
             page: const AllToolsView(),
+          ),
+        ],
+      ),
+      ToolGroup(
+        title: const Text('Converters'),
+        items: [
+          ToolItem(
+            icon: const SvgAssetIcon('assets/icons/JsonYaml.svg'),
+            title: const Text('JSON <> YAML'),
+            page: const JsonYamlConverterView(),
           ),
         ],
       ),

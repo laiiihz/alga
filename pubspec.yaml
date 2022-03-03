@@ -25,6 +25,8 @@ dependencies:
   fluentui_system_icons: ^1.1.161
   lorem_ipsum:
     path: ./packages/lorem_ipsum
+  yaml: ^3.1.0
+  json2yaml: ^3.0.0
 
 dev_dependencies:
   flutter_test:
@@ -45,3 +47,4 @@ flutter:
     - assets/icons/Guid.svg
     - assets/icons/LoremIpsum.svg
     - assets/icons/MarkdownPreview.svg
+    - 'assets/icons/JsonYaml.svg'
