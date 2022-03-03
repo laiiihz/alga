@@ -5,6 +5,7 @@ import 'package:devtoys/tools/converters/json_yaml_converter/json_yaml_converter
 import 'package:devtoys/tools/converters/number_base_converter/number_base_converter_view.dart';
 import 'package:devtoys/tools/encoders_decoders/base_64_encoder_decoder/base_64_encoder_decoder.dart';
 import 'package:devtoys/tools/encoders_decoders/gzip_compress_decompress/gzip_compress_decompress_view.dart';
+import 'package:devtoys/tools/encoders_decoders/jwt_decoder/jwt_decoder_view.dart';
 import 'package:devtoys/tools/encoders_decoders/uri_encoder_decoder/uri_encoder_decoder.dart';
 import 'package:devtoys/tools/formatters/dart_formatter/dart_formatter_view.dart';
 import 'package:devtoys/tools/formatters/json_formatter/json_formatter_view.dart';
@@ -58,6 +59,11 @@ List<ToolGroup> _genToolItems(BuildContext context) => [
             icon: const SvgAssetIcon('assets/icons/Base64.svg'),
             title: const Text('Gzip'),
             page: const GzipCompressDecompressView(),
+          ),
+          ToolItem(
+            icon: const SvgAssetIcon('assets/icons/Base64.svg'),
+            title: const Text('JWT Decoder'),
+            page: const JWTDecoderView(),
           ),
         ],
       ),
