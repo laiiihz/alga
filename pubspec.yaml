@@ -47,4 +47,5 @@ flutter:
     - assets/icons/Guid.svg
     - assets/icons/LoremIpsum.svg
     - assets/icons/MarkdownPreview.svg
-    - 'assets/icons/JsonYaml.svg'
+    - assets/icons/JsonYaml.svg
+    - assets/icons/JsonYaml.svg
