@@ -36,7 +36,16 @@ class _RegexTesterViewState extends State<RegexTesterView> {
       children: [
         AppTitleWrapper(
           title: 'Regular expression',
-          actions: [],
+          actions: [
+            Button(
+              child: const Icon(FluentIcons.paste),
+              onPressed: _provider.pasteReg,
+            ),
+            Button(
+              child: const Icon(FluentIcons.clear),
+              onPressed: _provider.clearReg,
+            ),
+          ],
           child: TextBox(
             controller: _provider.regexController,
             onChanged: (_) {
@@ -46,7 +55,16 @@ class _RegexTesterViewState extends State<RegexTesterView> {
         ),
         AppTitleWrapper(
           title: 'Text',
-          actions: [],
+          actions: [
+            Button(
+              child: const Icon(FluentIcons.copy),
+              onPressed: _provider.pasteText,
+            ),
+            Button(
+              child: const Icon(FluentIcons.clear),
+              onPressed: _provider.clearText,
+            ),
+          ],
           child: md.Material(
             child: ExtendedTextField(
               controller: _provider.textController,

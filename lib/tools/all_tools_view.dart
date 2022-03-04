@@ -1,7 +1,6 @@
 import 'package:devtoys/constants/import_helper.dart';
 import 'package:devtoys/home_page.dart';
 import 'package:devtoys/models/tool_items.dart';
-import 'package:devtoys/widgets/tool_view.dart';
 
 class AllToolsView extends StatefulWidget {
   const AllToolsView({Key? key}) : super(key: key);
@@ -48,7 +47,12 @@ class _AllToolsViewState extends State<AllToolsView> {
                         color: isDark ? Colors.grey[150] : Colors.grey[30],
                         margin: const EdgeInsets.all(12),
                         padding: const EdgeInsets.all(12),
-                        child: item.icon,
+                        child: IconTheme(
+                          data: FluentTheme.of(context)
+                              .iconTheme
+                              .copyWith(size: 48),
+                          child: item.icon,
+                        ),
                       ),
                     ),
                   ),

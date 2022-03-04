@@ -54,7 +54,16 @@ class _GzipCompressDecompressViewState
         ),
         AppTitleWrapper(
           title: S.of(context).input,
-          actions: [],
+          actions: [
+            Button(
+              child: const Icon(FluentIcons.paste),
+              onPressed: _provider.paste,
+            ),
+            Button(
+              child: const Icon(FluentIcons.clear),
+              onPressed: _provider.clear,
+            ),
+          ],
           child: TextBox(
             controller: _provider.inputController,
             minLines: 12,
@@ -66,7 +75,12 @@ class _GzipCompressDecompressViewState
         ),
         AppTitleWrapper(
           title: S.of(context).output,
-          actions: [],
+          actions: [
+            Button(
+              child: const Icon(FluentIcons.copy),
+              onPressed: _provider.copy,
+            ),
+          ],
           child: TextBox(
             controller: _provider.outputController,
             minLines: 12,

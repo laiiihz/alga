@@ -1,8 +1,5 @@
 import 'package:devtoys/constants/import_helper.dart';
 import 'package:devtoys/tools/generators/lorem_ipsum_generator/lorem_ipsum_provider.dart';
-import 'package:devtoys/widgets/app_title.dart';
-import 'package:devtoys/widgets/tool_view.dart';
-import 'package:devtoys/widgets/tool_view_config.dart';
 import 'package:flutter/services.dart';
 
 class LoremIpsumGeneratorView extends StatefulWidget {

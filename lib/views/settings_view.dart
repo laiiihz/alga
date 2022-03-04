@@ -1,5 +1,4 @@
 import 'package:devtoys/constants/import_helper.dart';
-import 'package:devtoys/widgets/app_title.dart';
 
 class SettingsView extends StatefulWidget {
   const SettingsView({Key? key}) : super(key: key);

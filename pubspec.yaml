@@ -2,7 +2,7 @@ name: devtoys
 description: a flutter implements of microsoft devtoys.
 
 publish_to: "none"
-version: 0.1.1+2
+version: 0.1.2+3
 
 environment:
   sdk: ">=2.16.1 <3.0.0"

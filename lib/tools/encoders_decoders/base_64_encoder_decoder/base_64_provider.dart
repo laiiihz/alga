@@ -39,7 +39,7 @@ class Base64Provider extends ChangeNotifier {
         Uint8List result = base64.decode(inputController.text);
         outputController.text = String.fromCharCodes(result);
       } catch (e) {
-        print(e);
+        return;
       }
     }
   }

@@ -42,7 +42,7 @@ class _FormatterBaseViewState extends State<FormatterBaseView> {
             try {
               widget.base.convertIt();
             } catch (e) {
-              print(e);
+              return;
             }
           },
         ),

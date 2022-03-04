@@ -3,6 +3,7 @@ import 'dart:typed_data';
 
 import 'package:archive/archive.dart';
 import 'package:devtoys/constants/import_helper.dart';
+import 'package:devtoys/utils/clipboard_util.dart';
 
 class GzipCompressDecompressProvider extends ChangeNotifier {
   bool _isCompress = true;
@@ -14,6 +15,19 @@ class GzipCompressDecompressProvider extends ChangeNotifier {
 
   final inputController = TextEditingController();
   final outputController = TextEditingController();
+
+  paste() async {
+    inputController.text = await ClipboardUtil.paste();
+  }
+
+  copy() {
+    ClipboardUtil.copy(outputController.text);
+  }
+
+  clear() {
+    inputController.clear();
+    outputController.clear();
+  }
 
   convert() {
     try {
@@ -31,7 +45,7 @@ class GzipCompressDecompressProvider extends ChangeNotifier {
             String.fromCharCodes(decoder.decodeBytes(result));
       }
     } catch (e) {
-      print(e);
+      return;
     }
   }
 

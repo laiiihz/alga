@@ -56,7 +56,7 @@ class _MarkdownPreviewViewState extends State<MarkdownPreviewView> {
             Expanded(
               child: AppTitleWrapper(
                 title: 'Preview',
-                actions: [],
+                actions: const [],
                 child: SizedBox(
                   height: 300,
                   child: Markdown(data: _provider.data),

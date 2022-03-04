@@ -14,7 +14,7 @@ class JsonYamlConverterProvider extends ChangeNotifier {
       yamlController.text =
           json_2_yaml.json2yaml(json.decode(jsonController.text));
     } catch (e) {
-      print(e);
+      return;
     }
   }
 
@@ -27,7 +27,7 @@ class JsonYamlConverterProvider extends ChangeNotifier {
         jsonController.text = 'unknown yaml';
       }
     } catch (e) {
-      print(e);
+      return;
     }
   }
 

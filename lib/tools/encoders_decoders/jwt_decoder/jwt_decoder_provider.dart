@@ -68,7 +68,6 @@ class JWTModel {
       final payload = jDeocder.convert(payloadString);
       return JWTModel(header: header, payload: payload, sign: signString);
     } catch (e) {
-      print(e);
       return null;
     }
   }
