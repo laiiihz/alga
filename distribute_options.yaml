@@ -1,0 +1,14 @@
+output: dist/
+releases:
+  - name: release
+    jobs:
+      - name: release-macos
+        package:
+          platform: macos
+          target: zip
+      - name: release-android
+        package:
+          platform: android
+          target: apk
+          build_args:
+            target-platform: android-arm64
