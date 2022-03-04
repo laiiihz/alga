@@ -13,7 +13,13 @@ class WindowsUtil {
     } else {
       await windowManager.ensureInitialized();
       await windowManager.waitUntilReadyToShow();
-      windowManager.center();
+      await windowManager.center();
+      await windowManager.setTitle('DevToys');
     }
+  }
+
+  static setTitle(String title) async {
+    if (Platform.isAndroid || Platform.isIOS) return;
+    await windowManager.setTitle(title);
   }
 }
