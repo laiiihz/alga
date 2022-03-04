@@ -22,26 +22,26 @@ import '../widgets/svg_asset_icon.dart';
 
 List<ToolGroup> _genToolItems(BuildContext context) => [
       ToolGroup(
-        title: const Text('All Tools'),
+        title: Text(S.of(context).allTools),
         items: [
           ToolItem(
             icon: const Icon(FluentIcons.home),
-            title: const Text('All Tools'),
+            title: Text(S.of(context).allTools),
             page: const AllToolsView(),
           ),
         ],
       ),
       ToolGroup(
-        title: const Text('Converters'),
+        title: Text(S.of(context).converters),
         items: [
           ToolItem(
             icon: const SvgAssetIcon('assets/icons/JsonYaml.svg'),
-            title: const Text('JSON <> YAML'),
+            title: Text(S.of(context).jsonYamlConverter),
             page: const JsonYamlConverterView(),
           ),
           ToolItem(
             icon: const Icon(FluentIcons.number_field),
-            title: const Text('Number Base'),
+            title: Text(S.of(context).numberBaseConverter),
             page: const NumberBaseConverterView(),
           ),
         ],
@@ -61,12 +61,12 @@ List<ToolGroup> _genToolItems(BuildContext context) => [
           ),
           ToolItem(
             icon: const Icon(f_icons.FluentIcons.folder_zip_24_regular),
-            title: const Text('Gzip'),
+            title: Text(S.of(context).encoderDecoderGzip),
             page: const GzipCompressDecompressView(),
           ),
           ToolItem(
             icon: const SvgAssetIcon('assets/icons/JWT.svg'),
-            title: const Text('JWT Decoder'),
+            title: Text(S.of(context).decoderJWT),
             page: const JWTDecoderView(),
           ),
         ],
@@ -111,7 +111,7 @@ List<ToolGroup> _genToolItems(BuildContext context) => [
         items: [
           ToolItem(
             icon: const SvgAssetIcon('assets/icons/RegexTester.svg'),
-            title: const Text('Regex Tester'),
+            title: Text(S.of(context).regexTester),
             page: const RegexTesterView(),
           ),
           ToolItem(

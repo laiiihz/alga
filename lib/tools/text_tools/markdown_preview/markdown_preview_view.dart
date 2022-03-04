@@ -29,14 +29,14 @@ class _MarkdownPreviewViewState extends State<MarkdownPreviewView> {
   @override
   Widget build(BuildContext context) {
     return ToolView.scrollVertical(
-      title: const Text('Markdown Preview'),
+      title: Text(S.of(context).markdownPreview),
       children: [
         Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Expanded(
               child: AppTitleWrapper(
-                title: 'Markdown',
+                title: S.of(context).markdownInput,
                 actions: [
                   Button(
                     child: const Icon(FluentIcons.copy),
@@ -53,9 +53,10 @@ class _MarkdownPreviewViewState extends State<MarkdownPreviewView> {
                 ),
               ),
             ),
+            const SizedBox(width: 8),
             Expanded(
               child: AppTitleWrapper(
-                title: 'Preview',
+                title: S.of(context).markdownPreviewInput,
                 actions: const [],
                 child: SizedBox(
                   height: 300,

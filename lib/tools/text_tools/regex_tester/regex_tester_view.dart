@@ -32,10 +32,10 @@ class _RegexTesterViewState extends State<RegexTesterView> {
   @override
   Widget build(BuildContext context) {
     return ToolView.scrollVertical(
-      title: const Text('Regex Tester'),
+      title: Text(S.of(context).regexTester),
       children: [
         AppTitleWrapper(
-          title: 'Regular expression',
+          title: S.of(context).regularExpression,
           actions: [
             Button(
               child: const Icon(FluentIcons.paste),
@@ -54,7 +54,7 @@ class _RegexTesterViewState extends State<RegexTesterView> {
           ),
         ),
         AppTitleWrapper(
-          title: 'Text',
+          title: S.of(context).regexText,
           actions: [
             Button(
               child: const Icon(FluentIcons.copy),

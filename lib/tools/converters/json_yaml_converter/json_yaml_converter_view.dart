@@ -19,7 +19,7 @@ class _JsonYamlConverterViewState extends State<JsonYamlConverterView> {
   @override
   Widget build(BuildContext context) {
     return ToolView.scrollVertical(
-      title: const Text("JSON <> YAML Converter"),
+      title: Text(S.of(context).jsonYamlConverter),
       children: [
         Row(
           children: [

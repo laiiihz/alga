@@ -14,7 +14,7 @@ class _NumberBaseConverterViewState extends State<NumberBaseConverterView> {
   @override
   Widget build(BuildContext context) {
     return ToolView.scrollVertical(
-      title: const Text('Number Base Converter'),
+      title: Text(S.of(context).numberBaseConverter),
       children: _provider.controllers.map((e) {
         return AppTitleWrapper(
           title: e.title,

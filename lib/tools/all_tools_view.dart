@@ -22,7 +22,7 @@ class _AllToolsViewState extends State<AllToolsView> {
   Widget build(BuildContext context) {
     bool isDark = FluentTheme.of(context).brightness == Brightness.dark;
     return ToolView(
-      title: const Text('All Tools'),
+      title: Text(S.of(context).allTools),
       content: GridView.builder(
         gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
           maxCrossAxisExtent: 150,
