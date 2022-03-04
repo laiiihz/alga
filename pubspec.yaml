@@ -29,6 +29,8 @@ dependencies:
   json2yaml: ^3.0.0
   flutter_markdown: ^0.6.9
   extended_text_field: ^10.0.0
+  package_info_plus: ^1.4.0
+  url_launcher: ^6.0.20
 
 dev_dependencies:
   flutter_test:
