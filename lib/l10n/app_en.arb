@@ -4,6 +4,7 @@
     "description": "name of app"
   },
   "allTools": "All tools",
+  "typeToSearch": "Type to search for tools",
   "settings": "Settings",
   "about": "About",
   "configuration": "configuration",

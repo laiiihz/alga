@@ -56,7 +56,7 @@ class _HomePageState extends State<HomePage> {
           homeProvider.currentIndex = index;
         },
         autoSuggestBox: AutoSuggestBox(
-          placeholder: 'Type to search for tools',
+          placeholder: S.of(context).typeToSearch,
           trailingIcon: const Padding(
             padding: EdgeInsets.symmetric(horizontal: 8),
             child: Icon(FluentIcons.search),
