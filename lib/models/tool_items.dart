@@ -16,6 +16,8 @@ import 'package:devtoys/tools/text_tools/markdown_preview/markdown_preview_view.
 import 'package:devtoys/tools/text_tools/regex_tester/regex_tester_view.dart';
 import 'package:fluent_ui/fluent_ui.dart';
 
+import 'package:fluentui_system_icons/fluentui_system_icons.dart' as f_icons;
+
 import '../widgets/svg_asset_icon.dart';
 
 List<ToolGroup> _genToolItems(BuildContext context) => [
@@ -58,12 +60,12 @@ List<ToolGroup> _genToolItems(BuildContext context) => [
             page: const Base64EncoderDecoderView(),
           ),
           ToolItem(
-            icon: const SvgAssetIcon('assets/icons/Base64.svg'),
+            icon: const Icon(f_icons.FluentIcons.folder_zip_24_regular),
             title: const Text('Gzip'),
             page: const GzipCompressDecompressView(),
           ),
           ToolItem(
-            icon: const SvgAssetIcon('assets/icons/Base64.svg'),
+            icon: const SvgAssetIcon('assets/icons/JWT.svg'),
             title: const Text('JWT Decoder'),
             page: const JWTDecoderView(),
           ),
@@ -108,7 +110,7 @@ List<ToolGroup> _genToolItems(BuildContext context) => [
         title: Text(S.of(context).textTool),
         items: [
           ToolItem(
-            icon: const SvgAssetIcon('assets/icons/MarkdownPreview.svg'),
+            icon: const SvgAssetIcon('assets/icons/RegexTester.svg'),
             title: const Text('Regex Tester'),
             page: const RegexTesterView(),
           ),

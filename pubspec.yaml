@@ -43,11 +43,4 @@ flutter:
   assets:
     - assets/logo/1080x1080.webp
     - assets/logo/256x256.webp
-    - assets/icons/Base64.svg
-    - assets/icons/JsonFormatter.svg
-    - assets/icons/dart.svg
-    - assets/icons/Guid.svg
-    - assets/icons/LoremIpsum.svg
-    - assets/icons/MarkdownPreview.svg
-    - assets/icons/JsonYaml.svg
-    - assets/icons/JsonYaml.svg
+    - assets/icons/
