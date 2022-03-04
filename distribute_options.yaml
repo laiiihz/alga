@@ -12,3 +12,13 @@ releases:
           target: apk
           build_args:
             target-platform: android-arm64
+  - name: windows
+    jobs:
+      - name: release-windows
+        package: 
+          platform: windows
+          target: exe
+      - name: release-windows-zip
+        package: 
+          platform: windows
+          target: zip
