@@ -4,6 +4,7 @@ import 'package:devtoys/models/tool_items.dart';
 import 'package:devtoys/views/settings_view.dart';
 import 'package:devtoys/widgets/window_tool_widget.dart';
 import 'package:fluent_ui/fluent_ui.dart';
+import 'package:window_manager/window_manager.dart';
 
 final homeProvider = HomeProvider();
 
@@ -46,9 +47,19 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     Widget child = NavigationView(
       appBar: NavigationAppBar(
-        title: Text(S.of(context).appName),
+        title: Padding(
+          padding: const EdgeInsets.only(top: 6),
+          child: Text(S.of(context).appName),
+        ),
         automaticallyImplyLeading: true,
-        leading: Image.asset('assets/logo/256x256.webp'),
+        leading: Padding(
+          padding: const EdgeInsets.only(top: 6),
+          child: Image.asset('assets/logo/256x256.webp'),
+        ),
+        actions: WindowCaption(
+          brightness: FluentTheme.of(context).brightness,
+          backgroundColor: Colors.transparent,
+        ),
       ),
       pane: NavigationPane(
         selected: homeProvider.currentIndex,

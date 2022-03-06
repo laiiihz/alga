@@ -12,9 +12,14 @@ class WindowsUtil {
       );
     } else {
       await windowManager.ensureInitialized();
-      await windowManager.waitUntilReadyToShow();
-      await windowManager.center();
-      await windowManager.setTitle('DevToys');
+      windowManager.waitUntilReadyToShow().then((value) async {
+        await windowManager.setTitleBarStyle('hidden',
+            windowButtonVisibility: false);
+        await windowManager.center();
+        await windowManager.setTitle('DevToys');
+        await windowManager.setSkipTaskbar(false);
+        await windowManager.show();
+      });
     }
   }
 
