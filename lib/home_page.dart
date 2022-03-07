@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:alga/home_provider.dart';
 import 'package:alga/l10n/l10n.dart';
 import 'package:alga/models/tool_items.dart';
@@ -45,6 +47,13 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    Widget caption = const SizedBox.shrink();
+    if (Platform.isWindows || Platform.isMacOS || Platform.isLinux) {
+      caption = WindowCaption(
+        brightness: FluentTheme.of(context).brightness,
+        backgroundColor: Colors.transparent,
+      );
+    }
     Widget child = NavigationView(
       appBar: NavigationAppBar(
         title: Padding(
@@ -56,10 +65,7 @@ class _HomePageState extends State<HomePage> {
           padding: const EdgeInsets.only(top: 6),
           child: Image.asset('assets/logo/256x256.webp'),
         ),
-        actions: WindowCaption(
-          brightness: FluentTheme.of(context).brightness,
-          backgroundColor: Colors.transparent,
-        ),
+        actions: caption,
       ),
       pane: NavigationPane(
         selected: homeProvider.currentIndex,
