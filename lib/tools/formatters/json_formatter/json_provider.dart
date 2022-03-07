@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:devtoys/tools/formatters/formatter_abstract.dart';
+import 'package:alga/tools/formatters/formatter_abstract.dart';
 import 'package:flutter/material.dart';
 
 import 'json_enums.dart';

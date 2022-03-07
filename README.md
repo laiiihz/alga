@@ -1,4 +1,4 @@
-# DevToys
+# Alga
 
 A flutter implement of [DevToys[microsoft]](https://github.com/veler/DevToys) .
 

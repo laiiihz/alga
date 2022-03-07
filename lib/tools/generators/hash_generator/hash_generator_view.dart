@@ -1,4 +1,4 @@
-import 'package:devtoys/tools/generators/hash_generator/hash_provider.dart';
+import 'package:alga/tools/generators/hash_generator/hash_provider.dart';
 import 'package:fluentui_system_icons/fluentui_system_icons.dart' as f_icons;
 
 import '../../../constants/import_helper.dart';

@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import 'package:devtoys/widgets/titlebar_button.dart';
+import 'package:alga/widgets/titlebar_button.dart';
 import 'package:fluent_ui/fluent_ui.dart';
 import 'package:flutter/foundation.dart';
 

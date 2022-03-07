@@ -1,8 +1,8 @@
-import 'package:devtoys/l10n/l10n.dart';
-import 'package:devtoys/tools/generators/uuid_generator/uuid_provider.dart';
-import 'package:devtoys/widgets/app_title.dart';
-import 'package:devtoys/widgets/tool_view.dart';
-import 'package:devtoys/widgets/tool_view_config.dart';
+import 'package:alga/l10n/l10n.dart';
+import 'package:alga/tools/generators/uuid_generator/uuid_provider.dart';
+import 'package:alga/widgets/app_title.dart';
+import 'package:alga/widgets/tool_view.dart';
+import 'package:alga/widgets/tool_view_config.dart';
 import 'package:fluent_ui/fluent_ui.dart';
 import 'package:fluentui_system_icons/fluentui_system_icons.dart' as f_icons;
 import 'package:flutter/services.dart';

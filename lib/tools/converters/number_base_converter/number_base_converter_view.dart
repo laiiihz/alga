@@ -1,5 +1,5 @@
-import 'package:devtoys/constants/import_helper.dart';
-import 'package:devtoys/tools/converters/number_base_converter/number_base_converter_provider.dart';
+import 'package:alga/constants/import_helper.dart';
+import 'package:alga/tools/converters/number_base_converter/number_base_converter_provider.dart';
 
 class NumberBaseConverterView extends StatefulWidget {
   const NumberBaseConverterView({Key? key}) : super(key: key);

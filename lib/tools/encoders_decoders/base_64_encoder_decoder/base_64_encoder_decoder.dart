@@ -1,8 +1,8 @@
-import 'package:devtoys/l10n/l10n.dart';
-import 'package:devtoys/tools/encoders_decoders/base_64_encoder_decoder/base_64_provider.dart';
-import 'package:devtoys/widgets/app_title.dart';
-import 'package:devtoys/widgets/tool_view.dart';
-import 'package:devtoys/widgets/tool_view_config.dart';
+import 'package:alga/l10n/l10n.dart';
+import 'package:alga/tools/encoders_decoders/base_64_encoder_decoder/base_64_provider.dart';
+import 'package:alga/widgets/app_title.dart';
+import 'package:alga/widgets/tool_view.dart';
+import 'package:alga/widgets/tool_view_config.dart';
 import 'package:fluent_ui/fluent_ui.dart';
 
 class Base64EncoderDecoderView extends StatefulWidget {

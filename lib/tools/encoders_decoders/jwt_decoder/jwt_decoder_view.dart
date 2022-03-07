@@ -1,5 +1,5 @@
-import 'package:devtoys/constants/import_helper.dart';
-import 'package:devtoys/tools/encoders_decoders/jwt_decoder/jwt_decoder_provider.dart';
+import 'package:alga/constants/import_helper.dart';
+import 'package:alga/tools/encoders_decoders/jwt_decoder/jwt_decoder_provider.dart';
 
 class JWTDecoderView extends StatefulWidget {
   const JWTDecoderView({Key? key}) : super(key: key);

@@ -1,5 +1,5 @@
-import 'package:devtoys/constants/import_helper.dart';
-import 'package:devtoys/tools/encoders_decoders/gzip_compress_decompress/gzip_compress_decompress_provider.dart';
+import 'package:alga/constants/import_helper.dart';
+import 'package:alga/tools/encoders_decoders/gzip_compress_decompress/gzip_compress_decompress_provider.dart';
 
 class GzipCompressDecompressView extends StatefulWidget {
   const GzipCompressDecompressView({Key? key}) : super(key: key);

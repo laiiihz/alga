@@ -1,6 +1,6 @@
-import 'package:devtoys/constants/import_helper.dart';
-import 'package:devtoys/home_page.dart';
-import 'package:devtoys/models/tool_items.dart';
+import 'package:alga/constants/import_helper.dart';
+import 'package:alga/home_page.dart';
+import 'package:alga/models/tool_items.dart';
 
 class AllToolsView extends StatefulWidget {
   const AllToolsView({Key? key}) : super(key: key);

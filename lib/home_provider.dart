@@ -1,4 +1,4 @@
-import 'package:devtoys/constants/import_helper.dart';
+import 'package:alga/constants/import_helper.dart';
 
 class HomeProvider extends ChangeNotifier {
   int _currentIndex = 0;

@@ -1,4 +1,4 @@
-import 'package:devtoys/utils/clipboard_util.dart';
+import 'package:alga/utils/clipboard_util.dart';
 import 'package:flutter/material.dart';
 
 class UriProvider extends ChangeNotifier {

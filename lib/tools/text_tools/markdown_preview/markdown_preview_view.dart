@@ -1,5 +1,5 @@
-import 'package:devtoys/constants/import_helper.dart';
-import 'package:devtoys/tools/text_tools/markdown_preview/markdown_preview_provider.dart';
+import 'package:alga/constants/import_helper.dart';
+import 'package:alga/tools/text_tools/markdown_preview/markdown_preview_provider.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 
 class MarkdownPreviewView extends StatefulWidget {

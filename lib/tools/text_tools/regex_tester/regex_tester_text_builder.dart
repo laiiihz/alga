@@ -1,7 +1,7 @@
-import 'package:devtoys/tools/text_tools/regex_tester/regex_tester_provider.dart';
+import 'package:alga/tools/text_tools/regex_tester/regex_tester_provider.dart';
 import 'package:extended_text_field/extended_text_field.dart';
 
-import 'package:devtoys/constants/import_helper.dart';
+import 'package:alga/constants/import_helper.dart';
 
 class RegexTesterTextBuilder extends SpecialTextSpanBuilder {
   final RegexTesterProvider provider;

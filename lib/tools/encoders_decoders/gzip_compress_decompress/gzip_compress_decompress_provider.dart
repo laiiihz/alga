@@ -2,8 +2,8 @@ import 'dart:convert';
 import 'dart:typed_data';
 
 import 'package:archive/archive.dart';
-import 'package:devtoys/constants/import_helper.dart';
-import 'package:devtoys/utils/clipboard_util.dart';
+import 'package:alga/constants/import_helper.dart';
+import 'package:alga/utils/clipboard_util.dart';
 
 class GzipCompressDecompressProvider extends ChangeNotifier {
   bool _isCompress = true;

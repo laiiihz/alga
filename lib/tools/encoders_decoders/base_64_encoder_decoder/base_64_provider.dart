@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'dart:typed_data';
 
-import 'package:devtoys/utils/clipboard_util.dart';
+import 'package:alga/utils/clipboard_util.dart';
 import 'package:flutter/material.dart';
 
 class Base64Provider extends ChangeNotifier {

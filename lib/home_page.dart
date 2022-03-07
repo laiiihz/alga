@@ -1,8 +1,8 @@
-import 'package:devtoys/home_provider.dart';
-import 'package:devtoys/l10n/l10n.dart';
-import 'package:devtoys/models/tool_items.dart';
-import 'package:devtoys/views/settings_view.dart';
-import 'package:devtoys/widgets/window_tool_widget.dart';
+import 'package:alga/home_provider.dart';
+import 'package:alga/l10n/l10n.dart';
+import 'package:alga/models/tool_items.dart';
+import 'package:alga/views/settings_view.dart';
+import 'package:alga/widgets/window_tool_widget.dart';
 import 'package:fluent_ui/fluent_ui.dart';
 import 'package:window_manager/window_manager.dart';
 

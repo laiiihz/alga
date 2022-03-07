@@ -1,7 +1,7 @@
-import 'package:devtoys/l10n/l10n.dart';
-import 'package:devtoys/tools/formatters/json_formatter/json_enums.dart';
-import 'package:devtoys/tools/formatters/json_formatter/json_provider.dart';
-import 'package:devtoys/widgets/tool_view_config.dart';
+import 'package:alga/l10n/l10n.dart';
+import 'package:alga/tools/formatters/json_formatter/json_enums.dart';
+import 'package:alga/tools/formatters/json_formatter/json_provider.dart';
+import 'package:alga/widgets/tool_view_config.dart';
 import 'package:fluent_ui/fluent_ui.dart' hide FluentIcons;
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 

@@ -1,5 +1,5 @@
-import 'package:devtoys/constants/import_helper.dart';
-import 'package:devtoys/utils/clipboard_util.dart';
+import 'package:alga/constants/import_helper.dart';
+import 'package:alga/utils/clipboard_util.dart';
 
 class MarkdownPreviewProvider extends ChangeNotifier {
   final markdownController = TextEditingController();

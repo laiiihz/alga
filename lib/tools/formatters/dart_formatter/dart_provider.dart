@@ -1,5 +1,5 @@
 import 'package:dart_style/dart_style.dart';
-import 'package:devtoys/tools/formatters/formatter_abstract.dart';
+import 'package:alga/tools/formatters/formatter_abstract.dart';
 
 class DartProvider implements FormatterAbstract {
   @override

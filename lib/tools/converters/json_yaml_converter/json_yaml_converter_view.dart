@@ -1,5 +1,5 @@
-import 'package:devtoys/constants/import_helper.dart';
-import 'package:devtoys/tools/converters/json_yaml_converter/json_yaml_converter_provider.dart';
+import 'package:alga/constants/import_helper.dart';
+import 'package:alga/tools/converters/json_yaml_converter/json_yaml_converter_provider.dart';
 
 class JsonYamlConverterView extends StatefulWidget {
   const JsonYamlConverterView({Key? key}) : super(key: key);

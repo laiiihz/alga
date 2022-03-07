@@ -1,5 +1,5 @@
-import 'package:devtoys/constants/import_helper.dart';
-import 'package:devtoys/views/widgets/settings_tile.dart';
+import 'package:alga/constants/import_helper.dart';
+import 'package:alga/views/widgets/settings_tile.dart';
 import 'package:flutter/material.dart' as md;
 
 class ExpandableSettingsTile extends StatefulWidget {
