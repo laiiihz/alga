@@ -153,6 +153,13 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  flutter_highlight:
+    dependency: transitive
+    description:
+      name: flutter_highlight
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "0.7.0"
   flutter_lints:
     dependency: "direct dev"
     description:
@@ -196,6 +203,13 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "2.0.2"
+  highlight:
+    dependency: transitive
+    description:
+      name: highlight
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "0.7.0"
   http:
     dependency: transitive
     description:
@@ -231,6 +245,20 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "3.0.0"
+  json_textfield:
+    dependency: "direct main"
+    description:
+      path: "packages/json_textfield"
+      relative: true
+    source: path
+    version: "0.0.1"
+  language_textfield:
+    dependency: "direct main"
+    description:
+      path: "packages/language_textfield"
+      relative: true
+    source: path
+    version: "0.0.1"
   lints:
     dependency: transitive
     description:

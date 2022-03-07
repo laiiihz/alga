@@ -30,6 +30,8 @@ A flutter implement of [DevToys[microsoft]](https://github.com/veler/DevToys) .
   * [x] hightlight
   * [ ] code with fold
 * [ ] Launguage highlight
-  * [ ] Dart lang
+  * [x] Dart lang
   * [x] Yaml
+  * [x] Markdown
+  * [ ] Regex
   * [ ] JWT(custom support)

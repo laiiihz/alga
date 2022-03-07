@@ -1,6 +1,8 @@
 import 'package:alga/tools/formatters/formatter_abstract.dart';
 import 'package:fluent_ui/fluent_ui.dart';
+import 'package:flutter/material.dart' as md;
 import 'package:flutter/services.dart';
+import 'package:language_textfield/language_textfield.dart';
 
 import '../../../widgets/toolbar_view.dart';
 
@@ -8,11 +10,13 @@ class FormatterView extends StatefulWidget {
   final Widget title;
   final List<Widget> configs;
   final FormatResult Function(String text) onChanged;
+  final String lang;
   const FormatterView(
       {Key? key,
       required this.title,
       required this.configs,
-      required this.onChanged})
+      required this.onChanged,
+      required this.lang})
       : super(key: key);
 
   @override
@@ -36,18 +40,24 @@ class FormatterViewState extends State<FormatterView> {
       header: PageHeader(title: widget.title),
       content: ToolbarView(
         configs: widget.configs,
-        inputWidget: TextBox(
-          minLines: 80,
-          maxLines: 100,
-          controller: _inputController,
-          onChanged: (text) {
-            _outputController.text = widget.onChanged(text).result;
-          },
+        inputWidget: md.Material(
+          child: LangTextField(
+            lang: widget.lang,
+            minLines: 80,
+            maxLines: 100,
+            controller: _inputController,
+            onChanged: (text) {
+              _outputController.text = widget.onChanged(text).result;
+            },
+          ),
         ),
-        outputWidget: TextBox(
-          minLines: 80,
-          maxLines: 100,
-          controller: _outputController,
+        outputWidget: md.Material(
+          child: LangTextField(
+            lang: widget.lang,
+            minLines: 80,
+            maxLines: 100,
+            controller: _outputController,
+          ),
         ),
         inputActions: [
           Button(

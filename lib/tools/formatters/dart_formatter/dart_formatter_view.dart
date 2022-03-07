@@ -16,6 +16,7 @@ class _DartFormtterViewState extends State<DartFormtterView> {
   @override
   Widget build(BuildContext context) {
     return FormatterView(
+      lang: 'dart',
       title: Text(S.of(context).formatterDart),
       configs: const [],
       onChanged: provider.onChanged,

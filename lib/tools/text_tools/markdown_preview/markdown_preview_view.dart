@@ -1,6 +1,8 @@
 import 'package:alga/constants/import_helper.dart';
 import 'package:alga/tools/text_tools/markdown_preview/markdown_preview_provider.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
+import 'package:language_textfield/language_textfield.dart';
 
 class MarkdownPreviewView extends StatefulWidget {
   const MarkdownPreviewView({Key? key}) : super(key: key);
@@ -43,13 +45,16 @@ class _MarkdownPreviewViewState extends State<MarkdownPreviewView> {
                     onPressed: _provider.copy,
                   ),
                 ],
-                child: TextBox(
-                  minLines: 12,
-                  maxLines: 12,
-                  controller: _provider.markdownController,
-                  onChanged: (_) {
-                    _provider.convert();
-                  },
+                child: Material(
+                  child: LangTextField(
+                    minLines: 12,
+                    maxLines: 12,
+                    controller: _provider.markdownController,
+                    onChanged: (_) {
+                      _provider.convert();
+                    },
+                    lang: 'markdown',
+                  ),
                 ),
               ),
             ),

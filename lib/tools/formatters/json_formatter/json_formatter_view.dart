@@ -34,6 +34,7 @@ class _JsonFormtterViewState extends State<JsonFormtterView> {
   @override
   Widget build(BuildContext context) {
     return FormatterView(
+      lang: 'json',
       title: Text(S.of(context).formatterJson),
       configs: [
         ToolViewConfig(
