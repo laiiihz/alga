@@ -23,3 +23,13 @@ A flutter implement of [DevToys[microsoft]](https://github.com/veler/DevToys) .
   * Text
     * Markdown Preview
     * Regex Tester
+
+## APP Plan
+
+* [ ] Rich `JSON` Editor
+  * [x] hightlight
+  * [ ] code with fold
+* [ ] Launguage highlight
+  * [ ] Dart lang
+  * [x] Yaml
+  * [ ] JWT(custom support)

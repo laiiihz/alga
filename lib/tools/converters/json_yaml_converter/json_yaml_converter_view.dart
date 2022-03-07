@@ -1,5 +1,8 @@
 import 'package:alga/constants/import_helper.dart';
 import 'package:alga/tools/converters/json_yaml_converter/json_yaml_converter_provider.dart';
+import 'package:flutter/material.dart';
+import 'package:json_textfield/json_textfield.dart';
+import 'package:language_textfield/language_textfield.dart';
 
 class JsonYamlConverterView extends StatefulWidget {
   const JsonYamlConverterView({Key? key}) : super(key: key);
@@ -40,13 +43,15 @@ class _JsonYamlConverterViewState extends State<JsonYamlConverterView> {
                     onPressed: _provider.clear,
                   ),
                 ],
-                child: TextBox(
-                  minLines: 12,
-                  maxLines: 12,
-                  controller: _provider.jsonController,
-                  onChanged: (_) {
-                    _provider.json2yaml();
-                  },
+                child: Material(
+                  child: JsonTextField(
+                    minLines: 12,
+                    maxLines: 12,
+                    controller: _provider.jsonController,
+                    onChanged: (_) {
+                      _provider.json2yaml();
+                    },
+                  ),
                 ),
               ),
             ),
@@ -68,13 +73,16 @@ class _JsonYamlConverterViewState extends State<JsonYamlConverterView> {
                     onPressed: _provider.clear,
                   ),
                 ],
-                child: TextBox(
-                  minLines: 12,
-                  maxLines: 12,
-                  controller: _provider.yamlController,
-                  onChanged: (_) {
-                    _provider.yaml2json();
-                  },
+                child: Material(
+                  child: LangTextField(
+                    minLines: 12,
+                    maxLines: 12,
+                    controller: _provider.yamlController,
+                    onChanged: (_) {
+                      _provider.yaml2json();
+                    },
+                    lang: 'yaml',
+                  ),
                 ),
               ),
             ),

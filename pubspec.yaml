@@ -14,6 +14,14 @@ dependencies:
     sdk: flutter
   intl: ^0.17.0
 
+  # custom packages
+  lorem_ipsum:
+    path: ./packages/lorem_ipsum
+  json_textfield:
+    path: ./packages/json_textfield
+  language_textfield:
+    path: ./packages/language_textfield
+
   cupertino_icons: ^1.0.2
   fluent_ui: ^3.9.1
   archive: ^3.2.1
@@ -23,8 +31,6 @@ dependencies:
   flutter_svg: ^1.0.3
   window_manager: ^0.1.9
   fluentui_system_icons: ^1.1.161
-  lorem_ipsum:
-    path: ./packages/lorem_ipsum
   yaml: ^3.1.0
   json2yaml: ^3.0.0
   flutter_markdown: ^0.6.9
