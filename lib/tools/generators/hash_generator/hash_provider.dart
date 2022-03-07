@@ -4,6 +4,8 @@ import 'package:crypto/crypto.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+import '../abstract/generator_base.dart';
+
 enum HashType {
   md5,
   sha1,
@@ -59,7 +61,7 @@ extension HashTypeExt on HashType {
   }
 }
 
-class HashProvider extends ChangeNotifier {
+class HashProvider extends GeneratorBase {
   HashProvider() {
     controllers = HashType.values
         .map((e) =>
@@ -97,6 +99,7 @@ class HashProvider extends ChangeNotifier {
     inputController.text = res!.text!;
   }
 
+  @override
   generate() {
     if (_showHmac) {
       for (var item in hmacControllers) {
@@ -122,6 +125,7 @@ class HashProvider extends ChangeNotifier {
     }
   }
 
+  @override
   clear() {
     for (var item in controllers) {
       item.controller.clear();

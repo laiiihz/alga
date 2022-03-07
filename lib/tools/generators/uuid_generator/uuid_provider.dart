@@ -1,3 +1,4 @@
+import 'package:alga/tools/generators/abstract/generator_base.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:uuid/uuid.dart';
@@ -18,7 +19,7 @@ extension UUIDExt on UUIDVersion {
   }
 }
 
-class UUIDProvider extends ChangeNotifier {
+class UUIDProvider extends GeneratorBase {
   final uuid = const Uuid();
   bool _hypens = true;
   bool get hypens => _hypens;
@@ -54,6 +55,11 @@ class UUIDProvider extends ChangeNotifier {
     await Clipboard.setData(ClipboardData(text: resultController.text));
   }
 
+  @override
+  void clear() {
+    resultController.clear();
+  }
+
   String _genId() {
     switch (_version) {
       case UUIDVersion.v1:
@@ -74,6 +80,7 @@ class UUIDProvider extends ChangeNotifier {
     return result;
   }
 
+  @override
   generate() {
     List<String> results = List.generate(_count, (index) => _decoratedData());
     resultController.text = results.join('\n');

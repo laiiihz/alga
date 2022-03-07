@@ -1,4 +1,5 @@
 import 'package:alga/constants/import_helper.dart';
+import 'package:alga/tools/generators/abstract/generator_base.dart';
 import 'package:alga/utils/clipboard_util.dart';
 import 'package:lorem_ipsum/lorem_ipsum.dart';
 
@@ -21,7 +22,7 @@ extension LoremIpsumTypeExt on LoremIpsumType {
   }
 }
 
-class LoremIpsumProvider extends ChangeNotifier {
+class LoremIpsumProvider extends GeneratorBase {
   LoremIpsumType _type = LoremIpsumType.paragraphs;
   LoremIpsumType get type => _type;
   set type(LoremIpsumType state) {
@@ -38,6 +39,7 @@ class LoremIpsumProvider extends ChangeNotifier {
 
   TextEditingController outputController = TextEditingController();
 
+  @override
   generate() {
     switch (_type) {
       case LoremIpsumType.words:
@@ -56,6 +58,7 @@ class LoremIpsumProvider extends ChangeNotifier {
     ClipboardUtil.copy(outputController.text);
   }
 
+  @override
   clear() {
     outputController.clear();
   }
