@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="tech.laihz.devtoys">
+    package="tech.laihz.alga">
    <application
-        android:label="devtoys"
+        android:label="alga"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
