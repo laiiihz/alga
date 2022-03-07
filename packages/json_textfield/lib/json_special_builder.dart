@@ -1,10 +1,10 @@
 import 'package:extended_text_field/extended_text_field.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_highlight/themes/solarized-dark.dart';
 import 'package:highlight/highlight.dart';
 
 class JsonSpecialBuilder extends SpecialTextSpanBuilder {
-  final Map<String, TextStyle> theme = solarizedDarkTheme;
+  final Map<String, TextStyle> theme;
+  JsonSpecialBuilder(this.theme);
   List<TextSpan> _convert(List<Node> nodes) {
     List<TextSpan> spans = [];
     var currentSpans = spans;

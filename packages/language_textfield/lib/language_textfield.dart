@@ -21,9 +21,10 @@ class LangTextField extends StatelessWidget {
   }) : super(key: key);
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
     return ExtendedTextField(
       controller: controller,
-      specialTextSpanBuilder: LangSpecialBuilder(lang),
+      specialTextSpanBuilder: LangSpecialBuilder(lang, isDark),
       maxLines: maxLines,
       minLines: minLines,
       onChanged: onChanged,
