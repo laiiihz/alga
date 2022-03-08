@@ -26,7 +26,7 @@ class _SettingsViewState extends State<SettingsView> {
           ),
           ExpandableSettingsTile(
             title: const Text('Links'),
-            leading: const Icon(FluentIcons.link),
+            leading: const Icon(Icons.link),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [

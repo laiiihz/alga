@@ -57,7 +57,7 @@ class _HashGeneratorViewState extends State<HashGeneratorView> {
       children: [
         AppTitle(title: S.of(context).configuration),
         ToolViewConfig(
-          leading: const Icon(FluentIcons.upper_case),
+          leading: const Icon(Icons.text_fields),
           title: const Text('UpperCase'),
           trailing: ToggleSwitch(
             checked: _provider.upperCase,
@@ -81,13 +81,13 @@ class _HashGeneratorViewState extends State<HashGeneratorView> {
           title: S.of(context).input,
           actions: [
             IconButton(
-              icon: const Icon(FluentIcons.paste),
+              icon: const Icon(Icons.paste),
               onPressed: () {
                 _provider.setInputFormClipboard();
               },
             ),
             IconButton(
-              icon: const Icon(FluentIcons.clear),
+              icon: const Icon(Icons.clear),
               onPressed: () {
                 _provider.inputController.clear();
               },

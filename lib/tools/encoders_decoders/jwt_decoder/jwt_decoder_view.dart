@@ -30,11 +30,11 @@ class _JWTDecoderViewState extends State<JWTDecoderView> {
           title: 'JWT token',
           actions: [
             IconButton(
-              icon: const Icon(FluentIcons.paste),
+              icon: const Icon(Icons.paste),
               onPressed: _provider.paste,
             ),
             IconButton(
-              icon: const Icon(FluentIcons.clear),
+              icon: const Icon(Icons.clear),
               onPressed: _provider.clear,
             ),
           ],

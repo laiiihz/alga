@@ -38,11 +38,11 @@ class _RegexTesterViewState extends State<RegexTesterView> {
           title: S.of(context).regularExpression,
           actions: [
             IconButton(
-              icon: const Icon(FluentIcons.paste),
+              icon: const Icon(Icons.paste),
               onPressed: _provider.pasteReg,
             ),
             IconButton(
-              icon: const Icon(FluentIcons.clear),
+              icon: const Icon(Icons.clear),
               onPressed: _provider.clearReg,
             ),
           ],
@@ -61,7 +61,7 @@ class _RegexTesterViewState extends State<RegexTesterView> {
               onPressed: _provider.pasteText,
             ),
             IconButton(
-              icon: const Icon(FluentIcons.clear),
+              icon: const Icon(Icons.clear),
               onPressed: _provider.clearText,
             ),
           ],

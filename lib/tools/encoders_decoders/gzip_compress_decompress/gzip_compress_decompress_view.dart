@@ -34,7 +34,7 @@ class _GzipCompressDecompressViewState
       title: const Text('GZip Compress/Decompress'),
       children: [
         ToolViewConfig(
-          leading: const Icon(FluentIcons.switch_widget),
+          leading: const Icon(Icons.swap_horiz_sharp),
           title: Text(S.of(context).conversion),
           subtitle: Text(S.of(context).selectConversion),
           trailing: Row(
@@ -56,11 +56,11 @@ class _GzipCompressDecompressViewState
           title: S.of(context).input,
           actions: [
             IconButton(
-              icon: const Icon(FluentIcons.paste),
+              icon: const Icon(Icons.paste),
               onPressed: _provider.paste,
             ),
             IconButton(
-              icon: const Icon(FluentIcons.clear),
+              icon: const Icon(Icons.clear),
               onPressed: _provider.clear,
             ),
           ],

@@ -38,7 +38,7 @@ class _UUIDGeneratorViewState extends State<UUIDGeneratorView> {
       children: [
         AppTitle(title: S.of(context).configuration),
         ToolViewConfig(
-          leading: const Icon(f_icons.FluentIcons.line_horizontal_1_20_regular),
+          leading: const Icon(Icons.horizontal_rule),
           title: const Text('Hypens'),
           trailing: ToggleSwitch(
             checked: _provider.hypens,
@@ -48,7 +48,7 @@ class _UUIDGeneratorViewState extends State<UUIDGeneratorView> {
           ),
         ),
         ToolViewConfig(
-          leading: const Icon(FluentIcons.upper_case),
+          leading: const Icon(Icons.text_fields),
           title: const Text('Upper case'),
           trailing: ToggleSwitch(
             checked: _provider.upperCase,
@@ -58,7 +58,7 @@ class _UUIDGeneratorViewState extends State<UUIDGeneratorView> {
           ),
         ),
         ToolViewConfig(
-          leading: const Icon(FluentIcons.version_control_push),
+          leading: const Icon(Icons.info_outline),
           title: const Text('UUID Version'),
           subtitle:
               const Text('Choose the version of UUID version to generate'),
@@ -116,7 +116,7 @@ class _UUIDGeneratorViewState extends State<UUIDGeneratorView> {
               },
             ),
             Button(
-              child: const Icon(FluentIcons.clear),
+              child: const Icon(Icons.clear),
               onPressed: () {},
             ),
           ],

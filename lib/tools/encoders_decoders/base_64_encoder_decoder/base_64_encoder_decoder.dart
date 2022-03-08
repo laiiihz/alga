@@ -37,7 +37,7 @@ class _Base64EncoderDecoderViewState extends State<Base64EncoderDecoderView> {
       children: [
         AppTitle(title: S.of(context).configuration),
         ToolViewConfig(
-          leading: const Icon(FluentIcons.switch_widget),
+          leading: const Icon(Icons.swap_horiz_sharp),
           title: Text(S.of(context).conversion),
           subtitle: Text(S.of(context).selectConversion),
           trailing: Row(
@@ -58,13 +58,13 @@ class _Base64EncoderDecoderViewState extends State<Base64EncoderDecoderView> {
           title: S.of(context).input,
           actions: [
             Button(
-              child: const Icon(FluentIcons.paste),
+              child: const Icon(Icons.paste),
               onPressed: () {
                 _provider.paste();
               },
             ),
             Button(
-              child: const Icon(FluentIcons.clear),
+              child: const Icon(Icons.clear),
               onPressed: () {
                 _provider.clear();
               },

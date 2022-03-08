@@ -61,14 +61,14 @@ class FormatterViewState extends State<FormatterView> {
         ),
         inputActions: [
           IconButton(
-            icon: const Icon(FluentIcons.paste),
+            icon: const Icon(Icons.paste),
             onPressed: () async {
               final rawText = await Clipboard.getData('text/plain');
               _inputController.text = rawText?.text ?? '';
             },
           ),
           IconButton(
-            icon: const Icon(FluentIcons.clear),
+            icon: const Icon(Icons.clear),
             onPressed: () {
               _inputController.clear();
               _outputController.clear();

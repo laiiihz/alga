@@ -36,7 +36,7 @@ class _ExpandableSettingsTileState extends State<ExpandableSettingsTile> {
             trailing: AnimatedRotation(
               turns: _expand ? 0.5 : 0,
               duration: const Duration(milliseconds: 400),
-              child: const Icon(FluentIcons.chevron_down),
+              child: const Icon(Icons.keyboard_arrow_down),
             ),
           ),
         ),

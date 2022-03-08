@@ -1,11 +1,10 @@
 import 'dart:io';
 
+import 'package:alga/constants/import_helper.dart';
 import 'package:alga/home_provider.dart';
-import 'package:alga/l10n/l10n.dart';
 import 'package:alga/models/tool_items.dart';
 import 'package:alga/views/settings_view.dart';
 import 'package:alga/widgets/window_tool_widget.dart';
-import 'package:fluent_ui/fluent_ui.dart';
 import 'package:window_manager/window_manager.dart';
 
 final homeProvider = HomeProvider();
@@ -76,7 +75,7 @@ class _HomePageState extends State<HomePage> {
           placeholder: S.of(context).typeToSearch,
           trailingIcon: const Padding(
             padding: EdgeInsets.symmetric(horizontal: 8),
-            child: Icon(FluentIcons.search),
+            child: Icon(Icons.search),
           ),
           controller: _suggestController,
           clearButtonEnabled: true,
@@ -87,11 +86,11 @@ class _HomePageState extends State<HomePage> {
             setState(() {});
           },
         ),
-        autoSuggestBoxReplacement: const Icon(FluentIcons.search),
+        autoSuggestBoxReplacement: const Icon(Icons.search),
         items: [...naviUtil.displayItems],
         footerItems: [
           PaneItem(
-            icon: const Icon(FluentIcons.settings),
+            icon: const Icon(Icons.settings),
             title: Text(S.of(context).settings),
           ),
         ],

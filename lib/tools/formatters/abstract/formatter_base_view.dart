@@ -53,14 +53,14 @@ class _FormatterBaseViewState extends State<FormatterBaseView> {
         ),
         inputActions: [
           IconButton(
-            icon: const Icon(FluentIcons.paste),
+            icon: const Icon(Icons.paste),
             onPressed: () async {
               final rawText = await Clipboard.getData('text/plain');
               widget.base.inputController.text = rawText?.text ?? '';
             },
           ),
           IconButton(
-            icon: const Icon(FluentIcons.clear),
+            icon: const Icon(Icons.clear),
             onPressed: () {
               widget.base.clearAll();
             },

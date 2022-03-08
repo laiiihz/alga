@@ -37,7 +37,7 @@ class _LoremIpsumGeneratorViewState extends State<LoremIpsumGeneratorView> {
       children: [
         AppTitle(title: S.of(context).configuration),
         ToolViewConfig(
-          leading: const Icon(FluentIcons.text_document),
+          leading: const Icon(Icons.text_snippet),
           title: const Text('Type'),
           subtitle: const Text(
               'Generate words,sentences or paragraphs of Lorem ipsum'),
@@ -53,7 +53,7 @@ class _LoremIpsumGeneratorViewState extends State<LoremIpsumGeneratorView> {
           ),
         ),
         ToolViewConfig(
-          leading: const Icon(FluentIcons.number_symbol),
+          leading: const Icon(Icons.numbers),
           title: const Text('Length'),
           subtitle:
               const Text('Number of words,sentences or paragraphs to generate'),
@@ -78,7 +78,7 @@ class _LoremIpsumGeneratorViewState extends State<LoremIpsumGeneratorView> {
               onPressed: () => _provider.copy(),
             ),
             IconButton(
-              icon: const Icon(FluentIcons.clear),
+              icon: const Icon(Icons.clear),
               onPressed: () => _provider.clear(),
             ),
           ],
