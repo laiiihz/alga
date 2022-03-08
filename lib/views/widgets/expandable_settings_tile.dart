@@ -21,7 +21,7 @@ class _ExpandableSettingsTileState extends State<ExpandableSettingsTile> {
   bool _expand = false;
   @override
   Widget build(BuildContext context) {
-    final isDark = FluentTheme.of(context).brightness == Brightness.dark;
+    final isDark = Theme.of(context).brightness == Brightness.dark;
     return Column(
       children: [
         GestureDetector(

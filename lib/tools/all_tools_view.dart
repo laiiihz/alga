@@ -1,5 +1,4 @@
 import 'package:alga/constants/import_helper.dart';
-import 'package:alga/home_page.dart';
 import 'package:alga/models/tool_items.dart';
 
 class AllToolsView extends StatefulWidget {
@@ -20,7 +19,7 @@ class _AllToolsViewState extends State<AllToolsView> {
 
   @override
   Widget build(BuildContext context) {
-    bool isDark = FluentTheme.of(context).brightness == Brightness.dark;
+    bool isDark = Theme.of(context).brightness == Brightness.dark;
     return ToolView(
       title: Text(S.of(context).allTools),
       content: GridView.builder(
@@ -34,9 +33,7 @@ class _AllToolsViewState extends State<AllToolsView> {
         itemBuilder: (context, index) {
           final item = _naviUtil.realItems[index];
           return GestureDetector(
-            onTap: () {
-              homeProvider.currentIndex = _naviUtil.getIndex(item);
-            },
+            onTap: () {},
             child: Container(
               color: isDark ? Colors.grey[160] : Colors.grey[20],
               child: Column(

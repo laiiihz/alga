@@ -1,6 +1,6 @@
 import 'package:alga/constants/import_helper.dart';
 import 'package:alga/tools/generators/uuid_generator/uuid_provider.dart';
-import 'package:fluent_ui/fluent_ui.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 class UUIDGeneratorView extends StatefulWidget {
@@ -31,7 +31,7 @@ class _UUIDGeneratorViewState extends State<UUIDGeneratorView> {
 
   @override
   Widget build(BuildContext context) {
-    bool isDark = FluentTheme.of(context).brightness == Brightness.dark;
+    bool isDark = Theme.of(context).brightness == Brightness.dark;
     return ToolView.scrollVertical(
       title: Text(S.of(context).generatorUUID),
       children: [
@@ -74,18 +74,18 @@ class _UUIDGeneratorViewState extends State<UUIDGeneratorView> {
         const AppTitle(title: 'generate'),
         Row(
           children: [
-            Button(
+            ElevatedButton(
               child: const Text('Generate UUIDs'),
               onPressed: () {
                 _provider.generate();
               },
               style: ButtonStyle(
                 backgroundColor: isDark
-                    ? ButtonState.all(Colors.blue['darker'])
-                    : ButtonState.all(Colors.blue['lightest']),
+                    ? MaterialStateProperty.all(Colors.blue)
+                    : MaterialStateProperty.all(Colors.blue),
                 foregroundColor: isDark
-                    ? ButtonState.all(Colors.white)
-                    : ButtonState.all(Colors.black),
+                    ? MaterialStateProperty.all(Colors.white)
+                    : MaterialStateProperty.all(Colors.black),
               ),
             ),
             const Padding(
@@ -108,14 +108,14 @@ class _UUIDGeneratorViewState extends State<UUIDGeneratorView> {
         AppTitle(
           title: 'UUIDs',
           actions: [
-            Button(
-              child: const Icon(Icons.copy),
+            IconButton(
+              icon: const Icon(Icons.copy),
               onPressed: () async {
                 await _provider.copy();
               },
             ),
-            Button(
-              child: const Icon(Icons.clear),
+            IconButton(
+              icon: const Icon(Icons.clear),
               onPressed: () {},
             ),
           ],

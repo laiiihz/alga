@@ -1,6 +1,5 @@
 import 'package:alga/extension/list_ext.dart';
-import 'package:fluent_ui/fluent_ui.dart';
-import 'package:flutter/material.dart' as md;
+import 'package:flutter/material.dart';
 
 class AppTitle extends StatelessWidget {
   final String title;
@@ -10,9 +9,9 @@ class AppTitle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    bool isDark = FluentTheme.of(context).brightness == Brightness.dark;
-    return md.Material(
-      color: md.Colors.transparent,
+    bool isDark = Theme.of(context).brightness == Brightness.dark;
+    return Material(
+      color: Colors.transparent,
       child: IconTheme(
         data: IconThemeData(
           color: isDark ? Colors.white : Colors.black,

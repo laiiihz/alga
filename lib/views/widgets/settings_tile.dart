@@ -17,7 +17,7 @@ class SettingsTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    bool isDark = FluentTheme.of(context).brightness == Brightness.dark;
+    bool isDark = Theme.of(context).brightness == Brightness.dark;
     return ListTile(
       shape: shape ??
           RoundedRectangleBorder(borderRadius: BorderRadius.circular(4)),

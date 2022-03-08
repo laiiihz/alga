@@ -1,6 +1,5 @@
 import 'package:alga/constants/import_helper.dart';
 import 'package:alga/models/tool_item.dart';
-import 'package:alga/tools/all_tools_view.dart';
 import 'package:alga/tools/converters/json_yaml_converter/json_yaml_converter_view.dart';
 import 'package:alga/tools/converters/number_base_converter/number_base_converter_view.dart';
 import 'package:alga/tools/encoders_decoders/base_64_encoder_decoder/base_64_encoder_decoder.dart';
@@ -18,16 +17,6 @@ import 'package:alga/tools/text_tools/regex_tester/regex_tester_view.dart';
 import '../widgets/svg_asset_icon.dart';
 
 List<ToolGroup> _genToolItems(BuildContext context) => [
-      ToolGroup(
-        title: Text(S.of(context).allTools),
-        items: [
-          ToolItem(
-            icon: const Icon(Icons.home),
-            title: Text(S.of(context).allTools),
-            page: const AllToolsView(),
-          ),
-        ],
-      ),
       ToolGroup(
         title: Text(S.of(context).converters),
         items: [

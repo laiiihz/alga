@@ -1,6 +1,6 @@
 import 'package:alga/extension/list_ext.dart';
 import 'package:alga/widgets/app_title.dart';
-import 'package:fluent_ui/fluent_ui.dart';
+import 'package:flutter/material.dart';
 
 import '../l10n/l10n.dart';
 

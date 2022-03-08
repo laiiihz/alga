@@ -1,4 +1,3 @@
-import 'package:fluent_ui/fluent_ui.dart' as fui;
 import 'package:flutter/material.dart';
 
 class ToolViewConfig extends StatelessWidget {
@@ -18,7 +17,7 @@ class ToolViewConfig extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    bool isDark = fui.FluentTheme.of(context).brightness == Brightness.dark;
+    bool isDark = Theme.of(context).brightness == Brightness.dark;
     return Material(
       color: Colors.transparent,
       child: ListTile(
@@ -27,7 +26,7 @@ class ToolViewConfig extends StatelessWidget {
         subtitle: subtitle,
         leading: leading,
         trailing: trailing,
-        tileColor: isDark ? fui.Colors.grey[160] : fui.Colors.grey[20],
+        tileColor: isDark ? Colors.grey[900] : Colors.grey[50],
       ),
     );
   }

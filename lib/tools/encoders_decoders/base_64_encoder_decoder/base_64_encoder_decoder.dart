@@ -1,6 +1,5 @@
 import 'package:alga/constants/import_helper.dart';
 import 'package:alga/tools/encoders_decoders/base_64_encoder_decoder/base_64_provider.dart';
-import 'package:fluent_ui/fluent_ui.dart';
 
 class Base64EncoderDecoderView extends StatefulWidget {
   const Base64EncoderDecoderView({Key? key}) : super(key: key);
@@ -58,14 +57,14 @@ class _Base64EncoderDecoderViewState extends State<Base64EncoderDecoderView> {
         AppTitleWrapper(
           title: S.of(context).input,
           actions: [
-            Button(
-              child: const Icon(Icons.paste),
+            IconButton(
+              icon: const Icon(Icons.paste),
               onPressed: () {
                 _provider.paste();
               },
             ),
-            Button(
-              child: const Icon(Icons.clear),
+            IconButton(
+              icon: const Icon(Icons.clear),
               onPressed: () {
                 _provider.clear();
               },
@@ -83,8 +82,8 @@ class _Base64EncoderDecoderViewState extends State<Base64EncoderDecoderView> {
         AppTitleWrapper(
           title: S.of(context).output,
           actions: [
-            Button(
-              child: const Icon(Icons.copy),
+            IconButton(
+              icon: const Icon(Icons.copy),
               onPressed: () {
                 _provider.paste();
               },
