@@ -30,16 +30,16 @@ class _JsonYamlConverterViewState extends State<JsonYamlConverterView> {
               child: AppTitleWrapper(
                 title: 'JSON',
                 actions: [
-                  Button(
-                    child: const Icon(FluentIcons.copy),
+                  IconButton(
+                    icon: const Icon(Icons.copy),
                     onPressed: _provider.copyJson,
                   ),
-                  Button(
-                    child: const Icon(FluentIcons.paste),
+                  IconButton(
+                    icon: const Icon(FluentIcons.paste),
                     onPressed: _provider.pasteJson,
                   ),
-                  Button(
-                    child: const Icon(FluentIcons.clear),
+                  IconButton(
+                    icon: const Icon(FluentIcons.clear),
                     onPressed: _provider.clear,
                   ),
                 ],
@@ -60,16 +60,16 @@ class _JsonYamlConverterViewState extends State<JsonYamlConverterView> {
               child: AppTitleWrapper(
                 title: 'YAML',
                 actions: [
-                  Button(
-                    child: const Icon(FluentIcons.copy),
+                  IconButton(
+                    icon: const Icon(Icons.copy),
                     onPressed: _provider.copyYaml,
                   ),
-                  Button(
-                    child: const Icon(FluentIcons.paste),
+                  IconButton(
+                    icon: const Icon(Icons.paste),
                     onPressed: _provider.pasteYaml,
                   ),
-                  Button(
-                    child: const Icon(FluentIcons.clear),
+                  IconButton(
+                    icon: const Icon(Icons.clear),
                     onPressed: _provider.clear,
                   ),
                 ],

@@ -37,12 +37,12 @@ class _RegexTesterViewState extends State<RegexTesterView> {
         AppTitleWrapper(
           title: S.of(context).regularExpression,
           actions: [
-            Button(
-              child: const Icon(FluentIcons.paste),
+            IconButton(
+              icon: const Icon(FluentIcons.paste),
               onPressed: _provider.pasteReg,
             ),
-            Button(
-              child: const Icon(FluentIcons.clear),
+            IconButton(
+              icon: const Icon(FluentIcons.clear),
               onPressed: _provider.clearReg,
             ),
           ],
@@ -56,12 +56,12 @@ class _RegexTesterViewState extends State<RegexTesterView> {
         AppTitleWrapper(
           title: S.of(context).regexText,
           actions: [
-            Button(
-              child: const Icon(FluentIcons.copy),
+            IconButton(
+              icon: const Icon(Icons.copy),
               onPressed: _provider.pasteText,
             ),
-            Button(
-              child: const Icon(FluentIcons.clear),
+            IconButton(
+              icon: const Icon(FluentIcons.clear),
               onPressed: _provider.clearText,
             ),
           ],

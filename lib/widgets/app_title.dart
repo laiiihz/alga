@@ -1,5 +1,6 @@
 import 'package:alga/extension/list_ext.dart';
 import 'package:fluent_ui/fluent_ui.dart';
+import 'package:flutter/material.dart' as md;
 
 class AppTitle extends StatelessWidget {
   final String title;
@@ -9,12 +10,19 @@ class AppTitle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Text(title),
-        const Spacer(),
-        ...actions.sep(const SizedBox(width: 4)),
-      ],
+    bool isDark = FluentTheme.of(context).brightness == Brightness.dark;
+    return IconTheme(
+      data: IconThemeData(
+        color: isDark ? Colors.white : Colors.black,
+        size: 14,
+      ),
+      child: Row(
+        children: [
+          Text(title),
+          const Spacer(),
+          ...actions.sep(const SizedBox(width: 4)),
+        ],
+      ),
     );
   }
 }
@@ -32,13 +40,16 @@ class AppTitleWrapper extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        AppTitle(title: title, actions: actions),
-        const SizedBox(height: 4),
-        child,
-      ],
+    return md.Material(
+      color: Colors.transparent,
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          AppTitle(title: title, actions: actions),
+          const SizedBox(height: 4),
+          child,
+        ],
+      ),
     );
   }
 }

@@ -29,12 +29,12 @@ class _JWTDecoderViewState extends State<JWTDecoderView> {
         AppTitleWrapper(
           title: 'JWT token',
           actions: [
-            Button(
-              child: const Icon(FluentIcons.paste),
+            IconButton(
+              icon: const Icon(FluentIcons.paste),
               onPressed: _provider.paste,
             ),
-            Button(
-              child: const Icon(FluentIcons.clear),
+            IconButton(
+              icon: const Icon(FluentIcons.clear),
               onPressed: _provider.clear,
             ),
           ],
@@ -53,8 +53,8 @@ class _JWTDecoderViewState extends State<JWTDecoderView> {
         AppTitleWrapper(
           title: 'Header',
           actions: [
-            Button(
-              child: const Icon(FluentIcons.copy),
+            IconButton(
+              icon: const Icon(Icons.copy),
               onPressed: _provider.copyHeader,
             ),
           ],
@@ -70,8 +70,8 @@ class _JWTDecoderViewState extends State<JWTDecoderView> {
         AppTitleWrapper(
           title: 'Payload',
           actions: [
-            Button(
-              child: const Icon(FluentIcons.copy),
+            IconButton(
+              icon: const Icon(Icons.copy),
               onPressed: _provider.copyPayload(),
             ),
           ],

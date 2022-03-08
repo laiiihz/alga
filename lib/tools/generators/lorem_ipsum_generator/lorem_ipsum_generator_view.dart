@@ -73,12 +73,12 @@ class _LoremIpsumGeneratorViewState extends State<LoremIpsumGeneratorView> {
         AppTitleWrapper(
           title: S.of(context).output,
           actions: [
-            Button(
-              child: const Icon(FluentIcons.copy),
+            IconButton(
+              icon: const Icon(Icons.copy),
               onPressed: () => _provider.copy(),
             ),
-            Button(
-              child: const Icon(FluentIcons.clear),
+            IconButton(
+              icon: const Icon(FluentIcons.clear),
               onPressed: () => _provider.clear(),
             ),
           ],

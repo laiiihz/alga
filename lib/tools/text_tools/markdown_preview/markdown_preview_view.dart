@@ -40,8 +40,8 @@ class _MarkdownPreviewViewState extends State<MarkdownPreviewView> {
               child: AppTitleWrapper(
                 title: S.of(context).markdownInput,
                 actions: [
-                  Button(
-                    child: const Icon(FluentIcons.copy),
+                  IconButton(
+                    icon: const Icon(Icons.copy),
                     onPressed: _provider.copy,
                   ),
                 ],

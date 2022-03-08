@@ -1,5 +1,5 @@
+import 'package:alga/constants/import_helper.dart';
 import 'package:alga/tools/formatters/formatter_abstract.dart';
-import 'package:fluent_ui/fluent_ui.dart';
 import 'package:flutter/material.dart' as md;
 import 'package:flutter/services.dart';
 import 'package:language_textfield/language_textfield.dart';
@@ -60,15 +60,15 @@ class FormatterViewState extends State<FormatterView> {
           ),
         ),
         inputActions: [
-          Button(
-            child: const Icon(FluentIcons.paste),
+          IconButton(
+            icon: const Icon(FluentIcons.paste),
             onPressed: () async {
               final rawText = await Clipboard.getData('text/plain');
               _inputController.text = rawText?.text ?? '';
             },
           ),
-          Button(
-            child: const Icon(FluentIcons.clear),
+          IconButton(
+            icon: const Icon(FluentIcons.clear),
             onPressed: () {
               _inputController.clear();
               _outputController.clear();
@@ -76,25 +76,12 @@ class FormatterViewState extends State<FormatterView> {
           ),
         ],
         outputActions: [
-          Button(
-            child: const Icon(FluentIcons.copy),
+          IconButton(
+            icon: const Icon(Icons.copy),
             onPressed: () async {
               await Clipboard.setData(
                 ClipboardData(text: _outputController.text),
               );
-              showDialog(
-                  context: context,
-                  builder: (context) {
-                    return ContentDialog(
-                      title: const Text('Copied !'),
-                      actions: [
-                        Button(
-                          child: const Text('OK'),
-                          onPressed: () => Navigator.pop(context),
-                        ),
-                      ],
-                    );
-                  });
             },
           ),
         ],

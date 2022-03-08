@@ -19,8 +19,8 @@ class _NumberBaseConverterViewState extends State<NumberBaseConverterView> {
         return AppTitleWrapper(
           title: e.title,
           actions: [
-            Button(
-              child: const Icon(FluentIcons.copy),
+            IconButton(
+              icon: const Icon(Icons.copy),
               onPressed: () => e.copy(),
             ),
           ],

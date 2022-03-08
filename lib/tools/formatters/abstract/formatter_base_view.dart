@@ -1,4 +1,4 @@
-import 'package:fluent_ui/fluent_ui.dart';
+import 'package:alga/constants/import_helper.dart';
 import 'package:flutter/services.dart';
 
 import '../../../widgets/toolbar_view.dart';
@@ -52,40 +52,27 @@ class _FormatterBaseViewState extends State<FormatterBaseView> {
           controller: widget.base.outputController,
         ),
         inputActions: [
-          Button(
-            child: const Icon(FluentIcons.paste),
+          IconButton(
+            icon: const Icon(FluentIcons.paste),
             onPressed: () async {
               final rawText = await Clipboard.getData('text/plain');
               widget.base.inputController.text = rawText?.text ?? '';
             },
           ),
-          Button(
-            child: const Icon(FluentIcons.clear),
+          IconButton(
+            icon: const Icon(FluentIcons.clear),
             onPressed: () {
               widget.base.clearAll();
             },
           ),
         ],
         outputActions: [
-          Button(
-            child: const Icon(FluentIcons.copy),
+          IconButton(
+            icon: const Icon(Icons.copy),
             onPressed: () async {
               await Clipboard.setData(
                 ClipboardData(text: widget.base.outputController.text),
               );
-              showDialog(
-                  context: context,
-                  builder: (context) {
-                    return ContentDialog(
-                      title: const Text('Copied !'),
-                      actions: [
-                        Button(
-                          child: const Text('OK'),
-                          onPressed: () => Navigator.pop(context),
-                        ),
-                      ],
-                    );
-                  });
             },
           ),
         ],

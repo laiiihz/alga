@@ -1,5 +1,4 @@
 import 'package:alga/tools/generators/hash_generator/hash_provider.dart';
-import 'package:fluentui_system_icons/fluentui_system_icons.dart' as f_icons;
 
 import '../../../constants/import_helper.dart';
 
@@ -26,8 +25,8 @@ class _HashGeneratorViewState extends State<HashGeneratorView> {
           children: [
             Expanded(child: TextBox(controller: e.controller)),
             const SizedBox(width: 8),
-            Button(
-              child: const Icon(f_icons.FluentIcons.copy_24_regular),
+            IconButton(
+              icon: const Icon(Icons.copy),
               onPressed: () {
                 e.copy();
               },
@@ -81,14 +80,14 @@ class _HashGeneratorViewState extends State<HashGeneratorView> {
         AppTitle(
           title: S.of(context).input,
           actions: [
-            Button(
-              child: const Icon(FluentIcons.paste),
+            IconButton(
+              icon: const Icon(FluentIcons.paste),
               onPressed: () {
                 _provider.setInputFormClipboard();
               },
             ),
-            Button(
-              child: const Icon(FluentIcons.clear),
+            IconButton(
+              icon: const Icon(FluentIcons.clear),
               onPressed: () {
                 _provider.inputController.clear();
               },

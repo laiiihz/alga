@@ -1,8 +1,5 @@
-import 'package:alga/l10n/l10n.dart';
+import 'package:alga/constants/import_helper.dart';
 import 'package:alga/tools/encoders_decoders/uri_encoder_decoder/uri_provider.dart';
-import 'package:alga/widgets/app_title.dart';
-import 'package:alga/widgets/tool_view.dart';
-import 'package:alga/widgets/tool_view_config.dart';
 import 'package:fluent_ui/fluent_ui.dart';
 
 class UriEncoderDecoderView extends StatefulWidget {
@@ -81,7 +78,7 @@ class _UriEncoderDecoderViewState extends State<UriEncoderDecoderView> {
           title: S.of(context).output,
           actions: [
             Button(
-              child: const Icon(FluentIcons.copy),
+              child: const Icon(Icons.copy),
               onPressed: () => _provider.copy(),
             ),
           ],

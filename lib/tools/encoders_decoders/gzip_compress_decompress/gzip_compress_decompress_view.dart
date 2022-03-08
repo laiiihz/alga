@@ -55,12 +55,12 @@ class _GzipCompressDecompressViewState
         AppTitleWrapper(
           title: S.of(context).input,
           actions: [
-            Button(
-              child: const Icon(FluentIcons.paste),
+            IconButton(
+              icon: const Icon(FluentIcons.paste),
               onPressed: _provider.paste,
             ),
-            Button(
-              child: const Icon(FluentIcons.clear),
+            IconButton(
+              icon: const Icon(FluentIcons.clear),
               onPressed: _provider.clear,
             ),
           ],
@@ -76,8 +76,8 @@ class _GzipCompressDecompressViewState
         AppTitleWrapper(
           title: S.of(context).output,
           actions: [
-            Button(
-              child: const Icon(FluentIcons.copy),
+            IconButton(
+              icon: const Icon(Icons.copy),
               onPressed: _provider.copy,
             ),
           ],
