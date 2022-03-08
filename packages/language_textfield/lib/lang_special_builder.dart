@@ -1,17 +1,14 @@
 import 'package:extended_text_field/extended_text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_highlight/themes/solarized-dark.dart';
-import 'package:flutter_highlight/themes/solarized-light.dart';
 import 'package:highlight/highlight.dart';
 
 class LangSpecialBuilder extends SpecialTextSpanBuilder {
   final String lang;
-  final bool isDark;
 
-  LangSpecialBuilder(this.lang, this.isDark);
+  LangSpecialBuilder(this.lang);
 
-  Map<String, TextStyle> get theme =>
-      isDark ? solarizedDarkTheme : solarizedLightTheme;
+  Map<String, TextStyle> get theme => solarizedDarkTheme;
   List<TextSpan> _convert(List<Node> nodes) {
     List<TextSpan> spans = [];
     var currentSpans = spans;
@@ -49,6 +46,7 @@ class LangSpecialBuilder extends SpecialTextSpanBuilder {
   TextSpan build(String data,
       {TextStyle? textStyle, SpecialTextGestureTapCallback? onTap}) {
     return TextSpan(
+      style: textStyle,
       children: _convert(highlight.parse(data, language: lang).nodes!),
     );
   }

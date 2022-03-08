@@ -10,7 +10,7 @@ class RegexTesterTextBuilder extends SpecialTextSpanBuilder {
   TextSpan build(String data,
       {TextStyle? textStyle, SpecialTextGestureTapCallback? onTap}) {
     if (data.isEmpty) return const TextSpan(text: '');
-    if (provider.reg == null) return TextSpan(text: data);
+    if (provider.reg == null) return TextSpan(text: data,style: textStyle);
 
     String cacheData = data;
     final _spans = <InlineSpan>[];
