@@ -44,8 +44,8 @@ class _UriEncoderDecoderViewState extends State<UriEncoderDecoderView> {
               _provider.isEncode
                   ? Text(S.of(context).encode)
                   : Text(S.of(context).decode),
-              ToggleSwitch(
-                checked: _provider.isEncode,
+              Switch(
+                value: _provider.isEncode,
                 onChanged: (state) {
                   _provider.isEncode = state;
                 },

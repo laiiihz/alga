@@ -42,8 +42,8 @@ class _GzipCompressDecompressViewState
               _provider.isCompress
                   ? const Text('Compress')
                   : const Text('Decompress'),
-              ToggleSwitch(
-                checked: _provider.isCompress,
+              Switch(
+                value: _provider.isCompress,
                 onChanged: (state) {
                   _provider.isCompress = state;
                   _provider.swapData();

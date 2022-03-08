@@ -11,17 +11,20 @@ class AppTitle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     bool isDark = FluentTheme.of(context).brightness == Brightness.dark;
-    return IconTheme(
-      data: IconThemeData(
-        color: isDark ? Colors.white : Colors.black,
-        size: 14,
-      ),
-      child: Row(
-        children: [
-          Text(title),
-          const Spacer(),
-          ...actions.sep(const SizedBox(width: 4)),
-        ],
+    return md.Material(
+      color: md.Colors.transparent,
+      child: IconTheme(
+        data: IconThemeData(
+          color: isDark ? Colors.white : Colors.black,
+          size: 14,
+        ),
+        child: Row(
+          children: [
+            Text(title),
+            const Spacer(),
+            ...actions.sep(const SizedBox(width: 4)),
+          ],
+        ),
       ),
     );
   }
@@ -40,16 +43,13 @@ class AppTitleWrapper extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return md.Material(
-      color: Colors.transparent,
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          AppTitle(title: title, actions: actions),
-          const SizedBox(height: 4),
-          child,
-        ],
-      ),
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        AppTitle(title: title, actions: actions),
+        const SizedBox(height: 4),
+        child,
+      ],
     );
   }
 }
