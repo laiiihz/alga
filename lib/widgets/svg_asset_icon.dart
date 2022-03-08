@@ -10,7 +10,7 @@ class SvgAssetIcon extends StatelessWidget {
   Color? _color(BuildContext context) {
     final brightness = Theme.of(context).brightness;
     if (colorIcon) return null;
-    return brightness == Brightness.dark ? Colors.black : Colors.white;
+    return brightness == Brightness.dark ? Colors.white70 : Colors.black87;
   }
 
   @override

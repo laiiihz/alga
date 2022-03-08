@@ -1,5 +1,9 @@
-import 'package:alga/constants/import_helper.dart';
+import 'package:alga/l10n/l10n.dart';
 import 'package:alga/tools/encoders_decoders/uri_encoder_decoder/uri_provider.dart';
+import 'package:alga/widgets/app_title.dart';
+import 'package:alga/widgets/tool_view.dart';
+import 'package:alga/widgets/tool_view_config.dart';
+import 'package:flutter/material.dart';
 
 class UriEncoderDecoderView extends StatefulWidget {
   const UriEncoderDecoderView({Key? key}) : super(key: key);
@@ -64,7 +68,7 @@ class _UriEncoderDecoderViewState extends State<UriEncoderDecoderView> {
               onPressed: () => _provider.clear(),
             ),
           ],
-          child: TextBox(
+          child: TextField(
             maxLines: 12,
             minLines: 12,
             controller: _provider.inputController,
@@ -81,7 +85,7 @@ class _UriEncoderDecoderViewState extends State<UriEncoderDecoderView> {
               onPressed: () => _provider.copy(),
             ),
           ],
-          child: TextBox(
+          child: TextField(
             maxLines: 12,
             minLines: 12,
             controller: _provider.outputController,

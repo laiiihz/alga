@@ -1,6 +1,6 @@
-import 'package:alga/constants/import_helper.dart';
 import 'package:alga/views/widgets/settings_tile.dart';
 import 'package:flutter/material.dart' as md;
+import 'package:flutter/material.dart';
 
 class ExpandableSettingsTile extends StatefulWidget {
   final Widget title;

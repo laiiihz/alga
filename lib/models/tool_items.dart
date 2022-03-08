@@ -13,6 +13,7 @@ import 'package:alga/tools/generators/lorem_ipsum_generator/lorem_ipsum_generato
 import 'package:alga/tools/generators/uuid_generator/uuid_generator.dart';
 import 'package:alga/tools/text_tools/markdown_preview/markdown_preview_view.dart';
 import 'package:alga/tools/text_tools/regex_tester/regex_tester_view.dart';
+import 'package:flutter/material.dart';
 
 import '../widgets/svg_asset_icon.dart';
 
@@ -111,32 +112,8 @@ List<ToolGroup> _genToolItems(BuildContext context) => [
 
 class NaviUtil {
   late List<ToolGroup> toolGroups;
-  late List<NavigationPaneItem> displayItems;
-  late List<ToolItem> realItems;
-
-  List<String> get suggestItems => realItems.map((e) => e.text).toList();
 
   NaviUtil(BuildContext context) {
     toolGroups = _genToolItems(context);
-    var _displayItems = <NavigationPaneItem>[];
-    var _realItems = <ToolItem>[];
-    for (var item in toolGroups) {
-      var naviItem = item.items;
-      _displayItems.add(item);
-      _displayItems.addAll(naviItem);
-      _realItems.addAll(naviItem);
-    }
-    displayItems = _displayItems;
-    realItems = _realItems;
-  }
-
-  int suggestGetIndex(String data) {
-    int index = suggestItems.indexOf(data);
-    if (index == -1) return 0;
-    return index;
-  }
-
-  getIndex(ToolItem item) {
-    return realItems.indexOf(item);
   }
 }

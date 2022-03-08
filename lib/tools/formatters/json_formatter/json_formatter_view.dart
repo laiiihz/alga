@@ -1,6 +1,7 @@
 import 'package:alga/constants/import_helper.dart';
 import 'package:alga/tools/formatters/json_formatter/json_enums.dart';
 import 'package:alga/tools/formatters/json_formatter/json_provider.dart';
+import 'package:flutter/material.dart';
 
 import '../../widgets/formatter_view.dart';
 
@@ -37,13 +38,14 @@ class _JsonFormtterViewState extends State<JsonFormtterView> {
         ToolViewConfig(
           leading: const Icon(Icons.space_bar),
           title: const Text('indentation'),
-          trailing: Combobox<JsonIndentType>(
-            items: JsonIndentType.values
-                .map((e) => ComboboxItem(child: Text(e.name), value: e))
-                .toList(),
-            value: provider.type,
-            onChanged: (iType) =>
-                provider.type = iType ?? JsonIndentType.space2,
+          trailing: PopupMenuButton<JsonIndentType>(
+            itemBuilder: (context) {
+              return JsonIndentType.values
+                  .map((e) => PopupMenuItem(child: Text(e.name), value: e))
+                  .toList();
+            },
+            initialValue: provider.type,
+            onSelected: (iType) => provider.type = iType,
           ),
         ),
       ],

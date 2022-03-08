@@ -1,4 +1,5 @@
-import 'package:alga/constants/import_helper.dart';
+
+import 'package:flutter/material.dart';
 
 abstract class GeneratorBase extends ChangeNotifier {
   void generate();

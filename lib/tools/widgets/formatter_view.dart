@@ -1,6 +1,6 @@
 import 'package:alga/constants/import_helper.dart';
 import 'package:alga/tools/formatters/formatter_abstract.dart';
-import 'package:flutter/material.dart' as md;
+import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:language_textfield/language_textfield.dart';
 
@@ -36,11 +36,11 @@ class FormatterViewState extends State<FormatterView> {
 
   @override
   Widget build(BuildContext context) {
-    return ScaffoldPage.withPadding(
-      header: PageHeader(title: widget.title),
+    return ToolView(
+      title: widget.title,
       content: ToolbarView(
         configs: widget.configs,
-        inputWidget: md.Material(
+        inputWidget: Material(
           child: LangTextField(
             lang: widget.lang,
             minLines: 80,
@@ -51,7 +51,7 @@ class FormatterViewState extends State<FormatterView> {
             },
           ),
         ),
-        outputWidget: md.Material(
+        outputWidget: Material(
           child: LangTextField(
             lang: widget.lang,
             minLines: 80,

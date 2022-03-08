@@ -1,4 +1,5 @@
-import 'package:alga/constants/import_helper.dart';
+import 'package:alga/widgets/tool_view.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import '../../../widgets/toolbar_view.dart';
@@ -28,13 +29,11 @@ class _FormatterBaseViewState extends State<FormatterBaseView> {
 
   @override
   Widget build(BuildContext context) {
-    return ScaffoldPage.withPadding(
-      header: PageHeader(
-        title: Text(widget.base.title),
-      ),
+    return ToolView(
+      title: Text(widget.base.title),
       content: ToolbarView(
         configs: widget.configs,
-        inputWidget: TextBox(
+        inputWidget: TextField(
           minLines: 80,
           maxLines: 100,
           controller: widget.base.inputController,
@@ -46,7 +45,7 @@ class _FormatterBaseViewState extends State<FormatterBaseView> {
             }
           },
         ),
-        outputWidget: TextBox(
+        outputWidget: TextField(
           minLines: 80,
           maxLines: 100,
           controller: widget.base.outputController,

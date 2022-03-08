@@ -1,5 +1,6 @@
 import 'package:alga/constants/import_helper.dart';
 import 'package:alga/tools/generators/lorem_ipsum_generator/lorem_ipsum_provider.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 class LoremIpsumGeneratorView extends StatefulWidget {
@@ -41,13 +42,15 @@ class _LoremIpsumGeneratorViewState extends State<LoremIpsumGeneratorView> {
           title: const Text('Type'),
           subtitle: const Text(
               'Generate words,sentences or paragraphs of Lorem ipsum'),
-          trailing: Combobox(
-            items: LoremIpsumType.values
-                .map((e) => ComboboxItem(child: Text(e.value), value: e))
-                .toList(),
-            value: _provider.type,
-            onChanged: (LoremIpsumType? type) {
-              _provider.type = type ?? LoremIpsumType.paragraphs;
+          trailing: PopupMenuButton(
+            itemBuilder: (context) {
+              return LoremIpsumType.values
+                  .map((e) => PopupMenuItem(child: Text(e.value), value: e))
+                  .toList();
+            },
+            initialValue: _provider.type,
+            onSelected: (LoremIpsumType type) {
+              _provider.type = type;
               _provider.generate();
             },
           ),
@@ -59,8 +62,7 @@ class _LoremIpsumGeneratorViewState extends State<LoremIpsumGeneratorView> {
               const Text('Number of words,sentences or paragraphs to generate'),
           trailing: SizedBox(
             width: 60,
-            child: TextBox(
-              placeholder: '1',
+            child: TextField(
               inputFormatters: [FilteringTextInputFormatter.digitsOnly],
               onChanged: (text) {
                 final value = int.tryParse(text);
@@ -82,7 +84,7 @@ class _LoremIpsumGeneratorViewState extends State<LoremIpsumGeneratorView> {
               onPressed: () => _provider.clear(),
             ),
           ],
-          child: TextBox(
+          child: TextField(
             controller: _provider.outputController,
             minLines: 12,
             maxLines: 12,

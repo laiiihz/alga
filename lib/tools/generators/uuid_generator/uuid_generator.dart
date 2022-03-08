@@ -61,13 +61,15 @@ class _UUIDGeneratorViewState extends State<UUIDGeneratorView> {
           title: const Text('UUID Version'),
           subtitle:
               const Text('Choose the version of UUID version to generate'),
-          trailing: Combobox(
-            items: UUIDVersion.values.map((e) {
-              return ComboboxItem(child: Text(e.value), value: e);
-            }).toList(),
-            value: _provider.version,
-            onChanged: (UUIDVersion? version) {
-              _provider.version = version ?? UUIDVersion.v4;
+          trailing: PopupMenuButton(
+            itemBuilder: (context) {
+              return UUIDVersion.values.map((e) {
+                return PopupMenuItem(child: Text(e.value), value: e);
+              }).toList();
+            },
+            initialValue: _provider.version,
+            onSelected: (UUIDVersion version) {
+              _provider.version = version;
             },
           ),
         ),
@@ -94,8 +96,7 @@ class _UUIDGeneratorViewState extends State<UUIDGeneratorView> {
             ),
             SizedBox(
               width: 100,
-              child: TextBox(
-                placeholder: '1',
+              child: TextField(
                 inputFormatters: [FilteringTextInputFormatter.digitsOnly],
                 onChanged: (value) {
                   final _value = int.tryParse(value);
@@ -120,7 +121,7 @@ class _UUIDGeneratorViewState extends State<UUIDGeneratorView> {
             ),
           ],
         ),
-        TextBox(
+        TextField(
           minLines: 10,
           maxLines: 20,
           controller: _provider.resultController,

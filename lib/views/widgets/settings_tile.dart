@@ -1,4 +1,4 @@
-import 'package:alga/constants/import_helper.dart';
+import 'package:flutter/material.dart';
 
 class SettingsTile extends StatelessWidget {
   final Widget? leading;

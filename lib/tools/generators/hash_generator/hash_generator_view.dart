@@ -1,4 +1,5 @@
 import 'package:alga/tools/generators/hash_generator/hash_provider.dart';
+import 'package:flutter/material.dart';
 
 import '../../../constants/import_helper.dart';
 
@@ -23,7 +24,7 @@ class _HashGeneratorViewState extends State<HashGeneratorView> {
         actions: const [],
         child: Row(
           children: [
-            Expanded(child: TextBox(controller: e.controller)),
+            Expanded(child: TextField(controller: e.controller)),
             const SizedBox(width: 8),
             IconButton(
               icon: const Icon(Icons.copy),
@@ -94,7 +95,7 @@ class _HashGeneratorViewState extends State<HashGeneratorView> {
             ),
           ],
         ),
-        TextBox(
+        TextField(
           minLines: 12,
           maxLines: 12,
           controller: _provider.inputController,
@@ -103,12 +104,10 @@ class _HashGeneratorViewState extends State<HashGeneratorView> {
           },
         ),
         if (_provider.showHmac)
-          TextBox(
+          TextField(
             minLines: 12,
             maxLines: 12,
             controller: _provider.optionalController,
-            placeholder: 'Optional',
-            header: 'secret',
             onChanged: (text) {
               _provider.generate();
             },

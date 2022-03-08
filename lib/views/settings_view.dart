@@ -3,6 +3,7 @@ import 'package:alga/extension/list_ext.dart';
 import 'package:alga/views/widgets/expandable_settings_tile.dart';
 import 'package:alga/views/widgets/settings_tile.dart';
 import 'package:flutter/material.dart' as md;
+import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class SettingsView extends StatefulWidget {
@@ -15,10 +16,10 @@ class SettingsView extends StatefulWidget {
 class _SettingsViewState extends State<SettingsView> {
   @override
   Widget build(BuildContext context) {
-    return ScaffoldPage.withPadding(
-      header: PageHeader(title: Text(S.of(context).settings)),
+    return ToolView(
+      title: Text(S.of(context).settings),
       content: ListView(
-        children: [
+        children: <Widget>[
           AppTitle(title: S.of(context).about),
           SettingsTile(
             leading: Image.asset('assets/logo/256x256.webp'),
