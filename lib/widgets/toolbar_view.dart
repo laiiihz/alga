@@ -50,6 +50,14 @@ class ToolbarView extends StatelessWidget {
 
     Widget result = const SizedBox.shrink();
 
+    late Axis axis;
+    bool isSmallDevice = MediaQuery.of(context).size.width < 980;
+    if (isSmallDevice) {
+      axis = Axis.vertical;
+    } else {
+      axis = Axis.horizontal;
+    }
+
     switch (axis) {
       case Axis.horizontal:
         result = Row(
@@ -99,6 +107,6 @@ class ToolbarView extends StatelessWidget {
       );
     }
 
-    return result;
+    return Padding(padding: const EdgeInsets.all(12), child: result);
   }
 }

@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.14)
-project(devtoys LANGUAGES CXX)
+project(alga LANGUAGES CXX)
 
-set(BINARY_NAME "devtoys")
+set(BINARY_NAME "alga")
 
 cmake_policy(SET CMP0063 NEW)
 
