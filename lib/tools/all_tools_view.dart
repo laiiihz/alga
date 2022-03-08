@@ -24,6 +24,7 @@ class _AllToolsViewState extends State<AllToolsView> {
     return ToolView(
       title: Text(S.of(context).allTools),
       content: GridView.builder(
+        padding: const EdgeInsets.all(12),
         gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
           maxCrossAxisExtent: 150,
           mainAxisSpacing: 16,
