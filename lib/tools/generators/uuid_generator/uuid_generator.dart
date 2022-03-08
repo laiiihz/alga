@@ -37,7 +37,7 @@ class _UUIDGeneratorViewState extends State<UUIDGeneratorView> {
   Widget build(BuildContext context) {
     bool isDark = FluentTheme.of(context).brightness == Brightness.dark;
     return ToolView.scrollVertical(
-      title: const Text('UUID Generator'),
+      title: Text(S.of(context).generatorUUID),
       children: [
         AppTitle(title: S.of(context).configuration),
         ToolViewConfig(

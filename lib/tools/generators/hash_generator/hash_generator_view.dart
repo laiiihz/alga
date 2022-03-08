@@ -54,7 +54,7 @@ class _HashGeneratorViewState extends State<HashGeneratorView> {
   @override
   Widget build(BuildContext context) {
     return ToolView.scrollVertical(
-      title: const Text('Hash Genergator'),
+      title: Text(S.of(context).generatorHash),
       children: [
         AppTitle(title: S.of(context).configuration),
         ToolViewConfig(
