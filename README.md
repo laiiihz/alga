@@ -34,4 +34,4 @@ A flutter implement of [DevToys[microsoft]](https://github.com/veler/DevToys) .
   * [x] Yaml
   * [x] Markdown
   * [ ] Regex
-  * [ ] JWT(custom support)
+  * [x] JWT(custom support)

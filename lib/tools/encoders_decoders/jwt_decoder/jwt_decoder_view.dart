@@ -1,5 +1,8 @@
 import 'package:alga/constants/import_helper.dart';
 import 'package:alga/tools/encoders_decoders/jwt_decoder/jwt_decoder_provider.dart';
+import 'package:alga/tools/encoders_decoders/jwt_decoder/jwt_special_text_builder.dart';
+import 'package:extended_text_field/extended_text_field.dart';
+import 'package:flutter/material.dart';
 
 class JWTDecoderView extends StatefulWidget {
   const JWTDecoderView({Key? key}) : super(key: key);
@@ -34,13 +37,16 @@ class _JWTDecoderViewState extends State<JWTDecoderView> {
               onPressed: _provider.clear,
             ),
           ],
-          child: TextBox(
-            controller: _provider.inputController,
-            minLines: 12,
-            maxLines: 12,
-            onChanged: (_) {
-              _provider.convert();
-            },
+          child: Material(
+            child: ExtendedTextField(
+              controller: _provider.inputController,
+              minLines: 12,
+              maxLines: 12,
+              onChanged: (_) {
+                _provider.convert();
+              },
+              specialTextSpanBuilder: JWTSpecialTextBuilder(),
+            ),
           ),
         ),
         AppTitleWrapper(
