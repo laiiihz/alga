@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:alga/l10n/l10n.dart';
 import 'package:alga/models/tool_item.dart';
 import 'package:animations/animations.dart';
@@ -18,6 +20,8 @@ class _AppScaffoldState extends State<AppScaffold> {
 
   @override
   Widget build(BuildContext context) {
+    bool isSmallDevice = MediaQuery.of(context).size.width < 980;
+
     final drawer = Drawer(
       child: Column(
         children: [
@@ -35,7 +39,8 @@ class _AppScaffoldState extends State<AppScaffold> {
                     (context, index) {
                       final tool = widget.tools[index];
                       return ExpansionTile(
-                        title: tool.header,
+                        leading: tool.icon,
+                        title: tool.title,
                         children: tool.items.map((e) {
                           bool same = e == _currentItem;
                           return ListTile(
@@ -66,18 +71,41 @@ class _AppScaffoldState extends State<AppScaffold> {
         ],
       ),
     );
+    Widget body = PageTransitionSwitcher(
+      transitionBuilder: (child, primaryAnimation, secondaryAnimation) {
+        return SharedAxisTransition(
+          animation: primaryAnimation,
+          secondaryAnimation: secondaryAnimation,
+          transitionType: SharedAxisTransitionType.scaled,
+          child: child,
+        );
+      },
+      child: _currentItem?.page ?? const SizedBox.shrink(),
+    );
+    if (!isSmallDevice) {
+      body = Row(
+        children: [
+          drawer,
+          Expanded(
+            child: body,
+          ),
+        ],
+      );
+    }
+
     return Scaffold(
       appBar: PreferredSize(
         child: Row(
           children: [
-            Builder(builder: (context) {
-              return IconButton(
-                onPressed: () {
-                  Scaffold.of(context).openDrawer();
-                },
-                icon: const Icon(Icons.menu),
-              );
-            }),
+            if (isSmallDevice)
+              Builder(builder: (context) {
+                return IconButton(
+                  onPressed: () {
+                    Scaffold.of(context).openDrawer();
+                  },
+                  icon: const Icon(Icons.menu),
+                );
+              }),
             Padding(
               padding: const EdgeInsets.only(top: 6),
               child: Image.asset('assets/logo/256x256.webp'),
@@ -94,25 +122,8 @@ class _AppScaffoldState extends State<AppScaffold> {
         ),
         preferredSize: const Size.fromHeight(42),
       ),
-      drawer: drawer,
-      body: Row(
-        children: [
-          drawer,
-          Expanded(
-            child: PageTransitionSwitcher(
-              transitionBuilder: (child, primaryAnimation, secondaryAnimation) {
-                return SharedAxisTransition(
-                  animation: primaryAnimation,
-                  secondaryAnimation: secondaryAnimation,
-                  transitionType: SharedAxisTransitionType.scaled,
-                  child: child,
-                );
-              },
-              child: _currentItem?.page ?? const SizedBox.shrink(),
-            ),
-          ),
-        ],
-      ),
+      drawer: isSmallDevice ? drawer : null,
+      body: body,
     );
   }
 }

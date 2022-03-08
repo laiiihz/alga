@@ -19,6 +19,7 @@ import '../widgets/svg_asset_icon.dart';
 
 List<ToolGroup> _genToolItems(BuildContext context) => [
       ToolGroup(
+        icon: const Icon(Icons.transform),
         title: Text(S.of(context).converters),
         items: [
           ToolItem(
@@ -34,6 +35,7 @@ List<ToolGroup> _genToolItems(BuildContext context) => [
         ],
       ),
       ToolGroup(
+        icon: const Icon(Icons.compress),
         title: Text(S.of(context).encodersDecoders),
         items: [
           ToolItem(
@@ -59,6 +61,7 @@ List<ToolGroup> _genToolItems(BuildContext context) => [
         ],
       ),
       ToolGroup(
+        icon: const Icon(Icons.format_align_left),
         title: Text(S.of(context).formatters),
         items: [
           ToolItem(
@@ -74,6 +77,7 @@ List<ToolGroup> _genToolItems(BuildContext context) => [
         ],
       ),
       ToolGroup(
+        icon: const Icon(Icons.generating_tokens),
         title: Text(S.of(context).generators),
         items: [
           ToolItem(
@@ -94,6 +98,7 @@ List<ToolGroup> _genToolItems(BuildContext context) => [
         ],
       ),
       ToolGroup(
+        icon: const Icon(Icons.text_format),
         title: Text(S.of(context).textTool),
         items: [
           ToolItem(
