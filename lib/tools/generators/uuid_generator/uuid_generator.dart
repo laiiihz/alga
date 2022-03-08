@@ -1,7 +1,6 @@
 import 'package:alga/constants/import_helper.dart';
 import 'package:alga/tools/generators/uuid_generator/uuid_provider.dart';
 import 'package:fluent_ui/fluent_ui.dart';
-import 'package:fluentui_system_icons/fluentui_system_icons.dart' as f_icons;
 import 'package:flutter/services.dart';
 
 class UUIDGeneratorView extends StatefulWidget {
