@@ -3,6 +3,7 @@ import 'package:alga/tools/encoders_decoders/jwt_decoder/jwt_decoder_provider.da
 import 'package:alga/tools/encoders_decoders/jwt_decoder/jwt_special_text_builder.dart';
 import 'package:extended_text_field/extended_text_field.dart';
 import 'package:flutter/material.dart';
+import 'package:language_textfield/language_textfield.dart';
 
 class JWTDecoderView extends StatefulWidget {
   const JWTDecoderView({Key? key}) : super(key: key);
@@ -40,7 +41,7 @@ class _JWTDecoderViewState extends State<JWTDecoderView> {
           child: Material(
             child: ExtendedTextField(
               controller: _provider.inputController,
-              minLines: 12,
+              minLines: 3,
               maxLines: 12,
               onChanged: (_) {
                 _provider.convert();
@@ -57,10 +58,13 @@ class _JWTDecoderViewState extends State<JWTDecoderView> {
               onPressed: _provider.copyHeader,
             ),
           ],
-          child: TextBox(
-            controller: _provider.headerController,
-            minLines: 12,
-            maxLines: 12,
+          child: Material(
+            child: LangTextField(
+              lang: 'json',
+              controller: _provider.headerController,
+              minLines: 4,
+              maxLines: 12,
+            ),
           ),
         ),
         AppTitleWrapper(
@@ -71,10 +75,13 @@ class _JWTDecoderViewState extends State<JWTDecoderView> {
               onPressed: _provider.copyPayload(),
             ),
           ],
-          child: TextBox(
-            controller: _provider.payloadController,
-            minLines: 12,
-            maxLines: 12,
+          child: Material(
+            child: LangTextField(
+              lang: 'json',
+              controller: _provider.payloadController,
+              minLines: 2,
+              maxLines: 12,
+            ),
           ),
         ),
       ],
