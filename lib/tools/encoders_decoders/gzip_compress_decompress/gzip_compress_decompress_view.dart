@@ -42,6 +42,7 @@ class _GzipCompressDecompressViewState
           title: Text(S.of(context).conversion),
           subtitle: Text(S.of(context).selectConversion),
           trailing: Row(
+            mainAxisSize: MainAxisSize.min,
             children: [
               _provider.isCompress
                   ? const Text('Compress')

@@ -21,74 +21,83 @@ class _JsonYamlConverterViewState extends State<JsonYamlConverterView> {
 
   @override
   Widget build(BuildContext context) {
-    return ToolView.scrollVertical(
-      title: Text(S.of(context).jsonYamlConverter),
-      children: [
-        Row(
-          children: [
-            Expanded(
-              child: AppTitleWrapper(
-                title: 'JSON',
-                actions: [
-                  IconButton(
-                    icon: const Icon(Icons.copy),
-                    onPressed: _provider.copyJson,
-                  ),
-                  IconButton(
-                    icon: const Icon(Icons.paste),
-                    onPressed: _provider.pasteJson,
-                  ),
-                  IconButton(
-                    icon: const Icon(Icons.clear),
-                    onPressed: _provider.clear,
-                  ),
-                ],
-                child: Material(
-                  child: JsonTextField(
-                    minLines: 12,
-                    maxLines: 12,
-                    controller: _provider.jsonController,
-                    onChanged: (_) {
-                      _provider.json2yaml();
-                    },
-                  ),
-                ),
-              ),
-            ),
-            const SizedBox(width: 8),
-            Expanded(
-              child: AppTitleWrapper(
-                title: 'YAML',
-                actions: [
-                  IconButton(
-                    icon: const Icon(Icons.copy),
-                    onPressed: _provider.copyYaml,
-                  ),
-                  IconButton(
-                    icon: const Icon(Icons.paste),
-                    onPressed: _provider.pasteYaml,
-                  ),
-                  IconButton(
-                    icon: const Icon(Icons.clear),
-                    onPressed: _provider.clear,
-                  ),
-                ],
-                child: Material(
-                  child: LangTextField(
-                    minLines: 12,
-                    maxLines: 12,
-                    controller: _provider.yamlController,
-                    onChanged: (_) {
-                      _provider.yaml2json();
-                    },
-                    lang: 'yaml',
-                  ),
-                ),
-              ),
-            ),
-          ],
+    bool isSmallDevice = MediaQuery.of(context).size.width < 980;
+
+    final jsonWidget = AppTitleWrapper(
+      title: 'JSON',
+      actions: [
+        IconButton(
+          icon: const Icon(Icons.copy),
+          onPressed: _provider.copyJson,
+        ),
+        IconButton(
+          icon: const Icon(Icons.paste),
+          onPressed: _provider.pasteJson,
+        ),
+        IconButton(
+          icon: const Icon(Icons.clear),
+          onPressed: _provider.clear,
         ),
       ],
+      child: Material(
+        child: JsonTextField(
+          minLines: 12,
+          maxLines: 12,
+          controller: _provider.jsonController,
+          onChanged: (_) {
+            _provider.json2yaml();
+          },
+        ),
+      ),
+    );
+    final yamlWidget = AppTitleWrapper(
+      title: 'YAML',
+      actions: [
+        IconButton(
+          icon: const Icon(Icons.copy),
+          onPressed: _provider.copyYaml,
+        ),
+        IconButton(
+          icon: const Icon(Icons.paste),
+          onPressed: _provider.pasteYaml,
+        ),
+        IconButton(
+          icon: const Icon(Icons.clear),
+          onPressed: _provider.clear,
+        ),
+      ],
+      child: Material(
+        child: LangTextField(
+          minLines: 12,
+          maxLines: 12,
+          controller: _provider.yamlController,
+          onChanged: (_) {
+            _provider.yaml2json();
+          },
+          lang: 'yaml',
+        ),
+      ),
+    );
+    late List<Widget> children;
+    if (isSmallDevice) {
+      children = [
+        jsonWidget,
+        yamlWidget,
+      ];
+    } else {
+      children = [
+        Row(
+          children: [
+            Expanded(child: jsonWidget),
+            const SizedBox(width: 8),
+            Expanded(child: yamlWidget),
+          ],
+        ),
+      ];
+    }
+    return ToolView.scrollVertical(
+      title: Text(S.of(context).jsonYamlConverter),
+      children: children,
     );
   }
 }

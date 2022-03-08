@@ -22,7 +22,7 @@ class _SettingsViewState extends State<SettingsView> {
         children: <Widget>[
           AppTitle(title: S.of(context).about),
           SettingsTile(
-            leading: Image.asset('assets/logo/256x256.webp'),
+            leading: Image.asset('assets/logo/256.webp'),
             title: Text(S.of(context).appName),
           ),
           ExpandableSettingsTile(

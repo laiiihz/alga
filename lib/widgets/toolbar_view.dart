@@ -10,7 +10,6 @@ class ToolbarView extends StatelessWidget {
   final Widget outputWidget;
   final List<Widget> inputActions;
   final List<Widget> outputActions;
-  final Axis axis;
   final List<Widget> midWidgets;
   const ToolbarView({
     Key? key,
@@ -19,7 +18,6 @@ class ToolbarView extends StatelessWidget {
     required this.outputWidget,
     this.inputActions = const [],
     this.outputActions = const [],
-    this.axis = Axis.horizontal,
     this.midWidgets = const [],
   }) : super(key: key);
 

@@ -19,8 +19,7 @@ class AppTitle extends StatelessWidget {
         ),
         child: Row(
           children: [
-            Text(title),
-            const Spacer(),
+            Expanded(child: Text(title, maxLines: 1)),
             ...actions.sep(const SizedBox(width: 4)),
           ],
         ),

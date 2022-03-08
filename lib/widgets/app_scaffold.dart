@@ -106,10 +106,6 @@ class _AppScaffoldState extends State<AppScaffold> {
                     icon: const Icon(Icons.menu),
                   );
                 }),
-              Padding(
-                padding: const EdgeInsets.only(top: 6),
-                child: Image.asset('assets/logo/256x256.webp'),
-              ),
               const SizedBox(width: 8),
               Text(S.of(context).appName),
               WindowUtil.isMobileDevice

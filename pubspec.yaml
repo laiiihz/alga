@@ -48,6 +48,4 @@ flutter:
   generate: true
 
   assets:
-    - assets/logo/1080x1080.webp
-    - assets/logo/256x256.webp
     - assets/icons/
