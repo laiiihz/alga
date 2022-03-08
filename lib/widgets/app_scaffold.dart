@@ -1,7 +1,6 @@
-import 'dart:async';
-
 import 'package:alga/l10n/l10n.dart';
 import 'package:alga/models/tool_item.dart';
+import 'package:alga/utils/window_util.dart';
 import 'package:animations/animations.dart';
 import 'package:flutter/material.dart';
 import 'package:window_manager/window_manager.dart';
@@ -95,30 +94,34 @@ class _AppScaffoldState extends State<AppScaffold> {
 
     return Scaffold(
       appBar: PreferredSize(
-        child: Row(
-          children: [
-            if (isSmallDevice)
-              Builder(builder: (context) {
-                return IconButton(
-                  onPressed: () {
-                    Scaffold.of(context).openDrawer();
-                  },
-                  icon: const Icon(Icons.menu),
-                );
-              }),
-            Padding(
-              padding: const EdgeInsets.only(top: 6),
-              child: Image.asset('assets/logo/256x256.webp'),
-            ),
-            const SizedBox(width: 8),
-            Text(S.of(context).appName),
-            Expanded(
-              child: WindowCaption(
-                brightness: Theme.of(context).brightness,
-                backgroundColor: Colors.transparent,
+        child: SafeArea(
+          child: Row(
+            children: [
+              if (isSmallDevice)
+                Builder(builder: (context) {
+                  return IconButton(
+                    onPressed: () {
+                      Scaffold.of(context).openDrawer();
+                    },
+                    icon: const Icon(Icons.menu),
+                  );
+                }),
+              Padding(
+                padding: const EdgeInsets.only(top: 6),
+                child: Image.asset('assets/logo/256x256.webp'),
               ),
-            ),
-          ],
+              const SizedBox(width: 8),
+              Text(S.of(context).appName),
+              WindowUtil.isMobileDevice
+                  ? const Spacer()
+                  : Expanded(
+                      child: WindowCaption(
+                        brightness: Theme.of(context).brightness,
+                        backgroundColor: Colors.transparent,
+                      ),
+                    ),
+            ],
+          ),
         ),
         preferredSize: const Size.fromHeight(42),
       ),

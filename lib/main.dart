@@ -1,12 +1,12 @@
 import 'package:alga/home_view.dart';
 import 'package:alga/l10n/l10n.dart';
-import 'package:alga/utils/windows_util.dart';
+import 'package:alga/utils/window_util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await WindowsUtil.init();
+  await WindowUtil.init();
   runApp(const MyApp());
 }
 

@@ -2,7 +2,7 @@ import 'dart:io';
 
 import 'package:window_manager/window_manager.dart';
 
-class WindowsUtil {
+class WindowUtil {
   static Future init() async {
     if (Platform.isAndroid || Platform.isIOS) {
       return;
@@ -23,4 +23,6 @@ class WindowsUtil {
     if (Platform.isAndroid || Platform.isIOS) return;
     await windowManager.setTitle(title);
   }
+
+  static bool get isMobileDevice => Platform.isAndroid || Platform.isIOS;
 }
