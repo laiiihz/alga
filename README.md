@@ -1,6 +1,6 @@
 # Alga
 
-A flutter implement of [DevToys[microsoft]](https://github.com/veler/DevToys) .
+A flutter implement of [DevToys[veler]](https://github.com/veler/DevToys) .
 
 
 ## Supported Tools
@@ -35,3 +35,7 @@ A flutter implement of [DevToys[microsoft]](https://github.com/veler/DevToys) .
   * [x] Markdown
   * [ ] Regex
   * [x] JWT(custom support)
+
+## Special Thanks
+
+* [lijy91](https://github.com/lijy91) and his [flutter_distributor](https://github.com/leanflutter/flutter_distributor), [window_manager](https://github.com/leanflutter/window_manager)
