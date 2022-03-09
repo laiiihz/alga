@@ -1,5 +1,4 @@
 import 'package:alga/constants/import_helper.dart';
-import 'package:alga/models/tool_items.dart';
 import 'package:alga/widgets/app_scaffold.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -11,16 +10,10 @@ class AllToolsView extends ConsumerStatefulWidget {
 }
 
 class _AllToolsViewState extends ConsumerState<AllToolsView> {
-  late NaviUtil _navi;
-  @override
-  void didChangeDependencies() {
-    _navi = NaviUtil(context);
-    super.didChangeDependencies();
-  }
-
   @override
   Widget build(BuildContext context) {
     final itemRead = ref.read(currentToolProvider.notifier);
+    final _navi = ref.watch(toolsProvider)!;
     final isDark = Theme.of(context).brightness == Brightness.dark;
     return ToolView(
       title: Text(S.of(context).allTools),
