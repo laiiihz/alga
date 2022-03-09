@@ -7,17 +7,21 @@ import 'lang_special_builder.dart';
 
 class LangTextField extends StatelessWidget {
   final TextEditingController? controller;
-  final int maxLines;
-  final int minLines;
+  final int? maxLines;
+  final int? minLines;
   final ValueChanged<String>? onChanged;
   final String lang;
+  final bool expands;
+  final InputDecoration? inputDecoration;
   const LangTextField({
     Key? key,
     this.controller,
-    this.maxLines = 1,
-    this.minLines = 1,
+    this.maxLines,
+    this.minLines,
     this.onChanged,
     required this.lang,
+    this.expands = false,
+    this.inputDecoration,
   }) : super(key: key);
   @override
   Widget build(BuildContext context) {
@@ -27,6 +31,8 @@ class LangTextField extends StatelessWidget {
       maxLines: maxLines,
       minLines: minLines,
       onChanged: onChanged,
+      expands: expands,
+      decoration: inputDecoration,
     );
   }
 }

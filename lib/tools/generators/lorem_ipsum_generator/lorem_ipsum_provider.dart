@@ -1,6 +1,6 @@
-import 'package:alga/constants/import_helper.dart';
 import 'package:alga/tools/generators/abstract/generator_base.dart';
 import 'package:alga/utils/clipboard_util.dart';
+import 'package:flutter/material.dart';
 import 'package:lorem_ipsum/lorem_ipsum.dart';
 
 enum LoremIpsumType {
@@ -37,6 +37,7 @@ class LoremIpsumProvider extends GeneratorBase {
     notifyListeners();
   }
 
+  TextEditingController numberController = TextEditingController();
   TextEditingController outputController = TextEditingController();
 
   @override
@@ -66,6 +67,7 @@ class LoremIpsumProvider extends GeneratorBase {
   @override
   void dispose() {
     outputController.dispose();
+    numberController.dispose();
     super.dispose();
   }
 }

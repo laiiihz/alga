@@ -1,6 +1,5 @@
 import 'package:alga/constants/import_helper.dart';
 import 'package:alga/tools/text_tools/markdown_preview/markdown_preview_provider.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:language_textfield/language_textfield.dart';
 
@@ -40,20 +39,22 @@ class _MarkdownPreviewViewState extends State<MarkdownPreviewView> {
               child: AppTitleWrapper(
                 title: S.of(context).markdownInput,
                 actions: [
-                  Button(
-                    child: const Icon(FluentIcons.copy),
+                  IconButton(
+                    icon: const Icon(Icons.copy),
                     onPressed: _provider.copy,
                   ),
                 ],
                 child: Material(
                   child: LangTextField(
-                    minLines: 12,
-                    maxLines: 12,
+                    minLines: 2,
+                    maxLines: 20,
                     controller: _provider.markdownController,
                     onChanged: (_) {
                       _provider.convert();
                     },
                     lang: 'markdown',
+                    inputDecoration:
+                        const InputDecoration(border: OutlineInputBorder()),
                   ),
                 ),
               ),

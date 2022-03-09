@@ -89,13 +89,13 @@ BEGIN
     BEGIN
         BLOCK "040904e4"
         BEGIN
-            VALUE "CompanyName", "com.example" "\0"
-            VALUE "FileDescription", "devtoys" "\0"
+            VALUE "CompanyName", "tech.laihz" "\0"
+            VALUE "FileDescription", "alga" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
-            VALUE "InternalName", "devtoys" "\0"
-            VALUE "LegalCopyright", "Copyright (C) 2022 com.example. All rights reserved." "\0"
-            VALUE "OriginalFilename", "devtoys.exe" "\0"
-            VALUE "ProductName", "devtoys" "\0"
+            VALUE "InternalName", "alga" "\0"
+            VALUE "LegalCopyright", "Copyright (C) 2022 tech.laihz. All rights reserved." "\0"
+            VALUE "OriginalFilename", "alga.exe" "\0"
+            VALUE "ProductName", "alga" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
         END
     END

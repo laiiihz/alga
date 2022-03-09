@@ -1,5 +1,5 @@
-import 'package:alga/constants/import_helper.dart';
 import 'package:alga/tools/converters/number_base_converter/number_base_converter_provider.dart';
+import 'package:alga/constants/import_helper.dart';
 
 class NumberBaseConverterView extends StatefulWidget {
   const NumberBaseConverterView({Key? key}) : super(key: key);
@@ -19,12 +19,12 @@ class _NumberBaseConverterViewState extends State<NumberBaseConverterView> {
         return AppTitleWrapper(
           title: e.title,
           actions: [
-            Button(
-              child: const Icon(FluentIcons.copy),
+            IconButton(
+              icon: const Icon(Icons.copy),
               onPressed: () => e.copy(),
             ),
           ],
-          child: TextBox(
+          child: AppTextField(
             controller: e.controller,
             inputFormatters: e.formatter,
             onChanged: (_) {

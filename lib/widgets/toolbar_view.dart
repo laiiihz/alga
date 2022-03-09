@@ -1,6 +1,6 @@
 import 'package:alga/extension/list_ext.dart';
 import 'package:alga/widgets/app_title.dart';
-import 'package:fluent_ui/fluent_ui.dart';
+import 'package:flutter/material.dart';
 
 import '../l10n/l10n.dart';
 
@@ -10,7 +10,6 @@ class ToolbarView extends StatelessWidget {
   final Widget outputWidget;
   final List<Widget> inputActions;
   final List<Widget> outputActions;
-  final Axis axis;
   final List<Widget> midWidgets;
   const ToolbarView({
     Key? key,
@@ -19,7 +18,6 @@ class ToolbarView extends StatelessWidget {
     required this.outputWidget,
     this.inputActions = const [],
     this.outputActions = const [],
-    this.axis = Axis.horizontal,
     this.midWidgets = const [],
   }) : super(key: key);
 
@@ -51,6 +49,14 @@ class ToolbarView extends StatelessWidget {
     );
 
     Widget result = const SizedBox.shrink();
+
+    late Axis axis;
+    bool isSmallDevice = MediaQuery.of(context).size.width < 980;
+    if (isSmallDevice) {
+      axis = Axis.vertical;
+    } else {
+      axis = Axis.horizontal;
+    }
 
     switch (axis) {
       case Axis.horizontal:
@@ -101,6 +107,6 @@ class ToolbarView extends StatelessWidget {
       );
     }
 
-    return result;
+    return Padding(padding: const EdgeInsets.all(12), child: result);
   }
 }

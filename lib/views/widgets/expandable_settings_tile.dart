@@ -1,6 +1,6 @@
-import 'package:alga/constants/import_helper.dart';
 import 'package:alga/views/widgets/settings_tile.dart';
 import 'package:flutter/material.dart' as md;
+import 'package:flutter/material.dart';
 
 class ExpandableSettingsTile extends StatefulWidget {
   final Widget title;
@@ -21,7 +21,7 @@ class _ExpandableSettingsTileState extends State<ExpandableSettingsTile> {
   bool _expand = false;
   @override
   Widget build(BuildContext context) {
-    final isDark = FluentTheme.of(context).brightness == Brightness.dark;
+    final isDark = Theme.of(context).brightness == Brightness.dark;
     return Column(
       children: [
         GestureDetector(
@@ -36,7 +36,7 @@ class _ExpandableSettingsTileState extends State<ExpandableSettingsTile> {
             trailing: AnimatedRotation(
               turns: _expand ? 0.5 : 0,
               duration: const Duration(milliseconds: 400),
-              child: const Icon(FluentIcons.chevron_down),
+              child: const Icon(Icons.keyboard_arrow_down),
             ),
           ),
         ),

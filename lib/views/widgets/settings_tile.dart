@@ -1,4 +1,4 @@
-import 'package:alga/constants/import_helper.dart';
+import 'package:flutter/material.dart';
 
 class SettingsTile extends StatelessWidget {
   final Widget? leading;
@@ -17,7 +17,7 @@ class SettingsTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    bool isDark = FluentTheme.of(context).brightness == Brightness.dark;
+    bool isDark = Theme.of(context).brightness == Brightness.dark;
     return ListTile(
       shape: shape ??
           RoundedRectangleBorder(borderRadius: BorderRadius.circular(4)),
@@ -26,7 +26,6 @@ class SettingsTile extends StatelessWidget {
       trailing: trailing,
       subtitle: subtitle,
       tileColor: isDark ? Colors.grey[160] : Colors.grey[20],
-      isThreeLine: true,
     );
   }
 }

@@ -1,6 +1,5 @@
 import 'package:alga/constants/import_helper.dart';
 import 'package:alga/tools/converters/json_yaml_converter/json_yaml_converter_provider.dart';
-import 'package:flutter/material.dart';
 import 'package:json_textfield/json_textfield.dart';
 import 'package:language_textfield/language_textfield.dart';
 
@@ -21,74 +20,88 @@ class _JsonYamlConverterViewState extends State<JsonYamlConverterView> {
 
   @override
   Widget build(BuildContext context) {
-    return ToolView.scrollVertical(
-      title: Text(S.of(context).jsonYamlConverter),
-      children: [
-        Row(
-          children: [
-            Expanded(
-              child: AppTitleWrapper(
-                title: 'JSON',
-                actions: [
-                  Button(
-                    child: const Icon(FluentIcons.copy),
-                    onPressed: _provider.copyJson,
-                  ),
-                  Button(
-                    child: const Icon(FluentIcons.paste),
-                    onPressed: _provider.pasteJson,
-                  ),
-                  Button(
-                    child: const Icon(FluentIcons.clear),
-                    onPressed: _provider.clear,
-                  ),
-                ],
-                child: Material(
-                  child: JsonTextField(
-                    minLines: 12,
-                    maxLines: 12,
-                    controller: _provider.jsonController,
-                    onChanged: (_) {
-                      _provider.json2yaml();
-                    },
-                  ),
-                ),
-              ),
-            ),
-            const SizedBox(width: 8),
-            Expanded(
-              child: AppTitleWrapper(
-                title: 'YAML',
-                actions: [
-                  Button(
-                    child: const Icon(FluentIcons.copy),
-                    onPressed: _provider.copyYaml,
-                  ),
-                  Button(
-                    child: const Icon(FluentIcons.paste),
-                    onPressed: _provider.pasteYaml,
-                  ),
-                  Button(
-                    child: const Icon(FluentIcons.clear),
-                    onPressed: _provider.clear,
-                  ),
-                ],
-                child: Material(
-                  child: LangTextField(
-                    minLines: 12,
-                    maxLines: 12,
-                    controller: _provider.yamlController,
-                    onChanged: (_) {
-                      _provider.yaml2json();
-                    },
-                    lang: 'yaml',
-                  ),
-                ),
-              ),
-            ),
-          ],
+    bool isSmallDevice = MediaQuery.of(context).size.width < 980;
+
+    final jsonWidget = AppTitleWrapper(
+      title: 'JSON',
+      expand: !isSmallDevice,
+      actions: [
+        IconButton(
+          icon: const Icon(Icons.copy),
+          onPressed: _provider.copyJson,
+        ),
+        IconButton(
+          icon: const Icon(Icons.paste),
+          onPressed: _provider.pasteJson,
+        ),
+        IconButton(
+          icon: const Icon(Icons.clear),
+          onPressed: _provider.clear,
         ),
       ],
+      child: JsonTextField(
+        minLines: isSmallDevice ? 12 : null,
+        maxLines: isSmallDevice ? 12 : null,
+        controller: _provider.jsonController,
+        onChanged: (_) {
+          _provider.json2yaml();
+        },
+        expands: !isSmallDevice,
+        inputDecoration: const InputDecoration(
+          border: OutlineInputBorder(),
+        ),
+      ),
     );
+    final yamlWidget = AppTitleWrapper(
+      title: 'YAML',
+      expand: !isSmallDevice,
+      actions: [
+        IconButton(
+          icon: const Icon(Icons.copy),
+          onPressed: _provider.copyYaml,
+        ),
+        IconButton(
+          icon: const Icon(Icons.paste),
+          onPressed: _provider.pasteYaml,
+        ),
+        IconButton(
+          icon: const Icon(Icons.clear),
+          onPressed: _provider.clear,
+        ),
+      ],
+      child: LangTextField(
+        minLines: isSmallDevice ? 12 : null,
+        maxLines: isSmallDevice ? 12 : null,
+        expands: !isSmallDevice,
+        controller: _provider.yamlController,
+        onChanged: (_) {
+          _provider.yaml2json();
+        },
+        inputDecoration: const InputDecoration(
+          border: OutlineInputBorder(),
+        ),
+        lang: 'yaml',
+      ),
+    );
+    if (isSmallDevice) {
+      return ToolView.scrollVertical(
+        title: Text(S.of(context).jsonYamlConverter),
+        children: [jsonWidget, yamlWidget],
+      );
+    } else {
+      return ToolView(
+        title: Text(S.of(context).jsonYamlConverter),
+        content: Padding(
+          padding: const EdgeInsets.all(12.0),
+          child: Row(
+            children: [
+              Expanded(child: jsonWidget),
+              const SizedBox(width: 8),
+              Expanded(child: yamlWidget),
+            ],
+          ),
+        ),
+      );
+    }
   }
 }

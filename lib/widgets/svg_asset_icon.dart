@@ -1,4 +1,4 @@
-import 'package:fluent_ui/fluent_ui.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 class SvgAssetIcon extends StatelessWidget {
@@ -8,9 +8,9 @@ class SvgAssetIcon extends StatelessWidget {
       : super(key: key);
 
   Color? _color(BuildContext context) {
-    final brightness = FluentTheme.of(context).brightness;
+    final brightness = Theme.of(context).brightness;
     if (colorIcon) return null;
-    return brightness.isLight ? Colors.black : Colors.white;
+    return brightness == Brightness.dark ? Colors.white70 : Colors.black87;
   }
 
   @override

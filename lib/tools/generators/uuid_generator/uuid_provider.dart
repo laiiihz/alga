@@ -50,6 +50,7 @@ class UUIDProvider extends GeneratorBase {
   }
 
   TextEditingController resultController = TextEditingController();
+  TextEditingController numberController = TextEditingController();
 
   Future copy() async {
     await Clipboard.setData(ClipboardData(text: resultController.text));
@@ -89,6 +90,7 @@ class UUIDProvider extends GeneratorBase {
   @override
   void dispose() {
     resultController.dispose();
+    numberController.dispose();
     super.dispose();
   }
 }

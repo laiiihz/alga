@@ -34,16 +34,17 @@ class _GzipCompressDecompressViewState
       title: const Text('GZip Compress/Decompress'),
       children: [
         ToolViewConfig(
-          leading: const Icon(FluentIcons.switch_widget),
+          leading: const Icon(Icons.swap_horiz_sharp),
           title: Text(S.of(context).conversion),
           subtitle: Text(S.of(context).selectConversion),
           trailing: Row(
+            mainAxisSize: MainAxisSize.min,
             children: [
               _provider.isCompress
                   ? const Text('Compress')
                   : const Text('Decompress'),
-              ToggleSwitch(
-                checked: _provider.isCompress,
+              Switch(
+                value: _provider.isCompress,
                 onChanged: (state) {
                   _provider.isCompress = state;
                   _provider.swapData();
@@ -55,18 +56,18 @@ class _GzipCompressDecompressViewState
         AppTitleWrapper(
           title: S.of(context).input,
           actions: [
-            Button(
-              child: const Icon(FluentIcons.paste),
+            IconButton(
+              icon: const Icon(Icons.paste),
               onPressed: _provider.paste,
             ),
-            Button(
-              child: const Icon(FluentIcons.clear),
+            IconButton(
+              icon: const Icon(Icons.clear),
               onPressed: _provider.clear,
             ),
           ],
-          child: TextBox(
+          child: AppTextField(
             controller: _provider.inputController,
-            minLines: 12,
+            minLines: 2,
             maxLines: 12,
             onChanged: (_) {
               _provider.convert();
@@ -76,14 +77,14 @@ class _GzipCompressDecompressViewState
         AppTitleWrapper(
           title: S.of(context).output,
           actions: [
-            Button(
-              child: const Icon(FluentIcons.copy),
+            IconButton(
+              icon: const Icon(Icons.copy),
               onPressed: _provider.copy,
             ),
           ],
-          child: TextBox(
+          child: AppTextField(
             controller: _provider.outputController,
-            minLines: 12,
+            minLines: 2,
             maxLines: 12,
           ),
         ),

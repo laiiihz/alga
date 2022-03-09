@@ -1,9 +1,5 @@
-import 'package:alga/l10n/l10n.dart';
+import 'package:alga/constants/import_helper.dart';
 import 'package:alga/tools/encoders_decoders/uri_encoder_decoder/uri_provider.dart';
-import 'package:alga/widgets/app_title.dart';
-import 'package:alga/widgets/tool_view.dart';
-import 'package:alga/widgets/tool_view_config.dart';
-import 'package:fluent_ui/fluent_ui.dart';
 
 class UriEncoderDecoderView extends StatefulWidget {
   const UriEncoderDecoderView({Key? key}) : super(key: key);
@@ -38,7 +34,7 @@ class _UriEncoderDecoderViewState extends State<UriEncoderDecoderView> {
       children: [
         AppTitle(title: S.of(context).configuration),
         ToolViewConfig(
-          leading: const Icon(FluentIcons.switch_widget),
+          leading: const Icon(Icons.swap_horiz_sharp),
           title: Text(S.of(context).conversion),
           subtitle: Text(S.of(context).selectConversion),
           trailing: Row(
@@ -47,8 +43,8 @@ class _UriEncoderDecoderViewState extends State<UriEncoderDecoderView> {
               _provider.isEncode
                   ? Text(S.of(context).encode)
                   : Text(S.of(context).decode),
-              ToggleSwitch(
-                checked: _provider.isEncode,
+              Switch(
+                value: _provider.isEncode,
                 onChanged: (state) {
                   _provider.isEncode = state;
                 },
@@ -59,18 +55,18 @@ class _UriEncoderDecoderViewState extends State<UriEncoderDecoderView> {
         AppTitleWrapper(
           title: S.of(context).input,
           actions: [
-            Button(
-              child: const Icon(FluentIcons.paste),
+            IconButton(
+              icon: const Icon(Icons.paste),
               onPressed: () => _provider.paste(),
             ),
-            Button(
-              child: const Icon(FluentIcons.clear),
+            IconButton(
+              icon: const Icon(Icons.clear),
               onPressed: () => _provider.clear(),
             ),
           ],
-          child: TextBox(
+          child: AppTextField(
             maxLines: 12,
-            minLines: 12,
+            minLines: 2,
             controller: _provider.inputController,
             onChanged: (_) {
               _provider.convert();
@@ -80,14 +76,14 @@ class _UriEncoderDecoderViewState extends State<UriEncoderDecoderView> {
         AppTitleWrapper(
           title: S.of(context).output,
           actions: [
-            Button(
-              child: const Icon(FluentIcons.copy),
+            IconButton(
+              icon: const Icon(Icons.copy),
               onPressed: () => _provider.copy(),
             ),
           ],
-          child: TextBox(
+          child: AppTextField(
             maxLines: 12,
-            minLines: 12,
+            minLines: 2,
             controller: _provider.outputController,
           ),
         ),

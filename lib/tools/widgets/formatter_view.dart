@@ -1,10 +1,7 @@
+import 'package:alga/constants/import_helper.dart';
 import 'package:alga/tools/formatters/formatter_abstract.dart';
-import 'package:fluent_ui/fluent_ui.dart';
-import 'package:flutter/material.dart' as md;
 import 'package:flutter/services.dart';
 import 'package:language_textfield/language_textfield.dart';
-
-import '../../../widgets/toolbar_view.dart';
 
 class FormatterView extends StatefulWidget {
   final Widget title;
@@ -36,11 +33,11 @@ class FormatterViewState extends State<FormatterView> {
 
   @override
   Widget build(BuildContext context) {
-    return ScaffoldPage.withPadding(
-      header: PageHeader(title: widget.title),
+    return ToolView(
+      title: widget.title,
       content: ToolbarView(
         configs: widget.configs,
-        inputWidget: md.Material(
+        inputWidget: Material(
           child: LangTextField(
             lang: widget.lang,
             minLines: 80,
@@ -49,26 +46,30 @@ class FormatterViewState extends State<FormatterView> {
             onChanged: (text) {
               _outputController.text = widget.onChanged(text).result;
             },
+            inputDecoration:
+                const InputDecoration(border: OutlineInputBorder()),
           ),
         ),
-        outputWidget: md.Material(
+        outputWidget: Material(
           child: LangTextField(
             lang: widget.lang,
             minLines: 80,
             maxLines: 100,
             controller: _outputController,
+            inputDecoration:
+                const InputDecoration(border: OutlineInputBorder()),
           ),
         ),
         inputActions: [
-          Button(
-            child: const Icon(FluentIcons.paste),
+          IconButton(
+            icon: const Icon(Icons.paste),
             onPressed: () async {
               final rawText = await Clipboard.getData('text/plain');
               _inputController.text = rawText?.text ?? '';
             },
           ),
-          Button(
-            child: const Icon(FluentIcons.clear),
+          IconButton(
+            icon: const Icon(Icons.clear),
             onPressed: () {
               _inputController.clear();
               _outputController.clear();
@@ -76,25 +77,12 @@ class FormatterViewState extends State<FormatterView> {
           ),
         ],
         outputActions: [
-          Button(
-            child: const Icon(FluentIcons.copy),
+          IconButton(
+            icon: const Icon(Icons.copy),
             onPressed: () async {
               await Clipboard.setData(
                 ClipboardData(text: _outputController.text),
               );
-              showDialog(
-                  context: context,
-                  builder: (context) {
-                    return ContentDialog(
-                      title: const Text('Copied !'),
-                      actions: [
-                        Button(
-                          child: const Text('OK'),
-                          onPressed: () => Navigator.pop(context),
-                        ),
-                      ],
-                    );
-                  });
             },
           ),
         ],

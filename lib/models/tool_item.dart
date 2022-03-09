@@ -1,21 +1,26 @@
-import 'package:fluent_ui/fluent_ui.dart';
+import 'package:flutter/material.dart';
 
-class ToolGroup extends PaneItemHeader {
+class ToolGroup {
   final List<ToolItem> items;
+  final Text title;
+  final Widget icon;
   ToolGroup({
-    required Text title,
+    required this.title,
     required this.items,
-  }) : super(header: title);
+    required this.icon,
+  });
 }
 
-class ToolItem extends PaneItem {
+class ToolItem {
   final Widget page;
+  final Text title;
+  final Widget icon;
 
-  String get text => (title as Text).data ?? '';
+  String get text => title.data ?? '';
 
   ToolItem({
-    required Widget icon,
-    required Text title,
+    required this.icon,
+    required this.title,
     required this.page,
-  }) : super(icon: icon, title: title);
+  });
 }

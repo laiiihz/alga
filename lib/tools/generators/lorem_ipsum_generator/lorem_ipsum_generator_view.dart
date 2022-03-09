@@ -37,33 +37,35 @@ class _LoremIpsumGeneratorViewState extends State<LoremIpsumGeneratorView> {
       children: [
         AppTitle(title: S.of(context).configuration),
         ToolViewConfig(
-          leading: const Icon(FluentIcons.text_document),
+          leading: const Icon(Icons.text_snippet),
           title: const Text('Type'),
           subtitle: const Text(
               'Generate words,sentences or paragraphs of Lorem ipsum'),
-          trailing: Combobox(
-            items: LoremIpsumType.values
-                .map((e) => ComboboxItem(child: Text(e.value), value: e))
-                .toList(),
-            value: _provider.type,
-            onChanged: (LoremIpsumType? type) {
-              _provider.type = type ?? LoremIpsumType.paragraphs;
+          trailing: PopupMenuButton(
+            itemBuilder: (context) {
+              return LoremIpsumType.values
+                  .map((e) => PopupMenuItem(child: Text(e.value), value: e))
+                  .toList();
+            },
+            initialValue: _provider.type,
+            onSelected: (LoremIpsumType type) {
+              _provider.type = type;
               _provider.generate();
             },
           ),
         ),
         ToolViewConfig(
-          leading: const Icon(FluentIcons.number_symbol),
+          leading: const Icon(Icons.numbers),
           title: const Text('Length'),
           subtitle:
               const Text('Number of words,sentences or paragraphs to generate'),
           trailing: SizedBox(
             width: 60,
-            child: TextBox(
-              placeholder: '1',
+            child: AppTextField(
+              controller: _provider.numberController,
               inputFormatters: [FilteringTextInputFormatter.digitsOnly],
-              onChanged: (text) {
-                final value = int.tryParse(text);
+              onChanged: (_) {
+                final value = int.tryParse(_provider.numberController.text);
                 _provider.count = value ?? 1;
                 _provider.generate();
               },
@@ -73,18 +75,18 @@ class _LoremIpsumGeneratorViewState extends State<LoremIpsumGeneratorView> {
         AppTitleWrapper(
           title: S.of(context).output,
           actions: [
-            Button(
-              child: const Icon(FluentIcons.copy),
+            IconButton(
+              icon: const Icon(Icons.copy),
               onPressed: () => _provider.copy(),
             ),
-            Button(
-              child: const Icon(FluentIcons.clear),
+            IconButton(
+              icon: const Icon(Icons.clear),
               onPressed: () => _provider.clear(),
             ),
           ],
-          child: TextBox(
+          child: AppTextField(
             controller: _provider.outputController,
-            minLines: 12,
+            minLines: 2,
             maxLines: 12,
           ),
         ),

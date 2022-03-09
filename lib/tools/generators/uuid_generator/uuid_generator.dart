@@ -1,10 +1,5 @@
-import 'package:alga/l10n/l10n.dart';
+import 'package:alga/constants/import_helper.dart';
 import 'package:alga/tools/generators/uuid_generator/uuid_provider.dart';
-import 'package:alga/widgets/app_title.dart';
-import 'package:alga/widgets/tool_view.dart';
-import 'package:alga/widgets/tool_view_config.dart';
-import 'package:fluent_ui/fluent_ui.dart';
-import 'package:fluentui_system_icons/fluentui_system_icons.dart' as f_icons;
 import 'package:flutter/services.dart';
 
 class UUIDGeneratorView extends StatefulWidget {
@@ -35,61 +30,63 @@ class _UUIDGeneratorViewState extends State<UUIDGeneratorView> {
 
   @override
   Widget build(BuildContext context) {
-    bool isDark = FluentTheme.of(context).brightness == Brightness.dark;
+    bool isDark = Theme.of(context).brightness == Brightness.dark;
     return ToolView.scrollVertical(
       title: Text(S.of(context).generatorUUID),
       children: [
         AppTitle(title: S.of(context).configuration),
         ToolViewConfig(
-          leading: const Icon(f_icons.FluentIcons.line_horizontal_1_20_regular),
+          leading: const Icon(Icons.horizontal_rule),
           title: const Text('Hypens'),
-          trailing: ToggleSwitch(
-            checked: _provider.hypens,
+          trailing: Switch(
+            value: _provider.hypens,
             onChanged: (value) {
               _provider.hypens = value;
             },
           ),
         ),
         ToolViewConfig(
-          leading: const Icon(FluentIcons.upper_case),
+          leading: const Icon(Icons.text_fields),
           title: const Text('Upper case'),
-          trailing: ToggleSwitch(
-            checked: _provider.upperCase,
+          trailing: Switch(
+            value: _provider.upperCase,
             onChanged: (value) {
               _provider.upperCase = value;
             },
           ),
         ),
         ToolViewConfig(
-          leading: const Icon(FluentIcons.version_control_push),
+          leading: const Icon(Icons.info_outline),
           title: const Text('UUID Version'),
           subtitle:
               const Text('Choose the version of UUID version to generate'),
-          trailing: Combobox(
-            items: UUIDVersion.values.map((e) {
-              return ComboboxItem(child: Text(e.value), value: e);
-            }).toList(),
-            value: _provider.version,
-            onChanged: (UUIDVersion? version) {
-              _provider.version = version ?? UUIDVersion.v4;
+          trailing: PopupMenuButton(
+            itemBuilder: (context) {
+              return UUIDVersion.values.map((e) {
+                return PopupMenuItem(child: Text(e.value), value: e);
+              }).toList();
+            },
+            initialValue: _provider.version,
+            onSelected: (UUIDVersion version) {
+              _provider.version = version;
             },
           ),
         ),
         const AppTitle(title: 'generate'),
         Row(
           children: [
-            Button(
+            ElevatedButton(
               child: const Text('Generate UUIDs'),
               onPressed: () {
                 _provider.generate();
               },
               style: ButtonStyle(
                 backgroundColor: isDark
-                    ? ButtonState.all(Colors.blue['darker'])
-                    : ButtonState.all(Colors.blue['lightest']),
+                    ? MaterialStateProperty.all(Colors.blue)
+                    : MaterialStateProperty.all(Colors.blue),
                 foregroundColor: isDark
-                    ? ButtonState.all(Colors.white)
-                    : ButtonState.all(Colors.black),
+                    ? MaterialStateProperty.all(Colors.white)
+                    : MaterialStateProperty.all(Colors.black),
               ),
             ),
             const Padding(
@@ -98,8 +95,8 @@ class _UUIDGeneratorViewState extends State<UUIDGeneratorView> {
             ),
             SizedBox(
               width: 100,
-              child: TextBox(
-                placeholder: '1',
+              child: AppTextField(
+                controller: _provider.numberController,
                 inputFormatters: [FilteringTextInputFormatter.digitsOnly],
                 onChanged: (value) {
                   final _value = int.tryParse(value);
@@ -112,20 +109,20 @@ class _UUIDGeneratorViewState extends State<UUIDGeneratorView> {
         AppTitle(
           title: 'UUIDs',
           actions: [
-            Button(
-              child: const Icon(FluentIcons.copy),
+            IconButton(
+              icon: const Icon(Icons.copy),
               onPressed: () async {
                 await _provider.copy();
               },
             ),
-            Button(
-              child: const Icon(FluentIcons.clear),
+            IconButton(
+              icon: const Icon(Icons.clear),
               onPressed: () {},
             ),
           ],
         ),
-        TextBox(
-          minLines: 10,
+        AppTextField(
+          minLines: 2,
           maxLines: 20,
           controller: _provider.resultController,
         ),

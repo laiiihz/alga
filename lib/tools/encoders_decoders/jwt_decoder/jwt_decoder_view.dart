@@ -2,7 +2,6 @@ import 'package:alga/constants/import_helper.dart';
 import 'package:alga/tools/encoders_decoders/jwt_decoder/jwt_decoder_provider.dart';
 import 'package:alga/tools/encoders_decoders/jwt_decoder/jwt_special_text_builder.dart';
 import 'package:extended_text_field/extended_text_field.dart';
-import 'package:flutter/material.dart';
 import 'package:language_textfield/language_textfield.dart';
 
 class JWTDecoderView extends StatefulWidget {
@@ -29,12 +28,12 @@ class _JWTDecoderViewState extends State<JWTDecoderView> {
         AppTitleWrapper(
           title: 'JWT token',
           actions: [
-            Button(
-              child: const Icon(FluentIcons.paste),
+            IconButton(
+              icon: const Icon(Icons.paste),
               onPressed: _provider.paste,
             ),
-            Button(
-              child: const Icon(FluentIcons.clear),
+            IconButton(
+              icon: const Icon(Icons.clear),
               onPressed: _provider.clear,
             ),
           ],
@@ -47,14 +46,15 @@ class _JWTDecoderViewState extends State<JWTDecoderView> {
                 _provider.convert();
               },
               specialTextSpanBuilder: JWTSpecialTextBuilder(),
+              decoration: const InputDecoration(border: OutlineInputBorder()),
             ),
           ),
         ),
         AppTitleWrapper(
           title: 'Header',
           actions: [
-            Button(
-              child: const Icon(FluentIcons.copy),
+            IconButton(
+              icon: const Icon(Icons.copy),
               onPressed: _provider.copyHeader,
             ),
           ],
@@ -62,16 +62,18 @@ class _JWTDecoderViewState extends State<JWTDecoderView> {
             child: LangTextField(
               lang: 'json',
               controller: _provider.headerController,
-              minLines: 4,
+              minLines: 2,
               maxLines: 12,
+              inputDecoration:
+                  const InputDecoration(border: OutlineInputBorder()),
             ),
           ),
         ),
         AppTitleWrapper(
           title: 'Payload',
           actions: [
-            Button(
-              child: const Icon(FluentIcons.copy),
+            IconButton(
+              icon: const Icon(Icons.copy),
               onPressed: _provider.copyPayload(),
             ),
           ],
@@ -81,6 +83,8 @@ class _JWTDecoderViewState extends State<JWTDecoderView> {
               controller: _provider.payloadController,
               minLines: 2,
               maxLines: 12,
+              inputDecoration:
+                  const InputDecoration(border: OutlineInputBorder()),
             ),
           ),
         ),

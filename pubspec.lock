@@ -15,6 +15,13 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "3.3.1"
+  animations:
+    dependency: "direct main"
+    description:
+      name: animations
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "2.0.2"
   archive:
     dependency: "direct main"
     description:
@@ -134,20 +141,6 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "6.1.2"
-  fluent_ui:
-    dependency: "direct main"
-    description:
-      name: fluent_ui
-      url: "https://pub.flutter-io.cn"
-    source: hosted
-    version: "3.9.1"
-  fluentui_system_icons:
-    dependency: "direct main"
-    description:
-      name: fluentui_system_icons
-      url: "https://pub.flutter-io.cn"
-    source: hosted
-    version: "1.1.161"
   flutter:
     dependency: "direct main"
     description: flutter
@@ -179,6 +172,13 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "0.6.9"
+  flutter_riverpod:
+    dependency: "direct main"
+    description:
+      name: flutter_riverpod
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "1.0.3"
   flutter_svg:
     dependency: "direct main"
     description:
@@ -391,21 +391,14 @@ packages:
       name: pub_semver
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "2.1.0"
-  recase:
+    version: "2.1.1"
+  riverpod:
     dependency: transitive
     description:
-      name: recase
+      name: riverpod
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "4.0.0"
-  scroll_pos:
-    dependency: transitive
-    description:
-      name: scroll_pos
-      url: "https://pub.flutter-io.cn"
-    source: hosted
-    version: "0.3.0"
+    version: "1.0.3"
   sky_engine:
     dependency: transitive
     description: flutter
@@ -425,6 +418,13 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "1.10.0"
+  state_notifier:
+    dependency: transitive
+    description:
+      name: state_notifier
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "0.7.2+1"
   stream_channel:
     dependency: transitive
     description:

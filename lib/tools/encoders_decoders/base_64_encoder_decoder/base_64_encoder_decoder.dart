@@ -1,9 +1,5 @@
-import 'package:alga/l10n/l10n.dart';
+import 'package:alga/constants/import_helper.dart';
 import 'package:alga/tools/encoders_decoders/base_64_encoder_decoder/base_64_provider.dart';
-import 'package:alga/widgets/app_title.dart';
-import 'package:alga/widgets/tool_view.dart';
-import 'package:alga/widgets/tool_view_config.dart';
-import 'package:fluent_ui/fluent_ui.dart';
 
 class Base64EncoderDecoderView extends StatefulWidget {
   const Base64EncoderDecoderView({Key? key}) : super(key: key);
@@ -40,16 +36,17 @@ class _Base64EncoderDecoderViewState extends State<Base64EncoderDecoderView> {
       children: [
         AppTitle(title: S.of(context).configuration),
         ToolViewConfig(
-          leading: const Icon(FluentIcons.switch_widget),
+          leading: const Icon(Icons.swap_horiz_sharp),
           title: Text(S.of(context).conversion),
           subtitle: Text(S.of(context).selectConversion),
           trailing: Row(
+            mainAxisSize: MainAxisSize.min,
             children: [
               _provider.isEncode
                   ? Text(S.of(context).encode)
                   : Text(S.of(context).decode),
-              ToggleSwitch(
-                checked: _provider.isEncode,
+              Switch(
+                value: _provider.isEncode,
                 onChanged: (state) {
                   _provider.isEncode = state;
                 },
@@ -60,22 +57,22 @@ class _Base64EncoderDecoderViewState extends State<Base64EncoderDecoderView> {
         AppTitleWrapper(
           title: S.of(context).input,
           actions: [
-            Button(
-              child: const Icon(FluentIcons.paste),
+            IconButton(
+              icon: const Icon(Icons.paste),
               onPressed: () {
                 _provider.paste();
               },
             ),
-            Button(
-              child: const Icon(FluentIcons.clear),
+            IconButton(
+              icon: const Icon(Icons.clear),
               onPressed: () {
                 _provider.clear();
               },
             ),
           ],
-          child: TextBox(
-            minLines: 10,
-            maxLines: 10,
+          child: AppTextField(
+            minLines: 2,
+            maxLines: 12,
             controller: _provider.inputController,
             onChanged: (text) {
               _provider.convert();
@@ -85,16 +82,16 @@ class _Base64EncoderDecoderViewState extends State<Base64EncoderDecoderView> {
         AppTitleWrapper(
           title: S.of(context).output,
           actions: [
-            Button(
-              child: const Icon(FluentIcons.copy),
+            IconButton(
+              icon: const Icon(Icons.copy),
               onPressed: () {
                 _provider.paste();
               },
             ),
           ],
-          child: TextBox(
-            minLines: 10,
-            maxLines: 10,
+          child: AppTextField(
+            minLines: 2,
+            maxLines: 12,
             controller: _provider.outputController,
             onChanged: (text) {
               _provider.convert();

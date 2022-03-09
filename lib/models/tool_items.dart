@@ -1,6 +1,5 @@
-import 'package:alga/l10n/l10n.dart';
+import 'package:alga/constants/import_helper.dart';
 import 'package:alga/models/tool_item.dart';
-import 'package:alga/tools/all_tools_view.dart';
 import 'package:alga/tools/converters/json_yaml_converter/json_yaml_converter_view.dart';
 import 'package:alga/tools/converters/number_base_converter/number_base_converter_view.dart';
 import 'package:alga/tools/encoders_decoders/base_64_encoder_decoder/base_64_encoder_decoder.dart';
@@ -14,24 +13,14 @@ import 'package:alga/tools/generators/lorem_ipsum_generator/lorem_ipsum_generato
 import 'package:alga/tools/generators/uuid_generator/uuid_generator.dart';
 import 'package:alga/tools/text_tools/markdown_preview/markdown_preview_view.dart';
 import 'package:alga/tools/text_tools/regex_tester/regex_tester_view.dart';
-import 'package:fluent_ui/fluent_ui.dart';
-
-import 'package:fluentui_system_icons/fluentui_system_icons.dart' as f_icons;
+import 'package:alga/views/all_tools_view.dart';
+import 'package:alga/views/settings_view.dart';
 
 import '../widgets/svg_asset_icon.dart';
 
 List<ToolGroup> _genToolItems(BuildContext context) => [
       ToolGroup(
-        title: Text(S.of(context).allTools),
-        items: [
-          ToolItem(
-            icon: const Icon(FluentIcons.home),
-            title: Text(S.of(context).allTools),
-            page: const AllToolsView(),
-          ),
-        ],
-      ),
-      ToolGroup(
+        icon: const Icon(Icons.transform),
         title: Text(S.of(context).converters),
         items: [
           ToolItem(
@@ -40,17 +29,18 @@ List<ToolGroup> _genToolItems(BuildContext context) => [
             page: const JsonYamlConverterView(),
           ),
           ToolItem(
-            icon: const Icon(FluentIcons.number_field),
+            icon: const Icon(Icons.numbers),
             title: Text(S.of(context).numberBaseConverter),
             page: const NumberBaseConverterView(),
           ),
         ],
       ),
       ToolGroup(
+        icon: const Icon(Icons.compress),
         title: Text(S.of(context).encodersDecoders),
         items: [
           ToolItem(
-            icon: const Icon(FluentIcons.link),
+            icon: const Icon(Icons.link),
             title: Text(S.of(context).encoderDecoderURL),
             page: const UriEncoderDecoderView(),
           ),
@@ -60,7 +50,7 @@ List<ToolGroup> _genToolItems(BuildContext context) => [
             page: const Base64EncoderDecoderView(),
           ),
           ToolItem(
-            icon: const Icon(f_icons.FluentIcons.folder_zip_24_regular),
+            icon: const Icon(Icons.folder_zip),
             title: Text(S.of(context).encoderDecoderGzip),
             page: const GzipCompressDecompressView(),
           ),
@@ -72,6 +62,7 @@ List<ToolGroup> _genToolItems(BuildContext context) => [
         ],
       ),
       ToolGroup(
+        icon: const Icon(Icons.format_align_left),
         title: Text(S.of(context).formatters),
         items: [
           ToolItem(
@@ -87,6 +78,7 @@ List<ToolGroup> _genToolItems(BuildContext context) => [
         ],
       ),
       ToolGroup(
+        icon: const Icon(Icons.generating_tokens),
         title: Text(S.of(context).generators),
         items: [
           ToolItem(
@@ -95,7 +87,7 @@ List<ToolGroup> _genToolItems(BuildContext context) => [
             page: const UUIDGeneratorView(),
           ),
           ToolItem(
-            icon: const Icon(FluentIcons.fingerprint),
+            icon: const Icon(Icons.fingerprint),
             title: Text(S.of(context).generatorHash),
             page: const HashGeneratorView(),
           ),
@@ -107,6 +99,7 @@ List<ToolGroup> _genToolItems(BuildContext context) => [
         ],
       ),
       ToolGroup(
+        icon: const Icon(Icons.text_format),
         title: Text(S.of(context).textTool),
         items: [
           ToolItem(
@@ -125,32 +118,27 @@ List<ToolGroup> _genToolItems(BuildContext context) => [
 
 class NaviUtil {
   late List<ToolGroup> toolGroups;
-  late List<NavigationPaneItem> displayItems;
-  late List<ToolItem> realItems;
-
-  List<String> get suggestItems => realItems.map((e) => e.text).toList();
+  late ToolItem settingsItem;
+  late ToolItem allToolsItem;
 
   NaviUtil(BuildContext context) {
     toolGroups = _genToolItems(context);
-    var _displayItems = <NavigationPaneItem>[];
-    var _realItems = <ToolItem>[];
+    settingsItem = ToolItem(
+      icon: const Icon(Icons.settings),
+      title: Text(S.of(context).settings),
+      page: const SettingsView(),
+    );
+    allToolsItem = ToolItem(
+      icon: const Icon(Icons.category_outlined),
+      title: Text(S.of(context).allTools),
+      page: const AllToolsView(),
+    );
+  }
+  List<ToolItem> get items {
+    var items = <ToolItem>[];
     for (var item in toolGroups) {
-      var naviItem = item.items;
-      _displayItems.add(item);
-      _displayItems.addAll(naviItem);
-      _realItems.addAll(naviItem);
+      items.addAll(item.items);
     }
-    displayItems = _displayItems;
-    realItems = _realItems;
-  }
-
-  int suggestGetIndex(String data) {
-    int index = suggestItems.indexOf(data);
-    if (index == -1) return 0;
-    return index;
-  }
-
-  getIndex(ToolItem item) {
-    return realItems.indexOf(item);
+    return items;
   }
 }

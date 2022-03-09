@@ -2,7 +2,6 @@ import 'package:alga/constants/import_helper.dart';
 import 'package:alga/tools/text_tools/regex_tester/regex_tester_provider.dart';
 import 'package:alga/tools/text_tools/regex_tester/regex_tester_text_builder.dart';
 import 'package:extended_text_field/extended_text_field.dart';
-import 'package:flutter/material.dart' as md;
 
 class RegexTesterView extends StatefulWidget {
   const RegexTesterView({Key? key}) : super(key: key);
@@ -37,16 +36,16 @@ class _RegexTesterViewState extends State<RegexTesterView> {
         AppTitleWrapper(
           title: S.of(context).regularExpression,
           actions: [
-            Button(
-              child: const Icon(FluentIcons.paste),
+            IconButton(
+              icon: const Icon(Icons.paste),
               onPressed: _provider.pasteReg,
             ),
-            Button(
-              child: const Icon(FluentIcons.clear),
+            IconButton(
+              icon: const Icon(Icons.clear),
               onPressed: _provider.clearReg,
             ),
           ],
-          child: TextBox(
+          child: TextField(
             controller: _provider.regexController,
             onChanged: (_) {
               _provider.update();
@@ -56,22 +55,21 @@ class _RegexTesterViewState extends State<RegexTesterView> {
         AppTitleWrapper(
           title: S.of(context).regexText,
           actions: [
-            Button(
-              child: const Icon(FluentIcons.copy),
+            IconButton(
+              icon: const Icon(Icons.copy),
               onPressed: _provider.pasteText,
             ),
-            Button(
-              child: const Icon(FluentIcons.clear),
+            IconButton(
+              icon: const Icon(Icons.clear),
               onPressed: _provider.clearText,
             ),
           ],
-          child: md.Material(
-            child: ExtendedTextField(
-              controller: _provider.textController,
-              minLines: 16,
-              maxLines: 16,
-              specialTextSpanBuilder: RegexTesterTextBuilder(_provider),
-            ),
+          child: ExtendedTextField(
+            controller: _provider.textController,
+            minLines: 2,
+            maxLines: 16,
+            decoration: const InputDecoration(border: OutlineInputBorder()),
+            specialTextSpanBuilder: RegexTesterTextBuilder(_provider),
           ),
         ),
       ],
