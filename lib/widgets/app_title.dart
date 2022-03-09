@@ -32,11 +32,13 @@ class AppTitleWrapper extends StatelessWidget {
   final String title;
   final List<Widget> actions;
   final Widget child;
+  final bool expand;
   const AppTitleWrapper(
       {Key? key,
       required this.title,
       required this.actions,
-      required this.child})
+      required this.child,
+      this.expand = false})
       : super(key: key);
 
   @override
@@ -46,7 +48,7 @@ class AppTitleWrapper extends StatelessWidget {
       children: [
         AppTitle(title: title, actions: actions),
         const SizedBox(height: 4),
-        child,
+        expand ? Expanded(child: child) : child,
       ],
     );
   }

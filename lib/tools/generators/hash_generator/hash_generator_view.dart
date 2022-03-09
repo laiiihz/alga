@@ -1,7 +1,6 @@
 import 'package:alga/constants/import_helper.dart';
 import 'package:alga/tools/generators/hash_generator/hash_provider.dart';
 
-
 class HashGeneratorView extends StatefulWidget {
   const HashGeneratorView({Key? key}) : super(key: key);
 
@@ -23,7 +22,7 @@ class _HashGeneratorViewState extends State<HashGeneratorView> {
         actions: const [],
         child: Row(
           children: [
-            Expanded(child: TextField(controller: e.controller)),
+            Expanded(child: AppTextField(controller: e.controller)),
             const SizedBox(width: 8),
             IconButton(
               icon: const Icon(Icons.copy),
@@ -94,8 +93,8 @@ class _HashGeneratorViewState extends State<HashGeneratorView> {
             ),
           ],
         ),
-        TextField(
-          minLines: 12,
+        AppTextField(
+          minLines: 2,
           maxLines: 12,
           controller: _provider.inputController,
           onChanged: (text) {
@@ -103,8 +102,8 @@ class _HashGeneratorViewState extends State<HashGeneratorView> {
           },
         ),
         if (_provider.showHmac)
-          TextField(
-            minLines: 12,
+          AppTextField(
+            minLines: 1,
             maxLines: 12,
             controller: _provider.optionalController,
             onChanged: (text) {

@@ -46,13 +46,15 @@ class _MarkdownPreviewViewState extends State<MarkdownPreviewView> {
                 ],
                 child: Material(
                   child: LangTextField(
-                    minLines: 12,
-                    maxLines: 12,
+                    minLines: 2,
+                    maxLines: 20,
                     controller: _provider.markdownController,
                     onChanged: (_) {
                       _provider.convert();
                     },
                     lang: 'markdown',
+                    inputDecoration:
+                        const InputDecoration(border: OutlineInputBorder()),
                   ),
                 ),
               ),

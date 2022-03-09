@@ -64,13 +64,12 @@ class _RegexTesterViewState extends State<RegexTesterView> {
               onPressed: _provider.clearText,
             ),
           ],
-          child: Material(
-            child: ExtendedTextField(
-              controller: _provider.textController,
-              minLines: 16,
-              maxLines: 16,
-              specialTextSpanBuilder: RegexTesterTextBuilder(_provider),
-            ),
+          child: ExtendedTextField(
+            controller: _provider.textController,
+            minLines: 2,
+            maxLines: 16,
+            decoration: const InputDecoration(border: OutlineInputBorder()),
+            specialTextSpanBuilder: RegexTesterTextBuilder(_provider),
           ),
         ),
       ],

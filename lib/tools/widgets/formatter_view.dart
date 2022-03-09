@@ -3,7 +3,6 @@ import 'package:alga/tools/formatters/formatter_abstract.dart';
 import 'package:flutter/services.dart';
 import 'package:language_textfield/language_textfield.dart';
 
-
 class FormatterView extends StatefulWidget {
   final Widget title;
   final List<Widget> configs;
@@ -47,6 +46,8 @@ class FormatterViewState extends State<FormatterView> {
             onChanged: (text) {
               _outputController.text = widget.onChanged(text).result;
             },
+            inputDecoration:
+                const InputDecoration(border: OutlineInputBorder()),
           ),
         ),
         outputWidget: Material(
@@ -55,6 +56,8 @@ class FormatterViewState extends State<FormatterView> {
             minLines: 80,
             maxLines: 100,
             controller: _outputController,
+            inputDecoration:
+                const InputDecoration(border: OutlineInputBorder()),
           ),
         ),
         inputActions: [

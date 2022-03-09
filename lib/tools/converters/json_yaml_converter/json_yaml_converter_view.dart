@@ -24,6 +24,7 @@ class _JsonYamlConverterViewState extends State<JsonYamlConverterView> {
 
     final jsonWidget = AppTitleWrapper(
       title: 'JSON',
+      expand: !isSmallDevice,
       actions: [
         IconButton(
           icon: const Icon(Icons.copy),
@@ -38,19 +39,22 @@ class _JsonYamlConverterViewState extends State<JsonYamlConverterView> {
           onPressed: _provider.clear,
         ),
       ],
-      child: Material(
-        child: JsonTextField(
-          minLines: 12,
-          maxLines: 12,
-          controller: _provider.jsonController,
-          onChanged: (_) {
-            _provider.json2yaml();
-          },
+      child: JsonTextField(
+        minLines: isSmallDevice ? 12 : null,
+        maxLines: isSmallDevice ? 12 : null,
+        controller: _provider.jsonController,
+        onChanged: (_) {
+          _provider.json2yaml();
+        },
+        expands: !isSmallDevice,
+        inputDecoration: const InputDecoration(
+          border: OutlineInputBorder(),
         ),
       ),
     );
     final yamlWidget = AppTitleWrapper(
       title: 'YAML',
+      expand: !isSmallDevice,
       actions: [
         IconButton(
           icon: const Icon(Icons.copy),
@@ -65,38 +69,39 @@ class _JsonYamlConverterViewState extends State<JsonYamlConverterView> {
           onPressed: _provider.clear,
         ),
       ],
-      child: Material(
-        child: LangTextField(
-          minLines: 12,
-          maxLines: 12,
-          controller: _provider.yamlController,
-          onChanged: (_) {
-            _provider.yaml2json();
-          },
-          lang: 'yaml',
+      child: LangTextField(
+        minLines: isSmallDevice ? 12 : null,
+        maxLines: isSmallDevice ? 12 : null,
+        expands: !isSmallDevice,
+        controller: _provider.yamlController,
+        onChanged: (_) {
+          _provider.yaml2json();
+        },
+        inputDecoration: const InputDecoration(
+          border: OutlineInputBorder(),
         ),
+        lang: 'yaml',
       ),
     );
-    late List<Widget> children;
     if (isSmallDevice) {
-      children = [
-        jsonWidget,
-        yamlWidget,
-      ];
+      return ToolView.scrollVertical(
+        title: Text(S.of(context).jsonYamlConverter),
+        children: [jsonWidget, yamlWidget],
+      );
     } else {
-      children = [
-        Row(
-          children: [
-            Expanded(child: jsonWidget),
-            const SizedBox(width: 8),
-            Expanded(child: yamlWidget),
-          ],
+      return ToolView(
+        title: Text(S.of(context).jsonYamlConverter),
+        content: Padding(
+          padding: const EdgeInsets.all(12.0),
+          child: Row(
+            children: [
+              Expanded(child: jsonWidget),
+              const SizedBox(width: 8),
+              Expanded(child: yamlWidget),
+            ],
+          ),
         ),
-      ];
+      );
     }
-    return ToolView.scrollVertical(
-      title: Text(S.of(context).jsonYamlConverter),
-      children: children,
-    );
   }
 }

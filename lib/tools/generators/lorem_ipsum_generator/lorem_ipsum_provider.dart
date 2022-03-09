@@ -37,6 +37,7 @@ class LoremIpsumProvider extends GeneratorBase {
     notifyListeners();
   }
 
+  TextEditingController numberController = TextEditingController();
   TextEditingController outputController = TextEditingController();
 
   @override
@@ -66,6 +67,7 @@ class LoremIpsumProvider extends GeneratorBase {
   @override
   void dispose() {
     outputController.dispose();
+    numberController.dispose();
     super.dispose();
   }
 }

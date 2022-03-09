@@ -46,6 +46,7 @@ class _JWTDecoderViewState extends State<JWTDecoderView> {
                 _provider.convert();
               },
               specialTextSpanBuilder: JWTSpecialTextBuilder(),
+              decoration: const InputDecoration(border: OutlineInputBorder()),
             ),
           ),
         ),
@@ -61,8 +62,10 @@ class _JWTDecoderViewState extends State<JWTDecoderView> {
             child: LangTextField(
               lang: 'json',
               controller: _provider.headerController,
-              minLines: 4,
+              minLines: 2,
               maxLines: 12,
+              inputDecoration:
+                  const InputDecoration(border: OutlineInputBorder()),
             ),
           ),
         ),
@@ -80,6 +83,8 @@ class _JWTDecoderViewState extends State<JWTDecoderView> {
               controller: _provider.payloadController,
               minLines: 2,
               maxLines: 12,
+              inputDecoration:
+                  const InputDecoration(border: OutlineInputBorder()),
             ),
           ),
         ),
