@@ -1,7 +1,6 @@
+import 'package:alga/constants/import_helper.dart';
 import 'package:alga/tools/generators/hash_generator/hash_provider.dart';
-import 'package:flutter/material.dart';
 
-import '../../../constants/import_helper.dart';
 
 class HashGeneratorView extends StatefulWidget {
   const HashGeneratorView({Key? key}) : super(key: key);

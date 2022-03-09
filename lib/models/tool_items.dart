@@ -15,7 +15,6 @@ import 'package:alga/tools/text_tools/markdown_preview/markdown_preview_view.dar
 import 'package:alga/tools/text_tools/regex_tester/regex_tester_view.dart';
 import 'package:alga/views/all_tools_view.dart';
 import 'package:alga/views/settings_view.dart';
-import 'package:flutter/material.dart';
 
 import '../widgets/svg_asset_icon.dart';
 

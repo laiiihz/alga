@@ -1,6 +1,5 @@
 import 'package:alga/constants/import_helper.dart';
 import 'package:alga/tools/generators/lorem_ipsum_generator/lorem_ipsum_provider.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 class LoremIpsumGeneratorView extends StatefulWidget {

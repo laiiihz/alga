@@ -2,7 +2,6 @@ import 'package:alga/constants/import_helper.dart';
 import 'package:alga/tools/encoders_decoders/jwt_decoder/jwt_decoder_provider.dart';
 import 'package:alga/tools/encoders_decoders/jwt_decoder/jwt_special_text_builder.dart';
 import 'package:extended_text_field/extended_text_field.dart';
-import 'package:flutter/material.dart';
 import 'package:language_textfield/language_textfield.dart';
 
 class JWTDecoderView extends StatefulWidget {

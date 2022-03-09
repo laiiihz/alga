@@ -1,6 +1,5 @@
 import 'package:alga/constants/import_helper.dart';
 import 'package:alga/tools/converters/json_yaml_converter/json_yaml_converter_provider.dart';
-import 'package:flutter/material.dart';
 import 'package:json_textfield/json_textfield.dart';
 import 'package:language_textfield/language_textfield.dart';
 

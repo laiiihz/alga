@@ -2,7 +2,6 @@ import 'package:alga/constants/import_helper.dart';
 import 'package:alga/extension/list_ext.dart';
 import 'package:alga/views/widgets/expandable_settings_tile.dart';
 import 'package:alga/views/widgets/settings_tile.dart';
-import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class SettingsView extends StatefulWidget {

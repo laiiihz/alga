@@ -1,10 +1,8 @@
 import 'package:alga/constants/import_helper.dart';
 import 'package:alga/tools/formatters/formatter_abstract.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:language_textfield/language_textfield.dart';
 
-import '../../../widgets/toolbar_view.dart';
 
 class FormatterView extends StatefulWidget {
   final Widget title;
