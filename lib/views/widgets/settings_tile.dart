@@ -26,7 +26,6 @@ class SettingsTile extends StatelessWidget {
       trailing: trailing,
       subtitle: subtitle,
       tileColor: isDark ? Colors.grey[160] : Colors.grey[20],
-      isThreeLine: true,
     );
   }
 }

@@ -12,7 +12,7 @@ class WindowUtil {
         await windowManager.setTitleBarStyle('hidden',
             windowButtonVisibility: false);
         await windowManager.center();
-        await windowManager.setTitle('DevToys');
+        await windowManager.setTitle('Alga');
         await windowManager.setSkipTaskbar(false);
         await windowManager.show();
       });

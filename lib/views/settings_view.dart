@@ -2,7 +2,6 @@ import 'package:alga/constants/import_helper.dart';
 import 'package:alga/extension/list_ext.dart';
 import 'package:alga/views/widgets/expandable_settings_tile.dart';
 import 'package:alga/views/widgets/settings_tile.dart';
-import 'package:flutter/material.dart' as md;
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -28,25 +27,24 @@ class _SettingsViewState extends State<SettingsView> {
           ExpandableSettingsTile(
             title: const Text('Links'),
             leading: const Icon(Icons.link),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
+            child: Column(
               children: [
-                TextButton(
-                  child: const Text('github'),
-                  onPressed: () {
-                    launch('https://github.com/laiiihz/DevToys');
+                ListTile(
+                  title: const Text('github'),
+                  onTap: () {
+                    launch('https://github.com/laiiihz/alga');
                   },
                 ),
-                TextButton(
-                  child: const Text('licenses'),
-                  onPressed: () {
-                    md.showLicensePage(context: context);
+                ListTile(
+                  title: const Text('licenses'),
+                  onTap: () {
+                    showLicensePage(context: context);
                   },
                 ),
-                TextButton(
-                  child: const Text('issues'),
-                  onPressed: () {
-                    launch('https://github.com/laiiihz/DevToys/issues');
+                ListTile(
+                  title: const Text('issues'),
+                  onTap: () {
+                    launch('https://github.com/laiiihz/alga/issues');
                   },
                 ),
               ],

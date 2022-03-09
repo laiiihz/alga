@@ -36,6 +36,7 @@ dependencies:
   package_info_plus: ^1.4.0
   url_launcher: ^6.0.20
   animations: ^2.0.2
+  flutter_riverpod: ^1.0.3
 
 dev_dependencies:
   flutter_test:
@@ -49,3 +50,4 @@ flutter:
 
   assets:
     - assets/icons/
+    - assets/logo/

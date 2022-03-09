@@ -19,6 +19,10 @@ class _HomeViewState extends State<HomeView> {
 
   @override
   Widget build(BuildContext context) {
-    return AppScaffold(tools: _navi.toolGroups);
+    return AppScaffold(
+      tools: _navi.toolGroups,
+      settingsItem: _navi.settingsItem,
+      allToolsItem: _navi.allToolsItem,
+    );
   }
 }

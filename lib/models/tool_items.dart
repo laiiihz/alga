@@ -13,6 +13,8 @@ import 'package:alga/tools/generators/lorem_ipsum_generator/lorem_ipsum_generato
 import 'package:alga/tools/generators/uuid_generator/uuid_generator.dart';
 import 'package:alga/tools/text_tools/markdown_preview/markdown_preview_view.dart';
 import 'package:alga/tools/text_tools/regex_tester/regex_tester_view.dart';
+import 'package:alga/views/all_tools_view.dart';
+import 'package:alga/views/settings_view.dart';
 import 'package:flutter/material.dart';
 
 import '../widgets/svg_asset_icon.dart';
@@ -117,8 +119,27 @@ List<ToolGroup> _genToolItems(BuildContext context) => [
 
 class NaviUtil {
   late List<ToolGroup> toolGroups;
+  late ToolItem settingsItem;
+  late ToolItem allToolsItem;
 
   NaviUtil(BuildContext context) {
     toolGroups = _genToolItems(context);
+    settingsItem = ToolItem(
+      icon: const Icon(Icons.settings),
+      title: Text(S.of(context).settings),
+      page: const SettingsView(),
+    );
+    allToolsItem = ToolItem(
+      icon: const Icon(Icons.category_outlined),
+      title: Text(S.of(context).allTools),
+      page: const AllToolsView(),
+    );
+  }
+  List<ToolItem> get items {
+    var items = <ToolItem>[];
+    for (var item in toolGroups) {
+      items.addAll(item.items);
+    }
+    return items;
   }
 }
