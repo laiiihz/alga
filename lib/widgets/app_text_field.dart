@@ -7,6 +7,8 @@ class AppTextField extends StatelessWidget {
   final ValueChanged<String>? onChanged;
   final int? maxLines;
   final int? minLines;
+  final String? hintText;
+  final Widget? prefixIcon;
   const AppTextField({
     Key? key,
     required this.controller,
@@ -14,6 +16,8 @@ class AppTextField extends StatelessWidget {
     this.onChanged,
     this.maxLines,
     this.minLines,
+    this.hintText,
+    this.prefixIcon,
   }) : super(key: key);
 
   @override
@@ -24,8 +28,10 @@ class AppTextField extends StatelessWidget {
       onChanged: onChanged,
       maxLines: maxLines,
       minLines: minLines,
-      decoration: const InputDecoration(
-        border: OutlineInputBorder(),
+      decoration: InputDecoration(
+        border: const OutlineInputBorder(),
+        hintText: hintText,
+        prefixIcon: prefixIcon,
       ),
     );
   }

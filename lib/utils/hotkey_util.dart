@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:alga/constants/import_helper.dart';
+import 'package:alga/views/search_view/search_view.dart';
 import 'package:hotkey_manager/hotkey_manager.dart';
 
 class HotkeyUtil {
@@ -13,17 +14,10 @@ class HotkeyUtil {
     );
     await hotKeyManager.register(
       searchHotKey,
-      keyDownHandler: (hotKey) {
-        showDialog(
-          context: context,
-          builder: (context) {
-            return SimpleDialog(
-              title: Text('TEST'),
-            );
-          },
-        );
+      keyDownHandler: (hotKey) {},
+      keyUpHandler: (key) {
+        showSearchDialog(context);
       },
-      keyUpHandler: (key) {},
     );
   }
 }
