@@ -37,6 +37,7 @@ dependencies:
   url_launcher: ^6.0.20
   animations: ^2.0.2
   flutter_riverpod: ^1.0.3
+  hotkey_manager: ^0.1.6
 
 dev_dependencies:
   flutter_test:

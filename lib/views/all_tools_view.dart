@@ -14,7 +14,6 @@ class _AllToolsViewState extends ConsumerState<AllToolsView> {
   Widget build(BuildContext context) {
     final itemRead = ref.read(currentToolProvider.notifier);
     final _navi = ref.watch(toolsProvider)!;
-    final isDark = Theme.of(context).brightness == Brightness.dark;
     return ToolView(
       title: Text(S.of(context).allTools),
       content: GridView.builder(
@@ -27,7 +26,7 @@ class _AllToolsViewState extends ConsumerState<AllToolsView> {
         itemBuilder: (context, index) {
           final item = _navi.items[index];
           return Material(
-            color: isDark ? Colors.white12 : Colors.grey[100],
+            color: isDark(context) ? Colors.white12 : Colors.grey[100],
             borderRadius: BorderRadius.circular(4),
             child: InkWell(
               borderRadius: BorderRadius.circular(4),
@@ -40,7 +39,8 @@ class _AllToolsViewState extends ConsumerState<AllToolsView> {
                     child: IconTheme(
                       data: IconThemeData(
                         size: 48,
-                        color: isDark ? Colors.white70 : Colors.black87,
+                        color:
+                            isDark(context) ? Colors.white70 : Colors.black87,
                       ),
                       child: item.icon,
                     ),

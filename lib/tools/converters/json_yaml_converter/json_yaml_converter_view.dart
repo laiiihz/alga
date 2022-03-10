@@ -20,11 +20,9 @@ class _JsonYamlConverterViewState extends State<JsonYamlConverterView> {
 
   @override
   Widget build(BuildContext context) {
-    bool isSmallDevice = MediaQuery.of(context).size.width < 980;
-
     final jsonWidget = AppTitleWrapper(
       title: 'JSON',
-      expand: !isSmallDevice,
+      expand: !isSmallDevice(context),
       actions: [
         IconButton(
           icon: const Icon(Icons.copy),
@@ -40,13 +38,13 @@ class _JsonYamlConverterViewState extends State<JsonYamlConverterView> {
         ),
       ],
       child: JsonTextField(
-        minLines: isSmallDevice ? 12 : null,
-        maxLines: isSmallDevice ? 12 : null,
+        minLines: isSmallDevice(context) ? 12 : null,
+        maxLines: isSmallDevice(context) ? 12 : null,
         controller: _provider.jsonController,
         onChanged: (_) {
           _provider.json2yaml();
         },
-        expands: !isSmallDevice,
+        expands: !isSmallDevice(context),
         inputDecoration: const InputDecoration(
           border: OutlineInputBorder(),
         ),
@@ -54,7 +52,7 @@ class _JsonYamlConverterViewState extends State<JsonYamlConverterView> {
     );
     final yamlWidget = AppTitleWrapper(
       title: 'YAML',
-      expand: !isSmallDevice,
+      expand: !isSmallDevice(context),
       actions: [
         IconButton(
           icon: const Icon(Icons.copy),
@@ -70,9 +68,9 @@ class _JsonYamlConverterViewState extends State<JsonYamlConverterView> {
         ),
       ],
       child: LangTextField(
-        minLines: isSmallDevice ? 12 : null,
-        maxLines: isSmallDevice ? 12 : null,
-        expands: !isSmallDevice,
+        minLines: isSmallDevice(context) ? 12 : null,
+        maxLines: isSmallDevice(context) ? 12 : null,
+        expands: !isSmallDevice(context),
         controller: _provider.yamlController,
         onChanged: (_) {
           _provider.yaml2json();
@@ -83,7 +81,7 @@ class _JsonYamlConverterViewState extends State<JsonYamlConverterView> {
         lang: 'yaml',
       ),
     );
-    if (isSmallDevice) {
+    if (isSmallDevice(context)) {
       return ToolView.scrollVertical(
         title: Text(S.of(context).jsonYamlConverter),
         children: [jsonWidget, yamlWidget],

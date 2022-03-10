@@ -1,13 +1,13 @@
-import 'package:alga/l10n/l10n.dart';
+import 'package:alga/constants/import_helper.dart';
 import 'package:alga/models/tool_item.dart';
 import 'package:alga/models/tool_items.dart';
 import 'package:alga/utils/window_util.dart';
 import 'package:alga/widgets/animated_show_widget.dart';
 import 'package:alga/widgets/app_drawer.dart';
 import 'package:animations/animations.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:window_manager/window_manager.dart';
+
 
 final currentToolProvider = StateProvider<ToolItem?>((ref) => null);
 final toolsProvider = StateProvider<NaviUtil?>((ref) => null);
@@ -17,7 +17,6 @@ class AppScaffold extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    bool isSmallDevice = MediaQuery.of(context).size.width < 980;
     const drawer = AppDrawer();
     Widget body = Consumer(
       builder: (context, ref, child) {
@@ -35,7 +34,7 @@ class AppScaffold extends StatelessWidget {
         );
       },
     );
-    if (!isSmallDevice) {
+    if (!isSmallDevice(context)) {
       body = Row(children: [drawer, Expanded(child: body)]);
     }
 
@@ -44,7 +43,7 @@ class AppScaffold extends StatelessWidget {
         child: SafeArea(
           child: Row(
             children: [
-              if (isSmallDevice)
+              if (isSmallDevice(context))
                 Builder(builder: (context) {
                   return IconButton(
                     onPressed: () {
@@ -91,7 +90,7 @@ class AppScaffold extends StatelessWidget {
         ),
         preferredSize: const Size.fromHeight(42),
       ),
-      drawer: isSmallDevice ? drawer : null,
+      drawer: isSmallDevice(context) ? drawer : null,
       body: body,
     );
   }

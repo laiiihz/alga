@@ -1,3 +1,4 @@
+import 'package:alga/utils/theme_util.dart';
 import 'package:flutter/material.dart';
 
 class ToolViewConfig extends StatelessWidget {
@@ -17,7 +18,6 @@ class ToolViewConfig extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    bool isDark = Theme.of(context).brightness == Brightness.dark;
     return Material(
       color: Colors.transparent,
       child: ListTile(
@@ -26,7 +26,7 @@ class ToolViewConfig extends StatelessWidget {
         subtitle: subtitle,
         leading: leading,
         trailing: trailing,
-        tileColor: isDark ? Colors.grey[900] : Colors.grey[50],
+        tileColor: isDark(context) ? Colors.grey[900] : Colors.grey[50],
       ),
     );
   }

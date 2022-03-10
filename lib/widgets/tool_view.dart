@@ -1,4 +1,5 @@
 import 'package:alga/extension/list_ext.dart';
+import 'package:alga/utils/theme_util.dart';
 import 'package:flutter/material.dart';
 
 class ToolView extends StatelessWidget {
@@ -26,14 +27,13 @@ class ToolView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    bool isDark = Theme.of(context).brightness == Brightness.dark;
     return Scaffold(
       appBar: AppBar(
         title: title,
         centerTitle: false,
       ),
       body: content,
-      backgroundColor: isDark ? Colors.grey[900] : Colors.white70,
+      backgroundColor: isDark(context) ? Colors.grey[900] : Colors.white70,
     );
   }
 }

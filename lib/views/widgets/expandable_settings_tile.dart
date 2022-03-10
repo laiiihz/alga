@@ -1,6 +1,5 @@
+import 'package:alga/constants/import_helper.dart';
 import 'package:alga/views/widgets/settings_tile.dart';
-import 'package:flutter/material.dart' as md;
-import 'package:flutter/material.dart';
 
 class ExpandableSettingsTile extends StatefulWidget {
   final Widget title;
@@ -21,7 +20,6 @@ class _ExpandableSettingsTileState extends State<ExpandableSettingsTile> {
   bool _expand = false;
   @override
   Widget build(BuildContext context) {
-    final isDark = Theme.of(context).brightness == Brightness.dark;
     return Column(
       children: [
         GestureDetector(
@@ -47,8 +45,8 @@ class _ExpandableSettingsTileState extends State<ExpandableSettingsTile> {
             duration: const Duration(milliseconds: 400),
             curve: Curves.easeInOutCubic,
             heightFactor: _expand ? 1 : 0,
-            child: md.Material(
-              color: isDark ? Colors.grey[150] : Colors.grey[30],
+            child: Material(
+              color: isDark(context) ? Colors.grey[150] : Colors.grey[30],
               child: widget.child,
             ),
           ),

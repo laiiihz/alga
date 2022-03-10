@@ -30,7 +30,6 @@ class _UUIDGeneratorViewState extends State<UUIDGeneratorView> {
 
   @override
   Widget build(BuildContext context) {
-    bool isDark = Theme.of(context).brightness == Brightness.dark;
     return ToolView.scrollVertical(
       title: Text(S.of(context).generatorUUID),
       children: [
@@ -81,10 +80,10 @@ class _UUIDGeneratorViewState extends State<UUIDGeneratorView> {
                 _provider.generate();
               },
               style: ButtonStyle(
-                backgroundColor: isDark
+                backgroundColor: isDark(context)
                     ? MaterialStateProperty.all(Colors.blue)
                     : MaterialStateProperty.all(Colors.blue),
-                foregroundColor: isDark
+                foregroundColor: isDark(context)
                     ? MaterialStateProperty.all(Colors.white)
                     : MaterialStateProperty.all(Colors.black),
               ),

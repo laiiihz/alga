@@ -1,8 +1,5 @@
+import 'package:alga/constants/import_helper.dart';
 import 'package:alga/extension/list_ext.dart';
-import 'package:alga/widgets/app_title.dart';
-import 'package:flutter/material.dart';
-
-import '../l10n/l10n.dart';
 
 class ToolbarView extends StatelessWidget {
   final List<Widget> configs;
@@ -51,8 +48,7 @@ class ToolbarView extends StatelessWidget {
     Widget result = const SizedBox.shrink();
 
     late Axis axis;
-    bool isSmallDevice = MediaQuery.of(context).size.width < 980;
-    if (isSmallDevice) {
+    if (isSmallDevice(context)) {
       axis = Axis.vertical;
     } else {
       axis = Axis.horizontal;

@@ -1,5 +1,5 @@
+import 'package:alga/constants/import_helper.dart';
 import 'package:alga/extension/list_ext.dart';
-import 'package:flutter/material.dart';
 
 class AppTitle extends StatelessWidget {
   final String title;
@@ -9,12 +9,11 @@ class AppTitle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    bool isDark = Theme.of(context).brightness == Brightness.dark;
     return Material(
       color: Colors.transparent,
       child: IconTheme(
         data: IconThemeData(
-          color: isDark ? Colors.white : Colors.black,
+          color: isDark(context) ? Colors.white : Colors.black,
           size: 14,
         ),
         child: Row(
