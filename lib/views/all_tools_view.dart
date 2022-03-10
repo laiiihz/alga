@@ -35,7 +35,8 @@ class _AllToolsViewState extends ConsumerState<AllToolsView> {
               },
               child: Stack(
                 children: [
-                  Center(
+                  Align(
+                    alignment: const Alignment(0, -0.4),
                     child: IconTheme(
                       data: IconThemeData(
                         size: 48,
@@ -45,7 +46,18 @@ class _AllToolsViewState extends ConsumerState<AllToolsView> {
                       child: item.icon,
                     ),
                   ),
-                  Positioned(bottom: 4, left: 4, right: 4, child: item.title),
+                  Positioned(
+                    bottom: 4,
+                    left: 4,
+                    right: 4,
+                    child: DefaultTextStyle(
+                      style: Theme.of(context).textTheme.caption!,
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
+                      textAlign: TextAlign.center,
+                      child: item.title,
+                    ),
+                  ),
                 ],
               ),
             ),
