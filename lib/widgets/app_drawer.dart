@@ -15,15 +15,17 @@ class AppDrawer extends ConsumerStatefulWidget {
 }
 
 class _AppDrawerState extends ConsumerState<AppDrawer> {
+  late ScrollController _scrollController;
   @override
   void initState() {
     super.initState();
-    ref.read(appDrawerController).addListener(updateScrollState);
+    _scrollController = ref.read(appDrawerController);
+    _scrollController.addListener(updateScrollState);
   }
 
   @override
   void dispose() {
-    ref.read(appDrawerController).removeListener(updateScrollState);
+    _scrollController.removeListener(updateScrollState);
     super.dispose();
   }
 
