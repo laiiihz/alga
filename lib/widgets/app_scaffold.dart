@@ -2,12 +2,12 @@ import 'package:alga/constants/import_helper.dart';
 import 'package:alga/models/tool_item.dart';
 import 'package:alga/models/tool_items.dart';
 import 'package:alga/utils/window_util.dart';
+import 'package:alga/views/search_view/search_view.dart';
 import 'package:alga/widgets/animated_show_widget.dart';
 import 'package:alga/widgets/app_drawer.dart';
 import 'package:animations/animations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:window_manager/window_manager.dart';
-
 
 final currentToolProvider = StateProvider<ToolItem?>((ref) => null);
 final toolsProvider = StateProvider<NaviUtil?>((ref) => null);
@@ -85,6 +85,13 @@ class AppScaffold extends StatelessWidget {
                         backgroundColor: Colors.transparent,
                       ),
                     ),
+              if (WindowUtil.isMobileDevice)
+                IconButton(
+                  onPressed: () {
+                    showSearchDialog(context);
+                  },
+                  icon: const Icon(Icons.search_rounded),
+                ),
             ],
           ),
         ),

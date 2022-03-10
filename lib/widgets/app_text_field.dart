@@ -9,6 +9,7 @@ class AppTextField extends StatelessWidget {
   final int? minLines;
   final String? hintText;
   final Widget? prefixIcon;
+  final bool autofocus;
   const AppTextField({
     Key? key,
     required this.controller,
@@ -18,11 +19,13 @@ class AppTextField extends StatelessWidget {
     this.minLines,
     this.hintText,
     this.prefixIcon,
+    this.autofocus = false,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return TextField(
+      autofocus: autofocus,
       controller: controller,
       inputFormatters: inputFormatters,
       onChanged: onChanged,

@@ -33,42 +33,54 @@ class _SearchDialogState extends ConsumerState<SearchDialog> {
     final currentItem = ref.read(currentToolProvider.notifier);
     return Dialog(
       backgroundColor: Theme.of(context).canvasColor,
-      child: SizedBox(
-        width: MediaQuery.of(context).size.width / 2,
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            AppTextField(
-              controller: _textEditingController,
-              hintText: 'Search Tools',
-              prefixIcon: const Icon(Icons.search_rounded),
-              onChanged: (text) {
-                currentTools = allItems.where((element) {
-                  return element.text
-                      .toLowerCase()
-                      .contains(text.toLowerCase());
-                }).toList();
-                setState(() {});
-              },
-            ),
-            Expanded(
-              child: ListView.builder(
-                itemBuilder: (context, index) {
-                  final tool = currentTools[index];
-                  return ListTile(
-                    title: tool.title,
-                    leading: tool.icon,
-                    onTap: () {
-                      currentItem.state = tool;
-                      Navigator.pop(context);
+      insetPadding: isSmallDevice(context)
+          ? null
+          : EdgeInsets.symmetric(
+              horizontal: MediaQuery.of(context).size.width / 3, vertical: 24),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Row(
+              children: [
+                const BackButton(),
+                Expanded(
+                  child: AppTextField(
+                    autofocus: true,
+                    controller: _textEditingController,
+                    hintText: 'Search Tools',
+                    prefixIcon: const Icon(Icons.search_rounded),
+                    onChanged: (text) {
+                      currentTools = allItems.where((element) {
+                        return element.text
+                            .toLowerCase()
+                            .contains(text.toLowerCase());
+                      }).toList();
+                      setState(() {});
                     },
-                  );
-                },
-                itemCount: currentTools.length,
-              ),
+                  ),
+                ),
+              ],
             ),
-          ],
-        ),
+          ),
+          Expanded(
+            child: ListView.builder(
+              itemBuilder: (context, index) {
+                final tool = currentTools[index];
+                return ListTile(
+                  title: tool.title,
+                  leading: tool.icon,
+                  onTap: () {
+                    currentItem.state = tool;
+                    Navigator.pop(context);
+                  },
+                );
+              },
+              itemCount: currentTools.length,
+            ),
+          ),
+        ],
       ),
     );
   }
