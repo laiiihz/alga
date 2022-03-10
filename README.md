@@ -36,6 +36,20 @@ A flutter implement of [DevToys[veler]](https://github.com/veler/DevToys) .
   * [ ] Regex
   * [x] JWT(custom support)
 
+## Getting Started
+
+### before build app
+
+* place your own key and modify this file (`android/key.properties.example`) and rename to `key.properties`
+
+### build app
+
+```shell
+flutter_distributor release --name release
+```
+
+> will generate apps at `dist/`
+
 ## Special Thanks
 
 * [lijy91](https://github.com/lijy91) and his [flutter_distributor](https://github.com/leanflutter/flutter_distributor), [window_manager](https://github.com/leanflutter/window_manager)

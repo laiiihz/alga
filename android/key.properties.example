@@ -1,0 +1,4 @@
+storePassword=<上一步骤中的密码>
+keyPassword=<上一步骤中的密码>
+keyAlias=<keyAlias>
+storeFile=<密钥库的位置 e.g. /Users/<用户名>/upload-keystore.jks>
