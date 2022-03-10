@@ -58,7 +58,13 @@ class AppScaffold extends StatelessWidget {
                   final showTitle = ref.watch(showAppTitle);
                   return AnimatedShowWidget(isShow: showTitle, child: child);
                 },
-                child: Text(S.of(context).appName),
+                child: Text(
+                  S.of(context).appName,
+                  style: Theme.of(context)
+                      .textTheme
+                      .titleMedium
+                      ?.copyWith(fontWeight: FontWeight.bold),
+                ),
               ),
               Consumer(
                 builder: (context, ref, _) {

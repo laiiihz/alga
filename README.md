@@ -35,6 +35,8 @@ A flutter implement of [DevToys[veler]](https://github.com/veler/DevToys) .
   * [x] Markdown
   * [ ] Regex
   * [x] JWT(custom support)
+* [ ] Web Support
+  * [ ] 
 
 ## Getting Started
 
