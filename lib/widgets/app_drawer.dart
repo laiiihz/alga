@@ -5,11 +5,37 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 final appDrawerController =
     StateProvider<ScrollController>((ref) => ScrollController());
 
-class AppDrawer extends ConsumerWidget {
+final showAppTitle = StateProvider<bool>((ref) => true);
+
+class AppDrawer extends ConsumerStatefulWidget {
   const AppDrawer({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<ConsumerStatefulWidget> createState() => _AppDrawerState();
+}
+
+class _AppDrawerState extends ConsumerState<AppDrawer> {
+  @override
+  void initState() {
+    super.initState();
+    ref.read(appDrawerController).addListener(updateScrollState);
+  }
+
+  @override
+  void dispose() {
+    ref.read(appDrawerController).removeListener(updateScrollState);
+    super.dispose();
+  }
+
+  updateScrollState() {
+    if (mounted && MediaQuery.of(context).size.width > 980) {
+      ref.read(showAppTitle.notifier).state =
+          ref.read(appDrawerController).offset >= 120;
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
     final item = ref.watch(currentToolProvider);
     final itemRead = ref.read(currentToolProvider.notifier);
     final navi = ref.watch(toolsProvider)!;

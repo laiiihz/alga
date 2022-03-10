@@ -12,6 +12,7 @@ class HomeView extends ConsumerStatefulWidget {
 
 class _HomeViewState extends ConsumerState<HomeView> {
   late NaviUtil _navi;
+
   @override
   void didChangeDependencies() {
     _navi = NaviUtil(context);
@@ -22,6 +23,6 @@ class _HomeViewState extends ConsumerState<HomeView> {
 
   @override
   Widget build(BuildContext context) {
-    return AppScaffold();
+    return const AppScaffold();
   }
 }
