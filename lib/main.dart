@@ -28,6 +28,7 @@ class MyApp extends StatelessWidget {
           foregroundColor: Colors.black87,
           elevation: 0,
         ),
+        useMaterial3: true,
       ),
       darkTheme: ThemeData(
         colorScheme: ColorScheme.fromSeed(

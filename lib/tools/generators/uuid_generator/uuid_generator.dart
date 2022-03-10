@@ -79,14 +79,6 @@ class _UUIDGeneratorViewState extends State<UUIDGeneratorView> {
               onPressed: () {
                 _provider.generate();
               },
-              style: ButtonStyle(
-                backgroundColor: isDark(context)
-                    ? MaterialStateProperty.all(Colors.blue)
-                    : MaterialStateProperty.all(Colors.blue),
-                foregroundColor: isDark(context)
-                    ? MaterialStateProperty.all(Colors.white)
-                    : MaterialStateProperty.all(Colors.black),
-              ),
             ),
             const Padding(
               padding: EdgeInsets.symmetric(horizontal: 8),

@@ -67,6 +67,7 @@ class _AppDrawerState extends ConsumerState<AppDrawer> {
                     title: navi.allToolsItem.title,
                     onTap: () {
                       itemRead.state = navi.allToolsItem;
+                      Navigator.pop(context);
                     },
                     tileColor: item == navi.allToolsItem
                         ? Colors.lightBlue.withOpacity(0.1)
@@ -91,6 +92,7 @@ class _AppDrawerState extends ConsumerState<AppDrawer> {
                                 same ? Colors.lightBlue.withOpacity(0.1) : null,
                             onTap: () {
                               itemRead.state = e;
+                              Navigator.pop(context);
                             },
                           );
                         }).toList(),
@@ -107,6 +109,7 @@ class _AppDrawerState extends ConsumerState<AppDrawer> {
             title: Text(S.of(context).settings),
             onTap: () {
               itemRead.state = navi.settingsItem;
+              Navigator.pop(context);
             },
             tileColor: item == navi.settingsItem
                 ? Colors.lightBlue.withOpacity(0.1)
