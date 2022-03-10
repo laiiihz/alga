@@ -6,6 +6,10 @@ releases:
         package:
           platform: macos
           target: zip
+      - name: release-macos-dmg
+        package:
+          platform: macos
+          target: dmg
       - name: release-android
         package:
           platform: android
