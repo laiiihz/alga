@@ -6,6 +6,7 @@ class SettingsTile extends StatelessWidget {
   final Widget? subtitle;
   final Widget? trailing;
   final ShapeBorder? shape;
+  final VoidCallback? onTap;
   const SettingsTile({
     Key? key,
     this.leading,
@@ -13,6 +14,7 @@ class SettingsTile extends StatelessWidget {
     this.subtitle,
     this.trailing,
     this.shape,
+    this.onTap,
   }) : super(key: key);
 
   @override
@@ -24,7 +26,7 @@ class SettingsTile extends StatelessWidget {
       title: title,
       trailing: trailing,
       subtitle: subtitle,
-      tileColor: isDark(context) ? Colors.grey[160] : Colors.grey[20],
+      onTap: onTap,
     );
   }
 }

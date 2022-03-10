@@ -23,6 +23,7 @@ class _SettingsViewState extends State<SettingsView> {
             leading: Image.asset('assets/logo/256.webp'),
             title: Text(S.of(context).appName),
           ),
+          const SizedBox(height: 8),
           ExpandableSettingsTile(
             title: const Text('Links'),
             leading: const Icon(Icons.link),
@@ -35,7 +36,7 @@ class _SettingsViewState extends State<SettingsView> {
                   },
                 ),
                 ListTile(
-                  title: const Text('licenses'),
+                  title: const Text('LICENSES'),
                   onTap: () {
                     showLicensePage(context: context);
                   },

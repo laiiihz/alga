@@ -51,6 +51,7 @@ class _AppDrawerState extends ConsumerState<AppDrawer> {
               slivers: [
                 SliverAppBar(
                   expandedHeight: 120,
+                  leading: const SizedBox.shrink(),
                   flexibleSpace: FlexibleSpaceBar(
                     title: Text(
                       S.of(context).appName,
