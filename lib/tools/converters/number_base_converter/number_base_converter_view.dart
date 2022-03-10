@@ -10,7 +10,20 @@ class NumberBaseConverterView extends StatefulWidget {
 }
 
 class _NumberBaseConverterViewState extends State<NumberBaseConverterView> {
-  final _provider = NumberBaseConverterProvider();
+  late NumberBaseConverterProvider _provider;
+
+  @override
+  void initState() {
+    super.initState();
+    _provider = NumberBaseConverterProvider(context);
+  }
+
+  @override
+  void dispose() {
+    _provider.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return ToolView.scrollVertical(

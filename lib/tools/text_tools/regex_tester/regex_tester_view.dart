@@ -45,7 +45,7 @@ class _RegexTesterViewState extends State<RegexTesterView> {
               onPressed: _provider.clearReg,
             ),
           ],
-          child: TextField(
+          child: AppTextField(
             controller: _provider.regexController,
             onChanged: (_) {
               _provider.update();

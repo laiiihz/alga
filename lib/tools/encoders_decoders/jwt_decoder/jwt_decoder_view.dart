@@ -23,7 +23,7 @@ class _JWTDecoderViewState extends State<JWTDecoderView> {
   @override
   Widget build(BuildContext context) {
     return ToolView.scrollVertical(
-      title: const Text('JWT Decoder'),
+      title: Text(S.of(context).decoderJWT),
       children: [
         AppTitleWrapper(
           title: 'JWT token',

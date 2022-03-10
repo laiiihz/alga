@@ -31,7 +31,7 @@ class _GzipCompressDecompressViewState
   @override
   Widget build(BuildContext context) {
     return ToolView.scrollVertical(
-      title: const Text('GZip Compress/Decompress'),
+      title: Text(S.of(context).encoderDecoderGzip),
       children: [
         ToolViewConfig(
           leading: const Icon(Icons.swap_horiz_sharp),
@@ -41,8 +41,8 @@ class _GzipCompressDecompressViewState
             mainAxisSize: MainAxisSize.min,
             children: [
               _provider.isCompress
-                  ? const Text('Compress')
-                  : const Text('Decompress'),
+                  ? Text(S.of(context).compress)
+                  : Text(S.of(context).decompress),
               Switch(
                 value: _provider.isCompress,
                 onChanged: (state) {
