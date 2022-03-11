@@ -41,15 +41,15 @@ class _LoremIpsumGeneratorViewState extends State<LoremIpsumGeneratorView> {
           title: const Text('Type'),
           subtitle: const Text(
               'Generate words,sentences or paragraphs of Lorem ipsum'),
-          trailing: PopupMenuButton(
-            itemBuilder: (context) {
-              return LoremIpsumType.values
-                  .map((e) => PopupMenuItem(child: Text(e.value), value: e))
-                  .toList();
-            },
-            initialValue: _provider.type,
-            onSelected: (LoremIpsumType type) {
-              _provider.type = type;
+          trailing: DropdownButton<LoremIpsumType>(
+            underline: const SizedBox.shrink(),
+            isDense: true,
+            items: LoremIpsumType.values
+                .map((e) => DropdownMenuItem(child: Text(e.value), value: e))
+                .toList(),
+            value: _provider.type,
+            onChanged: (LoremIpsumType? type) {
+              _provider.type = type ?? LoremIpsumType.words;
               _provider.generate();
             },
           ),
@@ -69,6 +69,11 @@ class _LoremIpsumGeneratorViewState extends State<LoremIpsumGeneratorView> {
                 _provider.count = value ?? 1;
                 _provider.generate();
               },
+              decoration: const InputDecoration(
+                isDense: true,
+                contentPadding:
+                    EdgeInsets.symmetric(horizontal: 8, vertical: 12),
+              ),
             ),
           ),
         ),

@@ -38,14 +38,16 @@ class _JsonFormtterViewState extends State<JsonFormtterView> {
         ToolViewConfig(
           leading: const Icon(Icons.space_bar),
           title: const Text('indentation'),
-          trailing: PopupMenuButton<JsonIndentType>(
-            itemBuilder: (context) {
-              return JsonIndentType.values
-                  .map((e) => PopupMenuItem(child: Text(e.name), value: e))
-                  .toList();
+          trailing: DropdownButton<JsonIndentType>(
+            underline: const SizedBox.shrink(),
+            isDense: true,
+            items: JsonIndentType.values
+                .map((e) => DropdownMenuItem(child: Text(e.name), value: e))
+                .toList(),
+            onChanged: (iType) {
+              provider.type = iType ?? JsonIndentType.space2;
             },
-            initialValue: provider.type,
-            onSelected: (iType) => provider.type = iType,
+            value: provider.type,
           ),
         ),
       ],
