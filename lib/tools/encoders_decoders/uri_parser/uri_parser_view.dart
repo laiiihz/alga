@@ -35,7 +35,7 @@ class _UriParserViewState extends State<UriParserView> {
         AppTitleWrapper(
           title: 'source',
           actions: const [],
-          child: AppTextField(
+          child: TextField(
             controller: _provider.inputController,
             onChanged: (_) {
               _provider.parse();

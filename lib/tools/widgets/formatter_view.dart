@@ -46,8 +46,6 @@ class FormatterViewState extends State<FormatterView> {
             onChanged: (text) {
               _outputController.text = widget.onChanged(text).result;
             },
-            inputDecoration:
-                const InputDecoration(border: OutlineInputBorder()),
           ),
         ),
         outputWidget: LangTextField(
@@ -55,7 +53,6 @@ class FormatterViewState extends State<FormatterView> {
           minLines: 80,
           maxLines: 100,
           controller: _outputController,
-          inputDecoration: const InputDecoration(border: OutlineInputBorder()),
         ),
         inputActions: [
           IconButton(

@@ -61,7 +61,7 @@ class _LoremIpsumGeneratorViewState extends State<LoremIpsumGeneratorView> {
               const Text('Number of words,sentences or paragraphs to generate'),
           trailing: SizedBox(
             width: 60,
-            child: AppTextField(
+            child: TextField(
               controller: _provider.numberController,
               inputFormatters: [FilteringTextInputFormatter.digitsOnly],
               onChanged: (_) {
@@ -84,7 +84,7 @@ class _LoremIpsumGeneratorViewState extends State<LoremIpsumGeneratorView> {
               onPressed: () => _provider.clear(),
             ),
           ],
-          child: AppTextField(
+          child: TextField(
             controller: _provider.outputController,
             minLines: 2,
             maxLines: 12,

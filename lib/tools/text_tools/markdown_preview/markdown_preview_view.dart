@@ -53,8 +53,6 @@ class _MarkdownPreviewViewState extends State<MarkdownPreviewView> {
                       _provider.convert();
                     },
                     lang: LangHighlightType.markdown,
-                    inputDecoration:
-                        const InputDecoration(border: OutlineInputBorder()),
                   ),
                 ),
               ),

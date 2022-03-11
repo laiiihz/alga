@@ -65,7 +65,7 @@ class _GzipCompressDecompressViewState
               onPressed: _provider.clear,
             ),
           ],
-          child: AppTextField(
+          child: TextField(
             controller: _provider.inputController,
             minLines: 2,
             maxLines: 12,
@@ -82,7 +82,7 @@ class _GzipCompressDecompressViewState
               onPressed: _provider.copy,
             ),
           ],
-          child: AppTextField(
+          child: TextField(
             controller: _provider.outputController,
             minLines: 2,
             maxLines: 12,

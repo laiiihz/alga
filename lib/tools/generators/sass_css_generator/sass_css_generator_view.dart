@@ -38,8 +38,6 @@ class _SassCssGeneratorViewState extends State<SassCssGeneratorView> {
             controller: _provider.scssController,
             minLines: 2,
             maxLines: 12,
-            inputDecoration:
-                const InputDecoration(border: OutlineInputBorder()),
             onChanged: (_) {
               _provider.generate();
             },
@@ -47,14 +45,12 @@ class _SassCssGeneratorViewState extends State<SassCssGeneratorView> {
         ),
         AppTitleWrapper(
           title: 'CSS result',
-          actions: [],
+          actions: const [],
           child: LangTextField(
             lang: LangHighlightType.css,
             controller: _provider.cssController,
             minLines: 2,
             maxLines: 12,
-            inputDecoration:
-                const InputDecoration(border: OutlineInputBorder()),
           ),
         ),
       ],

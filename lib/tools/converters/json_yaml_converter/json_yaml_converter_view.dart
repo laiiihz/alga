@@ -45,9 +45,6 @@ class _JsonYamlConverterViewState extends State<JsonYamlConverterView> {
           _provider.json2yaml();
         },
         expands: !isSmallDevice(context),
-        inputDecoration: const InputDecoration(
-          border: OutlineInputBorder(),
-        ),
       ),
     );
     final yamlWidget = AppTitleWrapper(
@@ -75,9 +72,6 @@ class _JsonYamlConverterViewState extends State<JsonYamlConverterView> {
         onChanged: (_) {
           _provider.yaml2json();
         },
-        inputDecoration: const InputDecoration(
-          border: OutlineInputBorder(),
-        ),
         lang: LangHighlightType.yaml,
       ),
     );

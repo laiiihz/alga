@@ -86,7 +86,7 @@ class _UUIDGeneratorViewState extends State<UUIDGeneratorView> {
             ),
             SizedBox(
               width: 100,
-              child: AppTextField(
+              child: TextField(
                 controller: _provider.numberController,
                 inputFormatters: [FilteringTextInputFormatter.digitsOnly],
                 onChanged: (value) {
@@ -112,7 +112,7 @@ class _UUIDGeneratorViewState extends State<UUIDGeneratorView> {
             ),
           ],
         ),
-        AppTextField(
+        TextField(
           minLines: 2,
           maxLines: 20,
           controller: _provider.resultController,

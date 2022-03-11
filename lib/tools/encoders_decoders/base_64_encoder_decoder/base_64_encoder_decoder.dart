@@ -70,7 +70,7 @@ class _Base64EncoderDecoderViewState extends State<Base64EncoderDecoderView> {
               },
             ),
           ],
-          child: AppTextField(
+          child: TextField(
             minLines: 2,
             maxLines: 12,
             controller: _provider.inputController,
@@ -89,7 +89,7 @@ class _Base64EncoderDecoderViewState extends State<Base64EncoderDecoderView> {
               },
             ),
           ],
-          child: AppTextField(
+          child: TextField(
             minLines: 2,
             maxLines: 12,
             controller: _provider.outputController,

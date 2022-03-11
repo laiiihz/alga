@@ -22,7 +22,7 @@ class _HashGeneratorViewState extends State<HashGeneratorView> {
         actions: const [],
         child: Row(
           children: [
-            Expanded(child: AppTextField(controller: e.controller)),
+            Expanded(child: TextField(controller: e.controller)),
             const SizedBox(width: 8),
             IconButton(
               icon: const Icon(Icons.copy),
@@ -93,7 +93,7 @@ class _HashGeneratorViewState extends State<HashGeneratorView> {
             ),
           ],
         ),
-        AppTextField(
+        TextField(
           minLines: 2,
           maxLines: 12,
           controller: _provider.inputController,
@@ -102,7 +102,7 @@ class _HashGeneratorViewState extends State<HashGeneratorView> {
           },
         ),
         if (_provider.showHmac)
-          AppTextField(
+          TextField(
             minLines: 1,
             maxLines: 12,
             controller: _provider.optionalController,

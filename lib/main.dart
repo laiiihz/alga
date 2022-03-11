@@ -28,12 +28,18 @@ class MyApp extends StatelessWidget {
           foregroundColor: Colors.black87,
           elevation: 0,
         ),
+        inputDecorationTheme: const InputDecorationTheme(
+          border: OutlineInputBorder(),
+        ),
         useMaterial3: true,
       ),
       darkTheme: ThemeData(
         colorScheme: ColorScheme.fromSeed(
           seedColor: Colors.blue,
           brightness: Brightness.dark,
+        ),
+        inputDecorationTheme: const InputDecorationTheme(
+          border: OutlineInputBorder(),
         ),
       ),
       themeMode: ThemeMode.system,

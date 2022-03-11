@@ -45,7 +45,7 @@ class _RegexTesterViewState extends State<RegexTesterView> {
               onPressed: _provider.clearReg,
             ),
           ],
-          child: AppTextField(
+          child: TextField(
             controller: _provider.regexController,
             onChanged: (_) {
               _provider.update();
@@ -68,7 +68,6 @@ class _RegexTesterViewState extends State<RegexTesterView> {
             controller: _provider.textController,
             minLines: 2,
             maxLines: 16,
-            decoration: const InputDecoration(border: OutlineInputBorder()),
             specialTextSpanBuilder: RegexTesterTextBuilder(_provider),
           ),
         ),

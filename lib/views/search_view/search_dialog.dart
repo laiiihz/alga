@@ -46,11 +46,9 @@ class _SearchDialogState extends ConsumerState<SearchDialog> {
               children: [
                 const BackButton(),
                 Expanded(
-                  child: AppTextField(
+                  child: TextField(
                     autofocus: true,
                     controller: _textEditingController,
-                    hintText: 'Search Tools',
-                    prefixIcon: const Icon(Icons.search_rounded),
                     onChanged: (text) {
                       currentTools = allItems.where((element) {
                         return element.text
@@ -59,6 +57,10 @@ class _SearchDialogState extends ConsumerState<SearchDialog> {
                       }).toList();
                       setState(() {});
                     },
+                    decoration: const InputDecoration(
+                      hintText: 'Search Tools',
+                      prefixIcon: Icon(Icons.search_rounded),
+                    ),
                   ),
                 ),
               ],

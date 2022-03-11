@@ -1,6 +1,6 @@
 # Alga
 
-A flutter implement of [DevToys[veler]](https://github.com/veler/DevToys) .
+A flutter implement of [DevToys[veler]](https://github.com/veler/DevToys).
 
 
 ## Supported Tools
@@ -43,7 +43,7 @@ A flutter implement of [DevToys[veler]](https://github.com/veler/DevToys) .
   * [ ] accessible on internet config
   * [ ] default path config
 * [ ] sass to css generator
-  * [ ] working sass to css generator
+  * [x] working sass to css generator
   * [ ] pick syntax config
   * [ ] OutputStyle config
   * [ ] show sourceMap config

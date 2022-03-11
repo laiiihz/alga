@@ -64,7 +64,7 @@ class _UriEncoderDecoderViewState extends State<UriEncoderDecoderView> {
               onPressed: () => _provider.clear(),
             ),
           ],
-          child: AppTextField(
+          child: TextField(
             maxLines: 12,
             minLines: 2,
             controller: _provider.inputController,
@@ -81,7 +81,7 @@ class _UriEncoderDecoderViewState extends State<UriEncoderDecoderView> {
               onPressed: () => _provider.copy(),
             ),
           ],
-          child: AppTextField(
+          child: TextField(
             maxLines: 12,
             minLines: 2,
             controller: _provider.outputController,

@@ -8,6 +8,7 @@ import 'package:alga/tools/encoders_decoders/base_64_encoder_decoder/base_64_enc
 import 'package:alga/tools/encoders_decoders/gzip_compress_decompress/gzip_compress_decompress_view.dart';
 import 'package:alga/tools/encoders_decoders/jwt_decoder/jwt_decoder_view.dart';
 import 'package:alga/tools/encoders_decoders/uri_encoder_decoder/uri_encoder_decoder.dart';
+import 'package:alga/tools/encoders_decoders/uri_parser/uri_parser_view.dart';
 import 'package:alga/tools/formatters/dart_formatter/dart_formatter_view.dart';
 import 'package:alga/tools/formatters/json_formatter/json_formatter_view.dart';
 import 'package:alga/tools/generators/hash_generator/hash_generator_view.dart';
@@ -62,6 +63,11 @@ List<ToolGroup> _genToolItems(BuildContext context) => [
             icon: const SvgAssetIcon('assets/icons/JWT.svg'),
             title: Text(S.of(context).decoderJWT),
             page: const JWTDecoderView(),
+          ),
+          ToolItem(
+            icon: const Icon(Icons.add_link),
+            title: const Text('URI Parser'),
+            page: const UriParserView(),
           ),
         ],
       ),

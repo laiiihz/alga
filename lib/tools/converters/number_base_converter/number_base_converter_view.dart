@@ -37,7 +37,7 @@ class _NumberBaseConverterViewState extends State<NumberBaseConverterView> {
               onPressed: () => e.copy(),
             ),
           ],
-          child: AppTextField(
+          child: TextField(
             controller: e.controller,
             inputFormatters: e.formatter,
             onChanged: (_) {

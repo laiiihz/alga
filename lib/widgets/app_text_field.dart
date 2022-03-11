@@ -1,7 +1,7 @@
 import 'package:alga/constants/import_helper.dart';
 import 'package:flutter/services.dart';
 
-class AppTextField extends StatelessWidget {
+class TextField extends StatelessWidget {
   final TextEditingController controller;
   final List<TextInputFormatter> inputFormatters;
   final ValueChanged<String>? onChanged;
@@ -10,7 +10,7 @@ class AppTextField extends StatelessWidget {
   final String? hintText;
   final Widget? prefixIcon;
   final bool autofocus;
-  const AppTextField({
+  const TextField({
     Key? key,
     required this.controller,
     this.inputFormatters = const [],
@@ -31,11 +31,6 @@ class AppTextField extends StatelessWidget {
       onChanged: onChanged,
       maxLines: maxLines,
       minLines: minLines,
-      decoration: InputDecoration(
-        border: const OutlineInputBorder(),
-        hintText: hintText,
-        prefixIcon: prefixIcon,
-      ),
     );
   }
 }
