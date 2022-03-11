@@ -1,19 +1,17 @@
-name: json_textfield
+name: highlight_textspan
 description: A new Flutter package project.
 version: 0.0.1
-publish_to: none
+homepage:
 
 environment:
   sdk: ">=2.16.1 <3.0.0"
   flutter: ">=1.17.0"
 
 dependencies:
-  extended_text_field: ^10.0.0
   flutter:
     sdk: flutter
   flutter_highlight: ^0.7.0
-  highlight_textspan:
-    path: ../highlight_textspan
+  highlight: ^0.7.0
 
 dev_dependencies:
   flutter_test:

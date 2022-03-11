@@ -17,6 +17,8 @@ dependencies:
   # custom packages
   lorem_ipsum:
     path: ./packages/lorem_ipsum
+  highlight_textspan:
+    path: ./packages/highlight_textspan
   json_textfield:
     path: ./packages/json_textfield
   language_textfield:
@@ -41,6 +43,7 @@ dependencies:
   sass: ^1.49.9
   file_selector: ^0.8.4
   shelf_static: ^1.1.0
+  flutter_highlight: ^0.7.0
 
 dev_dependencies:
   flutter_test:

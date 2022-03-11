@@ -1,5 +1,8 @@
 import 'package:alga/constants/import_helper.dart';
 import 'package:alga/tools/encoders_decoders/uri_parser/uri_parser_provider.dart';
+import 'package:alga/utils/clipboard_util.dart';
+import 'package:alga/widgets/app_text_box.dart';
+import 'package:language_textfield/language_textfield.dart';
 
 class UriParserView extends StatefulWidget {
   const UriParserView({Key? key}) : super(key: key);
@@ -34,7 +37,14 @@ class _UriParserViewState extends State<UriParserView> {
       children: [
         AppTitleWrapper(
           title: 'source',
-          actions: const [],
+          actions: [
+            IconButton(
+              onPressed: () {
+                _provider.paste();
+              },
+              icon: const Icon(Icons.paste),
+            ),
+          ],
           child: TextField(
             controller: _provider.inputController,
             onChanged: (_) {
@@ -42,14 +52,23 @@ class _UriParserViewState extends State<UriParserView> {
             },
           ),
         ),
-        ListTile(
-          title: const Text('host'),
-          subtitle: Text(_provider.uri?.host ?? ''),
-        ),
-        ListTile(
-          title: const Text('origin'),
-          subtitle: Text(_provider.uri?.origin ?? ''),
-        ),
+        ..._provider.parts.map((e) {
+          return AppTitleWrapper(
+            title: e.title,
+            actions: [
+              IconButton(
+                onPressed: () {
+                  ClipboardUtil.copy(e.name());
+                },
+                icon: const Icon(Icons.copy),
+              ),
+            ],
+            child: AppTextBox(
+              data: e.name(),
+              lang: e.lang,
+            ),
+          );
+        }).toList(),
       ],
     );
   }
