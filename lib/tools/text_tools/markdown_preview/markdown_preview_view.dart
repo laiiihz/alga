@@ -44,16 +44,14 @@ class _MarkdownPreviewViewState extends State<MarkdownPreviewView> {
                     onPressed: _provider.copy,
                   ),
                 ],
-                child: Material(
-                  child: LangTextField(
-                    minLines: 2,
-                    maxLines: 20,
-                    controller: _provider.markdownController,
-                    onChanged: (_) {
-                      _provider.convert();
-                    },
-                    lang: LangHighlightType.markdown,
-                  ),
+                child: LangTextField(
+                  minLines: 2,
+                  maxLines: 20,
+                  controller: _provider.markdownController,
+                  onChanged: (_) {
+                    _provider.convert();
+                  },
+                  lang: LangHighlightType.markdown,
                 ),
               ),
             ),

@@ -37,16 +37,14 @@ class FormatterViewState extends State<FormatterView> {
       title: widget.title,
       content: ToolbarView(
         configs: widget.configs,
-        inputWidget: Material(
-          child: LangTextField(
-            lang: widget.lang,
-            minLines: 80,
-            maxLines: 100,
-            controller: _inputController,
-            onChanged: (text) {
-              _outputController.text = widget.onChanged(text).result;
-            },
-          ),
+        inputWidget: LangTextField(
+          lang: widget.lang,
+          minLines: 80,
+          maxLines: 100,
+          controller: _inputController,
+          onChanged: (text) {
+            _outputController.text = widget.onChanged(text).result;
+          },
         ),
         outputWidget: LangTextField(
           lang: widget.lang,

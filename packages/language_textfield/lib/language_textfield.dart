@@ -14,7 +14,7 @@ class LangTextField extends StatelessWidget {
   final ValueChanged<String>? onChanged;
   final String lang;
   final bool expands;
-  final InputDecoration? inputDecoration;
+  final InputDecoration inputDecoration;
   const LangTextField({
     Key? key,
     this.controller,
@@ -23,7 +23,7 @@ class LangTextField extends StatelessWidget {
     this.onChanged,
     required this.lang,
     this.expands = false,
-    this.inputDecoration,
+    this.inputDecoration = const InputDecoration(),
   }) : super(key: key);
   @override
   Widget build(BuildContext context) {

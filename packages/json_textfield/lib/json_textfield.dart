@@ -9,7 +9,7 @@ class JsonTextField extends StatelessWidget {
   final int? maxLines;
   final int? minLines;
   final ValueChanged<String>? onChanged;
-  final InputDecoration? inputDecoration;
+  final InputDecoration inputDecoration;
   final bool expands;
   const JsonTextField({
     Key? key,
@@ -17,7 +17,7 @@ class JsonTextField extends StatelessWidget {
     this.maxLines,
     this.minLines,
     this.onChanged,
-    this.inputDecoration,
+    this.inputDecoration = const InputDecoration(),
     this.expands = false,
   }) : super(key: key);
   @override

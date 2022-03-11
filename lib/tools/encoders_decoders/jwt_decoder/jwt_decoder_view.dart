@@ -37,16 +37,14 @@ class _JWTDecoderViewState extends State<JWTDecoderView> {
               onPressed: _provider.clear,
             ),
           ],
-          child: Material(
-            child: ExtendedTextField(
-              controller: _provider.inputController,
-              minLines: 3,
-              maxLines: 12,
-              onChanged: (_) {
-                _provider.convert();
-              },
-              specialTextSpanBuilder: JWTSpecialTextBuilder(),
-            ),
+          child: ExtendedTextField(
+            controller: _provider.inputController,
+            minLines: 3,
+            maxLines: 12,
+            onChanged: (_) {
+              _provider.convert();
+            },
+            specialTextSpanBuilder: JWTSpecialTextBuilder(),
           ),
         ),
         AppTitleWrapper(
@@ -57,13 +55,11 @@ class _JWTDecoderViewState extends State<JWTDecoderView> {
               onPressed: _provider.copyHeader,
             ),
           ],
-          child: Material(
-            child: LangTextField(
-              lang: LangHighlightType.json,
-              controller: _provider.headerController,
-              minLines: 2,
-              maxLines: 12,
-            ),
+          child: LangTextField(
+            lang: LangHighlightType.json,
+            controller: _provider.headerController,
+            minLines: 2,
+            maxLines: 12,
           ),
         ),
         AppTitleWrapper(
@@ -74,13 +70,11 @@ class _JWTDecoderViewState extends State<JWTDecoderView> {
               onPressed: _provider.copyPayload(),
             ),
           ],
-          child: Material(
-            child: LangTextField(
-              lang: LangHighlightType.json,
-              controller: _provider.payloadController,
-              minLines: 2,
-              maxLines: 12,
-            ),
+          child: LangTextField(
+            lang: LangHighlightType.json,
+            controller: _provider.payloadController,
+            minLines: 2,
+            maxLines: 12,
           ),
         ),
       ],
