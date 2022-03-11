@@ -35,8 +35,19 @@ A flutter implement of [DevToys[veler]](https://github.com/veler/DevToys) .
   * [x] Markdown
   * [ ] Regex
   * [x] JWT(custom support)
+* [ ] static server
+  * [x] a working static server
+  * [ ] UI update
+  * [ ] listDirectories config
+  * [ ] port config
+  * [ ] accessible on internet config
+  * [ ] default path config
+* [ ] sass to css generator
+  * [ ] working sass to css generator
+  * [ ] pick syntax config
+  * [ ] OutputStyle config
+  * [ ] show sourceMap config
 * [ ] Web Support
-  * [ ] 
 
 ## Getting Started
 

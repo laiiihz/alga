@@ -20,7 +20,9 @@ class SassCssGeneratorProvider extends GeneratorBase {
   @override
   void generate() {
     try {
-      final result = compileStringToResult(scssController.text);
+      final result = compileStringToResult(
+        scssController.text,
+      );
       cssController.text = result.css;
     } catch (e) {
       cssController.clear();
