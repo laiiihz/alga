@@ -25,6 +25,8 @@
   "encoderDecoderURL": "URL 编码/解码工具",
   "encoderDecoderGzip": "GZip 编码/解码工具",
   "decoderJWT": "JWT 解码工具",
+  "jwtHeader": "标头",
+  "jwtPayload": "载荷",
   "formatters": "格式化类型工具",
   "formatterJson": "JSON 格式化",
   "formatterDart": "Dart 格式化",

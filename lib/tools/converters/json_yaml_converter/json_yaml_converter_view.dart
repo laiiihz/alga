@@ -78,7 +78,7 @@ class _JsonYamlConverterViewState extends State<JsonYamlConverterView> {
         inputDecoration: const InputDecoration(
           border: OutlineInputBorder(),
         ),
-        lang: 'yaml',
+        lang: LangHighlightType.yaml,
       ),
     );
     if (isSmallDevice(context)) {

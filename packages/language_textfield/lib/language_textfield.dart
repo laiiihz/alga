@@ -5,6 +5,8 @@ import 'package:flutter/material.dart';
 
 import 'lang_special_builder.dart';
 
+export 'language_highlight_type.dart';
+
 class LangTextField extends StatelessWidget {
   final TextEditingController? controller;
   final int? maxLines;

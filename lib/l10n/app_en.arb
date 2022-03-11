@@ -28,6 +28,8 @@
   "encoderDecoderURL": "URL Encoder/Decoder",
   "encoderDecoderGzip": "GZip Encoder/Decoder",
   "decoderJWT": "JWT Decoder",
+  "jwtHeader": "Header",
+  "jwtPayload": "Payload",
   "formatters": "Formatters",
   "formatterJson": "JSON formatter",
   "formatterDart": "Dart formatter",

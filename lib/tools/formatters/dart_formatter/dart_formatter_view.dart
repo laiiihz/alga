@@ -1,6 +1,7 @@
 import 'package:alga/l10n/l10n.dart';
 import 'package:alga/tools/formatters/dart_formatter/dart_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:language_textfield/language_textfield.dart';
 
 import '../../widgets/formatter_view.dart';
 
@@ -16,7 +17,7 @@ class _DartFormtterViewState extends State<DartFormtterView> {
   @override
   Widget build(BuildContext context) {
     return FormatterView(
-      lang: 'dart',
+      lang: LangHighlightType.dart,
       title: Text(S.of(context).formatterDart),
       configs: const [],
       onChanged: provider.onChanged,

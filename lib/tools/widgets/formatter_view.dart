@@ -50,15 +50,12 @@ class FormatterViewState extends State<FormatterView> {
                 const InputDecoration(border: OutlineInputBorder()),
           ),
         ),
-        outputWidget: Material(
-          child: LangTextField(
-            lang: widget.lang,
-            minLines: 80,
-            maxLines: 100,
-            controller: _outputController,
-            inputDecoration:
-                const InputDecoration(border: OutlineInputBorder()),
-          ),
+        outputWidget: LangTextField(
+          lang: widget.lang,
+          minLines: 80,
+          maxLines: 100,
+          controller: _outputController,
+          inputDecoration: const InputDecoration(border: OutlineInputBorder()),
         ),
         inputActions: [
           IconButton(

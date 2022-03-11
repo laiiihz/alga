@@ -51,7 +51,7 @@ class _JWTDecoderViewState extends State<JWTDecoderView> {
           ),
         ),
         AppTitleWrapper(
-          title: 'Header',
+          title: S.of(context).jwtHeader,
           actions: [
             IconButton(
               icon: const Icon(Icons.copy),
@@ -60,7 +60,7 @@ class _JWTDecoderViewState extends State<JWTDecoderView> {
           ],
           child: Material(
             child: LangTextField(
-              lang: 'json',
+              lang: LangHighlightType.json,
               controller: _provider.headerController,
               minLines: 2,
               maxLines: 12,
@@ -70,7 +70,7 @@ class _JWTDecoderViewState extends State<JWTDecoderView> {
           ),
         ),
         AppTitleWrapper(
-          title: 'Payload',
+          title: S.of(context).jwtPayload,
           actions: [
             IconButton(
               icon: const Icon(Icons.copy),
@@ -79,7 +79,7 @@ class _JWTDecoderViewState extends State<JWTDecoderView> {
           ],
           child: Material(
             child: LangTextField(
-              lang: 'json',
+              lang: LangHighlightType.json,
               controller: _provider.payloadController,
               minLines: 2,
               maxLines: 12,
