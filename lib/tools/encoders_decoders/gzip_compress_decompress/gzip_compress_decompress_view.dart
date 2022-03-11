@@ -43,7 +43,7 @@ class _GzipCompressDecompressViewState
               _provider.isCompress
                   ? Text(S.of(context).compress)
                   : Text(S.of(context).decompress),
-              Switch(
+              Switch.adaptive(
                 value: _provider.isCompress,
                 onChanged: (state) {
                   _provider.isCompress = state;
