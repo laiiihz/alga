@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:alga/constants/import_helper.dart';
 import 'package:alga/models/tool_item.dart';
 import 'package:alga/tools/converters/json_yaml_converter/json_yaml_converter_view.dart';
@@ -12,6 +14,7 @@ import 'package:alga/tools/generators/hash_generator/hash_generator_view.dart';
 import 'package:alga/tools/generators/lorem_ipsum_generator/lorem_ipsum_generator_view.dart';
 import 'package:alga/tools/generators/sass_css_generator/sass_css_generator_view.dart';
 import 'package:alga/tools/generators/uuid_generator/uuid_generator.dart';
+import 'package:alga/tools/server_tools/static_server_tool/static_server_tool_view.dart';
 import 'package:alga/tools/text_tools/markdown_preview/markdown_preview_view.dart';
 import 'package:alga/tools/text_tools/regex_tester/regex_tester_view.dart';
 import 'package:alga/views/all_tools_view.dart';
@@ -120,6 +123,18 @@ List<ToolGroup> _genToolItems(BuildContext context) => [
           ),
         ],
       ),
+      if (Platform.isMacOS || Platform.isLinux || Platform.isWindows)
+        ToolGroup(
+          title: const Text('Server Tools'),
+          items: [
+            ToolItem(
+              icon: const Icon(Icons.file_open),
+              title: const Text('Static Server Tool'),
+              page: const StaticServerToolView(),
+            ),
+          ],
+          icon: const Icon(Icons.open_in_browser),
+        ),
     ];
 
 class NaviUtil {
