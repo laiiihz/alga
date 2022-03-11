@@ -3,4 +3,6 @@ class LangHighlightType {
   static const dart = 'dart';
   static const yaml = 'yaml';
   static const markdown = 'markdown';
+  static const scss = 'scss';
+  static const css = 'css';
 }

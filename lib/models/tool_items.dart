@@ -10,6 +10,7 @@ import 'package:alga/tools/formatters/dart_formatter/dart_formatter_view.dart';
 import 'package:alga/tools/formatters/json_formatter/json_formatter_view.dart';
 import 'package:alga/tools/generators/hash_generator/hash_generator_view.dart';
 import 'package:alga/tools/generators/lorem_ipsum_generator/lorem_ipsum_generator_view.dart';
+import 'package:alga/tools/generators/sass_css_generator/sass_css_generator_view.dart';
 import 'package:alga/tools/generators/uuid_generator/uuid_generator.dart';
 import 'package:alga/tools/text_tools/markdown_preview/markdown_preview_view.dart';
 import 'package:alga/tools/text_tools/regex_tester/regex_tester_view.dart';
@@ -95,6 +96,11 @@ List<ToolGroup> _genToolItems(BuildContext context) => [
             icon: const SvgAssetIcon('assets/icons/LoremIpsum.svg'),
             title: Text(S.of(context).generatorLoremIpsum),
             page: const LoremIpsumGeneratorView(),
+          ),
+          ToolItem(
+            icon: const Icon(Icons.add),
+            title: const Text('sass css generator'),
+            page: const SassCssGeneratorView(),
           ),
         ],
       ),
