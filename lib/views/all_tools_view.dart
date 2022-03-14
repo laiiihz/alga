@@ -55,7 +55,7 @@ class _AllToolsViewState extends ConsumerState<AllToolsView> {
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
                       textAlign: TextAlign.center,
-                      child: item.title,
+                      child: item.title(context),
                     ),
                   ),
                 ],

@@ -64,7 +64,7 @@ class _AppDrawerState extends ConsumerState<AppDrawer> {
                 SliverToBoxAdapter(
                   child: ListTile(
                     leading: navi.allToolsItem.icon,
-                    title: navi.allToolsItem.title,
+                    title: navi.allToolsItem.title(context),
                     onTap: () {
                       itemRead.state = navi.allToolsItem;
                       if (isSmallDevice(context)) Navigator.pop(context);
@@ -86,7 +86,7 @@ class _AppDrawerState extends ConsumerState<AppDrawer> {
                           return ListTile(
                             leading: e.icon,
                             minLeadingWidth: 24,
-                            title: e.title,
+                            title: e.title(context),
                             horizontalTitleGap: 4,
                             tileColor:
                                 same ? Colors.lightBlue.withOpacity(0.1) : null,

@@ -30,12 +30,12 @@ List<ToolGroup> _genToolItems(BuildContext context) => [
         items: [
           ToolItem(
             icon: const SvgAssetIcon('assets/icons/JsonYaml.svg'),
-            title: Text(S.of(context).jsonYamlConverter),
+            title: (context) => Text(S.of(context).jsonYamlConverter),
             page: const JsonYamlConverterView(),
           ),
           ToolItem(
             icon: const Icon(Icons.numbers),
-            title: Text(S.of(context).numberBaseConverter),
+            title: (context) => Text(S.of(context).numberBaseConverter),
             page: const NumberBaseConverterView(),
           ),
         ],
@@ -46,27 +46,27 @@ List<ToolGroup> _genToolItems(BuildContext context) => [
         items: [
           ToolItem(
             icon: const Icon(Icons.link),
-            title: Text(S.of(context).encoderDecoderURL),
+            title: (context) => Text(S.of(context).encoderDecoderURL),
             page: const UriEncoderDecoderView(),
           ),
           ToolItem(
             icon: const SvgAssetIcon('assets/icons/Base64.svg'),
-            title: Text(S.of(context).encoderDecoderBase64),
+            title: (context) => Text(S.of(context).encoderDecoderBase64),
             page: const Base64EncoderDecoderView(),
           ),
           ToolItem(
             icon: const Icon(Icons.folder_zip),
-            title: Text(S.of(context).encoderDecoderGzip),
+            title: (context) => Text(S.of(context).encoderDecoderGzip),
             page: const GzipCompressDecompressView(),
           ),
           ToolItem(
             icon: const SvgAssetIcon('assets/icons/JWT.svg'),
-            title: Text(S.of(context).decoderJWT),
+            title: (context) => Text(S.of(context).decoderJWT),
             page: const JWTDecoderView(),
           ),
           ToolItem(
             icon: const Icon(Icons.add_link),
-            title: const Text('URI Parser'),
+            title: (context) => const Text('URI Parser'),
             page: const UriParserView(),
           ),
         ],
@@ -77,12 +77,12 @@ List<ToolGroup> _genToolItems(BuildContext context) => [
         items: [
           ToolItem(
             icon: const SvgAssetIcon('assets/icons/JsonFormatter.svg'),
-            title: Text(S.of(context).formatterJson),
+            title: (context) => Text(S.of(context).formatterJson),
             page: const JsonFormtterView(),
           ),
           ToolItem(
             icon: const SvgAssetIcon('assets/icons/dart.svg', colorIcon: true),
-            title: Text(S.of(context).formatterDart),
+            title: (context) => Text(S.of(context).formatterDart),
             page: const DartFormtterView(),
           ),
         ],
@@ -93,22 +93,22 @@ List<ToolGroup> _genToolItems(BuildContext context) => [
         items: [
           ToolItem(
             icon: const SvgAssetIcon('assets/icons/Guid.svg'),
-            title: Text(S.of(context).generatorUUID),
+            title: (context) => Text(S.of(context).generatorUUID),
             page: const UUIDGeneratorView(),
           ),
           ToolItem(
             icon: const Icon(Icons.fingerprint),
-            title: Text(S.of(context).generatorHash),
+            title: (context) => Text(S.of(context).generatorHash),
             page: const HashGeneratorView(),
           ),
           ToolItem(
             icon: const SvgAssetIcon('assets/icons/LoremIpsum.svg'),
-            title: Text(S.of(context).generatorLoremIpsum),
+            title: (context) => Text(S.of(context).generatorLoremIpsum),
             page: const LoremIpsumGeneratorView(),
           ),
           ToolItem(
             icon: const Icon(Icons.add),
-            title: const Text('sass css generator'),
+            title: (context) => const Text('sass css generator'),
             page: const SassCssGeneratorView(),
           ),
         ],
@@ -119,12 +119,12 @@ List<ToolGroup> _genToolItems(BuildContext context) => [
         items: [
           ToolItem(
             icon: const SvgAssetIcon('assets/icons/RegexTester.svg'),
-            title: Text(S.of(context).regexTester),
+            title: (context) => Text(S.of(context).regexTester),
             page: const RegexTesterView(),
           ),
           ToolItem(
             icon: const SvgAssetIcon('assets/icons/MarkdownPreview.svg'),
-            title: Text(S.of(context).markdownPreview),
+            title: (context) => Text(S.of(context).markdownPreview),
             page: const MarkdownPreviewView(),
           ),
         ],
@@ -135,7 +135,7 @@ List<ToolGroup> _genToolItems(BuildContext context) => [
           items: [
             ToolItem(
               icon: const Icon(Icons.file_open),
-              title: const Text('Static Server Tool'),
+              title: (context) => const Text('Static Server Tool'),
               page: const StaticServerToolView(),
             ),
           ],
@@ -152,12 +152,12 @@ class NaviUtil {
     toolGroups = _genToolItems(context);
     settingsItem = ToolItem(
       icon: const Icon(Icons.settings),
-      title: Text(S.of(context).settings),
+      title: (context) => Text(S.of(context).settings),
       page: const SettingsView(),
     );
     allToolsItem = ToolItem(
       icon: const Icon(Icons.category_outlined),
-      title: Text(S.of(context).allTools),
+      title: (context) => Text(S.of(context).allTools),
       page: const AllToolsView(),
     );
   }

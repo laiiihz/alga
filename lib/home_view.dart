@@ -1,3 +1,4 @@
+import 'package:alga/main.dart';
 import 'package:alga/models/tool_items.dart';
 import 'package:alga/utils/hotkey_util.dart';
 import 'package:alga/widgets/app_scaffold.dart';
@@ -17,14 +18,16 @@ class _HomeViewState extends ConsumerState<HomeView> {
   @override
   void initState() {
     super.initState();
+    _navi = NaviUtil(globalContext);
+    if (mounted) ref.read(toolsProvider.notifier).state = _navi;
+    if (mounted) {
+      ref.read(currentToolProvider.notifier).state = _navi.allToolsItem;
+    }
     HotkeyUtil.init(context);
   }
 
   @override
   void didChangeDependencies() {
-    _navi = NaviUtil(context);
-    ref.read(toolsProvider.notifier).state = _navi;
-    ref.read(currentToolProvider.notifier).state = _navi.allToolsItem;
     super.didChangeDependencies();
   }
 

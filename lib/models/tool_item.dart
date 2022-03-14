@@ -13,10 +13,10 @@ class ToolGroup {
 
 class ToolItem {
   final Widget page;
-  final Text title;
+  final Text Function(BuildContext context) title;
   final Widget icon;
 
-  String get text => title.data ?? '';
+  String text(BuildContext context) => title(context).data ?? '';
 
   ToolItem({
     required this.icon,

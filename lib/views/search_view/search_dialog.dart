@@ -1,5 +1,6 @@
 import 'package:alga/constants/import_helper.dart';
 import 'package:alga/models/tool_item.dart';
+import 'package:alga/views/search_view/search_delegate.dart';
 import 'package:alga/widgets/app_scaffold.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -51,7 +52,8 @@ class _SearchDialogState extends ConsumerState<SearchDialog> {
                     controller: _textEditingController,
                     onChanged: (text) {
                       currentTools = allItems.where((element) {
-                        return element.text
+                        return element
+                            .text(context)
                             .toLowerCase()
                             .contains(text.toLowerCase());
                       }).toList();
@@ -71,7 +73,7 @@ class _SearchDialogState extends ConsumerState<SearchDialog> {
               itemBuilder: (context, index) {
                 final tool = currentTools[index];
                 return ListTile(
-                  title: tool.title,
+                  title: tool.title(context),
                   leading: tool.icon,
                   onTap: () {
                     currentItem.state = tool;
@@ -89,6 +91,9 @@ class _SearchDialogState extends ConsumerState<SearchDialog> {
 }
 
 Future showSearchDialog(BuildContext context) async {
+  if (isSmallDevice(context)) {
+    return showSearch(context: context, delegate: AppSearchDelegate());
+  }
   return await showDialog(
     context: context,
     builder: (context) => const SearchDialog(),
