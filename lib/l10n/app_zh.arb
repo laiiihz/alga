@@ -4,6 +4,7 @@
   "themeMode": "主题色",
   "themeLight": "浅色",
   "themeDark": "深色",
+  "themeColor":"主色调",
   "language": "语言",
   "allTools": "所有工具",
   "typeToSearch": "搜索您想要使用的工具类型",

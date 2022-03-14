@@ -17,19 +17,22 @@ class SystemSettingsModelAdapter extends TypeAdapter<SystemSettingsModel> {
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
     return SystemSettingsModel(
-      themeCode: fields[0] as int,
-      localeCode: fields[1] as String,
+      themeCode: fields[0] == null ? 0 : fields[0] as int,
+      localeCode: fields[1] == null ? 'system' : fields[1] as String,
+      themeColor: fields[2] == null ? 4280391411 : fields[2] as int,
     );
   }
 
   @override
   void write(BinaryWriter writer, SystemSettingsModel obj) {
     writer
-      ..writeByte(2)
+      ..writeByte(3)
       ..writeByte(0)
       ..write(obj.themeCode)
       ..writeByte(1)
-      ..write(obj.localeCode);
+      ..write(obj.localeCode)
+      ..writeByte(2)
+      ..write(obj.themeColor);
   }
 
   @override

@@ -4,6 +4,8 @@ import 'package:hive/hive.dart';
 
 part 'system_settings_model.g.dart';
 
+const _kDefaultColor = 0xFF2196F3;
+
 @HiveType(typeId: 1)
 class SystemSettingsModel {
   static const themeSystem = 0;
@@ -12,19 +14,22 @@ class SystemSettingsModel {
   static const String localSystem = 'system';
   static const String localChinese = 'zh';
   static const String localEnglish = 'en';
+
   static const List<String> localCodes = [
     localSystem,
     localChinese,
     localEnglish,
   ];
-  @HiveField(0)
+  @HiveField(0, defaultValue: themeSystem)
   final int themeCode;
-  @HiveField(1)
+  @HiveField(1, defaultValue: localSystem)
   final String localeCode;
-
+  @HiveField(2, defaultValue: _kDefaultColor)
+  final int themeColor;
   const SystemSettingsModel({
     required this.themeCode,
     required this.localeCode,
+    required this.themeColor,
   });
 
   ThemeMode get themeMode {
@@ -56,15 +61,18 @@ class SystemSettingsModel {
   static const SystemSettingsModel defaultModel = SystemSettingsModel(
     themeCode: themeSystem,
     localeCode: localSystem,
+    themeColor: _kDefaultColor,
   );
 
   SystemSettingsModel copyWith({
     ThemeMode? themeMode,
     String? localeCode,
+    Color? color,
   }) {
     return SystemSettingsModel(
       themeCode: themeMode?.code ?? themeCode,
       localeCode: localeCode ?? this.localeCode,
+      themeColor: color?.value ?? themeColor,
     );
   }
 }

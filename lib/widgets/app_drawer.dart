@@ -70,7 +70,7 @@ class _AppDrawerState extends ConsumerState<AppDrawer> {
                       if (isSmallDevice(context)) Navigator.pop(context);
                     },
                     tileColor: item == navi.allToolsItem
-                        ? Colors.lightBlue.withOpacity(0.1)
+                        ? Theme.of(context).colorScheme.primary.withOpacity(0.1)
                         : null,
                   ),
                 ),
@@ -88,8 +88,12 @@ class _AppDrawerState extends ConsumerState<AppDrawer> {
                             minLeadingWidth: 24,
                             title: e.title(context),
                             horizontalTitleGap: 4,
-                            tileColor:
-                                same ? Colors.lightBlue.withOpacity(0.1) : null,
+                            tileColor: same
+                                ? Theme.of(context)
+                                    .colorScheme
+                                    .primary
+                                    .withOpacity(0.1)
+                                : null,
                             onTap: () {
                               itemRead.state = e;
                               if (isSmallDevice(context)) {
@@ -114,7 +118,7 @@ class _AppDrawerState extends ConsumerState<AppDrawer> {
               if (isSmallDevice(context)) Navigator.pop(context);
             },
             tileColor: item == navi.settingsItem
-                ? Colors.lightBlue.withOpacity(0.1)
+                ? Theme.of(context).colorScheme.primary.withOpacity(0.1)
                 : null,
           ),
         ],

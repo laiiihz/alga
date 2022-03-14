@@ -3,6 +3,7 @@ import 'package:alga/extension/list_ext.dart';
 import 'package:alga/utils/hive_adapters/system_settings_model.dart';
 import 'package:alga/utils/hive_boxes/system_box.dart';
 import 'package:alga/utils/hive_util.dart';
+import 'package:alga/views/widgets/color_popup_item.dart';
 import 'package:alga/views/widgets/expandable_settings_tile.dart';
 import 'package:alga/views/widgets/settings_tile.dart';
 import 'package:alga/widgets/box_builder.dart';
@@ -72,6 +73,35 @@ class _SettingsViewState extends State<SettingsView> {
                         SystemBox.model.copyWith(localeCode: item);
                   },
                   child: Text(S.getlang(context, SystemBox.model.localeCode)),
+                );
+              },
+            ),
+          ),
+          SettingsTile(
+            leading: const Icon(Icons.color_lens),
+            title: Text(S.of(context).themeColor),
+            trailing: BoxBuilder(
+              box: HiveUtil.systemBox,
+              builder: (context, box) {
+                return PopupMenuButton<int>(
+                  itemBuilder: (context) {
+                    return Colors.primaries.map((e) {
+                      return ColorPopupItem(e.value);
+                    }).toList();
+                  },
+                  initialValue: SystemBox.model.themeColor,
+                  onSelected: (item) {
+                    SystemBox.model =
+                        SystemBox.model.copyWith(color: Color(item));
+                  },
+                  child: Container(
+                    height: 32,
+                    width: 32,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: Color(SystemBox.model.themeColor),
+                    ),
+                  ),
                 );
               },
             ),

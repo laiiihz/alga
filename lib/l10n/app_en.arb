@@ -7,6 +7,7 @@
   "themeMode": "Theme Mode",
   "themeLight": "Light",
   "themeDark": "Dark",
+  "themeColor":"Theme Color",
   "language": "language",
   "allTools": "All tools",
   "typeToSearch": "Type to search for tools",

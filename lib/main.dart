@@ -31,7 +31,7 @@ class MyApp extends StatelessWidget {
             onGenerateTitle: (context) => S.of(context).appName,
             theme: ThemeData(
               colorScheme: ColorScheme.fromSeed(
-                seedColor: Colors.blue,
+                seedColor: Color(SystemBox.model.themeColor),
                 brightness: Brightness.light,
               ),
               appBarTheme: AppBarTheme(
@@ -46,12 +46,13 @@ class MyApp extends StatelessWidget {
             ),
             darkTheme: ThemeData(
               colorScheme: ColorScheme.fromSeed(
-                seedColor: Colors.blue,
+                seedColor: Color(SystemBox.model.themeColor),
                 brightness: Brightness.dark,
               ),
               inputDecorationTheme: const InputDecorationTheme(
                 border: OutlineInputBorder(),
               ),
+              useMaterial3: true,
             ),
             themeMode: SystemBox.model.themeMode,
             home: const HomeView(),
