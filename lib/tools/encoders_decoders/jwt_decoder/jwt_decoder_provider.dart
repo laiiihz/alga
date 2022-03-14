@@ -3,15 +3,27 @@ import 'dart:convert';
 import 'package:alga/utils/clipboard_util.dart';
 import 'package:flutter/material.dart';
 
-class JWTDecoderProvider {
+class JWTDecoderProvider extends ChangeNotifier {
   final inputController = TextEditingController();
-  final headerController = TextEditingController();
-  final payloadController = TextEditingController();
+
+  String _headerResult = '';
+  String get headerResult => _headerResult;
+  set headerResult(String state) {
+    _headerResult = state;
+    notifyListeners();
+  }
+
+  String _payloadResult = '';
+  String get payloadResult => _payloadResult;
+  set payloadResult(String state) {
+    _payloadResult = state;
+    notifyListeners();
+  }
 
   clear() {
     inputController.clear();
-    headerController.clear();
-    payloadController.clear();
+    headerResult = '';
+    payloadResult = '';
   }
 
   paste() async {
@@ -19,26 +31,26 @@ class JWTDecoderProvider {
   }
 
   copyHeader() {
-    ClipboardUtil.copy(headerController.text);
+    ClipboardUtil.copy(headerResult);
   }
 
   copyPayload() {
-    ClipboardUtil.copy(payloadController.text);
+    ClipboardUtil.copy(payloadResult);
   }
 
   convert() {
     final result = JWTModel.fromToken(inputController.text);
     final jEncoder = JsonEncoder.withIndent(' ' * 4);
     if (result != null) {
-      headerController.text = jEncoder.convert(result.header);
-      payloadController.text = jEncoder.convert(result.payload);
+      headerResult = jEncoder.convert(result.header);
+      payloadResult = jEncoder.convert(result.payload);
     }
   }
 
+  @override
   void dispose() {
     inputController.dispose();
-    headerController.dispose();
-    payloadController.dispose();
+    super.dispose();
   }
 }
 

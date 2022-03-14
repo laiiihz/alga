@@ -3,7 +3,12 @@ import 'package:flutter/material.dart';
 
 class UriProvider extends ChangeNotifier {
   final inputController = TextEditingController();
-  final outputController = TextEditingController();
+  String _uriResult = '';
+  String get uriResult => _uriResult;
+  set uriResult(String state) {
+    _uriResult = state;
+    notifyListeners();
+  }
 
   bool _isEncode = true;
   bool get isEncode => _isEncode;
@@ -14,7 +19,7 @@ class UriProvider extends ChangeNotifier {
 
   clear() {
     inputController.clear();
-    outputController.clear();
+    uriResult = '';
   }
 
   paste() async {
@@ -23,11 +28,11 @@ class UriProvider extends ChangeNotifier {
   }
 
   copy() async {
-    await ClipboardUtil.copy(outputController.text);
+    await ClipboardUtil.copy(uriResult);
   }
 
   convert() {
-    outputController.text = _isEncode
+    uriResult = _isEncode
         ? Uri.encodeFull(inputController.text)
         : Uri.decodeFull(inputController.text);
   }
@@ -35,7 +40,6 @@ class UriProvider extends ChangeNotifier {
   @override
   void dispose() {
     inputController.dispose();
-    outputController.dispose();
     super.dispose();
   }
 }

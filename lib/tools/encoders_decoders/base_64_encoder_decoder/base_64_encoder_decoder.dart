@@ -89,13 +89,10 @@ class _Base64EncoderDecoderViewState extends State<Base64EncoderDecoderView> {
               },
             ),
           ],
-          child: TextField(
+          child: AppTextBox(
             minLines: 2,
             maxLines: 12,
-            controller: _provider.outputController,
-            onChanged: (text) {
-              _provider.convert();
-            },
+            data: _provider.base64Result,
           ),
         ),
       ],

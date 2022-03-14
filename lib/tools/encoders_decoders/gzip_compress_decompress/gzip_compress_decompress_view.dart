@@ -82,8 +82,8 @@ class _GzipCompressDecompressViewState
               onPressed: _provider.copy,
             ),
           ],
-          child: TextField(
-            controller: _provider.outputController,
+          child: AppTextBox(
+            data: _provider.gzipResult,
             minLines: 2,
             maxLines: 12,
           ),

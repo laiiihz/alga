@@ -13,9 +13,19 @@ class JWTDecoderView extends StatefulWidget {
 
 class _JWTDecoderViewState extends State<JWTDecoderView> {
   final _provider = JWTDecoderProvider();
+  update() {
+    setState(() {});
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _provider.addListener(update);
+  }
 
   @override
   void dispose() {
+    _provider.removeListener(update);
     _provider.dispose();
     super.dispose();
   }
@@ -55,9 +65,9 @@ class _JWTDecoderViewState extends State<JWTDecoderView> {
               onPressed: _provider.copyHeader,
             ),
           ],
-          child: LangTextField(
+          child: AppTextBox(
             lang: LangHighlightType.json,
-            controller: _provider.headerController,
+            data: _provider.headerResult,
             minLines: 2,
             maxLines: 12,
           ),
@@ -70,9 +80,9 @@ class _JWTDecoderViewState extends State<JWTDecoderView> {
               onPressed: _provider.copyPayload(),
             ),
           ],
-          child: LangTextField(
+          child: AppTextBox(
             lang: LangHighlightType.json,
-            controller: _provider.payloadController,
+            data: _provider.payloadResult,
             minLines: 2,
             maxLines: 12,
           ),

@@ -13,20 +13,25 @@ class GzipCompressDecompressProvider extends ChangeNotifier {
     notifyListeners();
   }
 
+  String _gzipResult = '';
+  String get gzipResult => _gzipResult;
+  set gzipResult(String state) {
+    _gzipResult = state;
+    notifyListeners();
+  }
+
   final inputController = TextEditingController();
-  final outputController = TextEditingController();
 
   paste() async {
     inputController.text = await ClipboardUtil.paste();
   }
 
   copy() {
-    ClipboardUtil.copy(outputController.text);
+    ClipboardUtil.copy(_gzipResult);
   }
 
   clear() {
     inputController.clear();
-    outputController.clear();
   }
 
   convert() {
@@ -36,13 +41,12 @@ class GzipCompressDecompressProvider extends ChangeNotifier {
         const base64Encoder = Base64Encoder();
         final result = encoder.encode(inputController.text.codeUnits);
         if (result == null) return;
-        outputController.text = base64Encoder.convert(result);
+        gzipResult = base64Encoder.convert(result);
       } else {
         final decoder = GZipDecoder();
         const base64Decoder = Base64Decoder();
         Uint8List result = base64Decoder.convert(inputController.text);
-        outputController.text =
-            String.fromCharCodes(decoder.decodeBytes(result));
+        gzipResult = String.fromCharCodes(decoder.decodeBytes(result));
       }
     } catch (e) {
       return;
@@ -51,14 +55,14 @@ class GzipCompressDecompressProvider extends ChangeNotifier {
 
   swapData() {
     String temp = inputController.text;
-    inputController.text = outputController.text;
-    outputController.text = temp;
+    inputController.text = gzipResult;
+    gzipResult = temp;
   }
 
   @override
   void dispose() {
     inputController.dispose();
-    outputController.dispose();
+
     super.dispose();
   }
 }
