@@ -42,6 +42,22 @@ class MyApp extends StatelessWidget {
               inputDecorationTheme: const InputDecorationTheme(
                 border: OutlineInputBorder(),
               ),
+              popupMenuTheme: PopupMenuThemeData(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(8),
+                ),
+              ),
+              switchTheme: SwitchThemeData(
+                thumbColor: MaterialStateProperty.all(
+                    Color(SystemBox.model.themeColor)),
+                trackColor: MaterialStateProperty.resolveWith((states) {
+                  if (states.contains(MaterialState.selected)) {
+                    return Color(SystemBox.model.themeColor).withOpacity(0.5);
+                  } else {
+                    return null;
+                  }
+                }),
+              ),
               useMaterial3: true,
             ),
             darkTheme: ThemeData(
@@ -51,6 +67,22 @@ class MyApp extends StatelessWidget {
               ),
               inputDecorationTheme: const InputDecorationTheme(
                 border: OutlineInputBorder(),
+              ),
+              popupMenuTheme: PopupMenuThemeData(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(8),
+                ),
+              ),
+              switchTheme: SwitchThemeData(
+                thumbColor: MaterialStateProperty.all(
+                    Color(SystemBox.model.themeColor)),
+                trackColor: MaterialStateProperty.resolveWith((states) {
+                  if (states.contains(MaterialState.selected)) {
+                    return Color(SystemBox.model.themeColor).withOpacity(0.5);
+                  } else {
+                    return null;
+                  }
+                }),
               ),
               useMaterial3: true,
             ),

@@ -35,6 +35,7 @@ class LangTextField extends StatelessWidget {
       onChanged: onChanged,
       expands: expands,
       decoration: inputDecoration,
+      textAlignVertical: TextAlignVertical.top,
     );
   }
 }

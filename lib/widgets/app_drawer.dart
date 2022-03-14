@@ -79,6 +79,7 @@ class _AppDrawerState extends ConsumerState<AppDrawer> {
                     (context, index) {
                       final tool = navi.toolGroups[index];
                       return ExpansionTile(
+                        initiallyExpanded: tool.items.contains(item),
                         leading: tool.icon,
                         title: tool.title(context),
                         children: tool.items.map((e) {

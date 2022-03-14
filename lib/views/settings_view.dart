@@ -7,6 +7,7 @@ import 'package:alga/views/widgets/color_popup_item.dart';
 import 'package:alga/views/widgets/expandable_settings_tile.dart';
 import 'package:alga/views/widgets/settings_tile.dart';
 import 'package:alga/widgets/box_builder.dart';
+import 'package:package_info_plus/package_info_plus.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class SettingsView extends StatefulWidget {
@@ -134,6 +135,24 @@ class _SettingsViewState extends State<SettingsView> {
                   },
                 ),
               ],
+            ),
+          ),
+          SettingsTile(
+            leading: const Icon(Icons.info_rounded),
+            title: const Text('Version'),
+            trailing: FutureBuilder<PackageInfo>(
+              future: PackageInfo.fromPlatform(),
+              builder: (context, snap) {
+                if (snap.connectionState != ConnectionState.done) {
+                  return const SizedBox.shrink();
+                } else {
+                  return Chip(
+                    label: Text(
+                      '${snap.data?.version}+${snap.data?.buildNumber}',
+                    ),
+                  );
+                }
+              },
             ),
           ),
         ].sep(const SizedBox(height: 4)),

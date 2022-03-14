@@ -41,6 +41,7 @@ A flutter implement of [DevToys[veler]](https://github.com/veler/DevToys).
   * [ ] show sourceMap config
 * [ ] blurhash tool
 * [ ] Web Support
+* [ ] Migrate themeData
 
 ## Getting Started
 

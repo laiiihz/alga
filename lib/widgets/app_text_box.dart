@@ -79,6 +79,7 @@ class _AppTextBoxState extends State<AppTextBox> {
         onTap: () {
           FocusScope.of(context).requestFocus(_focusNode);
         },
+        behavior: HitTestBehavior.translucent,
         child: Container(
           width: double.infinity,
           padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 12),
