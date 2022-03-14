@@ -20,6 +20,8 @@
   "output": "输出",
   "converters": "转换类型工具",
   "jsonYamlConverter": "JSON/YAML 字符串互转工具",
+  "indentation":"缩进",
+  "upperCase": "大写字母",
   "numberBaseConverter": "进制转换工具",
   "hexdecimal": "十六进制",
   "decimal": "十进制",

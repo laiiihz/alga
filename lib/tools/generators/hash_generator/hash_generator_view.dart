@@ -58,7 +58,7 @@ class _HashGeneratorViewState extends State<HashGeneratorView> {
           children: [
             ToolViewConfig(
               leading: const Icon(Icons.text_fields),
-              title: const Text('UpperCase'),
+              title: Text(S.of(context).upperCase),
               trailing: Switch.adaptive(
                 value: _provider.upperCase,
                 onChanged: (value) {

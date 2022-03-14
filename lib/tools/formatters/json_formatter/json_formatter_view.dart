@@ -36,7 +36,7 @@ class _JsonFormtterViewState extends State<JsonFormtterView> {
       configs: [
         ToolViewConfig(
           leading: const Icon(Icons.space_bar),
-          title: const Text('indentation'),
+          title: Text(S.of(context).indentation),
           trailing: DropdownButton<JsonIndentType>(
             underline: const SizedBox.shrink(),
             isDense: true,
