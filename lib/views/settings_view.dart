@@ -1,8 +1,7 @@
 import 'package:alga/constants/import_helper.dart';
 import 'package:alga/extension/list_ext.dart';
-import 'package:alga/utils/hive_adapters/theme_mode_adapter.dart'
-    as theme_mode_adapter;
-import 'package:alga/utils/hive_boxes/theme_box.dart';
+import 'package:alga/utils/hive_adapters/system_settings_model.dart';
+import 'package:alga/utils/hive_boxes/system_box.dart';
 import 'package:alga/utils/hive_util.dart';
 import 'package:alga/views/widgets/expandable_settings_tile.dart';
 import 'package:alga/views/widgets/settings_tile.dart';
@@ -23,31 +22,56 @@ class _SettingsViewState extends State<SettingsView> {
       title: Text(S.of(context).settings),
       content: ListView(
         children: <Widget>[
-          AppTitle(title: S.of(context).about),
+          ListTile(
+            title: Text(S.of(context).about),
+          ),
           SettingsTile(
-            leading: Image.asset('assets/logo/256.webp'),
+            leading: Image.asset('assets/logo/256.webp', height: 32, width: 32),
             title: Text(S.of(context).appName),
           ),
           SettingsTile(
             leading: const Icon(Icons.dark_mode),
-            title: const Text('Theme Mode'),
+            title: Text(S.of(context).themeMode),
             trailing: BoxBuilder(
-              box: HiveUtil.themeBox,
+              box: HiveUtil.systemBox,
               builder: (context, box) {
-                return PopupMenuButton<theme_mode_adapter.ThemeMode>(
+                return PopupMenuButton<ThemeMode>(
                   itemBuilder: (context) {
-                    return theme_mode_adapter.ThemeMode.values
+                    return ThemeMode.values
                         .map((e) => PopupMenuItem(
                             child: Text(e.getName(context)), value: e))
                         .toList();
                   },
-                  initialValue: ThemeBox.themeMode.theThemeMode,
+                  initialValue: SystemBox.model.themeMode,
                   onSelected: (item) {
-                    ThemeBox.setThemeMode(
-                        theme_mode_adapter.ThemeModeModel(theThemeMode: item));
-                    setState(() {});
+                    SystemBox.model = SystemBox.model.copyWith(themeMode: item);
                   },
-                  child: Text(ThemeBox.themeMode.theThemeMode.name),
+                  child: Text(SystemBox.model.themeMode.getName(context)),
+                );
+              },
+            ),
+          ),
+          SettingsTile(
+            leading: const Icon(Icons.language),
+            title: Text(S.of(context).language),
+            trailing: BoxBuilder(
+              box: HiveUtil.systemBox,
+              builder: (context, box) {
+                return PopupMenuButton<String>(
+                  itemBuilder: (context) {
+                    return SystemSettingsModel.localCodes.map((e) {
+                      return PopupMenuItem(
+                        child: Text(S.getlang(context, e)),
+                        value: e,
+                      );
+                    }).toList();
+                  },
+                  initialValue: SystemBox.model.localeCode,
+                  onSelected: (item) {
+                    SystemBox.model =
+                        SystemBox.model.copyWith(localeCode: item);
+                  },
+                  child: Text(S.getlang(context, SystemBox.model.localeCode)),
                 );
               },
             ),
@@ -59,18 +83,21 @@ class _SettingsViewState extends State<SettingsView> {
             child: Column(
               children: [
                 ListTile(
+                  leading: const Icon(Icons.code_rounded),
                   title: const Text('github'),
                   onTap: () {
                     launch('https://github.com/laiiihz/alga');
                   },
                 ),
                 ListTile(
+                  leading: const Icon(Icons.copyright),
                   title: const Text('LICENSES'),
                   onTap: () {
                     showLicensePage(context: context);
                   },
                 ),
                 ListTile(
+                  leading: const Icon(Icons.bug_report_rounded),
                   title: const Text('issues'),
                   onTap: () {
                     launch('https://github.com/laiiihz/alga/issues');

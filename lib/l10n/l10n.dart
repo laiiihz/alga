@@ -1,3 +1,4 @@
+import 'package:alga/utils/hive_adapters/system_settings_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/s.dart';
 
@@ -14,4 +15,17 @@ class S {
 
   static LocalizationsDelegate<AppLocalizations> get delegate =>
       AppLocalizations.delegate;
+
+  static String getlang(BuildContext context, String localeCode) {
+    switch (localeCode) {
+      case SystemSettingsModel.localSystem:
+        return of(context).followSystem;
+      case SystemSettingsModel.localChinese:
+        return '简体中文';
+      case SystemSettingsModel.localEnglish:
+        return 'English';
+      default:
+        return 'UNKNOWN';
+    }
+  }
 }

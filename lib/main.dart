@@ -1,6 +1,6 @@
 import 'package:alga/home_view.dart';
 import 'package:alga/l10n/l10n.dart';
-import 'package:alga/utils/hive_boxes/theme_box.dart';
+import 'package:alga/utils/hive_boxes/system_box.dart';
 import 'package:alga/utils/hive_util.dart';
 import 'package:alga/utils/window_util.dart';
 import 'package:alga/widgets/box_builder.dart';
@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     globalContext = context;
     return BoxBuilder(
-        box: HiveUtil.themeBox,
+        box: HiveUtil.systemBox,
         builder: (context, box) {
           return MaterialApp(
             onGenerateTitle: (context) => S.of(context).appName,
@@ -53,7 +53,7 @@ class MyApp extends StatelessWidget {
                 border: OutlineInputBorder(),
               ),
             ),
-            themeMode: ThemeBox.themeMode.themeMode,
+            themeMode: SystemBox.model.themeMode,
             home: const HomeView(),
             debugShowCheckedModeBanner: false,
             localizationsDelegates: [
@@ -63,6 +63,7 @@ class MyApp extends StatelessWidget {
               GlobalWidgetsLocalizations.delegate,
             ],
             supportedLocales: S.supportedLocales,
+            locale: SystemBox.model.locale,
           );
         });
   }

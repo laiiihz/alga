@@ -1,5 +1,10 @@
 {
   "appName": "Alga",
+  "followSystem": "跟随系统",
+  "themeMode": "主题色",
+  "themeLight": "浅色",
+  "themeDark": "深色",
+  "language": "语言",
   "allTools": "所有工具",
   "typeToSearch": "搜索您想要使用的工具类型",
   "settings": "设置",

@@ -3,6 +3,11 @@
   "@appName": {
     "description": "name of app"
   },
+  "followSystem": "follow system",
+  "themeMode": "Theme Mode",
+  "themeLight": "Light",
+  "themeDark": "Dark",
+  "language": "language",
   "allTools": "All tools",
   "typeToSearch": "Type to search for tools",
   "settings": "Settings",
