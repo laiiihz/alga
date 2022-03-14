@@ -46,7 +46,7 @@ A flutter implement of [DevToys[veler]](https://github.com/veler/DevToys).
 * [ ] sass to css generator
   * [x] working sass to css generator
   * [ ] pick syntax config
-  * [ ] OutputStyle config
+  * [x] OutputStyle config
   * [ ] show sourceMap config
 * [ ] blurhash tool
 * [ ] rework search tool

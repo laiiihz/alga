@@ -5,16 +5,32 @@ import 'package:sass/sass.dart';
 
 class SassCssGeneratorProvider extends GeneratorBase {
   final scssController = TextEditingController();
-  final cssController = TextEditingController();
+  String _cssResult = '';
+  String get cssResult => _cssResult;
+  set cssResult(String state) {
+    _cssResult = state;
+    notifyListeners();
+  }
+
+  bool _compressResult = false;
+  bool get compressResult => _compressResult;
+  set compressResult(bool state) {
+    _compressResult = state;
+    notifyListeners();
+  }
 
   paste() async {
     scssController.text = await ClipboardUtil.paste();
   }
 
+  copy() async {
+    ClipboardUtil.copy(cssResult);
+  }
+
   @override
   void clear() {
     scssController.clear();
-    cssController.clear();
+    cssResult = '';
   }
 
   @override
@@ -22,10 +38,11 @@ class SassCssGeneratorProvider extends GeneratorBase {
     try {
       final result = compileStringToResult(
         scssController.text,
+        style: compressResult ? OutputStyle.compressed : OutputStyle.expanded,
       );
-      cssController.text = result.css;
+      cssResult = result.css;
     } catch (e) {
-      cssController.clear();
+      cssResult = '';
       return;
     }
   }
@@ -33,7 +50,6 @@ class SassCssGeneratorProvider extends GeneratorBase {
   @override
   void dispose() {
     scssController.dispose();
-    cssController.dispose();
     super.dispose();
   }
 }

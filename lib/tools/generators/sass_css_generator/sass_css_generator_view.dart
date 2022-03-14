@@ -10,8 +10,16 @@ class SassCssGeneratorView extends StatefulWidget {
 
 class _SassCssGeneratorViewState extends State<SassCssGeneratorView> {
   final _provider = SassCssGeneratorProvider();
+  update() => setState(() {});
+  @override
+  void initState() {
+    super.initState();
+    _provider.addListener(update);
+  }
+
   @override
   void dispose() {
+    _provider.removeListener(update);
     _provider.dispose();
     super.dispose();
   }
@@ -21,6 +29,18 @@ class _SassCssGeneratorViewState extends State<SassCssGeneratorView> {
     return ToolView.scrollVertical(
       title: const Text('SCSS/CSS generator'),
       children: [
+        AppTitle(title: S.of(context).configuration),
+        ToolViewConfig(
+          leading: const Icon(Icons.compress),
+          title: Text(S.of(context).compress),
+          trailing: Switch.adaptive(
+            value: _provider.compressResult,
+            onChanged: (state) {
+              _provider.compressResult = state;
+              _provider.generate();
+            },
+          ),
+        ),
         AppTitleWrapper(
           title: 'SCSS source',
           actions: [
@@ -44,10 +64,17 @@ class _SassCssGeneratorViewState extends State<SassCssGeneratorView> {
         ),
         AppTitleWrapper(
           title: 'CSS result',
-          actions: const [],
-          child: LangTextField(
+          actions: [
+            IconButton(
+              onPressed: () {
+                _provider.copy();
+              },
+              icon: const Icon(Icons.copy),
+            ),
+          ],
+          child: AppTextBox(
             lang: LangHighlightType.css,
-            controller: _provider.cssController,
+            data: _provider.cssResult,
             minLines: 2,
             maxLines: 12,
           ),

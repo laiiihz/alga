@@ -80,7 +80,7 @@ class _AppTextBoxState extends State<AppTextBox> {
           FocusScope.of(context).requestFocus(_focusNode);
         },
         child: Container(
-          alignment: Alignment.topLeft,
+          width: double.infinity,
           padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 12),
           decoration: BoxDecoration(
             border: Border.all(
