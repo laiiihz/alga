@@ -36,13 +36,6 @@ A flutter implement of [DevToys[veler]](https://github.com/veler/DevToys).
   * [ ] Regex
   * [x] JWT(custom support)
   * [ ] Uri
-* [ ] static server
-  * [x] a working static server
-  * [x] UI update
-  * [x] listDirectories config
-  * [x] port config
-  * [x] accessible on internet config
-  * [x] default path config
 * [ ] sass to css generator
   * [x] working sass to css generator
   * [ ] pick syntax config
