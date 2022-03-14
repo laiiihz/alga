@@ -13,6 +13,7 @@ A flutter implement of [DevToys[veler]](https://github.com/veler/DevToys).
     * URL Encoder/Decoder
     * GZip Encoder/Decoder
     * JWT Decoder
+    * Uri Parser
   * Formatters
     * JSON formatter
     * Dart formatter
@@ -20,9 +21,12 @@ A flutter implement of [DevToys[veler]](https://github.com/veler/DevToys).
     * Hash Generator
     * UUID Generator
     * Lorem Ipsum Generator
+    * Sass to Css Generator
   * Text
     * Markdown Preview
     * Regex Tester
+  * Server Tools
+    * Static Server Tool
 
 ## APP Plan
 
@@ -30,19 +34,12 @@ A flutter implement of [DevToys[veler]](https://github.com/veler/DevToys).
   * [x] hightlight
   * [ ] code with fold
 * [ ] Launguage highlight
-  * [x] Dart lang
-  * [x] Yaml
-  * [x] Markdown
   * [ ] Regex
-  * [x] JWT(custom support)
   * [ ] Uri
 * [ ] sass to css generator
-  * [x] working sass to css generator
   * [ ] pick syntax config
-  * [x] OutputStyle config
   * [ ] show sourceMap config
 * [ ] blurhash tool
-* [ ] rework search tool
 * [ ] Web Support
 
 ## Getting Started
