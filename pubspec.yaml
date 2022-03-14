@@ -44,12 +44,16 @@ dependencies:
   file_selector: ^0.8.4
   shelf_static: ^1.1.0
   flutter_highlight: ^0.7.0
+  hive: ^2.0.6
+  hive_flutter: ^1.1.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
   flutter_lints: ^1.0.0
+  hive_generator: ^1.1.2
+  build_runner: ^2.1.7
 
 flutter:
   uses-material-design: true
