@@ -38,6 +38,7 @@
   "generatorHash": "Hash Generator",
   "generatorUUID": "UUID Generator",
   "generatorLoremIpsum": "Lorem Ipsum Generator",
+  "sassCssGenerator": "sass to css Generator",
   "textTool": "Text",
   "markdownPreview": "Markdown Preview",
   "markdownInput": "Markdown input",
@@ -45,5 +46,6 @@
   "regexTester": "Regex Tester",
   "regularExpression": "Regular expression",
   "regexText": "Text",
-  "serverTools": "Server Tools"
+  "serverTools": "Server Tools",
+  "staticServerTool": "Static Server Tool"
 }

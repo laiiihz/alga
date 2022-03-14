@@ -30,7 +30,7 @@ class _StaticServerToolViewState extends State<StaticServerToolView> {
   @override
   Widget build(BuildContext context) {
     return ToolView.scrollVertical(
-      title: const Text('Static Server Tool'),
+      title: Text(S.of(context).staticServerTool),
       children: [
         AppTitle(
           title: 'Open file',

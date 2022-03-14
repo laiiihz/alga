@@ -108,7 +108,7 @@ List<ToolGroup> _toolItems = [
       ),
       ToolItem(
         icon: const Icon(Icons.add),
-        title: (context) => const Text('sass css generator'),
+        title: (context) => Text(S.of(context).sassCssGenerator),
         page: const SassCssGeneratorView(),
       ),
     ],
@@ -135,7 +135,7 @@ List<ToolGroup> _toolItems = [
       items: [
         ToolItem(
           icon: const Icon(Icons.file_open),
-          title: (context) => const Text('Static Server Tool'),
+          title: (context) => Text(S.of(context).staticServerTool),
           page: const StaticServerToolView(),
         ),
       ],

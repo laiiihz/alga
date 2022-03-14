@@ -35,6 +35,7 @@
   "generatorHash": "Hash 生成器",
   "generatorUUID": "UUID 生成器",
   "generatorLoremIpsum": "乱数假文 生成器",
+  "sassCssGenerator": "sass/css 生成器",
   "textTool": "文本处理类型工具",
   "markdownPreview": "Markdown预览工具",
   "markdownInput": "Markdown 文本输入",
@@ -42,5 +43,6 @@
   "regexTester": "正则表达式测试工具",
   "regularExpression": "正则表达式",
   "regexText": "文本",
-  "serverTools": "服务器工具集"
+  "serverTools": "服务器工具集",
+  "staticServerTool": "静态服务器工具"
 }

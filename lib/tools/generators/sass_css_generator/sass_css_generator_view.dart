@@ -27,7 +27,7 @@ class _SassCssGeneratorViewState extends State<SassCssGeneratorView> {
   @override
   Widget build(BuildContext context) {
     return ToolView.scrollVertical(
-      title: const Text('SCSS/CSS generator'),
+      title: Text(S.of(context).sassCssGenerator),
       children: [
         AppTitle(title: S.of(context).configuration),
         ToolViewConfig(
