@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class ToolGroup {
   final List<ToolItem> items;
-  final Text title;
+  final Text Function(BuildContext context) title;
   final Widget icon;
   ToolGroup({
     required this.title,

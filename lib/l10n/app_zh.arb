@@ -27,6 +27,7 @@
   "decoderJWT": "JWT 解码工具",
   "jwtHeader": "标头",
   "jwtPayload": "载荷",
+  "uriParser": "Uri 解析",
   "formatters": "格式化类型工具",
   "formatterJson": "JSON 格式化",
   "formatterDart": "Dart 格式化",
@@ -40,5 +41,6 @@
   "markdownPreviewInput": "预览",
   "regexTester": "正则表达式测试工具",
   "regularExpression": "正则表达式",
-  "regexText": "文本"
+  "regexText": "文本",
+  "serverTools": "服务器工具集"
 }

@@ -1,4 +1,3 @@
-import 'package:alga/main.dart';
 import 'package:alga/models/tool_items.dart';
 import 'package:alga/utils/hotkey_util.dart';
 import 'package:alga/widgets/app_scaffold.dart';
@@ -13,12 +12,11 @@ class HomeView extends ConsumerStatefulWidget {
 }
 
 class _HomeViewState extends ConsumerState<HomeView> {
-  late NaviUtil _navi;
+  final _navi = NaviUtil();
 
   @override
   void initState() {
     super.initState();
-    _navi = NaviUtil(globalContext);
     if (mounted) ref.read(toolsProvider.notifier).state = _navi;
     if (mounted) {
       ref.read(currentToolProvider.notifier).state = _navi.allToolsItem;

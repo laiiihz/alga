@@ -23,133 +23,132 @@ import 'package:alga/views/settings_view.dart';
 
 import '../widgets/svg_asset_icon.dart';
 
-List<ToolGroup> _genToolItems(BuildContext context) => [
-      ToolGroup(
-        icon: const Icon(Icons.transform),
-        title: Text(S.of(context).converters),
-        items: [
-          ToolItem(
-            icon: const SvgAssetIcon('assets/icons/JsonYaml.svg'),
-            title: (context) => Text(S.of(context).jsonYamlConverter),
-            page: const JsonYamlConverterView(),
-          ),
-          ToolItem(
-            icon: const Icon(Icons.numbers),
-            title: (context) => Text(S.of(context).numberBaseConverter),
-            page: const NumberBaseConverterView(),
-          ),
-        ],
+List<ToolGroup> _toolItems = [
+  ToolGroup(
+    icon: const Icon(Icons.transform),
+    title: (context) => Text(S.of(context).converters),
+    items: [
+      ToolItem(
+        icon: const SvgAssetIcon('assets/icons/JsonYaml.svg'),
+        title: (context) => Text(S.of(context).jsonYamlConverter),
+        page: const JsonYamlConverterView(),
       ),
-      ToolGroup(
-        icon: const Icon(Icons.compress),
-        title: Text(S.of(context).encodersDecoders),
-        items: [
-          ToolItem(
-            icon: const Icon(Icons.link),
-            title: (context) => Text(S.of(context).encoderDecoderURL),
-            page: const UriEncoderDecoderView(),
-          ),
-          ToolItem(
-            icon: const SvgAssetIcon('assets/icons/Base64.svg'),
-            title: (context) => Text(S.of(context).encoderDecoderBase64),
-            page: const Base64EncoderDecoderView(),
-          ),
-          ToolItem(
-            icon: const Icon(Icons.folder_zip),
-            title: (context) => Text(S.of(context).encoderDecoderGzip),
-            page: const GzipCompressDecompressView(),
-          ),
-          ToolItem(
-            icon: const SvgAssetIcon('assets/icons/JWT.svg'),
-            title: (context) => Text(S.of(context).decoderJWT),
-            page: const JWTDecoderView(),
-          ),
-          ToolItem(
-            icon: const Icon(Icons.add_link),
-            title: (context) => const Text('URI Parser'),
-            page: const UriParserView(),
-          ),
-        ],
+      ToolItem(
+        icon: const Icon(Icons.numbers),
+        title: (context) => Text(S.of(context).numberBaseConverter),
+        page: const NumberBaseConverterView(),
       ),
-      ToolGroup(
-        icon: const Icon(Icons.format_align_left),
-        title: Text(S.of(context).formatters),
-        items: [
-          ToolItem(
-            icon: const SvgAssetIcon('assets/icons/JsonFormatter.svg'),
-            title: (context) => Text(S.of(context).formatterJson),
-            page: const JsonFormtterView(),
-          ),
-          ToolItem(
-            icon: const SvgAssetIcon('assets/icons/dart.svg', colorIcon: true),
-            title: (context) => Text(S.of(context).formatterDart),
-            page: const DartFormtterView(),
-          ),
-        ],
+    ],
+  ),
+  ToolGroup(
+    icon: const Icon(Icons.compress),
+    title: (context) => Text(S.of(context).encodersDecoders),
+    items: [
+      ToolItem(
+        icon: const Icon(Icons.link),
+        title: (context) => Text(S.of(context).encoderDecoderURL),
+        page: const UriEncoderDecoderView(),
       ),
-      ToolGroup(
-        icon: const Icon(Icons.generating_tokens),
-        title: Text(S.of(context).generators),
-        items: [
-          ToolItem(
-            icon: const SvgAssetIcon('assets/icons/Guid.svg'),
-            title: (context) => Text(S.of(context).generatorUUID),
-            page: const UUIDGeneratorView(),
-          ),
-          ToolItem(
-            icon: const Icon(Icons.fingerprint),
-            title: (context) => Text(S.of(context).generatorHash),
-            page: const HashGeneratorView(),
-          ),
-          ToolItem(
-            icon: const SvgAssetIcon('assets/icons/LoremIpsum.svg'),
-            title: (context) => Text(S.of(context).generatorLoremIpsum),
-            page: const LoremIpsumGeneratorView(),
-          ),
-          ToolItem(
-            icon: const Icon(Icons.add),
-            title: (context) => const Text('sass css generator'),
-            page: const SassCssGeneratorView(),
-          ),
-        ],
+      ToolItem(
+        icon: const SvgAssetIcon('assets/icons/Base64.svg'),
+        title: (context) => Text(S.of(context).encoderDecoderBase64),
+        page: const Base64EncoderDecoderView(),
       ),
-      ToolGroup(
-        icon: const Icon(Icons.text_format),
-        title: Text(S.of(context).textTool),
-        items: [
-          ToolItem(
-            icon: const SvgAssetIcon('assets/icons/RegexTester.svg'),
-            title: (context) => Text(S.of(context).regexTester),
-            page: const RegexTesterView(),
-          ),
-          ToolItem(
-            icon: const SvgAssetIcon('assets/icons/MarkdownPreview.svg'),
-            title: (context) => Text(S.of(context).markdownPreview),
-            page: const MarkdownPreviewView(),
-          ),
-        ],
+      ToolItem(
+        icon: const Icon(Icons.folder_zip),
+        title: (context) => Text(S.of(context).encoderDecoderGzip),
+        page: const GzipCompressDecompressView(),
       ),
-      if (Platform.isMacOS || Platform.isLinux || Platform.isWindows)
-        ToolGroup(
-          title: const Text('Server Tools'),
-          items: [
-            ToolItem(
-              icon: const Icon(Icons.file_open),
-              title: (context) => const Text('Static Server Tool'),
-              page: const StaticServerToolView(),
-            ),
-          ],
-          icon: const Icon(Icons.open_in_browser),
+      ToolItem(
+        icon: const SvgAssetIcon('assets/icons/JWT.svg'),
+        title: (context) => Text(S.of(context).decoderJWT),
+        page: const JWTDecoderView(),
+      ),
+      ToolItem(
+        icon: const Icon(Icons.add_link),
+        title: (context) => Text(S.of(context).uriParser),
+        page: const UriParserView(),
+      ),
+    ],
+  ),
+  ToolGroup(
+    icon: const Icon(Icons.format_align_left),
+    title: (context) => Text(S.of(context).formatters),
+    items: [
+      ToolItem(
+        icon: const SvgAssetIcon('assets/icons/JsonFormatter.svg'),
+        title: (context) => Text(S.of(context).formatterJson),
+        page: const JsonFormtterView(),
+      ),
+      ToolItem(
+        icon: const SvgAssetIcon('assets/icons/dart.svg', colorIcon: true),
+        title: (context) => Text(S.of(context).formatterDart),
+        page: const DartFormtterView(),
+      ),
+    ],
+  ),
+  ToolGroup(
+    icon: const Icon(Icons.generating_tokens),
+    title: (context) => Text(S.of(context).generators),
+    items: [
+      ToolItem(
+        icon: const SvgAssetIcon('assets/icons/Guid.svg'),
+        title: (context) => Text(S.of(context).generatorUUID),
+        page: const UUIDGeneratorView(),
+      ),
+      ToolItem(
+        icon: const Icon(Icons.fingerprint),
+        title: (context) => Text(S.of(context).generatorHash),
+        page: const HashGeneratorView(),
+      ),
+      ToolItem(
+        icon: const SvgAssetIcon('assets/icons/LoremIpsum.svg'),
+        title: (context) => Text(S.of(context).generatorLoremIpsum),
+        page: const LoremIpsumGeneratorView(),
+      ),
+      ToolItem(
+        icon: const Icon(Icons.add),
+        title: (context) => const Text('sass css generator'),
+        page: const SassCssGeneratorView(),
+      ),
+    ],
+  ),
+  ToolGroup(
+    icon: const Icon(Icons.text_format),
+    title: (context) => Text(S.of(context).textTool),
+    items: [
+      ToolItem(
+        icon: const SvgAssetIcon('assets/icons/RegexTester.svg'),
+        title: (context) => Text(S.of(context).regexTester),
+        page: const RegexTesterView(),
+      ),
+      ToolItem(
+        icon: const SvgAssetIcon('assets/icons/MarkdownPreview.svg'),
+        title: (context) => Text(S.of(context).markdownPreview),
+        page: const MarkdownPreviewView(),
+      ),
+    ],
+  ),
+  if (Platform.isMacOS || Platform.isLinux || Platform.isWindows)
+    ToolGroup(
+      title: (context) => Text(S.of(context).serverTools),
+      items: [
+        ToolItem(
+          icon: const Icon(Icons.file_open),
+          title: (context) => const Text('Static Server Tool'),
+          page: const StaticServerToolView(),
         ),
-    ];
+      ],
+      icon: const Icon(Icons.open_in_browser),
+    ),
+];
 
 class NaviUtil {
-  late List<ToolGroup> toolGroups;
+  late List<ToolGroup> toolGroups = _toolItems;
   late ToolItem settingsItem;
   late ToolItem allToolsItem;
 
-  NaviUtil(BuildContext context) {
-    toolGroups = _genToolItems(context);
+  NaviUtil() {
     settingsItem = ToolItem(
       icon: const Icon(Icons.settings),
       title: (context) => Text(S.of(context).settings),

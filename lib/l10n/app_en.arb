@@ -30,6 +30,7 @@
   "decoderJWT": "JWT Decoder",
   "jwtHeader": "Header",
   "jwtPayload": "Payload",
+  "uriParser": "Uri parser",
   "formatters": "Formatters",
   "formatterJson": "JSON formatter",
   "formatterDart": "Dart formatter",
@@ -43,5 +44,6 @@
   "markdownPreviewInput": "Preview",
   "regexTester": "Regex Tester",
   "regularExpression": "Regular expression",
-  "regexText": "Text"
+  "regexText": "Text",
+  "serverTools": "Server Tools"
 }

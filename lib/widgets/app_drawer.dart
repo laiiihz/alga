@@ -80,7 +80,7 @@ class _AppDrawerState extends ConsumerState<AppDrawer> {
                       final tool = navi.toolGroups[index];
                       return ExpansionTile(
                         leading: tool.icon,
-                        title: tool.title,
+                        title: tool.title(context),
                         children: tool.items.map((e) {
                           bool same = e == item;
                           return ListTile(
