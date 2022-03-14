@@ -8,10 +8,18 @@ class HighlightTextSpan {
   HighlightTextSpan(this.theme);
 
   TextSpan span(String data, String lang, TextStyle? defaultStyle) {
-    return TextSpan(
-      style: defaultStyle,
-      children: _convert(highlight.parse(data, language: lang).nodes!),
-    );
+    if (lang == 'uri') {
+      return TextSpan(style: defaultStyle, text: data);
+      // return TextSpan(
+      //   style: defaultStyle,
+      //   children: uriHighlight(data),
+      // );
+    } else {
+      return TextSpan(
+        style: defaultStyle,
+        children: _convert(highlight.parse(data, language: lang).nodes!),
+      );
+    }
   }
 
   List<TextSpan> _convert(List<Node> nodes) {

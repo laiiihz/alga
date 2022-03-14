@@ -43,7 +43,8 @@ class _UriParserViewState extends State<UriParserView> {
               icon: const Icon(Icons.paste),
             ),
           ],
-          child: TextField(
+          child: LangTextField(
+            lang: LangHighlightType.uri,
             controller: _provider.inputController,
             onChanged: (_) {
               _provider.parse();

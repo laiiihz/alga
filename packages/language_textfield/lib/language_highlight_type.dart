@@ -5,4 +5,5 @@ class LangHighlightType {
   static const markdown = 'markdown';
   static const scss = 'scss';
   static const css = 'css';
+  static const uri = 'uri';
 }
