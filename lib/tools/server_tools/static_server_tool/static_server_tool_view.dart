@@ -32,38 +32,91 @@ class _StaticServerToolViewState extends State<StaticServerToolView> {
     return ToolView.scrollVertical(
       title: Text(S.of(context).staticServerTool),
       children: [
-        AppTitle(
-          title: 'Open file',
-          actions: [
-            IconButton(
-              onPressed: () async {
-                bool result = await _provider.openFile();
-                if (!result) {
-                  ScaffoldMessenger.of(context)
-                      .showSnackBar(const SnackBar(content: Text('canceled')));
-                }
-              },
-              icon: const Icon(Icons.file_open),
+        ToolViewWrapper(
+          children: [
+            ToolViewConfig(
+              leading: const Icon(Icons.power_outlined),
+              title: const Text('Port'),
+              trailing: SizedBox(
+                width: 120,
+                child: TextField(
+                  controller: _provider.portController,
+                  decoration: const InputDecoration(
+                    isDense: true,
+                    contentPadding:
+                        EdgeInsets.symmetric(horizontal: 8, vertical: 12),
+                    hintText: '8080',
+                  ),
+                ),
+              ),
             ),
+            ToolViewConfig(
+              leading: const Icon(Icons.list),
+              title: const Text('List Directories'),
+              trailing: Switch.adaptive(
+                value: _provider.listDirectories,
+                onChanged: (state) {
+                  _provider.listDirectories = state;
+                },
+              ),
+            ),
+            ToolViewConfig(
+              leading: const Icon(Icons.network_check),
+              title: const Text('Accessible on Internet'),
+              trailing: Switch.adaptive(
+                value: _provider.accessOnNet,
+                onChanged: (state) {
+                  _provider.accessOnNet = state;
+                },
+              ),
+            ),
+            ToolViewConfig(
+              title: const Text('Open file'),
+              leading: const Icon(Icons.file_open),
+              trailing: IconButton(
+                onPressed: () async {
+                  bool result = await _provider.openFile();
+                  if (!result) {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(content: Text('canceled')));
+                  }
+                },
+                icon: const Icon(Icons.file_open),
+              ),
+            ),
+            ToolViewConfig(
+              leading: const Icon(Icons.podcasts_sharp),
+              title: Text(_provider.filePath ?? 'select file'),
+              trailing: _provider.isStarted
+                  ? TextButton(
+                      onPressed: () {
+                        _provider.stop();
+                      },
+                      child: const Text('stop'),
+                    )
+                  : TextButton(
+                      onPressed: () {
+                        _provider.startServe();
+                      },
+                      child: const Text('start'),
+                    ),
+            ),
+            const ToolViewConfig(
+              leading: Icon(Icons.u_turn_left),
+              title: Text('Default path'),
+              trailing: SizedBox.shrink(),
+            ),
+            TextField(controller: _provider.pathController),
           ],
         ),
         AppTitle(
-          title: _provider.filePath ?? 'select file',
+          title: 'Server Status',
           actions: [
-            if (!_provider.isStarted)
-              TextButton(
-                onPressed: () {
-                  _provider.startServe();
-                },
-                child: const Text('start'),
-              ),
-            if (_provider.isStarted)
-              TextButton(
-                onPressed: () {
-                  _provider.stop();
-                },
-                child: const Text('stop'),
-              ),
+            Chip(
+              label: _provider.isStarted
+                  ? const Text('Started')
+                  : const Text('Stoped'),
+            ),
           ],
         ),
       ],

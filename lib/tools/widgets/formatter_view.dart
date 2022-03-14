@@ -21,12 +21,11 @@ class FormatterView extends StatefulWidget {
 
 class FormatterViewState extends State<FormatterView> {
   final _inputController = TextEditingController();
-  final _outputController = TextEditingController();
+  String outputText = '';
 
   @override
   void dispose() {
     _inputController.dispose();
-    _outputController.dispose();
     super.dispose();
   }
 
@@ -42,14 +41,15 @@ class FormatterViewState extends State<FormatterView> {
           maxLines: 100,
           controller: _inputController,
           onChanged: (text) {
-            _outputController.text = widget.onChanged(text).result;
+            outputText = widget.onChanged(text).result;
+            setState(() {});
           },
         ),
-        outputWidget: LangTextField(
+        outputWidget: AppTextBox(
           lang: widget.lang,
           minLines: 80,
           maxLines: 100,
-          controller: _outputController,
+          data: outputText,
         ),
         inputActions: [
           IconButton(
@@ -63,7 +63,8 @@ class FormatterViewState extends State<FormatterView> {
             icon: const Icon(Icons.clear),
             onPressed: () {
               _inputController.clear();
-              _outputController.clear();
+              outputText = '';
+              setState(() {});
             },
           ),
         ],
@@ -71,9 +72,7 @@ class FormatterViewState extends State<FormatterView> {
           IconButton(
             icon: const Icon(Icons.copy),
             onPressed: () async {
-              await Clipboard.setData(
-                ClipboardData(text: _outputController.text),
-              );
+              await Clipboard.setData(ClipboardData(text: outputText));
             },
           ),
         ],
