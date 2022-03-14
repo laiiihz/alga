@@ -1,7 +1,6 @@
 import 'package:alga/constants/import_helper.dart';
 import 'package:alga/tools/formatters/json_formatter/json_enums.dart';
 import 'package:alga/tools/formatters/json_formatter/json_provider.dart';
-import 'package:language_textfield/language_highlight_type.dart';
 
 import '../../widgets/formatter_view.dart';
 

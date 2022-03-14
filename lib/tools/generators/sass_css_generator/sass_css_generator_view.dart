@@ -1,6 +1,5 @@
 import 'package:alga/constants/import_helper.dart';
 import 'package:alga/tools/generators/sass_css_generator/sass_css_generator_provider.dart';
-import 'package:language_textfield/language_textfield.dart';
 
 class SassCssGeneratorView extends StatefulWidget {
   const SassCssGeneratorView({Key? key}) : super(key: key);
