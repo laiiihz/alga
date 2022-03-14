@@ -1,7 +1,5 @@
 import 'package:alga/constants/import_helper.dart';
 import 'package:alga/extension/list_ext.dart';
-import 'package:alga/utils/theme_util.dart';
-import 'package:flutter/material.dart';
 
 class ToolViewConfig extends StatelessWidget {
   final Widget title;
