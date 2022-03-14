@@ -35,47 +35,51 @@ class _LoremIpsumGeneratorViewState extends State<LoremIpsumGeneratorView> {
     return ToolView.scrollVertical(
       title: Text(S.of(context).generatorLoremIpsum),
       children: [
-        AppTitle(title: S.of(context).configuration),
-        ToolViewConfig(
-          leading: const Icon(Icons.text_snippet),
-          title: const Text('Type'),
-          subtitle: const Text(
-              'Generate words,sentences or paragraphs of Lorem ipsum'),
-          trailing: DropdownButton<LoremIpsumType>(
-            underline: const SizedBox.shrink(),
-            isDense: true,
-            items: LoremIpsumType.values
-                .map((e) => DropdownMenuItem(child: Text(e.value), value: e))
-                .toList(),
-            value: _provider.type,
-            onChanged: (LoremIpsumType? type) {
-              _provider.type = type ?? LoremIpsumType.words;
-              _provider.generate();
-            },
-          ),
-        ),
-        ToolViewConfig(
-          leading: const Icon(Icons.numbers),
-          title: const Text('Length'),
-          subtitle:
-              const Text('Number of words,sentences or paragraphs to generate'),
-          trailing: SizedBox(
-            width: 60,
-            child: TextField(
-              controller: _provider.numberController,
-              inputFormatters: [FilteringTextInputFormatter.digitsOnly],
-              onChanged: (_) {
-                final value = int.tryParse(_provider.numberController.text);
-                _provider.count = value ?? 1;
-                _provider.generate();
-              },
-              decoration: const InputDecoration(
+        ToolViewWrapper(
+          children: [
+            ToolViewConfig(
+              leading: const Icon(Icons.text_snippet),
+              title: const Text('Type'),
+              subtitle: const Text(
+                  'Generate words,sentences or paragraphs of Lorem ipsum'),
+              trailing: DropdownButton<LoremIpsumType>(
+                underline: const SizedBox.shrink(),
                 isDense: true,
-                contentPadding:
-                    EdgeInsets.symmetric(horizontal: 8, vertical: 12),
+                items: LoremIpsumType.values
+                    .map(
+                        (e) => DropdownMenuItem(child: Text(e.value), value: e))
+                    .toList(),
+                value: _provider.type,
+                onChanged: (LoremIpsumType? type) {
+                  _provider.type = type ?? LoremIpsumType.words;
+                  _provider.generate();
+                },
               ),
             ),
-          ),
+            ToolViewConfig(
+              leading: const Icon(Icons.numbers),
+              title: const Text('Length'),
+              subtitle: const Text(
+                  'Number of words,sentences or paragraphs to generate'),
+              trailing: SizedBox(
+                width: 60,
+                child: TextField(
+                  controller: _provider.numberController,
+                  inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+                  onChanged: (_) {
+                    final value = int.tryParse(_provider.numberController.text);
+                    _provider.count = value ?? 1;
+                    _provider.generate();
+                  },
+                  decoration: const InputDecoration(
+                    isDense: true,
+                    contentPadding:
+                        EdgeInsets.symmetric(horizontal: 8, vertical: 12),
+                  ),
+                ),
+              ),
+            ),
+          ],
         ),
         AppTitleWrapper(
           title: S.of(context).output,

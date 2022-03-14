@@ -1,3 +1,5 @@
+import 'package:alga/constants/import_helper.dart';
+import 'package:alga/extension/list_ext.dart';
 import 'package:alga/utils/theme_util.dart';
 import 'package:flutter/material.dart';
 
@@ -28,6 +30,23 @@ class ToolViewConfig extends StatelessWidget {
         trailing: trailing,
         tileColor: isDark(context) ? Colors.grey[900] : Colors.grey[50],
       ),
+    );
+  }
+}
+
+class ToolViewWrapper extends StatelessWidget {
+  final List<Widget> children;
+  const ToolViewWrapper({Key? key, required this.children}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        AppTitle(title: S.of(context).configuration),
+        const SizedBox(height: 8),
+        ...children.sep(const SizedBox(height: 4)),
+        const SizedBox(height: 8),
+      ],
     );
   }
 }

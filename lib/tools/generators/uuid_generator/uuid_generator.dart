@@ -33,41 +33,44 @@ class _UUIDGeneratorViewState extends State<UUIDGeneratorView> {
     return ToolView.scrollVertical(
       title: Text(S.of(context).generatorUUID),
       children: [
-        AppTitle(title: S.of(context).configuration),
-        ToolViewConfig(
-          leading: const Icon(Icons.horizontal_rule),
-          title: const Text('Hypens'),
-          trailing: Switch.adaptive(
-            value: _provider.hypens,
-            onChanged: (value) {
-              _provider.hypens = value;
-            },
-          ),
-        ),
-        ToolViewConfig(
-          leading: const Icon(Icons.text_fields),
-          title: const Text('Upper case'),
-          trailing: Switch.adaptive(
-            value: _provider.upperCase,
-            onChanged: (value) {
-              _provider.upperCase = value;
-            },
-          ),
-        ),
-        ToolViewConfig(
-          leading: const Icon(Icons.info_outline),
-          title: const Text('UUID Version'),
-          subtitle:
-              const Text('Choose the version of UUID version to generate'),
-          trailing: DropdownButton<UUIDVersion>(
-            items: UUIDVersion.values.map((e) {
-              return DropdownMenuItem(child: Text(e.value), value: e);
-            }).toList(),
-            value: _provider.version,
-            onChanged: (version) {
-              _provider.version = version ?? UUIDVersion.v1;
-            },
-          ),
+        ToolViewWrapper(
+          children: [
+            ToolViewConfig(
+              leading: const Icon(Icons.horizontal_rule),
+              title: const Text('Hypens'),
+              trailing: Switch.adaptive(
+                value: _provider.hypens,
+                onChanged: (value) {
+                  _provider.hypens = value;
+                },
+              ),
+            ),
+            ToolViewConfig(
+              leading: const Icon(Icons.text_fields),
+              title: const Text('Upper case'),
+              trailing: Switch.adaptive(
+                value: _provider.upperCase,
+                onChanged: (value) {
+                  _provider.upperCase = value;
+                },
+              ),
+            ),
+            ToolViewConfig(
+              leading: const Icon(Icons.info_outline),
+              title: const Text('UUID Version'),
+              subtitle:
+                  const Text('Choose the version of UUID version to generate'),
+              trailing: DropdownButton<UUIDVersion>(
+                items: UUIDVersion.values.map((e) {
+                  return DropdownMenuItem(child: Text(e.value), value: e);
+                }).toList(),
+                value: _provider.version,
+                onChanged: (version) {
+                  _provider.version = version ?? UUIDVersion.v1;
+                },
+              ),
+            ),
+          ],
         ),
         const AppTitle(title: 'generate'),
         Row(

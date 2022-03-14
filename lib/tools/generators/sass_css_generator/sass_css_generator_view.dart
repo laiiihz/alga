@@ -29,17 +29,20 @@ class _SassCssGeneratorViewState extends State<SassCssGeneratorView> {
     return ToolView.scrollVertical(
       title: Text(S.of(context).sassCssGenerator),
       children: [
-        AppTitle(title: S.of(context).configuration),
-        ToolViewConfig(
-          leading: const Icon(Icons.compress),
-          title: Text(S.of(context).compress),
-          trailing: Switch.adaptive(
-            value: _provider.compressResult,
-            onChanged: (state) {
-              _provider.compressResult = state;
-              _provider.generate();
-            },
-          ),
+        ToolViewWrapper(
+          children: [
+            ToolViewConfig(
+              leading: const Icon(Icons.compress),
+              title: Text(S.of(context).compress),
+              trailing: Switch.adaptive(
+                value: _provider.compressResult,
+                onChanged: (state) {
+                  _provider.compressResult = state;
+                  _provider.generate();
+                },
+              ),
+            ),
+          ],
         ),
         AppTitleWrapper(
           title: 'SCSS source',

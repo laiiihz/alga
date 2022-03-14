@@ -54,27 +54,30 @@ class _HashGeneratorViewState extends State<HashGeneratorView> {
     return ToolView.scrollVertical(
       title: Text(S.of(context).generatorHash),
       children: [
-        AppTitle(title: S.of(context).configuration),
-        ToolViewConfig(
-          leading: const Icon(Icons.text_fields),
-          title: const Text('UpperCase'),
-          trailing: Switch.adaptive(
-            value: _provider.upperCase,
-            onChanged: (value) {
-              _provider.upperCase = value;
-            },
-          ),
-        ),
-        ToolViewConfig(
-          title: const Text('HMAC'),
-          subtitle: const Text('Keyed-hash message authentication code'),
-          trailing: Switch.adaptive(
-            value: _provider.showHmac,
-            onChanged: (value) {
-              _provider.showHmac = value;
-              _provider.generate();
-            },
-          ),
+        ToolViewWrapper(
+          children: [
+            ToolViewConfig(
+              leading: const Icon(Icons.text_fields),
+              title: const Text('UpperCase'),
+              trailing: Switch.adaptive(
+                value: _provider.upperCase,
+                onChanged: (value) {
+                  _provider.upperCase = value;
+                },
+              ),
+            ),
+            ToolViewConfig(
+              title: const Text('HMAC'),
+              subtitle: const Text('Keyed-hash message authentication code'),
+              trailing: Switch.adaptive(
+                value: _provider.showHmac,
+                onChanged: (value) {
+                  _provider.showHmac = value;
+                  _provider.generate();
+                },
+              ),
+            ),
+          ],
         ),
         AppTitle(
           title: S.of(context).input,
