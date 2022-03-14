@@ -31,7 +31,7 @@ class _UriParserViewState extends State<UriParserView> {
   @override
   Widget build(BuildContext context) {
     return ToolView.scrollVertical(
-      title:  Text(S.of(context).uriParser),
+      title: Text(S.of(context).uriParser),
       children: [
         AppTitleWrapper(
           title: 'source',

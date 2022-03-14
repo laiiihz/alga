@@ -22,7 +22,10 @@ class AppSearchDelegate extends SearchDelegate {
         final allItems = ref.watch(toolsProvider)!.items;
         final currentItem = ref.read(currentToolProvider.notifier);
         final currentTools = allItems.where((element) {
-          return element.text(context).toLowerCase().contains(query.toLowerCase());
+          return element
+              .text(context)
+              .toLowerCase()
+              .contains(query.toLowerCase());
         }).toList();
         return ListView.builder(
           itemBuilder: (context, index) {
