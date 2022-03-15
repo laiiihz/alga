@@ -38,7 +38,7 @@ class _UUIDGeneratorViewState extends State<UUIDGeneratorView> {
             ToolViewConfig(
               leading: const Icon(Icons.horizontal_rule),
               title: const Text('Hypens'),
-              trailing: Switch.adaptive(
+              trailing: Switch(
                 value: _provider.hypens,
                 onChanged: (value) {
                   _provider.hypens = value;
@@ -48,7 +48,7 @@ class _UUIDGeneratorViewState extends State<UUIDGeneratorView> {
             ToolViewConfig(
               leading: const Icon(Icons.text_fields),
               title: Text(S.of(context).upperCase),
-              trailing: Switch.adaptive(
+              trailing: Switch(
                 value: _provider.upperCase,
                 onChanged: (value) {
                   _provider.upperCase = value;

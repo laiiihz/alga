@@ -63,7 +63,7 @@ class _QrcodeViewState extends State<QrcodeView> {
             ),
             ToolViewConfig(
               title: const Text('Gapless'),
-              trailing: Switch.adaptive(
+              trailing: Switch(
                 value: _provider.gapless,
                 onChanged: (state) {
                   _provider.gapless = state;

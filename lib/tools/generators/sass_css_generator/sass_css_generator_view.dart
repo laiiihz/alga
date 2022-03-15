@@ -34,7 +34,7 @@ class _SassCssGeneratorViewState extends State<SassCssGeneratorView> {
             ToolViewConfig(
               leading: const Icon(Icons.compress),
               title: Text(S.of(context).compress),
-              trailing: Switch.adaptive(
+              trailing: Switch(
                 value: _provider.compressResult,
                 onChanged: (state) {
                   _provider.compressResult = state;

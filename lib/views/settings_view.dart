@@ -24,9 +24,6 @@ class _SettingsViewState extends State<SettingsView> {
       title: Text(S.of(context).settings),
       content: ListView(
         children: <Widget>[
-          ListTile(
-            title: Text(S.of(context).about),
-          ),
           SettingsTile(
             leading: Image.asset('assets/logo/256.webp', height: 32, width: 32),
             title: Text(S.of(context).appName),

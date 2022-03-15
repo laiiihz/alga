@@ -8,6 +8,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import 'utils/theme_util.dart';
+
 late BuildContext globalContext;
 
 void main() async {
@@ -27,65 +29,11 @@ class MyApp extends StatelessWidget {
     return BoxBuilder(
         box: HiveUtil.systemBox,
         builder: (context, box) {
+          final theme = ThemeUtil(Color(SystemBox.model.themeColor));
           return MaterialApp(
             onGenerateTitle: (context) => S.of(context).appName,
-            theme: ThemeData(
-              colorScheme: ColorScheme.fromSeed(
-                seedColor: Color(SystemBox.model.themeColor),
-                brightness: Brightness.light,
-              ),
-              appBarTheme: AppBarTheme(
-                backgroundColor: Colors.grey[50],
-                foregroundColor: Colors.black87,
-                elevation: 0,
-              ),
-              inputDecorationTheme: const InputDecorationTheme(
-                border: OutlineInputBorder(),
-              ),
-              popupMenuTheme: PopupMenuThemeData(
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(8),
-                ),
-              ),
-              switchTheme: SwitchThemeData(
-                thumbColor: MaterialStateProperty.all(
-                    Color(SystemBox.model.themeColor)),
-                trackColor: MaterialStateProperty.resolveWith((states) {
-                  if (states.contains(MaterialState.selected)) {
-                    return Color(SystemBox.model.themeColor).withOpacity(0.5);
-                  } else {
-                    return null;
-                  }
-                }),
-              ),
-              useMaterial3: true,
-            ),
-            darkTheme: ThemeData(
-              colorScheme: ColorScheme.fromSeed(
-                seedColor: Color(SystemBox.model.themeColor),
-                brightness: Brightness.dark,
-              ),
-              inputDecorationTheme: const InputDecorationTheme(
-                border: OutlineInputBorder(),
-              ),
-              popupMenuTheme: PopupMenuThemeData(
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(8),
-                ),
-              ),
-              switchTheme: SwitchThemeData(
-                thumbColor: MaterialStateProperty.all(
-                    Color(SystemBox.model.themeColor)),
-                trackColor: MaterialStateProperty.resolveWith((states) {
-                  if (states.contains(MaterialState.selected)) {
-                    return Color(SystemBox.model.themeColor).withOpacity(0.5);
-                  } else {
-                    return null;
-                  }
-                }),
-              ),
-              useMaterial3: true,
-            ),
+            theme: theme.getTheme(Brightness.light),
+            darkTheme: theme.getTheme(Brightness.dark),
             themeMode: SystemBox.model.themeMode,
             home: const HomeView(),
             debugShowCheckedModeBanner: false,

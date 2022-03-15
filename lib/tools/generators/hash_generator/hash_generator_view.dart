@@ -59,7 +59,7 @@ class _HashGeneratorViewState extends State<HashGeneratorView> {
             ToolViewConfig(
               leading: const Icon(Icons.text_fields),
               title: Text(S.of(context).upperCase),
-              trailing: Switch.adaptive(
+              trailing: Switch(
                 value: _provider.upperCase,
                 onChanged: (value) {
                   _provider.upperCase = value;
@@ -69,7 +69,7 @@ class _HashGeneratorViewState extends State<HashGeneratorView> {
             ToolViewConfig(
               title: const Text('HMAC'),
               subtitle: const Text('Keyed-hash message authentication code'),
-              trailing: Switch.adaptive(
+              trailing: Switch(
                 value: _provider.showHmac,
                 onChanged: (value) {
                   _provider.showHmac = value;

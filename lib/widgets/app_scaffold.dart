@@ -60,10 +60,9 @@ class AppScaffold extends StatelessWidget {
                 },
                 child: Text(
                   S.of(context).appName,
-                  style: Theme.of(context)
-                      .textTheme
-                      .titleMedium
-                      ?.copyWith(fontWeight: FontWeight.bold),
+                  style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                      fontWeight: FontWeight.bold,
+                      color: Theme.of(context).colorScheme.secondary),
                 ),
               ),
               Consumer(

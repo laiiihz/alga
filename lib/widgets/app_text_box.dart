@@ -89,6 +89,7 @@ class _AppTextBoxState extends State<AppTextBox> {
               width: isFocus ? 2 : 1,
             ),
             borderRadius: BorderRadius.circular(4),
+            color: Theme.of(context).inputDecorationTheme.fillColor,
           ),
           child: text,
         ),

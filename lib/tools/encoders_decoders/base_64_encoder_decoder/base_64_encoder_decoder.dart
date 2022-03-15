@@ -46,7 +46,7 @@ class _Base64EncoderDecoderViewState extends State<Base64EncoderDecoderView> {
                   _provider.isEncode
                       ? Text(S.of(context).encode)
                       : Text(S.of(context).decode),
-                  Switch.adaptive(
+                  Switch(
                     value: _provider.isEncode,
                     onChanged: (state) {
                       _provider.isEncode = state;

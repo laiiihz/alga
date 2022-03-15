@@ -53,7 +53,7 @@ class _StaticServerToolViewState extends State<StaticServerToolView> {
             ToolViewConfig(
               leading: const Icon(Icons.list),
               title: const Text('List Directories'),
-              trailing: Switch.adaptive(
+              trailing: Switch(
                 value: _provider.listDirectories,
                 onChanged: (state) {
                   _provider.listDirectories = state;
@@ -63,7 +63,7 @@ class _StaticServerToolViewState extends State<StaticServerToolView> {
             ToolViewConfig(
               leading: const Icon(Icons.network_check),
               title: const Text('Accessible on Internet'),
-              trailing: Switch.adaptive(
+              trailing: Switch(
                 value: _provider.accessOnNet,
                 onChanged: (state) {
                   _provider.accessOnNet = state;

@@ -39,9 +39,7 @@ A flutter implement of [DevToys[veler]](https://github.com/veler/DevToys).
 * [ ] sass to css generator
   * [ ] pick syntax config
   * [ ] show sourceMap config
-* [ ] blurhash tool
 * [ ] Web Support
-* [ ] Migrate themeData
 
 ## Getting Started
 
