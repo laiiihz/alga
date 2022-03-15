@@ -5,12 +5,12 @@ class ToolViewConfig extends StatelessWidget {
   final Widget title;
   final Widget? subtitle;
   final Widget? leading;
-  final Widget trailing;
+  final Widget? trailing;
   final VoidCallback? onPressed;
   const ToolViewConfig(
       {Key? key,
       required this.title,
-      required this.trailing,
+      this.trailing,
       this.leading,
       this.subtitle,
       this.onPressed})

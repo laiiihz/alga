@@ -17,6 +17,7 @@ import 'package:alga/tools/generators/sass_css_generator/sass_css_generator_view
 import 'package:alga/tools/generators/uuid_generator/uuid_generator.dart';
 import 'package:alga/tools/image_tools/blur_hash_tool/blur_hash_view.dart';
 import 'package:alga/tools/image_tools/qrcode_tool/qrcode_view.dart';
+import 'package:alga/tools/info/device_info/device_info_view.dart';
 import 'package:alga/tools/server_tools/static_server_tool/static_server_tool_view.dart';
 import 'package:alga/tools/text_tools/markdown_preview/markdown_preview_view.dart';
 import 'package:alga/tools/text_tools/regex_tester/regex_tester_view.dart';
@@ -159,6 +160,17 @@ List<ToolGroup> _toolItems = [
       ],
       icon: const Icon(Icons.open_in_browser),
     ),
+  ToolGroup(
+    icon: const Icon(Icons.info),
+    title: (context) => const Text('Info'),
+    items: [
+      ToolItem(
+        icon: const Icon(Icons.info_outline),
+        title: (context) => const Text('Device Info'),
+        page: const DeviceInfoView(),
+      ),
+    ],
+  ),
 ];
 
 class NaviUtil {
