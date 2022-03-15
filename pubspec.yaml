@@ -25,12 +25,12 @@ dependencies:
     path: ./packages/language_textfield
 
   cupertino_icons: ^1.0.2
-  archive: ^3.2.1
+  archive: ^3.2.2
   dart_style: ^2.2.1
   uuid: ^3.0.6
   crypto: ^3.0.1
   flutter_svg: ^1.0.3
-  window_manager: ^0.1.9
+  window_manager: ^0.2.0
   yaml: ^3.1.0
   json2yaml: ^3.0.0
   flutter_markdown: ^0.6.9
@@ -41,7 +41,7 @@ dependencies:
   flutter_riverpod: ^1.0.3
   hotkey_manager: ^0.1.6
   sass: ^1.49.9
-  file_selector: ^0.8.4
+  file_selector: ^0.8.4+1
   shelf_static: ^1.1.0
   flutter_highlight: ^0.7.0
   hive: ^2.0.6
@@ -50,6 +50,7 @@ dependencies:
   blurhash_dart: ^1.1.0
   flutter_blurhash: ^0.6.4
   image_picker: ^0.8.4+11
+  device_info_plus: ^3.2.2
 
 dev_dependencies:
   flutter_test:
@@ -57,7 +58,7 @@ dev_dependencies:
 
   flutter_lints: ^1.0.0
   hive_generator: ^1.1.2
-  build_runner: ^2.1.7
+  build_runner: ^2.1.8
 
 flutter:
   uses-material-design: true
