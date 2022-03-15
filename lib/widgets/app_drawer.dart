@@ -7,6 +7,11 @@ final appDrawerController =
 
 final showAppTitle = StateProvider<bool>((ref) => true);
 
+final _kShape = RoundedRectangleBorder(borderRadius: BorderRadius.circular(12));
+const _kDrawerShape = RoundedRectangleBorder(
+  borderRadius: BorderRadius.horizontal(right: Radius.circular(12)),
+);
+
 class AppDrawer extends ConsumerStatefulWidget {
   const AppDrawer({Key? key}) : super(key: key);
 
@@ -43,6 +48,7 @@ class _AppDrawerState extends ConsumerState<AppDrawer> {
     final navi = ref.watch(toolsProvider)!;
     final scrollController = ref.watch(appDrawerController);
     return Drawer(
+      shape: _kDrawerShape,
       child: Column(
         children: [
           Expanded(
@@ -118,6 +124,7 @@ class _AppDrawerState extends ConsumerState<AppDrawer> {
               itemRead.state = navi.settingsItem;
               if (isSmallDevice(context)) Navigator.pop(context);
             },
+            shape: _kShape,
             tileColor: item == navi.settingsItem
                 ? Theme.of(context).colorScheme.primary.withOpacity(0.1)
                 : null,
