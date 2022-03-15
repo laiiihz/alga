@@ -1,8 +1,8 @@
 name: alga
-description: a flutter implements of veler devtoys.
+description: A powerful tool app for all developers.
 
 publish_to: "none"
-version: 0.2.3+7
+version: 0.3.0+10
 
 environment:
   sdk: ">=2.16.1 <3.0.0"
