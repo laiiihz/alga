@@ -25,13 +25,15 @@ A flutter implement of [DevToys[veler]](https://github.com/veler/DevToys).
   * Text
     * Markdown Preview
     * Regex Tester
+  * Image Tools
+    * Blurhash Tool
+    * QR Code Tool
   * Server Tools
     * Static Server Tool
 
 ## APP Plan
 
 * [ ] Rich `JSON` Editor
-  * [x] hightlight
   * [ ] code with fold
 * [ ] Launguage highlight
   * [ ] Regex
@@ -44,6 +46,8 @@ A flutter implement of [DevToys[veler]](https://github.com/veler/DevToys).
 ## Getting Started
 
 ### before build app
+
+#### Android
 
 * place your own key and modify this file (`android/key.properties.example`) and rename to `key.properties`
 
