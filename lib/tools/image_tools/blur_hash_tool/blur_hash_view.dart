@@ -53,9 +53,14 @@ class _BlurHashViewState extends State<BlurHashView> {
                         title: 'Raw Image',
                         actions: const [],
                         child: Expanded(
-                          child: Image.file(
-                            _provider.imageItem!.file,
-                            fit: BoxFit.contain,
+                          child: Center(
+                            child: AspectRatio(
+                              aspectRatio: _provider.imageItem!.aspectRatio,
+                              child: Image.file(
+                                _provider.imageItem!.file,
+                                fit: BoxFit.fill,
+                              ),
+                            ),
                           ),
                         ),
                       ),
@@ -67,9 +72,13 @@ class _BlurHashViewState extends State<BlurHashView> {
                         title: 'Blurhash Image',
                         actions: const [],
                         child: Expanded(
-                          child: BlurHash(
-                            hash: _provider.imageItem!.blurHash.hash,
-                            imageFit: BoxFit.contain,
+                          child: Center(
+                            child: AspectRatio(
+                              aspectRatio: _provider.imageItem!.aspectRatio,
+                              child: BlurHash(
+                                hash: _provider.imageItem!.blurHash.hash,
+                              ),
+                            ),
                           ),
                         ),
                       ),

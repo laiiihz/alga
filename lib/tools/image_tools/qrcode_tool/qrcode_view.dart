@@ -93,7 +93,7 @@ class _QrcodeViewState extends State<QrcodeView> {
                 version: _provider.qrVersion,
                 errorCorrectionLevel: _provider.errorCorrectionLevel,
                 gapless: _provider.gapless,
-                backgroundColor: isDark(context) ? Colors.black : Colors.white,
+                backgroundColor: Colors.transparent,
                 foregroundColor: isDark(context) ? Colors.white : Colors.black,
               ),
             ),

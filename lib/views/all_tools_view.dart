@@ -40,8 +40,7 @@ class _AllToolsViewState extends ConsumerState<AllToolsView> {
                     child: IconTheme(
                       data: IconThemeData(
                         size: 48,
-                        color:
-                            isDark(context) ? Colors.white70 : Colors.black87,
+                        color: Theme.of(context).colorScheme.secondary,
                       ),
                       child: item.icon,
                     ),
