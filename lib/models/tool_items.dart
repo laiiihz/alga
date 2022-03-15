@@ -15,6 +15,7 @@ import 'package:alga/tools/generators/hash_generator/hash_generator_view.dart';
 import 'package:alga/tools/generators/lorem_ipsum_generator/lorem_ipsum_generator_view.dart';
 import 'package:alga/tools/generators/sass_css_generator/sass_css_generator_view.dart';
 import 'package:alga/tools/generators/uuid_generator/uuid_generator.dart';
+import 'package:alga/tools/image_tools/blur_hash_tool/blur_hash_view.dart';
 import 'package:alga/tools/server_tools/static_server_tool/static_server_tool_view.dart';
 import 'package:alga/tools/text_tools/markdown_preview/markdown_preview_view.dart';
 import 'package:alga/tools/text_tools/regex_tester/regex_tester_view.dart';
@@ -126,6 +127,17 @@ List<ToolGroup> _toolItems = [
         icon: const SvgAssetIcon('assets/icons/MarkdownPreview.svg'),
         title: (context) => Text(S.of(context).markdownPreview),
         page: const MarkdownPreviewView(),
+      ),
+    ],
+  ),
+  ToolGroup(
+    icon: const Icon(Icons.image),
+    title: (context) => const Text('Image Tool'),
+    items: [
+      ToolItem(
+        icon: const Icon(Icons.imagesearch_roller),
+        title: (context) => const Text('Blur Hash Tool'),
+        page: const BlurHashView(),
       ),
     ],
   ),

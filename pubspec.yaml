@@ -46,6 +46,10 @@ dependencies:
   flutter_highlight: ^0.7.0
   hive: ^2.0.6
   hive_flutter: ^1.1.0
+  qr_flutter: ^4.0.0
+  blurhash_dart: ^1.1.0
+  flutter_blurhash: ^0.6.4
+  image_picker: ^0.8.4+11
 
 dev_dependencies:
   flutter_test:

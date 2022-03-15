@@ -33,7 +33,9 @@ class ToolViewConfig extends StatelessWidget {
 }
 
 class ToolViewWrapper extends StatelessWidget {
+  /// normally a list of [ToolViewConfig]
   final List<Widget> children;
+
   const ToolViewWrapper({Key? key, required this.children}) : super(key: key);
 
   @override
