@@ -26,7 +26,7 @@ class _AllToolsViewState extends ConsumerState<AllToolsView> {
         itemBuilder: (context, index) {
           final item = _navi.items[index];
           return Material(
-            color: isDark(context) ? Colors.white12 : Colors.grey[100],
+            color: Theme.of(context).colorScheme.primary.withOpacity(0.1),
             borderRadius: BorderRadius.circular(4),
             child: InkWell(
               borderRadius: BorderRadius.circular(4),

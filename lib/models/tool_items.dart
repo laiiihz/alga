@@ -60,7 +60,7 @@ List<ToolGroup> _toolItems = [
         page: const GzipCompressDecompressView(),
       ),
       ToolItem(
-        icon: const SvgAssetIcon('assets/icons/JWT.svg'),
+        icon: const SvgAssetIcon('assets/icons/JWT.svg', colorIcon: true),
         title: (context) => Text(S.of(context).decoderJWT),
         page: const JWTDecoderView(),
       ),
