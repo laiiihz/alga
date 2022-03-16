@@ -44,6 +44,7 @@ class AppTitleWrapper extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       mainAxisSize: MainAxisSize.min,
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         AppTitle(title: title, actions: actions),
         const SizedBox(height: 4),

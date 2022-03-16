@@ -8,7 +8,6 @@ class SvgAssetIcon extends StatelessWidget {
       : super(key: key);
 
   Color? _color(BuildContext context) {
-    final brightness = Theme.of(context).brightness;
     if (colorIcon) return null;
     return Theme.of(context).colorScheme.secondary;
   }

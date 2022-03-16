@@ -19,6 +19,7 @@ import 'package:alga/tools/image_tools/blur_hash_tool/blur_hash_view.dart';
 import 'package:alga/tools/image_tools/qrcode_tool/qrcode_view.dart';
 import 'package:alga/tools/info/device_info/device_info_view.dart';
 import 'package:alga/tools/server_tools/static_server_tool/static_server_tool_view.dart';
+import 'package:alga/tools/text_tools/date_parser/date_parser_view.dart';
 import 'package:alga/tools/text_tools/markdown_preview/markdown_preview_view.dart';
 import 'package:alga/tools/text_tools/regex_tester/regex_tester_view.dart';
 import 'package:alga/views/all_tools_view.dart';
@@ -129,6 +130,11 @@ List<ToolGroup> _toolItems = [
         icon: const SvgAssetIcon('assets/icons/MarkdownPreview.svg'),
         title: (context) => Text(S.of(context).markdownPreview),
         page: const MarkdownPreviewView(),
+      ),
+      ToolItem(
+        icon: const Icon(Icons.date_range),
+        title: (context) => const Text('Date Parser'),
+        page: const DateParserView(),
       ),
     ],
   ),
