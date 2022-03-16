@@ -1,34 +1,11 @@
 import 'package:alga/constants/import_helper.dart';
 import 'package:alga/tools/generators/lorem_ipsum_generator/lorem_ipsum_provider.dart';
+import 'package:alga/utils/clipboard_util.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class LoremIpsumGeneratorView extends StatefulWidget {
+class LoremIpsumGeneratorView extends StatelessWidget {
   const LoremIpsumGeneratorView({Key? key}) : super(key: key);
-
-  @override
-  State<LoremIpsumGeneratorView> createState() =>
-      _LoremIpsumGeneratorViewState();
-}
-
-class _LoremIpsumGeneratorViewState extends State<LoremIpsumGeneratorView> {
-  final LoremIpsumProvider _provider = LoremIpsumProvider();
-
-  update() {
-    setState(() {});
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    _provider.addListener(update);
-  }
-
-  @override
-  void dispose() {
-    _provider.removeListener(update);
-    _provider.dispose();
-    super.dispose();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -42,17 +19,22 @@ class _LoremIpsumGeneratorViewState extends State<LoremIpsumGeneratorView> {
               title: const Text('Type'),
               subtitle: const Text(
                   'Generate words,sentences or paragraphs of Lorem ipsum'),
-              trailing: DropdownButton<LoremIpsumType>(
-                underline: const SizedBox.shrink(),
-                isDense: true,
-                items: LoremIpsumType.values
-                    .map(
-                        (e) => DropdownMenuItem(child: Text(e.value), value: e))
-                    .toList(),
-                value: _provider.type,
-                onChanged: (LoremIpsumType? type) {
-                  _provider.type = type ?? LoremIpsumType.words;
-                  _provider.generate();
+              trailing: Consumer(
+                builder: (context, ref, _) {
+                  return DropdownButton<LoremIpsumType>(
+                    underline: const SizedBox.shrink(),
+                    items: LoremIpsumType.values
+                        .map((e) => DropdownMenuItem(
+                              child: Text(e.typeName(context)),
+                              value: e,
+                            ))
+                        .toList(),
+                    value: ref.watch(loremType),
+                    onChanged: (LoremIpsumType? type) {
+                      final _type = ref.read(loremType.notifier);
+                      _type.state = type ?? LoremIpsumType.words;
+                    },
+                  );
                 },
               ),
             ),
@@ -63,20 +45,22 @@ class _LoremIpsumGeneratorViewState extends State<LoremIpsumGeneratorView> {
                   'Number of words,sentences or paragraphs to generate'),
               trailing: SizedBox(
                 width: 60,
-                child: TextField(
-                  controller: _provider.numberController,
-                  inputFormatters: [FilteringTextInputFormatter.digitsOnly],
-                  onChanged: (_) {
-                    final value = int.tryParse(_provider.numberController.text);
-                    _provider.count = value ?? 1;
-                    _provider.generate();
-                  },
-                  decoration: const InputDecoration(
-                    isDense: true,
-                    contentPadding:
-                        EdgeInsets.symmetric(horizontal: 8, vertical: 12),
-                  ),
-                ),
+                child: Consumer(builder: (context, ref, _) {
+                  return TextField(
+                    controller: ref.watch(loremNumberController),
+                    inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+                    onChanged: (_) {
+                      final value =
+                          int.tryParse(ref.watch(loremNumberController).text);
+                      ref.read(loremCount.notifier).state = value ?? 1;
+                    },
+                    decoration: const InputDecoration(
+                      isDense: true,
+                      contentPadding:
+                          EdgeInsets.symmetric(horizontal: 8, vertical: 12),
+                    ),
+                  );
+                }),
               ),
             ),
           ],
@@ -84,19 +68,43 @@ class _LoremIpsumGeneratorViewState extends State<LoremIpsumGeneratorView> {
         AppTitleWrapper(
           title: S.of(context).output,
           actions: [
-            IconButton(
-              icon: const Icon(Icons.copy),
-              onPressed: () => _provider.copy(),
+            Consumer(
+              builder: (context, ref, _) {
+                return ref.watch(loremProvider).when(
+                      data: (state) => IconButton(
+                        icon: const Icon(Icons.copy),
+                        onPressed: () async {
+                          ClipboardUtil.copy(state.output);
+                        },
+                      ),
+                      error: (err, stack) => Text(err.toString()),
+                      loading: () => const CircularProgressIndicator(),
+                    );
+              },
             ),
-            IconButton(
-              icon: const Icon(Icons.clear),
-              onPressed: () => _provider.clear(),
+            Consumer(
+              builder: (context, ref, _) {
+                return IconButton(
+                  icon: const Icon(Icons.refresh),
+                  onPressed: () {
+                    ref.refresh(loremProvider);
+                  },
+                );
+              },
             ),
           ],
-          child: TextField(
-            controller: _provider.outputController,
-            minLines: 2,
-            maxLines: 12,
+          child: Consumer(
+            builder: (context, ref, _) {
+              return ref.watch(loremProvider).when(
+                    data: (state) => AppTextBox(
+                      data: state.output,
+                      minLines: 2,
+                      maxLines: null,
+                    ),
+                    error: (err, stack) => Text(err.toString()),
+                    loading: () => const CircularProgressIndicator(),
+                  );
+            },
           ),
         ),
       ],

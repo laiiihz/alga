@@ -1,6 +1,5 @@
-import 'package:alga/tools/generators/abstract/generator_base.dart';
-import 'package:alga/utils/clipboard_util.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:lorem_ipsum/lorem_ipsum.dart';
 
 enum LoremIpsumType {
@@ -10,64 +9,47 @@ enum LoremIpsumType {
 }
 
 extension LoremIpsumTypeExt on LoremIpsumType {
-  String get value {
+  String typeName(BuildContext context) {
+    String _name = '';
     switch (this) {
       case LoremIpsumType.words:
-        return 'Words'.padRight(12);
+        _name = 'Words';
+        break;
       case LoremIpsumType.sentences:
-        return 'Sentences'.padRight(12);
+        _name = 'Sentences';
+        break;
       case LoremIpsumType.paragraphs:
-        return 'Paragraphs'.padRight(12);
+        _name = 'Paragraphs';
+        break;
     }
+    return _name.padLeft(_name.length + 4);
   }
 }
 
-class LoremIpsumProvider extends GeneratorBase {
-  LoremIpsumType _type = LoremIpsumType.paragraphs;
-  LoremIpsumType get type => _type;
-  set type(LoremIpsumType state) {
-    _type = state;
-    notifyListeners();
-  }
-
-  int _count = 1;
-  int get count => _count;
-  set count(int state) {
-    _count = state;
-    notifyListeners();
-  }
-
-  TextEditingController numberController = TextEditingController();
-  TextEditingController outputController = TextEditingController();
-
-  @override
-  generate() {
-    switch (_type) {
-      case LoremIpsumType.words:
-        outputController.text = LoremIpsum.words(_count).join(' ');
-        return;
-      case LoremIpsumType.sentences:
-        outputController.text = LoremIpsum.sentences(_count).join(' ');
-        return;
-      case LoremIpsumType.paragraphs:
-        outputController.text = LoremIpsum.paragraphs(_count).join(' ');
-        return;
-    }
-  }
-
-  copy() {
-    ClipboardUtil.copy(outputController.text);
-  }
-
-  @override
-  clear() {
-    outputController.clear();
-  }
-
-  @override
-  void dispose() {
-    outputController.dispose();
-    numberController.dispose();
-    super.dispose();
-  }
+class LoremState {
+  final String output;
+  LoremState({required this.output});
 }
+
+final loremType = StateProvider.autoDispose<LoremIpsumType>((ref) {
+  return LoremIpsumType.paragraphs;
+});
+final loremCount = StateProvider.autoDispose<int>((ref) => 1);
+final loremNumberController = StateProvider.autoDispose((ref) {
+  final controller = TextEditingController();
+  ref.onDispose(() => controller.dispose());
+  return controller;
+});
+
+final loremProvider = FutureProvider.autoDispose<LoremState>((ref) {
+  final count = ref.watch(loremCount);
+  final type = ref.watch(loremType);
+  switch (type) {
+    case LoremIpsumType.words:
+      return LoremState(output: LoremIpsum.words(count).join(' '));
+    case LoremIpsumType.sentences:
+      return LoremState(output: LoremIpsum.sentences(count).join(' '));
+    case LoremIpsumType.paragraphs:
+      return LoremState(output: LoremIpsum.paragraphs(count).join(' '));
+  }
+});

@@ -6,7 +6,7 @@ bool isDark(BuildContext context) =>
 bool isLight(BuildContext context) => !isDark(context);
 
 bool isSmallDevice(BuildContext context) =>
-    MediaQuery.of(context).size.width < 980;
+    MediaQuery.of(context).size.width < 768;
 
 class ThemeUtil {
   final Color color;

@@ -18,6 +18,7 @@ enum HashType {
 }
 
 extension HashTypeExt on HashType {
+  // String typeName(BuildContext context) {}
   String get value {
     switch (this) {
       case HashType.md5:
