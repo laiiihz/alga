@@ -3,10 +3,10 @@ import 'package:alga/extension/list_ext.dart';
 
 class AppTitle extends StatelessWidget {
   final String title;
-  final List<Widget> actions;
-  const AppTitle({Key? key, required this.title, this.actions = const []})
+  final List<Widget>? actions;
+  const AppTitle({Key? key, required this.title, this.actions})
       : super(key: key);
-
+  List<Widget> get _actions => actions ?? const <Widget>[];
   @override
   Widget build(BuildContext context) {
     return Material(
@@ -19,7 +19,7 @@ class AppTitle extends StatelessWidget {
         child: Row(
           children: [
             Expanded(child: Text(title, maxLines: 1)),
-            ...actions.sep(const SizedBox(width: 4)),
+            ..._actions.sep(const SizedBox(width: 4)),
           ],
         ),
       ),
@@ -29,13 +29,13 @@ class AppTitle extends StatelessWidget {
 
 class AppTitleWrapper extends StatelessWidget {
   final String title;
-  final List<Widget> actions;
+  final List<Widget>? actions;
   final Widget child;
   final bool expand;
   const AppTitleWrapper(
       {Key? key,
       required this.title,
-      required this.actions,
+      this.actions,
       required this.child,
       this.expand = false})
       : super(key: key);
