@@ -10,19 +10,14 @@ enum LoremIpsumType {
 
 extension LoremIpsumTypeExt on LoremIpsumType {
   String typeName(BuildContext context) {
-    String _name = '';
     switch (this) {
       case LoremIpsumType.words:
-        _name = 'Words';
-        break;
+        return 'Words';
       case LoremIpsumType.sentences:
-        _name = 'Sentences';
-        break;
+        return 'Sentences';
       case LoremIpsumType.paragraphs:
-        _name = 'Paragraphs';
-        break;
+        return 'Paragraphs';
     }
-    return _name.padLeft(_name.length + 4);
   }
 }
 
