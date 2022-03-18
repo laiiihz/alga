@@ -1,15 +1,22 @@
-import 'dart:io';
+part of './blur_hash_view.dart';
 
-import 'package:alga/utils/image_util.dart';
-import 'package:flutter/material.dart';
+final _currentFile =
+    StateNotifierProvider.autoDispose<FileState, File?>((ref) => FileState());
 
-class BlurHashProvider extends ChangeNotifier {
-  ImageItem? imageItem;
-  Future<bool> gen() async {
-    File? file = await ImageUtil.pick();
-    if (file == null) return false;
-    imageItem = await ImageUtil.getBlurHash(file);
-    notifyListeners();
-    return imageItem != null;
+final _currentImageItem = FutureProvider.autoDispose<ImageItem?>((ref) {
+  final file = ref.watch(_currentFile);
+  if (file == null) return null;
+  return _gen(file);
+});
+
+class FileState extends StateNotifier<File?> {
+  FileState() : super(null);
+
+  pick() async {
+    state = await ImageUtil.pick();
   }
+}
+
+Future<ImageItem?> _gen(File file) async {
+  return await compute(ImageUtil.getBlurHash, file);
 }
