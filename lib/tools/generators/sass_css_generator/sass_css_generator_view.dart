@@ -1,5 +1,9 @@
 import 'package:alga/constants/import_helper.dart';
-import 'package:alga/tools/generators/sass_css_generator/sass_css_generator_provider.dart';
+import 'package:alga/utils/clipboard_util.dart';
+import 'package:alga/widgets/ref_readonly.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:sass/sass.dart';
+part './sass_css_generator_provider.dart';
 
 class SassCssGeneratorView extends StatefulWidget {
   const SassCssGeneratorView({Key? key}) : super(key: key);
@@ -9,21 +13,6 @@ class SassCssGeneratorView extends StatefulWidget {
 }
 
 class _SassCssGeneratorViewState extends State<SassCssGeneratorView> {
-  final _provider = SassCssGeneratorProvider();
-  update() => setState(() {});
-  @override
-  void initState() {
-    super.initState();
-    _provider.addListener(update);
-  }
-
-  @override
-  void dispose() {
-    _provider.removeListener(update);
-    _provider.dispose();
-    super.dispose();
-  }
-
   @override
   Widget build(BuildContext context) {
     return ToolView.scrollVertical(
@@ -34,53 +23,63 @@ class _SassCssGeneratorViewState extends State<SassCssGeneratorView> {
             ToolViewConfig(
               leading: const Icon(Icons.compress),
               title: Text(S.of(context).compress),
-              trailing: Switch(
-                value: _provider.compressResult,
-                onChanged: (state) {
-                  _provider.compressResult = state;
-                  _provider.generate();
-                },
-              ),
+              trailing: Consumer(builder: (context, ref, _) {
+                return Switch(
+                  value: ref.watch(_compress),
+                  onChanged: (state) {
+                    ref.read(_compress.notifier).state = state;
+                  },
+                );
+              }),
             ),
           ],
         ),
         AppTitleWrapper(
           title: 'SCSS source',
           actions: [
-            IconButton(
-              onPressed: () {
-                _provider.paste();
-                _provider.generate();
-              },
-              icon: const Icon(Icons.paste),
-            ),
+            RefReadonly(builder: (ref) {
+              return IconButton(
+                onPressed: () async {
+                  ref.watch(_inputController).text =
+                      await ClipboardUtil.paste();
+                  ref.refresh(_cssResult);
+                },
+                icon: const Icon(Icons.paste),
+              );
+            }),
           ],
-          child: LangTextField(
-            lang: LangHighlightType.scss,
-            controller: _provider.scssController,
-            minLines: 2,
-            maxLines: 12,
-            onChanged: (_) {
-              _provider.generate();
-            },
-          ),
+          child: Consumer(builder: (context, ref, _) {
+            return LangTextField(
+              lang: LangHighlightType.scss,
+              controller: ref.watch(_inputController),
+              minLines: 2,
+              maxLines: 12,
+              onChanged: (_) {
+                ref.refresh(_cssResult);
+              },
+            );
+          }),
         ),
         AppTitleWrapper(
           title: 'CSS result',
           actions: [
-            IconButton(
-              onPressed: () {
-                _provider.copy();
-              },
-              icon: const Icon(Icons.copy),
-            ),
+            RefReadonly(builder: (ref) {
+              return IconButton(
+                onPressed: () {
+                  ClipboardUtil.copy(ref.read(_cssResult));
+                },
+                icon: const Icon(Icons.copy),
+              );
+            }),
           ],
-          child: AppTextBox(
-            lang: LangHighlightType.css,
-            data: _provider.cssResult,
-            minLines: 2,
-            maxLines: 12,
-          ),
+          child: Consumer(builder: (context, ref, _) {
+            return AppTextBox(
+              lang: LangHighlightType.css,
+              data: ref.watch(_cssResult),
+              minLines: 2,
+              maxLines: 12,
+            );
+          }),
         ),
       ],
     );

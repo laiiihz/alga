@@ -1,55 +1,20 @@
-import 'package:alga/constants/import_helper.dart';
-import 'package:alga/tools/generators/abstract/generator_base.dart';
-import 'package:alga/utils/clipboard_util.dart';
-import 'package:sass/sass.dart';
+part of './sass_css_generator_view.dart';
 
-class SassCssGeneratorProvider extends GeneratorBase {
-  final scssController = TextEditingController();
-  String _cssResult = '';
-  String get cssResult => _cssResult;
-  set cssResult(String state) {
-    _cssResult = state;
-    notifyListeners();
-  }
+final _inputController = StateProvider.autoDispose<TextEditingController>(
+    (ref) => TextEditingController());
 
-  bool _compressResult = false;
-  bool get compressResult => _compressResult;
-  set compressResult(bool state) {
-    _compressResult = state;
-    notifyListeners();
-  }
+final _compress = StateProvider.autoDispose<bool>((ref) => false);
 
-  paste() async {
-    scssController.text = await ClipboardUtil.paste();
+final _cssResult = StateProvider.autoDispose<String>((ref) {
+  final compress = ref.watch(_compress);
+  final text = ref.watch(_inputController).text;
+  try {
+    final result = compileStringToResult(
+      text,
+      style: compress ? OutputStyle.compressed : OutputStyle.expanded,
+    );
+    return result.css;
+  } catch (e) {
+    return '';
   }
-
-  copy() async {
-    ClipboardUtil.copy(cssResult);
-  }
-
-  @override
-  void clear() {
-    scssController.clear();
-    cssResult = '';
-  }
-
-  @override
-  void generate() {
-    try {
-      final result = compileStringToResult(
-        scssController.text,
-        style: compressResult ? OutputStyle.compressed : OutputStyle.expanded,
-      );
-      cssResult = result.css;
-    } catch (e) {
-      cssResult = '';
-      return;
-    }
-  }
-
-  @override
-  void dispose() {
-    scssController.dispose();
-    super.dispose();
-  }
-}
+});
