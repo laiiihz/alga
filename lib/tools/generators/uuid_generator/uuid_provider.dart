@@ -1,7 +1,4 @@
-import 'package:alga/tools/generators/abstract/generator_base.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:uuid/uuid.dart';
+part of './uuid_generator.dart';
 
 enum UUIDVersion {
   v1,
@@ -9,7 +6,7 @@ enum UUIDVersion {
 }
 
 extension UUIDExt on UUIDVersion {
-  String get value {
+  String typeName(BuildContext context) {
     switch (this) {
       case UUIDVersion.v1:
         return '1'.padRight(10);
@@ -19,50 +16,32 @@ extension UUIDExt on UUIDVersion {
   }
 }
 
-class UUIDProvider extends GeneratorBase {
-  final uuid = const Uuid();
-  bool _hypens = true;
-  bool get hypens => _hypens;
-  set hypens(bool state) {
-    _hypens = state;
-    notifyListeners();
-  }
+final _uuid = StateProvider.autoDispose((ref) => const Uuid());
 
-  bool _upperCase = true;
-  bool get upperCase => _upperCase;
-  set upperCase(bool state) {
-    _upperCase = state;
-    notifyListeners();
-  }
+final _version =
+    StateProvider.autoDispose<UUIDVersion>((ref) => UUIDVersion.v4);
+final _hypens = StateProvider.autoDispose<bool>((ref) => true);
+final _upperCase = StateProvider.autoDispose<bool>((ref) => true);
+final _countController =
+    StateProvider.autoDispose<TextEditingController>((ref) {
+  final controller = TextEditingController();
+  ref.onDispose(controller.dispose);
+  return controller;
+});
 
-  UUIDVersion _version = UUIDVersion.v4;
-  UUIDVersion get version => _version;
-  set version(UUIDVersion state) {
-    _version = state;
-    notifyListeners();
-  }
+final _count = StateProvider.autoDispose<int>((ref) {
+  return int.tryParse(ref.read(_countController).text) ?? 1;
+});
 
-  int _count = 1;
-  int get count => _count;
-  set count(int value) {
-    _count = value;
-    notifyListeners();
-  }
-
-  TextEditingController resultController = TextEditingController();
-  TextEditingController numberController = TextEditingController();
-
-  Future copy() async {
-    await Clipboard.setData(ClipboardData(text: resultController.text));
-  }
-
-  @override
-  void clear() {
-    resultController.clear();
-  }
+final _results = StateProvider.autoDispose<List<String>>((ref) {
+  final uuid = ref.read(_uuid);
+  final version = ref.watch(_version);
+  final hypen = ref.watch(_hypens);
+  final uppercase = ref.watch(_upperCase);
+  final count = ref.watch(_count);
 
   String _genId() {
-    switch (_version) {
+    switch (version) {
       case UUIDVersion.v1:
         return uuid.v1();
       case UUIDVersion.v4:
@@ -70,27 +49,15 @@ class UUIDProvider extends GeneratorBase {
     }
   }
 
-  String _decoratedData() {
-    String result = _genId();
-    if (!_hypens) {
-      result = result.replaceAll('-', '');
-    }
-    if (_upperCase) {
-      result = result.toUpperCase();
-    }
-    return result;
+  String _convertValue() {
+    String value = _genId();
+    if (!hypen) value = value.replaceAll('-', '');
+    if (uppercase) value = value.toUpperCase();
+    return value;
   }
 
-  @override
-  generate() {
-    List<String> results = List.generate(_count, (index) => _decoratedData());
-    resultController.text = results.join('\n');
-  }
+  return List.generate(count, (index) => _convertValue());
+});
 
-  @override
-  void dispose() {
-    resultController.dispose();
-    numberController.dispose();
-    super.dispose();
-  }
-}
+final _resultValue =
+    StateProvider.autoDispose<String>((ref) => ref.watch(_results).join('\n'));
