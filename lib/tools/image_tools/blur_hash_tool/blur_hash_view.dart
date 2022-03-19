@@ -1,11 +1,17 @@
 import 'dart:io';
+import 'dart:typed_data';
+import 'dart:ui' as ui;
 
 import 'package:alga/constants/import_helper.dart';
+import 'package:alga/utils/clipboard_util.dart';
 import 'package:alga/utils/image_util.dart';
 import 'package:alga/widgets/ref_readonly.dart';
+import 'package:file_selector/file_selector.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_blurhash/flutter_blurhash.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:path/path.dart' as path;
+
 part './blur_hash_provider.dart';
 
 class BlurHashView extends StatefulWidget {
@@ -18,6 +24,7 @@ class BlurHashView extends StatefulWidget {
 class _BlurHashViewState extends State<BlurHashView> {
   @override
   Widget build(BuildContext context) {
+    print(DateTime.now().microsecondsSinceEpoch);
     return ToolView.scrollVertical(
       title: const Text('Blur Hash Tool'),
       children: [
@@ -60,7 +67,19 @@ class _BlurHashViewState extends State<BlurHashView> {
                               ? const SizedBox.shrink()
                               : AppTitleWrapper(
                                   title: 'Blurhash Image',
-                                  actions: const [],
+                                  actions: [
+                                    IconButton(
+                                      onPressed: () async {
+                                        final config = await getConfig(
+                                          context: context,
+                                          hash: item.blurHash.hash,
+                                        );
+                                        if (config == null) return;
+                                        await save(config, context);
+                                      },
+                                      icon: const Icon(Icons.save_alt),
+                                    ),
+                                  ],
                                   child: Expanded(
                                     child: Center(
                                       child: AspectRatio(
@@ -88,7 +107,14 @@ class _BlurHashViewState extends State<BlurHashView> {
                   if (item == null) return const SizedBox.shrink();
                   return AppTitleWrapper(
                     title: 'blurhash',
-                    actions: const [],
+                    actions: [
+                      IconButton(
+                        onPressed: () {
+                          ClipboardUtil.copy(item.blurHash.hash);
+                        },
+                        icon: const Icon(Icons.copy),
+                      )
+                    ],
                     child: AppTextBox(data: item.blurHash.hash),
                   );
                 },
