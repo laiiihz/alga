@@ -28,17 +28,18 @@ class _QrcodeViewState extends State<QrcodeView> {
   @override
   Widget build(BuildContext context) {
     return ToolView.scrollVertical(
-      title: const Text('QR Code Tool'),
+      title: Text(S.of(context).qrCodeTool),
       children: [
         ToolViewWrapper(
           children: [
             ToolViewConfig(
-              title: const Text('Version'),
+              title: Text(S.of(context).qrVersion),
               trailing: SizedBox(
                 width: 120,
                 child: TextField(
                   controller: _provider.versionController,
-                  decoration: const InputDecoration(hintText: 'auto'),
+                  decoration:
+                      InputDecoration(hintText: S.of(context).qrAutoVersion),
                   onChanged: (_) {
                     _provider.setQrVersion(_provider.versionController.text);
                   },
@@ -46,7 +47,7 @@ class _QrcodeViewState extends State<QrcodeView> {
               ),
             ),
             ToolViewConfig(
-              title: const Text('Error Correction Level'),
+              title: Text(S.of(context).errorCorrectionLevel),
               trailing: DropdownButton<int>(
                 items: QrErrorCorrectLevel.levels
                     .map((e) => DropdownMenuItem(
@@ -62,7 +63,7 @@ class _QrcodeViewState extends State<QrcodeView> {
               ),
             ),
             ToolViewConfig(
-              title: const Text('Gapless'),
+              title: Text(S.of(context).qrGapless),
               trailing: Switch(
                 value: _provider.gapless,
                 onChanged: (state) {
@@ -83,7 +84,7 @@ class _QrcodeViewState extends State<QrcodeView> {
           ),
         ),
         AppTitleWrapper(
-          title: 'QR image',
+          title: S.of(context).output,
           actions: const [],
           child: SizedBox(
             height: 300,

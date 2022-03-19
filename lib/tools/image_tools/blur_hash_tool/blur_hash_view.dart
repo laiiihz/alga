@@ -24,20 +24,19 @@ class BlurHashView extends StatefulWidget {
 class _BlurHashViewState extends State<BlurHashView> {
   @override
   Widget build(BuildContext context) {
-    print(DateTime.now().microsecondsSinceEpoch);
     return ToolView.scrollVertical(
-      title: const Text('Blur Hash Tool'),
+      title: Text(S.of(context).blurHashTool),
       children: [
         ToolViewWrapper(children: [
           ToolViewConfig(
             leading: const Icon(Icons.image),
-            title: const Text('Pick image'),
+            title: Text(S.of(context).pickImage),
             trailing: RefReadonly(builder: (ref) {
               return TextButton(
                 onPressed: () async {
                   await ref.read(_currentFile.notifier).pick();
                 },
-                child: const Text('Pick'),
+                child: Text(S.of(context).pickImagePick),
               );
             }),
           ),

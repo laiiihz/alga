@@ -133,23 +133,23 @@ List<ToolGroup> _toolItems = [
       ),
       ToolItem(
         icon: const Icon(Icons.date_range),
-        title: (context) => const Text('Date Parser'),
+        title: (context) => Text(S.of(context).dateParser),
         page: const DateParserView(),
       ),
     ],
   ),
   ToolGroup(
     icon: const Icon(Icons.image),
-    title: (context) => const Text('Image Tool'),
+    title: (context) => Text(S.of(context).imageTools),
     items: [
       ToolItem(
         icon: const Icon(Icons.imagesearch_roller),
-        title: (context) => const Text('Blur Hash Tool'),
+        title: (context) => Text(S.of(context).blurHashTool),
         page: const BlurHashView(),
       ),
       ToolItem(
         icon: const Icon(Icons.qr_code),
-        title: (context) => const Text('Qr Code Tool'),
+        title: (context) => Text(S.of(context).qrCodeTool),
         page: const QrcodeView(),
       ),
     ],
@@ -168,11 +168,11 @@ List<ToolGroup> _toolItems = [
     ),
   ToolGroup(
     icon: const Icon(Icons.info),
-    title: (context) => const Text('Info'),
+    title: (context) => Text(S.of(context).systemInfos),
     items: [
       ToolItem(
         icon: const Icon(Icons.info_outline),
-        title: (context) => const Text('Device Info'),
+        title: (context) => Text(S.of(context).deviceInfo),
         page: const DeviceInfoView(),
       ),
     ],
