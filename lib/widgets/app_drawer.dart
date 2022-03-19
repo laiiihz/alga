@@ -35,7 +35,7 @@ class _AppDrawerState extends ConsumerState<AppDrawer> {
   }
 
   updateScrollState() {
-    if (mounted && MediaQuery.of(context).size.width > 980) {
+    if (mounted && !isSmallDevice(context)) {
       ref.read(showAppTitle.notifier).state =
           ref.read(appDrawerController).offset >= 120;
     }
@@ -67,17 +67,24 @@ class _AppDrawerState extends ConsumerState<AppDrawer> {
                     ),
                   ),
                 ),
-                SliverToBoxAdapter(
-                  child: ListTile(
-                    leading: navi.allToolsItem.icon,
-                    title: navi.allToolsItem.title(context),
-                    onTap: () {
-                      itemRead.state = navi.allToolsItem;
-                      if (isSmallDevice(context)) Navigator.pop(context);
-                    },
-                    tileColor: item == navi.allToolsItem
-                        ? Theme.of(context).colorScheme.primary.withOpacity(0.1)
-                        : null,
+                SliverPadding(
+                  padding: const EdgeInsets.only(top: 8, left: 8, right: 8),
+                  sliver: SliverToBoxAdapter(
+                    child: ListTile(
+                      leading: navi.allToolsItem.icon,
+                      title: navi.allToolsItem.title(context),
+                      shape: const StadiumBorder(),
+                      onTap: () {
+                        itemRead.state = navi.allToolsItem;
+                        if (isSmallDevice(context)) Navigator.pop(context);
+                      },
+                      tileColor: item == navi.allToolsItem
+                          ? Theme.of(context)
+                              .colorScheme
+                              .primary
+                              .withOpacity(0.1)
+                          : null,
+                    ),
                   ),
                 ),
                 SliverList(
@@ -90,23 +97,27 @@ class _AppDrawerState extends ConsumerState<AppDrawer> {
                         title: tool.title(context),
                         children: tool.items.map((e) {
                           bool same = e == item;
-                          return ListTile(
-                            leading: e.icon,
-                            minLeadingWidth: 24,
-                            title: e.title(context),
-                            horizontalTitleGap: 4,
-                            tileColor: same
-                                ? Theme.of(context)
-                                    .colorScheme
-                                    .primary
-                                    .withOpacity(0.1)
-                                : null,
-                            onTap: () {
-                              itemRead.state = e;
-                              if (isSmallDevice(context)) {
-                                Navigator.pop(context);
-                              }
-                            },
+                          return Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 8),
+                            child: ListTile(
+                              leading: e.icon,
+                              minLeadingWidth: 24,
+                              title: e.title(context),
+                              horizontalTitleGap: 4,
+                              shape: const StadiumBorder(),
+                              tileColor: same
+                                  ? Theme.of(context)
+                                      .colorScheme
+                                      .primary
+                                      .withOpacity(0.1)
+                                  : null,
+                              onTap: () {
+                                itemRead.state = e;
+                                if (isSmallDevice(context)) {
+                                  Navigator.pop(context);
+                                }
+                              },
+                            ),
                           );
                         }).toList(),
                       );

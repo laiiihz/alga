@@ -136,7 +136,7 @@ class _SettingsViewState extends State<SettingsView> {
           ),
           SettingsTile(
             leading: const Icon(Icons.info_rounded),
-            title: const Text('Version'),
+            title: Text(S.of(context).version),
             trailing: FutureBuilder<PackageInfo>(
               future: PackageInfo.fromPlatform(),
               builder: (context, snap) {

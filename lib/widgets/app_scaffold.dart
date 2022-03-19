@@ -35,7 +35,11 @@ class AppScaffold extends StatelessWidget {
       },
     );
     if (!isSmallDevice(context)) {
-      body = Row(children: [drawer, Expanded(child: body)]);
+      body = Row(children: [
+        drawer,
+        const SizedBox(width: 8),
+        Expanded(child: body),
+      ]);
     }
 
     return Scaffold(
