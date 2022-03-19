@@ -16,7 +16,7 @@ class HotkeyUtil {
       searchHotKey,
       keyDownHandler: (hotKey) {},
       keyUpHandler: (key) {
-        showSearchDialog(context);
+        showSearch(context: context, delegate: AppSearchDelegate());
       },
     );
   }

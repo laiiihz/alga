@@ -97,7 +97,7 @@ class AppScaffold extends StatelessWidget {
               if (WindowUtil.isMobileDevice)
                 IconButton(
                   onPressed: () {
-                    showSearchDialog(context);
+                    showSearch(context: context, delegate: AppSearchDelegate());
                   },
                   icon: const Icon(Icons.search_rounded),
                 ),
