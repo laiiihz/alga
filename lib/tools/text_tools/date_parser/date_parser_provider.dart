@@ -1,48 +1,26 @@
-import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
+part of './date_parser_view.dart';
 
-class DateParserProvider extends ChangeNotifier {
-  final inputController = TextEditingController();
-  final formatController = TextEditingController();
+final _dateController = StateProvider.autoDispose<TextEditingController>((ref) {
+  final controller = TextEditingController();
+  ref.onDispose(controller.dispose);
+  return controller;
+});
 
-  DateTime? _date;
-  DateTime? get date => _date;
-  set date(DateTime? state) {
-    _date = state;
-    notifyListeners();
-  }
+final _formatController =
+    StateProvider.autoDispose<TextEditingController>((ref) {
+  final controller = TextEditingController();
+  ref.onDispose(controller.dispose);
+  return controller;
+});
 
-  String _formatText = '';
-  String get formatText => _formatText;
-  set formatText(String state) {
-    _formatText = state;
-    notifyListeners();
-  }
+final _date = StateProvider.autoDispose<DateTime?>((ref) {
+  final date = ref.watch(_dateController).text;
+  return DateTime.tryParse(date);
+});
 
-  update() {
-    date = DateTime.tryParse(inputController.text);
-  }
-
-  format() {
-    if (date == null) return;
-    formatText = DateFormat(formatController.text).format(date!);
-  }
-
-  showSupportedDialog(BuildContext context) async {
-    return await showDialog(
-      context: context,
-      builder: (context) {
-        return const AlertDialog(
-          title: Text('Supported Date Format'),
-        );
-      },
-    );
-  }
-
-  @override
-  void dispose() {
-    inputController.dispose();
-    formatController.dispose();
-    super.dispose();
-  }
-}
+final _formatResult = StateProvider.autoDispose<String?>((ref) {
+  final date = ref.watch(_date);
+  final format = ref.watch(_formatController).text;
+  if (date == null) return null;
+  return DateFormat(format).format(date);
+});

@@ -39,7 +39,6 @@ class _JsonFormtterViewState extends State<JsonFormtterView> {
           title: Text(S.of(context).indentation),
           trailing: DropdownButton<JsonIndentType>(
             underline: const SizedBox.shrink(),
-            isDense: true,
             items: JsonIndentType.values
                 .map((e) => DropdownMenuItem(child: Text(e.name), value: e))
                 .toList(),

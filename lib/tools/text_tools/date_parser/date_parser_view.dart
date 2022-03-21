@@ -1,6 +1,11 @@
 import 'package:alga/constants/import_helper.dart';
 import 'package:alga/tools/text_tools/date_parser/date_parsed_widget.dart';
-import 'package:alga/tools/text_tools/date_parser/date_parser_provider.dart';
+import 'package:alga/utils/clipboard_util.dart';
+import 'package:alga/widgets/ref_readonly.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:intl/intl.dart';
+
+part './date_parser_provider.dart';
 
 class DateParserView extends StatefulWidget {
   const DateParserView({Key? key}) : super(key: key);
@@ -10,21 +15,6 @@ class DateParserView extends StatefulWidget {
 }
 
 class _DateParserViewState extends State<DateParserView> {
-  final _provider = DateParserProvider();
-  update() => setState(() {});
-  @override
-  void initState() {
-    super.initState();
-    _provider.addListener(update);
-  }
-
-  @override
-  void dispose() {
-    _provider.removeListener(update);
-    _provider.dispose();
-    super.dispose();
-  }
-
   @override
   Widget build(BuildContext context) {
     return ToolView.scrollVertical(
@@ -33,42 +23,73 @@ class _DateParserViewState extends State<DateParserView> {
         AppTitleWrapper(
           title: 'Date',
           actions: const [],
-          child: TextField(
-            controller: _provider.inputController,
-            onChanged: (_) {
-              _provider.update();
-            },
-          ),
-        ),
-        if (_provider.date != null)
-          AppTitleWrapper(
-            title: 'Parsed Date',
-            actions: const [],
-            child: DateParsedWidget(date: _provider.date!),
-          ),
-        if (_provider.date != null)
-          AppTitleWrapper(
-            title: 'Iso8601 Date',
-            actions: const [],
-            child: AppTextBox(data: _provider.date!.toIso8601String()),
-          ),
-        if (_provider.date != null)
-          AppTitleWrapper(
-            title: 'Custom Format',
-            actions: const [],
-            child: TextField(
-              controller: _provider.formatController,
+          child: RefReadonly(builder: (ref) {
+            return TextField(
+              controller: ref.read(_dateController),
               onChanged: (_) {
-                _provider.format();
+                ref.refresh(_date);
+              },
+            );
+          }),
+        ),
+        Consumer(builder: (context, ref, _) {
+          final date = ref.watch(_date);
+          if (date == null) return const SizedBox.shrink();
+          return Column(
+            children: [
+              AppTitleWrapper(
+                title: 'Parsed Date',
+                child: DateParsedWidget(date: date),
+              ),
+              AppTitleWrapper(
+                title: 'Iso8601 Date',
+                actions: [
+                  IconButton(
+                    onPressed: () {
+                      ClipboardUtil.copy(date.toIso8601String());
+                    },
+                    icon: const Icon(Icons.copy),
+                  ),
+                ],
+                child: AppTextBox(data: date.toIso8601String()),
+              ),
+            ],
+          );
+        }),
+        RefReadonly(builder: (ref) {
+          return AppTitleWrapper(
+            title: 'Custom Format',
+            actions: [
+              IconButton(
+                onPressed: () async {
+                  ref.read(_formatController).text =
+                      await ClipboardUtil.paste();
+                },
+                icon: const Icon(Icons.copy),
+              ),
+            ],
+            child: TextField(
+              controller: ref.read(_formatController),
+              onChanged: (_) {
+                ref.refresh(_formatResult);
               },
             ),
-          ),
-        if (_provider.date != null)
-          AppTitleWrapper(
+          );
+        }),
+        Consumer(builder: (context, ref, _) {
+          return AppTitleWrapper(
             title: 'Formatted Date String',
-            actions: const [],
-            child: AppTextBox(data: _provider.formatText),
-          ),
+            actions: [
+              IconButton(
+                onPressed: () {
+                  ClipboardUtil.copy(ref.watch(_formatResult) ?? '');
+                },
+                icon: const Icon(Icons.copy),
+              ),
+            ],
+            child: AppTextBox(data: ref.watch(_formatResult) ?? ''),
+          );
+        }),
       ],
     );
   }
