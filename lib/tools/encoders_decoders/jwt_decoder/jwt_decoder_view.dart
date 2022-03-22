@@ -1,7 +1,12 @@
+import 'dart:convert';
+
 import 'package:alga/constants/import_helper.dart';
-import 'package:alga/tools/encoders_decoders/jwt_decoder/jwt_decoder_provider.dart';
 import 'package:alga/tools/encoders_decoders/jwt_decoder/jwt_special_text_builder.dart';
+import 'package:alga/utils/clipboard_util.dart';
+import 'package:alga/widgets/ref_readonly.dart';
 import 'package:extended_text_field/extended_text_field.dart';
+
+part './jwt_decoder_provider.dart';
 
 class JWTDecoderView extends StatefulWidget {
   const JWTDecoderView({Key? key}) : super(key: key);
@@ -11,24 +16,6 @@ class JWTDecoderView extends StatefulWidget {
 }
 
 class _JWTDecoderViewState extends State<JWTDecoderView> {
-  final _provider = JWTDecoderProvider();
-  update() {
-    setState(() {});
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    _provider.addListener(update);
-  }
-
-  @override
-  void dispose() {
-    _provider.removeListener(update);
-    _provider.dispose();
-    super.dispose();
-  }
-
   @override
   Widget build(BuildContext context) {
     return ToolView.scrollVertical(
@@ -37,54 +24,77 @@ class _JWTDecoderViewState extends State<JWTDecoderView> {
         AppTitleWrapper(
           title: 'JWT token',
           actions: [
-            IconButton(
-              icon: const Icon(Icons.paste),
-              onPressed: _provider.paste,
-            ),
-            IconButton(
-              icon: const Icon(Icons.clear),
-              onPressed: _provider.clear,
-            ),
+            RefReadonly(builder: (ref) {
+              return IconButton(
+                icon: const Icon(Icons.paste),
+                onPressed: () async {
+                  ref.read(_jwtInput).text = await ClipboardUtil.paste();
+                  ref.refresh(_jwtModel);
+                },
+              );
+            }),
+            RefReadonly(builder: (ref) {
+              return IconButton(
+                icon: const Icon(Icons.clear),
+                onPressed: () {
+                  ref.refresh(_jwtModel);
+                },
+              );
+            }),
           ],
-          child: ExtendedTextField(
-            controller: _provider.inputController,
-            minLines: 3,
-            maxLines: 12,
-            onChanged: (_) {
-              _provider.convert();
-            },
-            specialTextSpanBuilder: JWTSpecialTextBuilder(),
-          ),
+          child: RefReadonly(builder: (ref) {
+            return ExtendedTextField(
+              controller: ref.watch(_jwtInput),
+              minLines: 3,
+              maxLines: 12,
+              onChanged: (_) {
+                ref.refresh(_jwtModel);
+              },
+              specialTextSpanBuilder: JWTSpecialTextBuilder(),
+            );
+          }),
         ),
         AppTitleWrapper(
           title: S.of(context).jwtHeader,
           actions: [
-            IconButton(
-              icon: const Icon(Icons.copy),
-              onPressed: _provider.copyHeader,
-            ),
+            RefReadonly(builder: (ref) {
+              return IconButton(
+                icon: const Icon(Icons.copy),
+                onPressed: () {
+                  ClipboardUtil.copy(ref.read(_headerResult));
+                },
+              );
+            }),
           ],
-          child: AppTextBox(
-            lang: LangHighlightType.json,
-            data: _provider.headerResult,
-            minLines: 2,
-            maxLines: 12,
-          ),
+          child: Consumer(builder: (context, ref, _) {
+            return AppTextBox(
+              lang: LangHighlightType.json,
+              data: ref.watch(_headerResult),
+              minLines: 2,
+              maxLines: 12,
+            );
+          }),
         ),
         AppTitleWrapper(
           title: S.of(context).jwtPayload,
           actions: [
-            IconButton(
-              icon: const Icon(Icons.copy),
-              onPressed: _provider.copyPayload(),
-            ),
+            RefReadonly(builder: (ref) {
+              return IconButton(
+                icon: const Icon(Icons.copy),
+                onPressed: () {
+                  ClipboardUtil.copy(ref.read(_payloadResult));
+                },
+              );
+            }),
           ],
-          child: AppTextBox(
-            lang: LangHighlightType.json,
-            data: _provider.payloadResult,
-            minLines: 2,
-            maxLines: 12,
-          ),
+          child: Consumer(builder: (context, ref, _) {
+            return AppTextBox(
+              lang: LangHighlightType.json,
+              data: ref.watch(_payloadResult),
+              minLines: 2,
+              maxLines: 12,
+            );
+          }),
         ),
       ],
     );

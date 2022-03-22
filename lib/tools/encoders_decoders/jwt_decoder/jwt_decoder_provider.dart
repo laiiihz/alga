@@ -1,58 +1,28 @@
-import 'dart:convert';
+part of './jwt_decoder_view.dart';
 
-import 'package:alga/utils/clipboard_util.dart';
-import 'package:flutter/material.dart';
+final _jwtInput = StateProvider.autoDispose<TextEditingController>((ref) {
+  final controller = TextEditingController();
+  ref.onDispose(controller.dispose);
+  return controller;
+});
 
-class JWTDecoderProvider extends ChangeNotifier {
-  final inputController = TextEditingController();
+final _jwtModel = StateProvider.autoDispose<JWTModel?>((ref) {
+  final text = ref.watch(_jwtInput).text;
+  if (text.isEmpty) return null;
+  return JWTModel.fromToken(text);
+});
 
-  String _headerResult = '';
-  String get headerResult => _headerResult;
-  set headerResult(String state) {
-    _headerResult = state;
-    notifyListeners();
-  }
+final _headerResult = StateProvider.autoDispose<String>((ref) {
+  final model = ref.watch(_jwtModel);
+  if (model == null) return '';
+  return JsonEncoder.withIndent(' ' * 4).convert(model.header);
+});
 
-  String _payloadResult = '';
-  String get payloadResult => _payloadResult;
-  set payloadResult(String state) {
-    _payloadResult = state;
-    notifyListeners();
-  }
-
-  clear() {
-    inputController.clear();
-    headerResult = '';
-    payloadResult = '';
-  }
-
-  paste() async {
-    inputController.text = await ClipboardUtil.paste();
-  }
-
-  copyHeader() {
-    ClipboardUtil.copy(headerResult);
-  }
-
-  copyPayload() {
-    ClipboardUtil.copy(payloadResult);
-  }
-
-  convert() {
-    final result = JWTModel.fromToken(inputController.text);
-    final jEncoder = JsonEncoder.withIndent(' ' * 4);
-    if (result != null) {
-      headerResult = jEncoder.convert(result.header);
-      payloadResult = jEncoder.convert(result.payload);
-    }
-  }
-
-  @override
-  void dispose() {
-    inputController.dispose();
-    super.dispose();
-  }
-}
+final _payloadResult = StateProvider.autoDispose<String>((ref) {
+  final model = ref.watch(_jwtModel);
+  if (model == null) return '';
+  return JsonEncoder.withIndent(' ' * 4).convert(model.payload);
+});
 
 class JWTModel {
   final Map<String, dynamic> header;
