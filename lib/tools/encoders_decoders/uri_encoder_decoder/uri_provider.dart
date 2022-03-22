@@ -1,45 +1,16 @@
-import 'package:alga/utils/clipboard_util.dart';
-import 'package:flutter/material.dart';
+part of './uri_encoder_decoder.dart';
 
-class UriProvider extends ChangeNotifier {
-  final inputController = TextEditingController();
-  String _uriResult = '';
-  String get uriResult => _uriResult;
-  set uriResult(String state) {
-    _uriResult = state;
-    notifyListeners();
-  }
+final _input = StateProvider.autoDispose<TextEditingController>((ref) {
+  final controller = TextEditingController();
+  ref.onDispose(controller.dispose);
+  return controller;
+});
 
-  bool _isEncode = true;
-  bool get isEncode => _isEncode;
-  set isEncode(bool state) {
-    _isEncode = state;
-    notifyListeners();
-  }
+final _isEncode = StateProvider.autoDispose((ref) => true);
 
-  clear() {
-    inputController.clear();
-    uriResult = '';
-  }
-
-  paste() async {
-    inputController.text = await ClipboardUtil.paste();
-    convert();
-  }
-
-  copy() async {
-    await ClipboardUtil.copy(uriResult);
-  }
-
-  convert() {
-    uriResult = _isEncode
-        ? Uri.encodeFull(inputController.text)
-        : Uri.decodeFull(inputController.text);
-  }
-
-  @override
-  void dispose() {
-    inputController.dispose();
-    super.dispose();
-  }
-}
+final _result = StateProvider.autoDispose<String>((ref) {
+  final isEncode = ref.watch(_isEncode);
+  final text = ref.watch(_input).text;
+  if (text.isEmpty) return '';
+  return isEncode ? Uri.encodeFull(text) : Uri.decodeFull(text);
+});
