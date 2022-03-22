@@ -1,47 +1,46 @@
 import 'package:alga/constants/import_helper.dart';
-import 'package:alga/tools/converters/json_yaml_converter/json_yaml_converter_provider.dart';
+import 'package:alga/utils/clipboard_util.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:json_textfield/json_textfield.dart';
+import 'dart:convert';
 
-class JsonYamlConverterView extends StatefulWidget {
+import 'package:json2yaml/json2yaml.dart' as json_2_yaml;
+import 'package:yaml/yaml.dart';
+
+part './json_yaml_converter_provider.dart';
+
+class JsonYamlConverterView extends ConsumerWidget {
   const JsonYamlConverterView({Key? key}) : super(key: key);
 
   @override
-  State<JsonYamlConverterView> createState() => _JsonYamlConverterViewState();
-}
-
-class _JsonYamlConverterViewState extends State<JsonYamlConverterView> {
-  final _provider = JsonYamlConverterProvider();
-  @override
-  void dispose() {
-    _provider.dispose();
-    super.dispose();
-  }
-
-  @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final jsonWidget = AppTitleWrapper(
       title: 'JSON',
       expand: !isSmallDevice(context),
       actions: [
         IconButton(
           icon: const Icon(Icons.copy),
-          onPressed: _provider.copyJson,
+          onPressed: () {
+            ClipboardUtil.copy(ref.read(_jsonController).text);
+          },
         ),
         IconButton(
           icon: const Icon(Icons.paste),
-          onPressed: _provider.pasteJson,
+          onPressed: () async {
+            ref.read(_jsonController).text = await ClipboardUtil.paste();
+          },
         ),
         IconButton(
           icon: const Icon(Icons.clear),
-          onPressed: _provider.clear,
+          onPressed: ref.read(_jsonController).clear,
         ),
       ],
       child: JsonTextField(
         minLines: isSmallDevice(context) ? 12 : null,
         maxLines: isSmallDevice(context) ? 12 : null,
-        controller: _provider.jsonController,
+        controller: ref.watch(_jsonController),
         onChanged: (_) {
-          _provider.json2yaml();
+          JsonYamlUtil.json2yaml(ref);
         },
         expands: !isSmallDevice(context),
       ),
@@ -52,24 +51,28 @@ class _JsonYamlConverterViewState extends State<JsonYamlConverterView> {
       actions: [
         IconButton(
           icon: const Icon(Icons.copy),
-          onPressed: _provider.copyYaml,
+          onPressed: () {
+            ClipboardUtil.copy(ref.read(_yamlController).text);
+          },
         ),
         IconButton(
           icon: const Icon(Icons.paste),
-          onPressed: _provider.pasteYaml,
+          onPressed: () async {
+            ref.read(_yamlController).text = await ClipboardUtil.paste();
+          },
         ),
         IconButton(
           icon: const Icon(Icons.clear),
-          onPressed: _provider.clear,
+          onPressed: ref.read(_yamlController).clear,
         ),
       ],
       child: LangTextField(
         minLines: isSmallDevice(context) ? 12 : null,
         maxLines: isSmallDevice(context) ? 12 : null,
         expands: !isSmallDevice(context),
-        controller: _provider.yamlController,
+        controller: ref.watch(_yamlController),
         onChanged: (_) {
-          _provider.yaml2json();
+          JsonYamlUtil.yaml2json(ref);
         },
         lang: LangHighlightType.yaml,
       ),

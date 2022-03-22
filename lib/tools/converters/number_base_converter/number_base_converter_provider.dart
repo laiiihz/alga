@@ -1,44 +1,39 @@
-import 'package:alga/l10n/l10n.dart';
-import 'package:alga/utils/clipboard_util.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+part of './number_base_converter_view.dart';
 
-class NumberBaseConverterProvider extends ChangeNotifier {
-  final BuildContext context;
-  late List<NumberBaseController> controllers;
-
-  NumberBaseConverterProvider(this.context) {
-    controllers = [
-      HexController(context),
-      DecController(context),
-      OctController(context),
-      BinController(context),
-    ];
-  }
-
-  onUpdate(NumberBaseController controller) {
+final _controllers =
+    StateProvider.autoDispose<List<NumberBaseController>>((ref) {
+  final controllers = [
+    HexController(),
+    DecController(),
+    OctController(),
+    BinController(),
+  ];
+  ref.onDispose(() {
     for (var item in controllers) {
-      if (item.runtimeType != controller.runtimeType) {
-        item.controller.text = controller.radixString(item.radix) ?? '';
+      item.dispose();
+    }
+  });
+  return controllers;
+});
+
+class NumberBaseUtil {
+  static update(NumberBaseController base, List<NumberBaseController> controllers) {
+    for (var item in controllers) {
+      if (item.runtimeType != base.runtimeType) {
+        item.controller.text = base.radixString(item.radix) ?? '';
       }
     }
-  }
-
-  @override
-  void dispose() {
-    for (var controller in controllers) {
-      controller.dispose();
-    }
-    super.dispose();
   }
 }
 
 abstract class NumberBaseController {
-  final BuildContext context;
   final int radix;
-  final String title = '';
   final List<TextInputFormatter> formatter = [];
-  NumberBaseController(this.radix, this.context);
+
+  /// get l10n title
+  String title(BuildContext context);
+
+  NumberBaseController(this.radix);
 
   final controller = TextEditingController();
   int? get value => int.tryParse(controller.text, radix: radix);
@@ -57,20 +52,20 @@ abstract class NumberBaseController {
 }
 
 class HexController extends NumberBaseController {
-  HexController(BuildContext context) : super(16, context);
+  HexController() : super(16);
 
   @override
-  String get title => S.of(context).hexdecimal;
+  String title(context) => S.of(context).hexdecimal;
   @override
   List<TextInputFormatter> get formatter =>
       [FilteringTextInputFormatter.allow(RegExp(r'[0-9a-fA-F]'))];
 }
 
 class DecController extends NumberBaseController {
-  DecController(BuildContext context) : super(10, context);
+  DecController() : super(10);
 
   @override
-  String get title => S.of(context).decimal;
+  String title(context) => S.of(context).decimal;
 
   @override
   List<TextInputFormatter> get formatter =>
@@ -78,10 +73,10 @@ class DecController extends NumberBaseController {
 }
 
 class OctController extends NumberBaseController {
-  OctController(BuildContext context) : super(8, context);
+  OctController() : super(8);
 
   @override
-  String get title => S.of(context).octal;
+  String title(context) => S.of(context).octal;
 
   @override
   List<TextInputFormatter> get formatter =>
@@ -89,10 +84,10 @@ class OctController extends NumberBaseController {
 }
 
 class BinController extends NumberBaseController {
-  BinController(BuildContext context) : super(2, context);
+  BinController() : super(2);
 
   @override
-  String get title => S.of(context).binary;
+  String title(context) => S.of(context).binary;
 
   @override
   List<TextInputFormatter> get formatter =>

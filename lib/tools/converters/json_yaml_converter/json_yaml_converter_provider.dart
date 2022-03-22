@@ -1,70 +1,44 @@
-import 'dart:convert';
 
-import 'package:alga/utils/clipboard_util.dart';
-import 'package:flutter/material.dart';
-import 'package:json2yaml/json2yaml.dart' as json_2_yaml;
-import 'package:yaml/yaml.dart';
 
-class JsonYamlConverterProvider extends ChangeNotifier {
-  TextEditingController jsonController = TextEditingController();
-  TextEditingController yamlController = TextEditingController();
+part of './json_yaml_converter_view.dart';
 
-  json2yaml() {
+final _jsonController = StateProvider.autoDispose<TextEditingController>((ref) {
+  final controller = TextEditingController();
+  ref.onDispose(controller.dispose);
+  return controller;
+});
+final _yamlController = StateProvider.autoDispose<TextEditingController>((ref) {
+  final controller = TextEditingController();
+  ref.onDispose(controller.dispose);
+  return controller;
+});
+
+
+class JsonYamlUtil {
+  static json2yaml(WidgetRef ref) {
     try {
-      yamlController.text =
-          json_2_yaml.json2yaml(json.decode(jsonController.text));
+      ref.read(_yamlController).text =
+          json_2_yaml.json2yaml(json.decode(ref.read(_jsonController).text));
     } catch (e) {
       return;
     }
   }
 
-  yaml2json() {
+  static yaml2json(WidgetRef ref) {
     try {
-      final result = loadYaml(yamlController.text);
+      final result = loadYaml(ref.read(_yamlController).text);
       if (result is YamlMap || result is YamlList) {
-        jsonController.text = formatJson(result);
+        ref.read(_jsonController).text = formatJson(result);
       } else {
-        jsonController.text = 'unknown yaml';
+        ref.read(_jsonController).text = 'unknown yaml';
       }
     } catch (e) {
       return;
     }
   }
 
-  clear() {
-    jsonController.clear();
-    yamlController.clear();
-  }
-
-  copyJson() {
-    ClipboardUtil.copy(jsonController.text);
-  }
-
-  copyYaml() {
-    ClipboardUtil.copy(yamlController.text);
-  }
-
-  Future pasteJson() async {
-    String value = await ClipboardUtil.paste();
-    jsonController.text = value;
-    json2yaml();
-  }
-
-  Future pasteYaml() async {
-    String value = await ClipboardUtil.paste();
-    yamlController.text = value;
-    yaml2json();
-  }
-
-  formatJson(Map map) {
+  static String formatJson(Map map) {
     final JsonEncoder jsonEncoder = JsonEncoder.withIndent(' ' * 4);
-    jsonController.text = jsonEncoder.convert(map);
-  }
-
-  @override
-  void dispose() {
-    jsonController.dispose();
-    yamlController.dispose();
-    super.dispose();
+    return jsonEncoder.convert(map);
   }
 }
