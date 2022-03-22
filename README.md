@@ -45,6 +45,7 @@ A powerful tool app for all developers.
   * [ ] pick syntax config
   * [ ] show sourceMap config
 * [ ] Web Support
+* [ ] disable copy button when content is empty
 
 ## Getting Started
 

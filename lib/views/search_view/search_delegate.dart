@@ -1,7 +1,6 @@
 import 'package:alga/constants/import_helper.dart';
 import 'package:alga/models/tool_item.dart';
 import 'package:alga/widgets/app_scaffold.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class AppSearchDelegate extends SearchDelegate {
   var currentTools = <ToolItem>[];

@@ -2,7 +2,6 @@ import 'dart:convert';
 
 import 'package:alga/constants/import_helper.dart';
 import 'package:alga/tools/encoders_decoders/jwt_decoder/jwt_special_text_builder.dart';
-import 'package:alga/utils/clipboard_util.dart';
 import 'package:alga/widgets/ref_readonly.dart';
 import 'package:extended_text_field/extended_text_field.dart';
 

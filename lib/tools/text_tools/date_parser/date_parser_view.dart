@@ -1,8 +1,6 @@
 import 'package:alga/constants/import_helper.dart';
 import 'package:alga/tools/text_tools/date_parser/date_parsed_widget.dart';
-import 'package:alga/utils/clipboard_util.dart';
 import 'package:alga/widgets/ref_readonly.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
 
 part './date_parser_provider.dart';

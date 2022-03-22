@@ -2,9 +2,7 @@ import 'dart:convert';
 import 'dart:typed_data';
 
 import 'package:alga/constants/import_helper.dart';
-import 'package:alga/utils/clipboard_util.dart';
 import 'package:alga/widgets/ref_readonly.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 part './base_64_provider.dart';
 

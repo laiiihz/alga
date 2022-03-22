@@ -1,7 +1,5 @@
 import 'package:alga/constants/import_helper.dart';
 import 'package:alga/tools/generators/hash_generator/hash_provider.dart';
-import 'package:alga/utils/clipboard_util.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class HashGeneratorView extends StatefulWidget {
   const HashGeneratorView({Key? key}) : super(key: key);

@@ -1,6 +1,4 @@
 import 'package:alga/constants/import_helper.dart';
-import 'package:alga/utils/clipboard_util.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:json_textfield/json_textfield.dart';
 import 'dart:convert';
 
