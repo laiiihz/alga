@@ -1,5 +1,12 @@
+import 'dart:convert';
+import 'dart:typed_data';
+
 import 'package:alga/constants/import_helper.dart';
-import 'package:alga/tools/encoders_decoders/base_64_encoder_decoder/base_64_provider.dart';
+import 'package:alga/utils/clipboard_util.dart';
+import 'package:alga/widgets/ref_readonly.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+part './base_64_provider.dart';
 
 class Base64EncoderDecoderView extends StatefulWidget {
   const Base64EncoderDecoderView({Key? key}) : super(key: key);
@@ -10,25 +17,6 @@ class Base64EncoderDecoderView extends StatefulWidget {
 }
 
 class _Base64EncoderDecoderViewState extends State<Base64EncoderDecoderView> {
-  final _provider = Base64Provider();
-
-  update() {
-    setState(() {});
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    _provider.addListener(update);
-  }
-
-  @override
-  void dispose() {
-    _provider.removeListener(update);
-    _provider.dispose();
-    super.dispose();
-  }
-
   @override
   Widget build(BuildContext context) {
     return ToolView.scrollVertical(
@@ -40,63 +28,79 @@ class _Base64EncoderDecoderViewState extends State<Base64EncoderDecoderView> {
               leading: const Icon(Icons.swap_horiz_sharp),
               title: Text(S.of(context).conversion),
               subtitle: Text(S.of(context).selectConversion),
-              trailing: Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  _provider.isEncode
-                      ? Text(S.of(context).encode)
-                      : Text(S.of(context).decode),
-                  Switch(
-                    value: _provider.isEncode,
-                    onChanged: (state) {
-                      _provider.isEncode = state;
-                    },
-                  ),
-                ],
-              ),
+              trailing: Consumer(builder: (context, ref, _) {
+                return Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    ref.watch(_isEncode)
+                        ? Text(S.of(context).encode)
+                        : Text(S.of(context).decode),
+                    Switch(
+                      value: ref.watch(_isEncode),
+                      onChanged: (state) {
+                        ref.read(_isEncode.notifier).state = state;
+                      },
+                    ),
+                  ],
+                );
+              }),
             ),
           ],
         ),
         AppTitleWrapper(
           title: S.of(context).input,
           actions: [
-            IconButton(
-              icon: const Icon(Icons.paste),
-              onPressed: () {
-                _provider.paste();
-              },
-            ),
-            IconButton(
-              icon: const Icon(Icons.clear),
-              onPressed: () {
-                _provider.clear();
-              },
-            ),
+            RefReadonly(builder: (ref) {
+              return IconButton(
+                icon: const Icon(Icons.paste),
+                onPressed: () async {
+                  ref.read(_input).text = await ClipboardUtil.paste();
+                  ref.refresh(_result);
+                },
+              );
+            }),
+            RefReadonly(builder: (ref) {
+              return IconButton(
+                icon: const Icon(Icons.clear),
+                onPressed: () {
+                  ref.read(_input).clear();
+                  ref.refresh(_result);
+                },
+              );
+            }),
           ],
-          child: TextField(
-            minLines: 2,
-            maxLines: 12,
-            controller: _provider.inputController,
-            onChanged: (text) {
-              _provider.convert();
-            },
-          ),
+          child: RefReadonly(builder: (ref) {
+            return TextField(
+              minLines: 2,
+              maxLines: 12,
+              controller: ref.watch(_input),
+              onChanged: (text) {
+                ref.refresh(_result);
+              },
+            );
+          }),
         ),
         AppTitleWrapper(
           title: S.of(context).output,
           actions: [
-            IconButton(
-              icon: const Icon(Icons.copy),
-              onPressed: () {
-                _provider.paste();
+            RefReadonly(
+              builder: (ref) {
+                return IconButton(
+                  icon: const Icon(Icons.copy),
+                  onPressed: () {
+                    ClipboardUtil.copy(ref.read(_result));
+                  },
+                );
               },
             ),
           ],
-          child: AppTextBox(
-            minLines: 2,
-            maxLines: 12,
-            data: _provider.base64Result,
-          ),
+          child: Consumer(builder: (context, ref, _) {
+            return AppTextBox(
+              minLines: 2,
+              maxLines: 12,
+              data: ref.watch(_result),
+            );
+          }),
         ),
       ],
     );
