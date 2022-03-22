@@ -1,5 +1,10 @@
+import 'dart:convert';
+import 'dart:typed_data';
+
 import 'package:alga/constants/import_helper.dart';
-import 'package:alga/tools/encoders_decoders/gzip_compress_decompress/gzip_compress_decompress_provider.dart';
+import 'package:archive/archive.dart';
+
+part './gzip_compress_decompress_provider.dart';
 
 class GzipCompressDecompressView extends StatefulWidget {
   const GzipCompressDecompressView({Key? key}) : super(key: key);
@@ -11,23 +16,6 @@ class GzipCompressDecompressView extends StatefulWidget {
 
 class _GzipCompressDecompressViewState
     extends State<GzipCompressDecompressView> {
-  final _provider = GzipCompressDecompressProvider();
-
-  update() => setState(() {});
-
-  @override
-  void initState() {
-    super.initState();
-    _provider.addListener(update);
-  }
-
-  @override
-  void dispose() {
-    _provider.removeListener(update);
-    _provider.dispose();
-    super.dispose();
-  }
-
   @override
   Widget build(BuildContext context) {
     return ToolView.scrollVertical(
@@ -37,56 +25,72 @@ class _GzipCompressDecompressViewState
           leading: const Icon(Icons.swap_horiz_sharp),
           title: Text(S.of(context).conversion),
           subtitle: Text(S.of(context).selectConversion),
-          trailing: Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              _provider.isCompress
-                  ? Text(S.of(context).compress)
-                  : Text(S.of(context).decompress),
-              Switch(
-                value: _provider.isCompress,
-                onChanged: (state) {
-                  _provider.isCompress = state;
-                  _provider.swapData();
-                },
-              ),
-            ],
-          ),
+          trailing: Consumer(builder: (context, ref, _) {
+            return Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                ref.watch(_isCompress)
+                    ? Text(S.of(context).compress)
+                    : Text(S.of(context).decompress),
+                Switch(
+                  value: ref.watch(_isCompress),
+                  onChanged: (state) {
+                    ref.read(_isCompress.notifier).state = state;
+                  },
+                ),
+              ],
+            );
+          }),
         ),
         AppTitleWrapper(
           title: S.of(context).input,
           actions: [
-            IconButton(
-              icon: const Icon(Icons.paste),
-              onPressed: _provider.paste,
-            ),
-            IconButton(
-              icon: const Icon(Icons.clear),
-              onPressed: _provider.clear,
-            ),
+            RefReadonly(builder: (ref) {
+              return IconButton(
+                icon: const Icon(Icons.paste),
+                onPressed: () async {
+                  ref.watch(_input).text = await ClipboardUtil.paste();
+                  ref.refresh(_result);
+                },
+              );
+            }),
+            RefReadonly(builder: (ref) {
+              return IconButton(
+                icon: const Icon(Icons.clear),
+                onPressed: ref.watch(_input).clear,
+              );
+            }),
           ],
-          child: TextField(
-            controller: _provider.inputController,
-            minLines: 2,
-            maxLines: 12,
-            onChanged: (_) {
-              _provider.convert();
-            },
-          ),
+          child: Consumer(builder: (context, ref, _) {
+            return TextField(
+              controller: ref.watch(_input),
+              minLines: 2,
+              maxLines: 12,
+              onChanged: (_) {
+                ref.refresh(_result);
+              },
+            );
+          }),
         ),
         AppTitleWrapper(
           title: S.of(context).output,
           actions: [
-            IconButton(
-              icon: const Icon(Icons.copy),
-              onPressed: _provider.copy,
-            ),
+            RefReadonly(builder: (ref) {
+              return IconButton(
+                icon: const Icon(Icons.copy),
+                onPressed: () {
+                  ClipboardUtil.copy(ref.read(_result));
+                },
+              );
+            }),
           ],
-          child: AppTextBox(
-            data: _provider.gzipResult,
-            minLines: 2,
-            maxLines: 12,
-          ),
+          child: Consumer(builder: (context, ref, _) {
+            return AppTextBox(
+              data: ref.watch(_result),
+              minLines: 2,
+              maxLines: 12,
+            );
+          }),
         ),
       ],
     );
