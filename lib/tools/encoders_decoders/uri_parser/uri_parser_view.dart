@@ -1,5 +1,8 @@
+import 'dart:convert';
+
 import 'package:alga/constants/import_helper.dart';
-import 'package:alga/tools/encoders_decoders/uri_parser/uri_parser_provider.dart';
+
+part './uri_parser_provider.dart';
 
 class UriParserView extends StatefulWidget {
   const UriParserView({Key? key}) : super(key: key);
@@ -9,24 +12,6 @@ class UriParserView extends StatefulWidget {
 }
 
 class _UriParserViewState extends State<UriParserView> {
-  final _provider = UriParserProvider();
-  update() {
-    setState(() {});
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    _provider.addListener(update);
-  }
-
-  @override
-  void dispose() {
-    _provider.removeListener(update);
-    _provider.dispose();
-    super.dispose();
-  }
-
   @override
   Widget build(BuildContext context) {
     return ToolView.scrollVertical(
@@ -35,38 +20,48 @@ class _UriParserViewState extends State<UriParserView> {
         AppTitleWrapper(
           title: 'source',
           actions: [
-            IconButton(
-              onPressed: () {
-                _provider.paste();
-              },
-              icon: const Icon(Icons.paste),
-            ),
-          ],
-          child: LangTextField(
-            lang: LangHighlightType.uri,
-            controller: _provider.inputController,
-            onChanged: (_) {
-              _provider.parse();
-            },
-          ),
-        ),
-        ..._provider.parts.map((e) {
-          return AppTitleWrapper(
-            title: e.title,
-            actions: [
-              IconButton(
-                onPressed: () {
-                  ClipboardUtil.copy(e.name());
+            RefReadonly(builder: (ref) {
+              return IconButton(
+                onPressed: () async {
+                  ref.watch(_input).text = await ClipboardUtil.paste();
+                  ref.refresh(_uri);
                 },
-                icon: const Icon(Icons.copy),
-              ),
-            ],
-            child: AppTextBox(
-              data: e.name(),
-              lang: e.lang,
-            ),
+                icon: const Icon(Icons.paste),
+              );
+            }),
+          ],
+          child: Consumer(builder: (context, ref, _) {
+            return LangTextField(
+              lang: LangHighlightType.uri,
+              controller: ref.watch(_input),
+              onChanged: (_) {
+                ref.refresh(_uri);
+              },
+            );
+          }),
+        ),
+        Consumer(builder: (context, ref, _) {
+          return Column(
+            children: ref
+                .watch(_uriParts)
+                .map((e) => AppTitleWrapper(
+                      title: e.title(context),
+                      actions: [
+                        IconButton(
+                          onPressed: () {
+                            ClipboardUtil.copy(e.name);
+                          },
+                          icon: const Icon(Icons.copy),
+                        ),
+                      ],
+                      child: AppTextBox(
+                        data: e.name,
+                        lang: e.lang,
+                      ),
+                    ))
+                .toList(),
           );
-        }).toList(),
+        }),
       ],
     );
   }
