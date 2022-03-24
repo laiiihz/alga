@@ -2,20 +2,30 @@ output: dist/
 releases:
   - name: release
     jobs:
-      - name: release-macos
+      - name: archive
         package:
           platform: macos
           target: zip
-      - name: release-macos-dmg
+      - name: app
         package:
           platform: macos
           target: dmg
-      - name: release-android
+      - name: 64bit
         package:
           platform: android
           target: apk
           build_args:
             target-platform: android-arm64
+      - name: 32bit
+        package:
+          platform: android
+          target: apk
+          build_args:
+            target-platform: android-arm
+      - name: aab
+        package:
+          platform: android
+          target: aab
   - name: windows
     jobs:
       - name: release-windows
