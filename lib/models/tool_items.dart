@@ -18,6 +18,7 @@ import 'package:alga/tools/generators/uuid_generator/uuid_generator.dart';
 import 'package:alga/tools/image_tools/blur_hash_tool/blur_hash_view.dart';
 import 'package:alga/tools/image_tools/qrcode_tool/qrcode_view.dart';
 import 'package:alga/tools/info/device_info/device_info_view.dart';
+import 'package:alga/tools/info/network_info/network_info_view.dart';
 import 'package:alga/tools/server_tools/static_server_tool/static_server_tool_view.dart';
 import 'package:alga/tools/text_tools/date_parser/date_parser_view.dart';
 import 'package:alga/tools/text_tools/markdown_preview/markdown_preview_view.dart';
@@ -174,6 +175,11 @@ List<ToolGroup> _toolItems = [
         icon: const Icon(Icons.info_outline),
         title: (context) => Text(S.of(context).deviceInfo),
         page: const DeviceInfoView(),
+      ),
+      ToolItem(
+        icon: const Icon(Icons.network_check),
+        title: (context) => const Text('Network Info'),
+        page: const NetworkInfoView(),
       ),
     ],
   ),

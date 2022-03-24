@@ -31,6 +31,8 @@ A powerful tool app for all developers.
   * Image Tools
     * Blurhash Tool
     * QR Code Tool
+  * Info
+    * Device Info
   * Server Tools
     * Static Server Tool
 

@@ -86,7 +86,6 @@ class _QrcodeViewState extends State<QrcodeView> {
             height: 300,
             child: Center(
               child: Consumer(builder: (context, ref, _) {
-                print(ref.watch(_version));
                 return QrImage(
                   data: ref.watch(_inputData),
                   version: ref.watch(_version),

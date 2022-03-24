@@ -51,6 +51,7 @@ dependencies:
   flutter_blurhash: ^0.6.4
   image_picker: ^0.8.4+11
   device_info_plus: ^3.2.2
+  network_info_plus: ^2.1.3
 
 dev_dependencies:
   flutter_test:
