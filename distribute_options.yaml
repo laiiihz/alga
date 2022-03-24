@@ -19,10 +19,10 @@ releases:
   - name: windows
     jobs:
       - name: release-windows
-        package: 
+        package:
           platform: windows
           target: exe
       - name: release-windows-zip
-        package: 
+        package:
           platform: windows
           target: zip
