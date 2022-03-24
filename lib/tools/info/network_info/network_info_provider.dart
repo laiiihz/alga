@@ -3,7 +3,8 @@ part of './network_info_view.dart';
 final _info = StateProvider.autoDispose<NetworkInfo>((ref) => NetworkInfo());
 
 final _name = FutureProvider.autoDispose<InfoDetail>((ref) async => InfoDetail(
-    title: (context) => '', value: await ref.watch(_info).getWifiName() ?? ''));
+    title: (context) => 'name',
+    value: await ref.watch(_info).getWifiName() ?? ''));
 
 final _ssid = FutureProvider.autoDispose<InfoDetail>((ref) async => InfoDetail(
     title: (context) => 'SSID',

@@ -10,7 +10,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'utils/theme_util.dart';
 
-late BuildContext globalContext;
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -25,7 +24,6 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    globalContext = context;
     return BoxBuilder(
         box: HiveUtil.systemBox,
         builder: (context, box) {
