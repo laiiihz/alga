@@ -1,6 +1,7 @@
 import 'package:alga/constants/import_helper.dart';
-import 'package:alga/tools/image_tools/qrcode_tool/qrcode_provider.dart';
 import 'package:qr_flutter/qr_flutter.dart';
+
+part './qrcode_provider.dart';
 
 class QrcodeView extends StatefulWidget {
   const QrcodeView({Key? key}) : super(key: key);
@@ -10,21 +11,6 @@ class QrcodeView extends StatefulWidget {
 }
 
 class _QrcodeViewState extends State<QrcodeView> {
-  final _provider = QRcodeProvider();
-  update() => setState(() {});
-  @override
-  void initState() {
-    super.initState();
-    _provider.addListener(update);
-  }
-
-  @override
-  void dispose() {
-    _provider.removeListener(update);
-    _provider.dispose();
-    super.dispose();
-  }
-
   @override
   Widget build(BuildContext context) {
     return ToolView.scrollVertical(
@@ -36,52 +22,62 @@ class _QrcodeViewState extends State<QrcodeView> {
               title: Text(S.of(context).qrVersion),
               trailing: SizedBox(
                 width: 120,
-                child: TextField(
-                  controller: _provider.versionController,
-                  decoration:
-                      InputDecoration(hintText: S.of(context).qrAutoVersion),
-                  onChanged: (_) {
-                    _provider.setQrVersion(_provider.versionController.text);
-                  },
-                ),
+                child: Consumer(builder: (context, ref, _) {
+                  return TextField(
+                    controller: ref.watch(_versionInput),
+                    decoration:
+                        InputDecoration(hintText: S.of(context).qrAutoVersion),
+                    onChanged: (text) {
+                      ref.refresh(_version);
+                    },
+                  );
+                }),
               ),
             ),
             ToolViewConfig(
               title: Text(S.of(context).errorCorrectionLevel),
-              trailing: DropdownButton<int>(
-                items: QrErrorCorrectLevel.levels
-                    .map((e) => DropdownMenuItem(
-                          child: Text(QrErrorCorrectLevel.getName(e)),
-                          value: e,
-                        ))
-                    .toList(),
-                onChanged: (item) {
-                  _provider.errorCorrectionLevel =
-                      item ?? QrErrorCorrectLevel.L;
-                },
-                value: _provider.errorCorrectionLevel,
-              ),
+              trailing: Consumer(builder: (context, ref, _) {
+                return DropdownButton<int>(
+                  items: QrErrorCorrectLevel.levels
+                      .map((e) => DropdownMenuItem(
+                            child: Text(QrErrorCorrectLevel.getName(e)),
+                            value: e,
+                          ))
+                      .toList(),
+                  onChanged: (item) {
+                    ref.read(_errorCorrectionLevel.notifier).state =
+                        item ?? QrErrorCorrectLevel.L;
+                  },
+                  value: ref.watch(_errorCorrectionLevel),
+                );
+              }),
             ),
             ToolViewConfig(
               title: Text(S.of(context).qrGapless),
-              trailing: Switch(
-                value: _provider.gapless,
-                onChanged: (state) {
-                  _provider.gapless = state;
-                },
-              ),
+              trailing: Consumer(builder: (context, ref, _) {
+                return Switch(
+                  value: ref.watch(_gapless),
+                  onChanged: (state) {
+                    ref.read(_gapless.notifier).state = state;
+                  },
+                );
+              }),
             ),
           ],
         ),
         AppTitleWrapper(
           title: S.of(context).input,
           actions: const [],
-          child: TextField(
-            controller: _provider.inputController,
-            onChanged: (_) {
-              setState(() {});
-            },
-          ),
+          child: Consumer(builder: (context, ref, _) {
+            return TextField(
+              controller: ref.watch(_input),
+              onChanged: (_) {
+                ref.refresh(_inputData);
+              },
+              minLines: 1,
+              maxLines: 12,
+            );
+          }),
         ),
         AppTitleWrapper(
           title: S.of(context).output,
@@ -89,14 +85,18 @@ class _QrcodeViewState extends State<QrcodeView> {
           child: SizedBox(
             height: 300,
             child: Center(
-              child: QrImage(
-                data: _provider.inputController.text,
-                version: _provider.qrVersion,
-                errorCorrectionLevel: _provider.errorCorrectionLevel,
-                gapless: _provider.gapless,
-                backgroundColor: Colors.transparent,
-                foregroundColor: isDark(context) ? Colors.white : Colors.black,
-              ),
+              child: Consumer(builder: (context, ref, _) {
+                print(ref.watch(_version));
+                return QrImage(
+                  data: ref.watch(_inputData),
+                  version: ref.watch(_version),
+                  errorCorrectionLevel: ref.watch(_errorCorrectionLevel),
+                  gapless: ref.watch(_gapless),
+                  backgroundColor: Colors.transparent,
+                  foregroundColor:
+                      isDark(context) ? Colors.white : Colors.black,
+                );
+              }),
             ),
           ),
         ),

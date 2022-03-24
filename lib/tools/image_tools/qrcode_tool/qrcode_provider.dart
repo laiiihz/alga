@@ -1,42 +1,33 @@
-import 'package:flutter/material.dart';
-import 'package:qr_flutter/qr_flutter.dart';
+part of './qrcode_view.dart';
 
-class QRcodeProvider extends ChangeNotifier {
-  final inputController = TextEditingController();
-  final versionController = TextEditingController();
+final _input = StateProvider.autoDispose<TextEditingController>((ref) {
+  final controller = TextEditingController();
+  ref.onDispose(controller.dispose);
+  return controller;
+});
 
-  int _qrVersion = QrVersions.auto;
-  int get qrVersion => _qrVersion;
-  setQrVersion(String version) {
-    final v = int.tryParse(version);
-    if (v == null) {
-      _qrVersion = QrVersions.auto;
-    } else {
-      bool supported = QrVersions.isSupportedVersion(v);
-      _qrVersion = supported ? v : QrVersions.auto;
-    }
+final _inputData =
+    StateProvider.autoDispose<String>((ref) => ref.watch(_input).text);
 
-    notifyListeners();
-  }
+final _versionInput = StateProvider.autoDispose<TextEditingController>((ref) {
+  final controller = TextEditingController();
+  ref.onDispose(controller.dispose);
+  return controller;
+});
 
-  int _errorCorrectionLevel = QrErrorCorrectLevel.L;
-  int get errorCorrectionLevel => _errorCorrectionLevel;
-  set errorCorrectionLevel(int level) {
-    _errorCorrectionLevel = level;
-    notifyListeners();
-  }
+final _version = StateProvider.autoDispose<int>((ref) {
+  final text = ref.watch(_versionInput).text;
+  if (text.isEmpty) return QrVersions.auto;
+  if (text == 'max') return QrVersions.max;
+  if (text == 'min') return QrVersions.min;
+  final v = int.tryParse(text);
+  if (v == null) return QrVersions.auto;
+  bool supported = QrVersions.isSupportedVersion(v);
+  if (!supported) return QrVersions.auto;
+  return v;
+});
 
-  bool _gapless = true;
-  bool get gapless => _gapless;
-  set gapless(bool state) {
-    _gapless = state;
-    notifyListeners();
-  }
+final _errorCorrectionLevel =
+    StateProvider.autoDispose<int>((ref) => QrErrorCorrectLevel.L);
 
-  @override
-  void dispose() {
-    inputController.dispose();
-    versionController.dispose();
-    super.dispose();
-  }
-}
+final _gapless = StateProvider.autoDispose<bool>((ref) => true);
