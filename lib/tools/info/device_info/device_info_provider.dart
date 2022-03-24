@@ -36,18 +36,21 @@ class DeviceInfoProvider {
 
   List<InfoModel> commonInfomations = [
     InfoModel(
-        title: (context) => 'Local Host Name', value: Platform.localHostname),
+        title: (context) => S.of(context).localHostName,
+        value: Platform.localHostname),
     InfoModel(
-      title: (context) => 'Number Of Processors',
+      title: (context) => S.of(context).numberOfProcessors,
       value: '${Platform.numberOfProcessors}',
     ),
-    InfoModel(title: (context) => 'Locale Name', value: Platform.localeName),
     InfoModel(
-      title: (context) => 'Operating System',
+        title: (context) => S.of(context).localeNameInfo,
+        value: Platform.localeName),
+    InfoModel(
+      title: (context) => S.of(context).operatingSystem,
       value: Platform.operatingSystem,
     ),
     InfoModel(
-      title: (context) => 'Operating System Version',
+      title: (context) => S.of(context).operatingSystemVersion,
       value: Platform.operatingSystemVersion,
     ),
   ];
