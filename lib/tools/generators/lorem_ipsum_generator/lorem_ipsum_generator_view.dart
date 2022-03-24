@@ -14,9 +14,8 @@ class LoremIpsumGeneratorView extends StatelessWidget {
           children: [
             ToolViewConfig(
               leading: const Icon(Icons.text_snippet),
-              title: const Text('Type'),
-              subtitle: const Text(
-                  'Generate words,sentences or paragraphs of Lorem ipsum'),
+              title: Text(S.of(context).loremType),
+              subtitle: Text(S.of(context).loremTypeDes),
               trailing: Consumer(
                 builder: (context, ref, _) {
                   return DropdownButton<LoremIpsumType>(
@@ -38,9 +37,8 @@ class LoremIpsumGeneratorView extends StatelessWidget {
             ),
             ToolViewConfig(
               leading: const Icon(Icons.numbers),
-              title: const Text('Length'),
-              subtitle: const Text(
-                  'Number of words,sentences or paragraphs to generate'),
+              title: Text(S.of(context).loremLength),
+              subtitle: Text(S.of(context).loremLengthDes),
               trailing: SizedBox(
                 width: 60,
                 child: Consumer(builder: (context, ref, _) {

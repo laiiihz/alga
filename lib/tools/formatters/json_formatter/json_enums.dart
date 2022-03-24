@@ -1,3 +1,5 @@
+import 'package:alga/constants/import_helper.dart';
+
 enum JsonIndentType {
   space2,
   space4,
@@ -6,16 +8,16 @@ enum JsonIndentType {
 }
 
 extension JsonIndentExt on JsonIndentType {
-  String get name {
+  String name(BuildContext context) {
     switch (this) {
       case JsonIndentType.space2:
-        return '2 spaces'.padRight(10);
+        return S.of(context).json2spaces;
       case JsonIndentType.space4:
-        return '4 spaces'.padRight(10);
+        return S.of(context).json4spaces;
       case JsonIndentType.tab:
-        return '1 tab'.padRight(10);
+        return S.of(context).json1tab;
       case JsonIndentType.minified:
-        return 'minified'.padRight(10);
+        return S.of(context).jsonMinified;
     }
   }
 }

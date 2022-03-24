@@ -3,33 +3,34 @@ part of './network_info_view.dart';
 final _info = StateProvider.autoDispose<NetworkInfo>((ref) => NetworkInfo());
 
 final _name = FutureProvider.autoDispose<InfoDetail>((ref) async => InfoDetail(
-    title: (context) => 'name',
+    title: (context) => S.of(context).networkName,
     value: await ref.watch(_info).getWifiName() ?? ''));
 
 final _ssid = FutureProvider.autoDispose<InfoDetail>((ref) async => InfoDetail(
-    title: (context) => 'SSID',
+    title: (context) => S.of(context).networkSSID,
     value: await ref.watch(_info).getWifiBSSID() ?? ''));
 
 final _ip = FutureProvider.autoDispose<InfoDetail>((ref) async => InfoDetail(
-    title: (context) => 'ip', value: await ref.watch(_info).getWifiIP() ?? ''));
+    title: (context) => S.of(context).networkIp,
+    value: await ref.watch(_info).getWifiIP() ?? ''));
 
 final _ip6 = FutureProvider.autoDispose<InfoDetail>((ref) async => InfoDetail(
-    title: (context) => 'IPv6',
+    title: (context) => S.of(context).networkIPv6,
     value: await ref.watch(_info).getWifiIPv6() ?? ''));
 
 final _submask = FutureProvider.autoDispose<InfoDetail>((ref) async =>
     InfoDetail(
-        title: (context) => 'submask',
+        title: (context) => S.of(context).networkSubmask,
         value: await ref.watch(_info).getWifiSubmask() ?? ''));
 
 final _broadcast = FutureProvider.autoDispose<InfoDetail>((ref) async =>
     InfoDetail(
-        title: (context) => 'broadcast',
+        title: (context) => S.of(context).networkBroadcast,
         value: await ref.watch(_info).getWifiBroadcast() ?? ''));
 
 final _gateway = FutureProvider.autoDispose<InfoDetail>((ref) async =>
     InfoDetail(
-        title: (context) => 'gateway',
+        title: (context) => S.of(context).networkGateway,
         value: await ref.watch(_info).getWifiGatewayIP() ?? ''));
 
 final _infos = <AutoDisposeFutureProvider<InfoDetail>>[

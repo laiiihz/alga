@@ -106,27 +106,27 @@ class _SettingsViewState extends State<SettingsView> {
           ),
           const SizedBox(height: 8),
           ExpandableSettingsTile(
-            title: const Text('Links'),
+            title: Text(S.of(context).links),
             leading: const Icon(Icons.link),
             child: Column(
               children: [
                 ListTile(
                   leading: const Icon(Icons.code_rounded),
-                  title: const Text('github'),
+                  title: Text(S.of(context).github),
                   onTap: () {
                     launch('https://github.com/laiiihz/alga');
                   },
                 ),
                 ListTile(
                   leading: const Icon(Icons.copyright),
-                  title: const Text('LICENSES'),
+                  title: Text(S.of(context).licenses),
                   onTap: () {
                     showLicensePage(context: context);
                   },
                 ),
                 ListTile(
                   leading: const Icon(Icons.bug_report_rounded),
-                  title: const Text('issues'),
+                  title: Text(S.of(context).issues),
                   onTap: () {
                     launch('https://github.com/laiiihz/alga/issues');
                   },

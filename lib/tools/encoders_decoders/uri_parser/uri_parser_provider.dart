@@ -22,13 +22,14 @@ final _uriParts = StateProvider.autoDispose<List<UriPart>>((ref) {
 
   String params = JsonEncoder.withIndent(' ' * 4).convert(uri.queryParameters);
   return [
-    UriPart(title: (context) => 'host', name: uri.host),
-    if (origin != null) UriPart(title: (context) => 'origin', name: origin),
-    UriPart(title: (context) => 'scheme', name: uri.scheme),
-    UriPart(title: (context) => 'port', name: '${uri.port}'),
-    UriPart(title: (context) => 'path', name: uri.path),
+    UriPart(title: (context) => S.of(context).uriHost, name: uri.host),
+    if (origin != null)
+      UriPart(title: (context) => S.of(context).uriOrigin, name: origin),
+    UriPart(title: (context) => S.of(context).uriScheme, name: uri.scheme),
+    UriPart(title: (context) => S.of(context).uriPort, name: '${uri.port}'),
+    UriPart(title: (context) => S.of(context).uriPath, name: uri.path),
     UriPart(
-      title: (context) => 'path',
+      title: (context) => S.of(context).uriParams,
       name: params,
       lang: LangHighlightType.json,
     ),

@@ -31,8 +31,8 @@ class _HashGeneratorViewState extends State<HashGeneratorView> {
               ),
             ),
             ToolViewConfig(
-              title: const Text('HMAC'),
-              subtitle: const Text('Keyed-hash message authentication code'),
+              title: Text(S.of(context).hashHMAC),
+              subtitle: Text(S.of(context).hashHMACDes),
               trailing: Consumer(
                 builder: (context, ref, _) {
                   return Switch(
@@ -76,7 +76,7 @@ class _HashGeneratorViewState extends State<HashGeneratorView> {
         Consumer(builder: (context, ref, _) {
           if (!ref.watch(showHmac)) return const SizedBox.shrink();
           return AppTitleWrapper(
-            title: 'optional',
+            title: S.of(context).hashOptional,
             child: Consumer(builder: (context, ref, _) {
               if (!ref.watch(showHmac)) return const SizedBox.shrink();
               return TextField(

@@ -1,3 +1,4 @@
+import 'package:alga/l10n/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:lorem_ipsum/lorem_ipsum.dart';
@@ -12,11 +13,11 @@ extension LoremIpsumTypeExt on LoremIpsumType {
   String typeName(BuildContext context) {
     switch (this) {
       case LoremIpsumType.words:
-        return 'Words';
+        return S.of(context).loremWords;
       case LoremIpsumType.sentences:
-        return 'Sentences';
+        return S.of(context).loremSentences;
       case LoremIpsumType.paragraphs:
-        return 'Paragraphs';
+        return S.of(context).loremParagraphs;
     }
   }
 }

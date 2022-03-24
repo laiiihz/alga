@@ -40,7 +40,8 @@ class _JsonFormtterViewState extends State<JsonFormtterView> {
           trailing: DropdownButton<JsonIndentType>(
             underline: const SizedBox.shrink(),
             items: JsonIndentType.values
-                .map((e) => DropdownMenuItem(child: Text(e.name), value: e))
+                .map((e) =>
+                    DropdownMenuItem(child: Text(e.name(context)), value: e))
                 .toList(),
             onChanged: (iType) {
               provider.type = iType ?? JsonIndentType.space2;

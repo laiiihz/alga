@@ -178,7 +178,7 @@ List<ToolGroup> _toolItems = [
       ),
       ToolItem(
         icon: const Icon(Icons.network_check),
-        title: (context) => const Text('Network Info'),
+        title: (context) => Text(S.of(context).networkInfo),
         page: const NetworkInfoView(),
       ),
     ],

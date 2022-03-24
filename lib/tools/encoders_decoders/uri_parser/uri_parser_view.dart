@@ -18,7 +18,7 @@ class _UriParserViewState extends State<UriParserView> {
       title: Text(S.of(context).uriParser),
       children: [
         AppTitleWrapper(
-          title: 'source',
+          title: S.of(context).input,
           actions: [
             RefReadonly(builder: (ref) {
               return IconButton(

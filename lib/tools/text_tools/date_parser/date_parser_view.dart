@@ -1,6 +1,6 @@
 import 'package:alga/constants/import_helper.dart';
 import 'package:alga/tools/text_tools/date_parser/date_parsed_widget.dart';
-import 'package:alga/widgets/ref_readonly.dart';
+
 import 'package:intl/intl.dart';
 
 part './date_parser_provider.dart';
@@ -16,10 +16,10 @@ class _DateParserViewState extends State<DateParserView> {
   @override
   Widget build(BuildContext context) {
     return ToolView.scrollVertical(
-      title: const Text('Date Parser'),
+      title: Text(S.of(context).dateParser),
       children: [
         AppTitleWrapper(
-          title: 'Date',
+          title: S.of(context).dateParserdate,
           actions: const [],
           child: RefReadonly(builder: (ref) {
             return TextField(
@@ -36,11 +36,11 @@ class _DateParserViewState extends State<DateParserView> {
           return Column(
             children: [
               AppTitleWrapper(
-                title: 'Parsed Date',
+                title: S.of(context).parsedDate,
                 child: DateParsedWidget(date: date),
               ),
               AppTitleWrapper(
-                title: 'Iso8601 Date',
+                title: S.of(context).iso8601Date,
                 actions: [
                   IconButton(
                     onPressed: () {
@@ -56,7 +56,7 @@ class _DateParserViewState extends State<DateParserView> {
         }),
         RefReadonly(builder: (ref) {
           return AppTitleWrapper(
-            title: 'Custom Format',
+            title: S.of(context).dateCustomFormat,
             actions: [
               IconButton(
                 onPressed: () async {
@@ -76,7 +76,7 @@ class _DateParserViewState extends State<DateParserView> {
         }),
         Consumer(builder: (context, ref, _) {
           return AppTitleWrapper(
-            title: 'Formatted Date String',
+            title: S.of(context).formattedDateString,
             actions: [
               IconButton(
                 onPressed: () {

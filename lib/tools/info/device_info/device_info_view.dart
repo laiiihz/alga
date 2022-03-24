@@ -19,16 +19,16 @@ class _DeviceInfoViewState extends State<DeviceInfoView> {
           return const Center(child: CircularProgressIndicator.adaptive());
         }
         return ToolView.scrollVertical(
-          title: const Text('Device Info'),
+          title: Text(S.of(context).deviceInfo),
           children: [
-            const AppTitle(title: 'Common Info'),
+            AppTitle(title: S.of(context).commonInfo),
             ..._provider.commonInfomations
                 .map((e) => ToolViewConfig(
                       title: Text(e.title(context)),
                       subtitle: Text(e.value),
                     ))
                 .toList(),
-            const AppTitle(title: 'Platform Info'),
+            AppTitle(title: S.of(context).platformInfo),
             ..._provider.infomations
                 .map((e) => ToolViewConfig(
                       title: Text(e.title(context)),

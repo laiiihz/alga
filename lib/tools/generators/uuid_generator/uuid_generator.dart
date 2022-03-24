@@ -1,5 +1,4 @@
 import 'package:alga/constants/import_helper.dart';
-import 'package:alga/widgets/ref_readonly.dart';
 import 'package:flutter/services.dart';
 import 'package:uuid/uuid.dart';
 
@@ -22,7 +21,7 @@ class _UUIDGeneratorViewState extends State<UUIDGeneratorView> {
           children: [
             ToolViewConfig(
               leading: const Icon(Icons.horizontal_rule),
-              title: const Text('Hypens'),
+              title: Text(S.of(context).hypens),
               trailing: Consumer(builder: (context, ref, _) {
                 return Switch(
                   value: ref.watch(_hypens),
@@ -46,9 +45,8 @@ class _UUIDGeneratorViewState extends State<UUIDGeneratorView> {
             ),
             ToolViewConfig(
               leading: const Icon(Icons.info_outline),
-              title: const Text('UUID Version'),
-              subtitle:
-                  const Text('Choose the version of UUID version to generate'),
+              title: Text(S.of(context).uuidVersion),
+              subtitle: Text(S.of(context).uuidVersionDes),
               trailing: Consumer(builder: (context, ref, _) {
                 return DropdownButton<UUIDVersion>(
                   items: UUIDVersion.values.map((e) {
@@ -67,12 +65,11 @@ class _UUIDGeneratorViewState extends State<UUIDGeneratorView> {
             ),
           ],
         ),
-        const AppTitle(title: 'generate'),
         Row(
           children: [
             RefReadonly(builder: (ref) {
               return ElevatedButton(
-                child: const Text('Generate UUIDs'),
+                child: Text(S.of(context).generateUUIDs),
                 onPressed: () {
                   ref.refresh(_results);
                 },
@@ -102,7 +99,7 @@ class _UUIDGeneratorViewState extends State<UUIDGeneratorView> {
           ],
         ),
         AppTitle(
-          title: 'UUIDs',
+          title: S.of(context).uuids,
           actions: [
             RefReadonly(builder: (ref) {
               return IconButton(
