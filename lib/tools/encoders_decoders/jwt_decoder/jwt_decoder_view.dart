@@ -22,14 +22,9 @@ class _JWTDecoderViewState extends State<JWTDecoderView> {
         AppTitleWrapper(
           title: 'JWT token',
           actions: [
-            Consumer(builder: (context, ref, _) {
-              return IconButton(
-                icon: const Icon(Icons.paste),
-                onPressed: () async {
-                  ref.read(_jwtInput).text = await ClipboardUtil.paste();
-                  ref.refresh(_jwtModel);
-                },
-              );
+            PasteButton(onPaste: (ref, data) {
+              ref.read(_jwtInput).text = data;
+              ref.refresh(_jwtModel);
             }),
             Consumer(builder: (context, ref, _) {
               return IconButton(

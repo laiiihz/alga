@@ -16,14 +16,9 @@ class JsonYamlConverterView extends ConsumerWidget {
       title: 'JSON',
       expand: !isSmallDevice(context),
       actions: [
-        CopyButton(onCopy: (ref) {
-          return ref.read(_jsonController).text;
-        }),
-        IconButton(
-          icon: const Icon(Icons.paste),
-          onPressed: () async {
-            ref.read(_jsonController).text = await ClipboardUtil.paste();
-          },
+        CopyButton(onCopy: (ref) => ref.read(_jsonController).text),
+        PasteButton(
+          onPaste: (ref, data) => ref.read(_jsonController).text = data,
         ),
         IconButton(
           icon: const Icon(Icons.clear),
@@ -44,14 +39,9 @@ class JsonYamlConverterView extends ConsumerWidget {
       title: 'YAML',
       expand: !isSmallDevice(context),
       actions: [
-        CopyButton(onCopy: (ref) {
-          return ref.read(_yamlController).text;
-        }),
-        IconButton(
-          icon: const Icon(Icons.paste),
-          onPressed: () async {
-            ref.read(_yamlController).text = await ClipboardUtil.paste();
-          },
+        CopyButton(onCopy: (ref) => ref.read(_yamlController).text),
+        PasteButton(
+          onPaste: (ref, data) => ref.read(_yamlController).text = data,
         ),
         IconButton(
           icon: const Icon(Icons.clear),

@@ -36,14 +36,9 @@ class UriEncoderDecoderView extends StatelessWidget {
         AppTitleWrapper(
           title: S.of(context).input,
           actions: [
-            Consumer(builder: (context, ref, _) {
-              return IconButton(
-                icon: const Icon(Icons.paste),
-                onPressed: () async {
-                  ref.read(_input).text = await ClipboardUtil.paste();
-                  ref.refresh(_result);
-                },
-              );
+            PasteButton(onPaste: (ref, data) {
+              ref.read(_input).text = data;
+              ref.refresh(_result);
             }),
             Consumer(builder: (context, ref, _) {
               return IconButton(

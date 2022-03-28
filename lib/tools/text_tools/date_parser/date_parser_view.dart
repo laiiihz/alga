@@ -53,13 +53,10 @@ class _DateParserViewState extends State<DateParserView> {
           return AppTitleWrapper(
             title: S.of(context).dateCustomFormat,
             actions: [
-              IconButton(
-                onPressed: () async {
-                  ref.read(_formatController).text =
-                      await ClipboardUtil.paste();
-                },
-                icon: const Icon(Icons.paste),
-              ),
+              PasteButton(onPaste: (ref, data) {
+                ref.read(_formatController).text = data;
+                ref.refresh(_formatResult);
+              }),
             ],
             child: TextField(
               controller: ref.read(_formatController),

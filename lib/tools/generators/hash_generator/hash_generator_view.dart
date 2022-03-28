@@ -50,12 +50,10 @@ class _HashGeneratorViewState extends State<HashGeneratorView> {
           return AppTitleWrapper(
             title: S.of(context).input,
             actions: [
-              IconButton(
-                icon: const Icon(Icons.paste),
-                onPressed: () async {
-                  ref.watch(inputController).text = await ClipboardUtil.paste();
-                },
-              ),
+              PasteButton(onPaste: (ref, data) {
+                ref.watch(inputController).text = data;
+                ref.refresh(hashResults);
+              }),
               IconButton(
                 icon: const Icon(Icons.clear),
                 onPressed: () {

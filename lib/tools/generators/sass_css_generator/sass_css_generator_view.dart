@@ -34,15 +34,9 @@ class _SassCssGeneratorViewState extends State<SassCssGeneratorView> {
         AppTitleWrapper(
           title: 'SCSS source',
           actions: [
-            Consumer(builder: (context, ref, _) {
-              return IconButton(
-                onPressed: () async {
-                  ref.watch(_inputController).text =
-                      await ClipboardUtil.paste();
-                  ref.refresh(_cssResult);
-                },
-                icon: const Icon(Icons.paste),
-              );
+            PasteButton(onPaste: (ref, data) {
+              ref.watch(_inputController).text = data;
+              ref.refresh(_cssResult);
             }),
           ],
           child: Consumer(builder: (context, ref, _) {
