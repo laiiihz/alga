@@ -22,7 +22,7 @@ class _JWTDecoderViewState extends State<JWTDecoderView> {
         AppTitleWrapper(
           title: 'JWT token',
           actions: [
-            RefReadonly(builder: (ref) {
+            Consumer(builder: (context, ref, _) {
               return IconButton(
                 icon: const Icon(Icons.paste),
                 onPressed: () async {
@@ -31,7 +31,7 @@ class _JWTDecoderViewState extends State<JWTDecoderView> {
                 },
               );
             }),
-            RefReadonly(builder: (ref) {
+            Consumer(builder: (context, ref, _) {
               return IconButton(
                 icon: const Icon(Icons.clear),
                 onPressed: () {
@@ -40,7 +40,7 @@ class _JWTDecoderViewState extends State<JWTDecoderView> {
               );
             }),
           ],
-          child: RefReadonly(builder: (ref) {
+          child: Consumer(builder: (context, ref, _) {
             return ExtendedTextField(
               controller: ref.watch(_jwtInput),
               minLines: 3,

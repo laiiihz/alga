@@ -20,7 +20,7 @@ class _UriParserViewState extends State<UriParserView> {
         AppTitleWrapper(
           title: S.of(context).input,
           actions: [
-            RefReadonly(builder: (ref) {
+            Consumer(builder: (context, ref, _) {
               return IconButton(
                 onPressed: () async {
                   ref.watch(_input).text = await ClipboardUtil.paste();

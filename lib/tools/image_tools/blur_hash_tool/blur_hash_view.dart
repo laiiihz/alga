@@ -28,7 +28,7 @@ class _BlurHashViewState extends State<BlurHashView> {
           ToolViewConfig(
             leading: const Icon(Icons.image),
             title: Text(S.of(context).pickImage),
-            trailing: RefReadonly(builder: (ref) {
+            trailing: Consumer(builder: (context, ref, _) {
               return TextButton(
                 onPressed: () async {
                   await ref.read(_currentFile.notifier).pick();

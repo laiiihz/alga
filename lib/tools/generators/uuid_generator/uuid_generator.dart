@@ -67,7 +67,7 @@ class _UUIDGeneratorViewState extends State<UUIDGeneratorView> {
         ),
         Row(
           children: [
-            RefReadonly(builder: (ref) {
+            Consumer(builder: (context, ref, _) {
               return ElevatedButton(
                 child: Text(S.of(context).generateUUIDs),
                 onPressed: () {
@@ -81,7 +81,7 @@ class _UUIDGeneratorViewState extends State<UUIDGeneratorView> {
             ),
             SizedBox(
               width: 100,
-              child: RefReadonly(builder: (ref) {
+              child: Consumer(builder: (context, ref, _) {
                 return TextField(
                   controller: ref.watch(_countController),
                   inputFormatters: [FilteringTextInputFormatter.digitsOnly],

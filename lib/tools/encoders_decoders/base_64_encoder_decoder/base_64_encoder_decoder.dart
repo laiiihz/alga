@@ -47,7 +47,7 @@ class _Base64EncoderDecoderViewState extends State<Base64EncoderDecoderView> {
         AppTitleWrapper(
           title: S.of(context).input,
           actions: [
-            RefReadonly(builder: (ref) {
+            Consumer(builder: (context, ref, _) {
               return IconButton(
                 icon: const Icon(Icons.paste),
                 onPressed: () async {
@@ -56,7 +56,7 @@ class _Base64EncoderDecoderViewState extends State<Base64EncoderDecoderView> {
                 },
               );
             }),
-            RefReadonly(builder: (ref) {
+            Consumer(builder: (context, ref, _) {
               return IconButton(
                 icon: const Icon(Icons.clear),
                 onPressed: () {
@@ -66,7 +66,7 @@ class _Base64EncoderDecoderViewState extends State<Base64EncoderDecoderView> {
               );
             }),
           ],
-          child: RefReadonly(builder: (ref) {
+          child: Consumer(builder: (context, ref, _) {
             return TextField(
               minLines: 2,
               maxLines: 12,

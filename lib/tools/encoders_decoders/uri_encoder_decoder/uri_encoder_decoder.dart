@@ -36,7 +36,7 @@ class UriEncoderDecoderView extends StatelessWidget {
         AppTitleWrapper(
           title: S.of(context).input,
           actions: [
-            RefReadonly(builder: (ref) {
+            Consumer(builder: (context, ref, _) {
               return IconButton(
                 icon: const Icon(Icons.paste),
                 onPressed: () async {
@@ -45,7 +45,7 @@ class UriEncoderDecoderView extends StatelessWidget {
                 },
               );
             }),
-            RefReadonly(builder: (ref) {
+            Consumer(builder: (context, ref, _) {
               return IconButton(
                 icon: const Icon(Icons.clear),
                 onPressed: () {

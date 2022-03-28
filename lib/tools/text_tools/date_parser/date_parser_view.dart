@@ -21,7 +21,7 @@ class _DateParserViewState extends State<DateParserView> {
         AppTitleWrapper(
           title: S.of(context).dateParserdate,
           actions: const [],
-          child: RefReadonly(builder: (ref) {
+          child: Consumer(builder: (context, ref, _) {
             return TextField(
               controller: ref.read(_dateController),
               onChanged: (_) {
@@ -49,7 +49,7 @@ class _DateParserViewState extends State<DateParserView> {
             ],
           );
         }),
-        RefReadonly(builder: (ref) {
+        Consumer(builder: (context, ref, _) {
           return AppTitleWrapper(
             title: S.of(context).dateCustomFormat,
             actions: [

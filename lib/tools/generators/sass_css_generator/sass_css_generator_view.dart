@@ -34,7 +34,7 @@ class _SassCssGeneratorViewState extends State<SassCssGeneratorView> {
         AppTitleWrapper(
           title: 'SCSS source',
           actions: [
-            RefReadonly(builder: (ref) {
+            Consumer(builder: (context, ref, _) {
               return IconButton(
                 onPressed: () async {
                   ref.watch(_inputController).text =
