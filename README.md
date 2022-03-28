@@ -46,7 +46,6 @@ A powerful tool app for all developers.
 * [ ] sass to css generator
   * [ ] show sourceMap config
 * [ ] Web Support
-* [ ] disable copy button when content is empty
 
 ## Getting Started
 

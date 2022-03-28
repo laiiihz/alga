@@ -11,10 +11,13 @@ class CopyButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer(
       builder: (context, ref, child) {
+        final data = onCopy(ref);
         return IconButton(
-          onPressed: () async {
-            await ClipboardUtil.copy(onCopy(ref));
-          },
+          onPressed: data.isEmpty
+              ? null
+              : () async {
+                  await ClipboardUtil.copy(data);
+                },
           icon: child!,
           tooltip: S.of(context).copy,
         );
