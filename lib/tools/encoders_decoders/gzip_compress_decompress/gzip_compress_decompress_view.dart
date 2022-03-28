@@ -75,14 +75,7 @@ class _GzipCompressDecompressViewState
         AppTitleWrapper(
           title: S.of(context).output,
           actions: [
-            RefReadonly(builder: (ref) {
-              return IconButton(
-                icon: const Icon(Icons.copy),
-                onPressed: () {
-                  ClipboardUtil.copy(ref.read(_result));
-                },
-              );
-            }),
+            CopyButton(onCopy: (ref) => ref.read(_result)),
           ],
           child: Consumer(builder: (context, ref, _) {
             return AppTextBox(

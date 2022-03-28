@@ -42,12 +42,7 @@ class _DateParserViewState extends State<DateParserView> {
               AppTitleWrapper(
                 title: S.of(context).iso8601Date,
                 actions: [
-                  IconButton(
-                    onPressed: () {
-                      ClipboardUtil.copy(date.toIso8601String());
-                    },
-                    icon: const Icon(Icons.copy),
-                  ),
+                  CopyButton(onCopy: (ref) => date.toIso8601String()),
                 ],
                 child: AppTextBox(data: date.toIso8601String()),
               ),
@@ -63,7 +58,7 @@ class _DateParserViewState extends State<DateParserView> {
                   ref.read(_formatController).text =
                       await ClipboardUtil.paste();
                 },
-                icon: const Icon(Icons.copy),
+                icon: const Icon(Icons.paste),
               ),
             ],
             child: TextField(

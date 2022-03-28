@@ -14,14 +14,12 @@ class QuickJsView extends StatelessWidget {
         AppTitleWrapper(
           title: S.of(context).input,
           actions: [
-            Consumer(builder: (context, ref, _) {
-              return IconButton(
-                onPressed: () {
-                  ref.refresh(_result);
-                },
-                icon: const Icon(Icons.paste),
-              );
-            }),
+            PasteButton(
+              onPaste: (ref, data) {
+                ref.watch(_input).text = data;
+                ref.refresh(_result);
+              },
+            ),
           ],
           child: Consumer(builder: (context, ref, _) {
             return LangTextField(
@@ -32,8 +30,21 @@ class QuickJsView extends StatelessWidget {
             );
           }),
         ),
+        Consumer(builder: (context, ref, _) {
+          return ElevatedButton(
+            onPressed: () {
+              ref.refresh(_result);
+            },
+            child: const Text('RUN'),
+          );
+        }),
         AppTitleWrapper(
           title: S.of(context).output,
+          actions: [
+            CopyButton(onCopy: (ref) {
+              return ref.watch(_result);
+            }),
+          ],
           child: Consumer(builder: (context, ref, _) {
             return AppTextBox(
               data: ref.watch(_result),

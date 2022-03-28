@@ -16,12 +16,9 @@ class JsonYamlConverterView extends ConsumerWidget {
       title: 'JSON',
       expand: !isSmallDevice(context),
       actions: [
-        IconButton(
-          icon: const Icon(Icons.copy),
-          onPressed: () {
-            ClipboardUtil.copy(ref.read(_jsonController).text);
-          },
-        ),
+        CopyButton(onCopy: (ref) {
+          return ref.read(_jsonController).text;
+        }),
         IconButton(
           icon: const Icon(Icons.paste),
           onPressed: () async {
@@ -47,12 +44,9 @@ class JsonYamlConverterView extends ConsumerWidget {
       title: 'YAML',
       expand: !isSmallDevice(context),
       actions: [
-        IconButton(
-          icon: const Icon(Icons.copy),
-          onPressed: () {
-            ClipboardUtil.copy(ref.read(_yamlController).text);
-          },
-        ),
+        CopyButton(onCopy: (ref) {
+          return ref.read(_yamlController).text;
+        }),
         IconButton(
           icon: const Icon(Icons.paste),
           onPressed: () async {

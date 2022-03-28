@@ -101,14 +101,7 @@ class _UUIDGeneratorViewState extends State<UUIDGeneratorView> {
         AppTitle(
           title: S.of(context).uuids,
           actions: [
-            RefReadonly(builder: (ref) {
-              return IconButton(
-                icon: const Icon(Icons.copy),
-                onPressed: () async {
-                  ClipboardUtil.copy(ref.read(_resultValue));
-                },
-              );
-            }),
+            CopyButton(onCopy: (ref) => ref.read(_resultValue)),
           ],
         ),
         Consumer(builder: (context, ref, _) {

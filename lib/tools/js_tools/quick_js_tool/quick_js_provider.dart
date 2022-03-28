@@ -15,6 +15,7 @@ final _input = StateProvider.autoDispose<TextEditingController>((ref) {
 final _result = StateProvider.autoDispose<String>((ref) {
   final runtime = ref.watch(_runtime);
   final text = ref.watch(_input).text;
+  if (text.isEmpty) return '';
   final result = runtime.evaluate(text);
   return result.stringResult;
 });

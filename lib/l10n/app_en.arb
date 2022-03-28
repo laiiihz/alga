@@ -3,6 +3,8 @@
   "@appName": {
     "description": "name of app"
   },
+  "copy": "Copy",
+  "paste":"Paste",
   "followSystem": "follow system",
   "themeMode": "Theme Mode",
   "themeLight": "Light",

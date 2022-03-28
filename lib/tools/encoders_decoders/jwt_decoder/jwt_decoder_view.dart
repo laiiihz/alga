@@ -2,7 +2,6 @@ import 'dart:convert';
 
 import 'package:alga/constants/import_helper.dart';
 import 'package:alga/tools/encoders_decoders/jwt_decoder/jwt_special_text_builder.dart';
-import 'package:alga/widgets/ref_readonly.dart';
 import 'package:extended_text_field/extended_text_field.dart';
 
 part './jwt_decoder_provider.dart';
@@ -56,14 +55,7 @@ class _JWTDecoderViewState extends State<JWTDecoderView> {
         AppTitleWrapper(
           title: S.of(context).jwtHeader,
           actions: [
-            RefReadonly(builder: (ref) {
-              return IconButton(
-                icon: const Icon(Icons.copy),
-                onPressed: () {
-                  ClipboardUtil.copy(ref.read(_headerResult));
-                },
-              );
-            }),
+            CopyButton(onCopy: (ref) => ref.read(_headerResult)),
           ],
           child: Consumer(builder: (context, ref, _) {
             return AppTextBox(
@@ -77,14 +69,7 @@ class _JWTDecoderViewState extends State<JWTDecoderView> {
         AppTitleWrapper(
           title: S.of(context).jwtPayload,
           actions: [
-            RefReadonly(builder: (ref) {
-              return IconButton(
-                icon: const Icon(Icons.copy),
-                onPressed: () {
-                  ClipboardUtil.copy(ref.read(_payloadResult));
-                },
-              );
-            }),
+            CopyButton(onCopy: (ref) => ref.read(_payloadResult)),
           ],
           child: Consumer(builder: (context, ref, _) {
             return AppTextBox(

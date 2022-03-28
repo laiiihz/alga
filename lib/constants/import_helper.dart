@@ -10,3 +10,5 @@ export 'package:language_textfield/language_textfield.dart';
 export 'package:flutter_riverpod/flutter_riverpod.dart';
 export 'package:alga/utils/clipboard_util.dart';
 export 'package:alga/widgets/ref_readonly.dart';
+export 'package:alga/widgets/copy_button.dart';
+export 'package:alga/widgets/paste_button.dart';

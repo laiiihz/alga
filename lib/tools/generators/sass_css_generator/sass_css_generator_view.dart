@@ -1,5 +1,4 @@
 import 'package:alga/constants/import_helper.dart';
-import 'package:alga/widgets/ref_readonly.dart';
 import 'package:sass/sass.dart';
 part './sass_css_generator_provider.dart';
 
@@ -61,14 +60,7 @@ class _SassCssGeneratorViewState extends State<SassCssGeneratorView> {
         AppTitleWrapper(
           title: 'CSS result',
           actions: [
-            RefReadonly(builder: (ref) {
-              return IconButton(
-                onPressed: () {
-                  ClipboardUtil.copy(ref.read(_cssResult));
-                },
-                icon: const Icon(Icons.copy),
-              );
-            }),
+            CopyButton(onCopy: (ref) => ref.read(_cssResult)),
           ],
           child: Consumer(builder: (context, ref, _) {
             return AppTextBox(

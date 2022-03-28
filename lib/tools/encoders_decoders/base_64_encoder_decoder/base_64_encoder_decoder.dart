@@ -2,7 +2,6 @@ import 'dart:convert';
 import 'dart:typed_data';
 
 import 'package:alga/constants/import_helper.dart';
-import 'package:alga/widgets/ref_readonly.dart';
 
 part './base_64_provider.dart';
 
@@ -81,16 +80,9 @@ class _Base64EncoderDecoderViewState extends State<Base64EncoderDecoderView> {
         AppTitleWrapper(
           title: S.of(context).output,
           actions: [
-            RefReadonly(
-              builder: (ref) {
-                return IconButton(
-                  icon: const Icon(Icons.copy),
-                  onPressed: () {
-                    ClipboardUtil.copy(ref.read(_result));
-                  },
-                );
-              },
-            ),
+            CopyButton(onCopy: (ref) {
+              return ref.read(_result);
+            }),
           ],
           child: Consumer(builder: (context, ref, _) {
             return AppTextBox(

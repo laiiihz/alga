@@ -1,5 +1,7 @@
 {
   "appName": "Alga",
+  "copy": "复制",
+  "paste": "粘贴",
   "followSystem": "跟随系统",
   "themeMode": "主题色",
   "themeLight": "浅色",
