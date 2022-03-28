@@ -71,12 +71,12 @@ class _SassCssGeneratorViewState extends State<SassCssGeneratorView> {
         AppTitleWrapper(
           title: 'CSS result',
           actions: [
-            CopyButton(onCopy: (ref) => ref.read(_cssResult)),
+            CopyButton(onCopy: (ref) => ref.read(_css)),
           ],
           child: Consumer(builder: (context, ref, _) {
             return AppTextBox(
               lang: LangHighlightType.css,
-              data: ref.watch(_cssResult),
+              data: ref.watch(_css),
               minLines: 2,
               maxLines: 12,
             );

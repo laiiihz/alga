@@ -43,8 +43,6 @@ A powerful tool app for all developers.
 * [ ] Launguage highlight
   * [ ] Regex
   * [ ] Uri
-* [ ] sass to css generator
-  * [ ] show sourceMap config
 * [ ] Web Support
 
 ## Getting Started

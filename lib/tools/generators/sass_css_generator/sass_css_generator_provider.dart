@@ -7,7 +7,7 @@ final _compress = StateProvider.autoDispose<bool>((ref) => false);
 
 final _syntax = StateProvider.autoDispose<Syntax>((ref) => Syntax.scss);
 
-final _cssResult = StateProvider.autoDispose<String>((ref) {
+final _cssResult = StateProvider.autoDispose<CompileResult?>((ref) {
   final compress = ref.watch(_compress);
   final text = ref.watch(_inputController).text;
   final syntax = ref.watch(_syntax);
@@ -17,8 +17,11 @@ final _cssResult = StateProvider.autoDispose<String>((ref) {
       style: compress ? OutputStyle.compressed : OutputStyle.expanded,
       syntax: syntax,
     );
-    return result.css;
+    return result;
   } catch (e) {
-    return '';
+    return null;
   }
 });
+
+final _css = StateProvider.autoDispose<String>(
+    (ref) => ref.watch(_cssResult)?.css ?? '');
