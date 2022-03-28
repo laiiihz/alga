@@ -19,6 +19,7 @@ import 'package:alga/tools/image_tools/blur_hash_tool/blur_hash_view.dart';
 import 'package:alga/tools/image_tools/qrcode_tool/qrcode_view.dart';
 import 'package:alga/tools/info/device_info/device_info_view.dart';
 import 'package:alga/tools/info/network_info/network_info_view.dart';
+import 'package:alga/tools/js_tools/quick_js_tool/quick_js_view.dart';
 import 'package:alga/tools/server_tools/static_server_tool/static_server_tool_view.dart';
 import 'package:alga/tools/text_tools/date_parser/date_parser_view.dart';
 import 'package:alga/tools/text_tools/markdown_preview/markdown_preview_view.dart';
@@ -182,6 +183,17 @@ List<ToolGroup> _toolItems = [
         page: const NetworkInfoView(),
       ),
     ],
+  ),
+  ToolGroup(
+    title: (context) => const Text('JS Tools'),
+    items: [
+      ToolItem(
+        icon: const Icon(Icons.javascript_rounded),
+        title: (context) => const Text('Quick JS Tool'),
+        page: const QuickJsView(),
+      ),
+    ],
+    icon: const Icon(Icons.javascript_rounded),
   ),
 ];
 

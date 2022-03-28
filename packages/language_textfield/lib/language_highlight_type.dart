@@ -6,4 +6,5 @@ class LangHighlightType {
   static const scss = 'scss';
   static const css = 'css';
   static const uri = 'uri';
+  static const js = 'javascript';
 }
