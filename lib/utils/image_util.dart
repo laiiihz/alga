@@ -12,7 +12,7 @@ class ImageUtil {
     if (Platform.isAndroid || Platform.isIOS) {
       return await _pickMobile();
     }
-    if (Platform.isLinux || Platform.isMacOS || Platform.isMacOS) {
+    if (Platform.isLinux || Platform.isMacOS || Platform.isWindows) {
       return await _pickDesktop();
     }
     throw UnsupportedError('Unsupported Platform');
