@@ -3,6 +3,8 @@ PODS:
     - FlutterMacOS
   - file_selector_macos (0.0.1):
     - FlutterMacOS
+  - flutter_js (0.0.1):
+    - FlutterMacOS
   - FlutterMacOS (1.0.0)
   - HotKey (0.1.2)
   - hotkey_manager (0.0.1):
@@ -22,6 +24,7 @@ PODS:
 DEPENDENCIES:
   - device_info_plus_macos (from `Flutter/ephemeral/.symlinks/plugins/device_info_plus_macos/macos`)
   - file_selector_macos (from `Flutter/ephemeral/.symlinks/plugins/file_selector_macos/macos`)
+  - flutter_js (from `Flutter/ephemeral/.symlinks/plugins/flutter_js/macos`)
   - FlutterMacOS (from `Flutter/ephemeral`)
   - hotkey_manager (from `Flutter/ephemeral/.symlinks/plugins/hotkey_manager/macos`)
   - network_info_plus_macos (from `Flutter/ephemeral/.symlinks/plugins/network_info_plus_macos/macos`)
@@ -39,6 +42,8 @@ EXTERNAL SOURCES:
     :path: Flutter/ephemeral/.symlinks/plugins/device_info_plus_macos/macos
   file_selector_macos:
     :path: Flutter/ephemeral/.symlinks/plugins/file_selector_macos/macos
+  flutter_js:
+    :path: Flutter/ephemeral/.symlinks/plugins/flutter_js/macos
   FlutterMacOS:
     :path: Flutter/ephemeral
   hotkey_manager:
@@ -57,6 +62,7 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   device_info_plus_macos: 1ad388a1ef433505c4038e7dd9605aadd1e2e9c7
   file_selector_macos: f1b08a781e66103e3ba279fd5d4024a2478b3af6
+  flutter_js: c664361655af1d8fc24e278c7d086e9cbe0d68bc
   FlutterMacOS: 57701585bf7de1b3fc2bb61f6378d73bbdea8424
   HotKey: ad59450195936c10992438c4210f673de5aee43e
   hotkey_manager: ad673457691f4d39e481be04a61da2ae07d81c62
