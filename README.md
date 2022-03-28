@@ -44,7 +44,6 @@ A powerful tool app for all developers.
   * [ ] Regex
   * [ ] Uri
 * [ ] sass to css generator
-  * [ ] pick syntax config
   * [ ] show sourceMap config
 * [ ] Web Support
 * [ ] disable copy button when content is empty

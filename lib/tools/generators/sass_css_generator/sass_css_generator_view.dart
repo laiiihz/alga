@@ -29,6 +29,23 @@ class _SassCssGeneratorViewState extends State<SassCssGeneratorView> {
                 );
               }),
             ),
+            ToolViewConfig(
+              title: const Text('Source Type'),
+              trailing: Consumer(builder: (context, ref, _) {
+                return DropdownButton<Syntax>(
+                  items: [Syntax.css, Syntax.sass, Syntax.scss]
+                      .map((e) => DropdownMenuItem(
+                            child: Text(e.toString()),
+                            value: e,
+                          ))
+                      .toList(),
+                  onChanged: (syntax) {
+                    ref.read(_syntax.notifier).state = syntax ?? Syntax.scss;
+                  },
+                  value: ref.watch(_syntax),
+                );
+              }),
+            ),
           ],
         ),
         AppTitleWrapper(
