@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:alga/l10n/l10n.dart';
 import 'package:alga/models/tool_item.dart';
 import 'package:alga/models/tool_items.dart';
@@ -6,6 +8,7 @@ import 'package:alga/views/search_view/search_view.dart';
 import 'package:alga/widgets/animated_show_widget.dart';
 import 'package:alga/widgets/app_drawer.dart';
 import 'package:animations/animations.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hotkey_manager/hotkey_manager.dart';
@@ -45,7 +48,7 @@ class AppScaffold extends StatelessWidget {
     }
 
     Widget searchButton = const SizedBox.shrink();
-    if (isSmallDevice(context)) {
+    if (kIsWeb || Platform.isIOS || Platform.isAndroid) {
       searchButton = IconButton(
         onPressed: () {
           showSearch(context: context, delegate: AppSearchDelegate());
@@ -150,7 +153,8 @@ class AppScaffold extends StatelessWidget {
       ],
     );
 
-    if (!isSmallDevice(context)) {
+    if (!kIsWeb &&
+        (Platform.isLinux || Platform.isWindows || Platform.isMacOS)) {
       appBarTop = Stack(
         children: [
           WindowCaption(
@@ -161,6 +165,7 @@ class AppScaffold extends StatelessWidget {
         ],
       );
     }
+
     return Scaffold(
       appBar: PreferredSize(
         child: SafeArea(child: appBarTop),
