@@ -43,7 +43,6 @@ A powerful tool app for all developers.
 * [ ] Launguage highlight
   * [ ] Regex
   * [ ] Uri
-* [ ] Web Support
 
 ## Getting Started
 
