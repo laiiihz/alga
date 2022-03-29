@@ -1,6 +1,7 @@
+import 'package:flutter/services.dart';
+
 import 'package:alga/constants/import_helper.dart';
 import 'package:alga/tools/formatters/formatter_abstract.dart';
-import 'package:flutter/services.dart';
 
 class FormatterView extends StatefulWidget {
   final Widget title;

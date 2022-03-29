@@ -1,6 +1,8 @@
-import 'package:alga/l10n/l10n.dart';
 import 'package:flutter/material.dart';
+
 import 'package:hive/hive.dart';
+
+import 'package:alga/l10n/l10n.dart';
 
 part 'system_settings_model.g.dart';
 

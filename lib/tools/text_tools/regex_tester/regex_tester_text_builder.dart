@@ -1,7 +1,8 @@
-import 'package:alga/tools/text_tools/regex_tester/regex_tester_provider.dart';
+import 'package:flutter/material.dart';
+
 import 'package:extended_text_field/extended_text_field.dart';
 
-import 'package:flutter/material.dart';
+import 'package:alga/tools/text_tools/regex_tester/regex_tester_provider.dart';
 
 class RegexTesterTextBuilder extends SpecialTextSpanBuilder {
   final RegexTesterProvider provider;

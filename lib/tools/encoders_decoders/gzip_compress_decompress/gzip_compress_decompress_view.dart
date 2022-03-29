@@ -1,8 +1,9 @@
 import 'dart:convert';
 import 'dart:typed_data';
 
-import 'package:alga/constants/import_helper.dart';
 import 'package:archive/archive.dart';
+
+import 'package:alga/constants/import_helper.dart';
 
 part './gzip_compress_decompress_provider.dart';
 

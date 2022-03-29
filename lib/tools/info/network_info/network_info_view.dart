@@ -1,5 +1,6 @@
-import 'package:alga/constants/import_helper.dart';
 import 'package:network_info_plus/network_info_plus.dart';
+
+import 'package:alga/constants/import_helper.dart';
 
 part './network_info_provider.dart';
 

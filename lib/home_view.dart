@@ -1,8 +1,10 @@
+import 'package:flutter/material.dart';
+
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+
 import 'package:alga/models/tool_items.dart';
 import 'package:alga/utils/hotkey_util.dart';
 import 'package:alga/widgets/app_scaffold.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class HomeView extends ConsumerStatefulWidget {
   const HomeView({Key? key}) : super(key: key);

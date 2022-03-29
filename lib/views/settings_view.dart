@@ -1,3 +1,6 @@
+import 'package:package_info_plus/package_info_plus.dart';
+import 'package:url_launcher/url_launcher.dart';
+
 import 'package:alga/constants/import_helper.dart';
 import 'package:alga/extension/list_ext.dart';
 import 'package:alga/utils/hive_adapters/system_settings_model.dart';
@@ -7,8 +10,6 @@ import 'package:alga/views/widgets/color_popup_item.dart';
 import 'package:alga/views/widgets/expandable_settings_tile.dart';
 import 'package:alga/views/widgets/settings_tile.dart';
 import 'package:alga/widgets/box_builder.dart';
-import 'package:package_info_plus/package_info_plus.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 class SettingsView extends StatefulWidget {
   const SettingsView({Key? key}) : super(key: key);

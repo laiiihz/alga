@@ -1,5 +1,7 @@
 import 'dart:io';
 
+import 'package:flutter/foundation.dart';
+
 import 'package:alga/constants/import_helper.dart';
 import 'package:alga/models/tool_item.dart';
 import 'package:alga/tools/converters/json_yaml_converter/json_yaml_converter_view.dart';
@@ -13,8 +15,6 @@ import 'package:alga/tools/formatters/dart_formatter/dart_formatter_view.dart';
 import 'package:alga/tools/formatters/json_formatter/json_formatter_view.dart';
 import 'package:alga/tools/generators/hash_generator/hash_generator_view.dart';
 import 'package:alga/tools/generators/lorem_ipsum_generator/lorem_ipsum_generator_view.dart';
-import 'package:alga/tools/generators/sass_css_generator/sass_css_generator_view.dart'
-    if (dart.library.js) 'package:alga/tools/generators/sass_css_generator/web/web_sass_css_generator_view.dart';
 import 'package:alga/tools/generators/uuid_generator/uuid_generator.dart';
 import 'package:alga/tools/image_tools/blur_hash_tool/blur_hash_view.dart';
 import 'package:alga/tools/image_tools/qrcode_tool/qrcode_view.dart';
@@ -27,9 +27,11 @@ import 'package:alga/tools/text_tools/markdown_preview/markdown_preview_view.dar
 import 'package:alga/tools/text_tools/regex_tester/regex_tester_view.dart';
 import 'package:alga/views/all_tools_view.dart';
 import 'package:alga/views/settings_view.dart';
-import 'package:flutter/foundation.dart';
-
 import '../widgets/svg_asset_icon.dart';
+
+import 'package:alga/tools/generators/sass_css_generator/sass_css_generator_view.dart'
+    if (dart.library.js) 'package:alga/tools/generators/sass_css_generator/web/web_sass_css_generator_view.dart';
+
 
 List<ToolGroup> _toolItems = [
   ToolGroup(

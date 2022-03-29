@@ -1,5 +1,6 @@
-import 'package:alga/constants/import_helper.dart';
 import 'package:qr_flutter/qr_flutter.dart';
+
+import 'package:alga/constants/import_helper.dart';
 
 part './qrcode_provider.dart';
 

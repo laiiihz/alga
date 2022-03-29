@@ -2,12 +2,14 @@ import 'dart:io';
 import 'dart:typed_data';
 import 'dart:ui' as ui;
 
-import 'package:alga/constants/import_helper.dart';
-import 'package:alga/utils/image_util.dart';
-import 'package:file_selector/file_selector.dart';
 import 'package:flutter/foundation.dart';
+
+import 'package:file_selector/file_selector.dart';
 import 'package:flutter_blurhash/flutter_blurhash.dart';
 import 'package:path/path.dart' as path;
+
+import 'package:alga/constants/import_helper.dart';
+import 'package:alga/utils/image_util.dart';
 
 part './blur_hash_provider.dart';
 

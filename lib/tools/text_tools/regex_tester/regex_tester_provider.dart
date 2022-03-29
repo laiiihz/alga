@@ -1,5 +1,6 @@
-import 'package:alga/utils/clipboard_util.dart';
 import 'package:flutter/material.dart';
+
+import 'package:alga/utils/clipboard_util.dart';
 
 class RegexTesterProvider extends ChangeNotifier {
   final regexController = TextEditingController();

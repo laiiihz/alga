@@ -1,6 +1,8 @@
-import 'package:alga/constants/import_helper.dart';
 import 'package:flutter/services.dart';
+
 import 'package:uuid/uuid.dart';
+
+import 'package:alga/constants/import_helper.dart';
 
 part './uuid_provider.dart';
 

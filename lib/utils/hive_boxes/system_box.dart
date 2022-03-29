@@ -1,6 +1,7 @@
+import 'package:hive_flutter/hive_flutter.dart';
+
 import 'package:alga/utils/hive_adapters/system_settings_model.dart';
 import 'package:alga/utils/hive_util.dart';
-import 'package:hive_flutter/hive_flutter.dart';
 
 class SystemBox {
   static final Box _current = HiveUtil.systemBox;

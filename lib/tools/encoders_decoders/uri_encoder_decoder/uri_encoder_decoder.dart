@@ -1,4 +1,5 @@
 import 'package:alga/constants/import_helper.dart';
+
 part './uri_provider.dart';
 
 class UriEncoderDecoderView extends StatelessWidget {

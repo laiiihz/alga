@@ -1,5 +1,6 @@
-import 'package:alga/utils/hive_adapters/system_settings_model.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+
+import 'package:alga/utils/hive_adapters/system_settings_model.dart';
 
 class HiveUtil {
   static late Box<SystemSettingsModel> systemBox;

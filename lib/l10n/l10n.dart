@@ -1,6 +1,8 @@
-import 'package:alga/utils/hive_adapters/system_settings_model.dart';
 import 'package:flutter/material.dart';
+
 import 'package:flutter_gen/gen_l10n/s.dart';
+
+import 'package:alga/utils/hive_adapters/system_settings_model.dart';
 
 class S {
   static AppLocalizations of(BuildContext context) {

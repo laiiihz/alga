@@ -1,7 +1,8 @@
+import 'package:extended_text_field/extended_text_field.dart';
+
 import 'package:alga/constants/import_helper.dart';
 import 'package:alga/tools/text_tools/regex_tester/regex_tester_provider.dart';
 import 'package:alga/tools/text_tools/regex_tester/regex_tester_text_builder.dart';
-import 'package:extended_text_field/extended_text_field.dart';
 
 class RegexTesterView extends StatefulWidget {
   const RegexTesterView({Key? key}) : super(key: key);

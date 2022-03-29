@@ -1,8 +1,9 @@
 import 'dart:io';
 
+import 'package:flutter/foundation.dart';
+
 import 'package:blurhash_dart/blurhash_dart.dart';
 import 'package:file_selector/file_selector.dart' as selector;
-import 'package:flutter/foundation.dart';
 import 'package:image/image.dart' as pub_image;
 import 'package:image_picker/image_picker.dart';
 

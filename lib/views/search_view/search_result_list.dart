@@ -1,6 +1,8 @@
-import 'package:alga/widgets/app_scaffold.dart';
 import 'package:flutter/material.dart';
+
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+import 'package:alga/widgets/app_scaffold.dart';
 
 class SearchResultList extends ConsumerStatefulWidget {
   const SearchResultList({Key? key}) : super(key: key);

@@ -13,13 +13,3 @@ class _SassCssGeneratorViewState extends State<SassCssGeneratorView> {
     return const Text('NOT SUPPORTED');
   }
 }
-
-final _inputController = UnimplementedError();
-
-final _compress = UnimplementedError();
-
-final _syntax = UnimplementedError();
-
-final _cssResult = UnimplementedError();
-
-final _css = UnimplementedError();

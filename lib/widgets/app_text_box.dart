@@ -1,7 +1,9 @@
-import 'package:alga/utils/theme_util.dart';
 import 'package:flutter/material.dart';
+
 import 'package:flutter_highlight/themes/solarized-dark.dart';
 import 'package:highlight_textspan/highlight_textspan.dart';
+
+import 'package:alga/utils/theme_util.dart';
 
 class AppTextBox extends StatefulWidget {
   final String data;

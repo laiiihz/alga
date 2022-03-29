@@ -1,6 +1,7 @@
+import 'package:flutter/material.dart';
+
 import 'package:alga/extension/list_ext.dart';
 import 'package:alga/utils/theme_util.dart';
-import 'package:flutter/material.dart';
 
 class ToolView extends StatelessWidget {
   final Widget title;

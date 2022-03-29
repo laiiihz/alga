@@ -1,7 +1,7 @@
+import 'package:intl/intl.dart';
+
 import 'package:alga/constants/import_helper.dart';
 import 'package:alga/tools/text_tools/date_parser/date_parsed_widget.dart';
-
-import 'package:intl/intl.dart';
 
 part './date_parser_provider.dart';
 

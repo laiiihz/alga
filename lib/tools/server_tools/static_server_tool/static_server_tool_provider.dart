@@ -1,9 +1,10 @@
 import 'dart:io';
 
-import 'package:file_selector/file_selector.dart' as selector;
 import 'package:flutter/material.dart';
-import 'package:shelf_static/shelf_static.dart';
+
+import 'package:file_selector/file_selector.dart' as selector;
 import 'package:shelf/shelf_io.dart' as io;
+import 'package:shelf_static/shelf_static.dart';
 
 const _kDefaultPort = 8080;
 

@@ -1,7 +1,9 @@
-import 'package:alga/l10n/l10n.dart';
 import 'package:flutter/material.dart';
+
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:lorem_ipsum/lorem_ipsum.dart';
+
+import 'package:alga/l10n/l10n.dart';
 
 enum LoremIpsumType {
   words,

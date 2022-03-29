@@ -1,5 +1,7 @@
-import 'package:alga/constants/import_helper.dart';
 import 'package:sass/sass.dart';
+
+import 'package:alga/constants/import_helper.dart';
+
 part './sass_css_generator_provider.dart';
 
 class SassCssGeneratorView extends StatefulWidget {

@@ -1,8 +1,8 @@
 import 'dart:convert';
 
-import 'package:alga/tools/formatters/formatter_abstract.dart';
 import 'package:flutter/material.dart';
 
+import 'package:alga/tools/formatters/formatter_abstract.dart';
 import 'json_enums.dart';
 
 class JsonProvider extends ChangeNotifier implements FormatterAbstract {
