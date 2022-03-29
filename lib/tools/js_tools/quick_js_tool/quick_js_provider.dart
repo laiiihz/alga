@@ -1,7 +1,7 @@
 part of './quick_js_view.dart';
 
-final _runtime = StateProvider.autoDispose<JavascriptRuntime>((ref) {
-  final runtime = getJavascriptRuntime();
+final _runtime = StateProvider.autoDispose<JsStub>((ref) {
+  final runtime = JsStub();
   ref.onDispose(runtime.dispose);
   return runtime;
 });
@@ -16,6 +16,5 @@ final _result = StateProvider.autoDispose<String>((ref) {
   final runtime = ref.watch(_runtime);
   final text = ref.watch(_input).text;
   if (text.isEmpty) return '';
-  final result = runtime.evaluate(text);
-  return result.stringResult;
+  return runtime.evaluate(text);
 });

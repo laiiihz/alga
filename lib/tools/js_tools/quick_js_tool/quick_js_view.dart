@@ -1,5 +1,5 @@
 import 'package:alga/constants/import_helper.dart';
-import 'package:flutter_js/flutter_js.dart';
+import 'package:flutter_js_wrapper/flutter_js_wrapper.dart';
 
 part './quick_js_provider.dart';
 

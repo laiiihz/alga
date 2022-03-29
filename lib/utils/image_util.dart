@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:blurhash_dart/blurhash_dart.dart';
 import 'package:file_selector/file_selector.dart' as selector;
+import 'package:flutter/foundation.dart';
 import 'package:image/image.dart' as pub_image;
 import 'package:image_picker/image_picker.dart';
 
@@ -9,6 +10,9 @@ class ImageUtil {
   static final ImagePicker _picker = ImagePicker();
 
   static Future<File?> pick() async {
+    if (kIsWeb) {
+      return await _pickDesktop();
+    }
     if (Platform.isAndroid || Platform.isIOS) {
       return await _pickMobile();
     }

@@ -1,10 +1,13 @@
 import 'dart:io';
 
+import 'package:flutter/foundation.dart';
 import 'package:window_manager/window_manager.dart';
 
 class WindowUtil {
   static Future init() async {
-    if (Platform.isAndroid || Platform.isIOS) {
+    if (kIsWeb) {
+      return;
+    } else if (Platform.isAndroid || Platform.isIOS) {
       return;
     } else {
       await windowManager.ensureInitialized();
@@ -20,9 +23,13 @@ class WindowUtil {
   }
 
   static setTitle(String title) async {
+    if (kIsWeb) return;
     if (Platform.isAndroid || Platform.isIOS) return;
     await windowManager.setTitle(title);
   }
 
-  static bool get isMobileDevice => Platform.isAndroid || Platform.isIOS;
+  static bool get isMobileDevice {
+    if (kIsWeb) return false;
+    return Platform.isAndroid || Platform.isIOS;
+  }
 }

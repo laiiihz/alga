@@ -23,6 +23,8 @@ dependencies:
     path: ./packages/json_textfield
   language_textfield:
     path: ./packages/language_textfield
+  flutter_js_wrapper:
+    path: ./packages/flutter_js_wrapper
 
   cupertino_icons: ^1.0.2
   archive: ^3.2.2
@@ -61,6 +63,9 @@ dev_dependencies:
   flutter_lints: ^1.0.0
   hive_generator: ^1.1.2
   build_runner: ^2.1.8
+
+dependency_overrides:
+  js: 0.6.4
 
 flutter:
   uses-material-design: true
