@@ -32,7 +32,6 @@ import '../widgets/svg_asset_icon.dart';
 import 'package:alga/tools/generators/sass_css_generator/sass_css_generator_view.dart'
     if (dart.library.js) 'package:alga/tools/generators/sass_css_generator/web/web_sass_css_generator_view.dart';
 
-
 List<ToolGroup> _toolItems = [
   ToolGroup(
     icon: const Icon(Icons.transform),
@@ -86,7 +85,7 @@ List<ToolGroup> _toolItems = [
     title: (context) => Text(S.of(context).formatters),
     items: [
       ToolItem(
-        icon: const SvgAssetIcon('assets/icons/JsonFormatter.svg'),
+        icon: const SvgAssetIcon('assets/icons/json.svg', colorIcon: true),
         title: (context) => Text(S.of(context).formatterJson),
         page: const JsonFormtterView(),
       ),
