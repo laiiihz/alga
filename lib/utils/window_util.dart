@@ -13,8 +13,10 @@ class WindowUtil {
     } else {
       await windowManager.ensureInitialized();
       windowManager.waitUntilReadyToShow().then((value) async {
-        await windowManager.setTitleBarStyle('hidden',
-            windowButtonVisibility: false);
+        await windowManager.setTitleBarStyle(
+          TitleBarStyle.hidden,
+          windowButtonVisibility: false,
+        );
         await windowManager.center();
         await windowManager.setTitle('Alga');
         await windowManager.setSkipTaskbar(false);
