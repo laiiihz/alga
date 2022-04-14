@@ -24,7 +24,8 @@ class NumberBaseConverterView extends ConsumerWidget {
             controller: e.controller,
             inputFormatters: e.formatter,
             minLines: 1,
-            maxLines: 12,
+            maxLines: 8,
+            maxLength: e.maxLength,
             onChanged: (_) {
               NumberBaseUtil.update(e, ref.watch(_controllers));
             },

@@ -17,7 +17,8 @@ final _controllers =
 });
 
 class NumberBaseUtil {
-  static update(NumberBaseController base, List<NumberBaseController> controllers) {
+  static update(
+      NumberBaseController base, List<NumberBaseController> controllers) {
     for (var item in controllers) {
       if (item.runtimeType != base.runtimeType) {
         item.controller.text = base.radixString(item.radix) ?? '';
@@ -28,12 +29,13 @@ class NumberBaseUtil {
 
 abstract class NumberBaseController {
   final int radix;
+  final int maxLength;
   final List<TextInputFormatter> formatter = [];
 
   /// get l10n title
   String title(BuildContext context);
 
-  NumberBaseController(this.radix);
+  NumberBaseController(this.radix, this.maxLength);
 
   final controller = TextEditingController();
   int? get value => int.tryParse(controller.text, radix: radix);
@@ -52,7 +54,7 @@ abstract class NumberBaseController {
 }
 
 class HexController extends NumberBaseController {
-  HexController() : super(16);
+  HexController() : super(16, 15);
 
   @override
   String title(context) => S.of(context).hexdecimal;
@@ -62,7 +64,7 @@ class HexController extends NumberBaseController {
 }
 
 class DecController extends NumberBaseController {
-  DecController() : super(10);
+  DecController() : super(10, 18);
 
   @override
   String title(context) => S.of(context).decimal;
@@ -73,7 +75,7 @@ class DecController extends NumberBaseController {
 }
 
 class OctController extends NumberBaseController {
-  OctController() : super(8);
+  OctController() : super(8, 20);
 
   @override
   String title(context) => S.of(context).octal;
@@ -84,7 +86,7 @@ class OctController extends NumberBaseController {
 }
 
 class BinController extends NumberBaseController {
-  BinController() : super(2);
+  BinController() : super(2, 60);
 
   @override
   String title(context) => S.of(context).binary;
