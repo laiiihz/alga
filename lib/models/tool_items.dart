@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:alga/tools/generators/sm3_generator/sm3_generator_view.dart';
 import 'package:flutter/foundation.dart';
 
 import 'package:alga/constants/import_helper.dart';
@@ -109,6 +110,11 @@ List<ToolGroup> _toolItems = [
         icon: const Icon(Icons.fingerprint),
         title: (context) => Text(S.of(context).generatorHash),
         page: const HashGeneratorView(),
+      ),
+      ToolItem(
+        icon: const Icon(Icons.fingerprint),
+        title: (context) => Text(S.of(context).generatorSM3Hash),
+        page: const SM3GeneratorView(),
       ),
       ToolItem(
         icon: const SvgAssetIcon('assets/icons/LoremIpsum.svg'),

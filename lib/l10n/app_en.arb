@@ -61,6 +61,7 @@
   "hashHMAC": "HMAC",
   "hashHMACDes": "Keyed-hash message authentication code",
   "hashOptional": "Optional",
+  "generatorSM3Hash": "Chinese SM3 Hash Generator",
   "generatorUUID": "UUID Generator",
   "hypens": "Hypens",
   "uuidVersion": "UUID Version",

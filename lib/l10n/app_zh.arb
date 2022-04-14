@@ -58,6 +58,7 @@
   "hashHMAC": "HMAC",
   "hashHMACDes": "基于密钥的消息身份认证哈希",
   "hashOptional": "可选",
+  "generatorSM3Hash": "国密 SM3 Hash生成器",
   "generatorUUID": "UUID 生成器",
   "hypens": "连字符",
   "uuidVersion": "UUID版本",
