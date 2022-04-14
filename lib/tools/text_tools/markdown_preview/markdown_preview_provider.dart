@@ -1,6 +1,17 @@
-import 'package:flutter/material.dart';
+part of './markdown_preview_view.dart';
 
-import 'package:alga/utils/clipboard_util.dart';
+final _inputController =
+    StateProvider.autoDispose<TextEditingController>((ref) {
+  final controller = TextEditingController();
+  ref.onDispose(() {
+    controller.dispose();
+  });
+  return controller;
+});
+
+final _inputValue = StateProvider.autoDispose<String>((ref) {
+  return ref.read(_inputController).text;
+});
 
 class MarkdownPreviewProvider extends ChangeNotifier {
   final markdownController = TextEditingController();
