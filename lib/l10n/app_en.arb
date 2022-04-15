@@ -3,8 +3,9 @@
   "@appName": {
     "description": "name of app"
   },
+  "confirm": "Confirm",
   "copy": "Copy",
-  "paste":"Paste",
+  "paste": "Paste",
   "followSystem": "follow system",
   "themeMode": "Theme Mode",
   "themeLight": "Light",

@@ -826,6 +826,13 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "4.4.0"
+  pigment:
+    dependency: "direct main"
+    description:
+      name: pigment
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "1.0.4"
   platform:
     dependency: transitive
     description:

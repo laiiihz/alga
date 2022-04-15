@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:alga/tools/converters/color_converter/color_converter_view.dart';
 import 'package:alga/tools/generators/sm3_generator/sm3_generator_view.dart';
 import 'package:flutter/foundation.dart';
 
@@ -47,6 +48,11 @@ List<ToolGroup> _toolItems = [
         icon: const Icon(Icons.numbers),
         title: (context) => Text(S.of(context).numberBaseConverter),
         page: const NumberBaseConverterView(),
+      ),
+      ToolItem(
+        icon: const Icon(Icons.color_lens),
+        title: (context) => const Text('Color Converter'),
+        page: const ColorConverterView(),
       ),
     ],
   ),
