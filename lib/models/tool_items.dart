@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:alga/tools/converters/color_converter/color_converter_view.dart';
+import 'package:alga/tools/generators/password_generator/password_generator_view.dart';
 import 'package:alga/tools/generators/sm3_generator/sm3_generator_view.dart';
 import 'package:flutter/foundation.dart';
 
@@ -126,6 +127,11 @@ List<ToolGroup> _toolItems = [
         icon: const SvgAssetIcon('assets/icons/LoremIpsum.svg'),
         title: (context) => Text(S.of(context).generatorLoremIpsum),
         page: const LoremIpsumGeneratorView(),
+      ),
+      ToolItem(
+        icon: const Icon(Icons.password),
+        title: (context) => const Text('Password generator'),
+        page: const PasswordGeneratorView(),
       ),
       if (!kIsWeb)
         ToolItem(
