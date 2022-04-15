@@ -10,10 +10,10 @@ class ColorConverterView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ToolView.scrollVertical(
-      title: const Text('Color Converter'),
+      title: Text(S.of(context).colorConverter),
       children: [
         AppTitleWrapper(
-          title: 'Current Color',
+          title: S.of(context).currentColor,
           actions: [
             HelperIconButton(
               title: const Text('Supported Color Format'),
@@ -47,7 +47,7 @@ class ColorConverterView extends StatelessWidget {
           }),
         ),
         AppTitleWrapper(
-          title: 'color String',
+          title: S.of(context).colorString,
           child: Consumer(builder: (context, ref, _) {
             return TextField(
               controller: ref.watch(_inputController),

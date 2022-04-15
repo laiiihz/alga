@@ -52,7 +52,7 @@ List<ToolGroup> _toolItems = [
       ),
       ToolItem(
         icon: const Icon(Icons.color_lens),
-        title: (context) => const Text('Color Converter'),
+        title: (context) => Text(S.of(context).colorConverter),
         page: const ColorConverterView(),
       ),
     ],
