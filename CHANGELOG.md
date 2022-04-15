@@ -5,3 +5,4 @@
 * [feature] add Color converter tool.
 * [fix] number base: set input limit.
 * [fix] fix copy error.
+* [fix] update windows make config.
