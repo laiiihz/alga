@@ -67,6 +67,7 @@ dev_dependencies:
   flutter_lints: ^1.0.4
   hive_generator: ^1.1.2
   build_runner: ^2.1.8
+  flutter_flavorizr: ^2.1.3
 
 dependency_overrides:
   js: 0.6.4
@@ -82,3 +83,30 @@ flutter:
 import_sorter:
   emojis: true
   comments: false
+
+flavorizr:
+  app:
+    android:
+      flavorDimensions: "abi"
+    ios:
+
+  flavors:
+    abi32bit:
+      app:
+        name: "Alga"
+
+      android:
+        applicationId: "tech.laihz.alga.32bit"
+      
+      ios:
+        bundleId: "tech.laihz.alga"
+
+    abi64bit:
+      app:
+        name: "Alga"
+
+      android:
+        applicationId: "tech.laihz.alga.64bit"
+
+      ios:
+        bundleId: "tech.laihz.alga"
