@@ -96,7 +96,7 @@ flavorizr:
         name: "Alga"
 
       android:
-        applicationId: "tech.laihz.alga.32bit"
+        applicationId: "tech.laihz.alga.abi32bit"
       
       ios:
         bundleId: "tech.laihz.alga"
@@ -106,7 +106,7 @@ flavorizr:
         name: "Alga"
 
       android:
-        applicationId: "tech.laihz.alga.64bit"
+        applicationId: "tech.laihz.alga.abi64bit"
 
       ios:
         bundleId: "tech.laihz.alga"
