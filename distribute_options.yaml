@@ -14,20 +14,22 @@ releases:
         package:
           platform: android
           target: apk
-          flavor: abi32bit
           build_args:
+            flavor: abi32bit
             target-platform: android-arm
       - name: android-64bit
         package:
           platform: android
           target: apk
-          flavor: abi64bit
           build_args:
+            flavor: abi64bit
             target-platform: android-arm64
       - name: aab
         package:
           platform: android
           target: aab
+          build_args:
+            flavor: aab
   - name: windows
     jobs:
       - name: release-windows

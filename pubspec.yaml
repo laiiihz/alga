@@ -110,3 +110,13 @@ flavorizr:
 
       ios:
         bundleId: "tech.laihz.alga"
+
+    aab:
+      app:
+        name: "Alga"
+      
+      android:
+        applicationId: "tech.laihz.alga.aab"
+
+      ios:
+        bundleId: "tech.laihz.alga"
