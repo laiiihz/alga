@@ -1,9 +1,13 @@
 import 'dart:convert';
+import 'dart:io';
 import 'dart:typed_data';
 
 import 'package:alga/constants/import_helper.dart';
+import 'package:alga/utils/image_util.dart';
+import 'package:flutter/foundation.dart';
 
 part './base_64_provider.dart';
+part './base64_file_picker.dart';
 
 class Base64EncoderDecoderView extends StatefulWidget {
   const Base64EncoderDecoderView({Key? key}) : super(key: key);
@@ -59,6 +63,9 @@ class _Base64EncoderDecoderViewState extends State<Base64EncoderDecoderView> {
         AppTitleWrapper(
           title: S.of(context).input,
           actions: [
+            Consumer(builder: (context, ref, _) {
+              return _Base64ImageButton(ref: ref);
+            }),
             PasteButton(onPaste: (ref, data) {
               ref.read(_input).text = data;
               ref.refresh(_result);
