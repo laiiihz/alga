@@ -11,3 +11,4 @@ export 'package:flutter_riverpod/flutter_riverpod.dart';
 export 'package:alga/utils/clipboard_util.dart';
 export 'package:alga/widgets/copy_button.dart';
 export 'package:alga/widgets/paste_button.dart';
+export 'package:alga/widgets/app_helper_dialog.dart';

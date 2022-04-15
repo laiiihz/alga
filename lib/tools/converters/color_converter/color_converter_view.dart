@@ -15,34 +15,18 @@ class ColorConverterView extends StatelessWidget {
         AppTitleWrapper(
           title: 'Current Color',
           actions: [
-            IconButton(
-              onPressed: () {
-                showDialog(
-                  context: context,
-                  builder: (context) {
-                    return AlertDialog(
-                      title: const Text('Supported Color Format'),
-                      content: Wrap(
-                        spacing: 4,
-                        runSpacing: 4,
-                        children: const [
-                          Chip(label: Text('CSS Color')),
-                          Chip(label: Text('Hex Color')),
-                          Chip(label: Text('RGB Color')),
-                          Chip(label: Text('Hex Color with Transparency')),
-                        ],
-                      ),
-                      actions: [
-                        TextButton(
-                          onPressed: Navigator.of(context).pop,
-                          child: Text(S.of(context).confirm),
-                        ),
-                      ],
-                    );
-                  },
-                );
-              },
-              icon: const Icon(Icons.help),
+            HelperIconButton(
+              title: const Text('Supported Color Format'),
+              content: Wrap(
+                spacing: 4,
+                runSpacing: 4,
+                children: const [
+                  Chip(label: Text('CSS Color')),
+                  Chip(label: Text('Hex Color')),
+                  Chip(label: Text('RGB Color')),
+                  Chip(label: Text('Hex Color with Transparency')),
+                ],
+              ),
             ),
           ],
           child: Consumer(builder: (context, ref, _) {
