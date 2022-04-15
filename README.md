@@ -38,11 +38,8 @@ A powerful tool app for all developers.
 
 ## APP Plan
 
-* [ ] Rich `JSON` Editor
-  * [ ] code with fold
-* [ ] Launguage highlight
-  * [ ] Regex
-  * [ ] Uri
+[WIP Plans](https://github.com/laiiihz/alga/projects/1)
+
 
 ## Getting Started
 
