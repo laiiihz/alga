@@ -1,3 +1,4 @@
+import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:intl/intl.dart';
 
 import 'package:alga/constants/import_helper.dart';
@@ -20,7 +21,35 @@ class _DateParserViewState extends State<DateParserView> {
       children: [
         AppTitleWrapper(
           title: S.of(context).dateParserdate,
-          actions: const [],
+          actions: [
+            IconButton(
+              onPressed: () {
+                showDialog(
+                  context: context,
+                  builder: (context) {
+                    return AlertDialog(
+                      title: const Text('Supported Date Format'),
+                      content: Wrap(
+                        spacing: 4,
+                        runSpacing: 4,
+                        children: [
+                          for (var item in _supportDateFormat)
+                            Chip(label: Text(item))
+                        ],
+                      ),
+                      actions: [
+                        TextButton(
+                          onPressed: Navigator.of(context).pop,
+                          child: Text(S.of(context).confirm),
+                        ),
+                      ],
+                    );
+                  },
+                );
+              },
+              icon: const Icon(Icons.help),
+            ),
+          ],
           child: Consumer(builder: (context, ref, _) {
             return TextField(
               controller: ref.read(_dateController),
@@ -53,6 +82,33 @@ class _DateParserViewState extends State<DateParserView> {
           return AppTitleWrapper(
             title: S.of(context).dateCustomFormat,
             actions: [
+              IconButton(
+                onPressed: () {
+                  showDialog(
+                    context: context,
+                    builder: (context) {
+                      return AlertDialog(
+                        title: const Text('Date Format Help'),
+                        content: Wrap(
+                          spacing: 4,
+                          runSpacing: 4,
+                          children: [
+                            for (var item in _dateFormatHelp)
+                              Chip(label: Text(item))
+                          ],
+                        ),
+                        actions: [
+                          TextButton(
+                            onPressed: Navigator.of(context).pop,
+                            child: Text(S.of(context).confirm),
+                          ),
+                        ],
+                      );
+                    },
+                  );
+                },
+                icon: const Icon(Icons.help),
+              ),
               PasteButton(onPaste: (ref, data) {
                 ref.read(_formatController).text = data;
                 ref.refresh(_formatResult);

@@ -85,7 +85,7 @@
   "dateParser": "日期解析",
   "dateParserdate": "日期",
   "parsedDate": "解析的日期",
-  "iso8601Date": "Iso8601日起",
+  "iso8601Date": "Iso8601日期",
   "dateCustomFormat": "自定义格式",
   "formattedDateString": "格式化的日期",
   "imageTools": "图片工具",
