@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:alga/constants/import_helper.dart';
 
 class DateParsedWidget extends StatelessWidget {
   final DateTime date;
@@ -6,25 +6,37 @@ class DateParsedWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Chip coloredChip(String data) => Chip(
-          label: Text(data),
-          backgroundColor: Theme.of(context).colorScheme.onPrimary,
+    GestureDetector coloredChip(String data, [String? helpText]) =>
+        GestureDetector(
+          onTap: () {
+            ClipboardUtil.copy(data);
+          },
+          child: Tooltip(
+            message: S.of(context).clickToCopy,
+            child: Chip(
+              label: Text('$data${helpText == null ? '' : ' ($helpText) '}'),
+              backgroundColor: Theme.of(context).colorScheme.onPrimary,
+            ),
+          ),
         );
+    final tzOffset = date.timeZoneOffset.inHours;
+    final weekday =
+        MaterialLocalizations.of(context).narrowWeekdays[date.weekday];
     return Wrap(
       spacing: 4,
       runSpacing: 4,
       children: [
-        coloredChip('${date.year} Year'),
-        coloredChip('${date.month}Month'),
-        coloredChip('${date.day}Day'),
-        coloredChip('${date.hour}Hour'),
-        coloredChip('${date.minute}Minute'),
-        coloredChip('${date.second}Second'),
-        coloredChip('${date.millisecond}Millisecond'),
-        coloredChip('Weekday${date.weekday}'),
+        coloredChip('${date.year}', 'Year'),
+        coloredChip('${date.month}', 'Month'),
+        coloredChip('${date.day}', 'Day'),
+        coloredChip('${date.hour}', 'Hour'),
+        coloredChip('${date.minute}', 'Minute'),
+        coloredChip('${date.second}', 'Second'),
+        coloredChip('${date.millisecond}', 'Millisecond'),
+        coloredChip(weekday, 'Weekday'),
         if (date.isUtc) coloredChip('UTC'),
         coloredChip(date.timeZoneName),
-        coloredChip('${date.timeZoneOffset.inHours}'),
+        coloredChip(tzOffset.isNegative ? '$tzOffset' : '+$tzOffset'),
       ],
     );
   }

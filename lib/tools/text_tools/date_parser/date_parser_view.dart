@@ -31,6 +31,16 @@ class _DateParserViewState extends State<DateParserView> {
                 ],
               ),
             ),
+            Consumer(builder: (context, ref, _) {
+              return TextButton(
+                onPressed: () {
+                  ref.watch(_dateController).text =
+                      DateTime.now().toIso8601String();
+                  ref.refresh(_date);
+                },
+                child: const Text('Current'),
+              );
+            }),
           ],
           child: Consumer(builder: (context, ref, _) {
             return TextField(

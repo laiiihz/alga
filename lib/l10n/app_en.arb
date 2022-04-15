@@ -4,6 +4,7 @@
     "description": "name of app"
   },
   "confirm": "Confirm",
+  "clickToCopy": "Click To Copy",
   "copy": "Copy",
   "paste": "Paste",
   "followSystem": "follow system",

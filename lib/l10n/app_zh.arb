@@ -1,6 +1,7 @@
 {
   "appName": "Alga",
   "confirm": "确定",
+  "clickToCopy": "点击复制",
   "copy": "复制",
   "paste": "粘贴",
   "followSystem": "跟随系统",
