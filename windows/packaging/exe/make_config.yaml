@@ -1,3 +1,6 @@
-appId: 0A35511A-49B7-4451-A5FF-5CE235CF036C
-appPublisher: laiiihz
-appPublisherUrl: https://github.com/laiiihz/alga
+app_id: 0A35511A-49B7-4451-A5FF-5CE235CF036C
+publisher: laiiihz
+publisher_url: https://github.com/laiiihz/alga
+display_name: Alga
+create_desktop_icon: true
+install_dir_name: alga_app
