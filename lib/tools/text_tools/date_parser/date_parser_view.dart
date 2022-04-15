@@ -1,4 +1,3 @@
-import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:intl/intl.dart';
 
 import 'package:alga/constants/import_helper.dart';
