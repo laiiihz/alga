@@ -129,7 +129,7 @@ List<ToolGroup> _toolItems = [
       ),
       if (!kIsWeb)
         ToolItem(
-          icon: const Icon(Icons.add),
+          icon: const SvgAssetIcon('assets/icons/sass.svg', colorIcon: true),
           title: (context) => Text(S.of(context).sassCssGenerator),
           page: const SassCssGeneratorView(),
         ),

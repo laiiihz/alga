@@ -9,3 +9,4 @@
 * [fix] fix copy error.
 * [fix] update windows make config.
 * [fix] fix date parse l10n.
+* [fix] update sass logo.
