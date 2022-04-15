@@ -10,10 +10,10 @@ class PasswordGeneratorView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ToolView.scrollVertical(
-      title: const Text('Pass Gen'),
+      title: Text(S.of(context).passGenerator),
       children: [
         ToolViewConfig(
-          title: const Text('Uppercase Characters'),
+          title: Text(S.of(context).passUppercaseCharacters),
           subtitle: const Text('[A-Z]'),
           trailing: Consumer(builder: (context, ref, _) {
             return Switch(
@@ -25,7 +25,7 @@ class PasswordGeneratorView extends StatelessWidget {
           }),
         ),
         ToolViewConfig(
-          title: const Text('Lowercase Characters'),
+          title: Text(S.of(context).passLowercaseCharacters),
           subtitle: const Text('[a-z]'),
           trailing: Consumer(builder: (context, ref, _) {
             return Switch(
@@ -37,7 +37,7 @@ class PasswordGeneratorView extends StatelessWidget {
           }),
         ),
         ToolViewConfig(
-          title: const Text('Numbers'),
+          title: Text(S.of(context).passNumbersCharacters),
           subtitle: const Text('[0-9]'),
           trailing: Consumer(builder: (context, ref, _) {
             return Switch(
@@ -49,7 +49,7 @@ class PasswordGeneratorView extends StatelessWidget {
           }),
         ),
         ToolViewConfig(
-          title: const Text('Special Characters'),
+          title: Text(S.of(context).passSpecialCharacters),
           subtitle: const Text('[$_symbolBox]'),
           trailing: Consumer(builder: (context, ref, _) {
             return Switch(
@@ -61,7 +61,7 @@ class PasswordGeneratorView extends StatelessWidget {
           }),
         ),
         ToolViewConfig(
-          title: const Text('Password Length'),
+          title: Text(S.of(context).passPasswordLength),
           trailing: Consumer(builder: (context, ref, _) {
             return SizedBox(
               width: 60,
@@ -75,7 +75,7 @@ class PasswordGeneratorView extends StatelessWidget {
           }),
         ),
         AppTitleWrapper(
-          title: 'Generated Password',
+          title: S.of(context).passGeneratedPassword,
           actions: [
             Consumer(builder: (context, ref, _) {
               return IconButton(

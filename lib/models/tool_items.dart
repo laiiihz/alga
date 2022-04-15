@@ -130,7 +130,7 @@ List<ToolGroup> _toolItems = [
       ),
       ToolItem(
         icon: const Icon(Icons.password),
-        title: (context) => const Text('Password generator'),
+        title: (context) => Text(S.of(context).passGenerator),
         page: const PasswordGeneratorView(),
       ),
       if (!kIsWeb)
