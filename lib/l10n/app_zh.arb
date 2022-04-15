@@ -36,6 +36,7 @@
   "binary": "二进制",
   "encodersDecoders": "编码/解码类型工具",
   "encoderDecoderBase64": "Base64 编码/解码工具",
+  "urlSafe":"URL safe",
   "encoderDecoderURL": "URL 编码/解码工具",
   "encoderDecoderGzip": "GZip 编码/解码工具",
   "decoderJWT": "JWT 解码工具",

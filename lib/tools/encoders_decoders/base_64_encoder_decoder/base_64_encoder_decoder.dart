@@ -44,8 +44,7 @@ class _Base64EncoderDecoderViewState extends State<Base64EncoderDecoderView> {
             ),
             ToolViewConfig(
               leading: const Icon(Icons.link),
-              title: const Text('URL safe'),
-              subtitle: Text(S.of(context).selectConversion),
+              title: Text(S.of(context).urlSafe),
               trailing: Consumer(builder: (context, ref, _) {
                 return Switch(
                   value: ref.watch(_urlSafe),

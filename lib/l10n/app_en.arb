@@ -39,6 +39,7 @@
   "binary": "Binary",
   "encodersDecoders": "Encoders/Decoders",
   "encoderDecoderBase64": "Base64 Encoder/Decoder",
+  "urlSafe": "URL safe",
   "encoderDecoderURL": "URL Encoder/Decoder",
   "encoderDecoderGzip": "GZip Encoder/Decoder",
   "decoderJWT": "JWT Decoder",
