@@ -57,6 +57,71 @@ class ColorConverterView extends StatelessWidget {
             );
           }),
         ),
+        AppTitleWrapper(
+          title: 'Flutter Hex',
+          actions: [
+            CopyButton(onCopy: (ref) {
+              return ref.watch(_hexValue);
+            }),
+          ],
+          child: Consumer(builder: (context, ref, _) {
+            return AppTextBox(
+              data: ref.watch(_hexValue),
+            );
+          }),
+        ),
+        AppTitleWrapper(
+          title: 'RGB',
+          actions: [
+            CopyButton(onCopy: (ref) {
+              return ref.watch(_rgbValue);
+            }),
+          ],
+          child: Consumer(builder: (context, ref, _) {
+            return AppTextBox(
+              data: ref.watch(_rgbValue),
+            );
+          }),
+        ),
+        AppTitleWrapper(
+          title: 'RGBA',
+          actions: [
+            CopyButton(onCopy: (ref) {
+              return ref.watch(_rgbaValue);
+            }),
+          ],
+          child: Consumer(builder: (context, ref, _) {
+            return AppTextBox(
+              data: ref.watch(_rgbaValue),
+            );
+          }),
+        ),
+        AppTitleWrapper(
+          title: 'HSL',
+          actions: [
+            CopyButton(onCopy: (ref) {
+              return ref.watch(_hslValue);
+            }),
+          ],
+          child: Consumer(builder: (context, ref, _) {
+            return AppTextBox(
+              data: ref.watch(_hslValue),
+            );
+          }),
+        ),
+        AppTitleWrapper(
+          title: 'HSV',
+          actions: [
+            CopyButton(onCopy: (ref) {
+              return ref.watch(_hsvValue);
+            }),
+          ],
+          child: Consumer(builder: (context, ref, _) {
+            return AppTextBox(
+              data: ref.watch(_hsvValue),
+            );
+          }),
+        ),
       ],
     );
   }
