@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:alga/tools/converters/color_converter/color_converter_view.dart';
 import 'package:alga/tools/generators/password_generator/password_generator_view.dart';
+import 'package:alga/tools/generators/random_file_generator/random_file_generator_view.dart';
 import 'package:alga/tools/generators/sm3_generator/sm3_generator_view.dart';
 import 'package:flutter/foundation.dart';
 
@@ -133,6 +134,13 @@ List<ToolGroup> _toolItems = [
         title: (context) => Text(S.of(context).passGenerator),
         page: const PasswordGeneratorView(),
       ),
+      if (!kIsWeb)
+        if (Platform.isMacOS || Platform.isLinux || Platform.isWindows)
+          ToolItem(
+            icon: const Icon(Icons.file_copy),
+            title: (context) => const Text('Random File generator'),
+            page: const RandomFileGeneratorView(),
+          ),
       if (!kIsWeb)
         ToolItem(
           icon: const SvgAssetIcon('assets/icons/sass.svg', colorIcon: true),
