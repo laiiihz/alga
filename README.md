@@ -11,6 +11,7 @@ A powerful tool app for all developers.
   * Converters
     * JSON<>YAML converter
     * Number Base Converter
+    * Color Converter
   * Encoders/Decoders
     * Base64 Encoder/Decoder
     * URL Encoder/Decoder
@@ -20,21 +21,29 @@ A powerful tool app for all developers.
   * Formatters
     * JSON formatter
     * Dart formatter
+    * Python Dict formatter
   * Generators
     * Hash Generator
     * UUID Generator
+    * Chinese SM3 Hash Generator
+    * Password Generator
+    * Random File Generator
     * Lorem Ipsum Generator
     * Sass to Css Generator
   * Text
     * Markdown Preview
     * Regex Tester
+    * Date Parser
   * Image Tools
     * Blurhash Tool
     * QR Code Tool
   * Info
     * Device Info
+    * Network Info
   * Server Tools
     * Static Server Tool
+  * JavaScript Tools
+    * Quick JS Tool
 
 ## APP Plan
 
