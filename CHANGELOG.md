@@ -2,6 +2,7 @@
 
 * [feature] add Python Dict formatter.
 * [feature] add random file generator.
+* [feature] show snackbar when copy & paste.
 
 # 0.3.5+16
 
