@@ -1,5 +1,5 @@
 import 'package:petitparser/petitparser.dart';
-import 'package:py_dict_parser/py_dict_parser.dart';
+import 'package:py_dict_parser/src/py_dict_grammar.dart';
 import 'package:py_dict_parser/src/tunple_data.dart';
 
 class PyDictParserDefinition extends PyDictGrammar {
