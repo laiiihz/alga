@@ -1,9 +1,11 @@
+import 'package:alga/tools/text_tools/date_parser/date_ext.dart';
 import 'package:intl/intl.dart';
 
 import 'package:alga/constants/import_helper.dart';
 import 'package:alga/tools/text_tools/date_parser/date_parsed_widget.dart';
 
 part './date_parser_provider.dart';
+part './date_operation_widget.dart';
 
 class DateParserView extends StatefulWidget {
   const DateParserView({Key? key}) : super(key: key);
@@ -70,6 +72,7 @@ class _DateParserViewState extends State<DateParserView> {
             ],
           );
         }),
+        const DateOperationWidget(),
         Consumer(builder: (context, ref, _) {
           return AppTitleWrapper(
             title: S.of(context).dateCustomFormat,

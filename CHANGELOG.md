@@ -3,6 +3,7 @@
 * [feature] add Python Dict formatter.
 * [feature] add random file generator.
 * [feature] show snackbar when copy & paste.
+* [feature] date parser: add operation tool.
 
 # 0.3.5+16
 
