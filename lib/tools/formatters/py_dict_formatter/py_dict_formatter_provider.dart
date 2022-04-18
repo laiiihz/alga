@@ -1,14 +1,12 @@
 part of './py_dict_formatter_view.dart';
 
 class PyDictProvider implements FormatterAbstract {
-  final PyDictEncoder _pyDictEncoder;
-  final PyDictDecoder _pyDictDecoder;
-  PyDictProvider()
-      : _pyDictEncoder = PyDictEncoder(),
-        _pyDictDecoder = PyDictDecoder();
+  PyDictProvider();
   @override
   FormatResult onChanged(String text) {
     try {
+      final PyDictEncoder _pyDictEncoder = PyDictEncoder();
+      final PyDictDecoder _pyDictDecoder = PyDictDecoder();
       final data = _pyDictDecoder.decode(text);
       return FormatResult(_pyDictEncoder.encode(data));
     } catch (e) {
