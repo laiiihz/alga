@@ -58,6 +58,8 @@ class FormatterViewState extends State<FormatterView> {
             onPressed: () async {
               final rawText = await Clipboard.getData('text/plain');
               _inputController.text = rawText?.text ?? '';
+              outputText = widget.onChanged(_inputController.text).result;
+              setState(() {});
             },
           ),
           IconButton(

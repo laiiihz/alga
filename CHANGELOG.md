@@ -1,3 +1,7 @@
+## next version
+
+* [feature] add Python Dict formatter.
+
 # 0.3.5+16
 
 * [feature] markdown: now can copy markdown html.

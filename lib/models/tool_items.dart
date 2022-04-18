@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:alga/tools/converters/color_converter/color_converter_view.dart';
+import 'package:alga/tools/formatters/py_dict_formatter/py_dict_formatter_view.dart';
 import 'package:alga/tools/generators/password_generator/password_generator_view.dart';
 import 'package:alga/tools/generators/sm3_generator/sm3_generator_view.dart';
 import 'package:flutter/foundation.dart';
@@ -101,6 +102,11 @@ List<ToolGroup> _toolItems = [
         icon: const SvgAssetIcon('assets/icons/dart.svg', colorIcon: true),
         title: (context) => Text(S.of(context).formatterDart),
         page: const DartFormtterView(),
+      ),
+      ToolItem(
+        icon: const SvgAssetIcon('assets/icons/dart.svg', colorIcon: true),
+        title: (context) => const Text('Python Dict Formatter'),
+        page: const PyDictFormatterView(),
       ),
     ],
   ),
