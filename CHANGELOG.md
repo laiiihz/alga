@@ -1,6 +1,7 @@
 ## next version
 
 * [feature] add Python Dict formatter.
+* [feature] add random file generator.
 
 # 0.3.5+16
 
