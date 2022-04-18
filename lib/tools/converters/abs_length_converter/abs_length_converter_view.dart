@@ -11,11 +11,10 @@ class AbsLengthConverterView extends StatelessWidget {
       title: const Text('Absolute Length Converter'),
       children: LengthType.values.map((e) {
         return AppTitleWrapper(
-          title: e.name,
+          title: e.getName(context),
           child: Consumer(
             builder: (context, ref, _) {
               final currentController = ref.watch(_types(e));
-
               return TextField(
                 controller: currentController,
                 onChanged: (text) {

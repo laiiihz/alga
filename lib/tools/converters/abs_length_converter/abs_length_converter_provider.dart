@@ -18,14 +18,27 @@ enum LengthType {
 
   /// points
   pt,
-
-  /// pixels
-  px,
 }
 
 extension LengthTypeExt on LengthType {
   double getInch(double value) => _getBaseline(this, value);
   double fromInch(double value) => _fromBaseLine(this, value);
+  String getName(BuildContext context) {
+    switch (this) {
+      case LengthType.cm:
+        return 'cm(centimeters)';
+      case LengthType.mm:
+        return 'mm(millimeters)';
+      case LengthType.q:
+        return 'q(quarter-millimeters)';
+      case LengthType.inch:
+        return 'inch(inches)';
+      case LengthType.pc:
+        return 'pc(picas)';
+      case LengthType.pt:
+        return 'pt(points)';
+    }
+  }
 }
 
 extension _DoubleExt on double {
@@ -57,8 +70,6 @@ double _fromBaseLine(LengthType type, double baseline) {
       return baseline * 6;
     case LengthType.pt:
       return baseline * 72;
-    case LengthType.px:
-      return baseline * 96;
   }
 }
 
@@ -76,8 +87,6 @@ double _getBaseline(LengthType type, double value) {
       return value / 6;
     case LengthType.pt:
       return value / 72;
-    case LengthType.px:
-      return value / 96;
   }
 }
 
