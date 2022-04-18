@@ -25,6 +25,8 @@ dependencies:
     path: ./packages/language_textfield
   flutter_js_wrapper:
     path: ./packages/flutter_js_wrapper
+  py_dict_parser:
+    path: ./packages/py_dict_parser
 
   cupertino_icons: ^1.0.2
   archive: ^3.3.0
@@ -71,6 +73,7 @@ dev_dependencies:
 
 dependency_overrides:
   js: 0.6.4
+  collection: 1.16.0
 
 flutter:
   uses-material-design: true
@@ -97,7 +100,7 @@ flavorizr:
 
       android:
         applicationId: "tech.laihz.alga.abi32bit"
-      
+
       ios:
         bundleId: "tech.laihz.alga"
 
@@ -114,7 +117,7 @@ flavorizr:
     aab:
       app:
         name: "Alga"
-      
+
       android:
         applicationId: "tech.laihz.alga.aab"
 

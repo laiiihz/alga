@@ -1,0 +1,12 @@
+name: py_dict_parser
+description: a parser for python dict
+version: 1.0.0
+
+environment:
+  sdk: ">=2.16.2 <3.0.0"
+
+dev_dependencies:
+  lints: ^1.0.0
+  test: ^1.16.0
+dependencies:
+  petitparser: ^5.0.0
