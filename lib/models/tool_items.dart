@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:alga/tools/converters/abs_length_converter/abs_length_converter_view.dart';
 import 'package:alga/tools/converters/color_converter/color_converter_view.dart';
 import 'package:alga/tools/formatters/py_dict_formatter/py_dict_formatter_view.dart';
 import 'package:alga/tools/generators/password_generator/password_generator_view.dart';
@@ -56,6 +57,11 @@ List<ToolGroup> _toolItems = [
         icon: const Icon(Icons.color_lens),
         title: (context) => Text(S.of(context).colorConverter),
         page: const ColorConverterView(),
+      ),
+      ToolItem(
+        icon: const Icon(Icons.legend_toggle),
+        title: (context) => const Text('Absolute Length Converter'),
+        page: const AbsLengthConverterView(),
       ),
     ],
   ),
