@@ -105,8 +105,8 @@ List<ToolGroup> _toolItems = [
         page: const DartFormtterView(),
       ),
       ToolItem(
-        icon: const SvgAssetIcon('assets/icons/dart.svg', colorIcon: true),
-        title: (context) => const Text('Python Dict Formatter'),
+        icon: const SvgAssetIcon('assets/icons/python.svg', colorIcon: true),
+        title: (context) => Text(S.of(context).pythonDictFormatter),
         page: const PyDictFormatterView(),
       ),
     ],

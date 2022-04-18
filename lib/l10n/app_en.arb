@@ -62,6 +62,7 @@
   "json1tab": "1 tab",
   "jsonMinified": "minified",
   "formatterDart": "Dart formatter",
+  "pythonDictFormatter": "Python Dict formatter",
   "generators": "Generators",
   "generatorHash": "Hash Generator",
   "hashHMAC": "HMAC",

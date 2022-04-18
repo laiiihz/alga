@@ -17,7 +17,7 @@ class _PyDictFormatterViewState extends State<PyDictFormatterView> {
   @override
   Widget build(BuildContext context) {
     return FormatterView(
-      title: const Text('Python Dict Formatter'),
+      title: Text(S.of(context).pythonDictFormatter),
       configs: const [],
       onChanged: provider.onChanged,
       lang: '',

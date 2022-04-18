@@ -59,6 +59,7 @@
   "json1tab": "1个制表符",
   "jsonMinified": "压缩的",
   "formatterDart": "Dart 格式化",
+  "pythonDictFormatter": "Python 字典格式化",
   "generators": "生成类型工具",
   "generatorHash": "Hash 生成器",
   "hashHMAC": "HMAC",
