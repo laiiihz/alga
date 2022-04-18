@@ -1,3 +1,4 @@
+import 'package:alga/utils/snackbar_util.dart';
 import 'package:flutter/services.dart';
 
 import 'package:alga/constants/import_helper.dart';
@@ -60,6 +61,7 @@ class FormatterViewState extends State<FormatterView> {
               _inputController.text = rawText?.text ?? '';
               outputText = widget.onChanged(_inputController.text).result;
               setState(() {});
+              SnackbarUtil(context).pasted();
             },
           ),
           IconButton(
@@ -76,6 +78,7 @@ class FormatterViewState extends State<FormatterView> {
             icon: const Icon(Icons.copy),
             onPressed: () async {
               await Clipboard.setData(ClipboardData(text: outputText));
+              SnackbarUtil(context).copied();
             },
           ),
         ],

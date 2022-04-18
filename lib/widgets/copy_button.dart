@@ -1,3 +1,4 @@
+import 'package:alga/utils/snackbar_util.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -17,6 +18,7 @@ class CopyButton extends StatelessWidget {
           onPressed: () async {
             final data = onCopy(ref);
             await ClipboardUtil.copy(data);
+            SnackbarUtil(context).copied();
           },
           icon: child!,
           tooltip: S.of(context).copy,

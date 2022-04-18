@@ -1,3 +1,4 @@
+import 'package:alga/utils/snackbar_util.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -16,6 +17,7 @@ class PasteButton extends StatelessWidget {
         return IconButton(
           onPressed: () async {
             onPaste(ref, await ClipboardUtil.paste());
+            SnackbarUtil(context).pasted();
           },
           icon: child!,
           tooltip: S.of(context).paste,
