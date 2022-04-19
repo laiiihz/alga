@@ -1,3 +1,4 @@
+import 'package:alga/routers/app_router.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -28,13 +29,13 @@ class MyApp extends StatelessWidget {
         box: HiveUtil.systemBox,
         builder: (context, box) {
           final theme = ThemeUtil(Color(SystemBox.model.themeColor));
-          return MaterialApp(
+          return MaterialApp.router(
             onGenerateTitle: (context) => S.of(context).appName,
             theme: theme.getTheme(Brightness.light),
             darkTheme: theme.getTheme(Brightness.dark),
             themeMode: SystemBox.model.themeMode,
-            home: const HomeView(),
-            debugShowCheckedModeBanner: false,
+            routerDelegate: appRouter.routerDelegate,
+            routeInformationParser: appRouter.routeInformationParser,
             localizationsDelegates: [
               S.delegate,
               GlobalMaterialLocalizations.delegate,
