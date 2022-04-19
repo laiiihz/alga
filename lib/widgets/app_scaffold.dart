@@ -16,8 +16,10 @@ import 'package:alga/views/search_view/search_view.dart';
 import 'package:alga/widgets/animated_show_widget.dart';
 import 'package:alga/widgets/app_drawer.dart';
 
-final currentToolProvider = StateProvider<ToolItem?>((ref) => null);
-final toolsProvider = StateProvider<NaviUtil?>((ref) => null);
+final currentToolProvider = StateProvider<ToolItem?>((ref) {
+  return ref.watch(toolsProvider).allToolsItem;
+});
+final toolsProvider = StateProvider<NaviUtil>((ref) => NaviUtil());
 
 class AppScaffold extends StatelessWidget {
   const AppScaffold({Key? key}) : super(key: key);
@@ -136,14 +138,14 @@ class AppScaffold extends StatelessWidget {
         Consumer(
           builder: (context, ref, _) {
             final showAllTools = ref.watch(currentToolProvider) ==
-                ref.watch(toolsProvider)!.allToolsItem;
+                ref.watch(toolsProvider).allToolsItem;
 
             return AnimatedShowWidget(
               isShow: !showAllTools,
               child: IconButton(
                 onPressed: () {
                   ref.read(currentToolProvider.notifier).state =
-                      ref.watch(toolsProvider)!.allToolsItem;
+                      ref.watch(toolsProvider).allToolsItem;
                 },
                 icon: const Icon(Icons.home_rounded),
               ),

@@ -15,7 +15,7 @@ class SearchResultList extends ConsumerStatefulWidget {
 class _SearchResultListState extends ConsumerState<SearchResultList> {
   @override
   Widget build(BuildContext context) {
-    final allItems = ref.watch(toolsProvider)!.items;
+    final allItems = ref.watch(toolsProvider).items;
     final currentItem = ref.read(currentToolProvider.notifier);
     return ListView.builder(
       itemBuilder: (context, index) {
