@@ -4,6 +4,8 @@
 * [feature] add random file generator.
 * [feature] show snackbar when copy & paste.
 * [feature] date parser: add operation tool.
+* [update] default hot key meta+s -> alt+s.
+* [fix] fix abi build issue.
 
 # 0.3.5+16
 

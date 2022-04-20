@@ -2,7 +2,7 @@ name: alga
 description: A powerful tool app for all developers.
 
 publish_to: "none"
-version: 0.3.6+17
+version: 0.3.7+18
 
 environment:
   sdk: ">=2.16.1 <3.0.0"
@@ -95,22 +95,48 @@ flavorizr:
     ios:
 
   flavors:
-    abi32bit:
+    arm:
       app:
         name: "Alga"
 
       android:
-        applicationId: "tech.laihz.alga.abi32bit"
+        applicationId: "tech.laihz.alga.arm"
+        customConfig:
+          ndk: "{ abiFilter \"armeabi-v7a\" }"
 
       ios:
         bundleId: "tech.laihz.alga"
 
-    abi64bit:
+    arm64:
       app:
         name: "Alga"
 
       android:
         applicationId: "tech.laihz.alga.abi64bit"
+        customConfig:
+          ndk: "{ abiFilter \"arm64-v8a\" }"
+
+      ios:
+        bundleId: "tech.laihz.alga"
+    
+    x86_64:
+      app:
+        name: "Alga"
+
+      android:
+        applicationId: "tech.laihz.alga.x86_64"
+        customConfig:
+          ndk: "{ abiFilter \"x86_64\" }"
+
+      ios:
+        bundleId: "tech.laihz.alga"
+
+    universal:
+      app:
+        name: "Alga"
+
+      android:
+        applicationId: "tech.laihz.alga"
 
       ios:
         bundleId: "tech.laihz.alga"

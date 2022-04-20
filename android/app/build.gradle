@@ -37,14 +37,27 @@ android {
     flavorDimensions "abi"
 
     productFlavors {
-        abi32bit {
+        arm {
             dimension "abi"
-            applicationId "tech.laihz.alga.abi32bit"
+            applicationId "tech.laihz.alga.arm"
+            ndk { abiFilter "armeabi-v7a" }
             resValue "string", "app_name", "Alga"
         }
-        abi64bit {
+        arm64 {
             dimension "abi"
             applicationId "tech.laihz.alga.abi64bit"
+            ndk { abiFilter "arm64-v8a" }
+            resValue "string", "app_name", "Alga"
+        }
+        x86_64 {
+            dimension "abi"
+            applicationId "tech.laihz.alga.x86_64"
+            ndk { abiFilter "x86_64" }
+            resValue "string", "app_name", "Alga"
+        }
+        universal {
+            dimension "abi"
+            applicationId "tech.laihz.alga"
             resValue "string", "app_name", "Alga"
         }
         aab {
@@ -95,6 +108,10 @@ android {
             useProguard true
             signingConfig signingConfigs.release
         }
+    }
+
+    lintOptions {
+        checkReleaseBuilds false
     }
 }
 
