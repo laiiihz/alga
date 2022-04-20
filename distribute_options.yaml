@@ -1,5 +1,5 @@
 output: dist/
-artifact_name: "{{name}}-{{platform}}{{#flavor}}-{{flavor}}{{/flavor}}{{#channel}}-{{channel}}{{/channel}}-{{version}}}{{#is_installer}}-setup{{/is_installer}}.{{ext}}"
+artifact_name: "{{name}}-{{platform}}{{#flavor}}-{{flavor}}{{/flavor}}{{#channel}}-{{channel}}{{/channel}}-{{version}}{{#is_installer}}-setup{{/is_installer}}.{{ext}}"
 releases:
   - name: macos
     jobs:
