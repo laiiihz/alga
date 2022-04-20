@@ -86,7 +86,7 @@ class AppScaffold extends StatelessWidget {
                 borderRadius: BorderRadius.circular(4),
               ),
               alignment: Alignment.center,
-              child: Text(KeyModifier.meta.keyLabel,
+              child: Text(KeyModifier.alt.keyLabel,
                   style: Theme.of(context).textTheme.caption),
             ),
             const SizedBox(width: 4),
