@@ -2,7 +2,7 @@ name: alga
 description: A powerful tool app for all developers.
 
 publish_to: "none"
-version: 0.3.7+18
+version: 0.3.8+19
 
 environment:
   sdk: ">=2.16.1 <3.0.0"
@@ -112,7 +112,7 @@ flavorizr:
         name: "Alga"
 
       android:
-        applicationId: "tech.laihz.alga.abi64bit"
+        applicationId: "tech.laihz.alga.arm64"
         customConfig:
           ndk: "{ abiFilter \"arm64-v8a\" }"
 

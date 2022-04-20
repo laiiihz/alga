@@ -1,4 +1,5 @@
 output: dist/
+artifact_name: "{{name}}-{{platform}}{{#flavor}}-{{flavor}}{{/flavor}}{{#channel}}-{{channel}}{{/channel}}-{{version}}}{{#is_installer}}-setup{{/is_installer}}.{{ext}}"
 releases:
   - name: macos
     jobs:
@@ -6,43 +7,67 @@ releases:
         package:
           platform: macos
           target: zip
+          obfuscate:
+            split-debug-info: symbols
       - name: app
         package:
           platform: macos
           target: dmg
+          obfuscate:
+            split-debug-info: symbols
   - name: android
-    jobs:    
+    jobs:
       - name: arm
         package:
           platform: android
           target: apk
           build_args:
             flavor: arm
+            obfuscate:
+            split-debug-info: symbols
       - name: arm64
         package:
           platform: android
           target: apk
           build_args:
             flavor: arm64
+            obfuscate:
+            split-debug-info: symbols
       - name: x86_64
         package:
           platform: android
           target: apk
           build_args:
             flavor: x86_64
+            obfuscate:
+            split-debug-info: symbols
+      - name: universal
+        package:
+          platform: android
+          target: apk
+          build_args:
+            flavor: universal
+            obfuscate:
+            split-debug-info: symbols
       - name: aab
         package:
           platform: android
           target: aab
           build_args:
             flavor: aab
+            obfuscate:
+            split-debug-info: symbols
   - name: windows
     jobs:
       - name: exe
         package:
           platform: windows
           target: exe
+          obfuscate:
+            split-debug-info: symbols
       - name: zip
         package:
           platform: windows
           target: zip
+          obfuscate:
+            split-debug-info: symbols
