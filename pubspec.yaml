@@ -70,6 +70,7 @@ dev_dependencies:
   hive_generator: ^1.1.2
   build_runner: ^2.1.8
   flutter_flavorizr: ^2.1.3
+  msix: ^3.5.1
 
 dependency_overrides:
   js: 0.6.4
