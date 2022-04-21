@@ -1,4 +1,5 @@
 display_name: Alga
-  publisher_display_name: laiiihz
-  identity_name: tech.laihz.alga
-  msix_version: 0.3.6.0
+publisher_display_name: laiiihz
+identity_name: tech.laihz.alga
+msix_version: 0.3.6.0
+logo_path: assets/logo/256.webp

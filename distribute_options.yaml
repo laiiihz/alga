@@ -59,15 +59,21 @@ releases:
             split-debug-info: symbols
   - name: windows
     jobs:
-      - name: exe
+      # - name: exe
+      #   package:
+      #     platform: windows
+      #     target: exe
+      #     obfuscate:
+      #       split-debug-info: symbols
+      # - name: zip
+      #   package:
+      #     platform: windows
+      #     target: zip
+      #     obfuscate:
+      #       split-debug-info: symbols
+      - name: msix
         package:
           platform: windows
-          target: exe
-          obfuscate:
-            split-debug-info: symbols
-      - name: zip
-        package:
-          platform: windows
-          target: zip
+          target: msix
           obfuscate:
             split-debug-info: symbols
