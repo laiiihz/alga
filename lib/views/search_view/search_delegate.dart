@@ -18,7 +18,7 @@ class AppSearchDelegate extends SearchDelegate {
   Widget buildResults(BuildContext context) {
     return Consumer(
       builder: (context, ref, _) {
-        final allItems = ref.watch(toolsProvider)!.items;
+        final allItems = ref.watch(toolsProvider).items;
         final currentItem = ref.read(currentToolProvider.notifier);
         final currentTools = allItems.where((element) {
           return element
@@ -48,7 +48,7 @@ class AppSearchDelegate extends SearchDelegate {
   Widget buildSuggestions(BuildContext context) {
     return Consumer(
       builder: (context, ref, _) {
-        final allItems = ref.watch(toolsProvider)!.items;
+        final allItems = ref.watch(toolsProvider).items;
         final currentItem = ref.read(currentToolProvider.notifier);
         return ListView.builder(
           itemBuilder: (context, index) {

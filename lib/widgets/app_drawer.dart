@@ -44,7 +44,7 @@ class _AppDrawerState extends ConsumerState<AppDrawer> {
   Widget build(BuildContext context) {
     final item = ref.watch(currentToolProvider);
     final itemRead = ref.read(currentToolProvider.notifier);
-    final navi = ref.watch(toolsProvider)!;
+    final navi = ref.watch(toolsProvider);
     final scrollController = ref.watch(appDrawerController);
     return Drawer(
       shape: _kDrawerShape,

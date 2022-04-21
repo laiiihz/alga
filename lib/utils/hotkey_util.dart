@@ -14,7 +14,7 @@ class HotkeyUtil {
     await hotKeyManager.unregisterAll();
     HotKey searchHotKey = HotKey(
       KeyCode.keyS,
-      modifiers: [KeyModifier.meta],
+      modifiers: [KeyModifier.alt],
     );
     await hotKeyManager.register(
       searchHotKey,

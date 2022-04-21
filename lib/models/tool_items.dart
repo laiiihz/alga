@@ -60,7 +60,7 @@ List<ToolGroup> _toolItems = [
       ),
       ToolItem(
         icon: const Icon(Icons.legend_toggle),
-        title: (context) => const Text('Absolute Length Converter'),
+        title: (context) => Text(S.of(context).absoluteLengthConverter),
         page: const AbsLengthConverterView(),
       ),
     ],
@@ -150,7 +150,7 @@ List<ToolGroup> _toolItems = [
         if (Platform.isMacOS || Platform.isLinux || Platform.isWindows)
           ToolItem(
             icon: const Icon(Icons.file_copy),
-            title: (context) => const Text('Random File generator'),
+            title: (context) => Text(S.of(context).randomFilegenerator),
             page: const RandomFileGeneratorView(),
           ),
       if (!kIsWeb)

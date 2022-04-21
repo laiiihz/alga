@@ -1,42 +1,73 @@
 output: dist/
+artifact_name: "{{name}}-{{platform}}{{#flavor}}-{{flavor}}{{/flavor}}{{#channel}}-{{channel}}{{/channel}}-{{version}}{{#is_installer}}-setup{{/is_installer}}.{{ext}}"
 releases:
-  - name: release
+  - name: macos
     jobs:
-      - name: macos-archive
+      - name: archive
         package:
           platform: macos
           target: zip
-      - name: macos-app
+          obfuscate:
+            split-debug-info: symbols
+      - name: app
         package:
           platform: macos
           target: dmg
-      - name: android-32bit
+          obfuscate:
+            split-debug-info: symbols
+  - name: android
+    jobs:
+      - name: arm
         package:
           platform: android
           target: apk
           build_args:
-            flavor: abi32bit
-            target-platform: android-arm
-      - name: android-64bit
+            flavor: arm
+            obfuscate:
+            split-debug-info: symbols
+      - name: arm64
         package:
           platform: android
           target: apk
           build_args:
-            flavor: abi64bit
-            target-platform: android-arm64
+            flavor: arm64
+            obfuscate:
+            split-debug-info: symbols
+      - name: x86_64
+        package:
+          platform: android
+          target: apk
+          build_args:
+            flavor: x86_64
+            obfuscate:
+            split-debug-info: symbols
+      - name: universal
+        package:
+          platform: android
+          target: apk
+          build_args:
+            flavor: universal
+            obfuscate:
+            split-debug-info: symbols
       - name: aab
         package:
           platform: android
           target: aab
           build_args:
             flavor: aab
+            obfuscate:
+            split-debug-info: symbols
   - name: windows
     jobs:
-      - name: release-windows
+      - name: exe
         package:
           platform: windows
           target: exe
-      - name: release-windows-zip
+          obfuscate:
+            split-debug-info: symbols
+      - name: zip
         package:
           platform: windows
           target: zip
+          obfuscate:
+            split-debug-info: symbols

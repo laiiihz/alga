@@ -12,7 +12,7 @@ class _AllToolsViewState extends ConsumerState<AllToolsView> {
   @override
   Widget build(BuildContext context) {
     final itemRead = ref.read(currentToolProvider.notifier);
-    final _navi = ref.watch(toolsProvider)!;
+    final _navi = ref.watch(toolsProvider);
     return ToolView(
       title: Text(S.of(context).allTools),
       content: GridView.builder(
