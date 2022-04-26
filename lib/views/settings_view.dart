@@ -1,5 +1,3 @@
-import 'package:url_launcher/url_launcher.dart';
-
 import 'package:alga/constants/import_helper.dart';
 import 'package:alga/extension/list_ext.dart';
 import 'package:alga/utils/hive_adapters/system_settings_model.dart';

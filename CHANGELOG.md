@@ -5,6 +5,7 @@
 * [feature] show snackbar when copy & paste.
 * [feature] date parser: add operation tool.
 * [feature] markdown: now can select markdown text.
+* [feature] color converter: now can pick multi-type colors.
 * [update] default hot key meta+s -> alt+s.
 * [fix] fix abi build issue.
 

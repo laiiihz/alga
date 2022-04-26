@@ -36,11 +36,11 @@ final _rgbaValue = StateProvider.autoDispose<String>((ref) {
 final _hslValue = StateProvider.autoDispose<String>((ref) {
   final color = ref.watch(_colorProvider);
   final hsl = HSLColor.fromColor(color);
-  return 'hsl(${hsl.hue}, ${hsl.saturation}%, ${hsl.lightness}%)';
+  return 'hsl(${hsl.hue.toStringAsFixed(0)}, ${hsl.saturation.toStringAsFixed(2)}%, ${hsl.lightness.toStringAsFixed(2)}%)';
 });
 
 final _hsvValue = StateProvider.autoDispose<String>((ref) {
   final color = ref.watch(_colorProvider);
   final hsv = HSVColor.fromColor(color);
-  return 'hsv(${hsv.hue}, ${hsv.saturation}%, ${hsv.value}%)';
+  return 'hsv(${hsv.hue.toStringAsFixed(0)}, ${hsv.saturation.toStringAsFixed(2)}%, ${hsv.value.toStringAsFixed(2)}%)';
 });

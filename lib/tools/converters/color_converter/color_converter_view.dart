@@ -1,5 +1,6 @@
 import 'package:alga/constants/import_helper.dart';
 import 'package:alga/tools/converters/color_converter/color_view_background_patiner.dart';
+import 'package:alga/tools/converters/color_converter/material_color_widget.dart';
 import 'package:pigment/pigment.dart';
 
 part 'color_converter_provider.dart';
@@ -45,6 +46,42 @@ class ColorConverterView extends StatelessWidget {
               ),
             );
           }),
+        ),
+        Wrap(
+          spacing: 4,
+          runSpacing: 4,
+          children: [
+            Consumer(builder: (context, ref, _) {
+              return ElevatedButton(
+                onPressed: () async {
+                  final color = await pickMaterialColor(context);
+                  if (color != null) {
+                    final hex = color.value & 0xFFFFFF;
+                    final opacity = color.value >> 24;
+                    ref.watch(_inputController).text =
+                        '#${hex.toRadixString(16).padLeft(6, '0')}${opacity.toRadixString(16).padLeft(2)}';
+                    ref.refresh(_colorProvider);
+                  }
+                },
+                child: const Text('Material Color'),
+              );
+            }),
+            Consumer(builder: (context, ref, _) {
+              return ElevatedButton(
+                onPressed: () async {
+                  final color = await pickColor(context);
+                  if (color != null) {
+                    final hex = color.value & 0xFFFFFF;
+                    final opacity = color.value >> 24;
+                    ref.watch(_inputController).text =
+                        '#${hex.toRadixString(16).padLeft(6, '0')}${opacity.toRadixString(16).padLeft(2)}';
+                    ref.refresh(_colorProvider);
+                  }
+                },
+                child: const Text('Color'),
+              );
+            }),
+          ],
         ),
         AppTitleWrapper(
           title: S.of(context).colorString,
