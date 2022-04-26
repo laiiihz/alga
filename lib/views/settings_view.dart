@@ -1,4 +1,3 @@
-import 'package:package_info_plus/package_info_plus.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import 'package:alga/constants/import_helper.dart';
@@ -19,6 +18,9 @@ class SettingsView extends StatefulWidget {
 }
 
 class _SettingsViewState extends State<SettingsView> {
+  static const String _buildName = String.fromEnvironment('FLUTTER_BUILD_NAME');
+  static const String _buildNumber =
+      String.fromEnvironment('FLUTTER_BUILD_NUMBER');
   @override
   Widget build(BuildContext context) {
     return ToolView(
@@ -138,19 +140,10 @@ class _SettingsViewState extends State<SettingsView> {
           SettingsTile(
             leading: const Icon(Icons.info_rounded),
             title: Text(S.of(context).version),
-            trailing: FutureBuilder<PackageInfo>(
-              future: PackageInfo.fromPlatform(),
-              builder: (context, snap) {
-                if (snap.connectionState != ConnectionState.done) {
-                  return const SizedBox.shrink();
-                } else {
-                  return Chip(
-                    label: Text(
-                      '${snap.data?.version}+${snap.data?.buildNumber}',
-                    ),
-                  );
-                }
-              },
+            trailing: const Chip(
+              label: Text(
+                '$_buildName+$_buildNumber',
+              ),
             ),
           ),
         ].sep(const SizedBox(height: 4)),

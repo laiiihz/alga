@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:alga/home_view.dart';
 import 'package:alga/l10n/l10n.dart';
 import 'package:alga/utils/hive_boxes/system_box.dart';
 import 'package:alga/utils/hive_util.dart';

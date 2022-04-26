@@ -58,6 +58,7 @@ class _MarkdownPreviewViewState extends State<MarkdownPreviewView> {
                 child: Consumer(builder: (context, ref, _) {
                   return Markdown(
                     data: ref.watch(_inputValue),
+                    selectable: true,
                   );
                 }),
               ),
