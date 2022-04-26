@@ -9,6 +9,7 @@ import 'package:alga/views/widgets/color_popup_item.dart';
 import 'package:alga/views/widgets/expandable_settings_tile.dart';
 import 'package:alga/views/widgets/settings_tile.dart';
 import 'package:alga/widgets/box_builder.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 
 class SettingsView extends StatefulWidget {
   const SettingsView({Key? key}) : super(key: key);
@@ -117,7 +118,7 @@ class _SettingsViewState extends State<SettingsView> {
                   leading: const Icon(Icons.code_rounded),
                   title: Text(S.of(context).github),
                   onTap: () {
-                    launch('https://github.com/laiiihz/alga');
+                    launchUrlString('https://github.com/laiiihz/alga');
                   },
                 ),
                 ListTile(
@@ -131,7 +132,7 @@ class _SettingsViewState extends State<SettingsView> {
                   leading: const Icon(Icons.bug_report_rounded),
                   title: Text(S.of(context).issues),
                   onTap: () {
-                    launch('https://github.com/laiiihz/alga/issues');
+                    launchUrlString('https://github.com/laiiihz/alga/issues');
                   },
                 ),
               ],
