@@ -1,7 +1,7 @@
 import 'package:flutter_markdown/flutter_markdown.dart';
+import 'package:markdown/markdown.dart' show markdownToHtml;
 
 import 'package:alga/constants/import_helper.dart';
-import 'package:markdown/markdown.dart' show markdownToHtml;
 
 part './markdown_preview_provider.dart';
 

@@ -2,9 +2,9 @@ import 'dart:convert';
 import 'dart:typed_data';
 
 import 'package:convert/convert.dart';
+import 'package:pointycastle/digests/sm3.dart';
 
 import 'package:alga/constants/import_helper.dart';
-import 'package:pointycastle/digests/sm3.dart';
 
 part './sm3_generator_provider.dart';
 

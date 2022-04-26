@@ -1,5 +1,6 @@
-import 'package:alga/home_view.dart';
 import 'package:go_router/go_router.dart';
+
+import 'package:alga/home_view.dart';
 
 final appRouter = GoRouter(
   routes: [

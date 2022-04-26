@@ -1,15 +1,11 @@
 import 'dart:io';
 
-import 'package:alga/tools/converters/abs_length_converter/abs_length_converter_view.dart';
-import 'package:alga/tools/converters/color_converter/color_converter_view.dart';
-import 'package:alga/tools/formatters/py_dict_formatter/py_dict_formatter_view.dart';
-import 'package:alga/tools/generators/password_generator/password_generator_view.dart';
-import 'package:alga/tools/generators/random_file_generator/random_file_generator_view.dart';
-import 'package:alga/tools/generators/sm3_generator/sm3_generator_view.dart';
 import 'package:flutter/foundation.dart';
 
 import 'package:alga/constants/import_helper.dart';
 import 'package:alga/models/tool_item.dart';
+import 'package:alga/tools/converters/abs_length_converter/abs_length_converter_view.dart';
+import 'package:alga/tools/converters/color_converter/color_converter_view.dart';
 import 'package:alga/tools/converters/json_yaml_converter/json_yaml_converter_view.dart';
 import 'package:alga/tools/converters/number_base_converter/number_base_converter_view.dart';
 import 'package:alga/tools/encoders_decoders/base_64_encoder_decoder/base_64_encoder_decoder.dart';
@@ -19,8 +15,12 @@ import 'package:alga/tools/encoders_decoders/uri_encoder_decoder/uri_encoder_dec
 import 'package:alga/tools/encoders_decoders/uri_parser/uri_parser_view.dart';
 import 'package:alga/tools/formatters/dart_formatter/dart_formatter_view.dart';
 import 'package:alga/tools/formatters/json_formatter/json_formatter_view.dart';
+import 'package:alga/tools/formatters/py_dict_formatter/py_dict_formatter_view.dart';
 import 'package:alga/tools/generators/hash_generator/hash_generator_view.dart';
 import 'package:alga/tools/generators/lorem_ipsum_generator/lorem_ipsum_generator_view.dart';
+import 'package:alga/tools/generators/password_generator/password_generator_view.dart';
+import 'package:alga/tools/generators/random_file_generator/random_file_generator_view.dart';
+import 'package:alga/tools/generators/sm3_generator/sm3_generator_view.dart';
 import 'package:alga/tools/generators/uuid_generator/uuid_generator.dart';
 import 'package:alga/tools/image_tools/blur_hash_tool/blur_hash_view.dart';
 import 'package:alga/tools/image_tools/qrcode_tool/qrcode_view.dart';

@@ -1,10 +1,10 @@
-import 'package:alga/utils/snackbar_util.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:alga/l10n/l10n.dart';
 import 'package:alga/utils/clipboard_util.dart';
+import 'package:alga/utils/snackbar_util.dart';
 
 class CopyButton extends StatelessWidget {
   final String Function(WidgetRef ref) onCopy;

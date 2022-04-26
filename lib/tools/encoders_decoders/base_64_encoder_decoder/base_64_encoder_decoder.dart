@@ -2,9 +2,10 @@ import 'dart:convert';
 import 'dart:io';
 import 'dart:typed_data';
 
+import 'package:flutter/foundation.dart';
+
 import 'package:alga/constants/import_helper.dart';
 import 'package:alga/utils/image_util.dart';
-import 'package:flutter/foundation.dart';
 
 part './base_64_provider.dart';
 part './base64_file_picker.dart';

@@ -1,5 +1,3 @@
-
-
 part of './json_yaml_converter_view.dart';
 
 final _jsonController = StateProvider.autoDispose<TextEditingController>((ref) {
@@ -12,7 +10,6 @@ final _yamlController = StateProvider.autoDispose<TextEditingController>((ref) {
   ref.onDispose(controller.dispose);
   return controller;
 });
-
 
 class JsonYamlUtil {
   static json2yaml(WidgetRef ref) {

@@ -1,8 +1,8 @@
-import 'package:alga/utils/snackbar_util.dart';
 import 'package:flutter/services.dart';
 
 import 'package:alga/constants/import_helper.dart';
 import 'package:alga/tools/formatters/formatter_abstract.dart';
+import 'package:alga/utils/snackbar_util.dart';
 
 class FormatterView extends StatefulWidget {
   final Widget title;

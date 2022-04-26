@@ -1,7 +1,8 @@
+import 'package:pigment/pigment.dart';
+
 import 'package:alga/constants/import_helper.dart';
 import 'package:alga/tools/converters/color_converter/color_view_background_patiner.dart';
 import 'package:alga/tools/converters/color_converter/material_color_widget.dart';
-import 'package:pigment/pigment.dart';
 
 part 'color_converter_provider.dart';
 
