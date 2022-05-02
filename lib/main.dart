@@ -35,12 +35,7 @@ class MyApp extends StatelessWidget {
             themeMode: SystemBox.model.themeMode,
             routerDelegate: appRouter.routerDelegate,
             routeInformationParser: appRouter.routeInformationParser,
-            localizationsDelegates: [
-              S.delegate,
-              GlobalMaterialLocalizations.delegate,
-              GlobalCupertinoLocalizations.delegate,
-              GlobalWidgetsLocalizations.delegate,
-            ],
+            localizationsDelegates: S.localizationsDelegates,
             supportedLocales: S.supportedLocales,
             locale: SystemBox.model.locale,
           );
