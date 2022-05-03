@@ -40,6 +40,7 @@ class ThemeUtil {
       inputDecorationTheme: _inputDecorationTheme.copyWith(
         fillColor: scheme.primary.withOpacity(0.1),
         filled: true,
+        contentPadding: const EdgeInsets.all(12),
       ),
       listTileTheme: ListTileThemeData(
         iconColor: scheme.secondary,
@@ -57,6 +58,12 @@ class ThemeUtil {
             return null;
           }
         }),
+      ),
+      snackBarTheme: SnackBarThemeData(
+        actionTextColor: scheme.background,
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.vertical(top: Radius.circular(16)),
+        ),
       ),
       useMaterial3: true,
     );

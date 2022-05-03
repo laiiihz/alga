@@ -93,7 +93,6 @@ class _HashGeneratorViewState extends State<HashGeneratorView> {
             children: ref.watch(hashResults).map((e) {
               return AppTitleWrapper(
                 title: e.title(context),
-                actions: const [],
                 child: Row(
                   children: [
                     Expanded(child: AppTextBox(data: e.result)),

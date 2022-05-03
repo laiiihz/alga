@@ -68,7 +68,6 @@ class _QrcodeViewState extends State<QrcodeView> {
         ),
         AppTitleWrapper(
           title: S.of(context).input,
-          actions: const [],
           child: Consumer(builder: (context, ref, _) {
             return TextField(
               controller: ref.watch(_input),
@@ -82,7 +81,6 @@ class _QrcodeViewState extends State<QrcodeView> {
         ),
         AppTitleWrapper(
           title: S.of(context).output,
-          actions: const [],
           child: SizedBox(
             height: 300,
             child: Center(
