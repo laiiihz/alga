@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:typed_data';
 
+import 'package:alga/widgets/clear_button.dart';
 import 'package:convert/convert.dart';
 import 'package:pointycastle/digests/sm3.dart';
 
@@ -25,6 +26,10 @@ class SM3GeneratorView extends StatelessWidget {
                 ref.refresh(_inputValue);
               },
             ),
+            ClearButton(onClear: (ref) {
+              ref.watch(_inputController).clear();
+              ref.refresh(_inputValue);
+            }),
           ],
           child: Consumer(builder: (context, ref, _) {
             return TextField(

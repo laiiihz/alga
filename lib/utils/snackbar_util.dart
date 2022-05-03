@@ -45,4 +45,8 @@ class SnackbarUtil {
   pasted() {
     success(S.of(context).pasted);
   }
+
+  cleared() {
+    success(S.of(context).cleared);
+  } 
 }
