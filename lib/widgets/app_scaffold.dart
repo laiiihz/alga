@@ -16,7 +16,7 @@ import 'package:alga/views/search_view/search_view.dart';
 import 'package:alga/widgets/animated_show_widget.dart';
 import 'package:alga/widgets/app_drawer.dart';
 
-final currentToolProvider = StateProvider<ToolItem?>((ref) {
+final currentToolProvider = StateProvider<ToolItem>((ref) {
   return ref.watch(toolsProvider).allToolsItem;
 });
 final toolsProvider = StateProvider<NaviUtil>((ref) => NaviUtil());
@@ -39,7 +39,7 @@ class AppScaffold extends StatelessWidget {
               child: child,
             );
           },
-          child: item?.page ?? const SizedBox.shrink(),
+          child: item.page,
         );
       },
     );
