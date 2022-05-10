@@ -231,7 +231,7 @@ List<ToolGroup> _toolItems = [
     title: (context) => const Text('JS Tools'),
     items: [
       ToolItem(
-        icon: const Icon(Icons.javascript_rounded),
+        icon: const SvgAssetIcon('assets/icons/js.svg', colorIcon: true),
         title: (context) => const Text('Quick JS Tool'),
         page: const QuickJsView(),
       ),

@@ -15,8 +15,9 @@ class WindowUtil {
       windowManager.waitUntilReadyToShow().then((value) async {
         await windowManager.setTitleBarStyle(
           TitleBarStyle.hidden,
-          windowButtonVisibility: false,
+          windowButtonVisibility: true,
         );
+
         await windowManager.center();
         await windowManager.setTitle('Alga');
         await windowManager.setSkipTaskbar(false);
