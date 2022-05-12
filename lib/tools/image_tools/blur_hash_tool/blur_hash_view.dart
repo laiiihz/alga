@@ -73,7 +73,9 @@ class _BlurHashViewState extends State<BlurHashView> {
                                           hash: item.blurHash.hash,
                                         );
                                         if (config == null) return;
-                                        await save(config, context);
+                                        if (mounted) {
+                                          await save(config, context);
+                                        }
                                       },
                                       icon: const Icon(Icons.save_alt),
                                     ),

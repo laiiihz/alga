@@ -43,8 +43,10 @@ Future<BlurHashConfig?> getConfig({
   int height = 64,
   int width = 64,
 }) async {
-  String? _path = await getDirectoryPath();
-  if (_path == null) {
+  String? path = await getDirectoryPath();
+  if (path == null) {
+    // TODO
+    // ignore: use_build_context_synchronously
     ScaffoldMessenger.of(context)
         .showSnackBar(const SnackBar(content: Text('Cancelled')));
     return null;
@@ -58,12 +60,14 @@ Future<BlurHashConfig?> getConfig({
     bytes: bytes.buffer.asUint8List(),
     height: height,
     width: width,
-    storePath: _path,
+    storePath: path,
   );
 }
 
 save(BlurHashConfig config, BuildContext context) async {
   final result = await compute(_save, config);
+  // TODO
+  // ignore: use_build_context_synchronously
   ScaffoldMessenger.of(context)
       .showSnackBar(const SnackBar(content: Text('Saved')));
   return result;

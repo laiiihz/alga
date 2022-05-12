@@ -5,10 +5,10 @@ class PyDictProvider implements FormatterAbstract {
   @override
   FormatResult onChanged(String text) {
     try {
-      final PyDictEncoder _pyDictEncoder = PyDictEncoder();
-      final PyDictDecoder _pyDictDecoder = PyDictDecoder();
-      final data = _pyDictDecoder.decode(text);
-      return FormatResult(_pyDictEncoder.encode(data));
+      final PyDictEncoder pyDictEncoder = PyDictEncoder();
+      final PyDictDecoder pyDictDecoder = PyDictDecoder();
+      final data = pyDictDecoder.decode(text);
+      return FormatResult(pyDictEncoder.encode(data));
     } catch (e) {
       return FormatResult(text, e.toString());
     }

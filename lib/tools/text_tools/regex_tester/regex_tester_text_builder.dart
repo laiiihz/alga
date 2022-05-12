@@ -14,13 +14,13 @@ class RegexTesterTextBuilder extends SpecialTextSpanBuilder {
     if (provider.reg == null) return TextSpan(text: data, style: textStyle);
 
     String cacheData = data;
-    final _spans = <InlineSpan>[];
+    final spans = <InlineSpan>[];
 
     RegExpMatch? currentMatch = provider.reg!.firstMatch(cacheData);
 
     while (currentMatch != null) {
-      _spans.add(TextSpan(text: cacheData.substring(0, currentMatch.start)));
-      _spans.add(TextSpan(
+      spans.add(TextSpan(text: cacheData.substring(0, currentMatch.start)));
+      spans.add(TextSpan(
         text: cacheData.substring(
           currentMatch.start,
           currentMatch.end,
@@ -32,9 +32,9 @@ class RegexTesterTextBuilder extends SpecialTextSpanBuilder {
       }
       currentMatch = provider.reg!.firstMatch(cacheData);
     }
-    _spans.add(TextSpan(text: cacheData));
+    spans.add(TextSpan(text: cacheData));
 
-    return TextSpan(children: _spans);
+    return TextSpan(children: spans);
   }
 
   matched() {}

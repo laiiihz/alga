@@ -80,23 +80,23 @@ final hashUpperCase = StateProvider.autoDispose<bool>((ref) => false);
 final showHmac = StateProvider.autoDispose<bool>((ref) => false);
 
 final hashResults = StateProvider.autoDispose<List<HashResult>>((ref) {
-  bool _showHmac = ref.watch(showHmac);
-  bool _upperCase = ref.watch(hashUpperCase);
-  String _input = ref.watch(inputController).text;
-  String _optional = ref.watch(optionalController).text;
-  if (_input.isEmpty) return const [];
+  bool showHmacData = ref.watch(showHmac);
+  bool upperCaseData = ref.watch(hashUpperCase);
+  String inputData = ref.watch(inputController).text;
+  String optionalData = ref.watch(optionalController).text;
+  if (inputData.isEmpty) return const [];
 
   final results = <HashResult>[];
   for (var item in HashType.values) {
-    final _converter = _Converter(item);
-    if (!_showHmac) {
-      String normal = _converter.convert(_input).toString();
-      if (_upperCase) normal = normal.toUpperCase();
+    final converter = _Converter(item);
+    if (!showHmacData) {
+      String normal = converter.convert(inputData).toString();
+      if (upperCaseData) normal = normal.toUpperCase();
       results.add(HashResult(type: item, result: normal));
     } else {
       String hmacData =
-          _converter.convertWithSecret(_input, _optional).toString();
-      if (_upperCase) hmacData = hmacData.toUpperCase();
+          converter.convertWithSecret(inputData, optionalData).toString();
+      if (upperCaseData) hmacData = hmacData.toUpperCase();
       results.add(HMACResult(type: item, result: hmacData));
     }
   }

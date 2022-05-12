@@ -28,17 +28,17 @@ class StaticServerToolProvider extends ChangeNotifier {
   final portController = TextEditingController();
   final pathController = TextEditingController();
   int get port {
-    final _rawPort = int.tryParse(portController.text);
-    if (_rawPort == null) {
+    final rawPort = int.tryParse(portController.text);
+    if (rawPort == null) {
       return _kDefaultPort;
     }
-    if (_rawPort <= 0) {
+    if (rawPort <= 0) {
       return _kDefaultPort;
     }
-    if (_rawPort >= 65535) {
+    if (rawPort >= 65535) {
       return _kDefaultPort;
     }
-    return _rawPort;
+    return rawPort;
   }
 
   String? get _defaultPath {

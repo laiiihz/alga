@@ -3,6 +3,7 @@ part of './base_64_encoder_decoder.dart';
 Future _showBase64ImagePicker(BuildContext context, WidgetRef ref) async {
   final file = await ImageUtil.pick();
   if (file == null) {
+    // ignore: use_build_context_synchronously
     ScaffoldMessenger.of(context)
         .showSnackBar(const SnackBar(content: Text('empty image')));
     return;
@@ -24,7 +25,11 @@ Future _showBase64ImagePicker(BuildContext context, WidgetRef ref) async {
                 TextButton(
                   onPressed: () async {
                     await ClipboardUtil.copy(data);
+                    //TODO
+                    // ignore: use_build_context_synchronously
                     Navigator.pop(context);
+                    //TODO
+                    // ignore: use_build_context_synchronously
                     ScaffoldMessenger.of(context).showSnackBar(
                         const SnackBar(content: Text('copy success')));
                   },

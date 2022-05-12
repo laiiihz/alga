@@ -20,7 +20,7 @@ class ToolbarView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final _input = Expanded(
+    final input = Expanded(
       child: Column(
         children: [
           AppTitle(
@@ -32,7 +32,7 @@ class ToolbarView extends StatelessWidget {
         ],
       ),
     );
-    final _output = Expanded(
+    final output = Expanded(
       child: Column(
         children: [
           AppTitle(
@@ -59,16 +59,16 @@ class ToolbarView extends StatelessWidget {
         result = Row(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            _input,
+            input,
             if (midWidgets.isNotEmpty) const SizedBox(width: 4),
             midWidgets.isEmpty
                 ? const SizedBox(width: 8)
                 : Column(
-                    children: midWidgets.sep(const SizedBox(width: 4)),
                     mainAxisAlignment: MainAxisAlignment.center,
+                    children: midWidgets.sep(const SizedBox(width: 4)),
                   ),
             if (midWidgets.isNotEmpty) const SizedBox(width: 4),
-            _output,
+            output,
           ],
         );
         break;
@@ -76,16 +76,16 @@ class ToolbarView extends StatelessWidget {
         result = Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            _input,
+            input,
             if (midWidgets.isNotEmpty) const SizedBox(height: 4),
             midWidgets.isEmpty
                 ? const SizedBox(height: 8)
                 : Row(
-                    children: midWidgets.sep(const SizedBox(width: 4)),
                     mainAxisAlignment: MainAxisAlignment.center,
+                    children: midWidgets.sep(const SizedBox(width: 4)),
                   ),
             if (midWidgets.isNotEmpty) const SizedBox(height: 4),
-            _output,
+            output,
           ],
         );
         break;

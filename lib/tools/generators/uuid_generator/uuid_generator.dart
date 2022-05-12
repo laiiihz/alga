@@ -53,8 +53,8 @@ class _UUIDGeneratorViewState extends State<UUIDGeneratorView> {
                 return DropdownButton<UUIDVersion>(
                   items: UUIDVersion.values.map((e) {
                     return DropdownMenuItem(
-                      child: Text(e.typeName(context)),
                       value: e,
+                      child: Text(e.typeName(context)),
                     );
                   }).toList(),
                   value: ref.watch(_version),

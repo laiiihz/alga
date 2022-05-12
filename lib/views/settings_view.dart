@@ -41,7 +41,9 @@ class _SettingsViewState extends State<SettingsView> {
                   itemBuilder: (context) {
                     return ThemeMode.values
                         .map((e) => PopupMenuItem(
-                            child: Text(e.getName(context)), value: e))
+                              value: e,
+                              child: Text(e.getName(context)),
+                            ))
                         .toList();
                   },
                   initialValue: SystemBox.model.themeMode,
@@ -63,8 +65,8 @@ class _SettingsViewState extends State<SettingsView> {
                   itemBuilder: (context) {
                     return SystemSettingsModel.localCodes.map((e) {
                       return PopupMenuItem(
-                        child: Text(S.getlang(context, e)),
                         value: e,
+                        child: Text(S.getlang(context, e)),
                       );
                     }).toList();
                   },

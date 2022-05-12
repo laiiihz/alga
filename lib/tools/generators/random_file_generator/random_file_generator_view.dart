@@ -38,7 +38,7 @@ class RandomFileGeneratorView extends StatelessWidget {
                   itemBuilder: (context) {
                     return FileType.values
                         .map(
-                            (e) => PopupMenuItem(child: Text(e.name), value: e))
+                            (e) => PopupMenuItem(value: e, child: Text(e.name)))
                         .toList();
                   },
                   initialValue: ref.watch(_sizeType),
@@ -59,6 +59,8 @@ class RandomFileGeneratorView extends StatelessWidget {
                 return;
               } else {
                 _genFile(ref, path);
+                //TODO
+                // ignore: use_build_context_synchronously
                 ScaffoldMessenger.of(context)
                     .showSnackBar(const SnackBar(content: Text('Success')));
               }

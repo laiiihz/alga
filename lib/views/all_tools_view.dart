@@ -12,7 +12,7 @@ class _AllToolsViewState extends ConsumerState<AllToolsView> {
   @override
   Widget build(BuildContext context) {
     final itemRead = ref.read(currentToolProvider.notifier);
-    final _navi = ref.watch(toolsProvider);
+    final navi = ref.watch(toolsProvider);
     return ToolView(
       title: Text(S.of(context).allTools),
       content: GridView.builder(
@@ -23,7 +23,7 @@ class _AllToolsViewState extends ConsumerState<AllToolsView> {
           crossAxisSpacing: 12,
         ),
         itemBuilder: (context, index) {
-          final item = _navi.items[index];
+          final item = navi.items[index];
           return Material(
             color: Theme.of(context).colorScheme.primary.withOpacity(0.1),
             borderRadius: BorderRadius.circular(4),
@@ -61,7 +61,7 @@ class _AllToolsViewState extends ConsumerState<AllToolsView> {
             ),
           );
         },
-        itemCount: _navi.items.length,
+        itemCount: navi.items.length,
       ),
     );
   }

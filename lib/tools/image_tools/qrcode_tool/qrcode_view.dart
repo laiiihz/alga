@@ -41,8 +41,8 @@ class _QrcodeViewState extends State<QrcodeView> {
                 return DropdownButton<int>(
                   items: QrErrorCorrectLevel.levels
                       .map((e) => DropdownMenuItem(
-                            child: Text(QrErrorCorrectLevel.getName(e)),
                             value: e,
+                            child: Text(QrErrorCorrectLevel.getName(e)),
                           ))
                       .toList(),
                   onChanged: (item) {

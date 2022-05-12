@@ -179,7 +179,7 @@ packages:
     source: hosted
     version: "1.16.0"
   convert:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: convert
       url: "https://pub.flutter-io.cn"
@@ -542,7 +542,7 @@ packages:
     source: hosted
     version: "4.0.0"
   image:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: image
       url: "https://pub.flutter-io.cn"
@@ -766,7 +766,7 @@ packages:
     source: hosted
     version: "2.0.2"
   path:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: path
       url: "https://pub.flutter-io.cn"
@@ -941,7 +941,7 @@ packages:
     source: hosted
     version: "1.49.9"
   shelf:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: shelf
       url: "https://pub.flutter-io.cn"

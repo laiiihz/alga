@@ -23,14 +23,14 @@ class LoremIpsumGeneratorView extends StatelessWidget {
                     underline: const SizedBox.shrink(),
                     items: LoremIpsumType.values
                         .map((e) => DropdownMenuItem(
-                              child: Text(e.typeName(context)),
                               value: e,
+                              child: Text(e.typeName(context)),
                             ))
                         .toList(),
                     value: ref.watch(loremType),
                     onChanged: (LoremIpsumType? type) {
-                      final _type = ref.read(loremType.notifier);
-                      _type.state = type ?? LoremIpsumType.words;
+                      final typeData = ref.read(loremType.notifier);
+                      typeData.state = type ?? LoremIpsumType.words;
                     },
                   );
                 },

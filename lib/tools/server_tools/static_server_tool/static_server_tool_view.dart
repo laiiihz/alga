@@ -76,7 +76,7 @@ class _StaticServerToolViewState extends State<StaticServerToolView> {
               trailing: IconButton(
                 onPressed: () async {
                   bool result = await _provider.openFile();
-                  if (!result) {
+                  if (!result && mounted) {
                     ScaffoldMessenger.of(context).showSnackBar(
                         const SnackBar(content: Text('canceled')));
                   }

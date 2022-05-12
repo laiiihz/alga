@@ -37,8 +37,8 @@ class _SassCssGeneratorViewState extends State<SassCssGeneratorView> {
                 return DropdownButton<Syntax>(
                   items: [Syntax.css, Syntax.sass, Syntax.scss]
                       .map((e) => DropdownMenuItem(
-                            child: Text(e.toString()),
                             value: e,
+                            child: Text(e.toString()),
                           ))
                       .toList(),
                   onChanged: (syntax) {
