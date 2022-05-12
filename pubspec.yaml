@@ -38,10 +38,13 @@ dependencies:
   yaml: ^3.1.0
   json2yaml: ^3.0.0
   flutter_markdown: ^0.6.10
-  extended_text_field: ^10.0.1
+  extended_text_field: ^10.1.0
   url_launcher: ^6.1.0
-  animations: ^2.0.2
-  flutter_riverpod: ^1.0.3
+  animations:
+    git:
+      url: https://github.com/flutter/packages
+      path: packages/animations
+  flutter_riverpod: ^2.0.0-dev.7
   hotkey_manager: ^0.1.6
   sass: 1.49.9
   file_selector: ^0.8.4+1

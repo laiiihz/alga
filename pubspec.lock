@@ -18,9 +18,11 @@ packages:
   animations:
     dependency: "direct main"
     description:
-      name: animations
-      url: "https://pub.flutter-io.cn"
-    source: hosted
+      path: "packages/animations"
+      ref: HEAD
+      resolved-ref: bd2284609e3ca0b54786dc85c27b0b1c93b3f582
+      url: "https://github.com/flutter/packages"
+    source: git
     version: "2.0.2"
   archive:
     dependency: "direct main"
@@ -273,14 +275,14 @@ packages:
       name: extended_text_field
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "10.0.1"
+    version: "10.1.0"
   extended_text_library:
     dependency: transitive
     description:
       name: extended_text_library
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "9.0.0"
+    version: "9.1.0"
   fake_async:
     dependency: transitive
     description:
@@ -423,7 +425,7 @@ packages:
       name: flutter_riverpod
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "1.0.3"
+    version: "2.0.0-dev.7"
   flutter_svg:
     dependency: "direct main"
     description:
@@ -930,7 +932,7 @@ packages:
       name: riverpod
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "1.0.3"
+    version: "2.0.0-dev.7"
   sass:
     dependency: "direct main"
     description:
@@ -1203,5 +1205,5 @@ packages:
     source: hosted
     version: "3.1.0"
 sdks:
-  dart: ">=2.17.0-0 <3.0.0"
-  flutter: ">=2.10.0"
+  dart: ">=2.17.0 <3.0.0"
+  flutter: ">=3.0.0"
