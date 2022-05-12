@@ -97,6 +97,15 @@ flavorizr:
     ios:
 
   flavors:
+    dev:
+      app:
+        name: "Alga Dev"
+      
+      android:
+        applicationId: "tech.laihz.alga.dev" 
+      ios:
+        bundleId: "tech.laihz.alga"  
+
     arm:
       app:
         name: "Alga"

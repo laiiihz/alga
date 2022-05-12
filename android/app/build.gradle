@@ -37,6 +37,11 @@ android {
     flavorDimensions "abi"
 
     productFlavors {
+        dev {
+            dimension "abi"
+            applicationId "tech.laihz.alga.dev"
+            resValue "string", "app_name", "Alga Dev"
+        }
         arm {
             dimension "abi"
             applicationId "tech.laihz.alga.arm"
