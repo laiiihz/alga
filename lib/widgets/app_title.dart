@@ -4,8 +4,7 @@ import 'package:alga/extension/list_ext.dart';
 class AppTitle extends StatelessWidget {
   final String title;
   final List<Widget>? actions;
-  const AppTitle({Key? key, required this.title, this.actions})
-      : super(key: key);
+  const AppTitle({super.key, required this.title, this.actions});
   List<Widget> get _actions => actions ?? const <Widget>[];
   @override
   Widget build(BuildContext context) {
