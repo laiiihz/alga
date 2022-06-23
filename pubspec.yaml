@@ -43,7 +43,7 @@ dependencies:
   animations: ^2.0.3
   flutter_riverpod: ^2.0.0-dev.9
   hotkey_manager: ^0.1.7
-  sass: 1.49.9
+  sass: ^1.53.0
   file_selector: ^0.8.4+3
   shelf_static: ^1.1.1
   flutter_highlight: ^0.7.0

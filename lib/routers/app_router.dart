@@ -12,3 +12,7 @@ final appRouter = GoRouter(
     ),
   ],
 );
+
+// a safe way to call global context
+// must call after build the material app
+final gcontext = appRouter.routerDelegate.navigatorKey.currentContext!;
