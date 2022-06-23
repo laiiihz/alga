@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import 'package:alga/extension/list_ext.dart';
-import 'package:alga/utils/theme_util.dart';
 
 class ToolView extends StatelessWidget {
   final Widget title;
@@ -34,7 +33,7 @@ class ToolView extends StatelessWidget {
         centerTitle: false,
       ),
       body: content,
-      backgroundColor: isDark(context) ? Colors.grey[900] : Colors.white70,
+      backgroundColor: Theme.of(context).colorScheme.background,
     );
   }
 }

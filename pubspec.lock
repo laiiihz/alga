@@ -18,12 +18,10 @@ packages:
   animations:
     dependency: "direct main"
     description:
-      path: "packages/animations"
-      ref: HEAD
-      resolved-ref: bd2284609e3ca0b54786dc85c27b0b1c93b3f582
-      url: "https://github.com/flutter/packages"
-    source: git
-    version: "2.0.2"
+      name: animations
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "2.0.3"
   archive:
     dependency: "direct main"
     description:
@@ -39,7 +37,7 @@ packages:
     source: hosted
     version: "2.3.1"
   async:
-    dependency: "direct overridden"
+    dependency: transitive
     description:
       name: async
       url: "https://pub.flutter-io.cn"
@@ -93,7 +91,7 @@ packages:
       name: build_runner
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "2.1.10"
+    version: "2.1.11"
   build_runner_core:
     dependency: transitive
     description:
@@ -172,7 +170,7 @@ packages:
     source: hosted
     version: "4.1.0"
   collection:
-    dependency: "direct overridden"
+    dependency: transitive
     description:
       name: collection
       url: "https://pub.flutter-io.cn"
@@ -184,7 +182,7 @@ packages:
       name: convert
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "3.0.1"
+    version: "3.0.2"
   cross_file:
     dependency: transitive
     description:
@@ -205,7 +203,7 @@ packages:
       name: cupertino_icons
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "1.0.4"
+    version: "1.0.5"
   dart_console:
     dependency: transitive
     description:
@@ -233,7 +231,7 @@ packages:
       name: device_info_plus
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "3.2.3"
+    version: "4.0.0"
   device_info_plus_linux:
     dependency: transitive
     description:
@@ -310,7 +308,7 @@ packages:
       name: file_selector
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "0.8.4+2"
+    version: "0.8.4+3"
   file_selector_macos:
     dependency: transitive
     description:
@@ -411,7 +409,7 @@ packages:
       name: flutter_markdown
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "0.6.10"
+    version: "0.6.10+2"
   flutter_plugin_android_lifecycle:
     dependency: transitive
     description:
@@ -425,14 +423,14 @@ packages:
       name: flutter_riverpod
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "2.0.0-dev.7"
+    version: "2.0.0-dev.9"
   flutter_svg:
     dependency: "direct main"
     description:
       name: flutter_svg
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "1.0.3"
+    version: "1.1.0"
   flutter_test:
     dependency: "direct dev"
     description: flutter
@@ -470,7 +468,7 @@ packages:
       name: go_router
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "3.1.0"
+    version: "4.0.0"
   graphs:
     dependency: transitive
     description:
@@ -498,7 +496,7 @@ packages:
       name: hive
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "2.1.0"
+    version: "2.2.2"
   hive_flutter:
     dependency: "direct main"
     description:
@@ -512,7 +510,7 @@ packages:
       name: hive_generator
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "1.1.2"
+    version: "1.1.3"
   hotkey_manager:
     dependency: "direct main"
     description:
@@ -547,14 +545,14 @@ packages:
       name: image
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "3.1.3"
+    version: "3.2.0"
   image_picker:
     dependency: "direct main"
     description:
       name: image_picker
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "0.8.5+2"
+    version: "0.8.5+3"
   image_picker_android:
     dependency: transitive
     description:
@@ -605,7 +603,7 @@ packages:
     source: hosted
     version: "1.0.3"
   js:
-    dependency: "direct overridden"
+    dependency: transitive
     description:
       name: js
       url: "https://pub.flutter-io.cn"
@@ -932,7 +930,7 @@ packages:
       name: riverpod
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "2.0.0-dev.7"
+    version: "2.0.0-dev.9"
   sass:
     dependency: "direct main"
     description:
@@ -940,20 +938,27 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "1.49.9"
+  screen_retriever:
+    dependency: transitive
+    description:
+      name: screen_retriever
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "0.1.2"
   shelf:
     dependency: "direct main"
     description:
       name: shelf
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "1.3.0"
+    version: "1.3.1"
   shelf_static:
     dependency: "direct main"
     description:
       name: shelf_static
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "1.1.0"
+    version: "1.1.1"
   shelf_web_socket:
     dependency: transitive
     description:
@@ -1091,7 +1096,7 @@ packages:
       name: url_launcher
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "6.1.2"
+    version: "6.1.4"
   url_launcher_android:
     dependency: transitive
     description:
@@ -1126,7 +1131,7 @@ packages:
       name: url_launcher_platform_interface
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "2.0.5"
+    version: "2.1.0"
   url_launcher_web:
     dependency: transitive
     description:
@@ -1182,7 +1187,7 @@ packages:
       name: window_manager
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "0.2.3"
+    version: "0.2.5"
   xdg_directories:
     dependency: transitive
     description:
@@ -1191,19 +1196,19 @@ packages:
     source: hosted
     version: "0.2.0+1"
   xml:
-    dependency: transitive
+    dependency: "direct overridden"
     description:
       name: xml
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "5.4.1"
+    version: "6.0.1"
   yaml:
     dependency: "direct main"
     description:
       name: yaml
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "3.1.0"
+    version: "3.1.1"
 sdks:
   dart: ">=2.17.0 <3.0.0"
   flutter: ">=3.0.0"

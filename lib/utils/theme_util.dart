@@ -33,6 +33,7 @@ class ThemeUtil {
     ColorScheme scheme =
         brightness == Brightness.light ? lightScheme : darkScheme;
     return ThemeData.from(colorScheme: scheme).copyWith(
+      splashFactory: InkSparkle.splashFactory,
       appBarTheme: _appBarTheme.copyWith(
         backgroundColor: scheme.background,
         foregroundColor: scheme.secondary,

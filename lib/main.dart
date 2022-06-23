@@ -33,6 +33,7 @@ class MyApp extends StatelessWidget {
             darkTheme: theme.getTheme(Brightness.dark),
             themeMode: SystemBox.model.themeMode,
             routerDelegate: appRouter.routerDelegate,
+            routeInformationProvider: appRouter.routeInformationProvider,
             routeInformationParser: appRouter.routeInformationParser,
             localizationsDelegates: S.localizationsDelegates,
             supportedLocales: S.supportedLocales,

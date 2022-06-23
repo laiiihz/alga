@@ -5,7 +5,7 @@ publish_to: "none"
 version: 0.3.8+19
 
 environment:
-  sdk: ">=2.16.1 <3.0.0"
+  sdk: ">=2.17.0 <3.0.0"
 
 dependencies:
   flutter:
@@ -28,62 +28,57 @@ dependencies:
   py_dict_parser:
     path: ./packages/py_dict_parser
 
-  cupertino_icons: ^1.0.2
+  cupertino_icons: ^1.0.5
   archive: ^3.3.0
   dart_style: ^2.2.3
   uuid: ^3.0.6
   crypto: ^3.0.1
-  flutter_svg: ^1.0.3
-  window_manager: ^0.2.3
-  yaml: ^3.1.0
+  flutter_svg: ^1.1.0
+  window_manager: ^0.2.5
+  yaml: ^3.1.1
   json2yaml: ^3.0.0
-  flutter_markdown: ^0.6.10
+  flutter_markdown: ^0.6.10+2
   extended_text_field: ^10.1.0
-  url_launcher: ^6.1.2
-  animations:
-    git:
-      url: https://github.com/flutter/packages
-      path: packages/animations
-  flutter_riverpod: ^2.0.0-dev.7
+  url_launcher: ^6.1.4
+  animations: ^2.0.3
+  flutter_riverpod: ^2.0.0-dev.9
   hotkey_manager: ^0.1.7
   sass: 1.49.9
-  file_selector: ^0.8.4+2
-  shelf_static: ^1.1.0
+  file_selector: ^0.8.4+3
+  shelf_static: ^1.1.1
   flutter_highlight: ^0.7.0
-  hive: ^2.1.0
+  hive: ^2.2.2
   hive_flutter: ^1.1.0
   qr_flutter: ^4.0.0
   blurhash_dart: ^1.1.0
   flutter_blurhash: ^0.7.0
-  image_picker: ^0.8.5+2
-  device_info_plus: ^3.2.3
+  image_picker: ^0.8.5+3
+  device_info_plus: ^4.0.0
   network_info_plus: ^2.1.3
   flutter_js: ^0.5.0+6
   import_sorter: ^4.6.0
   markdown: ^5.0.0
   pointycastle: ^3.6.0
   pigment: ^1.0.4
-  go_router: ^3.1.0
+  go_router: ^4.0.0
   flutter_colorpicker: ^1.0.3
-  image: ^3.1.3
-  convert: ^3.0.1
+  image: ^3.2.0
+  convert: ^3.0.2
   path: ^1.8.1
-  shelf: ^1.3.0
+  shelf: ^1.3.1
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
   flutter_lints: ^2.0.0
-  hive_generator: ^1.1.2
-  build_runner: ^2.1.10
+  hive_generator: ^1.1.3
+  build_runner: ^2.1.11
   flutter_flavorizr: ^2.1.3
   msix: ^3.6.2
 
 dependency_overrides:
-  js: 0.6.4
-  collection: 1.16.0
-  async: 2.8.2
+  xml: 6.0.1
 
 flutter:
   uses-material-design: true
@@ -107,11 +102,11 @@ flavorizr:
     dev:
       app:
         name: "Alga Dev"
-      
+
       android:
-        applicationId: "tech.laihz.alga.dev" 
+        applicationId: "tech.laihz.alga.dev"
       ios:
-        bundleId: "tech.laihz.alga"  
+        bundleId: "tech.laihz.alga"
 
     arm:
       app:
@@ -120,7 +115,7 @@ flavorizr:
       android:
         applicationId: "tech.laihz.alga.arm"
         customConfig:
-          ndk: "{ abiFilter \"armeabi-v7a\" }"
+          ndk: '{ abiFilter "armeabi-v7a" }'
 
       ios:
         bundleId: "tech.laihz.alga"
@@ -132,11 +127,11 @@ flavorizr:
       android:
         applicationId: "tech.laihz.alga.arm64"
         customConfig:
-          ndk: "{ abiFilter \"arm64-v8a\" }"
+          ndk: '{ abiFilter "arm64-v8a" }'
 
       ios:
         bundleId: "tech.laihz.alga"
-    
+
     x86_64:
       app:
         name: "Alga"
@@ -144,7 +139,7 @@ flavorizr:
       android:
         applicationId: "tech.laihz.alga.x86_64"
         customConfig:
-          ndk: "{ abiFilter \"x86_64\" }"
+          ndk: '{ abiFilter "x86_64" }'
 
       ios:
         bundleId: "tech.laihz.alga"
