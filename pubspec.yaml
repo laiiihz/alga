@@ -78,7 +78,7 @@ dev_dependencies:
   msix: ^3.6.2
 
 dependency_overrides:
-  xml: 6.0.1
+  xml: 6.1.0
 
 flutter:
   uses-material-design: true
