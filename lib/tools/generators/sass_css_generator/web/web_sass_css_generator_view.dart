@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class SassCssGeneratorView extends StatefulWidget {
-  const SassCssGeneratorView({Key? key}) : super(key: key);
+  const SassCssGeneratorView({super.key});
 
   @override
   State<SassCssGeneratorView> createState() => _SassCssGeneratorViewState();

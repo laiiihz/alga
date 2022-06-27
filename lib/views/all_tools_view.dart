@@ -2,7 +2,7 @@ import 'package:alga/constants/import_helper.dart';
 import 'package:alga/widgets/app_scaffold.dart';
 
 class AllToolsView extends ConsumerStatefulWidget {
-  const AllToolsView({Key? key}) : super(key: key);
+  const AllToolsView({super.key});
 
   @override
   ConsumerState<AllToolsView> createState() => _AllToolsViewState();

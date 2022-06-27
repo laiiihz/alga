@@ -3,7 +3,7 @@ import 'package:alga/constants/import_helper.dart';
 part './abs_length_converter_provider.dart';
 
 class AbsLengthConverterView extends StatelessWidget {
-  const AbsLengthConverterView({Key? key}) : super(key: key);
+  const AbsLengthConverterView({super.key});
 
   @override
   Widget build(BuildContext context) {

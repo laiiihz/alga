@@ -8,7 +8,7 @@ part './date_parser_provider.dart';
 part './date_operation_widget.dart';
 
 class DateParserView extends StatefulWidget {
-  const DateParserView({Key? key}) : super(key: key);
+  const DateParserView({super.key});
 
   @override
   State<DateParserView> createState() => _DateParserViewState();

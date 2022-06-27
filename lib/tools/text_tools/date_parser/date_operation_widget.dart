@@ -1,7 +1,7 @@
 part of './date_parser_view.dart';
 
 class DateOperationWidget extends ConsumerWidget {
-  const DateOperationWidget({Key? key}) : super(key: key);
+  const DateOperationWidget({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

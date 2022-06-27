@@ -21,7 +21,7 @@ Future<Color?> pickColor(BuildContext context) async {
 }
 
 class MaterialColorDialog extends StatelessWidget {
-  const MaterialColorDialog({Key? key}) : super(key: key);
+  const MaterialColorDialog({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -54,7 +54,7 @@ class MaterialColorDialog extends StatelessWidget {
 }
 
 class ColorDialog extends StatefulWidget {
-  const ColorDialog({Key? key}) : super(key: key);
+  const ColorDialog({super.key});
 
   @override
   State<ColorDialog> createState() => _ColorDialogState();

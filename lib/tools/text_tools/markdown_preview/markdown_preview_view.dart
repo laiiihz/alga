@@ -6,7 +6,7 @@ import 'package:alga/constants/import_helper.dart';
 part './markdown_preview_provider.dart';
 
 class MarkdownPreviewView extends StatefulWidget {
-  const MarkdownPreviewView({Key? key}) : super(key: key);
+  const MarkdownPreviewView({super.key});
 
   @override
   State<MarkdownPreviewView> createState() => _MarkdownPreviewViewState();

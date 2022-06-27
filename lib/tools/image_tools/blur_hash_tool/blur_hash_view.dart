@@ -14,7 +14,7 @@ import 'package:alga/utils/image_util.dart';
 part './blur_hash_provider.dart';
 
 class BlurHashView extends StatefulWidget {
-  const BlurHashView({Key? key}) : super(key: key);
+  const BlurHashView({super.key});
 
   @override
   State<BlurHashView> createState() => _BlurHashViewState();

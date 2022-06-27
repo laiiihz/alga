@@ -5,7 +5,7 @@ import 'package:alga/constants/import_helper.dart';
 part './sass_css_generator_provider.dart';
 
 class SassCssGeneratorView extends StatefulWidget {
-  const SassCssGeneratorView({Key? key}) : super(key: key);
+  const SassCssGeneratorView({super.key});
 
   @override
   State<SassCssGeneratorView> createState() => _SassCssGeneratorViewState();

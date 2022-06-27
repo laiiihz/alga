@@ -13,7 +13,7 @@ import 'app_drawer.dart';
 import 'app_scaffold.dart';
 
 class AlgaDesktopAppBar extends StatelessWidget implements PreferredSizeWidget {
-  const AlgaDesktopAppBar({Key? key}) : super(key: key);
+  const AlgaDesktopAppBar({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -106,7 +106,7 @@ class AlgaDesktopAppBar extends StatelessWidget implements PreferredSizeWidget {
 }
 
 class _WindowsCaptionButtons extends StatefulWidget {
-  const _WindowsCaptionButtons({Key? key}) : super(key: key);
+  const _WindowsCaptionButtons();
 
   @override
   State<_WindowsCaptionButtons> createState() => __WindowsCaptionButtonsState();

@@ -5,7 +5,7 @@ import 'package:alga/constants/import_helper.dart';
 part './uri_parser_provider.dart';
 
 class UriParserView extends StatefulWidget {
-  const UriParserView({Key? key}) : super(key: key);
+  const UriParserView({super.key});
 
   @override
   State<UriParserView> createState() => _UriParserViewState();

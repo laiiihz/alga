@@ -10,7 +10,7 @@ import 'package:alga/constants/import_helper.dart';
 part './sm3_generator_provider.dart';
 
 class SM3GeneratorView extends StatelessWidget {
-  const SM3GeneratorView({Key? key}) : super(key: key);
+  const SM3GeneratorView({super.key});
 
   @override
   Widget build(BuildContext context) {

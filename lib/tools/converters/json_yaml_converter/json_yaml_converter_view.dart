@@ -9,7 +9,7 @@ import 'package:alga/constants/import_helper.dart';
 part './json_yaml_converter_provider.dart';
 
 class JsonYamlConverterView extends ConsumerWidget {
-  const JsonYamlConverterView({Key? key}) : super(key: key);
+  const JsonYamlConverterView({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

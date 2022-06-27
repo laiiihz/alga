@@ -6,7 +6,7 @@ import 'package:alga/utils/hotkey_util.dart';
 import 'package:alga/widgets/app_scaffold.dart';
 
 class HomeView extends ConsumerStatefulWidget {
-  const HomeView({Key? key}) : super(key: key);
+  const HomeView({super.key});
 
   @override
   ConsumerState<HomeView> createState() => _HomeViewState();

@@ -7,7 +7,7 @@ import 'package:alga/constants/import_helper.dart';
 part './uuid_provider.dart';
 
 class UUIDGeneratorView extends StatefulWidget {
-  const UUIDGeneratorView({Key? key}) : super(key: key);
+  const UUIDGeneratorView({super.key});
 
   @override
   State<UUIDGeneratorView> createState() => _UUIDGeneratorViewState();

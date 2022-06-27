@@ -11,7 +11,7 @@ import 'package:alga/views/widgets/settings_tile.dart';
 import 'package:alga/widgets/box_builder.dart';
 
 class SettingsView extends StatefulWidget {
-  const SettingsView({Key? key}) : super(key: key);
+  const SettingsView({super.key});
 
   @override
   State<SettingsView> createState() => _SettingsViewState();

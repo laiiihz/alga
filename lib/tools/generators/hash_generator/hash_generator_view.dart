@@ -2,7 +2,7 @@ import 'package:alga/constants/import_helper.dart';
 import 'package:alga/tools/generators/hash_generator/hash_provider.dart';
 
 class HashGeneratorView extends StatefulWidget {
-  const HashGeneratorView({Key? key}) : super(key: key);
+  const HashGeneratorView({super.key});
 
   @override
   State<HashGeneratorView> createState() => _HashGeneratorViewState();

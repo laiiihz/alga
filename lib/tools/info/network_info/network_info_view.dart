@@ -5,7 +5,7 @@ import 'package:alga/constants/import_helper.dart';
 part './network_info_provider.dart';
 
 class NetworkInfoView extends StatelessWidget {
-  const NetworkInfoView({Key? key}) : super(key: key);
+  const NetworkInfoView({super.key});
 
   @override
   Widget build(BuildContext context) {

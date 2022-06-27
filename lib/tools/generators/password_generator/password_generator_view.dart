@@ -5,7 +5,7 @@ import 'package:alga/constants/import_helper.dart';
 part './password_generator_provider.dart';
 
 class PasswordGeneratorView extends StatelessWidget {
-  const PasswordGeneratorView({Key? key}) : super(key: key);
+  const PasswordGeneratorView({super.key});
 
   @override
   Widget build(BuildContext context) {

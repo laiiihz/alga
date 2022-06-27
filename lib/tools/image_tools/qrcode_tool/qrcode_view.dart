@@ -5,7 +5,7 @@ import 'package:alga/constants/import_helper.dart';
 part './qrcode_provider.dart';
 
 class QrcodeView extends StatefulWidget {
-  const QrcodeView({Key? key}) : super(key: key);
+  const QrcodeView({super.key});
 
   @override
   State<QrcodeView> createState() => _QrcodeViewState();

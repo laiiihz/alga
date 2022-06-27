@@ -5,7 +5,7 @@ import 'package:alga/constants/import_helper.dart';
 part './number_base_converter_provider.dart';
 
 class NumberBaseConverterView extends ConsumerWidget {
-  const NumberBaseConverterView({Key? key}) : super(key: key);
+  const NumberBaseConverterView({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

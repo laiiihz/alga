@@ -61,7 +61,7 @@ Future<String> _encode2Base64(File file) async {
 
 class _Base64ImageButton extends StatelessWidget {
   final WidgetRef ref;
-  const _Base64ImageButton({Key? key, required this.ref}) : super(key: key);
+  const _Base64ImageButton({required this.ref});
 
   @override
   Widget build(BuildContext context) {

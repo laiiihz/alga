@@ -17,7 +17,7 @@ final currentToolProvider = StateProvider<ToolItem>((ref) {
 final toolsProvider = StateProvider<NaviUtil>((ref) => NaviUtil());
 
 class AppScaffold extends StatelessWidget {
-  const AppScaffold({Key? key}) : super(key: key);
+  const AppScaffold({super.key});
 
   @override
   Widget build(BuildContext context) {

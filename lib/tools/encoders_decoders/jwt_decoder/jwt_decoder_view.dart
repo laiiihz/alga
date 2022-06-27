@@ -8,7 +8,7 @@ import 'package:alga/tools/encoders_decoders/jwt_decoder/jwt_special_text_builde
 part './jwt_decoder_provider.dart';
 
 class JWTDecoderView extends StatefulWidget {
-  const JWTDecoderView({Key? key}) : super(key: key);
+  const JWTDecoderView({super.key});
 
   @override
   State<JWTDecoderView> createState() => _JWTDecoderViewState();

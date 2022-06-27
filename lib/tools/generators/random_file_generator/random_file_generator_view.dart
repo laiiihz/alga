@@ -9,7 +9,7 @@ part './random_file_generator_provider.dart';
 part './random_file_util.dart';
 
 class RandomFileGeneratorView extends StatelessWidget {
-  const RandomFileGeneratorView({Key? key}) : super(key: key);
+  const RandomFileGeneratorView({super.key});
 
   @override
   Widget build(BuildContext context) {

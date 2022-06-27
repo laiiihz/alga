@@ -7,7 +7,7 @@ import 'package:alga/tools/formatters/dart_formatter/dart_provider.dart';
 import '../../widgets/formatter_view.dart';
 
 class DartFormtterView extends StatefulWidget {
-  const DartFormtterView({Key? key}) : super(key: key);
+  const DartFormtterView({super.key});
 
   @override
   State<DartFormtterView> createState() => _DartFormtterViewState();

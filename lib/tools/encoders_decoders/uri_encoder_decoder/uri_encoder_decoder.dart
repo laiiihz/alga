@@ -3,7 +3,7 @@ import 'package:alga/constants/import_helper.dart';
 part './uri_provider.dart';
 
 class UriEncoderDecoderView extends StatelessWidget {
-  const UriEncoderDecoderView({Key? key}) : super(key: key);
+  const UriEncoderDecoderView({super.key});
   @override
   Widget build(BuildContext context) {
     return ToolView.scrollVertical(

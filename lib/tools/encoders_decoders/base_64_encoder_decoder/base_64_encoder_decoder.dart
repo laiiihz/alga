@@ -11,7 +11,7 @@ part './base_64_provider.dart';
 part './base64_file_picker.dart';
 
 class Base64EncoderDecoderView extends StatefulWidget {
-  const Base64EncoderDecoderView({Key? key}) : super(key: key);
+  const Base64EncoderDecoderView({super.key});
 
   @override
   State<Base64EncoderDecoderView> createState() =>

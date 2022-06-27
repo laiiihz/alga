@@ -7,7 +7,7 @@ import 'package:alga/tools/converters/color_converter/material_color_widget.dart
 part 'color_converter_provider.dart';
 
 class ColorConverterView extends StatelessWidget {
-  const ColorConverterView({Key? key}) : super(key: key);
+  const ColorConverterView({super.key});
 
   @override
   Widget build(BuildContext context) {

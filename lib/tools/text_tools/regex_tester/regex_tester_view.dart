@@ -5,7 +5,7 @@ import 'package:alga/tools/text_tools/regex_tester/regex_tester_provider.dart';
 import 'package:alga/tools/text_tools/regex_tester/regex_tester_text_builder.dart';
 
 class RegexTesterView extends StatefulWidget {
-  const RegexTesterView({Key? key}) : super(key: key);
+  const RegexTesterView({super.key});
 
   @override
   State<RegexTesterView> createState() => _RegexTesterViewState();

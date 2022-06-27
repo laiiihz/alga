@@ -7,7 +7,7 @@ import 'package:alga/tools/widgets/formatter_view.dart';
 part './py_dict_formatter_provider.dart';
 
 class PyDictFormatterView extends StatefulWidget {
-  const PyDictFormatterView({Key? key}) : super(key: key);
+  const PyDictFormatterView({super.key});
 
   @override
   State<PyDictFormatterView> createState() => _PyDictFormatterViewState();

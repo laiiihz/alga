@@ -12,7 +12,7 @@ const _kDrawerShape = RoundedRectangleBorder(
 );
 
 class AppDrawer extends ConsumerStatefulWidget {
-  const AppDrawer({Key? key}) : super(key: key);
+  const AppDrawer({super.key});
 
   @override
   ConsumerState<ConsumerStatefulWidget> createState() => _AppDrawerState();

@@ -2,7 +2,7 @@ import 'package:alga/constants/import_helper.dart';
 
 class DateParsedWidget extends StatelessWidget {
   final DateTime date;
-  const DateParsedWidget({Key? key, required this.date}) : super(key: key);
+  const DateParsedWidget({super.key, required this.date});
 
   @override
   Widget build(BuildContext context) {

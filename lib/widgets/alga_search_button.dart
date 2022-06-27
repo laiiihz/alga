@@ -5,7 +5,7 @@ import '../l10n/l10n.dart';
 import '../views/search_view/search_view.dart';
 
 class AlgaSearchButton extends StatelessWidget {
-  const AlgaSearchButton({Key? key}) : super(key: key);
+  const AlgaSearchButton({super.key});
 
   @override
   Widget build(BuildContext context) {

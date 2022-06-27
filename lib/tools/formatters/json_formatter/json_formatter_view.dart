@@ -4,7 +4,7 @@ import 'package:alga/tools/formatters/json_formatter/json_provider.dart';
 import '../../widgets/formatter_view.dart';
 
 class JsonFormtterView extends StatefulWidget {
-  const JsonFormtterView({Key? key}) : super(key: key);
+  const JsonFormtterView({super.key});
 
   @override
   State<JsonFormtterView> createState() => _JsonFormtterViewState();

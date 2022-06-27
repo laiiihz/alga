@@ -4,7 +4,7 @@ import 'package:alga/constants/import_helper.dart';
 import 'package:alga/tools/generators/lorem_ipsum_generator/lorem_ipsum_provider.dart';
 
 class LoremIpsumGeneratorView extends StatelessWidget {
-  const LoremIpsumGeneratorView({Key? key}) : super(key: key);
+  const LoremIpsumGeneratorView({super.key});
 
   @override
   Widget build(BuildContext context) {

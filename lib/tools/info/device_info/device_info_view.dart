@@ -2,7 +2,7 @@ import 'package:alga/constants/import_helper.dart';
 import 'package:alga/tools/info/device_info/device_info_provider.dart';
 
 class DeviceInfoView extends StatefulWidget {
-  const DeviceInfoView({Key? key}) : super(key: key);
+  const DeviceInfoView({super.key});
 
   @override
   State<DeviceInfoView> createState() => _DeviceInfoViewState();

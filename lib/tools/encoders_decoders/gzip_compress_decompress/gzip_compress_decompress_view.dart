@@ -8,7 +8,7 @@ import 'package:alga/constants/import_helper.dart';
 part './gzip_compress_decompress_provider.dart';
 
 class GzipCompressDecompressView extends StatefulWidget {
-  const GzipCompressDecompressView({Key? key}) : super(key: key);
+  const GzipCompressDecompressView({super.key});
 
   @override
   State<GzipCompressDecompressView> createState() =>

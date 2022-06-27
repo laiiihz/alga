@@ -5,7 +5,7 @@ import 'package:alga/constants/import_helper.dart';
 part './quick_js_provider.dart';
 
 class QuickJsView extends StatelessWidget {
-  const QuickJsView({Key? key}) : super(key: key);
+  const QuickJsView({super.key});
 
   @override
   Widget build(BuildContext context) {
