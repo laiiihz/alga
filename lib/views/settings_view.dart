@@ -1,9 +1,9 @@
+import 'package:alga/utils/hive_boxes/app_config_box.dart';
+import 'package:alga/widgets/app_show_menu.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
 import 'package:alga/constants/import_helper.dart';
 import 'package:alga/extension/list_ext.dart';
-import 'package:alga/utils/hive_adapters/system_settings_model.dart';
-import 'package:alga/utils/hive_boxes/system_box.dart';
 import 'package:alga/utils/hive_util.dart';
 import 'package:alga/views/widgets/color_popup_item.dart';
 import 'package:alga/views/widgets/expandable_settings_tile.dart';
@@ -31,84 +31,85 @@ class _SettingsViewState extends State<SettingsView> {
             leading: Image.asset('assets/logo/256.webp', height: 32, width: 32),
             title: Text(S.of(context).appName),
           ),
-          SettingsTile(
-            leading: const Icon(Icons.dark_mode),
-            title: Text(S.of(context).themeMode),
-            trailing: BoxBuilder(
-              box: HiveUtil.systemBox,
-              builder: (context, box) {
-                return PopupMenuButton<ThemeMode>(
-                  itemBuilder: (context) {
-                    return ThemeMode.values
-                        .map((e) => PopupMenuItem(
-                              value: e,
-                              child: Text(e.getName(context)),
-                            ))
-                        .toList();
-                  },
-                  initialValue: SystemBox.model.themeMode,
-                  onSelected: (item) {
-                    SystemBox.model = SystemBox.model.copyWith(themeMode: item);
-                  },
-                  child: Text(SystemBox.model.themeMode.getName(context)),
-                );
-              },
-            ),
+          ValueListenableBuilder(
+            valueListenable: AppConfigBox.key(AppConfigType.themeMode),
+            builder: (context, _, __) {
+              return AppShowMenu<ThemeMode>(
+                items: ThemeMode.values
+                    .map((e) => PopupMenuItem(
+                          value: e,
+                          child: Text(e.getName(context)),
+                        ))
+                    .toList(),
+                initialValue: AppConfigBox.themeMode,
+                onSelected: (item) {
+                  AppConfigBox.themeMode = item;
+                },
+                childBuilder: (context, open) {
+                  return SettingsTile(
+                    onTap: open,
+                    leading: const Icon(Icons.dark_mode),
+                    title: Text(S.of(context).themeMode),
+                    trailing: Text(AppConfigBox.themeMode.getName(context)),
+                  );
+                },
+              );
+            },
           ),
-          SettingsTile(
-            leading: const Icon(Icons.language),
-            title: Text(S.of(context).language),
-            trailing: BoxBuilder(
-              box: HiveUtil.systemBox,
-              builder: (context, box) {
-                return PopupMenuButton<String>(
-                  itemBuilder: (context) {
-                    return SystemSettingsModel.localCodes.map((e) {
-                      return PopupMenuItem(
-                        value: e,
-                        child: Text(S.getlang(context, e)),
-                      );
-                    }).toList();
-                  },
-                  initialValue: SystemBox.model.localeCode,
-                  onSelected: (item) {
-                    SystemBox.model =
-                        SystemBox.model.copyWith(localeCode: item);
-                  },
-                  child: Text(S.getlang(context, SystemBox.model.localeCode)),
-                );
-              },
-            ),
+          ValueListenableBuilder(
+            valueListenable: AppConfigBox.key(AppConfigType.locale),
+            builder: (context, _, __) {
+              return AppShowMenu<String>(
+                items: AppConfigBox.localCodes.map((e) {
+                  return PopupMenuItem(
+                    value: e,
+                    child: Text(S.getlang(context, e)),
+                  );
+                }).toList(),
+                initialValue: AppConfigBox.localeValue,
+                onSelected: (item) {
+                  AppConfigBox.localeValue = item;
+                },
+                childBuilder: (context, open) {
+                  return SettingsTile(
+                    onTap: open,
+                    leading: const Icon(Icons.language),
+                    title: Text(S.of(context).language),
+                    trailing:
+                        Text(S.getlang(context, AppConfigBox.localeValue)),
+                  );
+                },
+              );
+            },
           ),
-          SettingsTile(
-            leading: const Icon(Icons.color_lens),
-            title: Text(S.of(context).themeColor),
-            trailing: BoxBuilder(
-              box: HiveUtil.systemBox,
-              builder: (context, box) {
-                return PopupMenuButton<int>(
-                  itemBuilder: (context) {
-                    return Colors.primaries.map((e) {
-                      return ColorPopupItem(e.value);
-                    }).toList();
-                  },
-                  initialValue: SystemBox.model.themeColor,
+          ValueListenableBuilder(
+              valueListenable: AppConfigBox.key(AppConfigType.themeColor),
+              builder: (context, _, __) {
+                return AppShowMenu<Color>(
+                  items: Colors.primaries.map((e) {
+                    return ColorPopupItem(e);
+                  }).toList(),
                   onSelected: (item) {
-                    SystemBox.model =
-                        SystemBox.model.copyWith(color: Color(item));
+                    AppConfigBox.themeColor = item;
                   },
-                  child: Container(
-                    height: 32,
-                    width: 32,
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: Color(SystemBox.model.themeColor),
-                    ),
-                  ),
+                  initialValue: AppConfigBox.themeColor,
+                  childBuilder: (context, open) {
+                    return SettingsTile(
+                      onTap: open,
+                      leading: const Icon(Icons.color_lens),
+                      title: Text(S.of(context).themeColor),
+                      trailing: Container(
+                        height: 32,
+                        width: 32,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: AppConfigBox.themeColor,
+                        ),
+                      ),
+                    );
+                  },
                 );
-              },
-            ),
-          ),
+              }),
           const SizedBox(height: 8),
           ExpandableSettingsTile(
             title: Text(S.of(context).links),

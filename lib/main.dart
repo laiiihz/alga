@@ -1,10 +1,10 @@
+import 'package:alga/utils/hive_boxes/app_config_box.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:alga/l10n/l10n.dart';
 import 'package:alga/routers/app_router.dart';
-import 'package:alga/utils/hive_boxes/system_box.dart';
 import 'package:alga/utils/hive_util.dart';
 import 'package:alga/utils/window_util.dart';
 import 'package:alga/widgets/box_builder.dart';
@@ -23,21 +23,21 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BoxBuilder(
-        box: HiveUtil.systemBox,
-        builder: (context, box) {
-          final theme = ThemeUtil(Color(SystemBox.model.themeColor));
+    return ValueListenableBuilder(
+        valueListenable: AppConfigBox.keys(),
+        builder: (context, _, __) {
+          final theme = ThemeUtil(AppConfigBox.themeColor);
           return MaterialApp.router(
             onGenerateTitle: (context) => S.of(context).appName,
             theme: theme.getTheme(Brightness.light),
             darkTheme: theme.getTheme(Brightness.dark),
-            themeMode: SystemBox.model.themeMode,
+            themeMode: AppConfigBox.themeMode,
             routerDelegate: appRouter.routerDelegate,
             routeInformationProvider: appRouter.routeInformationProvider,
             routeInformationParser: appRouter.routeInformationParser,
             localizationsDelegates: S.localizationsDelegates,
             supportedLocales: S.supportedLocales,
-            locale: SystemBox.model.locale,
+            locale: AppConfigBox.locale,
           );
         });
   }

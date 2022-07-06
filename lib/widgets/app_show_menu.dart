@@ -1,0 +1,43 @@
+import '../constants/import_helper.dart';
+
+class AppShowMenu<T> extends StatelessWidget {
+  const AppShowMenu({
+    super.key,
+    required this.items,
+    required this.childBuilder,
+    required this.initialValue,
+    required this.onSelected,
+  });
+  final List<PopupMenuEntry<T>> items;
+  final T? initialValue;
+  final ValueChanged<T> onSelected;
+  final Widget Function(BuildContext context, VoidCallback open) childBuilder;
+
+  _showMenu(BuildContext context) async {
+    final widget = context.findRenderObject()! as RenderBox;
+    final offset = Offset(widget.size.width, 0);
+    final RenderBox overlay =
+        Navigator.of(context).overlay!.context.findRenderObject()! as RenderBox;
+    final RelativeRect position = RelativeRect.fromRect(
+      Rect.fromPoints(
+        widget.localToGlobal(offset, ancestor: overlay),
+        widget.localToGlobal(widget.size.bottomRight(Offset.zero) + offset,
+            ancestor: overlay),
+      ),
+      Offset.zero & overlay.size,
+    );
+    final result = await showMenu(
+      context: context,
+      position: position,
+      items: items,
+      initialValue: initialValue,
+    );
+    if (result != null) {}
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    showMenu() => _showMenu(context);
+    return childBuilder(context, showMenu);
+  }
+}
