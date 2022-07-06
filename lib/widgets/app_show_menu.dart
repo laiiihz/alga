@@ -32,7 +32,9 @@ class AppShowMenu<T> extends StatelessWidget {
       items: items,
       initialValue: initialValue,
     );
-    if (result != null) {}
+    if (result != null) {
+      onSelected(result);
+    }
   }
 
   @override
