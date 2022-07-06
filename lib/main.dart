@@ -7,7 +7,6 @@ import 'package:alga/l10n/l10n.dart';
 import 'package:alga/routers/app_router.dart';
 import 'package:alga/utils/hive_util.dart';
 import 'package:alga/utils/window_util.dart';
-import 'package:alga/widgets/box_builder.dart';
 import 'utils/theme_util.dart';
 
 void main() async {

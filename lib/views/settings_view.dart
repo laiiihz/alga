@@ -4,11 +4,9 @@ import 'package:url_launcher/url_launcher_string.dart';
 
 import 'package:alga/constants/import_helper.dart';
 import 'package:alga/extension/list_ext.dart';
-import 'package:alga/utils/hive_util.dart';
 import 'package:alga/views/widgets/color_popup_item.dart';
 import 'package:alga/views/widgets/expandable_settings_tile.dart';
 import 'package:alga/views/widgets/settings_tile.dart';
-import 'package:alga/widgets/box_builder.dart';
 
 class SettingsView extends StatefulWidget {
   const SettingsView({super.key});
