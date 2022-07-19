@@ -1,4 +1,5 @@
 import 'package:alga/utils/hive_boxes/app_config_box.dart';
+import 'package:dynamic_color/dynamic_color.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -24,19 +25,28 @@ class MyApp extends StatelessWidget {
     return ValueListenableBuilder(
         valueListenable: AppConfigBox.keys(),
         builder: (context, _, __) {
-          final theme = ThemeUtil(Colors.blue);
-          return MaterialApp.router(
-            onGenerateTitle: (context) => S.of(context).appName,
-            theme: theme.getTheme(Brightness.light),
-            darkTheme: theme.getTheme(Brightness.dark),
-            themeMode: AppConfigBox.themeMode,
-            routerDelegate: appRouter.routerDelegate,
-            routeInformationProvider: appRouter.routeInformationProvider,
-            routeInformationParser: appRouter.routeInformationParser,
-            localizationsDelegates: S.localizationsDelegates,
-            supportedLocales: S.supportedLocales,
-            locale: AppConfigBox.locale,
-          );
+          return DynamicColorBuilder(builder: (light, dark) {
+            ColorScheme? lightScheme;
+            ColorScheme? darkScheme;
+            if (light != null && dark != null) {
+              lightScheme = light.harmonized();
+              darkScheme = dark.harmonized();
+            }
+            lightScheme ??= kDefaultLightColorScheme;
+            darkScheme ??= kDefaultDarkColorScheme;
+            return MaterialApp.router(
+              onGenerateTitle: (context) => S.of(context).appName,
+              theme: ThemeUtil(lightScheme).getTheme(Brightness.light),
+              darkTheme: ThemeUtil(darkScheme).getTheme(Brightness.dark),
+              themeMode: AppConfigBox.themeMode,
+              routerDelegate: appRouter.routerDelegate,
+              routeInformationProvider: appRouter.routeInformationProvider,
+              routeInformationParser: appRouter.routeInformationParser,
+              localizationsDelegates: S.localizationsDelegates,
+              supportedLocales: S.supportedLocales,
+              locale: AppConfigBox.locale,
+            );
+          });
         });
   }
 }

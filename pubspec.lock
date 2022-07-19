@@ -274,6 +274,13 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "3.0.1"
+  dynamic_color:
+    dependency: "direct main"
+    description:
+      name: dynamic_color
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "1.4.0"
   extended_text_field:
     dependency: "direct main"
     description:

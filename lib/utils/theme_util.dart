@@ -8,16 +8,19 @@ bool isLight(BuildContext context) => !isDark(context);
 bool isSmallDevice(BuildContext context) =>
     MediaQuery.of(context).size.width < 768;
 
+final kDefaultLightColorScheme = ColorScheme.fromSeed(
+  seedColor: Colors.lightBlue,
+  brightness: Brightness.light,
+);
+
+final kDefaultDarkColorScheme = ColorScheme.fromSeed(
+  seedColor: Colors.lightBlue,
+  brightness: Brightness.dark,
+);
+
 class ThemeUtil {
-  final Color color;
-  late ColorScheme lightScheme;
-  late ColorScheme darkScheme;
-  ThemeUtil(this.color) {
-    lightScheme =
-        ColorScheme.fromSeed(seedColor: color, brightness: Brightness.light);
-    darkScheme =
-        ColorScheme.fromSeed(seedColor: color, brightness: Brightness.dark);
-  }
+  late ColorScheme colorScheme;
+  ThemeUtil(this.colorScheme);
 
   static const _appBarTheme = AppBarTheme(elevation: 0);
   static const _inputDecorationTheme = InputDecorationTheme(
@@ -30,8 +33,7 @@ class ThemeUtil {
   );
 
   ThemeData getTheme(Brightness brightness) {
-    ColorScheme scheme =
-        brightness == Brightness.light ? lightScheme : darkScheme;
+    ColorScheme scheme = colorScheme;
     return ThemeData.from(colorScheme: scheme).copyWith(
       splashFactory: InkSparkle.splashFactory,
       appBarTheme: _appBarTheme.copyWith(
