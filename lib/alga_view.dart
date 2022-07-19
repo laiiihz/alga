@@ -14,7 +14,6 @@ class _AlgaViewState extends State<AlgaView> {
     return Scaffold(
       appBar: AppBar(),
       bottomNavigationBar: NavigationBar(
-        height: 56,
         labelBehavior: NavigationDestinationLabelBehavior.onlyShowSelected,
         destinations: [
           const NavigationDestination(

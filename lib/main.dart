@@ -13,7 +13,6 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await WindowUtil.init();
   await HiveUtil.init();
-
   runApp(const ProviderScope(child: MyApp()));
 }
 

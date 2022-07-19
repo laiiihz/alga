@@ -8,6 +8,13 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "41.0.0"
+  adaptive_breakpoints:
+    dependency: "direct main"
+    description:
+      name: adaptive_breakpoints
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "0.1.4"
   analyzer:
     dependency: transitive
     description:

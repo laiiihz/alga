@@ -27,3 +27,7 @@ class S {
     }
   }
 }
+
+extension L10nX on BuildContext {
+  AppLocalizations get tr => S.of(this);
+}
