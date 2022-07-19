@@ -4,8 +4,6 @@ import 'package:url_launcher/url_launcher_string.dart';
 
 import 'package:alga/constants/import_helper.dart';
 import 'package:alga/extension/list_ext.dart';
-import 'package:alga/views/widgets/color_popup_item.dart';
-import 'package:alga/views/widgets/expandable_settings_tile.dart';
 import 'package:alga/views/widgets/settings_tile.dart';
 
 class SettingsView extends StatefulWidget {
@@ -80,72 +78,27 @@ class _SettingsViewState extends State<SettingsView> {
               );
             },
           ),
-          ValueListenableBuilder(
-              valueListenable: AppConfigBox.key(AppConfigType.themeColor),
-              builder: (context, _, __) {
-                return AppShowMenu<Color>(
-                  items: Colors.primaries.map((e) {
-                    return ColorPopupItem(e);
-                  }).toList(),
-                  onSelected: (item) {
-                    AppConfigBox.themeColor = item;
-                  },
-                  initialValue: AppConfigBox.themeColor,
-                  childBuilder: (context, open) {
-                    return SettingsTile(
-                      onTap: open,
-                      leading: const Icon(Icons.color_lens),
-                      title: Text(S.of(context).themeColor),
-                      trailing: Container(
-                        height: 32,
-                        width: 32,
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: AppConfigBox.themeColor,
-                        ),
-                      ),
-                    );
-                  },
-                );
-              }),
-          const SizedBox(height: 8),
-          ExpandableSettingsTile(
-            title: Text(S.of(context).links),
-            leading: const Icon(Icons.link),
-            child: Column(
-              children: [
-                ListTile(
-                  leading: const Icon(Icons.code_rounded),
-                  title: Text(S.of(context).github),
-                  onTap: () {
-                    launchUrlString('https://github.com/laiiihz/alga');
-                  },
-                ),
-                ListTile(
-                  leading: const Icon(Icons.copyright),
-                  title: Text(S.of(context).licenses),
-                  onTap: () {
-                    showLicensePage(context: context);
-                  },
-                ),
-                ListTile(
-                  leading: const Icon(Icons.bug_report_rounded),
-                  title: Text(S.of(context).issues),
-                  onTap: () {
-                    launchUrlString('https://github.com/laiiihz/alga/issues');
-                  },
-                ),
-              ],
-            ),
+          SettingsTile(
+            leading: const Icon(Icons.code_rounded),
+            title: Text(S.of(context).github),
+            onTap: () {
+              launchUrlString('https://github.com/laiiihz/alga');
+            },
+          ),
+          SettingsTile(
+            leading: const Icon(Icons.bug_report_rounded),
+            title: Text(S.of(context).issues),
+            onTap: () {
+              launchUrlString('https://github.com/laiiihz/alga/issues');
+            },
           ),
           SettingsTile(
             leading: const Icon(Icons.info_rounded),
-            title: Text(S.of(context).version),
-            trailing: const Chip(
-              label: Text(
-                '$_buildName+$_buildNumber',
-              ),
-            ),
+            title: Text(context.tr.about + context.tr.appName),
+            subtitle: Text('${context.tr.version}$_buildName+$_buildNumber'),
+            onTap: () {
+              showLicensePage(context: context);
+            },
           ),
         ].sep(const SizedBox(height: 4)),
       ),

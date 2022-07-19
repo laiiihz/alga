@@ -14,17 +14,6 @@ class AppConfigBox {
     _localeEnglish,
   ];
 
-  /// app theme color
-  static Color get themeColor {
-    int? colorValue = HiveUtil.appConfigBox.get(AppConfigType.themeColor.name);
-    if (colorValue == null) return Colors.lightBlue;
-    return Color(colorValue);
-  }
-
-  static set themeColor(Color color) {
-    HiveUtil.appConfigBox.put(AppConfigType.themeColor.name, color.value);
-  }
-
   /// app theme mode
   /// * light
   /// * dark

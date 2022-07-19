@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
     return ValueListenableBuilder(
         valueListenable: AppConfigBox.keys(),
         builder: (context, _, __) {
-          final theme = ThemeUtil(AppConfigBox.themeColor);
+          final theme = ThemeUtil(Colors.blue);
           return MaterialApp.router(
             onGenerateTitle: (context) => S.of(context).appName,
             theme: theme.getTheme(Brightness.light),
