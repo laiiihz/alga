@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:alga/constants/import_helper.dart';
 import 'package:flutter/foundation.dart';
 
 import 'package:window_manager/window_manager.dart';
@@ -22,6 +23,7 @@ class WindowUtil {
         await windowManager.setTitle('Alga');
         await windowManager.setSkipTaskbar(false);
         await windowManager.show();
+        await windowManager.setMinimumSize(const Size(800, 600));
       });
     }
   }

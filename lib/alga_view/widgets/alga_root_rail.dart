@@ -37,7 +37,6 @@ class AlgaRootRail extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final windowType = getWindowType(context);
     final railOption = ref.watch(_railOption(windowType));
-
     return NavigationRail(
       extended: railOption.item1,
       leading: const SizedBox(height: 32),
