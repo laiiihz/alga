@@ -1,8 +1,8 @@
-import 'dart:ui';
-
 import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
 import 'package:alga/alga_view/widgets/tooltip_rail_item.dart';
 import 'package:alga/constants/import_helper.dart';
+import 'package:alga/utils/hotkey_util.dart';
+import 'package:hotkey_manager/hotkey_manager.dart';
 import 'package:tuple/tuple.dart';
 
 import '../alga_view_provider.dart';
@@ -37,32 +37,47 @@ class AlgaRootRail extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final windowType = getWindowType(context);
     final railOption = ref.watch(_railOption(windowType));
-    return NavigationRail(
-      extended: railOption.item1,
-      leading: const SizedBox(height: 32),
-      destinations: [
-        TooltipRailItem(
-          icon: const Icon(Icons.home_rounded),
-          text: context.tr.appName,
-          windowType: windowType,
+    return Column(
+      children: [
+        Expanded(
+          child: NavigationRail(
+            extended: railOption.item1,
+            leading: const SizedBox(height: 32),
+            destinations: [
+              TooltipRailItem(
+                icon: const Icon(Icons.home_rounded),
+                text: context.tr.appName,
+                windowType: windowType,
+              ),
+              TooltipRailItem(
+                icon: const Icon(Icons.category_rounded),
+                text: context.tr.allTools,
+                windowType: windowType,
+              ),
+              TooltipRailItem(
+                icon: const Icon(Icons.settings_rounded),
+                text: context.tr.settings,
+                windowType: windowType,
+              ),
+            ],
+            selectedIndex: ref.watch(rootIndex),
+            onDestinationSelected: (index) {
+              ref.watch(rootIndex.state).state = index;
+              ref.watch(categoryIndex.state).state = null;
+              ref.watch(toolIndex.state).state = null;
+            },
+          ),
         ),
-        TooltipRailItem(
-          icon: const Icon(Icons.category_rounded),
-          text: context.tr.allTools,
-          windowType: windowType,
-        ),
-        TooltipRailItem(
-          icon: const Icon(Icons.settings_rounded),
-          text: context.tr.settings,
-          windowType: windowType,
+        Padding(
+          padding: const EdgeInsets.symmetric(vertical: 8),
+          child: Chip(
+            labelStyle: const TextStyle(fontSize: 12),
+            labelPadding:
+                const EdgeInsets.symmetric(horizontal: 4, vertical: 2),
+            label: Text('${context.tr.search} ${HotkeyUtil.label}'),
+          ),
         ),
       ],
-      selectedIndex: ref.watch(rootIndex),
-      onDestinationSelected: (index) {
-        ref.watch(rootIndex.state).state = index;
-        ref.watch(categoryIndex.state).state = null;
-        ref.watch(toolIndex.state).state = null;
-      },
     );
   }
 }

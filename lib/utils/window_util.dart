@@ -14,10 +14,13 @@ class WindowUtil {
     } else {
       await windowManager.ensureInitialized();
       windowManager.waitUntilReadyToShow().then((value) async {
-        await windowManager.setTitleBarStyle(
-          TitleBarStyle.hidden,
-          windowButtonVisibility: true,
-        );
+        //TODO custom windows title bar
+        if (Platform.isMacOS) {
+          await windowManager.setTitleBarStyle(
+            TitleBarStyle.hidden,
+            windowButtonVisibility: true,
+          );
+        }
 
         await windowManager.center();
         await windowManager.setTitle('Alga');

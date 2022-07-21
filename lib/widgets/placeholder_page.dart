@@ -5,8 +5,8 @@ class PlaceholderPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Center(
-      child: Icon(Icons.category),
+    return Center(
+      child: Image.asset('assets/logo/256.webp', height: 64, width: 64),
     );
   }
 }

@@ -1,3 +1,4 @@
+import 'package:alga/alga_view/alga_view_provider.dart';
 import 'package:alga/constants/import_helper.dart';
 import 'package:alga/models/tool_atom.dart';
 import 'package:alga/models/tool_atoms.dart';
@@ -12,14 +13,14 @@ Future showAlgaSearch(BuildContext context) async {
   );
 }
 
-class SearchTile extends StatefulWidget {
+class SearchTile extends ConsumerStatefulWidget {
   const SearchTile({Key? key}) : super(key: key);
 
   @override
-  State<SearchTile> createState() => _SearchTileState();
+  ConsumerState<SearchTile> createState() => _SearchTileState();
 }
 
-class _SearchTileState extends State<SearchTile> {
+class _SearchTileState extends ConsumerState<SearchTile> {
   final _query = TextEditingController();
   var _toolItems = <ToolAtom>[];
 
@@ -79,6 +80,11 @@ class _SearchTileState extends State<SearchTile> {
                               return ListTile(
                                 leading: item.icon,
                                 title: Text(item.name(context)),
+                                onTap: () {
+                                  ref.watch(currentWidget.state).state =
+                                      item.widget;
+                                  Navigator.of(context).pop();
+                                },
                               );
                             },
                             itemCount: _toolItems.length,

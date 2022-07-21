@@ -9,17 +9,29 @@ import 'package:alga/constants/import_helper.dart';
 
 class HotkeyUtil {
   static bool _hasSearch = false;
+  static String get label {
+    if (kIsWeb) return '';
+    if (Platform.isMacOS) return '${KeyModifier.meta.keyLabel}+F';
+    if (Platform.isWindows) return '${KeyModifier.control.keyLabel}+F';
+    return '';
+  }
 
   static init(BuildContext context) async {
     if (kIsWeb) return;
     if (Platform.isAndroid || Platform.isIOS) return;
+    late HotKey key;
+    if (Platform.isWindows) {
+      key = HotKey(KeyCode.keyF, modifiers: [KeyModifier.control]);
+    } else if (Platform.isMacOS) {
+      key = HotKey(KeyCode.keyF, modifiers: [KeyModifier.meta]);
+    } else if (Platform.isLinux) {
+      //TODO linux implement
+    } else {
+      throw UnimplementedError('Platform unsupported');
+    }
     await hotKeyManager.unregisterAll();
-    HotKey searchHotKey = HotKey(
-      KeyCode.keyS,
-      modifiers: [KeyModifier.alt],
-    );
     await hotKeyManager.register(
-      searchHotKey,
+      key,
       keyDownHandler: (hotKey) {
         if (!_hasSearch) {
           _hasSearch = true;
