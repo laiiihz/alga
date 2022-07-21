@@ -1,4 +1,7 @@
+import 'dart:ui';
+
 import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
+import 'package:alga/alga_view/widgets/tooltip_rail_item.dart';
 import 'package:alga/constants/import_helper.dart';
 import 'package:tuple/tuple.dart';
 
@@ -32,28 +35,27 @@ class AlgaRootRail extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final windowType = getBreakpointEntry(context).adaptiveWindowType;
+    final windowType = getWindowType(context);
     final railOption = ref.watch(_railOption(windowType));
 
     return NavigationRail(
       extended: railOption.item1,
-      labelType: railOption.item2,
       leading: const SizedBox(height: 32),
       destinations: [
-        NavigationRailDestination(
-          icon: const Icon(Icons.home_outlined),
-          selectedIcon: const Icon(Icons.home),
-          label: Text(context.tr.appName),
+        TooltipRailItem(
+          icon: const Icon(Icons.home_rounded),
+          text: context.tr.appName,
+          windowType: windowType,
         ),
-        NavigationRailDestination(
-          icon: const Icon(Icons.category_outlined),
-          selectedIcon: const Icon(Icons.category),
-          label: Text(context.tr.allTools),
+        TooltipRailItem(
+          icon: const Icon(Icons.category_rounded),
+          text: context.tr.allTools,
+          windowType: windowType,
         ),
-        NavigationRailDestination(
-          icon: const Icon(Icons.settings_outlined),
-          selectedIcon: const Icon(Icons.settings),
-          label: Text(context.tr.settings),
+        TooltipRailItem(
+          icon: const Icon(Icons.settings_rounded),
+          text: context.tr.settings,
+          windowType: windowType,
         ),
       ],
       selectedIndex: ref.watch(rootIndex),

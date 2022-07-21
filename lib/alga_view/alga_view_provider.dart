@@ -1,3 +1,4 @@
+import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
 import 'package:alga/constants/import_helper.dart';
 import 'package:alga/models/tool_atoms.dart';
 import 'package:alga/models/tool_category.dart';
@@ -12,7 +13,18 @@ final showCategory = StateProvider<bool>((ref) => ref.watch(rootIndex) == 1);
 final showTools =
     StateProvider<bool>((ref) => ref.watch(categoryIndex) != null);
 
+final enterCategory = StateProvider<bool>((ref) => false);
 final enterTool = StateProvider<bool>((ref) => false);
+final computedCategoryExpand =
+    StateProvider.family<bool, AdaptiveWindowType>((ref, type) {
+  if (type <= AdaptiveWindowType.small) return false;
+  return ref.watch(enterCategory);
+});
+final computedToolExpand =
+    StateProvider.family<bool, AdaptiveWindowType>((ref, type) {
+  if (type <= AdaptiveWindowType.small) return false;
+  return ref.watch(enterTool) || (!ref.watch(enterCategory));
+});
 
 final currentWidget = StateProvider<Widget>((ref) {
   final root = ref.watch(rootIndex);
