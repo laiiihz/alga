@@ -229,3 +229,10 @@ List<ToolAtom> getByCategory(ToolCategory category) {
       .where((element) => element.categories.contains(category))
       .toList();
 }
+
+List<ToolAtom> searchByText(BuildContext context, String text) {
+  if (text.isEmpty) return [];
+  return toolAtoms
+      .where((element) => element.name(context).contains(text))
+      .toList();
+}
