@@ -26,11 +26,6 @@ class ThemeUtil {
   static const _inputDecorationTheme = InputDecorationTheme(
     border: OutlineInputBorder(),
   );
-  static final _popupMenuTheme = PopupMenuThemeData(
-    shape: RoundedRectangleBorder(
-      borderRadius: BorderRadius.circular(8),
-    ),
-  );
 
   ThemeData getTheme(Brightness brightness) {
     ColorScheme scheme = colorScheme;
@@ -48,7 +43,12 @@ class ThemeUtil {
       listTileTheme: ListTileThemeData(
         iconColor: scheme.secondary,
       ),
-      popupMenuTheme: _popupMenuTheme,
+      popupMenuTheme: PopupMenuThemeData(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(8),
+        ),
+        color: colorScheme.secondaryContainer,
+      ),
       switchTheme: SwitchThemeData(
         thumbColor: MaterialStateProperty.resolveWith((states) {
           if (states.contains(MaterialState.disabled)) return null;

@@ -5,7 +5,6 @@ import 'package:flutter/foundation.dart';
 import 'package:hotkey_manager/hotkey_manager.dart';
 
 import 'package:alga/constants/import_helper.dart';
-import 'package:alga/views/search_view/search_view.dart';
 
 class HotkeyUtil {
   static init(BuildContext context) async {
@@ -19,9 +18,7 @@ class HotkeyUtil {
     await hotKeyManager.register(
       searchHotKey,
       keyDownHandler: (hotKey) {},
-      keyUpHandler: (key) {
-        showSearch(context: context, delegate: AppSearchDelegate());
-      },
+      keyUpHandler: (key) {},
     );
   }
 }

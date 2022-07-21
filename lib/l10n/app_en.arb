@@ -138,6 +138,7 @@
   "networkSubmask": "Submask",
   "networkBroadcast": "Broadcast",
   "networkGateway": "Gateway",
+  "jsTools": "JavaScript Tools",
   "links": "Links",
   "github": "github",
   "licenses": "LICENSES",

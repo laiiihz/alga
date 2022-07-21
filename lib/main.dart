@@ -1,3 +1,4 @@
+import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
 import 'package:alga/utils/hive_boxes/app_config_box.dart';
 import 'package:dynamic_color/dynamic_color.dart';
 import 'package:flutter/material.dart';

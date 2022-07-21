@@ -135,6 +135,7 @@
   "networkSubmask": "子网掩码",
   "networkBroadcast": "广播",
   "networkGateway": "网关",
+  "jsTools": "JavaScript工具",
   "links": "链接",
   "github": "github",
   "licenses": "许可证",
