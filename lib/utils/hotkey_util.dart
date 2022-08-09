@@ -1,6 +1,5 @@
 import 'dart:io';
 
-import 'package:alga/routers/app_router.dart';
 import 'package:alga/views/search_view.dart';
 import 'package:flutter/foundation.dart';
 
@@ -9,7 +8,7 @@ import 'package:hotkey_manager/hotkey_manager.dart';
 import 'package:alga/constants/import_helper.dart';
 import 'package:window_manager/window_manager.dart';
 
-class HotkeyUtil extends WindowListener {
+class HotkeyUtil {
   static HotkeyUtil? instance;
   HotkeyUtil._();
   factory HotkeyUtil() => instance ??= HotkeyUtil._();
@@ -22,40 +21,42 @@ class HotkeyUtil extends WindowListener {
     return '';
   }
 
-  init() async {
-    WindowManager.instance.addListener(this);
-  }
-
-  @override
-  void onWindowBlur() {
-    hotKeyManager.unregisterAll();
-  }
-
-  @override
-  void onWindowFocus() {
+  init(BuildContext context) async {
     if (kIsWeb) return;
     if (Platform.isAndroid || Platform.isIOS) return;
     late HotKey key;
     if (Platform.isWindows) {
-      key = HotKey(KeyCode.keyF, modifiers: [KeyModifier.control]);
+      key = HotKey(
+        KeyCode.keyF,
+        modifiers: [KeyModifier.control],
+        scope: HotKeyScope.inapp,
+      );
     } else if (Platform.isMacOS) {
-      key = HotKey(KeyCode.keyF, modifiers: [KeyModifier.meta]);
+      key = HotKey(
+        KeyCode.keyF,
+        modifiers: [KeyModifier.meta],
+        scope: HotKeyScope.inapp,
+      );
     } else if (Platform.isLinux) {
-      key = HotKey(KeyCode.keyF, modifiers: [KeyModifier.control]);
+      key = HotKey(
+        KeyCode.keyF,
+        modifiers: [KeyModifier.control],
+        scope: HotKeyScope.inapp,
+      );
     } else {
       throw UnimplementedError('Platform unsupported');
     }
-    hotKeyManager.unregisterAll();
-    hotKeyManager.register(
+    await hotKeyManager.unregisterAll();
+    await hotKeyManager.register(
       key,
       keyDownHandler: (hotKey) {
         if (!_hasSearch) {
           _hasSearch = true;
-          showAlgaSearch(gcontext).then((_) {
+          showAlgaSearch(context).then((_) {
             _hasSearch = false;
           });
         } else {
-          Navigator.pop(gcontext);
+          Navigator.pop(context);
         }
       },
       keyUpHandler: (key) {},
