@@ -2,7 +2,7 @@ name: alga
 description: A powerful tool app for all developers.
 
 publish_to: "none"
-version: 0.3.8+19
+version: 0.4.0+20
 
 environment:
   sdk: ">=2.17.0 <3.0.0"

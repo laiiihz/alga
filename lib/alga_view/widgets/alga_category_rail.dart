@@ -2,7 +2,7 @@ import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
 import 'package:alga/constants/import_helper.dart';
 import 'package:alga/models/tool_category.dart';
 
-import '../alga_view_provider.dart';
+import '../alga_view_provider.desktop.dart';
 import 'tooltip_rail_item.dart';
 
 class AlgaCategoryRail extends ConsumerWidget {

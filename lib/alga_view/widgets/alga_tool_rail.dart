@@ -1,5 +1,5 @@
 import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
-import 'package:alga/alga_view/alga_view_provider.dart';
+import 'package:alga/alga_view/alga_view_provider.desktop.dart';
 import 'package:alga/alga_view/widgets/tooltip_rail_item.dart';
 import 'package:alga/constants/import_helper.dart';
 import 'package:alga/models/tool_atoms.dart';

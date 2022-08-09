@@ -16,7 +16,7 @@ class _HomeViewState extends ConsumerState<HomeView> {
   @override
   void initState() {
     super.initState();
-    HotkeyUtil.init(context);
+    HotkeyUtil().init(context);
   }
 
   @override

@@ -1,13 +1,11 @@
-import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
 import 'package:alga/alga_view/widgets/alga_category_rail.dart';
 import 'package:alga/alga_view/widgets/alga_root_rail.dart';
 import 'package:alga/alga_view/widgets/alga_tool_rail.dart';
 
 import 'package:alga/constants/import_helper.dart';
-import 'package:alga/models/tool_category.dart';
 import 'package:animations/animations.dart';
 
-import 'alga_view_provider.dart';
+import 'alga_view_provider.desktop.dart';
 
 class AlgaViewDesktop extends ConsumerWidget {
   const AlgaViewDesktop({Key? key}) : super(key: key);

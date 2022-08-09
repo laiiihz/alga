@@ -6,7 +6,6 @@ import 'package:flutter/foundation.dart';
 import 'package:hotkey_manager/hotkey_manager.dart';
 
 import 'package:alga/constants/import_helper.dart';
-import 'package:window_manager/window_manager.dart';
 
 class HotkeyUtil {
   static HotkeyUtil? instance;

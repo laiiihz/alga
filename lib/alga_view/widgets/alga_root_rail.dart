@@ -2,10 +2,9 @@ import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
 import 'package:alga/alga_view/widgets/tooltip_rail_item.dart';
 import 'package:alga/constants/import_helper.dart';
 import 'package:alga/utils/hotkey_util.dart';
-import 'package:hotkey_manager/hotkey_manager.dart';
 import 'package:tuple/tuple.dart';
 
-import '../alga_view_provider.dart';
+import '../alga_view_provider.desktop.dart';
 
 /// * item1: extended
 /// * item2: labelType
