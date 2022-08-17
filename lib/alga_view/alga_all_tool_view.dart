@@ -13,7 +13,7 @@ class AlgaAllToolView extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(context.tr.allTools),
+        title: Text(context.tr.appName),
         actions: [
           IconButton(
             onPressed: () {

@@ -25,10 +25,10 @@ class AlgaViewMobile extends ConsumerWidget {
           ref.watch(rootIndex.state).state = index;
         },
         destinations: [
-          NavigationDestination(
-            icon: const Icon(Icons.home_rounded),
-            label: context.tr.appName,
-          ),
+          // NavigationDestination(
+          //   icon: const Icon(Icons.home_rounded),
+          //   label: context.tr.appName,
+          // ),
           NavigationDestination(
             icon: const Icon(Icons.category_rounded),
             label: context.tr.allTools,

@@ -9,7 +9,7 @@ final rootIndex = StateProvider<int?>((ref) => null);
 final categoryIndex = StateProvider<int?>((ref) => null);
 final toolIndex = StateProvider<int?>((ref) => null);
 
-final showCategory = StateProvider<bool>((ref) => ref.watch(rootIndex) == 1);
+final showCategory = StateProvider<bool>((ref) => ref.watch(rootIndex) == 0);
 final showTools =
     StateProvider<bool>((ref) => ref.watch(categoryIndex) != null);
 
@@ -31,8 +31,6 @@ final currentWidget = StateProvider<Widget>((ref) {
   final category = ref.watch(categoryIndex);
   final tool = ref.watch(toolIndex);
   if (root == 0) {
-    return const PlaceholderPage();
-  } else if (root == 1) {
     if (category == null) {
       return const PlaceholderPage();
     } else {
@@ -45,7 +43,7 @@ final currentWidget = StateProvider<Widget>((ref) {
         return current[tool].widget;
       }
     }
-  } else if (root == 2) {
+  } else if (root == 1) {
     return const SettingsView();
   }
 

@@ -8,9 +8,9 @@ final rootIndex = StateProvider<int>((ref) => 0);
 final currentWidget = StateProvider<Widget>((ref) {
   final index = ref.watch(rootIndex);
   switch (index) {
-    case 1:
+    case 0:
       return const AlgaAllToolView();
-    case 2:
+    case 1:
       return const SettingsView();
     default:
       return const PlaceholderPage();

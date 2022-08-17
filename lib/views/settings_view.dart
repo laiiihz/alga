@@ -82,14 +82,20 @@ class _SettingsViewState extends State<SettingsView> {
             leading: const Icon(Icons.code_rounded),
             title: Text(S.of(context).github),
             onTap: () {
-              launchUrlString('https://github.com/laiiihz/alga');
+              launchUrlString(
+                'https://github.com/laiiihz/alga',
+                mode: LaunchMode.externalApplication,
+              );
             },
           ),
           SettingsTile(
             leading: const Icon(Icons.bug_report_rounded),
             title: Text(S.of(context).issues),
             onTap: () {
-              launchUrlString('https://github.com/laiiihz/alga/issues');
+              launchUrlString(
+                'https://github.com/laiiihz/alga/issues',
+                mode: LaunchMode.externalApplication,
+              );
             },
           ),
           SettingsTile(

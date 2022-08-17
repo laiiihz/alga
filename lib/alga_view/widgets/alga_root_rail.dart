@@ -44,11 +44,6 @@ class AlgaRootRail extends ConsumerWidget {
             leading: const SizedBox(height: 32),
             destinations: [
               TooltipRailItem(
-                icon: const Icon(Icons.home_rounded),
-                text: context.tr.appName,
-                windowType: windowType,
-              ),
-              TooltipRailItem(
                 icon: const Icon(Icons.category_rounded),
                 text: context.tr.allTools,
                 windowType: windowType,
