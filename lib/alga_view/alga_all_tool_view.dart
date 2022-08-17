@@ -90,7 +90,11 @@ class _GridItems extends StatelessWidget {
             ),
             textStyle: Theme.of(context).textTheme.button,
           ),
-          onPressed: () {},
+          onPressed: () {
+            Navigator.of(context).push(
+              MaterialPageRoute(builder: (context) => item.widget),
+            );
+          },
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
