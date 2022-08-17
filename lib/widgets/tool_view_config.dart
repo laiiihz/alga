@@ -18,16 +18,13 @@ class ToolViewConfig extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Material(
-      color: Colors.transparent,
-      child: ListTile(
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4)),
-        title: title,
-        subtitle: subtitle,
-        leading: leading,
-        trailing: trailing,
-        tileColor: isDark(context) ? Colors.grey[900] : Colors.grey[50],
-      ),
+    return ListTile(
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4)),
+      title: title,
+      subtitle: subtitle,
+      leading: leading,
+      trailing: trailing,
+      tileColor: Theme.of(context).colorScheme.onInverseSurface,
     );
   }
 }

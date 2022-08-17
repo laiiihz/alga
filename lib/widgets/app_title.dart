@@ -8,19 +8,16 @@ class AppTitle extends StatelessWidget {
   List<Widget> get _actions => actions ?? const <Widget>[];
   @override
   Widget build(BuildContext context) {
-    return Material(
-      color: Colors.transparent,
-      child: IconTheme(
-        data: IconThemeData(
-          color: isDark(context) ? Colors.white : Colors.black,
-          size: 14,
-        ),
-        child: Row(
-          children: [
-            Expanded(child: Text(title, maxLines: 1)),
-            ..._actions.sep(const SizedBox(width: 4)),
-          ],
-        ),
+    return IconTheme(
+      data: IconThemeData(
+        color: isDark(context) ? Colors.white : Colors.black,
+        size: 14,
+      ),
+      child: Row(
+        children: [
+          Expanded(child: Text(title, maxLines: 1)),
+          ..._actions.sep(const SizedBox(width: 4)),
+        ],
       ),
     );
   }
