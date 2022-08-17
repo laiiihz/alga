@@ -191,12 +191,6 @@ final toolAtoms = <ToolAtom>[
     widget: const StaticServerToolView(),
     categories: [ToolCategories.serverTools],
   ),
-  ToolAtom(
-    icon: const Icon(Icons.file_open),
-    name: (context) => context.tr.staticServerTool,
-    widget: const StaticServerToolView(),
-    categories: [ToolCategories.serverTools],
-  ),
   // info
   ToolAtom(
     icon: const Icon(Icons.info_outline),
@@ -216,12 +210,12 @@ final toolAtoms = <ToolAtom>[
     widget: const QuickJsView(),
     categories: [ToolCategories.jsTools],
   ),
-  ToolAtom(
-    icon: const SvgAssetIcon('assets/icons/js.svg', colorIcon: true),
-    name: (context) => 'Quick JS Tool',
-    widget: const QuickJsView(),
-    categories: [ToolCategories.jsTools],
-  ),
+  // ToolAtom(
+  //   icon: const SvgAssetIcon('assets/icons/js.svg', colorIcon: true),
+  //   name: (context) => 'Quick JS Tool',
+  //   widget: const QuickJsView(),
+  //   categories: [ToolCategories.jsTools],
+  // ),
 ];
 
 List<ToolAtom> getByCategory(ToolCategory category) {

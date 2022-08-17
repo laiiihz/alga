@@ -37,7 +37,9 @@ final currentWidget = StateProvider<Widget>((ref) {
       return const PlaceholderPage();
     } else {
       final current = getByCategory(ToolCategories.items[category]);
-      if (tool == null) {
+      if (current.length == 1) {
+        return current.first.widget;
+      } else if (tool == null) {
         return const PlaceholderPage();
       } else {
         return current[tool].widget;

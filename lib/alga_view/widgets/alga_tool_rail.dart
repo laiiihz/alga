@@ -15,7 +15,7 @@ class AlgaToolRail extends ConsumerWidget {
     if (categoryIndex_ == null) return const SizedBox.shrink();
     final current = ToolCategories.items[categoryIndex_];
     final toolItems = getByCategory(current);
-    if (toolItems.length < 2) return const Placeholder();
+    if (toolItems.length < 2) return const SizedBox.shrink();
     return MouseRegion(
       onEnter: (_) {
         ref.watch(enterTool.state).state = true;
