@@ -86,7 +86,6 @@ class InfoModel {
 
   static List<InfoModel> fromAndroid(AndroidDeviceInfo info) {
     return [
-      InfoModel(title: (context) => 'Android Id', value: info.androidId ?? ''),
       InfoModel(title: (context) => 'Board', value: info.board ?? ''),
       InfoModel(title: (context) => 'Bootloader', value: info.bootloader ?? ''),
       InfoModel(title: (context) => 'Brand', value: info.brand ?? ''),
