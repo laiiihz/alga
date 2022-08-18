@@ -24,6 +24,8 @@ final computedCategoryExpand =
 });
 final computedToolExpand =
     StateProvider.family<bool, AdaptiveWindowType>((ref, type) {
+  final index = ref.watch(toolIndex);
+  if (index == null) return true;
   if (type <= AdaptiveWindowType.small) return false;
   return ref.watch(enterTool) || (!ref.watch(enterCategory));
 });

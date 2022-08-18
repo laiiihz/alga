@@ -25,6 +25,9 @@ final _railOption =
     extended = false;
     labelType = NavigationRailLabelType.none;
   }
+  if (index == null) {
+    extended = true;
+  }
 
   return RailOption(extended, labelType);
 });
