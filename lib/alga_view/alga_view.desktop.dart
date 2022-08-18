@@ -22,10 +22,14 @@ class AlgaViewDesktop extends ConsumerWidget {
         child: DecoratedBox(
           decoration: BoxDecoration(
             border: Border(
-              bottom: BorderSide(color: Theme.of(context).colorScheme.outline),
+              bottom: BorderSide(
+                color: Theme.of(context).colorScheme.outline,
+                width: 0.5,
+              ),
             ),
           ),
           child: WindowCaption(
+            backgroundColor: Colors.transparent,
             title: Text(context.tr.appName),
             brightness: Theme.of(context).brightness,
           ),
