@@ -1,12 +1,14 @@
-## next version
-
+## 0.5.2+25
+* [feature] Material 3 support.
+* [feature] redesign app ui.
+* [feature] automatic primary color from platform.
 * [feature] add Python Dict formatter.
 * [feature] add random file generator.
 * [feature] show snackbar when copy & paste.
 * [feature] date parser: add operation tool.
 * [feature] markdown: now can select markdown text.
 * [feature] color converter: now can pick multi-type colors.
-* [update] default hot key meta+s -> alt+s.
+* [update] change default hot key.
 * [fix] fix abi build issue.
 
 # 0.3.5+16
