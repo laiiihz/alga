@@ -21,7 +21,7 @@ final _railOption =
   } else if (windowType == AdaptiveWindowType.medium) {
     extended = true;
   }
-  if (index == 1) {
+  if (index == 0) {
     extended = false;
     labelType = NavigationRailLabelType.none;
   }
