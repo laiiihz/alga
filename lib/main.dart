@@ -12,8 +12,8 @@ import 'utils/theme_util.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await WindowUtil.init();
   await HiveUtil.init();
+  await WindowUtil.init();
   runApp(const ProviderScope(child: MyApp()));
 }
 

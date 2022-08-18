@@ -20,13 +20,7 @@ class _HomeViewState extends ConsumerState<HomeView> {
   }
 
   @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-  }
-
-  @override
   Widget build(BuildContext context) {
-    // return const AppScaffold();
     return const AlgaView();
   }
 }
