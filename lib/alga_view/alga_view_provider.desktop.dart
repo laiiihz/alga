@@ -17,6 +17,8 @@ final enterCategory = StateProvider<bool>((ref) => false);
 final enterTool = StateProvider<bool>((ref) => false);
 final computedCategoryExpand =
     StateProvider.family<bool, AdaptiveWindowType>((ref, type) {
+  final index = ref.watch(categoryIndex);
+  if (index == null) return true;
   if (type <= AdaptiveWindowType.small) return false;
   return ref.watch(enterCategory);
 });
