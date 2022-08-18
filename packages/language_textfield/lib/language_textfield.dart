@@ -8,13 +8,6 @@ import 'lang_special_builder.dart';
 export 'language_highlight_type.dart';
 
 class LangTextField extends StatelessWidget {
-  final TextEditingController? controller;
-  final int? maxLines;
-  final int? minLines;
-  final ValueChanged<String>? onChanged;
-  final String lang;
-  final bool expands;
-  final InputDecoration inputDecoration;
   const LangTextField({
     Key? key,
     this.controller,
@@ -23,8 +16,18 @@ class LangTextField extends StatelessWidget {
     this.onChanged,
     required this.lang,
     this.expands = false,
+    this.readOnly = false,
     this.inputDecoration = const InputDecoration(),
   }) : super(key: key);
+
+  final TextEditingController? controller;
+  final int? maxLines;
+  final int? minLines;
+  final ValueChanged<String>? onChanged;
+  final String lang;
+  final bool expands;
+  final InputDecoration inputDecoration;
+  final bool readOnly;
   @override
   Widget build(BuildContext context) {
     return ExtendedTextField(
@@ -36,6 +39,7 @@ class LangTextField extends StatelessWidget {
       expands: expands,
       decoration: inputDecoration,
       textAlignVertical: TextAlignVertical.top,
+      readOnly: readOnly,
     );
   }
 }

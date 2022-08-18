@@ -74,8 +74,8 @@ class _GzipCompressDecompressViewState
             CopyButton(onCopy: (ref) => ref.read(_result)),
           ],
           child: Consumer(builder: (context, ref, _) {
-            return AppTextBox(
-              data: ref.watch(_result),
+            return AppTextField(
+              text: ref.watch(_result),
               minLines: 2,
               maxLines: 12,
             );

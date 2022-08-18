@@ -54,7 +54,7 @@ class SM3GeneratorView extends StatelessWidget {
             ),
           ],
           child: Consumer(builder: (context, ref, _) {
-            return AppTextBox(data: ref.watch(_inputValue));
+            return AppTextField(text: ref.watch(_inputValue));
           }),
         ),
       ],

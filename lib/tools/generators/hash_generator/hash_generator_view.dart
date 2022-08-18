@@ -95,7 +95,7 @@ class _HashGeneratorViewState extends State<HashGeneratorView> {
                 title: e.title(context),
                 child: Row(
                   children: [
-                    Expanded(child: AppTextBox(data: e.result)),
+                    Expanded(child: AppTextField(text: e.result)),
                     const SizedBox(width: 8),
                     IconButton(
                       icon: const Icon(Icons.copy),

@@ -68,10 +68,10 @@ class UriEncoderDecoderView extends StatelessWidget {
             CopyButton(onCopy: (ref) => ref.read(_result)),
           ],
           child: Consumer(builder: (context, ref, _) {
-            return AppTextBox(
+            return AppTextField(
               maxLines: 12,
               minLines: 2,
-              data: ref.watch(_result),
+              text: ref.watch(_result),
             );
           }),
         ),

@@ -67,7 +67,7 @@ class _DateParserViewState extends State<DateParserView> {
                 actions: [
                   CopyButton(onCopy: (ref) => date.toIso8601String()),
                 ],
-                child: AppTextBox(data: date.toIso8601String()),
+                child: AppTextField(text: date.toIso8601String()),
               ),
             ],
           );
@@ -111,7 +111,7 @@ class _DateParserViewState extends State<DateParserView> {
                 icon: const Icon(Icons.copy),
               ),
             ],
-            child: AppTextBox(data: ref.watch(_formatResult) ?? ''),
+            child: AppTextField(text: ref.watch(_formatResult) ?? ''),
           );
         }),
       ],

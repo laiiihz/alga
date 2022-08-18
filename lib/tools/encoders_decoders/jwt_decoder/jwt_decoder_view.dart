@@ -54,9 +54,9 @@ class _JWTDecoderViewState extends State<JWTDecoderView> {
             CopyButton(onCopy: (ref) => ref.read(_headerResult)),
           ],
           child: Consumer(builder: (context, ref, _) {
-            return AppTextBox(
+            return AppTextField(
               lang: LangHighlightType.json,
-              data: ref.watch(_headerResult),
+              text: ref.watch(_headerResult),
               minLines: 2,
               maxLines: 12,
             );
@@ -68,9 +68,9 @@ class _JWTDecoderViewState extends State<JWTDecoderView> {
             CopyButton(onCopy: (ref) => ref.read(_payloadResult)),
           ],
           child: Consumer(builder: (context, ref, _) {
-            return AppTextBox(
+            return AppTextField(
               lang: LangHighlightType.json,
-              data: ref.watch(_payloadResult),
+              text: ref.watch(_payloadResult),
               minLines: 2,
               maxLines: 12,
             );

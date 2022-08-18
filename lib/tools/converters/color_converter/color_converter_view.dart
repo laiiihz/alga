@@ -103,9 +103,7 @@ class ColorConverterView extends StatelessWidget {
             }),
           ],
           child: Consumer(builder: (context, ref, _) {
-            return AppTextBox(
-              data: ref.watch(_hexValue),
-            );
+            return AppTextField(text: ref.watch(_hexValue));
           }),
         ),
         AppTitleWrapper(
@@ -116,9 +114,7 @@ class ColorConverterView extends StatelessWidget {
             }),
           ],
           child: Consumer(builder: (context, ref, _) {
-            return AppTextBox(
-              data: ref.watch(_rgbValue),
-            );
+            return AppTextField(text: ref.watch(_rgbValue));
           }),
         ),
         AppTitleWrapper(
@@ -129,9 +125,7 @@ class ColorConverterView extends StatelessWidget {
             }),
           ],
           child: Consumer(builder: (context, ref, _) {
-            return AppTextBox(
-              data: ref.watch(_rgbaValue),
-            );
+            return AppTextField(text: ref.watch(_rgbaValue));
           }),
         ),
         AppTitleWrapper(
@@ -142,9 +136,7 @@ class ColorConverterView extends StatelessWidget {
             }),
           ],
           child: Consumer(builder: (context, ref, _) {
-            return AppTextBox(
-              data: ref.watch(_hslValue),
-            );
+            return AppTextField(text: ref.watch(_hslValue));
           }),
         ),
         AppTitleWrapper(
@@ -155,9 +147,7 @@ class ColorConverterView extends StatelessWidget {
             }),
           ],
           child: Consumer(builder: (context, ref, _) {
-            return AppTextBox(
-              data: ref.watch(_hsvValue),
-            );
+            return AppTextField(text: ref.watch(_hsvValue));
           }),
         ),
       ],

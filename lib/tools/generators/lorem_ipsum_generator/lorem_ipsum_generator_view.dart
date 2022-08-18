@@ -93,8 +93,8 @@ class LoremIpsumGeneratorView extends StatelessWidget {
           child: Consumer(
             builder: (context, ref, _) {
               return ref.watch(loremProvider).when(
-                    data: (state) => AppTextBox(
-                      data: state.output,
+                    data: (state) => AppTextField(
+                      text: state.output,
                       minLines: 2,
                       maxLines: null,
                     ),

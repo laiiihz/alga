@@ -49,8 +49,8 @@ class _UriParserViewState extends State<UriParserView> {
                           icon: const Icon(Icons.copy),
                         ),
                       ],
-                      child: AppTextBox(
-                        data: e.name,
+                      child: AppTextField(
+                        text: e.name,
                         lang: e.lang,
                       ),
                     ))

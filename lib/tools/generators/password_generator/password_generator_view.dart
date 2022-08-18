@@ -93,9 +93,7 @@ class PasswordGeneratorView extends StatelessWidget {
           ],
           child: Consumer(
             builder: (context, ref, _) {
-              return AppTextBox(
-                data: ref.watch(_result),
-              );
+              return AppTextField(text: ref.watch(_result));
             },
           ),
         ),

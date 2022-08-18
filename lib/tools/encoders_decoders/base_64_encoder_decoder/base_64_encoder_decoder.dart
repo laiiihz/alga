@@ -100,10 +100,10 @@ class _Base64EncoderDecoderViewState extends State<Base64EncoderDecoderView> {
             }),
           ],
           child: Consumer(builder: (context, ref, _) {
-            return AppTextBox(
+            return AppTextField(
               minLines: 2,
               maxLines: 12,
-              data: ref.watch(_result),
+              text: ref.watch(_result),
             );
           }),
         ),

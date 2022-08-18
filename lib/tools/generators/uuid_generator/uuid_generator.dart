@@ -1,3 +1,4 @@
+import 'package:alga/widgets/app_text_field.dart';
 import 'package:flutter/services.dart';
 
 import 'package:uuid/uuid.dart';
@@ -107,10 +108,10 @@ class _UUIDGeneratorViewState extends State<UUIDGeneratorView> {
           ],
         ),
         Consumer(builder: (context, ref, _) {
-          return AppTextBox(
+          return AppTextField(
             minLines: 2,
             maxLines: 20,
-            data: ref.watch(_resultValue),
+            text: ref.watch(_resultValue),
           );
         }),
       ],

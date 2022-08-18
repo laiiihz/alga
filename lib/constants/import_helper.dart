@@ -5,7 +5,7 @@ export 'package:alga/widgets/tool_view_config.dart';
 export 'package:flutter/material.dart';
 export 'package:alga/widgets/toolbar_view.dart';
 export 'package:alga/utils/theme_util.dart';
-export 'package:alga/widgets/app_text_box.dart';
+export 'package:alga/widgets/app_text_field.dart';
 export 'package:language_textfield/language_textfield.dart';
 export 'package:flutter_riverpod/flutter_riverpod.dart';
 export 'package:alga/utils/clipboard_util.dart';

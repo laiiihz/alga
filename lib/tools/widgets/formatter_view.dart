@@ -47,11 +47,11 @@ class FormatterViewState extends State<FormatterView> {
             setState(() {});
           },
         ),
-        outputWidget: AppTextBox(
+        outputWidget: AppTextField(
           lang: widget.lang,
           minLines: 80,
           maxLines: 100,
-          data: outputText,
+          text: outputText,
         ),
         inputActions: [
           IconButton(

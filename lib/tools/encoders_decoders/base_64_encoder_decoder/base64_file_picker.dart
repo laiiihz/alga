@@ -20,7 +20,7 @@ Future _showBase64ImagePicker(BuildContext context, WidgetRef ref) async {
               title: const Text('Base64 from Image'),
               content: data.length > 1000
                   ? const Text('content is too big')
-                  : AppTextBox(data: data, minLines: 1, maxLines: 12),
+                  : AppTextField(text: data, minLines: 1, maxLines: 12),
               actions: [
                 TextButton(
                   onPressed: () async {

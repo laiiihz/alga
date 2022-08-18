@@ -115,7 +115,7 @@ class _BlurHashViewState extends State<BlurHashView> {
                         icon: const Icon(Icons.copy),
                       )
                     ],
-                    child: AppTextBox(data: item.blurHash.hash),
+                    child: AppTextField(text: item.blurHash.hash),
                   );
                 },
                 error: (e, stack) => Text(e.toString()),

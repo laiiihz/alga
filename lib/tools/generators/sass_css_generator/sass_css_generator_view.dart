@@ -76,9 +76,9 @@ class _SassCssGeneratorViewState extends State<SassCssGeneratorView> {
             CopyButton(onCopy: (ref) => ref.read(_css)),
           ],
           child: Consumer(builder: (context, ref, _) {
-            return AppTextBox(
+            return AppTextField(
               lang: LangHighlightType.css,
-              data: ref.watch(_css),
+              text: ref.watch(_css),
               minLines: 2,
               maxLines: 12,
             );
