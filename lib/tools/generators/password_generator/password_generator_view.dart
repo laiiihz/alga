@@ -53,9 +53,9 @@ class PasswordGeneratorView extends StatelessWidget {
           subtitle: const Text('[$_symbolBox]'),
           trailing: Consumer(builder: (context, ref, _) {
             return Switch(
-              value: ref.watch(_useNumbers),
+              value: ref.watch(_useSymbols),
               onChanged: (state) {
-                ref.watch(_useNumbers.notifier).state = state;
+                ref.watch(_useSymbols.notifier).state = state;
               },
             );
           }),
