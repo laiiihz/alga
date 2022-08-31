@@ -29,7 +29,6 @@ import 'package:alga/tools/server_tools/static_server_tool/static_server_tool_vi
 import 'package:alga/tools/text_tools/date_parser/date_parser_view.dart';
 import 'package:alga/tools/text_tools/markdown_preview/markdown_preview_view.dart';
 import 'package:alga/tools/text_tools/regex_tester/regex_tester_view.dart';
-import '../widgets/svg_asset_icon.dart';
 
 import 'package:alga/tools/generators/sass_css_generator/sass_css_generator_view.dart'
     if (dart.library.js) 'package:alga/tools/generators/sass_css_generator/web/web_sass_css_generator_view.dart';

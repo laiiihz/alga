@@ -69,7 +69,7 @@ SPEC CHECKSUMS:
   dynamic_color: 394d6a888650f8534e029b27d2f8bc5c64e44008
   file_selector_macos: f1b08a781e66103e3ba279fd5d4024a2478b3af6
   flutter_js: c664361655af1d8fc24e278c7d086e9cbe0d68bc
-  FlutterMacOS: 57701585bf7de1b3fc2bb61f6378d73bbdea8424
+  FlutterMacOS: ae6af50a8ea7d6103d888583d46bd8328a7e9811
   HotKey: ad59450195936c10992438c4210f673de5aee43e
   hotkey_manager: ad673457691f4d39e481be04a61da2ae07d81c62
   network_info_plus_macos: d2b9e6c01c291449b91a584217aa53b113847dbd

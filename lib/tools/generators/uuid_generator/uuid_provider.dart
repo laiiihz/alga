@@ -40,7 +40,7 @@ final _results = StateProvider.autoDispose<List<String>>((ref) {
   final uppercase = ref.watch(_upperCase);
   final count = ref.watch(_count);
 
-  String _genId() {
+  String genId() {
     switch (version) {
       case UUIDVersion.v1:
         return uuid.v1();
@@ -49,14 +49,14 @@ final _results = StateProvider.autoDispose<List<String>>((ref) {
     }
   }
 
-  String _convertValue() {
-    String value = _genId();
+  String convertValue() {
+    String value = genId();
     if (!hypen) value = value.replaceAll('-', '');
     if (uppercase) value = value.toUpperCase();
     return value;
   }
 
-  return List.generate(count, (index) => _convertValue());
+  return List.generate(count, (index) => convertValue());
 });
 
 final _resultValue =
