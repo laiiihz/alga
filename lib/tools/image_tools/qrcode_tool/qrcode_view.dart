@@ -14,7 +14,7 @@ class QrcodeView extends StatefulWidget {
 class _QrcodeViewState extends State<QrcodeView> {
   @override
   Widget build(BuildContext context) {
-    return ToolView.scrollVertical(
+    return ScrollableToolView(
       title: Text(S.of(context).qrCodeTool),
       children: [
         ToolViewWrapper(

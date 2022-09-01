@@ -9,7 +9,7 @@ class NumberBaseConverterView extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return ToolView.scrollVertical(
+    return ScrollableToolView(
       title: Text(S.of(context).numberBaseConverter),
       children: ref.watch(_controllers).map((e) {
         return AppTitleWrapper(

@@ -22,7 +22,7 @@ class BlurHashView extends StatefulWidget {
 class _BlurHashViewState extends State<BlurHashView> {
   @override
   Widget build(BuildContext context) {
-    return ToolView.scrollVertical(
+    return ScrollableToolView(
       title: Text(S.of(context).blurHashTool),
       children: [
         ToolViewWrapper(children: [

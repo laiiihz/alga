@@ -7,7 +7,7 @@ class AbsLengthConverterView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ToolView.scrollVertical(
+    return ScrollableToolView(
       title: const Text('Absolute Length Converter'),
       children: LengthType.values.map((e) {
         return AppTitleWrapper(

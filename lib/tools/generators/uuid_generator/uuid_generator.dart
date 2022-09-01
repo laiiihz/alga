@@ -16,7 +16,7 @@ class UUIDGeneratorView extends StatefulWidget {
 class _UUIDGeneratorViewState extends State<UUIDGeneratorView> {
   @override
   Widget build(BuildContext context) {
-    return ToolView.scrollVertical(
+    return ScrollableToolView(
       title: Text(S.of(context).generatorUUID),
       children: [
         ToolViewWrapper(

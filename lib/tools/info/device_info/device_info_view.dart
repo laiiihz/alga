@@ -18,7 +18,7 @@ class _DeviceInfoViewState extends State<DeviceInfoView> {
         if (snap.connectionState != ConnectionState.done) {
           return const Center(child: CircularProgressIndicator.adaptive());
         }
-        return ToolView.scrollVertical(
+        return ScrollableToolView(
           title: Text(S.of(context).deviceInfo),
           children: [
             AppTitle(title: S.of(context).commonInfo),

@@ -6,7 +6,7 @@ class UriEncoderDecoderView extends StatelessWidget {
   const UriEncoderDecoderView({super.key});
   @override
   Widget build(BuildContext context) {
-    return ToolView.scrollVertical(
+    return ScrollableToolView(
       title: Text(S.of(context).encoderDecoderURL),
       children: [
         ToolViewWrapper(

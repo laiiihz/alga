@@ -29,7 +29,7 @@ class _StaticServerToolViewState extends State<StaticServerToolView> {
 
   @override
   Widget build(BuildContext context) {
-    return ToolView.scrollVertical(
+    return ScrollableToolView(
       title: Text(S.of(context).staticServerTool),
       children: [
         ToolViewWrapper(

@@ -11,7 +11,7 @@ class HashGeneratorView extends StatefulWidget {
 class _HashGeneratorViewState extends State<HashGeneratorView> {
   @override
   Widget build(BuildContext context) {
-    return ToolView.scrollVertical(
+    return ScrollableToolView(
       title: Text(S.of(context).generatorHash),
       children: [
         ToolViewWrapper(

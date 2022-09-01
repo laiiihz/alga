@@ -14,7 +14,7 @@ class UriParserView extends StatefulWidget {
 class _UriParserViewState extends State<UriParserView> {
   @override
   Widget build(BuildContext context) {
-    return ToolView.scrollVertical(
+    return ScrollableToolView(
       title: Text(S.of(context).uriParser),
       children: [
         AppTitleWrapper(

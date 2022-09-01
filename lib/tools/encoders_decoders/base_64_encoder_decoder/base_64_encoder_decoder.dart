@@ -20,7 +20,7 @@ class Base64EncoderDecoderView extends StatefulWidget {
 class _Base64EncoderDecoderViewState extends State<Base64EncoderDecoderView> {
   @override
   Widget build(BuildContext context) {
-    return ToolView.scrollVertical(
+    return ScrollableToolView(
       title: Text(S.of(context).encoderDecoderBase64),
       children: [
         ToolViewWrapper(

@@ -9,7 +9,7 @@ class NetworkInfoView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ToolView.scrollVertical(
+    return ScrollableToolView(
       title: Text(S.of(context).networkInfo),
       children: _infos
           .map((e) => Consumer(builder: (context, ref, _) {

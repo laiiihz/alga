@@ -17,7 +17,7 @@ class JWTDecoderView extends StatefulWidget {
 class _JWTDecoderViewState extends State<JWTDecoderView> {
   @override
   Widget build(BuildContext context) {
-    return ToolView.scrollVertical(
+    return ScrollableToolView(
       title: Text(S.of(context).decoderJWT),
       children: [
         AppTitleWrapper(

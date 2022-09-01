@@ -17,7 +17,7 @@ class DateParserView extends StatefulWidget {
 class _DateParserViewState extends State<DateParserView> {
   @override
   Widget build(BuildContext context) {
-    return ToolView.scrollVertical(
+    return ScrollableToolView(
       title: Text(S.of(context).dateParser),
       children: [
         AppTitleWrapper(

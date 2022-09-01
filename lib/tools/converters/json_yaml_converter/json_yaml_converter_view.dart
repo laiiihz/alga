@@ -61,7 +61,7 @@ class JsonYamlConverterView extends ConsumerWidget {
       ),
     );
     if (isSmallDevice(context)) {
-      return ToolView.scrollVertical(
+      return ScrollableToolView(
         title: Text(S.of(context).jsonYamlConverter),
         children: [jsonWidget, yamlWidget],
       );

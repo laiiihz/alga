@@ -14,7 +14,7 @@ class SassCssGeneratorView extends StatefulWidget {
 class _SassCssGeneratorViewState extends State<SassCssGeneratorView> {
   @override
   Widget build(BuildContext context) {
-    return ToolView.scrollVertical(
+    return ScrollableToolView(
       title: Text(S.of(context).sassCssGenerator),
       children: [
         ToolViewWrapper(
