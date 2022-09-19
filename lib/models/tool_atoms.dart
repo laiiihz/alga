@@ -94,7 +94,7 @@ final toolAtoms = <ToolAtom>[
   ToolAtom(
     icon: const SvgAssetIcon('assets/icons/json.svg', colorIcon: true),
     name: (context) => context.tr.formatterJson,
-    widget: const JsonFormtterView(),
+    widget: const JsonFormatterView(),
     categories: [ToolCategories.formatters],
   ),
   ToolAtom(

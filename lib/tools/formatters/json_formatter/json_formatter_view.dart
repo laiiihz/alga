@@ -3,14 +3,14 @@ import 'package:alga/tools/formatters/json_formatter/json_enums.dart';
 import 'package:alga/tools/formatters/json_formatter/json_provider.dart';
 import '../../widgets/formatter_view.dart';
 
-class JsonFormtterView extends StatefulWidget {
-  const JsonFormtterView({super.key});
+class JsonFormatterView extends StatefulWidget {
+  const JsonFormatterView({super.key});
 
   @override
-  State<JsonFormtterView> createState() => _JsonFormtterViewState();
+  State<JsonFormatterView> createState() => _JsonFormatterViewState();
 }
 
-class _JsonFormtterViewState extends State<JsonFormtterView> {
+class _JsonFormatterViewState extends State<JsonFormatterView> {
   final provider = JsonProvider();
   update() => setState(() {});
 
@@ -36,17 +36,19 @@ class _JsonFormtterViewState extends State<JsonFormtterView> {
         ToolViewConfig(
           leading: const Icon(Icons.space_bar),
           title: Text(S.of(context).indentation),
-          trailing: DropdownButton<JsonIndentType>(
-            underline: const SizedBox.shrink(),
-            items: JsonIndentType.values
-                .map((e) =>
-                    DropdownMenuItem(value: e, child: Text(e.name(context))))
-                .toList(),
-            onChanged: (iType) {
-              provider.type = iType ?? JsonIndentType.space2;
-            },
-            value: provider.type,
-          ),
+          trailing: PopupMenuButton<JsonIndentType>(
+              itemBuilder: (context) => JsonIndentType.values
+                  .map((e) =>
+                      PopupMenuItem(value: e, child: Text(e.name(context))))
+                  .toList(),
+              onSelected: (iType) {
+                provider.type = iType;
+              },
+              initialValue: provider.type,
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                child: Text(provider.type.name(context)),
+              )),
         ),
       ],
       onChanged: provider.onChanged,

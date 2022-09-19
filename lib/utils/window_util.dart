@@ -19,10 +19,8 @@ class WindowUtil {
           windowButtonVisibility: true,
         );
 
-        await windowManager.center();
         await windowManager.setTitle('Alga');
         await windowManager.setSkipTaskbar(false);
-        await windowManager.show();
         await windowManager.setMinimumSize(const Size(800, 600));
       });
     }
