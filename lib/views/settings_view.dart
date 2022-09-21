@@ -3,7 +3,6 @@ import 'package:alga/widgets/app_show_menu.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
 import 'package:alga/constants/import_helper.dart';
-import 'package:alga/extension/list_ext.dart';
 import 'package:alga/views/widgets/settings_tile.dart';
 
 class SettingsView extends StatefulWidget {
@@ -19,10 +18,13 @@ class _SettingsViewState extends State<SettingsView> {
       String.fromEnvironment('FLUTTER_BUILD_NUMBER');
   @override
   Widget build(BuildContext context) {
-    return ToolView(
-      title: Text(S.of(context).settings),
-      content: ListView(
-        children: <Widget>[
+    return CustomScrollView(
+      slivers: [
+        SliverAppBar.large(
+          title: Text(S.of(context).settings),
+        ),
+        SliverList(
+            delegate: SliverChildListDelegate([
           SettingsTile(
             leading: Image.asset('assets/logo/256.webp', height: 32, width: 32),
             title: Text(S.of(context).appName),
@@ -106,8 +108,8 @@ class _SettingsViewState extends State<SettingsView> {
               showLicensePage(context: context);
             },
           ),
-        ].sep(const SizedBox(height: 4)),
-      ),
+        ])),
+      ],
     );
   }
 }
