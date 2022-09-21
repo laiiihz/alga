@@ -57,7 +57,7 @@ dependencies:
   network_info_plus: ^2.1.4+1
   flutter_js: ^0.5.0+6
   import_sorter: ^4.6.0
-  markdown: ^6.0.0
+  markdown: ^6.0.1
   pointycastle: ^3.6.2
   pigment: ^1.0.4
   go_router: ^5.0.0
@@ -65,7 +65,7 @@ dependencies:
   image: ^3.2.0
   convert: ^3.0.2
   path: ^1.8.1
-  shelf: ^1.3.2
+  shelf: ^1.4.0
   adaptive_breakpoints: ^0.1.4
   dynamic_color: ^1.5.4
   tuple: ^2.0.0
