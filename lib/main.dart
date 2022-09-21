@@ -35,13 +35,11 @@ class MyApp extends StatelessWidget {
             lightScheme ??= kDefaultLightColorScheme;
             darkScheme ??= kDefaultDarkColorScheme;
             return MaterialApp.router(
+              routerConfig: appRouter,
               onGenerateTitle: (context) => S.of(context).appName,
               theme: ThemeUtil(lightScheme).getTheme(Brightness.light),
               darkTheme: ThemeUtil(darkScheme).getTheme(Brightness.dark),
               themeMode: AppConfigBox.themeMode,
-              routerDelegate: appRouter.routerDelegate,
-              routeInformationProvider: appRouter.routeInformationProvider,
-              routeInformationParser: appRouter.routeInformationParser,
               localizationsDelegates: S.localizationsDelegates,
               supportedLocales: S.supportedLocales,
               locale: AppConfigBox.locale,
