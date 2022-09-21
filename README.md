@@ -68,7 +68,7 @@ flutter_distributor release --name release
 
 ## Special Thanks
 
-* [lijy91](https://github.com/lijy91) and his [flutter_distributor](https://github.com/leanflutter/flutter_distributor), [window_manager](https://github.com/leanflutter/window_manager)
+* [lijy91](https://github.com/lijy91) : [flutter_distributor](https://github.com/leanflutter/flutter_distributor)([pub](https://pub.dev/packages/flutter_distributor)), [window_manager](https://github.com/leanflutter/window_manager)([pub](https://pub.dev/packages/window_manager))
 
 ## Privacy Policy
 

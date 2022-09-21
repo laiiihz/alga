@@ -21,14 +21,20 @@ class _DeviceInfoViewState extends State<DeviceInfoView> {
         return ScrollableToolView(
           title: Text(S.of(context).deviceInfo),
           children: [
-            AppTitle(title: S.of(context).commonInfo),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: AppTitle(title: S.of(context).commonInfo),
+            ),
             ..._provider.commonInfomations
                 .map((e) => ToolViewConfig(
                       title: Text(e.title(context)),
                       subtitle: Text(e.value),
                     ))
                 .toList(),
-            AppTitle(title: S.of(context).platformInfo),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: AppTitle(title: S.of(context).platformInfo),
+            ),
             ..._provider.infomations
                 .map((e) => ToolViewConfig(
                       title: Text(e.title(context)),
