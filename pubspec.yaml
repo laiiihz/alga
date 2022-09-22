@@ -69,6 +69,7 @@ dependencies:
   adaptive_breakpoints: ^0.1.4
   dynamic_color: ^1.5.4
   tuple: ^2.0.0
+  multi_split_view: ^2.1.0
 
 dev_dependencies:
   flutter_test:

@@ -1,3 +1,7 @@
+## next
+
+* [feature] Material 3 appbar.
+
 ## 0.5.2+25
 * [feature] Material 3 support.
 * [feature] redesign app ui.
