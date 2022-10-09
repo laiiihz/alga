@@ -50,18 +50,26 @@ class _MarkdownPreviewViewState extends State<MarkdownPreviewView> {
         }),
       ],
       child: Consumer(builder: (context, ref, _) {
-        return MarkdownBody(
-          data: ref.watch(_inputValue),
-          selectable: true,
-          onTapLink: (text, href, title) {
-            if (href != null) {
-              launchUrlString(
-                href,
-                mode: LaunchMode.externalApplication,
-              );
-            }
-          },
-        );
+        final data = ref.watch(_inputValue);
+        void onTapLink(text, href, title) {
+          if (href != null) {
+            launchUrlString(
+              href,
+              mode: LaunchMode.externalApplication,
+            );
+          }
+        }
+
+        if (isSmallDevice(context)) {
+          return MarkdownBody(
+              data: data, selectable: true, onTapLink: onTapLink);
+        } else {
+          return Markdown(
+            data: data,
+            selectable: true,
+            onTapLink: onTapLink,
+          );
+        }
       }),
     );
 
