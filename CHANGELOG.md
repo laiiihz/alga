@@ -1,6 +1,7 @@
 ## next
 
-* [feature] Material 3 appbar.
+* [feature] Material 3 Appbar.
+* [feature] URL encoder/decoder add more options #5 thanks @RiqueAM.
 
 ## 0.5.2+25
 * [feature] Material 3 support.
