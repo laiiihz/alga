@@ -28,7 +28,7 @@ final _input = StateProvider.autoDispose<TextEditingController>((ref) {
 final _isEncode = StateProvider.autoDispose<bool>((ref) => true);
 
 final _type =
-    StateProvider.autoDispose<UriEncodeType>((ref) => UriEncodeType.full);
+    StateProvider.autoDispose<UriEncodeType>((ref) => UriEncodeType.component);
 
 final _result = StateProvider.autoDispose<String>((ref) {
   final isEncode = ref.watch(_isEncode);
