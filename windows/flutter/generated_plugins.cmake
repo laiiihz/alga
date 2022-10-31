@@ -7,7 +7,7 @@ list(APPEND FLUTTER_PLUGIN_LIST
   file_selector_windows
   flutter_js
   hotkey_manager
-  network_info_plus_windows
+  network_info_plus
   screen_retriever
   url_launcher_windows
   window_manager

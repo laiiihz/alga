@@ -10,7 +10,7 @@ import dynamic_color
 import file_selector_macos
 import flutter_js
 import hotkey_manager
-import network_info_plus_macos
+import network_info_plus
 import path_provider_macos
 import screen_retriever
 import url_launcher_macos
