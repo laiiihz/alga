@@ -18,7 +18,7 @@ class _SettingsViewState extends State<SettingsView> {
       String.fromEnvironment('FLUTTER_BUILD_NUMBER');
   @override
   Widget build(BuildContext context) {
-    return CustomScrollView(
+    Widget result = CustomScrollView(
       slivers: [
         SliverAppBar.large(
           title: Text(S.of(context).settings),
@@ -111,5 +111,7 @@ class _SettingsViewState extends State<SettingsView> {
         ])),
       ],
     );
+    result = Material(child: result);
+    return result;
   }
 }

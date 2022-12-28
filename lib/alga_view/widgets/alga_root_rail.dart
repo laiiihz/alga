@@ -10,40 +10,18 @@ import '../alga_view_provider.desktop.dart';
 /// * item2: labelType
 typedef RailOption = Tuple2<bool, NavigationRailLabelType?>;
 
-final _railOption =
-    StateProvider.family<RailOption, AdaptiveWindowType>((ref, windowType) {
-  int? index = ref.watch(rootIndex);
-  bool extended = false;
-  NavigationRailLabelType? labelType;
-
-  if (windowType == AdaptiveWindowType.small) {
-    labelType = NavigationRailLabelType.all;
-  } else if (windowType == AdaptiveWindowType.medium) {
-    extended = true;
-  }
-  if (index == 0) {
-    extended = false;
-    labelType = NavigationRailLabelType.none;
-  }
-  if (index == null) {
-    extended = true;
-  }
-
-  return RailOption(extended, labelType);
-});
-
 class AlgaRootRail extends ConsumerWidget {
   const AlgaRootRail({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final windowType = getWindowType(context);
-    final railOption = ref.watch(_railOption(windowType));
     return Column(
       children: [
         Expanded(
           child: NavigationRail(
-            extended: railOption.item1,
+            extended: false,
+            labelType: NavigationRailLabelType.all,
             leading: const SizedBox(height: 32),
             destinations: [
               TooltipRailItem(
