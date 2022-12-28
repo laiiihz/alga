@@ -1,5 +1,7 @@
 # Alga
 
+> [WIP] a new version of `alga` is work-in-progress.
+
 A powerful tool app for all developers.
 
 > inspired by [DevToys](https://github.com/veler/DevToys).
