@@ -84,8 +84,9 @@ class _SearchTileState extends ConsumerState<SearchTile> {
                                     leading: item.icon,
                                     title: Text(item.name(context)),
                                     onTap: () {
-                                      ref.watch(currentWidget.state).state =
-                                          item.widget;
+                                      ref
+                                          .read(currentWidget.notifier)
+                                          .update((state) => item.widget);
                                       Navigator.of(context).pop();
                                     },
                                   );

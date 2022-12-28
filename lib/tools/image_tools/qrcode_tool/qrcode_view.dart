@@ -29,7 +29,7 @@ class _QrcodeViewState extends State<QrcodeView> {
                     decoration:
                         InputDecoration(hintText: S.of(context).qrAutoVersion),
                     onChanged: (text) {
-                      ref.refresh(_version);
+                      return ref.refresh(_version);
                     },
                   );
                 }),
@@ -72,7 +72,7 @@ class _QrcodeViewState extends State<QrcodeView> {
             return TextField(
               controller: ref.watch(_input),
               onChanged: (_) {
-                ref.refresh(_inputData);
+                return ref.refresh(_inputData);
               },
               minLines: 1,
               maxLines: 12,

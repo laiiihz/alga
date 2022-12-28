@@ -52,7 +52,7 @@ class _HashGeneratorViewState extends State<HashGeneratorView> {
             actions: [
               PasteButton(onPaste: (ref, data) {
                 ref.watch(inputController).text = data;
-                ref.refresh(hashResults);
+                return ref.refresh(hashResults);
               }),
               IconButton(
                 icon: const Icon(Icons.clear),
@@ -66,7 +66,7 @@ class _HashGeneratorViewState extends State<HashGeneratorView> {
               maxLines: 12,
               controller: ref.watch(inputController),
               onChanged: (text) {
-                ref.refresh(hashResults);
+                return ref.refresh(hashResults);
               },
             ),
           );
@@ -82,7 +82,7 @@ class _HashGeneratorViewState extends State<HashGeneratorView> {
                 maxLines: 12,
                 controller: ref.watch(optionalController),
                 onChanged: (text) {
-                  ref.refresh(hashResults);
+                  return ref.refresh(hashResults);
                 },
               );
             }),

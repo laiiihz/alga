@@ -13,10 +13,10 @@ class AlgaCategoryRail extends ConsumerWidget {
     final windowType = getWindowType(context);
     return MouseRegion(
       onEnter: (_) {
-        ref.watch(enterCategory.state).state = true;
+        ref.read(enterCategory.notifier).update((state) => true);
       },
       onExit: (_) {
-        ref.watch(enterCategory.state).state = false;
+        ref.read(enterCategory.notifier).update((state) => false);
       },
       child: NavigationRail(
         extended: ref.watch(computedCategoryExpand(windowType)),
@@ -29,8 +29,8 @@ class AlgaCategoryRail extends ConsumerWidget {
         }).toList(),
         selectedIndex: ref.watch(categoryIndex),
         onDestinationSelected: (index) {
-          ref.watch(categoryIndex.state).state = index;
-          ref.watch(toolIndex.state).state = null;
+          ref.read(categoryIndex.notifier).update((state) => index);
+          ref.read(toolIndex.notifier).update((state) => null);
         },
       ),
     );

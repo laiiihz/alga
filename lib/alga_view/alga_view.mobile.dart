@@ -22,7 +22,7 @@ class AlgaViewMobile extends ConsumerWidget {
       bottomNavigationBar: NavigationBar(
         selectedIndex: ref.watch(rootIndex),
         onDestinationSelected: (index) {
-          ref.watch(rootIndex.state).state = index;
+          ref.read(rootIndex.notifier).update((state) => index);
         },
         destinations: [
           // NavigationDestination(

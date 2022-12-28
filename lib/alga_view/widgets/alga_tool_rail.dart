@@ -18,10 +18,10 @@ class AlgaToolRail extends ConsumerWidget {
     if (toolItems.length < 2) return const SizedBox.shrink();
     return MouseRegion(
       onEnter: (_) {
-        ref.watch(enterTool.state).state = true;
+        ref.read(enterTool.notifier).update((state) => true);
       },
       onExit: (_) {
-        ref.watch(enterTool.state).state = false;
+        ref.read(enterTool.notifier).update((state) => false);
       },
       child: NavigationRail(
         extended: ref.watch(computedToolExpand(windowType)),
@@ -34,7 +34,7 @@ class AlgaToolRail extends ConsumerWidget {
         }).toList(),
         selectedIndex: ref.watch(toolIndex),
         onDestinationSelected: (index) {
-          ref.watch(toolIndex.state).state = index;
+          ref.read(toolIndex.notifier).update((state) => index);
         },
       ),
     );

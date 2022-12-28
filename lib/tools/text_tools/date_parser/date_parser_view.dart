@@ -38,7 +38,7 @@ class _DateParserViewState extends State<DateParserView> {
                 onPressed: () {
                   ref.watch(_dateController).text =
                       DateTime.now().toIso8601String();
-                  ref.refresh(_date);
+                  return ref.refresh(_date);
                 },
                 child: const Text('Current'),
               );
@@ -48,7 +48,7 @@ class _DateParserViewState extends State<DateParserView> {
             return TextField(
               controller: ref.read(_dateController),
               onChanged: (_) {
-                ref.refresh(_date);
+                return ref.refresh(_date);
               },
             );
           }),
@@ -89,13 +89,13 @@ class _DateParserViewState extends State<DateParserView> {
               ),
               PasteButton(onPaste: (ref, data) {
                 ref.read(_formatController).text = data;
-                ref.refresh(_formatResult);
+                return ref.refresh(_formatResult);
               }),
             ],
             child: TextField(
               controller: ref.read(_formatController),
               onChanged: (_) {
-                ref.refresh(_formatResult);
+                return ref.refresh(_formatResult);
               },
             ),
           );

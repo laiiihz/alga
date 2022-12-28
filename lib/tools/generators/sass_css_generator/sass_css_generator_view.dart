@@ -55,7 +55,7 @@ class _SassCssGeneratorViewState extends State<SassCssGeneratorView> {
           actions: [
             PasteButton(onPaste: (ref, data) {
               ref.watch(_inputController).text = data;
-              ref.refresh(_cssResult);
+              return ref.refresh(_cssResult);
             }),
           ],
           child: Consumer(builder: (context, ref, _) {
@@ -65,7 +65,7 @@ class _SassCssGeneratorViewState extends State<SassCssGeneratorView> {
               minLines: 2,
               maxLines: 12,
               onChanged: (_) {
-                ref.refresh(_cssResult);
+                return ref.refresh(_cssResult);
               },
             );
           }),

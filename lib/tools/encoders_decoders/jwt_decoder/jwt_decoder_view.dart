@@ -25,13 +25,13 @@ class _JWTDecoderViewState extends State<JWTDecoderView> {
           actions: [
             PasteButton(onPaste: (ref, data) {
               ref.read(_jwtInput).text = data;
-              ref.refresh(_jwtModel);
+              return ref.refresh(_jwtModel);
             }),
             Consumer(builder: (context, ref, _) {
               return IconButton(
                 icon: const Icon(Icons.clear),
                 onPressed: () {
-                  ref.refresh(_jwtModel);
+                  return ref.refresh(_jwtModel);
                 },
               );
             }),
@@ -42,7 +42,7 @@ class _JWTDecoderViewState extends State<JWTDecoderView> {
               minLines: 3,
               maxLines: 12,
               onChanged: (_) {
-                ref.refresh(_jwtModel);
+                return ref.refresh(_jwtModel);
               },
               specialTextSpanBuilder: JWTSpecialTextBuilder(),
             );

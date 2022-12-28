@@ -23,12 +23,12 @@ class SM3GeneratorView extends StatelessWidget {
             PasteButton(
               onPaste: (ref, value) {
                 ref.watch(_inputController).text = value;
-                ref.refresh(_inputValue);
+                return ref.refresh(_inputValue);
               },
             ),
             ClearButton(onClear: (ref) {
               ref.watch(_inputController).clear();
-              ref.refresh(_inputValue);
+              return ref.refresh(_inputValue);
             }),
           ],
           child: Consumer(builder: (context, ref, _) {
@@ -37,7 +37,7 @@ class SM3GeneratorView extends StatelessWidget {
               minLines: 1,
               maxLines: 12,
               onChanged: (_) {
-                ref.refresh(_inputValue);
+                return ref.refresh(_inputValue);
               },
             );
           }),

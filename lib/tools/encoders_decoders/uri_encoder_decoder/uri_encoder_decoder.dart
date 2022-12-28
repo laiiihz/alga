@@ -60,14 +60,14 @@ class UriEncoderDecoderView extends StatelessWidget {
           actions: [
             PasteButton(onPaste: (ref, data) {
               ref.read(_input).text = data;
-              ref.refresh(_result);
+              return ref.refresh(_result);
             }),
             Consumer(builder: (context, ref, _) {
               return IconButton(
                 icon: const Icon(Icons.clear),
                 onPressed: () {
                   ref.read(_input).clear();
-                  ref.refresh(_result);
+                  return ref.refresh(_result);
                 },
               );
             }),
@@ -78,7 +78,7 @@ class UriEncoderDecoderView extends StatelessWidget {
               minLines: 2,
               controller: ref.watch(_input),
               onChanged: (_) {
-                ref.refresh(_result);
+                return ref.refresh(_result);
               },
             );
           }),

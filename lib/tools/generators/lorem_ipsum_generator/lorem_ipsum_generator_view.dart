@@ -84,7 +84,7 @@ class LoremIpsumGeneratorView extends StatelessWidget {
                 return IconButton(
                   icon: const Icon(Icons.refresh),
                   onPressed: () {
-                    ref.refresh(loremProvider);
+                    return ref.refresh(loremProvider);
                   },
                 );
               },

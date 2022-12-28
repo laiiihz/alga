@@ -24,7 +24,7 @@ class _MarkdownPreviewViewState extends State<MarkdownPreviewView> {
       actions: [
         PasteButton(onPaste: (ref, value) {
           ref.watch(_inputController).text = value;
-          ref.refresh(_inputValue);
+          return ref.refresh(_inputValue);
         }),
       ],
       child: Consumer(builder: (context, ref, _) {
@@ -34,7 +34,7 @@ class _MarkdownPreviewViewState extends State<MarkdownPreviewView> {
           minLines: small ? 16 : null,
           controller: ref.watch(_inputController),
           onChanged: (_) {
-            ref.refresh(_inputValue);
+            return ref.refresh(_inputValue);
           },
           lang: LangHighlightType.markdown,
         );

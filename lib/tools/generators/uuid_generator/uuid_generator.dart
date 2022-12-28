@@ -73,7 +73,7 @@ class _UUIDGeneratorViewState extends State<UUIDGeneratorView> {
               return ElevatedButton(
                 child: Text(S.of(context).generateUUIDs),
                 onPressed: () {
-                  ref.refresh(_results);
+                  return ref.refresh(_results);
                 },
               );
             }),
@@ -88,7 +88,7 @@ class _UUIDGeneratorViewState extends State<UUIDGeneratorView> {
                   controller: ref.watch(_countController),
                   inputFormatters: [FilteringTextInputFormatter.digitsOnly],
                   onChanged: (value) {
-                    ref.refresh(_count);
+                    return ref.refresh(_count);
                   },
                   decoration: const InputDecoration(
                     isDense: true,

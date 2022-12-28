@@ -86,23 +86,21 @@ class InfoModel {
 
   static List<InfoModel> fromAndroid(AndroidDeviceInfo info) {
     return [
-      InfoModel(title: (context) => 'Board', value: info.board ?? ''),
-      InfoModel(title: (context) => 'Bootloader', value: info.bootloader ?? ''),
-      InfoModel(title: (context) => 'Brand', value: info.brand ?? ''),
-      InfoModel(title: (context) => 'Device', value: info.device ?? ''),
-      InfoModel(title: (context) => 'Display', value: info.display ?? ''),
-      InfoModel(
-          title: (context) => 'Fingerprint', value: info.fingerprint ?? ''),
-      InfoModel(title: (context) => 'Hardware', value: info.hardware ?? ''),
-      InfoModel(title: (context) => 'Host', value: info.host ?? ''),
-      InfoModel(title: (context) => 'Id', value: info.id ?? ''),
+      InfoModel(title: (context) => 'Board', value: info.board),
+      InfoModel(title: (context) => 'Bootloader', value: info.bootloader),
+      InfoModel(title: (context) => 'Brand', value: info.brand),
+      InfoModel(title: (context) => 'Device', value: info.device),
+      InfoModel(title: (context) => 'Display', value: info.display),
+      InfoModel(title: (context) => 'Fingerprint', value: info.fingerprint),
+      InfoModel(title: (context) => 'Hardware', value: info.hardware),
+      InfoModel(title: (context) => 'Host', value: info.host),
+      InfoModel(title: (context) => 'Id', value: info.id),
       InfoModel(
           title: (context) => 'Is Physical Device',
           value: '${info.isPhysicalDevice}'),
-      InfoModel(
-          title: (context) => 'Manufacturer', value: info.manufacturer ?? ''),
-      InfoModel(title: (context) => 'Model', value: info.model ?? ''),
-      InfoModel(title: (context) => 'Product', value: info.product ?? ''),
+      InfoModel(title: (context) => 'Manufacturer', value: info.manufacturer),
+      InfoModel(title: (context) => 'Model', value: info.model),
+      InfoModel(title: (context) => 'Product', value: info.product),
       InfoModel(
           title: (context) => 'supported32BitAbis',
           value: info.supported32BitAbis.join(',')),
@@ -112,25 +110,22 @@ class InfoModel {
       InfoModel(
           title: (context) => 'supportedAbis',
           value: info.supportedAbis.join(',')),
-      InfoModel(title: (context) => 'tags', value: info.tags ?? ''),
-      InfoModel(title: (context) => 'type', value: info.type ?? ''),
+      InfoModel(title: (context) => 'tags', value: info.tags),
+      InfoModel(title: (context) => 'type', value: info.type),
       InfoModel(title: (context) => 'baseOS', value: info.version.baseOS ?? ''),
+      InfoModel(title: (context) => 'codename', value: info.version.codename),
       InfoModel(
-          title: (context) => 'codename', value: info.version.codename ?? ''),
-      InfoModel(
-          title: (context) => 'incremental',
-          value: info.version.incremental ?? ''),
+          title: (context) => 'incremental', value: info.version.incremental),
       InfoModel(
           title: (context) => 'previewSdkInt',
           value: '${info.version.previewSdkInt}'),
-      InfoModel(
-          title: (context) => 'release', value: info.version.release ?? ''),
+      InfoModel(title: (context) => 'release', value: info.version.release),
       InfoModel(title: (context) => 'sdkInt', value: '${info.version.sdkInt}'),
       InfoModel(
           title: (context) => 'securityPatch',
           value: '${info.version.securityPatch}'),
       ...info.systemFeatures.map((e) {
-        return InfoModel(title: (context) => 'feature', value: e ?? '');
+        return InfoModel(title: (context) => 'feature', value: e);
       }).toList(),
     ];
   }

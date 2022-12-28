@@ -22,7 +22,7 @@ class _UriParserViewState extends State<UriParserView> {
           actions: [
             PasteButton(onPaste: (ref, data) {
               ref.watch(_input).text = data;
-              ref.refresh(_uri);
+              return ref.refresh(_uri);
             }),
           ],
           child: Consumer(builder: (context, ref, _) {
@@ -30,7 +30,7 @@ class _UriParserViewState extends State<UriParserView> {
               lang: LangHighlightType.uri,
               controller: ref.watch(_input),
               onChanged: (_) {
-                ref.refresh(_uri);
+                return ref.refresh(_uri);
               },
             );
           }),

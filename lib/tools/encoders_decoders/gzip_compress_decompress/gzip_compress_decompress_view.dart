@@ -48,7 +48,7 @@ class _GzipCompressDecompressViewState
           actions: [
             PasteButton(onPaste: (ref, data) {
               ref.watch(_input).text = data;
-              ref.refresh(_result);
+              return ref.refresh(_result);
             }),
             Consumer(builder: (context, ref, _) {
               return IconButton(
@@ -62,9 +62,7 @@ class _GzipCompressDecompressViewState
               controller: ref.watch(_input),
               minLines: 2,
               maxLines: 12,
-              onChanged: (_) {
-                ref.refresh(_result);
-              },
+              onChanged: (_) => ref.refresh(_result),
             );
           }),
         ),

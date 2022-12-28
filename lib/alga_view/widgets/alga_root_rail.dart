@@ -59,9 +59,9 @@ class AlgaRootRail extends ConsumerWidget {
             ],
             selectedIndex: ref.watch(rootIndex),
             onDestinationSelected: (index) {
-              ref.watch(rootIndex.state).state = index;
-              ref.watch(categoryIndex.state).state = null;
-              ref.watch(toolIndex.state).state = null;
+              ref.read(rootIndex.notifier).update((state) => index);
+              ref.read(categoryIndex.notifier).update((state) => null);
+              ref.read(toolIndex.notifier).update((state) => null);
             },
           ),
         ),

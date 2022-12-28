@@ -68,7 +68,7 @@ class PasswordGeneratorView extends StatelessWidget {
               child: TextField(
                 controller: ref.watch(_lengthCtr),
                 onChanged: (_) {
-                  ref.refresh(_useLength);
+                  return ref.refresh(_useLength);
                 },
               ),
             );
@@ -80,7 +80,7 @@ class PasswordGeneratorView extends StatelessWidget {
             Consumer(builder: (context, ref, _) {
               return IconButton(
                 onPressed: () {
-                  ref.refresh(_result);
+                  return ref.refresh(_result);
                 },
                 icon: const Icon(Icons.refresh),
               );

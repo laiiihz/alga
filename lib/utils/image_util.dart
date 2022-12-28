@@ -25,7 +25,7 @@ class ImageUtil {
 
   static Future<File?> _pickDesktop() async {
     final file = await selector.openFile(
-      acceptedTypeGroups: [
+      acceptedTypeGroups: const [
         selector.XTypeGroup(
           label: 'images',
           extensions: ['jpg', 'jpeg', 'png', 'webp'],

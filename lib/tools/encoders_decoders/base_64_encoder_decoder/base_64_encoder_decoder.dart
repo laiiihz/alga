@@ -68,14 +68,14 @@ class _Base64EncoderDecoderViewState extends State<Base64EncoderDecoderView> {
             }),
             PasteButton(onPaste: (ref, data) {
               ref.read(_input).text = data;
-              ref.refresh(_result);
+              return ref.refresh(_result);
             }),
             Consumer(builder: (context, ref, _) {
               return IconButton(
                 icon: const Icon(Icons.clear),
                 onPressed: () {
                   ref.read(_input).clear();
-                  ref.refresh(_result);
+                  return ref.refresh(_result);
                 },
               );
             }),
@@ -85,9 +85,7 @@ class _Base64EncoderDecoderViewState extends State<Base64EncoderDecoderView> {
               minLines: 2,
               maxLines: 12,
               controller: ref.watch(_input),
-              onChanged: (text) {
-                ref.refresh(_result);
-              },
+              onChanged: (text) => ref.refresh(_result),
             );
           }),
         ),

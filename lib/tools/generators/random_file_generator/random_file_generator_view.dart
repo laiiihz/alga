@@ -27,7 +27,7 @@ class RandomFileGeneratorView extends StatelessWidget {
                   return TextField(
                     controller: ref.watch(_sizeValue),
                     onChanged: (_) {
-                      ref.refresh(_fileSize);
+                      return ref.refresh(_fileSize);
                     },
                   );
                 }),

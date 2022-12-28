@@ -61,7 +61,7 @@ class ColorConverterView extends StatelessWidget {
                     final opacity = color.value >> 24;
                     ref.watch(_inputController).text =
                         '#${hex.toRadixString(16).padLeft(6, '0')}${opacity.toRadixString(16).padLeft(2)}';
-                    ref.refresh(_colorProvider);
+                    return ref.refresh(_colorProvider);
                   }
                 },
                 child: const Text('Material Color'),
@@ -76,7 +76,7 @@ class ColorConverterView extends StatelessWidget {
                     final opacity = color.value >> 24;
                     ref.watch(_inputController).text =
                         '#${hex.toRadixString(16).padLeft(6, '0')}${opacity.toRadixString(16).padLeft(2)}';
-                    ref.refresh(_colorProvider);
+                    return ref.refresh(_colorProvider);
                   }
                 },
                 child: const Text('Color'),
@@ -89,9 +89,7 @@ class ColorConverterView extends StatelessWidget {
           child: Consumer(builder: (context, ref, _) {
             return TextField(
               controller: ref.watch(_inputController),
-              onChanged: (_) {
-                ref.refresh(_colorProvider);
-              },
+              onChanged: (_) => ref.refresh(_colorProvider),
             );
           }),
         ),

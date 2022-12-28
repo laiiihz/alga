@@ -17,7 +17,7 @@ class AlgaAllToolView extends ConsumerWidget {
         actions: [
           IconButton(
             onPressed: () {
-              ref.watch(useGrid.state).state = !ref.watch(useGrid);
+              ref.read(useGrid.notifier).update((state) => !state);
             },
             icon: ref.watch(useGrid)
                 ? const Icon(Icons.grid_3x3)

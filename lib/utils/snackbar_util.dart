@@ -48,5 +48,5 @@ class SnackbarUtil {
 
   cleared() {
     success(S.of(context).cleared);
-  } 
+  }
 }

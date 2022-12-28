@@ -18,7 +18,7 @@ class QuickJsView extends StatelessWidget {
             PasteButton(
               onPaste: (ref, data) {
                 ref.watch(_input).text = data;
-                ref.refresh(_result);
+                return ref.refresh(_result);
               },
             ),
           ],
@@ -34,7 +34,7 @@ class QuickJsView extends StatelessWidget {
         Consumer(builder: (context, ref, _) {
           return ElevatedButton(
             onPressed: () {
-              ref.refresh(_result);
+              return ref.refresh(_result);
             },
             child: const Text('RUN'),
           );
