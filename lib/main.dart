@@ -5,7 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:alga/l10n/l10n.dart';
-import 'package:alga/routers/app_router.dart';
+// import 'package:alga/routers/app_router.dart';
+import 'package:alga/routers/app_routes.dart';
 import 'package:alga/utils/hive_util.dart';
 import 'package:alga/utils/window_util.dart';
 import 'utils/theme_util.dart';

@@ -146,5 +146,16 @@
   "links": "Links",
   "github": "github",
   "licenses": "LICENSES",
-  "issues": "issues"
+  "issues": "issues",
+  "allApps": "All Apps",
+  "generatorApp": "Generator",
+  "photoApp": "Photo",
+  "converterApp": "Converter",
+  "textApp": "Text",
+  "designApp": "Design",
+  "encoderDecoderApp": "Encoder Decoder",
+  "formatterApp": "Formatter",
+  "frontEndApp": "Front End",
+  "infomationApp": "Infomation",
+  "serverApp": "Server"
 }

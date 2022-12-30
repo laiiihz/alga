@@ -1,17 +1,36 @@
-import 'package:alga/alga_view/alga_view.desktop.dart';
-import 'package:alga/alga_view/alga_view.mobile.dart';
+import 'package:alga/alga_view/widgets/alga_panel.dart';
 import 'package:alga/constants/import_helper.dart';
-import 'package:alga/utils/window_util.dart';
 
-class AlgaView extends StatelessWidget {
-  const AlgaView({super.key});
+class AlgaShellRouteView extends StatefulWidget {
+  const AlgaShellRouteView({super.key, required this.child});
+  final Widget child;
+
+  @override
+  State<AlgaShellRouteView> createState() => _AlgaShellRouteViewState();
+}
+
+class _AlgaShellRouteViewState extends State<AlgaShellRouteView> {
+  @override
+  void didUpdateWidget(covariant AlgaShellRouteView oldWidget) {
+    super.didUpdateWidget(oldWidget);
+  }
 
   @override
   Widget build(BuildContext context) {
-    if (WindowUtil.isMobileDevice) {
-      return const AlgaViewMobile();
-    } else {
-      return const AlgaViewDesktop();
-    }
+    return Material(
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          const AlgaPanel(),
+          const VerticalDivider(width: 1),
+          Expanded(
+            child: Scaffold(
+                body: ClipRect(
+              child: widget.child,
+            )),
+          ),
+        ],
+      ),
+    );
   }
 }

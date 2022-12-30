@@ -1,5 +1,6 @@
 import 'package:alga/utils/hive_boxes/app_config_box.dart';
 import 'package:alga/widgets/app_show_menu.dart';
+import 'package:go_router/go_router.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
 import 'package:alga/constants/import_helper.dart';
@@ -105,7 +106,7 @@ class _SettingsViewState extends State<SettingsView> {
             title: Text(context.tr.about + context.tr.appName),
             subtitle: Text('${context.tr.version}$_buildName+$_buildNumber'),
             onTap: () {
-              showLicensePage(context: context);
+              GoRouter.of(context).push('/settings/licenses');
             },
           ),
         ])),

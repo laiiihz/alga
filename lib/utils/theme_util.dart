@@ -49,6 +49,18 @@ class ThemeUtil {
         ),
         color: colorScheme.secondaryContainer,
       ),
+      tabBarTheme: TabBarTheme(
+        labelColor: colorScheme.primary,
+        indicator: BoxDecoration(
+          border: Border(
+            bottom: BorderSide(
+              color: colorScheme.primary,
+              width: 2
+            ),
+          ),
+        ),
+        indicatorSize: TabBarIndicatorSize.label,
+      ),
       switchTheme: SwitchThemeData(
         thumbColor: MaterialStateProperty.resolveWith((states) {
           if (states.contains(MaterialState.disabled)) return null;

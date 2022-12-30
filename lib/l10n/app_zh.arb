@@ -143,5 +143,16 @@
   "links": "链接",
   "github": "github",
   "licenses": "许可证",
-  "issues": "提交问题"
+  "issues": "提交问题",
+  "allApps": "所有应用",
+  "generatorApp": "生成器",
+  "photoApp": "图片处理",
+  "converterApp": "类型转换",
+  "textApp": "文本",
+  "designApp": "设计",
+  "encoderDecoderApp": "编码解码",
+  "formatterApp": "格式化",
+  "frontEndApp": "前端",
+  "infomationApp": "信息",
+  "serverApp": "服务器"
 }
