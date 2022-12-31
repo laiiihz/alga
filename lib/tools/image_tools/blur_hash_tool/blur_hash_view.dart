@@ -26,18 +26,16 @@ class _BlurHashViewState extends State<BlurHashView> {
       title: Text(S.of(context).blurHashTool),
       children: [
         ToolViewWrapper(children: [
-          ToolViewConfig(
-            leading: const Icon(Icons.image),
-            title: Text(S.of(context).pickImage),
-            trailing: Consumer(builder: (context, ref, _) {
-              return TextButton(
-                onPressed: () async {
-                  await ref.read(_currentFile.notifier).pick();
-                },
-                child: Text(S.of(context).pickImagePick),
-              );
-            }),
-          ),
+          Consumer(builder: (context, ref, _) {
+            return ToolViewConfig(
+              leading: const Icon(Icons.image),
+              title: Text(S.of(context).pickImage),
+              trailing: Text(S.of(context).pickImagePick),
+              onPressed: () async {
+                await ref.read(_currentFile.notifier).pick();
+              },
+            );
+          }),
         ]),
         SizedBox(
           height: 140,

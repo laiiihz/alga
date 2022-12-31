@@ -50,39 +50,31 @@ class _StaticServerToolViewState extends State<StaticServerToolView> {
                 ),
               ),
             ),
-            ToolViewConfig(
+            ToolViewSwitchConfig(
               leading: const Icon(Icons.list),
               title: const Text('List Directories'),
-              trailing: Switch(
-                value: _provider.listDirectories,
-                onChanged: (state) {
-                  _provider.listDirectories = state;
-                },
-              ),
+              value: (ref) => _provider.listDirectories,
+              onChanged: (value, ref) => _provider.listDirectories = value,
             ),
-            ToolViewConfig(
+            ToolViewSwitchConfig(
               leading: const Icon(Icons.network_check),
               title: const Text('Accessible on Internet'),
-              trailing: Switch(
-                value: _provider.accessOnNet,
-                onChanged: (state) {
-                  _provider.accessOnNet = state;
-                },
-              ),
+              value: (ref) => _provider.accessOnNet,
+              onChanged: (state, ref) {
+                _provider.accessOnNet = state;
+              },
             ),
             ToolViewConfig(
               title: const Text('Open file'),
               leading: const Icon(Icons.file_open),
-              trailing: IconButton(
-                onPressed: () async {
-                  bool result = await _provider.openFile();
-                  if (!result && mounted) {
-                    ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(content: Text('canceled')));
-                  }
-                },
-                icon: const Icon(Icons.file_open),
-              ),
+              trailing: const Icon(Icons.file_open),
+              onPressed: () async {
+                bool result = await _provider.openFile();
+                if (!result && mounted) {
+                  ScaffoldMessenger.of(context)
+                      .showSnackBar(const SnackBar(content: Text('canceled')));
+                }
+              },
             ),
             ToolViewConfig(
               leading: const Icon(Icons.podcasts_sharp),

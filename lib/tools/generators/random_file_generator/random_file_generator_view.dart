@@ -16,40 +16,44 @@ class RandomFileGeneratorView extends StatelessWidget {
     return ScrollableToolView(
       title: const Text('Random File Generator'),
       children: [
-        ToolViewConfig(
-          title: const Text('File Size'),
-          trailing: Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              SizedBox(
-                width: 60,
-                child: Consumer(builder: (context, ref, _) {
-                  return TextField(
-                    controller: ref.watch(_sizeValue),
-                    onChanged: (_) {
-                      return ref.refresh(_fileSize);
-                    },
-                  );
-                }),
+        ToolViewWrapper(
+          children: [
+            ToolViewConfig(
+              title: const Text('File Size'),
+              trailing: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  SizedBox(
+                    width: 60,
+                    child: Consumer(builder: (context, ref, _) {
+                      return TextField(
+                        controller: ref.watch(_sizeValue),
+                        onChanged: (_) {
+                          return ref.refresh(_fileSize);
+                        },
+                      );
+                    }),
+                  ),
+                  const SizedBox(width: 4),
+                  Consumer(builder: (context, ref, _) {
+                    return PopupMenuButton<FileType>(
+                      itemBuilder: (context) {
+                        return FileType.values
+                            .map((e) =>
+                                PopupMenuItem(value: e, child: Text(e.name)))
+                            .toList();
+                      },
+                      initialValue: ref.watch(_sizeType),
+                      child: Text(ref.watch(_sizeType).name),
+                      onSelected: (state) {
+                        ref.watch(_sizeType.notifier).state = state;
+                      },
+                    );
+                  })
+                ],
               ),
-              const SizedBox(width: 4),
-              Consumer(builder: (context, ref, _) {
-                return PopupMenuButton<FileType>(
-                  itemBuilder: (context) {
-                    return FileType.values
-                        .map(
-                            (e) => PopupMenuItem(value: e, child: Text(e.name)))
-                        .toList();
-                  },
-                  initialValue: ref.watch(_sizeType),
-                  child: Text(ref.watch(_sizeType).name),
-                  onSelected: (state) {
-                    ref.watch(_sizeType.notifier).state = state;
-                  },
-                );
-              })
-            ],
-          ),
+            ),
+          ],
         ),
         Consumer(builder: (context, ref, _) {
           return ElevatedButton.icon(

@@ -19,17 +19,12 @@ class _SassCssGeneratorViewState extends State<SassCssGeneratorView> {
       children: [
         ToolViewWrapper(
           children: [
-            ToolViewConfig(
+            ToolViewSwitchConfig(
               leading: const Icon(Icons.compress),
               title: Text(S.of(context).compress),
-              trailing: Consumer(builder: (context, ref, _) {
-                return Switch(
-                  value: ref.watch(_compress),
-                  onChanged: (state) {
-                    ref.read(_compress.notifier).state = state;
-                  },
-                );
-              }),
+              value: (ref) => ref.watch(_compress),
+              onChanged: (state, ref) =>
+                  ref.read(_compress.notifier).state = state,
             ),
             ToolViewConfig(
               title: const Text('Source Type'),

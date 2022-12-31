@@ -46,17 +46,13 @@ class _Base64EncoderDecoderViewState extends State<Base64EncoderDecoderView> {
                 );
               }),
             ),
-            ToolViewConfig(
+            ToolViewSwitchConfig(
               leading: const Icon(Icons.link),
               title: Text(S.of(context).urlSafe),
-              trailing: Consumer(builder: (context, ref, _) {
-                return Switch(
-                  value: ref.watch(_urlSafe),
-                  onChanged: (state) {
-                    ref.read(_urlSafe.notifier).state = state;
-                  },
-                );
-              }),
+              value: (ref) => ref.watch(_urlSafe),
+              onChanged: (state, ref) {
+                ref.read(_urlSafe.notifier).state = state;
+              },
             ),
           ],
         ),

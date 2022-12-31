@@ -53,16 +53,12 @@ class _QrcodeViewState extends State<QrcodeView> {
                 );
               }),
             ),
-            ToolViewConfig(
+            ToolViewSwitchConfig(
               title: Text(S.of(context).qrGapless),
-              trailing: Consumer(builder: (context, ref, _) {
-                return Switch(
-                  value: ref.watch(_gapless),
-                  onChanged: (state) {
-                    ref.read(_gapless.notifier).state = state;
-                  },
-                );
-              }),
+              value: (ref) => ref.watch(_gapless),
+              onChanged: (state, ref) {
+                ref.read(_gapless.notifier).state = state;
+              },
             ),
           ],
         ),
