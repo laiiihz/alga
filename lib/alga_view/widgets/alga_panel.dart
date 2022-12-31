@@ -1,6 +1,5 @@
 import 'package:alga/alga_view/widgets/alga_panel_item.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:alga/constants/import_helper.dart';
 
 class AlgaPanel extends ConsumerStatefulWidget {
   const AlgaPanel({super.key});
@@ -38,17 +37,23 @@ class _AlgaPanelState extends ConsumerState<AlgaPanel> {
           Expanded(
             child: ListView(
               padding: const EdgeInsets.all(4),
-              children: const [
+              children: [
                 AlgaPanelItem(
-                  icon: Icon(Icons.category_outlined),
-                  activeIcon: Icon(Icons.category),
-                  title: Text('应用'),
+                  icon: const Icon(Icons.category_outlined),
+                  activeIcon: const Icon(Icons.category),
+                  title: Text(context.tr.allApps),
                   path: '/apps',
                 ),
                 AlgaPanelItem(
-                  icon: Icon(Icons.settings_outlined),
-                  activeIcon: Icon(Icons.settings),
-                  title: Text('设置'),
+                  icon: const Icon(Icons.category_outlined),
+                  activeIcon: const Icon(Icons.category),
+                  title: Text(context.tr.favorite),
+                  path: '/favorite',
+                ),
+                AlgaPanelItem(
+                  icon: const Icon(Icons.settings_outlined),
+                  activeIcon: const Icon(Icons.settings),
+                  title: Text(context.tr.settings),
                   path: '/settings',
                 ),
               ],
@@ -57,7 +62,7 @@ class _AlgaPanelState extends ConsumerState<AlgaPanel> {
         ],
       ),
     );
-    result = SizedBox(width: 120, child: result);
+    result = SizedBox(width: 132, child: result);
 
     return result;
   }

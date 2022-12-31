@@ -30,6 +30,7 @@ import 'package:alga/tools/server_tools/static_server_tool/static_server_tool_vi
 import 'package:alga/tools/text_tools/date_parser/date_parser_view.dart';
 import 'package:alga/tools/text_tools/markdown_preview/markdown_preview_view.dart';
 import 'package:alga/tools/text_tools/regex_tester/regex_tester_view.dart';
+import 'package:alga/views/favorite_view.dart';
 import 'package:alga/views/settings_view.dart';
 import 'package:go_router/go_router.dart';
 
@@ -46,7 +47,7 @@ final appRouter = GoRouter(
       routes: [
         GoRoute(
           path: '/favorite',
-          builder: (context, state) => const Scaffold(),
+          builder: (context, state) => const FavoriteView(),
         ),
         GoRoute(
           path: '/apps',

@@ -157,5 +157,6 @@
   "formatterApp": "Formatter",
   "frontEndApp": "Front End",
   "infomationApp": "Infomation",
-  "serverApp": "Server"
+  "serverApp": "Server",
+  "favorite": "Favorite"
 }
