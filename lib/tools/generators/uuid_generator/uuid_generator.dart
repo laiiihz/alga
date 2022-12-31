@@ -21,29 +21,21 @@ class _UUIDGeneratorViewState extends State<UUIDGeneratorView> {
       children: [
         ToolViewWrapper(
           children: [
-            ToolViewConfig(
+            ToolViewSwitchConfig(
               leading: const Icon(Icons.horizontal_rule),
               title: Text(S.of(context).hypens),
-              trailing: Consumer(builder: (context, ref, _) {
-                return Switch(
-                  value: ref.watch(_hypens),
-                  onChanged: (value) {
-                    ref.read(_hypens.notifier).state = value;
-                  },
-                );
-              }),
+              value: (ref) => ref.watch(_hypens),
+              onChanged: (value, ref) {
+                ref.read(_hypens.notifier).state = value;
+              },
             ),
-            ToolViewConfig(
+            ToolViewSwitchConfig(
               leading: const Icon(Icons.text_fields),
               title: Text(S.of(context).upperCase),
-              trailing: Consumer(builder: (context, ref, _) {
-                return Switch(
-                  value: ref.watch(_upperCase),
-                  onChanged: (value) {
-                    ref.read(_upperCase.notifier).state = value;
-                  },
-                );
-              }),
+              value: (ref) => ref.watch(_upperCase),
+              onChanged: (value, ref) {
+                ref.read(_upperCase.notifier).state = value;
+              },
             ),
             ToolViewConfig(
               leading: const Icon(Icons.info_outline),

@@ -1,6 +1,7 @@
 import 'package:alga/constants/import_helper.dart';
 import 'package:alga/models/app_atom.dart';
 import 'package:alga/models/app_category.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:go_router/go_router.dart';
 
 class AlgaAppView extends StatefulWidget {
@@ -109,7 +110,7 @@ class AppCategoryView extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   Row(
                     children: [
@@ -128,17 +129,17 @@ class AppCategoryView extends StatelessWidget {
                       ),
                     ],
                   ),
-                  const SizedBox(height: 4),
+                  const SizedBox(height: 8),
                   Expanded(
-                    child: Text(
+                    child: AutoSizeText(
                       item.title(context),
-                      textAlign: TextAlign.center,
+                      textAlign: TextAlign.start,
                       style: TextStyle(
                         color: secondColor,
-                        fontSize: 14,
+                        fontSize: 18,
                       ),
                     ),
-                  ),
+                  )
                 ],
               ),
             ),

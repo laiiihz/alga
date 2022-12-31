@@ -16,33 +16,19 @@ class _HashGeneratorViewState extends State<HashGeneratorView> {
       children: [
         ToolViewWrapper(
           children: [
-            ToolViewConfig(
+            ToolViewSwitchConfig(
               leading: const Icon(Icons.text_fields),
               title: Text(S.of(context).upperCase),
-              trailing: Consumer(
-                builder: (context, ref, _) {
-                  return Switch(
-                    value: ref.watch(hashUpperCase),
-                    onChanged: (value) {
-                      ref.read(hashUpperCase.notifier).state = value;
-                    },
-                  );
-                },
-              ),
+              value: (ref) => ref.watch(hashUpperCase),
+              onChanged: (value, ref) =>
+                  ref.read(hashUpperCase.notifier).state = value,
             ),
-            ToolViewConfig(
+            ToolViewSwitchConfig(
               title: Text(S.of(context).hashHMAC),
               subtitle: Text(S.of(context).hashHMACDes),
-              trailing: Consumer(
-                builder: (context, ref, _) {
-                  return Switch(
-                    value: ref.watch(showHmac),
-                    onChanged: (value) {
-                      ref.read(showHmac.notifier).state = value;
-                    },
-                  );
-                },
-              ),
+              value: (ref) => ref.watch(showHmac),
+              onChanged: (value, ref) =>
+                  ref.read(showHmac.notifier).state = value,
             ),
           ],
         ),
