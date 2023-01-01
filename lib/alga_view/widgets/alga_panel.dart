@@ -45,8 +45,8 @@ class _AlgaPanelState extends ConsumerState<AlgaPanel> {
                   path: '/apps',
                 ),
                 AlgaPanelItem(
-                  icon: const Icon(Icons.category_outlined),
-                  activeIcon: const Icon(Icons.category),
+                  icon: const Icon(Icons.favorite_outline_rounded),
+                  activeIcon: const Icon(Icons.favorite_rounded),
                   title: Text(context.tr.favorite),
                   path: '/favorite',
                 ),

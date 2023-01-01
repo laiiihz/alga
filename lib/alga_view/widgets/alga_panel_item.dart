@@ -27,11 +27,18 @@ class AlgaPanelItem extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 8),
         child: Row(
           children: [
-            Material(
-              color: active
-                  ? Theme.of(context).colorScheme.primary
-                  : Colors.transparent,
-              borderRadius: BorderRadius.circular(8),
+            AnimatedContainer(
+              duration: kThemeAnimationDuration,
+              curve: Curves.easeInOutCubic,
+              decoration: BoxDecoration(
+                color: Theme.of(context)
+                    .colorScheme
+                    .primary
+                    .withOpacity(active ? 1 : 0),
+                borderRadius: active
+                    ? BorderRadius.circular(8)
+                    : BorderRadius.circular(32),
+              ),
               child: Padding(
                 padding: const EdgeInsets.all(4),
                 child: IconTheme(
