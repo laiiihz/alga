@@ -4,7 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:alga/l10n/l10n.dart';
 import 'package:alga/utils/snackbar_util.dart';
-
+@Deprecated('use clearButtonWidget')
 class ClearButton extends StatelessWidget {
   final Function(WidgetRef ref) onClear;
   const ClearButton({Key? key, required this.onClear}) : super(key: key);

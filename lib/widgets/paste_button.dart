@@ -6,6 +6,7 @@ import 'package:alga/l10n/l10n.dart';
 import 'package:alga/utils/clipboard_util.dart';
 import 'package:alga/utils/snackbar_util.dart';
 
+@Deprecated('use PasteButtonWidget')
 class PasteButton extends StatelessWidget {
   final Function(WidgetRef ref, String data) onPaste;
   const PasteButton({Key? key, required this.onPaste}) : super(key: key);

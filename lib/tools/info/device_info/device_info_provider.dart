@@ -7,15 +7,15 @@ import 'package:filesize/filesize.dart';
 
 class DeviceInfoProvider {
   static const macos = 'macos';
-  static const andrid = 'android';
+  static const android = 'android';
   final _deviceInfo = DeviceInfoPlugin();
   BaseDeviceInfo? _currentInfo;
   Future<bool> init() async {
     switch (Platform.operatingSystem) {
-      case 'macos':
+      case macos:
         _currentInfo = await _deviceInfo.macOsInfo;
         return true;
-      case 'android':
+      case android:
         _currentInfo = await _deviceInfo.androidInfo;
         return true;
       default:
@@ -28,7 +28,7 @@ class DeviceInfoProvider {
     switch (Platform.operatingSystem) {
       case macos:
         return InfoModel.fromMacos(_currentInfo as MacOsDeviceInfo);
-      case andrid:
+      case android:
         return InfoModel.fromAndroid(_currentInfo as AndroidDeviceInfo);
       default:
         return [];

@@ -1,9 +1,15 @@
+# CHANGELOG
+
 ## next
 
 * [feature] Material 3 Appbar.
 * [feature] URL encoder/decoder add more options #5 thanks @RiqueAM.
+* [feature] redesign app.
+* [feature] regex tester add error message and more options.
+* [fix] fix password generator algorithm.
 
 ## 0.5.2+25
+
 * [feature] Material 3 support.
 * [feature] redesign app ui.
 * [feature] automatic primary color from platform.
@@ -16,7 +22,7 @@
 * [update] change default hot key.
 * [fix] fix abi build issue.
 
-# 0.3.5+16
+## 0.3.5+16
 
 * [feature] markdown: now can copy markdown html.
 * [feature] add Chinese SM3 hash tool. 

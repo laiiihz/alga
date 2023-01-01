@@ -13,26 +13,29 @@ class FavoriteView extends StatelessWidget {
           SliverAppBar.large(
             title: Text(context.tr.favorite),
           ),
-          ValueListenableBuilder(
-            valueListenable: FavoriteBox.listenerAll,
-            builder: (context, _, __) {
-              final items = FavoriteBox.items;
-              return SliverGrid(
-                delegate: SliverChildBuilderDelegate(
-                  (context, index) {
-                    final item = items[index];
-                    return AlgaAppItem(item);
-                  },
-                  childCount: items.length,
-                ),
-                gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-                  maxCrossAxisExtent: 240,
-                  childAspectRatio: 2,
-                  mainAxisSpacing: 4,
-                  crossAxisSpacing: 4,
-                ),
-              );
-            },
+          SliverPadding(
+            padding: const EdgeInsets.all(16),
+            sliver: ValueListenableBuilder(
+              valueListenable: FavoriteBox.listenerAll,
+              builder: (context, _, __) {
+                final items = FavoriteBox.items;
+                return SliverGrid(
+                  delegate: SliverChildBuilderDelegate(
+                    (context, index) {
+                      final item = items[index];
+                      return AlgaAppItem(item);
+                    },
+                    childCount: items.length,
+                  ),
+                  gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+                    maxCrossAxisExtent: 240,
+                    childAspectRatio: 2,
+                    mainAxisSpacing: 4,
+                    crossAxisSpacing: 4,
+                  ),
+                );
+              },
+            ),
           ),
         ],
       ),
