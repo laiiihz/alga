@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:device_info_plus/device_info_plus.dart';
 
 import 'package:alga/constants/import_helper.dart';
+import 'package:filesize/filesize.dart';
 
 class DeviceInfoProvider {
   static const macos = 'macos';
@@ -68,19 +69,37 @@ class InfoModel {
 
   static List<InfoModel> fromMacos(MacOsDeviceInfo info) {
     return [
-      InfoModel(title: (context) => 'Active CPUs', value: '${info.activeCPUs}'),
-      InfoModel(title: (context) => 'Arch', value: info.arch),
-      InfoModel(title: (context) => 'Computer Name', value: info.computerName),
       InfoModel(
-          title: (context) => 'CPU Frequency', value: '${info.cpuFrequency}'),
-      InfoModel(title: (context) => 'Host Name', value: info.hostName),
+        title: (context) => context.tr.activeCPUs,
+        value: '${info.activeCPUs}',
+      ),
+      InfoModel(title: (context) => context.tr.deviceArch, value: info.arch),
       InfoModel(
-          title: (context) => 'Kernel Version', value: info.kernelVersion),
-      InfoModel(title: (context) => 'Memory Size', value: '${info.memorySize}'),
-      InfoModel(title: (context) => 'Model', value: info.model),
-      InfoModel(title: (context) => 'OS Release', value: info.osRelease),
+        title: (context) => context.tr.computerName,
+        value: info.computerName,
+      ),
       InfoModel(
-          title: (context) => 'System GUID', value: info.systemGUID ?? ''),
+        title: (context) => context.tr.frequencyOfCPU,
+        value: '${info.cpuFrequency}',
+      ),
+      InfoModel(title: (context) => context.tr.hostName, value: info.hostName),
+      InfoModel(
+        title: (context) => context.tr.kernelVersion,
+        value: info.kernelVersion,
+      ),
+      InfoModel(
+        title: (context) => context.tr.memorySize,
+        value: filesize(info.memorySize),
+      ),
+      InfoModel(title: (context) => context.tr.deviceModel, value: info.model),
+      InfoModel(
+        title: (context) => context.tr.osRelease,
+        value: info.osRelease,
+      ),
+      InfoModel(
+        title: (context) => context.tr.systemGUID,
+        value: info.systemGUID ?? '',
+      ),
     ];
   }
 

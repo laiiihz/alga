@@ -71,6 +71,7 @@ dependencies:
   tuple: ^2.0.1
   multi_split_view: ^2.1.0
   auto_size_text: ^3.0.0
+  filesize: ^2.0.1
 
 dev_dependencies:
   flutter_test:

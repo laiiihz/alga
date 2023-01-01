@@ -337,6 +337,13 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "0.9.1"
+  filesize:
+    dependency: "direct main"
+    description:
+      name: filesize
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "2.0.1"
   fixnum:
     dependency: transitive
     description:
