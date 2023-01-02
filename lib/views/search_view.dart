@@ -1,4 +1,9 @@
+import 'dart:ui';
+
+import 'package:alga/alga_view/all_apps/alga_app_item.dart';
 import 'package:alga/constants/import_helper.dart';
+import 'package:alga/models/app_atom.dart';
+import 'package:alga/widgets/asset_svg.dart';
 
 class SearchView extends StatefulWidget {
   const SearchView({super.key});
@@ -9,10 +14,40 @@ class SearchView extends StatefulWidget {
 
 class _SearchViewState extends State<SearchView> {
   final _textController = TextEditingController();
+
+  List<AppAtom> _items = <AppAtom>[];
+
+  @override
+  void initState() {
+    super.initState();
+    _items = _findAtom(_textController.text);
+
+    _textController.addListener(() {
+      _items = _findAtom(_textController.text);
+      if (mounted) setState(() {});
+    });
+  }
+
   @override
   void dispose() {
     _textController.dispose();
     super.dispose();
+  }
+
+  List<AppAtom> _findAtom(String query) {
+    if (query.isEmpty) return AppAtom.items.toList();
+    query = query.toLowerCase();
+    final results = <AppAtom>[];
+
+    for (var element in AppAtom.items) {
+      if (element.path.contains(query)) {
+        results.add(element);
+      }
+      if (element.title(context).contains(query)) {
+        results.add(element);
+      }
+    }
+    return results;
   }
 
   @override
@@ -58,7 +93,29 @@ class _SearchViewState extends State<SearchView> {
               ),
             ),
           ),
-          // SliverGrid(delegate: delegate, gridDelegate: gridDelegate),
+          if (_items.isNotEmpty)
+            SliverPadding(
+              padding: const EdgeInsets.all(16),
+              sliver: SliverGrid(
+                delegate: SliverChildBuilderDelegate(
+                  (context, index) {
+                    final item = _items[index];
+                    return AlgaAppItem(item);
+                  },
+                  childCount: _items.length,
+                ),
+                gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+                  maxCrossAxisExtent: 240,
+                  childAspectRatio: 2,
+                  mainAxisSpacing: 4,
+                  crossAxisSpacing: 4,
+                ),
+              ),
+            ),
+          if (_items.isEmpty)
+            const SliverToBoxAdapter(
+              child: AssetSvg('assets/images/not_found.svg'),
+            ),
         ],
       ),
     );
@@ -73,7 +130,19 @@ class _SearchPersistentHeader extends SliverPersistentHeaderDelegate {
   @override
   Widget build(
       BuildContext context, double shrinkOffset, bool overlapsContent) {
-    return SizedBox(width: double.infinity, height: _kHeight, child: child);
+    return ClipRect(
+      child: BackdropFilter(
+        filter: ImageFilter.blur(sigmaX: 4, sigmaY: 4),
+        child: Material(
+          color: Theme.of(context).colorScheme.background.withOpacity(0.8),
+          child: SizedBox(
+            width: double.infinity,
+            height: _kHeight,
+            child: child,
+          ),
+        ),
+      ),
+    );
   }
 
   @override

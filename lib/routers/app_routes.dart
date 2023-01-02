@@ -35,9 +35,15 @@ import 'package:alga/views/search_view.dart';
 import 'package:alga/views/settings_view.dart';
 import 'package:go_router/go_router.dart';
 
+final GlobalKey<NavigatorState> _routerKey =
+    GlobalKey<NavigatorState>(debugLabel: 'go_router');
 final GlobalKey<NavigatorState> _shellNavigatorKey =
     GlobalKey<NavigatorState>(debugLabel: 'shell');
+
+BuildContext get routerContext => _routerKey.currentContext!;
+
 final appRouter = GoRouter(
+  navigatorKey: _routerKey,
   initialLocation: '/apps',
   routes: [
     ShellRoute(
