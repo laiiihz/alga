@@ -31,6 +31,7 @@ import 'package:alga/tools/text_tools/date_parser/date_parser_view.dart';
 import 'package:alga/tools/text_tools/markdown_preview/markdown_preview_view.dart';
 import 'package:alga/tools/text_tools/regex_tester/regex_tester_app_view.dart';
 import 'package:alga/views/favorite_view.dart';
+import 'package:alga/views/search_view.dart';
 import 'package:alga/views/settings_view.dart';
 import 'package:go_router/go_router.dart';
 
@@ -48,6 +49,10 @@ final appRouter = GoRouter(
         GoRoute(
           path: '/favorite',
           builder: (context, state) => const FavoriteView(),
+        ),
+        GoRoute(
+          path: '/search',
+          builder: (context, state) => const SearchView(),
         ),
         GoRoute(
           path: '/apps',

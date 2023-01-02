@@ -63,6 +63,11 @@ class _AppCategoriesPanelState extends State<AppCategoriesPanel> {
     return TabBar(
       isScrollable: true,
       controller: parentState.tabController,
+      indicator: BoxDecoration(
+        color: Theme.of(context).colorScheme.primaryContainer,
+        borderRadius: const BorderRadius.vertical(top: Radius.circular(2)),
+      ),
+      indicatorPadding: const EdgeInsets.only(top: 44, left: 0, right: 0),
       tabs: [
         Tab(text: S.of(context).allApps),
         ...AppCategory.items.map(

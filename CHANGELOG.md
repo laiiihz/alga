@@ -6,6 +6,7 @@
 * [feature] URL encoder/decoder add more options #5 thanks @RiqueAM.
 * [feature] redesign app.
 * [feature] regex tester add error message and more options.
+* [feature] add favorite collection.
 * [fix] fix password generator algorithm.
 
 ## 0.5.2+25

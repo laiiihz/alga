@@ -10,9 +10,7 @@ class FavoriteView extends StatelessWidget {
     return Scaffold(
       body: CustomScrollView(
         slivers: [
-          SliverAppBar.large(
-            title: Text(context.tr.favorite),
-          ),
+          SliverAppBar.large(title: Text(context.tr.favorite)),
           SliverPadding(
             padding: const EdgeInsets.all(16),
             sliver: ValueListenableBuilder(
