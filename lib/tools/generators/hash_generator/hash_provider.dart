@@ -79,7 +79,7 @@ final optionalController =
 final hashUpperCase = StateProvider.autoDispose<bool>((ref) => false);
 final showHmac = StateProvider.autoDispose<bool>((ref) => false);
 
-final hashResults = StateProvider.autoDispose<List<HashResult>>((ref) {
+final hashResults = Provider.autoDispose<List<HashResult>>((ref) {
   bool showHmacData = ref.watch(showHmac);
   bool upperCaseData = ref.watch(hashUpperCase);
   String inputData = ref.watch(inputController).text;

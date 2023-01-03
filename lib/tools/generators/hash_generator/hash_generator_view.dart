@@ -1,5 +1,8 @@
 import 'package:alga/constants/import_helper.dart';
 import 'package:alga/tools/generators/hash_generator/hash_provider.dart';
+import 'package:alga/widgets/clear_button_widget.dart';
+import 'package:alga/widgets/copy_button_widget.dart';
+import 'package:alga/widgets/paste_button_widget.dart';
 
 class HashGeneratorView extends StatefulWidget {
   const HashGeneratorView({super.key});
@@ -36,16 +39,8 @@ class _HashGeneratorViewState extends State<HashGeneratorView> {
           return AppTitleWrapper(
             title: S.of(context).input,
             actions: [
-              PasteButton(onPaste: (ref, data) {
-                ref.watch(inputController).text = data;
-                return ref.refresh(hashResults);
-              }),
-              IconButton(
-                icon: const Icon(Icons.clear),
-                onPressed: () {
-                  ref.watch(inputController).clear();
-                },
-              ),
+              PasteButtonWidget(ref.watch(inputController)),
+              ClearButtonWidget(ref.watch(inputController)),
             ],
             child: TextField(
               minLines: 2,
@@ -79,16 +74,10 @@ class _HashGeneratorViewState extends State<HashGeneratorView> {
             children: ref.watch(hashResults).map((e) {
               return AppTitleWrapper(
                 title: e.title(context),
-                child: Row(
-                  children: [
-                    Expanded(child: AppTextField(text: e.result)),
-                    const SizedBox(width: 8),
-                    IconButton(
-                      icon: const Icon(Icons.copy),
-                      onPressed: e.copy,
-                    ),
-                  ],
-                ),
+                actions: [
+                  CopyButtonWidget(text: e.result),
+                ],
+                child: AppTextField(text: e.result),
               );
             }).toList(),
           );

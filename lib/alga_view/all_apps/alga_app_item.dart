@@ -1,6 +1,7 @@
 import 'package:alga/constants/import_helper.dart';
 import 'package:alga/models/app_atom.dart';
 import 'package:alga/utils/hive_boxes/favorite_box.dart';
+import 'package:alga/widgets/custom_icon_button.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:go_router/go_router.dart';
 
@@ -13,10 +14,11 @@ class AlgaAppItem extends StatelessWidget {
     final color = Theme.of(context).colorScheme.secondaryContainer;
     final secondColor = Theme.of(context).colorScheme.onSecondaryContainer;
     final background = Theme.of(context).colorScheme.primaryContainer;
-    Widget iconButton() => IconButton(
+    Widget iconButton() => CustomIconButton(
           onPressed: () {
             FavoriteBox.update(item);
           },
+          tooltip: context.tr.favorite,
           icon: Icon(
             FavoriteBox.get(item)
                 ? Icons.favorite_rounded
@@ -33,7 +35,7 @@ class AlgaAppItem extends StatelessWidget {
         },
       );
     }
-    return Card(
+    return Material(
       color: color,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
       child: InkWell(
@@ -41,43 +43,44 @@ class AlgaAppItem extends StatelessWidget {
         onTap: () {
           GoRouter.of(context).go('/apps/${item.path}');
         },
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              Row(
-                children: [
-                  Material(
-                    color: background,
-                    borderRadius: BorderRadius.circular(12),
-                    child: SizedBox(
-                      height: 44,
-                      width: 44,
-                      child: Padding(
-                        padding: const EdgeInsets.all(8),
-                        child: item.icon,
-                      ),
-                      // child: item.,
-                    ),
+        child: Stack(
+          children: [
+            Positioned(
+              left: 4,
+              top: 4,
+              child: Material(
+                color: background,
+                borderRadius: BorderRadius.circular(12),
+                child: SizedBox(
+                  height: 56,
+                  width: 56,
+                  child: Padding(
+                    padding: const EdgeInsets.all(8),
+                    child: item.icon,
                   ),
-                  const Spacer(),
-                  listenableIconButton,
-                ],
-              ),
-              const SizedBox(height: 8),
-              Expanded(
-                child: AutoSizeText(
-                  item.title(context),
-                  textAlign: TextAlign.start,
-                  style: TextStyle(
-                    color: secondColor,
-                    fontSize: 18,
-                  ),
+                  // child: item.,
                 ),
-              )
-            ],
-          ),
+              ),
+            ),
+            Positioned(
+              right: 0,
+              top: 0,
+              child: listenableIconButton,
+            ),
+            const SizedBox(height: 8),
+            Positioned(
+              left: 8,
+              right: 8,
+              bottom: 8,
+              child: AutoSizeText(
+                item.title(context),
+                maxLines: 2,
+                style: Theme.of(context).textTheme.button?.copyWith(
+                      color: Theme.of(context).colorScheme.onPrimaryContainer,
+                    ),
+              ),
+            ),
+          ],
         ),
       ),
     );
