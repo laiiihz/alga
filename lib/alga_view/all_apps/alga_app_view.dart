@@ -92,7 +92,7 @@ class AppCategoryView extends StatelessWidget {
     return GridView.builder(
       padding: const EdgeInsets.all(16),
       gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-        maxCrossAxisExtent: 240,
+        maxCrossAxisExtent: 200,
         childAspectRatio: 1.618,
         mainAxisSpacing: 8,
         crossAxisSpacing: 8,

@@ -12,7 +12,6 @@ class AlgaAppItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final color = Theme.of(context).colorScheme.secondaryContainer;
-    final secondColor = Theme.of(context).colorScheme.onSecondaryContainer;
     final background = Theme.of(context).colorScheme.primaryContainer;
     Widget iconButton() => CustomIconButton(
           onPressed: () {

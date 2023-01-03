@@ -26,10 +26,10 @@ class FavoriteView extends StatelessWidget {
                     childCount: items.length,
                   ),
                   gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-                    maxCrossAxisExtent: 240,
-                    childAspectRatio: 2,
-                    mainAxisSpacing: 4,
-                    crossAxisSpacing: 4,
+                    maxCrossAxisExtent: 200,
+                    childAspectRatio: 1.618,
+                    mainAxisSpacing: 8,
+                    crossAxisSpacing: 8,
                   ),
                 );
               },
