@@ -61,34 +61,15 @@ class _SearchViewState extends State<SearchView> {
             delegate: _SearchPersistentHeader(
               child: Padding(
                 padding: const EdgeInsets.all(16),
-                child: Row(
-                  children: [
-                    Expanded(
-                      child: TextField(
-                        controller: _textController,
-                        decoration: const InputDecoration(
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.horizontal(
-                              left: Radius.circular(8),
-                            ),
-                          ),
-                        ),
-                      ),
+                child: TextField(
+                  autofocus: true,
+                  controller: _textController,
+                  decoration: InputDecoration(
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(8),
                     ),
-                    OutlinedButton.icon(
-                      onPressed: () {},
-                      style: OutlinedButton.styleFrom(
-                        minimumSize: Size(0, 56),
-                        shape: const RoundedRectangleBorder(
-                          borderRadius: BorderRadius.horizontal(
-                            right: Radius.circular(8),
-                          ),
-                        ),
-                      ),
-                      icon: const Icon(Icons.search_rounded),
-                      label: Text(context.tr.search),
-                    ),
-                  ],
+                    hintText: context.tr.search,
+                  ),
                 ),
               ),
             ),

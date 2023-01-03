@@ -23,6 +23,7 @@
   "settings": "Settings",
   "version": "Version",
   "about": "About",
+  "lookAndFeel": "Look and feel",
   "configuration": "configuration",
   "conversion": "Conversion",
   "selectConversion": "Select whitch conversion mode you want to use",

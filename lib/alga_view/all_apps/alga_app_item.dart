@@ -73,7 +73,8 @@ class AlgaAppItem extends StatelessWidget {
               bottom: 8,
               child: AutoSizeText(
                 item.title(context),
-                maxLines: 2,
+                maxLines: 1,
+                minFontSize: 12,
                 style: Theme.of(context).textTheme.button?.copyWith(
                       color: Theme.of(context).colorScheme.onPrimaryContainer,
                     ),

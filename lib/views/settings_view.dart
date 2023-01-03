@@ -1,10 +1,10 @@
 import 'package:alga/utils/hive_boxes/app_config_box.dart';
 import 'package:alga/widgets/app_show_menu.dart';
+import 'package:alga/widgets/setting_title.dart';
 import 'package:go_router/go_router.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
 import 'package:alga/constants/import_helper.dart';
-import 'package:alga/views/widgets/settings_tile.dart';
 
 class SettingsView extends StatefulWidget {
   const SettingsView({super.key});
@@ -26,10 +26,7 @@ class _SettingsViewState extends State<SettingsView> {
         ),
         SliverList(
             delegate: SliverChildListDelegate([
-          SettingsTile(
-            leading: Image.asset('assets/logo/256.webp', height: 32, width: 32),
-            title: Text(S.of(context).appName),
-          ),
+          SettingTitle(Text(context.tr.lookAndFeel)),
           ValueListenableBuilder(
             valueListenable: AppConfigBox.key(AppConfigType.themeMode),
             builder: (context, _, __) {
@@ -45,7 +42,7 @@ class _SettingsViewState extends State<SettingsView> {
                   AppConfigBox.themeMode = item;
                 },
                 childBuilder: (context, open) {
-                  return SettingsTile(
+                  return ListTile(
                     onTap: open,
                     leading: const Icon(Icons.dark_mode),
                     title: Text(S.of(context).themeMode),
@@ -70,7 +67,7 @@ class _SettingsViewState extends State<SettingsView> {
                   AppConfigBox.localeValue = item;
                 },
                 childBuilder: (context, open) {
-                  return SettingsTile(
+                  return ListTile(
                     onTap: open,
                     leading: const Icon(Icons.language),
                     title: Text(S.of(context).language),
@@ -81,7 +78,8 @@ class _SettingsViewState extends State<SettingsView> {
               );
             },
           ),
-          SettingsTile(
+          SettingTitle(Text(context.tr.about)),
+          ListTile(
             leading: const Icon(Icons.code_rounded),
             title: Text(S.of(context).github),
             onTap: () {
@@ -91,7 +89,7 @@ class _SettingsViewState extends State<SettingsView> {
               );
             },
           ),
-          SettingsTile(
+          ListTile(
             leading: const Icon(Icons.bug_report_rounded),
             title: Text(S.of(context).issues),
             onTap: () {
@@ -101,13 +99,17 @@ class _SettingsViewState extends State<SettingsView> {
               );
             },
           ),
-          SettingsTile(
+          ListTile(
             leading: const Icon(Icons.info_rounded),
-            title: Text(context.tr.about + context.tr.appName),
-            subtitle: Text('${context.tr.version}$_buildName+$_buildNumber'),
+            title: Text(context.tr.licenses),
             onTap: () {
               GoRouter.of(context).push('/settings/licenses');
             },
+          ),
+          ListTile(
+            leading: const Icon(Icons.info_rounded),
+            title: Text(context.tr.appName),
+            subtitle: Text('${context.tr.version}$_buildName+$_buildNumber'),
           ),
         ])),
       ],

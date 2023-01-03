@@ -1,16 +1,15 @@
 import 'package:alga/constants/import_helper.dart';
-import 'package:alga/views/widgets/settings_tile.dart';
 
 class ExpandableSettingsTile extends StatefulWidget {
   final Widget title;
   final Widget leading;
   final Widget child;
   const ExpandableSettingsTile({
-    Key? key,
+    super.key,
     required this.title,
     required this.leading,
     required this.child,
-  }) : super(key: key);
+  });
 
   @override
   State<ExpandableSettingsTile> createState() => _ExpandableSettingsTileState();
@@ -22,7 +21,7 @@ class _ExpandableSettingsTileState extends State<ExpandableSettingsTile> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        SettingsTile(
+        ListTile(
           leading: widget.leading,
           title: widget.title,
           trailing: AnimatedRotation(

@@ -1,5 +1,8 @@
 import 'dart:convert';
 
+import 'package:alga/widgets/clear_button_widget.dart';
+import 'package:alga/widgets/copy_button_widget.dart';
+import 'package:alga/widgets/paste_button_widget.dart';
 import 'package:json2yaml/json2yaml.dart' as json_2_yaml;
 import 'package:json_textfield/json_textfield.dart';
 import 'package:yaml/yaml.dart';
@@ -17,14 +20,9 @@ class JsonYamlConverterView extends ConsumerWidget {
       title: 'JSON',
       expand: !isSmallDevice(context),
       actions: [
-        CopyButton(onCopy: (ref) => ref.read(_jsonController).text),
-        PasteButton(
-          onPaste: (ref, data) => ref.read(_jsonController).text = data,
-        ),
-        IconButton(
-          icon: const Icon(Icons.clear),
-          onPressed: ref.read(_jsonController).clear,
-        ),
+        CopyButtonWidget(refText: (ref) => ref.read(_jsonController).text),
+        PasteButtonWidget(ref.read(_jsonController)),
+        ClearButtonWidget(ref.watch(_jsonController)),
       ],
       child: JsonTextField(
         minLines: isSmallDevice(context) ? 12 : null,
@@ -40,14 +38,9 @@ class JsonYamlConverterView extends ConsumerWidget {
       title: 'YAML',
       expand: !isSmallDevice(context),
       actions: [
-        CopyButton(onCopy: (ref) => ref.read(_yamlController).text),
-        PasteButton(
-          onPaste: (ref, data) => ref.read(_yamlController).text = data,
-        ),
-        IconButton(
-          icon: const Icon(Icons.clear),
-          onPressed: ref.read(_yamlController).clear,
-        ),
+        CopyButtonWidget(refText: (ref) => ref.read(_yamlController).text),
+        PasteButtonWidget(ref.read(_yamlController)),
+        ClearButtonWidget(ref.read(_yamlController)),
       ],
       child: LangTextField(
         minLines: isSmallDevice(context) ? 12 : null,
