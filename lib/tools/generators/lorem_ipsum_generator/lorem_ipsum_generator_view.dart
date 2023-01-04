@@ -1,3 +1,5 @@
+import 'package:alga/widgets/copy_button_widget.dart';
+import 'package:alga/widgets/custom_icon_button.dart';
 import 'package:flutter/services.dart';
 
 import 'package:alga/constants/import_helper.dart';
@@ -13,28 +15,22 @@ class LoremIpsumGeneratorView extends StatelessWidget {
       children: [
         ToolViewWrapper(
           children: [
-            ToolViewConfig(
+            ToolViewMenuConfig<LoremIpsumType>(
+              name: (ref) => ref.watch(loremType).typeName(context),
               leading: const Icon(Icons.text_snippet),
               title: Text(S.of(context).loremType),
               subtitle: Text(S.of(context).loremTypeDes),
-              trailing: Consumer(
-                builder: (context, ref, _) {
-                  return DropdownButton<LoremIpsumType>(
-                    underline: const SizedBox.shrink(),
-                    items: LoremIpsumType.values
-                        .map((e) => DropdownMenuItem(
-                              value: e,
-                              child: Text(e.typeName(context)),
-                            ))
-                        .toList(),
-                    value: ref.watch(loremType),
-                    onChanged: (LoremIpsumType? type) {
-                      final typeData = ref.read(loremType.notifier);
-                      typeData.state = type ?? LoremIpsumType.words;
-                    },
-                  );
-                },
-              ),
+              items: LoremIpsumType.values
+                  .map((e) => PopupMenuItem(
+                        value: e,
+                        child: Text(e.typeName(context)),
+                      ))
+                  .toList(),
+              initialValue: (ref) => ref.watch(loremType),
+              onSelected: (type, ref) {
+                final typeData = ref.read(loremType.notifier);
+                typeData.state = type;
+              },
             ),
             ToolViewConfig(
               leading: const Icon(Icons.numbers),
@@ -65,23 +61,11 @@ class LoremIpsumGeneratorView extends StatelessWidget {
         AppTitleWrapper(
           title: S.of(context).output,
           actions: [
+            CopyButtonWidget(refText: (ref) => ref.watch(loremProvider).output),
             Consumer(
               builder: (context, ref, _) {
-                return ref.watch(loremProvider).when(
-                      data: (state) => IconButton(
-                        icon: const Icon(Icons.copy),
-                        onPressed: () async {
-                          ClipboardUtil.copy(state.output);
-                        },
-                      ),
-                      error: (err, stack) => Text(err.toString()),
-                      loading: () => const CircularProgressIndicator(),
-                    );
-              },
-            ),
-            Consumer(
-              builder: (context, ref, _) {
-                return IconButton(
+                return CustomIconButton(
+                  tooltip: context.tr.refresh,
                   icon: const Icon(Icons.refresh),
                   onPressed: () {
                     return ref.refresh(loremProvider);
@@ -92,15 +76,11 @@ class LoremIpsumGeneratorView extends StatelessWidget {
           ],
           child: Consumer(
             builder: (context, ref, _) {
-              return ref.watch(loremProvider).when(
-                    data: (state) => AppTextField(
-                      text: state.output,
-                      minLines: 2,
-                      maxLines: null,
-                    ),
-                    error: (err, stack) => Text(err.toString()),
-                    loading: () => const CircularProgressIndicator(),
-                  );
+              return AppTextField(
+                text: ref.watch(loremProvider).output,
+                minLines: 2,
+                maxLines: null,
+              );
             },
           ),
         ),

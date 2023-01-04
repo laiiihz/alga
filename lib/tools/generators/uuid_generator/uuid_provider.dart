@@ -9,9 +9,9 @@ extension UUIDExt on UUIDVersion {
   String typeName(BuildContext context) {
     switch (this) {
       case UUIDVersion.v1:
-        return '1'.padRight(10);
+        return 'V1';
       case UUIDVersion.v4:
-        return '4 (GUID)'.padRight(10);
+        return 'V4 (GUID)';
     }
   }
 }
@@ -30,7 +30,9 @@ final _countController =
 });
 
 final _count = StateProvider.autoDispose<int>((ref) {
-  return int.tryParse(ref.read(_countController).text) ?? 1;
+  int result = int.tryParse(ref.read(_countController).text) ?? 1;
+  if (result > 2000) result = 2000;
+  return result;
 });
 
 final _results = StateProvider.autoDispose<List<String>>((ref) {

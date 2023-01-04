@@ -166,5 +166,6 @@
   "frontEndApp": "前端",
   "infomationApp": "信息",
   "serverApp": "服务器",
-  "favorite": "收藏"
+  "favorite": "收藏",
+  "refresh": "刷新"
 }

@@ -1,6 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:alga/constants/import_helper.dart';
 import 'package:alga/extension/list_ext.dart';
+import 'package:alga/widgets/app_show_menu.dart';
 
 class ToolViewConfig extends StatelessWidget {
   final Widget title;
@@ -79,6 +80,48 @@ class ToolViewSwitchConfig extends ConsumerWidget {
       ),
       onPressed: () {
         onChanged?.call(!currentState, ref);
+      },
+    );
+  }
+}
+
+class ToolViewMenuConfig<T> extends ConsumerWidget {
+  const ToolViewMenuConfig({
+    super.key,
+    this.leading,
+    required this.title,
+    this.subtitle,
+    required this.initialValue,
+    required this.items,
+    required this.onSelected,
+    required this.name,
+  });
+  final Widget? leading;
+  final Widget title;
+  final Widget? subtitle;
+  final T Function(WidgetRef ref) initialValue;
+  final List<PopupMenuEntry<T>> items;
+  final void Function(T, WidgetRef) onSelected;
+  final String Function(WidgetRef ref) name;
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    return AppShowMenu<T>(
+      items: items,
+      childBuilder: (context, open) {
+        return ToolViewConfig(
+          leading: leading,
+          title: title,
+          subtitle: subtitle,
+          onPressed: open,
+          trailing: Chip(
+            label: Text(name(ref)),
+            backgroundColor: Theme.of(context).colorScheme.primaryContainer,
+          ),
+        );
+      },
+      initialValue: initialValue(ref),
+      onSelected: (item) {
+        onSelected(item, ref);
       },
     );
   }

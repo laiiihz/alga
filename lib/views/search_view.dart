@@ -37,7 +37,7 @@ class _SearchViewState extends State<SearchView> {
   List<AppAtom> _findAtom(String query) {
     if (query.isEmpty) return AppAtom.items.toList();
     query = query.toLowerCase();
-    final results = <AppAtom>[];
+    final results = <AppAtom>{};
 
     for (var element in AppAtom.items) {
       if (element.path.contains(query)) {
@@ -47,7 +47,7 @@ class _SearchViewState extends State<SearchView> {
         results.add(element);
       }
     }
-    return results;
+    return results.toList();
   }
 
   @override

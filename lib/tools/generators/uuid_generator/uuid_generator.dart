@@ -38,25 +38,21 @@ class _UUIDGeneratorViewState extends State<UUIDGeneratorView> {
                 ref.read(_upperCase.notifier).state = value;
               },
             ),
-            ToolViewConfig(
+            ToolViewMenuConfig<UUIDVersion>(
               leading: const Icon(Icons.info_outline),
               title: Text(S.of(context).uuidVersion),
               subtitle: Text(S.of(context).uuidVersionDes),
-              trailing: Consumer(builder: (context, ref, _) {
-                return DropdownButton<UUIDVersion>(
-                  items: UUIDVersion.values.map((e) {
-                    return DropdownMenuItem(
-                      value: e,
-                      child: Text(e.typeName(context)),
-                    );
-                  }).toList(),
-                  value: ref.watch(_version),
-                  onChanged: (version) {
-                    ref.read(_version.notifier).state =
-                        version ?? UUIDVersion.v1;
-                  },
+              initialValue: (ref) => ref.watch(_version),
+              items: UUIDVersion.values.map((e) {
+                return PopupMenuItem(
+                  value: e,
+                  child: Text(e.typeName(context)),
                 );
-              }),
+              }).toList(),
+              onSelected: (version, ref) {
+                ref.read(_version.notifier).state = version;
+              },
+              name: (ref) => ref.watch(_version).typeName(context),
             ),
           ],
         ),
@@ -65,14 +61,12 @@ class _UUIDGeneratorViewState extends State<UUIDGeneratorView> {
             Consumer(builder: (context, ref, _) {
               return ElevatedButton(
                 child: Text(S.of(context).generateUUIDs),
-                onPressed: () {
-                  return ref.refresh(_results);
-                },
+                onPressed: () => ref.refresh(_results),
               );
             }),
             const Padding(
               padding: EdgeInsets.symmetric(horizontal: 8),
-              child: Text('X'),
+              child: Icon(Icons.clear),
             ),
             SizedBox(
               width: 100,

@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:typed_data';
 
 import 'package:alga/widgets/clear_button.dart';
+import 'package:alga/widgets/paste_button_widget.dart';
 import 'package:convert/convert.dart';
 import 'package:pointycastle/digests/sm3.dart';
 

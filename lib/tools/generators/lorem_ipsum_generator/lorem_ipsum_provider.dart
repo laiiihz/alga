@@ -39,7 +39,7 @@ final loremNumberController = StateProvider.autoDispose((ref) {
   return controller;
 });
 
-final loremProvider = FutureProvider.autoDispose<LoremState>((ref) {
+final loremProvider = Provider.autoDispose<LoremState>((ref) {
   final count = ref.watch(loremCount);
   final type = ref.watch(loremType);
   switch (type) {

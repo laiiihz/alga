@@ -56,6 +56,7 @@ class _HashGeneratorViewState extends State<HashGeneratorView> {
           if (!ref.watch(showHmac)) return const SizedBox.shrink();
           return AppTitleWrapper(
             title: S.of(context).hashOptional,
+            actions: [],
             child: Consumer(builder: (context, ref, _) {
               if (!ref.watch(showHmac)) return const SizedBox.shrink();
               return TextField(

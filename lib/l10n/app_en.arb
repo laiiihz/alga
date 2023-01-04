@@ -169,5 +169,6 @@
   "frontEndApp": "Front End",
   "infomationApp": "Infomation",
   "serverApp": "Server",
-  "favorite": "Favorite"
+  "favorite": "Favorite",
+  "refresh": "Refresh"
 }
