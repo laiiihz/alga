@@ -113,7 +113,7 @@ class _SearchPersistentHeader extends SliverPersistentHeaderDelegate {
       BuildContext context, double shrinkOffset, bool overlapsContent) {
     return ClipRect(
       child: BackdropFilter(
-        filter: ImageFilter.blur(sigmaX: 4, sigmaY: 4),
+        filter: ImageFilter.blur(sigmaX: 8, sigmaY: 8),
         child: Material(
           color: Theme.of(context).colorScheme.background.withOpacity(0.8),
           child: SizedBox(

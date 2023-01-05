@@ -35,23 +35,20 @@ class _QrcodeViewState extends State<QrcodeView> {
                 }),
               ),
             ),
-            ToolViewConfig(
+            ToolViewMenuConfig<int>(
               title: Text(S.of(context).errorCorrectionLevel),
-              trailing: Consumer(builder: (context, ref, _) {
-                return DropdownButton<int>(
-                  items: QrErrorCorrectLevel.levels
-                      .map((e) => DropdownMenuItem(
-                            value: e,
-                            child: Text(QrErrorCorrectLevel.getName(e)),
-                          ))
-                      .toList(),
-                  onChanged: (item) {
-                    ref.read(_errorCorrectionLevel.notifier).state =
-                        item ?? QrErrorCorrectLevel.L;
-                  },
-                  value: ref.watch(_errorCorrectionLevel),
-                );
-              }),
+              name: (ref) =>
+                  QrErrorCorrectLevel.getName(ref.watch(_errorCorrectionLevel)),
+              items: QrErrorCorrectLevel.levels
+                  .map((e) => PopupMenuItem(
+                        value: e,
+                        child: Text(QrErrorCorrectLevel.getName(e)),
+                      ))
+                  .toList(),
+              onSelected: (item, ref) {
+                ref.read(_errorCorrectionLevel.notifier).state = item;
+              },
+              initialValue: (ref) => ref.watch(_errorCorrectionLevel),
             ),
             ToolViewSwitchConfig(
               title: Text(S.of(context).qrGapless),

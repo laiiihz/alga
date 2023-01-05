@@ -32,26 +32,18 @@ class UriEncoderDecoderView extends StatelessWidget {
                 );
               }),
             ),
-            ToolViewConfig(
+            ToolViewMenuConfig<UriEncodeType>(
               leading: const Icon(Icons.link_rounded),
               title: Text(S.of(context).uriType),
-              trailing: Consumer(builder: (context, ref, _) {
-                return PopupMenuButton<UriEncodeType>(
-                  itemBuilder: (context) => UriEncodeType.values
-                      .map((e) => PopupMenuItem(
-                          value: e, child: Text(e.getName(context))))
-                      .toList(),
-                  onSelected: (state) {
-                    ref.read(_type.notifier).update((_) => state);
-                  },
-                  initialValue: ref.read(_type),
-                  child: Padding(
-                    padding:
-                        const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-                    child: Text(ref.watch(_type).getName(context)),
-                  ),
-                );
-              }),
+              name: (ref) => ref.watch(_type).getName(context),
+              items: UriEncodeType.values
+                  .map((e) =>
+                      PopupMenuItem(value: e, child: Text(e.getName(context))))
+                  .toList(),
+              onSelected: (state, ref) {
+                ref.read(_type.notifier).update((_) => state);
+              },
+              initialValue: (ref) => ref.watch(_type),
             ),
           ],
         ),

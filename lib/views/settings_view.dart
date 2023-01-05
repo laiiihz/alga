@@ -107,7 +107,11 @@ class _SettingsViewState extends State<SettingsView> {
             },
           ),
           ListTile(
-            leading: const Icon(Icons.info_rounded),
+            leading: Image.asset(
+              'assets/logo/256.webp',
+              width: 28,
+              height: 28,
+            ),
             title: Text(context.tr.appName),
             subtitle: Text('${context.tr.version}$_buildName+$_buildNumber'),
           ),

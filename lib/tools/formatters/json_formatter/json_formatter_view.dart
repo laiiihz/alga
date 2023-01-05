@@ -33,22 +33,17 @@ class _JsonFormatterViewState extends State<JsonFormatterView> {
       lang: LangHighlightType.json,
       title: Text(S.of(context).formatterJson),
       configs: [
-        ToolViewConfig(
+        ToolViewMenuConfig<JsonIndentType>(
           leading: const Icon(Icons.space_bar),
           title: Text(S.of(context).indentation),
-          trailing: PopupMenuButton<JsonIndentType>(
-              itemBuilder: (context) => JsonIndentType.values
-                  .map((e) =>
-                      PopupMenuItem(value: e, child: Text(e.name(context))))
-                  .toList(),
-              onSelected: (iType) {
-                provider.type = iType;
-              },
-              initialValue: provider.type,
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-                child: Text(provider.type.name(context)),
-              )),
+          name: (ref) => provider.type.name(context),
+          items: JsonIndentType.values
+              .map((e) => PopupMenuItem(value: e, child: Text(e.name(context))))
+              .toList(),
+          onSelected: (iType, ref) {
+            provider.type = iType;
+          },
+          initialValue: (ref) => provider.type,
         ),
       ],
       onChanged: provider.onChanged,

@@ -26,22 +26,19 @@ class _SassCssGeneratorViewState extends State<SassCssGeneratorView> {
               onChanged: (state, ref) =>
                   ref.read(_compress.notifier).state = state,
             ),
-            ToolViewConfig(
+            ToolViewMenuConfig<Syntax>(
               title: const Text('Source Type'),
-              trailing: Consumer(builder: (context, ref, _) {
-                return DropdownButton<Syntax>(
-                  items: [Syntax.css, Syntax.sass, Syntax.scss]
-                      .map((e) => DropdownMenuItem(
-                            value: e,
-                            child: Text(e.toString()),
-                          ))
-                      .toList(),
-                  onChanged: (syntax) {
-                    ref.read(_syntax.notifier).state = syntax ?? Syntax.scss;
-                  },
-                  value: ref.watch(_syntax),
-                );
-              }),
+              name: (ref) => ref.watch(_syntax).toString(),
+              initialValue: (WidgetRef ref) => ref.watch(_syntax),
+              items: [Syntax.css, Syntax.sass, Syntax.scss]
+                  .map((e) => PopupMenuItem(
+                        value: e,
+                        child: Text(e.toString()),
+                      ))
+                  .toList(),
+              onSelected: (syntax, ref) {
+                ref.read(_syntax.notifier).state = syntax;
+              },
             ),
           ],
         ),

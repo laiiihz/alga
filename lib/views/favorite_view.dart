@@ -1,6 +1,7 @@
 import 'package:alga/alga_view/all_apps/alga_app_item.dart';
 import 'package:alga/constants/import_helper.dart';
 import 'package:alga/utils/hive_boxes/favorite_box.dart';
+import 'package:alga/widgets/asset_svg.dart';
 
 class FavoriteView extends StatelessWidget {
   const FavoriteView({super.key});
@@ -11,6 +12,10 @@ class FavoriteView extends StatelessWidget {
       body: CustomScrollView(
         slivers: [
           SliverAppBar.large(title: Text(context.tr.favorite)),
+          if (FavoriteBox.items.isEmpty)
+            const SliverToBoxAdapter(
+              child: AssetSvg('assets/images/house.svg'),
+            ),
           SliverPadding(
             padding: const EdgeInsets.all(16),
             sliver: ValueListenableBuilder(
