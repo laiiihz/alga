@@ -8,6 +8,7 @@
 * [feature] regex tester add error message and more options.
 * [feature] add favorite collection.
 * [fix] fix password generator algorithm.
+* [fix] fix regex tester memory leak.
 
 ## 0.5.2+25
 

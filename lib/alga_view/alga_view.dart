@@ -24,9 +24,8 @@ class _AlgaShellRouteViewState extends State<AlgaShellRouteView> {
             const VerticalDivider(width: 1),
             Expanded(
               child: Scaffold(
-                  body: ClipRect(
-                child: widget.child,
-              )),
+                body: ClipRect(child: widget.child),
+              ),
             ),
           ],
         ),

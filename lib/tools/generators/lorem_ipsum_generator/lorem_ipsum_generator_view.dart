@@ -5,9 +5,16 @@ import 'package:flutter/services.dart';
 import 'package:alga/constants/import_helper.dart';
 import 'package:alga/tools/generators/lorem_ipsum_generator/lorem_ipsum_provider.dart';
 
-class LoremIpsumGeneratorView extends StatelessWidget {
+class LoremIpsumGeneratorView extends ConsumerStatefulWidget {
   const LoremIpsumGeneratorView({super.key});
 
+  @override
+  ConsumerState<LoremIpsumGeneratorView> createState() =>
+      _LoremIpsumGeneratorViewState();
+}
+
+class _LoremIpsumGeneratorViewState
+    extends ConsumerState<LoremIpsumGeneratorView> {
   @override
   Widget build(BuildContext context) {
     return ScrollableToolView(
@@ -32,29 +39,14 @@ class LoremIpsumGeneratorView extends StatelessWidget {
                 typeData.state = type;
               },
             ),
-            ToolViewConfig(
+            ToolViewTextField(
               leading: const Icon(Icons.numbers),
               title: Text(S.of(context).loremLength),
               subtitle: Text(S.of(context).loremLengthDes),
-              trailing: SizedBox(
-                width: 60,
-                child: Consumer(builder: (context, ref, _) {
-                  return TextField(
-                    controller: ref.watch(loremNumberController),
-                    inputFormatters: [FilteringTextInputFormatter.digitsOnly],
-                    onChanged: (_) {
-                      final value =
-                          int.tryParse(ref.watch(loremNumberController).text);
-                      ref.read(loremCount.notifier).state = value ?? 1;
-                    },
-                    decoration: const InputDecoration(
-                      isDense: true,
-                      contentPadding:
-                          EdgeInsets.symmetric(horizontal: 8, vertical: 12),
-                    ),
-                  );
-                }),
-              ),
+              controller: loremNumberController,
+              inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+              onEditingComplete: (ref) => ref.refresh(loremCount),
+              hint: '1',
             ),
           ],
         ),

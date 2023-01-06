@@ -2,6 +2,7 @@
 import 'package:alga/constants/import_helper.dart';
 import 'package:alga/extension/list_ext.dart';
 import 'package:alga/widgets/app_show_menu.dart';
+import 'package:flutter/services.dart';
 
 class ToolViewConfig extends StatelessWidget {
   final Widget title;
@@ -40,13 +41,17 @@ class ToolViewWrapper extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        AppTitle(title: S.of(context).configuration),
-        const SizedBox(height: 8),
-        ...children.sep(const SizedBox(height: 4)),
-        const SizedBox(height: 8),
-      ],
+    // add a material to prevent [ListTile][Ink] render issue.
+    // related: https://github.com/flutter/flutter/issues/105760
+    return Material(
+      child: Column(
+        children: [
+          AppTitle(title: S.of(context).configuration),
+          const SizedBox(height: 8),
+          ...children.sep(const SizedBox(height: 4)),
+          const SizedBox(height: 8),
+        ],
+      ),
     );
   }
 }
@@ -123,6 +128,72 @@ class ToolViewMenuConfig<T> extends ConsumerWidget {
       onSelected: (item) {
         onSelected(item, ref);
       },
+    );
+  }
+}
+
+class ToolViewTextField extends ConsumerStatefulWidget {
+  const ToolViewTextField({
+    super.key,
+    this.leading,
+    required this.title,
+    this.subtitle,
+    this.controller,
+    this.inputFormatters,
+    this.onEditingComplete,
+    this.hint,
+  });
+  final Widget? leading;
+  final Widget title;
+  final Widget? subtitle;
+  final ProviderListenable<TextEditingController>? controller;
+  final List<TextInputFormatter>? inputFormatters;
+  final void Function(WidgetRef ref)? onEditingComplete;
+  final String? hint;
+
+  @override
+  ConsumerState<ConsumerStatefulWidget> createState() =>
+      _ToolViewTextFieldState();
+}
+
+class _ToolViewTextFieldState extends ConsumerState<ToolViewTextField> {
+  final _focusNode = FocusNode();
+  @override
+  void dispose() {
+    _focusNode.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return ToolViewConfig(
+      title: widget.title,
+      leading: widget.leading,
+      subtitle: widget.subtitle,
+      onPressed: () {
+        _focusNode.requestFocus();
+      },
+      trailing: SizedBox(
+        width: 84,
+        child: TextField(
+          focusNode: _focusNode,
+          controller:
+              widget.controller != null ? ref.watch(widget.controller!) : null,
+          inputFormatters: widget.inputFormatters,
+          decoration: InputDecoration(
+            isDense: true,
+            contentPadding: const EdgeInsets.symmetric(
+              horizontal: 8,
+              vertical: 12,
+            ),
+            hintText: widget.hint,
+          ),
+          onEditingComplete: () {
+            widget.onEditingComplete?.call(ref);
+            _focusNode.unfocus();
+          },
+        ),
+      ),
     );
   }
 }

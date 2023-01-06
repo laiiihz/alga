@@ -32,7 +32,12 @@ class LoremState {
 final loremType = StateProvider.autoDispose<LoremIpsumType>((ref) {
   return LoremIpsumType.paragraphs;
 });
-final loremCount = StateProvider.autoDispose<int>((ref) => 1);
+final loremCount = Provider.autoDispose<int>((ref) {
+  final controller = ref.watch(loremNumberController);
+  int count = int.tryParse(controller.text) ?? 1;
+  if (count > 500) count = 500;
+  return count;
+});
 final loremNumberController = StateProvider.autoDispose((ref) {
   final controller = TextEditingController();
   ref.onDispose(() => controller.dispose());

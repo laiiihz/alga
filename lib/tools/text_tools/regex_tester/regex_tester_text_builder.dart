@@ -17,29 +17,34 @@ class RegexTesterTextBuilder extends SpecialTextSpanBuilder {
     if (data.isEmpty) return const TextSpan(text: '');
     if (reg == null) return TextSpan(text: data, style: textStyle);
 
-    String cacheData = data;
     final spans = <InlineSpan>[];
 
-    RegExpMatch? currentMatch = reg!.firstMatch(cacheData);
-
-    while (currentMatch != null) {
-      spans.add(TextSpan(text: cacheData.substring(0, currentMatch.start)));
-      spans.add(TextSpan(
-        text: cacheData.substring(
-          currentMatch.start,
-          currentMatch.end,
-        ),
-        style: TextStyle(
-          backgroundColor: primaryColor,
-          color: onPrimary,
-        ),
-      ));
-      if (currentMatch.end <= cacheData.length) {
-        cacheData = cacheData.substring(currentMatch.end);
+    int currentIndex = 0;
+    Match? currentMatch = reg!.matchAsPrefix(data, currentIndex);
+    while (currentIndex < data.length) {
+      if (currentMatch != null) {
+        if (currentMatch.start == currentMatch.end) {
+          currentIndex++;
+        } else {
+          spans.add(TextSpan(
+            text: data.substring(
+              currentMatch.start,
+              currentMatch.end,
+            ),
+            style: TextStyle(
+              color: onPrimary,
+              backgroundColor: primaryColor,
+            ),
+          ));
+          currentIndex += currentMatch.end - currentMatch.start;
+        }
+      } else {
+        spans.add(TextSpan(text: data[currentIndex]));
+        currentIndex++;
       }
-      currentMatch = reg!.firstMatch(cacheData);
+      currentMatch = reg!.matchAsPrefix(data, currentIndex);
     }
-    spans.add(TextSpan(text: cacheData));
+    spans.add(TextSpan(text: data.substring(currentIndex)));
 
     return TextSpan(children: spans, style: textStyle);
   }

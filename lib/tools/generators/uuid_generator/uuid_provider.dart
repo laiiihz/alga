@@ -3,6 +3,7 @@ part of './uuid_generator.dart';
 enum UUIDVersion {
   v1,
   v4,
+  v5,
 }
 
 extension UUIDExt on UUIDVersion {
@@ -12,6 +13,8 @@ extension UUIDExt on UUIDVersion {
         return 'V1';
       case UUIDVersion.v4:
         return 'V4 (GUID)';
+      case UUIDVersion.v5:
+        return 'V5';
     }
   }
 }
@@ -22,8 +25,20 @@ final _version =
     StateProvider.autoDispose<UUIDVersion>((ref) => UUIDVersion.v4);
 final _hypens = StateProvider.autoDispose<bool>((ref) => true);
 final _upperCase = StateProvider.autoDispose<bool>((ref) => true);
-final _countController =
-    StateProvider.autoDispose<TextEditingController>((ref) {
+
+final _countController = Provider.autoDispose<TextEditingController>((ref) {
+  final controller = TextEditingController();
+  ref.onDispose(controller.dispose);
+  return controller;
+});
+
+final _v5NameController = Provider.autoDispose((ref) {
+  final controller = TextEditingController();
+  ref.onDispose(controller.dispose);
+  return controller;
+});
+
+final _v5NamespaceController = Provider.autoDispose((ref) {
   final controller = TextEditingController();
   ref.onDispose(controller.dispose);
   return controller;
@@ -35,12 +50,22 @@ final _count = StateProvider.autoDispose<int>((ref) {
   return result;
 });
 
+final _v5Name = StateProvider.autoDispose((ref) {
+  return ref.watch(_v5NameController).text;
+});
+final _v5Namespace = StateProvider.autoDispose<String?>((ref) {
+  final text = ref.watch(_v5NamespaceController).text;
+  final regex = RegExp('[a-zA-Z0-9]{32}');
+});
+
 final _results = StateProvider.autoDispose<List<String>>((ref) {
   final uuid = ref.read(_uuid);
   final version = ref.watch(_version);
   final hypen = ref.watch(_hypens);
   final uppercase = ref.watch(_upperCase);
   final count = ref.watch(_count);
+  final v5NameText = ref.watch(_v5Name);
+  final v5NamespaceText = ref.watch(_v5Namespace);
 
   String genId() {
     switch (version) {
@@ -48,6 +73,8 @@ final _results = StateProvider.autoDispose<List<String>>((ref) {
         return uuid.v1();
       case UUIDVersion.v4:
         return uuid.v4();
+      case UUIDVersion.v5:
+        return uuid.v5(v5NamespaceText, v5NameText);
     }
   }
 

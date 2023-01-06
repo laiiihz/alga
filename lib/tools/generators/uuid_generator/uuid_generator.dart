@@ -1,5 +1,7 @@
 import 'package:alga/widgets/copy_button_widget.dart';
+import 'package:alga/widgets/refresh_button.dart';
 import 'package:flutter/services.dart';
+import 'package:sass/sass.dart';
 
 import 'package:uuid/uuid.dart';
 
@@ -54,52 +56,49 @@ class _UUIDGeneratorViewState extends State<UUIDGeneratorView> {
               },
               name: (ref) => ref.watch(_version).typeName(context),
             ),
-          ],
-        ),
-        Row(
-          children: [
             Consumer(builder: (context, ref, _) {
-              return ElevatedButton(
-                child: Text(S.of(context).generateUUIDs),
-                onPressed: () => ref.refresh(_results),
+              bool isV5 = ref.watch(_version) == UUIDVersion.v5;
+              return AnimatedSize(
+                duration: kThemeAnimationDuration,
+                child: isV5
+                    ? Padding(
+                        padding: const EdgeInsets.only(left: 16),
+                        child: ToolViewTextField(
+                          title: Text(context.tr.uuidQuantity),
+                          leading: const Icon(Icons.numbers_rounded),
+                          controller: _countController,
+                          inputFormatters: [
+                            FilteringTextInputFormatter.digitsOnly
+                          ],
+                          onEditingComplete: (ref) => ref.refresh(_count),
+                        ),
+                      )
+                    : const SizedBox.shrink(),
               );
             }),
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 8),
-              child: Icon(Icons.clear),
+            ToolViewTextField(
+              title: Text(context.tr.uuidQuantity),
+              leading: const Icon(Icons.numbers_rounded),
+              controller: _countController,
+              inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+              onEditingComplete: (ref) => ref.refresh(_count),
             ),
-            SizedBox(
-              width: 100,
-              child: Consumer(builder: (context, ref, _) {
-                return TextField(
-                  controller: ref.watch(_countController),
-                  inputFormatters: [FilteringTextInputFormatter.digitsOnly],
-                  onChanged: (value) {
-                    return ref.refresh(_count);
-                  },
-                  decoration: const InputDecoration(
-                    isDense: true,
-                    contentPadding:
-                        EdgeInsets.symmetric(horizontal: 8, vertical: 12),
-                  ),
-                );
-              }),
-            )
           ],
         ),
-        AppTitle(
+        AppTitleWrapper(
           title: S.of(context).uuids,
           actions: [
             CopyButtonWidget(refText: (ref) => ref.watch(_resultValue)),
+            RefreshButton(_results),
           ],
+          child: Consumer(builder: (context, ref, _) {
+            return AppTextField(
+              minLines: 2,
+              maxLines: 20,
+              text: ref.watch(_resultValue),
+            );
+          }),
         ),
-        Consumer(builder: (context, ref, _) {
-          return AppTextField(
-            minLines: 2,
-            maxLines: 20,
-            text: ref.watch(_resultValue),
-          );
-        }),
       ],
     );
   }
