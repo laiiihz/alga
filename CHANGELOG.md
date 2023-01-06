@@ -7,6 +7,7 @@
 * [feature] redesign app.
 * [feature] regex tester add error message and more options.
 * [feature] add favorite collection.
+* [feature] add UUID v5.
 * [fix] fix password generator algorithm.
 * [fix] fix regex tester memory leak.
 

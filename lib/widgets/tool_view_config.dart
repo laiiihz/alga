@@ -44,6 +44,7 @@ class ToolViewWrapper extends StatelessWidget {
     // add a material to prevent [ListTile][Ink] render issue.
     // related: https://github.com/flutter/flutter/issues/105760
     return Material(
+      color: Colors.transparent,
       child: Column(
         children: [
           AppTitle(title: S.of(context).configuration),
