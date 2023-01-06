@@ -15,6 +15,7 @@ class RegexTestAppView extends ConsumerStatefulWidget {
 class _RegexTestAppViewState extends ConsumerState<RegexTestAppView> {
   final _controller = TextEditingController();
   final _textController = TextEditingController();
+
   @override
   void initState() {
     super.initState();

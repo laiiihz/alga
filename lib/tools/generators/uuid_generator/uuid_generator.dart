@@ -63,39 +63,66 @@ class _UUIDGeneratorViewState extends State<UUIDGeneratorView> {
                 child: isV5
                     ? Padding(
                         padding: const EdgeInsets.only(left: 16),
+                        child: Column(
+                          children: [
+                            ToolViewTextField(
+                              width: 120,
+                              title: Text(context.tr.uuidV5Name),
+                              controller: _v5NameController,
+                              onEditingComplete: (ref) => ref.refresh(_v5Name),
+                            ),
+                            const SizedBox(height: 4),
+                            ToolViewTextField(
+                              expanded: true,
+                              title: Text(context.tr.uuidV5Namespace),
+                              controller: _v5NamespaceController,
+                              inputFormatters: [
+                                FilteringTextInputFormatter.allow(
+                                  RegExp(r'[0-9a-fA-F/-]'),
+                                ),
+                              ],
+                              onEditingComplete: (ref) =>
+                                  ref.refresh(_v5Namespace),
+                            ),
+                          ],
+                        ),
+                      )
+                    : Padding(
+                        padding: const EdgeInsets.only(left: 16),
                         child: ToolViewTextField(
                           title: Text(context.tr.uuidQuantity),
                           leading: const Icon(Icons.numbers_rounded),
                           controller: _countController,
                           inputFormatters: [
-                            FilteringTextInputFormatter.digitsOnly
+                            FilteringTextInputFormatter.digitsOnly,
                           ],
                           onEditingComplete: (ref) => ref.refresh(_count),
                         ),
-                      )
-                    : const SizedBox.shrink(),
+                      ),
               );
             }),
-            ToolViewTextField(
-              title: Text(context.tr.uuidQuantity),
-              leading: const Icon(Icons.numbers_rounded),
-              controller: _countController,
-              inputFormatters: [FilteringTextInputFormatter.digitsOnly],
-              onEditingComplete: (ref) => ref.refresh(_count),
-            ),
           ],
         ),
         AppTitleWrapper(
           title: S.of(context).uuids,
           actions: [
-            CopyButtonWidget(refText: (ref) => ref.watch(_resultValue)),
-            RefreshButton(_results),
+            CopyButtonWidget(refText: (ref) => ref.watch(_results)),
+            Consumer(
+              builder: (context, ref, _) {
+                final isV5 = ref.watch(_version) == UUIDVersion.v5;
+                return AnimatedSize(
+                  duration: kThemeAnimationDuration,
+                  child:
+                      isV5 ? const SizedBox.shrink() : RefreshButton(_results),
+                );
+              },
+            ),
           ],
           child: Consumer(builder: (context, ref, _) {
             return AppTextField(
               minLines: 2,
               maxLines: 20,
-              text: ref.watch(_resultValue),
+              text: ref.watch(_results),
             );
           }),
         ),

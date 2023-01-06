@@ -26,11 +26,12 @@ class RegexTesterTextBuilder extends SpecialTextSpanBuilder {
         if (currentMatch.start == currentMatch.end) {
           currentIndex++;
         } else {
+          final tempText = data.substring(
+            currentMatch.start,
+            currentMatch.end,
+          );
           spans.add(TextSpan(
-            text: data.substring(
-              currentMatch.start,
-              currentMatch.end,
-            ),
+            text: tempText,
             style: TextStyle(
               color: onPrimary,
               backgroundColor: primaryColor,

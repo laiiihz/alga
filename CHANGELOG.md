@@ -27,7 +27,7 @@
 ## 0.3.5+16
 
 * [feature] markdown: now can copy markdown html.
-* [feature] add Chinese SM3 hash tool. 
+* [feature] add Chinese SM3 hash tool.
 * [feature] add Color converter tool.
 * [feature] date parser tool: add timestamp support.
 * [feature] date parser tool: add helper text.

@@ -45,27 +45,35 @@ final _v5NamespaceController = Provider.autoDispose((ref) {
 });
 
 final _count = StateProvider.autoDispose<int>((ref) {
-  int result = int.tryParse(ref.read(_countController).text) ?? 1;
+  int result = int.tryParse(ref.watch(_countController).text) ?? 1;
   if (result > 2000) result = 2000;
   return result;
 });
 
-final _v5Name = StateProvider.autoDispose((ref) {
+final _v5Name = Provider.autoDispose((ref) {
   return ref.watch(_v5NameController).text;
 });
-final _v5Namespace = StateProvider.autoDispose<String?>((ref) {
+final _v5Namespace = Provider.autoDispose<String?>((ref) {
   final text = ref.watch(_v5NamespaceController).text;
-  final regex = RegExp('[a-zA-Z0-9]{32}');
+  final regex = RegExp(r'^[a-fA-F0-9]{32}$');
+  final fullRegex = RegExp(
+      r'^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$');
+  if (regex.hasMatch(text) || fullRegex.hasMatch(text)) {
+    return text;
+  } else {
+    return null;
+  }
 });
 
-final _results = StateProvider.autoDispose<List<String>>((ref) {
-  final uuid = ref.read(_uuid);
+final _results = Provider.autoDispose<String>((ref) {
+  final uuid = ref.watch(_uuid);
   final version = ref.watch(_version);
   final hypen = ref.watch(_hypens);
   final uppercase = ref.watch(_upperCase);
   final count = ref.watch(_count);
   final v5NameText = ref.watch(_v5Name);
   final v5NamespaceText = ref.watch(_v5Namespace);
+  if (version == UUIDVersion.v5) return uuid.v5(v5NamespaceText, v5NameText);
 
   String genId() {
     switch (version) {
@@ -73,8 +81,8 @@ final _results = StateProvider.autoDispose<List<String>>((ref) {
         return uuid.v1();
       case UUIDVersion.v4:
         return uuid.v4();
-      case UUIDVersion.v5:
-        return uuid.v5(v5NamespaceText, v5NameText);
+      default:
+        return '';
     }
   }
 
@@ -85,8 +93,5 @@ final _results = StateProvider.autoDispose<List<String>>((ref) {
     return value;
   }
 
-  return List.generate(count, (index) => convertValue());
+  return List.generate(count, (index) => convertValue()).join('\n');
 });
-
-final _resultValue =
-    StateProvider.autoDispose<String>((ref) => ref.watch(_results).join('\n'));

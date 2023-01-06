@@ -41,6 +41,7 @@ final GlobalKey<NavigatorState> _shellNavigatorKey =
     GlobalKey<NavigatorState>(debugLabel: 'shell');
 
 BuildContext get routerContext => _routerKey.currentContext!;
+BuildContext get shellContext => _shellNavigatorKey.currentContext!;
 
 final appRouter = GoRouter(
   navigatorKey: _routerKey,

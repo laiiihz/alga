@@ -142,14 +142,18 @@ class ToolViewTextField extends ConsumerStatefulWidget {
     this.inputFormatters,
     this.onEditingComplete,
     this.hint,
+    this.expanded = false,
+    this.width,
   });
   final Widget? leading;
   final Widget title;
   final Widget? subtitle;
+  final bool expanded;
   final ProviderListenable<TextEditingController>? controller;
   final List<TextInputFormatter>? inputFormatters;
   final void Function(WidgetRef ref)? onEditingComplete;
   final String? hint;
+  final double? width;
 
   @override
   ConsumerState<ConsumerStatefulWidget> createState() =>
@@ -158,6 +162,17 @@ class ToolViewTextField extends ConsumerStatefulWidget {
 
 class _ToolViewTextFieldState extends ConsumerState<ToolViewTextField> {
   final _focusNode = FocusNode();
+
+  @override
+  void initState() {
+    super.initState();
+    _focusNode.addListener(() {
+      if (!_focusNode.hasFocus) {
+        widget.onEditingComplete?.call(ref);
+      }
+    });
+  }
+
   @override
   void dispose() {
     _focusNode.dispose();
@@ -166,34 +181,37 @@ class _ToolViewTextFieldState extends ConsumerState<ToolViewTextField> {
 
   @override
   Widget build(BuildContext context) {
+    final textField = TextField(
+      focusNode: _focusNode,
+      controller:
+          widget.controller != null ? ref.watch(widget.controller!) : null,
+      inputFormatters: widget.inputFormatters,
+      decoration: InputDecoration(
+        isDense: true,
+        contentPadding: const EdgeInsets.symmetric(
+          horizontal: 8,
+          vertical: 12,
+        ),
+        hintText: widget.hint,
+      ),
+      onEditingComplete: () {
+        widget.onEditingComplete?.call(ref);
+        _focusNode.unfocus();
+      },
+    );
     return ToolViewConfig(
       title: widget.title,
       leading: widget.leading,
-      subtitle: widget.subtitle,
+      subtitle: widget.expanded ? textField : widget.subtitle,
       onPressed: () {
         _focusNode.requestFocus();
       },
-      trailing: SizedBox(
-        width: 84,
-        child: TextField(
-          focusNode: _focusNode,
-          controller:
-              widget.controller != null ? ref.watch(widget.controller!) : null,
-          inputFormatters: widget.inputFormatters,
-          decoration: InputDecoration(
-            isDense: true,
-            contentPadding: const EdgeInsets.symmetric(
-              horizontal: 8,
-              vertical: 12,
+      trailing: widget.expanded
+          ? null
+          : SizedBox(
+              width: widget.width ?? 84,
+              child: textField,
             ),
-            hintText: widget.hint,
-          ),
-          onEditingComplete: () {
-            widget.onEditingComplete?.call(ref);
-            _focusNode.unfocus();
-          },
-        ),
-      ),
     );
   }
 }
