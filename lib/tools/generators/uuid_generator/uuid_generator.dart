@@ -53,6 +53,7 @@ class _UUIDGeneratorViewState extends State<UUIDGeneratorView> {
               bool isV5 = ref.watch(_version) == UUIDVersion.v5;
               return AnimatedSize(
                 duration: kThemeAnimationDuration,
+                curve: Curves.easeInOutCubic,
                 child: isV5
                     ? Padding(
                         padding: const EdgeInsets.only(left: 16),
@@ -106,6 +107,7 @@ class _UUIDGeneratorViewState extends State<UUIDGeneratorView> {
                 final isV5 = ref.watch(_version) == UUIDVersion.v5;
                 return AnimatedSize(
                   duration: kThemeAnimationDuration,
+                  curve: Curves.easeInOutCubic,
                   child:
                       isV5 ? const SizedBox.shrink() : RefreshButton(_results),
                 );

@@ -36,7 +36,8 @@ class ColorConverterView extends StatelessWidget {
             return CustomPaint(
               painter: ColorViewBackgroundPainter(lineColor),
               child: AnimatedContainer(
-                duration: const Duration(milliseconds: 300),
+                duration: kThemeAnimationDuration,
+                curve: Curves.easeInOutCubic,
                 height: 40,
                 width: double.infinity,
                 decoration: BoxDecoration(
