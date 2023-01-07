@@ -46,13 +46,10 @@ class _Base64EncoderDecoderViewState extends State<Base64EncoderDecoderView> {
                 );
               }),
             ),
-            ToolViewSwitchConfig(
+            AlgaConfigSwitch(
               leading: const Icon(Icons.link),
               title: Text(S.of(context).urlSafe),
-              value: (ref) => ref.watch(_urlSafe),
-              onChanged: (state, ref) {
-                ref.read(_urlSafe.notifier).state = state;
-              },
+              value: _urlSafe,
             ),
           ],
         ),

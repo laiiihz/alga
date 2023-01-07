@@ -2,32 +2,39 @@ import 'package:alga/constants/import_helper.dart';
 
 import 'custom_icon_button.dart';
 
-class ClearButtonWidget extends StatefulWidget {
-  const ClearButtonWidget(this.controller, {super.key});
-  final TextEditingController controller;
+class ClearButtonWidget extends ConsumerStatefulWidget {
+  const ClearButtonWidget(this.controller, {super.key, required this.onUpdate});
+  final ProviderListenable<TextEditingController> controller;
+  final void Function(WidgetRef ref) onUpdate;
 
   @override
-  State<ClearButtonWidget> createState() => _ClearButtonWidgetState();
+  ConsumerState<ClearButtonWidget> createState() => _ClearButtonWidgetState();
 }
 
-class _ClearButtonWidgetState extends State<ClearButtonWidget> {
+class _ClearButtonWidgetState extends ConsumerState<ClearButtonWidget> {
   late bool _enabled;
+  late TextEditingController _holdController;
 
-  updateState() {
-    _enabled = widget.controller.text.isNotEmpty;
-    setState(() {});
+  _update() {
+    _enabled = _holdController.text.isNotEmpty;
+  }
+
+  _handleUpdate() {
+    _update();
+    if (mounted) setState(() {});
   }
 
   @override
   void initState() {
     super.initState();
-    updateState();
-    widget.controller.addListener(updateState);
+    _holdController = ref.read(widget.controller);
+    _update();
+    _holdController.addListener(_handleUpdate);
   }
 
   @override
   void dispose() {
-    widget.controller.removeListener(updateState);
+    _holdController.removeListener(_handleUpdate);
     super.dispose();
   }
 
@@ -35,7 +42,12 @@ class _ClearButtonWidgetState extends State<ClearButtonWidget> {
   Widget build(BuildContext context) {
     return CustomIconButton(
       tooltip: context.tr.clear,
-      onPressed: _enabled ? () => widget.controller.clear() : null,
+      onPressed: _enabled
+          ? () {
+              ref.watch(widget.controller).clear();
+              widget.onUpdate(ref);
+            }
+          : null,
       icon: const Icon(Icons.clear_rounded),
       color: Theme.of(context).colorScheme.error,
     );

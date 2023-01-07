@@ -3,22 +3,28 @@ import 'package:alga/widgets/custom_icon_button.dart';
 
 import '../utils/snackbar_util.dart';
 
-class PasteButtonWidget extends StatefulWidget {
-  const PasteButtonWidget(this.controller, {super.key});
-  final TextEditingController controller;
+class PasteButtonWidget extends ConsumerStatefulWidget {
+  const PasteButtonWidget(
+    this.controller, {
+    super.key,
+    required this.onUpdate,
+  });
+  final ProviderListenable<TextEditingController> controller;
+  final void Function(WidgetRef ref) onUpdate;
 
   @override
-  State<PasteButtonWidget> createState() => _PasteButtonWidgetState();
+  ConsumerState<PasteButtonWidget> createState() => _PasteButtonWidgetState();
 }
 
-class _PasteButtonWidgetState extends State<PasteButtonWidget> {
+class _PasteButtonWidgetState extends ConsumerState<PasteButtonWidget> {
   @override
   Widget build(BuildContext context) {
     return CustomIconButton(
       tooltip: S.of(context).paste,
       onPressed: () async {
-        widget.controller.text = await ClipboardUtil.paste();
+        ref.read(widget.controller).text = await ClipboardUtil.paste();
         if (mounted) SnackbarUtil(context).pasted();
+        widget.onUpdate(ref);
       },
       icon: const Icon(Icons.paste),
     );

@@ -1,5 +1,8 @@
 import 'dart:convert';
 
+import 'package:alga/widgets/clear_button_widget.dart';
+import 'package:alga/widgets/copy_button_widget.dart';
+import 'package:alga/widgets/paste_button_widget.dart';
 import 'package:extended_text_field/extended_text_field.dart';
 
 import 'package:alga/constants/import_helper.dart';
@@ -23,27 +26,21 @@ class _JWTDecoderViewState extends State<JWTDecoderView> {
         AppTitleWrapper(
           title: 'JWT token',
           actions: [
-            PasteButton(onPaste: (ref, data) {
-              ref.read(_jwtInput).text = data;
-              return ref.refresh(_jwtModel);
-            }),
-            Consumer(builder: (context, ref, _) {
-              return IconButton(
-                icon: const Icon(Icons.clear),
-                onPressed: () {
-                  return ref.refresh(_jwtModel);
-                },
-              );
-            }),
+            PasteButtonWidget(
+              _jwtInput,
+              onUpdate: (ref) => ref.refresh(_jwtInputText),
+            ),
+            ClearButtonWidget(
+              _jwtInput,
+              onUpdate: (ref) => ref.refresh(_jwtInputText),
+            ),
           ],
           child: Consumer(builder: (context, ref, _) {
             return ExtendedTextField(
               controller: ref.watch(_jwtInput),
               minLines: 3,
               maxLines: 12,
-              onChanged: (_) {
-                return ref.refresh(_jwtModel);
-              },
+              onChanged: (_) => ref.refresh(_jwtInputText),
               specialTextSpanBuilder: JWTSpecialTextBuilder(),
             );
           }),
@@ -51,7 +48,7 @@ class _JWTDecoderViewState extends State<JWTDecoderView> {
         AppTitleWrapper(
           title: S.of(context).jwtHeader,
           actions: [
-            CopyButton(onCopy: (ref) => ref.read(_headerResult)),
+            CopyButtonWithText(_headerResult),
           ],
           child: Consumer(builder: (context, ref, _) {
             return AppTextField(
@@ -65,7 +62,7 @@ class _JWTDecoderViewState extends State<JWTDecoderView> {
         AppTitleWrapper(
           title: S.of(context).jwtPayload,
           actions: [
-            CopyButton(onCopy: (ref) => ref.read(_payloadResult)),
+            CopyButtonWithText(_payloadResult),
           ],
           child: Consumer(builder: (context, ref, _) {
             return AppTextField(

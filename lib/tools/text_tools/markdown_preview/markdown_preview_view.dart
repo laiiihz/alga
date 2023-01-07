@@ -1,20 +1,23 @@
 import 'package:alga/widgets/app_scaffold.dart';
+import 'package:alga/widgets/copy_button_widget.dart';
+import 'package:alga/widgets/paste_button_widget.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
-import 'package:markdown/markdown.dart' show markdownToHtml;
+// import 'package:markdown/markdown.dart' show markdownToHtml;
 
 import 'package:alga/constants/import_helper.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
 part './markdown_preview_provider.dart';
 
-class MarkdownPreviewView extends StatefulWidget {
+class MarkdownPreviewView extends ConsumerStatefulWidget {
   const MarkdownPreviewView({super.key});
 
   @override
-  State<MarkdownPreviewView> createState() => _MarkdownPreviewViewState();
+  ConsumerState<MarkdownPreviewView> createState() =>
+      _MarkdownPreviewViewState();
 }
 
-class _MarkdownPreviewViewState extends State<MarkdownPreviewView> {
+class _MarkdownPreviewViewState extends ConsumerState<MarkdownPreviewView> {
   @override
   Widget build(BuildContext context) {
     final bool small = isSmallDevice(context);
@@ -22,10 +25,10 @@ class _MarkdownPreviewViewState extends State<MarkdownPreviewView> {
       title: S.of(context).markdownInput,
       expand: !small,
       actions: [
-        PasteButton(onPaste: (ref, value) {
-          ref.watch(_inputController).text = value;
-          return ref.refresh(_inputValue);
-        }),
+        PasteButtonWidget(
+          _inputController,
+          onUpdate: (ref) => ref.refresh(_inputValue),
+        ),
       ],
       child: Consumer(builder: (context, ref, _) {
         return LangTextField(
@@ -33,9 +36,7 @@ class _MarkdownPreviewViewState extends State<MarkdownPreviewView> {
           maxLines: small ? 16 : null,
           minLines: small ? 16 : null,
           controller: ref.watch(_inputController),
-          onChanged: (_) {
-            return ref.refresh(_inputValue);
-          },
+          onChanged: (_) => ref.refresh(_inputValue),
           lang: LangHighlightType.markdown,
         );
       }),
@@ -44,10 +45,7 @@ class _MarkdownPreviewViewState extends State<MarkdownPreviewView> {
       title: S.of(context).markdownPreviewInput,
       expand: !small,
       actions: [
-        CopyButton(onCopy: (ref) {
-          final data = ref.read(_inputValue);
-          return markdownToHtml(data);
-        }),
+        CopyButtonWithText(_inputValue),
       ],
       child: Consumer(builder: (context, ref, _) {
         final data = ref.watch(_inputValue);

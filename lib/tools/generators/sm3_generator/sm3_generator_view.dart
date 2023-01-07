@@ -1,7 +1,8 @@
 import 'dart:convert';
 import 'dart:typed_data';
 
-import 'package:alga/widgets/clear_button.dart';
+import 'package:alga/widgets/clear_button_widget.dart';
+import 'package:alga/widgets/copy_button_widget.dart';
 import 'package:alga/widgets/paste_button_widget.dart';
 import 'package:convert/convert.dart';
 import 'package:pointycastle/digests/sm3.dart';
@@ -21,25 +22,21 @@ class SM3GeneratorView extends StatelessWidget {
         AppTitleWrapper(
           title: S.of(context).input,
           actions: [
-            PasteButton(
-              onPaste: (ref, value) {
-                ref.watch(_inputController).text = value;
-                return ref.refresh(_inputValue);
-              },
+            PasteButtonWidget(
+              _inputController,
+              onUpdate: (ref) => ref.refresh(_inputText),
             ),
-            ClearButton(onClear: (ref) {
-              ref.watch(_inputController).clear();
-              return ref.refresh(_inputValue);
-            }),
+            ClearButtonWidget(
+              _inputController,
+              onUpdate: (ref) => ref.refresh(_inputText),
+            ),
           ],
           child: Consumer(builder: (context, ref, _) {
             return TextField(
               controller: ref.watch(_inputController),
               minLines: 1,
               maxLines: 12,
-              onChanged: (_) {
-                return ref.refresh(_inputValue);
-              },
+              onChanged: (_) => ref.refresh(_inputText),
             );
           }),
         ),
@@ -47,12 +44,7 @@ class SM3GeneratorView extends StatelessWidget {
         AppTitleWrapper(
           title: S.of(context).output,
           actions: [
-            CopyButton(
-              onCopy: (ref) {
-                final data = ref.read(_inputValue);
-                return data;
-              },
-            ),
+            CopyButtonWidget(refText: (ref) => ref.read(_inputValue)),
           ],
           child: Consumer(builder: (context, ref, _) {
             return AppTextField(text: ref.watch(_inputValue));

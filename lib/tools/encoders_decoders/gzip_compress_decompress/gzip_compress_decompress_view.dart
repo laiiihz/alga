@@ -1,6 +1,9 @@
 import 'dart:convert';
 import 'dart:typed_data';
 
+import 'package:alga/widgets/clear_button_widget.dart';
+import 'package:alga/widgets/copy_button_widget.dart';
+import 'package:alga/widgets/paste_button_widget.dart';
 import 'package:archive/archive.dart';
 
 import 'package:alga/constants/import_helper.dart';
@@ -46,30 +49,28 @@ class _GzipCompressDecompressViewState
         AppTitleWrapper(
           title: S.of(context).input,
           actions: [
-            PasteButton(onPaste: (ref, data) {
-              ref.watch(_input).text = data;
-              return ref.refresh(_result);
-            }),
-            Consumer(builder: (context, ref, _) {
-              return IconButton(
-                icon: const Icon(Icons.clear),
-                onPressed: ref.watch(_input).clear,
-              );
-            }),
+            PasteButtonWidget(
+              _input,
+              onUpdate: (ref) => ref.refresh(_inputText),
+            ),
+            ClearButtonWidget(
+              _input,
+              onUpdate: (ref) => ref.refresh(_inputText),
+            ),
           ],
           child: Consumer(builder: (context, ref, _) {
             return TextField(
               controller: ref.watch(_input),
               minLines: 2,
               maxLines: 12,
-              onChanged: (_) => ref.refresh(_result),
+              onChanged: (_) => ref.refresh(_inputText),
             );
           }),
         ),
         AppTitleWrapper(
           title: S.of(context).output,
           actions: [
-            CopyButton(onCopy: (ref) => ref.read(_result)),
+            CopyButtonWithText(_result),
           ],
           child: Consumer(builder: (context, ref, _) {
             return AppTextField(

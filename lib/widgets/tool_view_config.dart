@@ -57,6 +57,7 @@ class ToolViewWrapper extends StatelessWidget {
   }
 }
 
+@Deprecated('use AlgaConfigSwitch')
 class ToolViewSwitchConfig extends ConsumerWidget {
   const ToolViewSwitchConfig({
     super.key,
@@ -213,6 +214,42 @@ class _ToolViewTextFieldState extends ConsumerState<ToolViewTextField> {
               width: widget.width ?? 84,
               child: textField,
             ),
+    );
+  }
+}
+
+/**
+ * NEW WIDGET_REF WIDGETS
+ */
+
+class AlgaConfigSwitch extends ConsumerWidget {
+  const AlgaConfigSwitch({
+    super.key,
+    this.subtitle,
+    this.leading,
+    required this.title,
+    required this.value,
+  });
+  final Widget title;
+  final Widget? subtitle;
+  final Widget? leading;
+  final AutoDisposeStateProvider<bool> value;
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    return ToolViewConfig(
+      title: title,
+      subtitle: subtitle,
+      leading: leading,
+      trailing: Switch(
+        value: ref.watch(value),
+        onChanged: (value) {
+          ref.read(this.value.notifier).update((state) => value);
+        },
+      ),
+      onPressed: () {
+        ref.read(value.notifier).update((state) => !state);
+      },
     );
   }
 }

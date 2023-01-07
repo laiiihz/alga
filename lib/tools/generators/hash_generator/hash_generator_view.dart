@@ -19,19 +19,15 @@ class _HashGeneratorViewState extends State<HashGeneratorView> {
       children: [
         ToolViewWrapper(
           children: [
-            ToolViewSwitchConfig(
+            AlgaConfigSwitch(
               leading: const Icon(Icons.text_fields),
               title: Text(S.of(context).upperCase),
-              value: (ref) => ref.watch(hashUpperCase),
-              onChanged: (value, ref) =>
-                  ref.read(hashUpperCase.notifier).state = value,
+              value: hashUpperCase,
             ),
-            ToolViewSwitchConfig(
+            AlgaConfigSwitch(
               title: Text(S.of(context).hashHMAC),
               subtitle: Text(S.of(context).hashHMACDes),
-              value: (ref) => ref.watch(showHmac),
-              onChanged: (value, ref) =>
-                  ref.read(showHmac.notifier).state = value,
+              value: showHmac,
             ),
           ],
         ),
@@ -39,16 +35,20 @@ class _HashGeneratorViewState extends State<HashGeneratorView> {
           return AppTitleWrapper(
             title: S.of(context).input,
             actions: [
-              PasteButtonWidget(ref.watch(inputController)),
-              ClearButtonWidget(ref.watch(inputController)),
+              PasteButtonWidget(
+                inputController,
+                onUpdate: (value) => ref.refresh(inputText),
+              ),
+              ClearButtonWidget(
+                inputController,
+                onUpdate: (ref) => ref.refresh(inputText),
+              ),
             ],
             child: TextField(
               minLines: 2,
               maxLines: 12,
               controller: ref.watch(inputController),
-              onChanged: (text) {
-                return ref.refresh(hashResults);
-              },
+              onChanged: (text) => ref.refresh(inputText),
             ),
           );
         }),
@@ -56,16 +56,23 @@ class _HashGeneratorViewState extends State<HashGeneratorView> {
           if (!ref.watch(showHmac)) return const SizedBox.shrink();
           return AppTitleWrapper(
             title: S.of(context).hashOptional,
-            actions: [],
+            actions: [
+              PasteButtonWidget(
+                optionalController,
+                onUpdate: (ref) => ref.refresh(optionalText),
+              ),
+              ClearButtonWidget(
+                optionalController,
+                onUpdate: (ref) => ref.refresh(optionalText),
+              ),
+            ],
             child: Consumer(builder: (context, ref, _) {
               if (!ref.watch(showHmac)) return const SizedBox.shrink();
               return TextField(
                 minLines: 1,
                 maxLines: 12,
                 controller: ref.watch(optionalController),
-                onChanged: (text) {
-                  return ref.refresh(hashResults);
-                },
+                onChanged: (text) => ref.refresh(optionalText),
               );
             }),
           );

@@ -1,24 +1,26 @@
 part of './jwt_decoder_view.dart';
 
-final _jwtInput = StateProvider.autoDispose<TextEditingController>((ref) {
+final _jwtInput = Provider.autoDispose<TextEditingController>((ref) {
   final controller = TextEditingController();
   ref.onDispose(controller.dispose);
   return controller;
 });
 
+final _jwtInputText = Provider.autoDispose((ref) => ref.watch(_jwtInput).text);
+
 final _jwtModel = StateProvider.autoDispose<JWTModel?>((ref) {
-  final text = ref.watch(_jwtInput).text;
+  final text = ref.watch(_jwtInputText);
   if (text.isEmpty) return null;
   return JWTModel.fromToken(text);
 });
 
-final _headerResult = StateProvider.autoDispose<String>((ref) {
+final _headerResult = Provider.autoDispose<String>((ref) {
   final model = ref.watch(_jwtModel);
   if (model == null) return '';
   return JsonEncoder.withIndent(' ' * 4).convert(model.header);
 });
 
-final _payloadResult = StateProvider.autoDispose<String>((ref) {
+final _payloadResult = Provider.autoDispose<String>((ref) {
   final model = ref.watch(_jwtModel);
   if (model == null) return '';
   return JsonEncoder.withIndent(' ' * 4).convert(model.payload);

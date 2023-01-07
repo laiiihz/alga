@@ -1,6 +1,8 @@
 import 'dart:convert';
 
 import 'package:alga/constants/import_helper.dart';
+import 'package:alga/widgets/copy_button_widget.dart';
+import 'package:alga/widgets/paste_button_widget.dart';
 
 part './uri_parser_provider.dart';
 
@@ -20,18 +22,16 @@ class _UriParserViewState extends State<UriParserView> {
         AppTitleWrapper(
           title: S.of(context).input,
           actions: [
-            PasteButton(onPaste: (ref, data) {
-              ref.watch(_input).text = data;
-              return ref.refresh(_uri);
-            }),
+            PasteButtonWidget(
+              _input,
+              onUpdate: (ref) => ref.refresh(_uri),
+            ),
           ],
           child: Consumer(builder: (context, ref, _) {
             return LangTextField(
               lang: LangHighlightType.uri,
               controller: ref.watch(_input),
-              onChanged: (_) {
-                return ref.refresh(_uri);
-              },
+              onChanged: (_) => ref.refresh(_uri),
             );
           }),
         ),
@@ -42,12 +42,7 @@ class _UriParserViewState extends State<UriParserView> {
                 .map((e) => AppTitleWrapper(
                       title: e.title(context),
                       actions: [
-                        IconButton(
-                          onPressed: () {
-                            ClipboardUtil.copy(e.name);
-                          },
-                          icon: const Icon(Icons.copy),
-                        ),
+                        CopyButtonWithText.raw(e.name),
                       ],
                       child: AppTextField(
                         text: e.name,

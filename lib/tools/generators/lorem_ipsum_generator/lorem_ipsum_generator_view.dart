@@ -54,6 +54,7 @@ class _LoremIpsumGeneratorViewState
           title: S.of(context).output,
           actions: [
             CopyButtonWidget(refText: (ref) => ref.watch(loremProvider).output),
+            // CopyButton2(loremProvider),
             Consumer(
               builder: (context, ref, _) {
                 return CustomIconButton(

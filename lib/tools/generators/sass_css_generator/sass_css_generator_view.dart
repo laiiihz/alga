@@ -1,3 +1,6 @@
+import 'package:alga/widgets/clear_button_widget.dart';
+import 'package:alga/widgets/copy_button_widget.dart';
+import 'package:alga/widgets/paste_button_widget.dart';
 import 'package:sass/sass.dart';
 
 import 'package:alga/constants/import_helper.dart';
@@ -19,15 +22,13 @@ class _SassCssGeneratorViewState extends State<SassCssGeneratorView> {
       children: [
         ToolViewWrapper(
           children: [
-            ToolViewSwitchConfig(
+            AlgaConfigSwitch(
               leading: const Icon(Icons.compress),
               title: Text(S.of(context).compress),
-              value: (ref) => ref.watch(_compress),
-              onChanged: (state, ref) =>
-                  ref.read(_compress.notifier).state = state,
+              value: _compress,
             ),
             ToolViewMenuConfig<Syntax>(
-              title: const Text('Source Type'),
+              title: Text(context.tr.sassSourceType),
               name: (ref) => ref.watch(_syntax).toString(),
               initialValue: (WidgetRef ref) => ref.watch(_syntax),
               items: [Syntax.css, Syntax.sass, Syntax.scss]
@@ -37,18 +38,22 @@ class _SassCssGeneratorViewState extends State<SassCssGeneratorView> {
                       ))
                   .toList(),
               onSelected: (syntax, ref) {
-                ref.read(_syntax.notifier).state = syntax;
+                ref.read(_syntax.notifier).update((state) => syntax);
               },
             ),
           ],
         ),
         AppTitleWrapper(
-          title: 'SCSS source',
+          title: context.tr.sassSource,
           actions: [
-            PasteButton(onPaste: (ref, data) {
-              ref.watch(_inputController).text = data;
-              return ref.refresh(_cssResult);
-            }),
+            PasteButtonWidget(
+              _inputController,
+              onUpdate: (ref) => ref.refresh(_inputText),
+            ),
+            ClearButtonWidget(
+              _inputController,
+              onUpdate: (ref) => ref.refresh(_inputText),
+            ),
           ],
           child: Consumer(builder: (context, ref, _) {
             return LangTextField(
@@ -56,16 +61,14 @@ class _SassCssGeneratorViewState extends State<SassCssGeneratorView> {
               controller: ref.watch(_inputController),
               minLines: 2,
               maxLines: 12,
-              onChanged: (_) {
-                return ref.refresh(_cssResult);
-              },
+              onChanged: (_) => ref.refresh(_inputText),
             );
           }),
         ),
         AppTitleWrapper(
-          title: 'CSS result',
+          title: context.tr.sassResult,
           actions: [
-            CopyButton(onCopy: (ref) => ref.read(_css)),
+            CopyButtonWithText(_css),
           ],
           child: Consumer(builder: (context, ref, _) {
             return AppTextField(

@@ -1,6 +1,8 @@
 import 'dart:math';
 
 import 'package:alga/constants/import_helper.dart';
+import 'package:alga/widgets/copy_button_widget.dart';
+import 'package:alga/widgets/refresh_button.dart';
 
 part './password_generator_provider.dart';
 
@@ -14,70 +16,39 @@ class PasswordGeneratorView extends StatelessWidget {
       children: [
         ToolViewWrapper(
           children: [
-            ToolViewSwitchConfig(
+            AlgaConfigSwitch(
               title: Text(S.of(context).passUppercaseCharacters),
               subtitle: const Text('[A-Z]'),
-              value: (ref) => ref.watch(_useUppercase),
-              onChanged: (value, ref) =>
-                  ref.watch(_useUppercase.notifier).state = value,
+              value: _useUppercase,
             ),
-            ToolViewSwitchConfig(
+            AlgaConfigSwitch(
               title: Text(S.of(context).passLowercaseCharacters),
               subtitle: const Text('[a-z]'),
-              value: (ref) => ref.watch(_useLowercase),
-              onChanged: (state, ref) {
-                ref.watch(_useLowercase.notifier).state = state;
-              },
+              value: _useLowercase,
             ),
-            ToolViewSwitchConfig(
+            AlgaConfigSwitch(
               title: Text(S.of(context).passNumbersCharacters),
               subtitle: const Text('[0-9]'),
-              value: (ref) => ref.watch(_useNumbers),
-              onChanged: (state, ref) {
-                ref.watch(_useNumbers.notifier).state = state;
-              },
+              value: _useNumbers,
             ),
-            ToolViewSwitchConfig(
+            AlgaConfigSwitch(
               title: Text(S.of(context).passSpecialCharacters),
               subtitle: const Text(r'!@#$%^&*'),
-              value: (ref) => ref.watch(_useSymbols),
-              onChanged: (state, ref) {
-                ref.watch(_useSymbols.notifier).state = state;
-              },
+              value: _useSymbols,
             ),
-            ToolViewConfig(
+            ToolViewTextField(
               title: Text(S.of(context).passPasswordLength),
-              trailing: Consumer(builder: (context, ref, _) {
-                return SizedBox(
-                  width: 60,
-                  child: TextField(
-                    controller: ref.watch(_lengthCtr),
-                    decoration: const InputDecoration(hintText: '8'),
-                    onChanged: (_) {
-                      return ref.refresh(_useLength);
-                    },
-                  ),
-                );
-              }),
+              controller: _lengthCtr,
+              hint: '8',
+              onEditingComplete: (ref) => ref.refresh(_useLength),
             ),
           ],
         ),
         AppTitleWrapper(
           title: S.of(context).passGeneratedPassword,
           actions: [
-            Consumer(builder: (context, ref, _) {
-              return IconButton(
-                onPressed: () {
-                  return ref.refresh(_result);
-                },
-                icon: const Icon(Icons.refresh),
-              );
-            }),
-            CopyButton(
-              onCopy: (ref) {
-                return ref.watch(_result);
-              },
-            ),
+            CopyButtonWithText(_result),
+            RefreshButton(_result),
           ],
           child: Consumer(
             builder: (context, ref, _) {

@@ -13,24 +13,6 @@ class RegexTestAppView extends ConsumerStatefulWidget {
 }
 
 class _RegexTestAppViewState extends ConsumerState<RegexTestAppView> {
-  final _controller = TextEditingController();
-  final _textController = TextEditingController();
-
-  @override
-  void initState() {
-    super.initState();
-    _controller.addListener(() {
-      ref.read(_regexTextProvider.notifier).update((state) => _controller.text);
-    });
-  }
-
-  @override
-  void dispose() {
-    _controller.dispose();
-    _textController.dispose();
-    super.dispose();
-  }
-
   @override
   Widget build(BuildContext context) {
     return ScrollableToolView(
@@ -38,55 +20,61 @@ class _RegexTestAppViewState extends ConsumerState<RegexTestAppView> {
       children: [
         ToolViewWrapper(
           children: [
-            ToolViewSwitchConfig(
-              title: const Text('multiLine'),
-              value: (ref) => ref.watch(_multiLine),
-              onChanged: (value, ref) =>
-                  ref.read(_multiLine.notifier).update((state) => value),
+            AlgaConfigSwitch(
+              title: Text(context.tr.regexMultiLine),
+              value: _multiLine,
             ),
-            ToolViewSwitchConfig(
-              title: const Text('caseSensitive'),
-              value: (ref) => ref.watch(_caseSensitive),
-              onChanged: (value, ref) =>
-                  ref.read(_caseSensitive.notifier).update((state) => value),
+            AlgaConfigSwitch(
+              title: Text(context.tr.regexCaseSensitive),
+              value: _caseSensitive,
             ),
-            ToolViewSwitchConfig(
-              title: const Text('unicode'),
-              value: (ref) => ref.watch(_unicode),
-              onChanged: (value, ref) =>
-                  ref.read(_unicode.notifier).update((state) => value),
+            AlgaConfigSwitch(
+              title: Text(context.tr.regexUnicode),
+              value: _unicode,
             ),
-            ToolViewSwitchConfig(
-              title: const Text('dotAll'),
-              value: (ref) => ref.watch(_dotAll),
-              onChanged: (value, ref) =>
-                  ref.read(_dotAll.notifier).update((state) => value),
+            AlgaConfigSwitch(
+              title: Text(context.tr.regexDotAll),
+              value: _dotAll,
             ),
           ],
         ),
         AppTitleWrapper(
           title: context.tr.regularExpression,
           actions: [
-            PasteButtonWidget(_controller),
-            ClearButtonWidget(_controller),
+            PasteButtonWidget(
+              _regexTextProvider,
+              onUpdate: (ref) => ref.refresh(_regexText),
+            ),
+            ClearButtonWidget(
+              _regexTextProvider,
+              onUpdate: (ref) => ref.refresh(_regexText),
+            ),
           ],
           child: TextField(
-            controller: _controller,
+            controller: ref.watch(_regexTextProvider),
             decoration: InputDecoration(
               errorText: ref.watch(_errorProvider),
             ),
+            onChanged: (value) => ref.refresh(_regexText),
           ),
         ),
         AppTitleWrapper(
           title: context.tr.regexText,
           actions: [
-            PasteButtonWidget(_textController),
-            ClearButtonWidget(_textController),
+            PasteButtonWidget(
+              _resultControllerProvider,
+              onUpdate: (ref) => ref.refresh(_regexProvider),
+            ),
+            ClearButtonWidget(
+              _resultControllerProvider,
+              onUpdate: (ref) => ref.refresh(_regexProvider),
+            ),
           ],
           child: ExtendedTextField(
             minLines: 2,
             maxLines: 99,
-            controller: _textController,
+            controller: ref.watch(_resultControllerProvider),
+            onChanged: (value) => ref.refresh(_regexProvider),
             specialTextSpanBuilder: RegexTesterTextBuilder(
               ref.watch(_regexProvider),
               primaryColor: Theme.of(context).colorScheme.primary,

@@ -1,7 +1,6 @@
 part of './sm3_generator_view.dart';
 
-final _inputController =
-    StateProvider.autoDispose<TextEditingController>((ref) {
+final _inputController = Provider.autoDispose<TextEditingController>((ref) {
   final controller = TextEditingController();
   ref.onDispose(() {
     controller.dispose();
@@ -9,8 +8,11 @@ final _inputController =
   return controller;
 });
 
+final _inputText =
+    Provider.autoDispose((ref) => ref.watch(_inputController).text);
+
 final _inputValue = StateProvider.autoDispose<String>((ref) {
-  final text = ref.read(_inputController).text;
+  final text = ref.watch(_inputText);
   if (text.isEmpty) return '';
   var sm3 = SM3Digest();
   Uint8List result = sm3.process(Uint8List.fromList(utf8.encode(text)));

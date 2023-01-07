@@ -1,15 +1,21 @@
 part of './sass_css_generator_view.dart';
 
-final _inputController = StateProvider.autoDispose<TextEditingController>(
-    (ref) => TextEditingController());
+final _inputController = Provider.autoDispose<TextEditingController>((ref) {
+  final controller = TextEditingController();
+  ref.onDispose(controller.dispose);
+  return controller;
+});
+
+final _inputText =
+    Provider.autoDispose((ref) => ref.watch(_inputController).text);
 
 final _compress = StateProvider.autoDispose<bool>((ref) => false);
 
 final _syntax = StateProvider.autoDispose<Syntax>((ref) => Syntax.scss);
 
-final _cssResult = StateProvider.autoDispose<CompileResult?>((ref) {
+final _cssResult = Provider.autoDispose<CompileResult?>((ref) {
   final compress = ref.watch(_compress);
-  final text = ref.watch(_inputController).text;
+  final text = ref.watch(_inputText);
   final syntax = ref.watch(_syntax);
   try {
     final result = compileStringToResult(
@@ -23,5 +29,5 @@ final _cssResult = StateProvider.autoDispose<CompileResult?>((ref) {
   }
 });
 
-final _css = StateProvider.autoDispose<String>(
-    (ref) => ref.watch(_cssResult)?.css ?? '');
+final _css =
+    Provider.autoDispose<String>((ref) => ref.watch(_cssResult)?.css ?? '');

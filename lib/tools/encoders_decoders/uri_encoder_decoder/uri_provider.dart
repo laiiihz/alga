@@ -19,20 +19,22 @@ enum UriEncodeType {
 }
 
 /// decoded
-final _input = StateProvider.autoDispose<TextEditingController>((ref) {
+final _input = Provider.autoDispose<TextEditingController>((ref) {
   final controller = TextEditingController();
   ref.onDispose(controller.dispose);
   return controller;
 });
+
+final _inputText = Provider.autoDispose((ref) => ref.watch(_input).text);
 
 final _isEncode = StateProvider.autoDispose<bool>((ref) => true);
 
 final _type =
     StateProvider.autoDispose<UriEncodeType>((ref) => UriEncodeType.component);
 
-final _result = StateProvider.autoDispose<String>((ref) {
+final _result = Provider.autoDispose<String>((ref) {
   final isEncode = ref.watch(_isEncode);
-  final text = ref.watch(_input).text;
+  final text = ref.watch(_inputText);
   if (text.isEmpty) return '';
   switch (ref.watch(_type)) {
     case UriEncodeType.full:

@@ -38,7 +38,7 @@ final loremCount = Provider.autoDispose<int>((ref) {
   if (count > 500) count = 500;
   return count;
 });
-final loremNumberController = StateProvider.autoDispose((ref) {
+final loremNumberController = Provider.autoDispose((ref) {
   final controller = TextEditingController();
   ref.onDispose(() => controller.dispose());
   return controller;

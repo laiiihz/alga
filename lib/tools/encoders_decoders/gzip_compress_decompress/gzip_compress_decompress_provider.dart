@@ -2,15 +2,17 @@ part of './gzip_compress_decompress_view.dart';
 
 final _isCompress = StateProvider.autoDispose<bool>((ref) => true);
 
-final _input = StateProvider.autoDispose<TextEditingController>((ref) {
+final _input = Provider.autoDispose<TextEditingController>((ref) {
   final controller = TextEditingController();
   ref.onDispose(controller.dispose);
   return controller;
 });
 
-final _result = StateProvider.autoDispose<String>((ref) {
+final _inputText = Provider.autoDispose((ref) => ref.watch(_input).text);
+
+final _result = Provider.autoDispose<String>((ref) {
   final compress = ref.watch(_isCompress);
-  final text = ref.watch(_input).text;
+  final text = ref.watch(_inputText);
   if (text.isEmpty) return '';
   try {
     if (compress) {

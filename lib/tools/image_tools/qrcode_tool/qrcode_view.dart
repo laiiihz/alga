@@ -1,3 +1,7 @@
+import 'package:alga/widgets/clear_button_widget.dart';
+import 'package:alga/widgets/copy_button_widget.dart';
+import 'package:alga/widgets/custom_icon_button.dart';
+import 'package:alga/widgets/paste_button_widget.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 
 import 'package:alga/constants/import_helper.dart';
@@ -19,21 +23,12 @@ class _QrcodeViewState extends State<QrcodeView> {
       children: [
         ToolViewWrapper(
           children: [
-            ToolViewConfig(
+            ToolViewTextField(
               title: Text(S.of(context).qrVersion),
-              trailing: SizedBox(
-                width: 120,
-                child: Consumer(builder: (context, ref, _) {
-                  return TextField(
-                    controller: ref.watch(_versionInput),
-                    decoration:
-                        InputDecoration(hintText: S.of(context).qrAutoVersion),
-                    onChanged: (text) {
-                      return ref.refresh(_version);
-                    },
-                  );
-                }),
-              ),
+              width: 120,
+              controller: _versionInput,
+              hint: context.tr.qrAutoVersion,
+              onEditingComplete: (ref) => ref.refresh(_version),
             ),
             ToolViewMenuConfig<int>(
               title: Text(S.of(context).errorCorrectionLevel),
@@ -50,23 +45,28 @@ class _QrcodeViewState extends State<QrcodeView> {
               },
               initialValue: (ref) => ref.watch(_errorCorrectionLevel),
             ),
-            ToolViewSwitchConfig(
+            AlgaConfigSwitch(
               title: Text(S.of(context).qrGapless),
-              value: (ref) => ref.watch(_gapless),
-              onChanged: (state, ref) {
-                ref.read(_gapless.notifier).state = state;
-              },
+              value: _gapless,
             ),
           ],
         ),
         AppTitleWrapper(
           title: S.of(context).input,
+          actions: [
+            PasteButtonWidget(
+              _input,
+              onUpdate: (ref) => ref.refresh(_inputData),
+            ),
+            ClearButtonWidget(
+              _input,
+              onUpdate: (ref) => ref.refresh(_inputData),
+            ),
+          ],
           child: Consumer(builder: (context, ref, _) {
             return TextField(
               controller: ref.watch(_input),
-              onChanged: (_) {
-                return ref.refresh(_inputData);
-              },
+              onChanged: (_) => ref.refresh(_inputData),
               minLines: 1,
               maxLines: 12,
             );
@@ -74,6 +74,13 @@ class _QrcodeViewState extends State<QrcodeView> {
         ),
         AppTitleWrapper(
           title: S.of(context).output,
+          actions: const [
+            CustomIconButton(
+              tooltip: 'export',
+              onPressed: null,
+              icon: Icon(Icons.save_alt_rounded),
+            ),
+          ],
           child: SizedBox(
             height: 300,
             child: Center(

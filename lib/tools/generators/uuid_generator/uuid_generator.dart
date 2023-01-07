@@ -1,7 +1,6 @@
 import 'package:alga/widgets/copy_button_widget.dart';
 import 'package:alga/widgets/refresh_button.dart';
 import 'package:flutter/services.dart';
-import 'package:sass/sass.dart';
 
 import 'package:uuid/uuid.dart';
 
@@ -24,21 +23,15 @@ class _UUIDGeneratorViewState extends State<UUIDGeneratorView> {
       children: [
         ToolViewWrapper(
           children: [
-            ToolViewSwitchConfig(
+            AlgaConfigSwitch(
               leading: const Icon(Icons.horizontal_rule),
               title: Text(S.of(context).hypens),
-              value: (ref) => ref.watch(_hypens),
-              onChanged: (value, ref) {
-                ref.read(_hypens.notifier).state = value;
-              },
+              value: _hypens,
             ),
-            ToolViewSwitchConfig(
+            AlgaConfigSwitch(
               leading: const Icon(Icons.text_fields),
               title: Text(S.of(context).upperCase),
-              value: (ref) => ref.watch(_upperCase),
-              onChanged: (value, ref) {
-                ref.read(_upperCase.notifier).state = value;
-              },
+              value: _upperCase,
             ),
             ToolViewMenuConfig<UUIDVersion>(
               leading: const Icon(Icons.info_outline),
@@ -96,6 +89,7 @@ class _UUIDGeneratorViewState extends State<UUIDGeneratorView> {
                           inputFormatters: [
                             FilteringTextInputFormatter.digitsOnly,
                           ],
+                          hint: '1',
                           onEditingComplete: (ref) => ref.refresh(_count),
                         ),
                       ),

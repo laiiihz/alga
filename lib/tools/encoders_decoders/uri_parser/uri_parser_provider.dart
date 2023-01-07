@@ -1,16 +1,15 @@
 part of './uri_parser_view.dart';
 
-final _input = StateProvider.autoDispose<TextEditingController>((ref) {
+final _input = Provider.autoDispose<TextEditingController>((ref) {
   final controller = TextEditingController();
   ref.onDispose(controller.dispose);
   return controller;
 });
 
-final _uri = StateProvider.autoDispose<Uri?>((ref) {
-  return Uri.parse(ref.watch(_input).text);
-});
+final _uri =
+    Provider.autoDispose<Uri?>((ref) => Uri.tryParse(ref.watch(_input).text));
 
-final _uriParts = StateProvider.autoDispose<List<UriPart>>((ref) {
+final _uriParts = Provider.autoDispose<List<UriPart>>((ref) {
   final uri = ref.watch(_uri);
   if (uri == null) return [];
   String? origin;

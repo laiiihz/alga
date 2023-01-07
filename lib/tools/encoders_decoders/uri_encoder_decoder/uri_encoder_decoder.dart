@@ -1,4 +1,7 @@
 import 'package:alga/constants/import_helper.dart';
+import 'package:alga/widgets/clear_button_widget.dart';
+import 'package:alga/widgets/copy_button_widget.dart';
+import 'package:alga/widgets/paste_button_widget.dart';
 
 part './uri_provider.dart';
 
@@ -50,35 +53,28 @@ class UriEncoderDecoderView extends StatelessWidget {
         AppTitleWrapper(
           title: S.of(context).input,
           actions: [
-            PasteButton(onPaste: (ref, data) {
-              ref.read(_input).text = data;
-              return ref.refresh(_result);
-            }),
-            Consumer(builder: (context, ref, _) {
-              return IconButton(
-                icon: const Icon(Icons.clear),
-                onPressed: () {
-                  ref.read(_input).clear();
-                  return ref.refresh(_result);
-                },
-              );
-            }),
+            PasteButtonWidget(
+              _input,
+              onUpdate: (ref) => ref.refresh(_inputText),
+            ),
+            ClearButtonWidget(
+              _input,
+              onUpdate: (ref) => ref.refresh(_inputText),
+            ),
           ],
           child: Consumer(builder: (context, ref, _) {
             return TextField(
               maxLines: 12,
               minLines: 2,
               controller: ref.watch(_input),
-              onChanged: (_) {
-                return ref.refresh(_result);
-              },
+              onChanged: (_) => ref.refresh(_inputText),
             );
           }),
         ),
         AppTitleWrapper(
           title: S.of(context).output,
           actions: [
-            CopyButton(onCopy: (ref) => ref.read(_result)),
+            CopyButtonWithText(_result),
           ],
           child: Consumer(builder: (context, ref, _) {
             return AppTextField(

@@ -61,14 +61,13 @@ extension HashTypeExt on HashType {
   }
 }
 
-// final hmacControllers = StateProvider.autoDispose<List<HMACResult>>(
-//     (ref) => HashType.values.map((e) => HMACResult.fromEmpty(e)).toList());
-
-final inputController = StateProvider.autoDispose<TextEditingController>((ref) {
+final inputController = Provider.autoDispose<TextEditingController>((ref) {
   final ctrl = TextEditingController();
   ref.onDispose(() => ctrl.dispose());
   return ctrl;
 });
+final inputText =
+    Provider.autoDispose<String>((ref) => ref.watch(inputController).text);
 final optionalController =
     StateProvider.autoDispose<TextEditingController>((ref) {
   final ctrl = TextEditingController();
@@ -76,14 +75,17 @@ final optionalController =
   return ctrl;
 });
 
+final optionalText =
+    Provider.autoDispose((ref) => ref.watch(optionalController).text);
+
 final hashUpperCase = StateProvider.autoDispose<bool>((ref) => false);
 final showHmac = StateProvider.autoDispose<bool>((ref) => false);
 
 final hashResults = Provider.autoDispose<List<HashResult>>((ref) {
   bool showHmacData = ref.watch(showHmac);
   bool upperCaseData = ref.watch(hashUpperCase);
-  String inputData = ref.watch(inputController).text;
-  String optionalData = ref.watch(optionalController).text;
+  String inputData = ref.watch(inputText);
+  String optionalData = ref.watch(optionalText);
   if (inputData.isEmpty) return const [];
 
   final results = <HashResult>[];
