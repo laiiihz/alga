@@ -7,6 +7,7 @@ import 'package:alga/widgets/copy_button_widget.dart';
 import 'package:alga/widgets/custom_icon_button.dart';
 import 'package:alga/widgets/paste_button_widget.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_blurhash/flutter_blurhash.dart';
 
 part 'blur_hash_tool_provider.dart';
@@ -58,6 +59,11 @@ class _BlurHashToolViewState extends ConsumerState<BlurHashToolView> {
             controller: ref.watch(hashController),
             onEditingComplete: () => ref.refresh(hashText),
             onChanged: (value) => ref.refresh(hashText),
+            inputFormatters: [
+              //
+              FilteringTextInputFormatter.allow(
+                  RegExp(r'[a-zA-Z0-9#\\$%*+,-.:;=?@\[\]^_{|}~]')),
+            ],
           ),
         ),
         const SizedBox(height: 8),
