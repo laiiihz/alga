@@ -126,6 +126,8 @@
   "blurHashTool": "Blur Hash工具",
   "pickImage": "选择图片",
   "pickImagePick": "选择",
+  "imageToBlurhash": "图片生成blurhash",
+  "blurhashToImage": "blurhash生成图片",
   "qrCodeTool": "二维码工具",
   "qrVersion": "版本",
   "qrAutoVersion": "自动",

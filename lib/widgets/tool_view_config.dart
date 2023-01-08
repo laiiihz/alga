@@ -146,6 +146,7 @@ class ToolViewTextField extends ConsumerStatefulWidget {
     this.hint,
     this.expanded = false,
     this.width,
+    this.enabled,
   });
   final Widget? leading;
   final Widget title;
@@ -156,6 +157,7 @@ class ToolViewTextField extends ConsumerStatefulWidget {
   final void Function(WidgetRef ref)? onEditingComplete;
   final String? hint;
   final double? width;
+  final bool? enabled;
 
   @override
   ConsumerState<ConsumerStatefulWidget> createState() =>
@@ -196,6 +198,7 @@ class _ToolViewTextFieldState extends ConsumerState<ToolViewTextField> {
         ),
         hintText: widget.hint,
       ),
+      enabled: widget.enabled,
       onEditingComplete: () {
         widget.onEditingComplete?.call(ref);
         _focusNode.unfocus();

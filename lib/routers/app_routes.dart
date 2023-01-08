@@ -21,6 +21,7 @@ import 'package:alga/tools/generators/random_file_generator/random_file_generato
 import 'package:alga/tools/generators/sass_css_generator/sass_css_generator_view.dart';
 import 'package:alga/tools/generators/sm3_generator/sm3_generator_view.dart';
 import 'package:alga/tools/generators/uuid_generator/uuid_generator.dart';
+import 'package:alga/tools/image_tools/blur_hash_tool/blur_hash_tool_view.dart';
 import 'package:alga/tools/image_tools/blur_hash_tool/blur_hash_view.dart';
 import 'package:alga/tools/image_tools/qrcode_tool/qrcode_view.dart';
 import 'package:alga/tools/info/device_info/device_info_view.dart';
@@ -95,7 +96,8 @@ final appRouter = GoRouter(
             ),
             GoRoute(
               path: AppAtom.blurhash.path,
-              builder: (context, state) => const BlurHashView(),
+              // builder: (context, state) => const BlurHashView(),
+              builder: (context, state) => const BlurHashToolView(),
             ),
             GoRoute(
               path: AppAtom.qrcode.path,

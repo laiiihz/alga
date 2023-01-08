@@ -129,6 +129,8 @@
   "blurHashTool": "Blur Hash Tool",
   "pickImage": "Pick Image",
   "pickImagePick": "Pick",
+  "imageToBlurhash": "image to blurhash",
+  "blurhashToImage": "blurhash to image",
   "qrCodeTool": "QR Code Tool",
   "qrVersion": "version",
   "qrAutoVersion": "Auto",
