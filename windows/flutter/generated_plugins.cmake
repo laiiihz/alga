@@ -9,6 +9,7 @@ list(APPEND FLUTTER_PLUGIN_LIST
   hotkey_manager
   network_info_plus
   screen_retriever
+  share_plus
   url_launcher_windows
   window_manager
 )

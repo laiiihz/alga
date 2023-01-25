@@ -179,5 +179,7 @@
   "infomationApp": "信息",
   "serverApp": "服务器",
   "favorite": "收藏",
-  "refresh": "刷新"
+  "refresh": "刷新",
+  "export": "导出",
+  "share": "分享"
 }

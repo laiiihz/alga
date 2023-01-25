@@ -1,5 +1,4 @@
 import 'package:flutter_js/flutter_js.dart';
-
 class JsStub {
   late JavascriptRuntime _runtime;
   JsStub() {

@@ -1,10 +1,13 @@
+import 'dart:ui';
+
 import 'package:alga/widgets/clear_button_widget.dart';
-import 'package:alga/widgets/copy_button_widget.dart';
 import 'package:alga/widgets/custom_icon_button.dart';
 import 'package:alga/widgets/paste_button_widget.dart';
+import 'package:flutter/rendering.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 
 import 'package:alga/constants/import_helper.dart';
+import 'package:share_plus/share_plus.dart';
 
 part './qrcode_provider.dart';
 
@@ -16,6 +19,7 @@ class QrcodeView extends StatefulWidget {
 }
 
 class _QrcodeViewState extends State<QrcodeView> {
+  final _key = GlobalKey();
   @override
   Widget build(BuildContext context) {
     return ScrollableToolView(
@@ -74,25 +78,53 @@ class _QrcodeViewState extends State<QrcodeView> {
         ),
         AppTitleWrapper(
           title: S.of(context).output,
-          actions: const [
-            CustomIconButton(
-              tooltip: 'export',
-              onPressed: null,
-              icon: Icon(Icons.save_alt_rounded),
-            ),
+          actions: [
+            Builder(builder: (context) {
+              return CustomIconButton(
+                tooltip: context.tr.share,
+                onPressed: () async {
+                  final cContext = _key.currentContext;
+                  if (cContext == null) return;
+                  final box =
+                      cContext.findRenderObject() as RenderRepaintBoundary?;
+                  if (box == null) return;
+                  final image = await box.toImage(pixelRatio: 4);
+                  final imageBytes =
+                      await image.toByteData(format: ImageByteFormat.png);
+                  if (imageBytes == null) return;
+                  if (cContext == null) return;
+
+                  Share.shareXFiles(
+                    [
+                      XFile.fromData(imageBytes.buffer.asUint8List(),
+                          name: 'test', mimeType: 'png')
+                    ],
+                    sharePositionOrigin:
+                        // ignore: use_build_context_synchronously
+                        (context.findRenderObject() as RenderBox)
+                                .localToGlobal(Offset.zero) &
+                            box.size,
+                  );
+                },
+                icon: const Icon(Icons.share_rounded),
+              );
+            }),
           ],
           child: SizedBox(
             height: 300,
             child: Center(
               child: Consumer(builder: (context, ref, _) {
-                return QrImage(
-                  data: ref.watch(_inputData),
-                  version: ref.watch(_version),
-                  errorCorrectionLevel: ref.watch(_errorCorrectionLevel),
-                  gapless: ref.watch(_gapless),
-                  backgroundColor: Colors.transparent,
-                  foregroundColor:
-                      isDark(context) ? Colors.white : Colors.black,
+                return RepaintBoundary(
+                  key: _key,
+                  child: QrImage(
+                    data: ref.watch(_inputData),
+                    version: ref.watch(_version),
+                    errorCorrectionLevel: ref.watch(_errorCorrectionLevel),
+                    gapless: ref.watch(_gapless),
+                    backgroundColor: Colors.transparent,
+                    foregroundColor:
+                        isDark(context) ? Colors.white : Colors.black,
+                  ),
                 );
               }),
             ),
