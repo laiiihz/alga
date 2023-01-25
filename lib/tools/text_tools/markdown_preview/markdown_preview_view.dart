@@ -31,13 +31,12 @@ class _MarkdownPreviewViewState extends ConsumerState<MarkdownPreviewView> {
         ),
       ],
       child: Consumer(builder: (context, ref, _) {
-        return LangTextField(
+        return LanguageTextField(
           expands: !small,
           maxLines: small ? 16 : null,
           minLines: small ? 16 : null,
           controller: ref.watch(_inputController),
           onChanged: (_) => ref.refresh(_inputValue),
-          lang: LangHighlightType.markdown,
         );
       }),
     );

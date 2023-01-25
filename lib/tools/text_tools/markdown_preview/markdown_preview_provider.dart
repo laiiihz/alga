@@ -1,7 +1,7 @@
 part of './markdown_preview_view.dart';
 
-final _inputController = Provider.autoDispose<TextEditingController>((ref) {
-  final controller = TextEditingController();
+final _inputController = Provider.autoDispose<RichTextController>((ref) {
+  final controller = RichTextController.lang(type: HighlightType.markdown);
   ref.onDispose(controller.dispose);
   return controller;
 });

@@ -3,7 +3,6 @@ import 'dart:convert';
 import 'package:alga/widgets/clear_button_widget.dart';
 import 'package:alga/widgets/copy_button_widget.dart';
 import 'package:json2yaml/json2yaml.dart' as json_2_yaml;
-import 'package:json_textfield/json_textfield.dart';
 import 'package:yaml/yaml.dart';
 
 import 'package:alga/constants/import_helper.dart';
@@ -28,7 +27,7 @@ class JsonYamlConverterView extends ConsumerWidget {
           onUpdate: (ref) {},
         ),
       ],
-      child: JsonTextField(
+      child: TextField(
         minLines: isSmallDevice(context) ? 12 : null,
         maxLines: isSmallDevice(context) ? 12 : null,
         controller: ref.watch(_jsonController),

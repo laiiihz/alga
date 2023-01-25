@@ -8,3 +8,14 @@ class LangHighlightType {
   static const uri = 'uri';
   static const js = 'javascript';
 }
+
+enum HighlightType {
+  json,
+  dart,
+  yaml,
+  markdown,
+  scss,
+  css,
+  uri,
+  js,
+}
