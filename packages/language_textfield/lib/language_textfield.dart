@@ -1,9 +1,6 @@
 library language_textfield;
 
-import 'package:extended_text_field/extended_text_field.dart';
 import 'package:flutter/material.dart';
-
-import 'lang_special_builder.dart';
 
 export 'language_highlight_type.dart';
 
@@ -30,9 +27,8 @@ class LangTextField extends StatelessWidget {
   final bool readOnly;
   @override
   Widget build(BuildContext context) {
-    return ExtendedTextField(
+    return TextField(
       controller: controller,
-      specialTextSpanBuilder: LangSpecialBuilder(lang),
       maxLines: maxLines,
       minLines: minLines,
       onChanged: onChanged,
@@ -40,6 +36,42 @@ class LangTextField extends StatelessWidget {
       decoration: inputDecoration,
       textAlignVertical: TextAlignVertical.top,
       readOnly: readOnly,
+    );
+  }
+}
+
+class RichTextController extends TextEditingController {
+  @override
+  TextSpan buildTextSpan(
+      {required BuildContext context,
+      TextStyle? style,
+      required bool withComposing}) {
+    assert(!value.composing.isValid ||
+        !withComposing ||
+        value.isComposingRangeValid);
+    // If the composing range is out of range for the current text, ignore it to
+    // preserve the tree integrity, otherwise in release mode a RangeError will
+    // be thrown and this EditableText will be built with a broken subtree.
+    final bool composingRegionOutOfRange =
+        !value.isComposingRangeValid || !withComposing;
+
+    if (composingRegionOutOfRange) {
+      return TextSpan(style: style, text: text);
+    }
+
+    final TextStyle composingStyle =
+        style?.merge(const TextStyle(decoration: TextDecoration.underline)) ??
+            const TextStyle(decoration: TextDecoration.underline);
+    return TextSpan(
+      style: style,
+      children: <TextSpan>[
+        TextSpan(text: value.composing.textBefore(value.text)),
+        TextSpan(
+          style: composingStyle,
+          text: value.composing.textInside(value.text),
+        ),
+        TextSpan(text: value.composing.textAfter(value.text)),
+      ],
     );
   }
 }

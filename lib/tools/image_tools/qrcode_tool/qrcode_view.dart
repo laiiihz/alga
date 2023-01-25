@@ -1,13 +1,8 @@
-import 'dart:ui';
-
 import 'package:alga/widgets/clear_button_widget.dart';
-import 'package:alga/widgets/custom_icon_button.dart';
 import 'package:alga/widgets/paste_button_widget.dart';
-import 'package:flutter/rendering.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 
 import 'package:alga/constants/import_helper.dart';
-import 'package:share_plus/share_plus.dart';
 
 part './qrcode_provider.dart';
 
@@ -78,37 +73,37 @@ class _QrcodeViewState extends State<QrcodeView> {
         ),
         AppTitleWrapper(
           title: S.of(context).output,
-          actions: [
-            Builder(builder: (context) {
-              return CustomIconButton(
-                tooltip: context.tr.share,
-                onPressed: () async {
-                  final cContext = _key.currentContext;
-                  if (cContext == null) return;
-                  final box =
-                      cContext.findRenderObject() as RenderRepaintBoundary?;
-                  if (box == null) return;
-                  final image = await box.toImage(pixelRatio: 4);
-                  final imageBytes =
-                      await image.toByteData(format: ImageByteFormat.png);
-                  if (imageBytes == null) return;
-                  if (cContext == null) return;
+          actions: const [
+            // Builder(builder: (context) {
+            //   return CustomIconButton(
+            //     tooltip: context.tr.share,
+            //     onPressed: () async {
+            //       final cContext = _key.currentContext;
+            //       if (cContext == null) return;
+            //       final box =
+            //           cContext.findRenderObject() as RenderRepaintBoundary?;
+            //       if (box == null) return;
+            //       final image = await box.toImage(pixelRatio: 4);
+            //       final imageBytes =
+            //           await image.toByteData(format: ImageByteFormat.png);
+            //       if (imageBytes == null) return;
+            //       if (cContext == null) return;
 
-                  Share.shareXFiles(
-                    [
-                      XFile.fromData(imageBytes.buffer.asUint8List(),
-                          name: 'test', mimeType: 'png')
-                    ],
-                    sharePositionOrigin:
-                        // ignore: use_build_context_synchronously
-                        (context.findRenderObject() as RenderBox)
-                                .localToGlobal(Offset.zero) &
-                            box.size,
-                  );
-                },
-                icon: const Icon(Icons.share_rounded),
-              );
-            }),
+            //       Share.shareXFiles(
+            //         [
+            //           XFile.fromData(imageBytes.buffer.asUint8List(),
+            //               name: 'test', mimeType: 'png')
+            //         ],
+            //         sharePositionOrigin:
+            //             // ignore: use_build_context_synchronously
+            //             (context.findRenderObject() as RenderBox)
+            //                     .localToGlobal(Offset.zero) &
+            //                 box.size,
+            //       );
+            //     },
+            //     icon: const Icon(Icons.share_rounded),
+            //   );
+            // }),
           ],
           child: SizedBox(
             height: 300,

@@ -289,22 +289,6 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "1.5.4"
-  extended_text_field:
-    dependency: "direct main"
-    description:
-      name: extended_text_field
-      sha256: eb897cb239f5375384ab29ebf9a902939446bc74a58eacab7e8456c2decdb645
-      url: "https://pub.flutter-io.cn"
-    source: hosted
-    version: "10.2.0"
-  extended_text_library:
-    dependency: transitive
-    description:
-      name: extended_text_library
-      sha256: "3538b6ab1c177071b7897bc059d666ba289a042d2142e9f647b7ccbc3e65496b"
-      url: "https://pub.flutter-io.cn"
-    source: hosted
-    version: "9.1.1"
   fake_async:
     dependency: transitive
     description:
@@ -322,13 +306,14 @@ packages:
     source: hosted
     version: "2.0.1"
   file:
-    dependency: transitive
+    dependency: "direct overridden"
     description:
-      name: file
-      sha256: b69516f2c26a5bcac4eee2e32512e1a5205ab312b3536c1c1227b2b942b5f9ad
-      url: "https://pub.flutter-io.cn"
-    source: hosted
-    version: "6.1.2"
+      path: "packages/file"
+      ref: HEAD
+      resolved-ref: b768f79dcd104a5feabafab47101c4355b71cd8f
+      url: "https://github.com/google/file.dart"
+    source: git
+    version: "6.1.4"
   file_selector:
     dependency: "direct main"
     description:
@@ -1047,22 +1032,6 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "0.1.4"
-  share_plus:
-    dependency: "direct main"
-    description:
-      name: share_plus
-      sha256: e387077716f80609bb979cd199331033326033ecd1c8f200a90c5f57b1c9f55e
-      url: "https://pub.flutter-io.cn"
-    source: hosted
-    version: "6.3.0"
-  share_plus_platform_interface:
-    dependency: transitive
-    description:
-      name: share_plus_platform_interface
-      sha256: "82ddd4ab9260c295e6e39612d4ff00390b9a7a21f1bb1da771e2f232d80ab8a1"
-      url: "https://pub.flutter-io.cn"
-    source: hosted
-    version: "3.2.0"
   shelf:
     dependency: "direct main"
     description:
@@ -1365,5 +1334,5 @@ packages:
     source: hosted
     version: "3.1.1"
 sdks:
-  dart: ">=2.18.2 <4.0.0"
+  dart: ">=2.19.0 <4.0.0"
   flutter: ">=3.3.0"

@@ -8,7 +8,6 @@ environment:
   flutter: ">=1.17.0"
 
 dependencies:
-  extended_text_field: ^10.1.0
   flutter:
     sdk: flutter
   flutter_highlight: ^0.7.0

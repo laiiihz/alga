@@ -46,7 +46,9 @@ class _SettingsViewState extends State<SettingsView> {
                     onTap: open,
                     leading: const Icon(Icons.dark_mode),
                     title: Text(S.of(context).themeMode),
-                    trailing: Text(AppConfigBox.themeMode.getName(context)),
+                    trailing: Chip(
+                      label: Text(AppConfigBox.themeMode.getName(context)),
+                    ),
                   );
                 },
               );

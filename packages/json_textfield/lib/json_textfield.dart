@@ -1,8 +1,6 @@
 library json_textfield;
 
-import 'package:extended_text_field/extended_text_field.dart';
 import 'package:flutter/material.dart';
-import 'package:json_textfield/json_special_builder.dart';
 
 class JsonTextField extends StatelessWidget {
   final TextEditingController? controller;
@@ -22,9 +20,9 @@ class JsonTextField extends StatelessWidget {
   }) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return ExtendedTextField(
+    return TextField(
       controller: controller,
-      specialTextSpanBuilder: JsonSpecialBuilder(),
+      // specialTextSpanBuilder: JsonSpecialBuilder(),
       maxLines: maxLines,
       minLines: minLines,
       onChanged: onChanged,

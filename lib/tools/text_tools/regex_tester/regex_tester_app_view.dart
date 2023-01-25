@@ -1,8 +1,6 @@
 import 'package:alga/constants/import_helper.dart';
-import 'package:alga/tools/text_tools/regex_tester/regex_tester_text_builder.dart';
 import 'package:alga/widgets/clear_button_widget.dart';
 import 'package:alga/widgets/paste_button_widget.dart';
-import 'package:extended_text_field/extended_text_field.dart';
 part './regex_tester_app_provider.dart';
 
 class RegexTestAppView extends ConsumerStatefulWidget {
@@ -70,16 +68,16 @@ class _RegexTestAppViewState extends ConsumerState<RegexTestAppView> {
               onUpdate: (ref) => ref.refresh(_regexProvider),
             ),
           ],
-          child: ExtendedTextField(
+          child: TextField(
             minLines: 2,
             maxLines: 99,
             controller: ref.watch(_resultControllerProvider),
             onChanged: (value) => ref.refresh(_regexProvider),
-            specialTextSpanBuilder: RegexTesterTextBuilder(
-              ref.watch(_regexProvider),
-              primaryColor: Theme.of(context).colorScheme.primary,
-              onPrimary: Theme.of(context).colorScheme.onPrimary,
-            ),
+            // specialTextSpanBuilder: RegexTesterTextBuilder(
+            //   ref.watch(_regexProvider),
+            //   primaryColor: Theme.of(context).colorScheme.primary,
+            //   onPrimary: Theme.of(context).colorScheme.onPrimary,
+            // ),
           ),
         ),
       ],

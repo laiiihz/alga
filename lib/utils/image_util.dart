@@ -9,7 +9,6 @@ import 'package:file_selector/file_selector.dart' as selector;
 import 'package:flutter/rendering.dart';
 import 'package:image/image.dart' as pub_image;
 import 'package:image_picker/image_picker.dart';
-import 'package:share_plus/share_plus.dart';
 
 class ImageUtil {
   static final ImagePicker _picker = ImagePicker();
@@ -54,19 +53,19 @@ class ImageUtil {
     return ImageItem(image: rawImage, blurHash: blurhash, file: image);
   }
 
-  static Future<bool> share(BuildContext captureContext) async {
-    RenderRepaintBoundary? box =
-        captureContext.findRenderObject() as RenderRepaintBoundary?;
-    if (box == null) return false;
-    final raw = await _widget2image(box);
-    if (raw == null) return false;
-    final result = await Share.shareXFiles([
-      XFile.fromData(raw),
-    ]);
+  // static Future<bool> share(BuildContext captureContext) async {
+  //   RenderRepaintBoundary? box =
+  //       captureContext.findRenderObject() as RenderRepaintBoundary?;
+  //   if (box == null) return false;
+  //   final raw = await _widget2image(box);
+  //   if (raw == null) return false;
+  //   final result = await Share.shareXFiles([
+  //     XFile.fromData(raw),
+  //   ]);
 
-    if (result.status == ShareResultStatus.success) return true;
-    return false;
-  }
+  //   if (result.status == ShareResultStatus.success) return true;
+  //   return false;
+  // }
 }
 
 class ImageItem {

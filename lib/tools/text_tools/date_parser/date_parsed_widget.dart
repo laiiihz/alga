@@ -15,7 +15,6 @@ class DateParsedWidget extends StatelessWidget {
             message: S.of(context).clickToCopy,
             child: Chip(
               label: Text('$data${helpText == null ? '' : ' ($helpText) '}'),
-              backgroundColor: Theme.of(context).colorScheme.onPrimary,
             ),
           ),
         );
