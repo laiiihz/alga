@@ -73,8 +73,9 @@ class _SettingsViewState extends State<SettingsView> {
                     onTap: open,
                     leading: const Icon(Icons.language),
                     title: Text(S.of(context).language),
-                    trailing:
-                        Text(S.getlang(context, AppConfigBox.localeValue)),
+                    trailing: Chip(
+                      label: Text(S.getlang(context, AppConfigBox.localeValue)),
+                    ),
                   );
                 },
               );

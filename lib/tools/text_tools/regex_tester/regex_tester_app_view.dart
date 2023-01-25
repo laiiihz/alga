@@ -1,6 +1,8 @@
 import 'package:alga/constants/import_helper.dart';
 import 'package:alga/widgets/clear_button_widget.dart';
 import 'package:alga/widgets/paste_button_widget.dart';
+
+import 'regex_tester_text_builder.dart';
 part './regex_tester_app_provider.dart';
 
 class RegexTestAppView extends ConsumerStatefulWidget {

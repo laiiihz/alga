@@ -19,8 +19,6 @@ dependencies:
     path: ./packages/lorem_ipsum
   highlight_textspan:
     path: ./packages/highlight_textspan
-  json_textfield:
-    path: ./packages/json_textfield
   language_textfield:
     path: ./packages/language_textfield
   flutter_js_wrapper:

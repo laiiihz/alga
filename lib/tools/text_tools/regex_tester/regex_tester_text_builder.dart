@@ -1,58 +1,43 @@
 import 'package:flutter/material.dart';
+import 'package:language_textfield/lang_special_builder.dart';
 
-// class RegexTesterTextBuilder extends SpecialTextSpanBuilder {
-//   RegexTesterTextBuilder(
-//     this.reg, {
-//     required this.primaryColor,
-//     required this.onPrimary,
-//   });
-//   final RegExp? reg;
-//   final Color primaryColor;
-//   final Color onPrimary;
-//   @override
-//   TextSpan build(String data,
-//       {TextStyle? textStyle, SpecialTextGestureTapCallback? onTap}) {
-//     if (data.isEmpty) return const TextSpan(text: '');
-//     if (reg == null) return TextSpan(text: data, style: textStyle);
+class RegexTesterBuilder extends LanguageBuilder {
+  RegexTesterBuilder(this.regex);
+  final RegExp? regex;
+  @override
+  TextSpan build(BuildContext context, String text, TextStyle? style) {
+    if (regex == null || text.isEmpty) {
+      return TextSpan(text: text, style: style);
+    }
+    final primary = Theme.of(context).colorScheme.primary;
+    final onPrimary = Theme.of(context).colorScheme.onPrimary;
+    final spans = <InlineSpan>[];
 
-//     final spans = <InlineSpan>[];
+    int currentIndex = 0;
+    Match? currentMatch = regex!.matchAsPrefix(text, currentIndex);
+    while (currentIndex < text.length) {
+      if (currentMatch != null) {
+        if (currentMatch.start == currentMatch.end) {
+          currentIndex++;
+        } else {
+          final tempText = text.substring(
+            currentMatch.start,
+            currentMatch.end,
+          );
+          spans.add(TextSpan(
+            text: tempText,
+            style: TextStyle(color: onPrimary, backgroundColor: primary),
+          ));
+          currentIndex += currentMatch.end - currentMatch.start;
+        }
+      } else {
+        spans.add(TextSpan(text: text[currentIndex]));
+        currentIndex++;
+      }
+      currentMatch = regex!.matchAsPrefix(text, currentIndex);
+    }
+    spans.add(TextSpan(text: text.substring(currentIndex)));
 
-//     int currentIndex = 0;
-//     Match? currentMatch = reg!.matchAsPrefix(data, currentIndex);
-//     while (currentIndex < data.length) {
-//       if (currentMatch != null) {
-//         if (currentMatch.start == currentMatch.end) {
-//           currentIndex++;
-//         } else {
-//           final tempText = data.substring(
-//             currentMatch.start,
-//             currentMatch.end,
-//           );
-//           spans.add(TextSpan(
-//             text: tempText,
-//             style: TextStyle(
-//               color: onPrimary,
-//               backgroundColor: primaryColor,
-//             ),
-//           ));
-//           currentIndex += currentMatch.end - currentMatch.start;
-//         }
-//       } else {
-//         spans.add(TextSpan(text: data[currentIndex]));
-//         currentIndex++;
-//       }
-//       currentMatch = reg!.matchAsPrefix(data, currentIndex);
-//     }
-//     spans.add(TextSpan(text: data.substring(currentIndex)));
-
-//     return TextSpan(children: spans, style: textStyle);
-//   }
-
-//   @override
-//   SpecialText? createSpecialText(String flag,
-//       {TextStyle? textStyle,
-//       SpecialTextGestureTapCallback? onTap,
-//       required int index}) {
-//     return null;
-//   }
-// }
+    return TextSpan(children: spans, style: style);
+  }
+}

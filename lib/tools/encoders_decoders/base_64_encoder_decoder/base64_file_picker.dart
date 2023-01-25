@@ -8,6 +8,9 @@ Future _showBase64ImagePicker(BuildContext context, WidgetRef ref) async {
         .showSnackBar(const SnackBar(content: Text('empty image')));
     return;
   }
+
+// TODO
+  // ignore: use_build_context_synchronously
   return await showDialog(
     context: context,
     builder: (context) {

@@ -75,7 +75,7 @@ class AlgaAppItem extends StatelessWidget {
                 item.title(context),
                 maxLines: 1,
                 minFontSize: 12,
-                style: Theme.of(context).textTheme.button?.copyWith(
+                style: Theme.of(context).textTheme.labelLarge?.copyWith(
                       color: Theme.of(context).colorScheme.onPrimaryContainer,
                     ),
               ),

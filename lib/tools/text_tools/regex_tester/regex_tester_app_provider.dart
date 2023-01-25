@@ -1,5 +1,21 @@
 part of 'regex_tester_app_view.dart';
 
+final _regexProvider = Provider.autoDispose<RegExp?>((ref) {
+  try {
+    final text = ref.watch(_regexText);
+    if (text.isEmpty) return null;
+    return RegExp(
+      text,
+      multiLine: ref.watch(_multiLine),
+      caseSensitive: ref.watch(_caseSensitive),
+      unicode: ref.watch(_unicode),
+      dotAll: ref.watch(_dotAll),
+    );
+  } on FormatException catch (_) {
+    return null;
+  }
+});
+
 final _regexTextProvider = Provider.autoDispose<TextEditingController>((ref) {
   final controller = TextEditingController();
   ref.onDispose(controller.dispose);
@@ -23,24 +39,9 @@ final _errorProvider = Provider.autoDispose<String?>((ref) {
   }
 });
 
-final _regexProvider = Provider.autoDispose<RegExp?>((ref) {
-  try {
-    final text = ref.watch(_regexText);
-    if (text.isEmpty) return null;
-    return RegExp(
-      text,
-      multiLine: ref.watch(_multiLine),
-      caseSensitive: ref.watch(_caseSensitive),
-      unicode: ref.watch(_unicode),
-      dotAll: ref.watch(_dotAll),
-    );
-  } on FormatException catch (_) {
-    return null;
-  }
-});
-
 final _resultControllerProvider = Provider.autoDispose((ref) {
-  final controller = TextEditingController();
+  final regex = ref.watch(_regexProvider);
+  final controller = RichTextController(builder: RegexTesterBuilder(regex));
   ref.onDispose(controller.dispose);
   return controller;
 });

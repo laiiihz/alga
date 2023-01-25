@@ -54,7 +54,7 @@ class AlgaPanelItem extends StatelessWidget {
             const SizedBox(width: 8),
             Expanded(
               child: DefaultTextStyle.merge(
-                style: Theme.of(context).textTheme.subtitle1?.copyWith(
+                style: Theme.of(context).textTheme.titleMedium?.copyWith(
                       fontWeight: active ? FontWeight.bold : FontWeight.normal,
                       color:
                           active ? Theme.of(context).colorScheme.primary : null,

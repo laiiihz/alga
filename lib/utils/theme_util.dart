@@ -22,57 +22,29 @@ class ThemeUtil {
   late ColorScheme colorScheme;
   ThemeUtil(this.colorScheme);
 
-  static const _appBarTheme = AppBarTheme(elevation: 0);
-  static const _inputDecorationTheme = InputDecorationTheme(
-    border: OutlineInputBorder(),
+  static final _inputDecorationTheme = InputDecorationTheme(
+    border: OutlineInputBorder(
+      borderRadius: BorderRadius.circular(8),
+    ),
   );
 
   ThemeData getTheme(Brightness brightness) {
     ColorScheme scheme = colorScheme;
     return ThemeData.from(colorScheme: scheme).copyWith(
       splashFactory: InkSparkle.splashFactory,
-      appBarTheme: _appBarTheme.copyWith(
-        backgroundColor: scheme.background,
-        foregroundColor: scheme.secondary,
-      ),
       inputDecorationTheme: _inputDecorationTheme.copyWith(
-        fillColor: scheme.primary.withOpacity(0.1),
-        filled: true,
         contentPadding: const EdgeInsets.all(12),
       ),
       listTileTheme: ListTileThemeData(
         iconColor: scheme.secondary,
       ),
-      popupMenuTheme: PopupMenuThemeData(
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(8),
-        ),
-        color: colorScheme.secondaryContainer,
-      ),
-      tabBarTheme: TabBarTheme(
-        labelColor: colorScheme.primary,
+      tabBarTheme: const TabBarTheme(
         indicator: BoxDecoration(
           border: Border(
-            bottom: BorderSide(
-              color: colorScheme.primary,
-              width: 2
-            ),
+            bottom: BorderSide(width: 2),
           ),
         ),
         indicatorSize: TabBarIndicatorSize.label,
-      ),
-      switchTheme: SwitchThemeData(
-        thumbColor: MaterialStateProperty.resolveWith((states) {
-          if (states.contains(MaterialState.disabled)) return null;
-          return scheme.primary;
-        }),
-        trackColor: MaterialStateProperty.resolveWith((states) {
-          if (states.contains(MaterialState.selected)) {
-            return scheme.inversePrimary;
-          } else {
-            return null;
-          }
-        }),
       ),
       snackBarTheme: SnackBarThemeData(
         actionTextColor: scheme.background,
