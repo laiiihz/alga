@@ -1,9 +1,7 @@
 import 'package:alga/constants/import_helper.dart';
+import 'package:alga/tools/text_tools/regex_tester/regex_tester_provider.dart';
 import 'package:alga/widgets/clear_button_widget.dart';
 import 'package:alga/widgets/paste_button_widget.dart';
-
-import 'regex_tester_text_builder.dart';
-part './regex_tester_app_provider.dart';
 
 class RegexTestAppView extends ConsumerStatefulWidget {
   const RegexTestAppView({super.key});
@@ -22,19 +20,19 @@ class _RegexTestAppViewState extends ConsumerState<RegexTestAppView> {
           children: [
             AlgaConfigSwitch(
               title: Text(context.tr.regexMultiLine),
-              value: _multiLine,
+              value: regexMultiLine,
             ),
             AlgaConfigSwitch(
               title: Text(context.tr.regexCaseSensitive),
-              value: _caseSensitive,
+              value: regexCaseSensitive,
             ),
             AlgaConfigSwitch(
               title: Text(context.tr.regexUnicode),
-              value: _unicode,
+              value: regexUnicode,
             ),
             AlgaConfigSwitch(
               title: Text(context.tr.regexDotAll),
-              value: _dotAll,
+              value: regexDotAll,
             ),
           ],
         ),
@@ -42,44 +40,42 @@ class _RegexTestAppViewState extends ConsumerState<RegexTestAppView> {
           title: context.tr.regularExpression,
           actions: [
             PasteButtonWidget(
-              _regexTextProvider,
-              onUpdate: (ref) => ref.refresh(_regexText),
+              regexExpressionProvider,
+              onUpdate: (ref) {},
             ),
             ClearButtonWidget(
-              _regexTextProvider,
-              onUpdate: (ref) => ref.refresh(_regexText),
+              regexExpressionProvider,
+              onUpdate: (ref) {},
             ),
           ],
-          child: TextField(
-            controller: ref.watch(_regexTextProvider),
-            decoration: InputDecoration(
-              errorText: ref.watch(_errorProvider),
-            ),
-            onChanged: (value) => ref.refresh(_regexText),
+          child: Consumer(
+            builder: (context, ref, _) {
+              final value = ref.watch(regexValueProvider);
+              return TextField(
+                controller: ref.watch(regexExpressionProvider),
+                decoration: InputDecoration(
+                  errorText: value.hasError ? value.error!.message : null,
+                ),
+              );
+            },
           ),
         ),
         AppTitleWrapper(
           title: context.tr.regexText,
           actions: [
             PasteButtonWidget(
-              _resultControllerProvider,
-              onUpdate: (ref) => ref.refresh(_regexProvider),
+              regexInputControllerProvider,
+              onUpdate: (ref) {},
             ),
             ClearButtonWidget(
-              _resultControllerProvider,
-              onUpdate: (ref) => ref.refresh(_regexProvider),
+              regexInputControllerProvider,
+              onUpdate: (ref) {},
             ),
           ],
           child: TextField(
             minLines: 2,
             maxLines: 99,
-            controller: ref.watch(_resultControllerProvider),
-            onChanged: (value) => ref.refresh(_regexProvider),
-            // specialTextSpanBuilder: RegexTesterTextBuilder(
-            //   ref.watch(_regexProvider),
-            //   primaryColor: Theme.of(context).colorScheme.primary,
-            //   onPrimary: Theme.of(context).colorScheme.onPrimary,
-            // ),
+            controller: ref.watch(regexInputControllerProvider),
           ),
         ),
       ],

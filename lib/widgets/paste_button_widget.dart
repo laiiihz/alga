@@ -23,6 +23,8 @@ class _PasteButtonWidgetState extends ConsumerState<PasteButtonWidget> {
       tooltip: S.of(context).paste,
       onPressed: () async {
         ref.read(widget.controller).text = await ClipboardUtil.paste();
+        print(await ClipboardUtil.paste());
+        print(ref.read(widget.controller).text);
         if (mounted) SnackbarUtil(context).pasted();
         widget.onUpdate(ref);
       },

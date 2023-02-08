@@ -700,13 +700,6 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "4.7.0"
-  json_textfield:
-    dependency: "direct main"
-    description:
-      path: "packages/json_textfield"
-      relative: true
-    source: path
-    version: "0.0.1"
   language_textfield:
     dependency: "direct main"
     description:
@@ -1016,6 +1009,22 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "2.1.3"
+  riverpod_annotation:
+    dependency: "direct main"
+    description:
+      name: riverpod_annotation
+      sha256: "13c414f7af300d9e73811ae24de5599df6609863e90266070d55a072f8bab045"
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "1.1.1"
+  riverpod_generator:
+    dependency: "direct dev"
+    description:
+      name: riverpod_generator
+      sha256: e87363e27dd8bce40a194c2ba6a7630ee343826d7a4500d70f7f729ea8e27d50
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "1.1.1"
   sass:
     dependency: "direct main"
     description:
@@ -1334,5 +1343,5 @@ packages:
     source: hosted
     version: "3.1.1"
 sdks:
-  dart: ">=2.19.0 <4.0.0"
+  dart: ">=2.19.0 <3.0.0"
   flutter: ">=3.3.0"

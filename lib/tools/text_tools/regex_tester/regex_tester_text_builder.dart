@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:language_textfield/lang_special_builder.dart';
 
 class RegexTesterBuilder extends LanguageBuilder {
-  RegexTesterBuilder(this.regex);
+  RegexTesterBuilder([this.regex]);
   final RegExp? regex;
+
   @override
   TextSpan build(BuildContext context, String text, TextStyle? style) {
     if (regex == null || text.isEmpty) {

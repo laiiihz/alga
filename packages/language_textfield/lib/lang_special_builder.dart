@@ -19,6 +19,8 @@ abstract class LanguageBuilder {
   )
               value) =>
       _CustomBuilder(value);
+
+  static final LanguageBuilder regex = _RegexBuilder();
 }
 
 class _HighlightBuilder extends LanguageBuilder {
@@ -43,5 +45,41 @@ class _CustomBuilder extends LanguageBuilder {
   @override
   TextSpan build(BuildContext context, String text, TextStyle? style) {
     return value(context, text, style);
+  }
+}
+
+class _RegexBuilder extends LanguageBuilder {
+  _RegexBuilder();
+  @override
+  TextSpan build(BuildContext context, String text, TextStyle? style) {
+    if (text.isEmpty) return const TextSpan();
+
+    final spans = <TextSpan>[];
+    int currentIndex = 0;
+
+    void colorSpan(Color color) {
+      spans.add(TextSpan(
+        text: text[currentIndex],
+        style: TextStyle(color: color),
+      ));
+    }
+
+    while ((currentIndex + 1) <= text.length) {
+      final current = text[currentIndex];
+
+      if (current == '[' || current == ']') {
+        colorSpan(Colors.red);
+      } else if (current == '{' || current == '}') {
+        colorSpan(Colors.green);
+      } else if (current == '(' || current == ')') {
+        colorSpan(Colors.blue);
+      } else {
+        spans.add(TextSpan(text: text[currentIndex]));
+      }
+
+      currentIndex++;
+    }
+
+    return TextSpan(children: spans);
   }
 }

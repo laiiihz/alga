@@ -43,62 +43,39 @@ class LangTextField extends StatelessWidget {
   }
 }
 
-class LanguageTextField extends StatelessWidget {
-  const LanguageTextField({
-    Key? key,
-    this.controller,
-    this.maxLines,
-    this.minLines,
-    this.onChanged,
-    this.expands = false,
-    this.readOnly = false,
-    this.inputDecoration = const InputDecoration(),
-  }) : super(key: key);
-
-  final RichTextController? controller;
-  final int? maxLines;
-  final int? minLines;
-  final ValueChanged<String>? onChanged;
-  final bool expands;
-  final InputDecoration inputDecoration;
-  final bool readOnly;
-
-  @override
-  Widget build(BuildContext context) {
-    return TextField(
-      controller: controller,
-      maxLines: maxLines,
-      minLines: minLines,
-      onChanged: onChanged,
-      expands: expands,
-      decoration: inputDecoration,
-      textAlignVertical: TextAlignVertical.top,
-      readOnly: readOnly,
-    );
-  }
-}
-
 class RichTextController extends TextEditingController {
   RichTextController({
     super.text,
-    required this.builder,
+    this.builder,
   });
 
   RichTextController.lang({super.text, required HighlightType type})
       : builder = LanguageBuilder.highlight(type);
 
-  final LanguageBuilder builder;
+  LanguageBuilder? builder;
+
+  updateBuilder(LanguageBuilder b) {
+    builder = b;
+    notifyListeners();
+  }
 
   @override
   TextSpan buildTextSpan(
       {required BuildContext context,
       TextStyle? style,
       required bool withComposing}) {
-    return TextSpan(
-      style: style,
-      children: <TextSpan>[
-        builder.build(context, value.text, style),
-      ],
-    );
+    if (builder == null) {
+      return TextSpan(
+        text: value.text,
+        style: style,
+      );
+    } else {
+      return TextSpan(
+        style: style,
+        children: <TextSpan>[
+          builder!.build(context, value.text, style),
+        ],
+      );
+    }
   }
 }
