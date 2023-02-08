@@ -39,14 +39,8 @@ class _RegexTestAppViewState extends ConsumerState<RegexTestAppView> {
         AppTitleWrapper(
           title: context.tr.regularExpression,
           actions: [
-            PasteButtonWidget(
-              regexExpressionProvider,
-              onUpdate: (ref) {},
-            ),
-            ClearButtonWidget(
-              regexExpressionProvider,
-              onUpdate: (ref) {},
-            ),
+            PasteButtonWidget(regexExpressionProvider),
+            ClearButtonWidget(regexExpressionProvider),
           ],
           child: Consumer(
             builder: (context, ref, _) {
@@ -63,14 +57,8 @@ class _RegexTestAppViewState extends ConsumerState<RegexTestAppView> {
         AppTitleWrapper(
           title: context.tr.regexText,
           actions: [
-            PasteButtonWidget(
-              regexInputControllerProvider,
-              onUpdate: (ref) {},
-            ),
-            ClearButtonWidget(
-              regexInputControllerProvider,
-              onUpdate: (ref) {},
-            ),
+            PasteButtonWidget(regexInputControllerProvider),
+            ClearButtonWidget(regexInputControllerProvider),
           ],
           child: TextField(
             minLines: 2,

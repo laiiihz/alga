@@ -3,9 +3,9 @@ import 'package:alga/constants/import_helper.dart';
 import 'custom_icon_button.dart';
 
 class ClearButtonWidget extends ConsumerStatefulWidget {
-  const ClearButtonWidget(this.controller, {super.key, required this.onUpdate});
+  const ClearButtonWidget(this.controller, {super.key, this.onUpdate});
   final ProviderListenable<TextEditingController> controller;
-  final void Function(WidgetRef ref) onUpdate;
+  final void Function(WidgetRef ref)? onUpdate;
 
   @override
   ConsumerState<ClearButtonWidget> createState() => _ClearButtonWidgetState();
@@ -45,7 +45,7 @@ class _ClearButtonWidgetState extends ConsumerState<ClearButtonWidget> {
       onPressed: _enabled
           ? () {
               ref.watch(widget.controller).clear();
-              widget.onUpdate(ref);
+              widget.onUpdate?.call(ref);
             }
           : null,
       icon: const Icon(Icons.clear_rounded),

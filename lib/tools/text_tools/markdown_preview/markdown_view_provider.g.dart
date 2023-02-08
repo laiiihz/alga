@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'regex_tester_provider.dart';
+part of 'markdown_view_provider.dart';
 
 // **************************************************************************
 // RiverpodGenerator
@@ -29,38 +29,26 @@ class _SystemHash {
   }
 }
 
-String _$regexExpressionHash() => r'a6ef3e819c861246cfbda0b577baf273cac45e5f';
+String _$markdownControllerHash() =>
+    r'fc0e288c48d07bcc2c98b6e579a6ad985e529c2a';
 
-/// can not watch other provider
-///
-/// Copied from [regexExpression].
-final regexExpressionProvider = AutoDisposeProvider<RichTextController>(
-  regexExpression,
-  name: r'regexExpressionProvider',
+/// See also [markdownController].
+final markdownControllerProvider = AutoDisposeProvider<RichTextController>(
+  markdownController,
+  name: r'markdownControllerProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
       ? null
-      : _$regexExpressionHash,
+      : _$markdownControllerHash,
 );
-typedef RegexExpressionRef = AutoDisposeProviderRef<RichTextController>;
-String _$regexValueHash() => r'69b2d3bcf92589f65fd2e12e4fbc769e070003a9';
+typedef MarkdownControllerRef = AutoDisposeProviderRef<RichTextController>;
+String _$markdownValueHash() => r'60d40d8ae31096a904836f1cd29566359831ff79';
 
-/// See also [regexValue].
-final regexValueProvider = AutoDisposeProvider<RegExpValue>(
-  regexValue,
-  name: r'regexValueProvider',
-  debugGetCreateSourceHash:
-      const bool.fromEnvironment('dart.vm.product') ? null : _$regexValueHash,
-);
-typedef RegexValueRef = AutoDisposeProviderRef<RegExpValue>;
-String _$regexInputControllerHash() =>
-    r'37330071ccbf319b03e45b2db5336fd13154acdf';
-
-/// See also [regexInputController].
-final regexInputControllerProvider = AutoDisposeProvider<RichTextController>(
-  regexInputController,
-  name: r'regexInputControllerProvider',
+/// See also [markdownValue].
+final markdownValueProvider = AutoDisposeProvider<String>(
+  markdownValue,
+  name: r'markdownValueProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
       ? null
-      : _$regexInputControllerHash,
+      : _$markdownValueHash,
 );
-typedef RegexInputControllerRef = AutoDisposeProviderRef<RichTextController>;
+typedef MarkdownValueRef = AutoDisposeProviderRef<String>;

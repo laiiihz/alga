@@ -1,13 +1,15 @@
+import 'package:alga/tools/text_tools/markdown_preview/markdown_view_provider.dart';
+import 'package:alga/utils/snackbar_util.dart';
 import 'package:alga/widgets/app_scaffold.dart';
+import 'package:alga/widgets/clear_button_widget.dart';
 import 'package:alga/widgets/copy_button_widget.dart';
+import 'package:alga/widgets/custom_icon_button.dart';
 import 'package:alga/widgets/paste_button_widget.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
-// import 'package:markdown/markdown.dart' show markdownToHtml;
 
 import 'package:alga/constants/import_helper.dart';
+import 'package:markdown/markdown.dart' as m_down;
 import 'package:url_launcher/url_launcher_string.dart';
-
-part './markdown_preview_provider.dart';
 
 class MarkdownPreviewView extends ConsumerStatefulWidget {
   const MarkdownPreviewView({super.key});
@@ -25,29 +27,38 @@ class _MarkdownPreviewViewState extends ConsumerState<MarkdownPreviewView> {
       title: S.of(context).markdownInput,
       expand: !small,
       actions: [
-        PasteButtonWidget(
-          _inputController,
-          onUpdate: (ref) => ref.refresh(_inputValue),
-        ),
+        PasteButtonWidget(markdownControllerProvider),
+        ClearButtonWidget(markdownControllerProvider),
       ],
-      child: Consumer(builder: (context, ref, _) {
-        return LanguageTextField(
-          expands: !small,
-          maxLines: small ? 16 : null,
-          minLines: small ? 16 : null,
-          controller: ref.watch(_inputController),
-          onChanged: (_) => ref.refresh(_inputValue),
-        );
-      }),
+      child: TextField(
+        expands: !small,
+        maxLines: small ? 16 : null,
+        minLines: small ? 16 : null,
+        textAlignVertical: TextAlignVertical.top,
+        controller: ref.watch(markdownControllerProvider),
+      ),
     );
     final preview = AppTitleWrapper(
       title: S.of(context).markdownPreviewInput,
       expand: !small,
       actions: [
-        CopyButtonWithText(_inputValue),
+        CopyButton2(markdownControllerProvider),
+        CustomIconButton(
+          tooltip: context.tr.copyHtml,
+          onPressed: () async {
+            final text = ref.read(markdownValueProvider);
+            if (text.isEmpty) {
+              SnackbarUtil(context).fail('Empty Text');
+            } else {
+              await ClipboardUtil.copy(m_down.markdownToHtml(text));
+              if (mounted) SnackbarUtil(context).copied();
+            }
+          },
+          icon: const Icon(Icons.copy_all_rounded),
+        ),
       ],
       child: Consumer(builder: (context, ref, _) {
-        final data = ref.watch(_inputValue);
+        final data = ref.watch(markdownValueProvider);
         void onTapLink(text, href, title) {
           if (href != null) {
             launchUrlString(
@@ -59,7 +70,10 @@ class _MarkdownPreviewViewState extends ConsumerState<MarkdownPreviewView> {
 
         if (isSmallDevice(context)) {
           return MarkdownBody(
-              data: data, selectable: true, onTapLink: onTapLink);
+            data: data,
+            selectable: true,
+            onTapLink: onTapLink,
+          );
         } else {
           return Markdown(
             data: data,
@@ -71,7 +85,7 @@ class _MarkdownPreviewViewState extends ConsumerState<MarkdownPreviewView> {
     );
 
     return AppScaffold(
-      title: Text(S.of(context).markdownPreview),
+      title: Text(context.tr.markdownPreview),
       first: editable,
       second: preview,
     );

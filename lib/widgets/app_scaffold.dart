@@ -42,8 +42,9 @@ class AppScaffold extends StatelessWidget {
           child: MultiSplitViewTheme(
             data: MultiSplitViewThemeData(
               dividerPainter: DividerPainters.grooved1(
-                  color: Colors.indigo[100]!,
-                  highlightedColor: Colors.indigo[900]!),
+                color: Theme.of(context).colorScheme.primary,
+                highlightedColor: Theme.of(context).colorScheme.secondary,
+              ),
             ),
             child: MultiSplitView(
               initialAreas: [Area(minimalSize: 200), Area(minimalSize: 200)],
