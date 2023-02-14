@@ -1,13 +1,17 @@
 import 'package:flutter/material.dart';
 
 class ToolView extends StatelessWidget {
-  final Widget title;
-  final Widget content;
   const ToolView({
-    Key? key,
+    super.key,
     required this.title,
     required this.content,
-  }) : super(key: key);
+    this.actions,
+    this.fab,
+  });
+  final Widget title;
+  final Widget content;
+  final List<Widget>? actions;
+  final Widget? fab;
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +19,9 @@ class ToolView extends StatelessWidget {
       appBar: AppBar(
         title: title,
         centerTitle: false,
+        actions: actions,
       ),
+      floatingActionButton: fab,
       body: content,
       backgroundColor: Theme.of(context).colorScheme.background,
     );

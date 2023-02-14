@@ -9,6 +9,7 @@
 * [feature] add favorite collection.
 * [feature] add UUID v5.
 * [feature] blurhash to image.
+* [feature] json/yaml converter add formater.
 * [fix] fix password generator algorithm.
 * [fix] fix regex tester memory leak.
 

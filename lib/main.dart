@@ -48,6 +48,7 @@ class MyApp extends StatelessWidget {
             localizationsDelegates: S.localizationsDelegates,
             supportedLocales: S.supportedLocales,
             locale: AppConfigBox.locale,
+            debugShowCheckedModeBanner: false,
           );
         });
       },

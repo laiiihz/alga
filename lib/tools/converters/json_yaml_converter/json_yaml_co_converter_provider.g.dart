@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'markdown_view_provider.dart';
+part of 'json_yaml_co_converter_provider.dart';
 
 // **************************************************************************
 // RiverpodGenerator
@@ -29,26 +29,34 @@ class _SystemHash {
   }
 }
 
-String _$markdownControllerHash() =>
-    r'86a5baedd3fdc580af9af32353d778b839bd5b0b';
+String _$JsonCVTControllerHash() => r'ee129dfd188a262a2cc5821d5a0197f68eda5c7f';
 
-/// See also [markdownController].
-final markdownControllerProvider = AutoDisposeProvider<RichTextController>(
-  markdownController,
-  name: r'markdownControllerProvider',
+/// See also [JsonCVTController].
+final jsonCVTControllerProvider =
+    AutoDisposeNotifierProvider<JsonCVTController, RichTextController>(
+  JsonCVTController.new,
+  name: r'jsonCVTControllerProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
       ? null
-      : _$markdownControllerHash,
+      : _$JsonCVTControllerHash,
 );
-typedef MarkdownControllerRef = AutoDisposeProviderRef<RichTextController>;
-String _$markdownValueHash() => r'60d40d8ae31096a904836f1cd29566359831ff79';
+typedef JsonCVTControllerRef
+    = AutoDisposeNotifierProviderRef<RichTextController>;
 
-/// See also [markdownValue].
-final markdownValueProvider = AutoDisposeProvider<String>(
-  markdownValue,
-  name: r'markdownValueProvider',
+abstract class _$JsonCVTController
+    extends AutoDisposeNotifier<RichTextController> {
+  @override
+  RichTextController build();
+}
+
+String _$yamlCVTControllerHash() => r'4a27122a7d50c46500d037342afe6deb8bba558a';
+
+/// See also [yamlCVTController].
+final yamlCVTControllerProvider = AutoDisposeProvider<RichTextController>(
+  yamlCVTController,
+  name: r'yamlCVTControllerProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
       ? null
-      : _$markdownValueHash,
+      : _$yamlCVTControllerHash,
 );
-typedef MarkdownValueRef = AutoDisposeProviderRef<String>;
+typedef YamlCVTControllerRef = AutoDisposeProviderRef<RichTextController>;
