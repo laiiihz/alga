@@ -150,7 +150,7 @@
   "computerName": "设备名",
   "frequencyOfCPU": "CPU频率",
   "hostName": "主机名",
-  "kernelVersion":"内核版本",
+  "kernelVersion": "内核版本",
   "memorySize": "内存大小",
   "deviceModel": "设备型号",
   "osRelease": "操作系统版本",

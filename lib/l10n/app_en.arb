@@ -1,8 +1,5 @@
 {
   "appName": "Alga",
-  "@appName": {
-    "description": "name of app"
-  },
   "confirm": "Confirm",
   "clickToCopy": "Click To Copy",
   "copy": "Copy",
@@ -153,7 +150,7 @@
   "computerName": "Computer Name",
   "frequencyOfCPU": "CPU frequency",
   "hostName": "Host Name",
-  "kernelVersion":"KernelVersion",
+  "kernelVersion": "KernelVersion",
   "memorySize": "Memory Size",
   "deviceModel": "Device Model",
   "osRelease": "OS Release",

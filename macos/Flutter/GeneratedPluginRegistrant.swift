@@ -11,7 +11,7 @@ import file_selector_macos
 import flutter_js
 import hotkey_manager
 import network_info_plus
-import path_provider_macos
+import path_provider_foundation
 import screen_retriever
 import url_launcher_macos
 import window_manager
