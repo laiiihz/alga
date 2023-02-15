@@ -688,11 +688,12 @@ packages:
   json2yaml:
     dependency: "direct main"
     description:
-      name: json2yaml
-      sha256: "1bd23a492025254aa14a760db94c8d52142c774ab3f2ab935e31742796bf505d"
-      url: "https://pub.flutter-io.cn"
-    source: hosted
-    version: "3.0.0"
+      path: "."
+      ref: HEAD
+      resolved-ref: "90ef1bf964c1295f3d1f7d32eec42274b7ecf539"
+      url: "https://github.com/laiiihz/json2yaml"
+    source: git
+    version: "3.0.1"
   json_annotation:
     dependency: transitive
     description:

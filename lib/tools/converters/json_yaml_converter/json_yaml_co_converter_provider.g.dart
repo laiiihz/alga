@@ -29,7 +29,7 @@ class _SystemHash {
   }
 }
 
-String _$JsonCVTControllerHash() => r'ee129dfd188a262a2cc5821d5a0197f68eda5c7f';
+String _$JsonCVTControllerHash() => r'71d81d1491d18038e884f7c0cf87db0087777b8c';
 
 /// See also [JsonCVTController].
 final jsonCVTControllerProvider =
@@ -49,14 +49,33 @@ abstract class _$JsonCVTController
   RichTextController build();
 }
 
-String _$yamlCVTControllerHash() => r'4a27122a7d50c46500d037342afe6deb8bba558a';
+String _$YamlCVTControllerHash() => r'332286212ef497d0d6db3058bed0ed5823318226';
 
-/// See also [yamlCVTController].
-final yamlCVTControllerProvider = AutoDisposeProvider<RichTextController>(
-  yamlCVTController,
+/// See also [YamlCVTController].
+final yamlCVTControllerProvider =
+    AutoDisposeNotifierProvider<YamlCVTController, RichTextController>(
+  YamlCVTController.new,
   name: r'yamlCVTControllerProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
       ? null
-      : _$yamlCVTControllerHash,
+      : _$YamlCVTControllerHash,
 );
-typedef YamlCVTControllerRef = AutoDisposeProviderRef<RichTextController>;
+typedef YamlCVTControllerRef
+    = AutoDisposeNotifierProviderRef<RichTextController>;
+
+abstract class _$YamlCVTController
+    extends AutoDisposeNotifier<RichTextController> {
+  @override
+  RichTextController build();
+}
+
+String _$processingHash() => r'f0fcce50817b3f7ee2fbcc8bf22c808c905c6ab1';
+
+/// See also [processing].
+final processingProvider = AutoDisposeProvider<bool>(
+  processing,
+  name: r'processingProvider',
+  debugGetCreateSourceHash:
+      const bool.fromEnvironment('dart.vm.product') ? null : _$processingHash,
+);
+typedef ProcessingRef = AutoDisposeProviderRef<bool>;
