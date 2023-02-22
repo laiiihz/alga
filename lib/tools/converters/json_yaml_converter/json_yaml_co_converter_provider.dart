@@ -84,8 +84,8 @@ class YamlCVTController extends _$YamlCVTController {
 
   format() {
     if (state.text.isEmpty) return;
-    final obj = json.decode(state.text);
-    state.text = JsonEncoder.withIndent(' ' * 4).convert(obj);
+    final obj = loadYaml(state.text);
+    state.text = json2yaml(obj);
   }
 
   convert2json() async {

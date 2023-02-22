@@ -46,6 +46,13 @@ class JsonYamlConverterView extends ConsumerWidget {
       title: 'YAML',
       expand: !isSmallDevice(context),
       actions: [
+        CustomIconButton(
+          tooltip: context.tr.format,
+          onPressed: () {
+            ref.read(yamlCVTControllerProvider.notifier).format();
+          },
+          icon: const Icon(Icons.format_align_left_rounded),
+        ),
         CopyButton2(yamlCVTControllerProvider),
         PasteButtonWidget(yamlCVTControllerProvider),
         ClearButtonWidget(yamlCVTControllerProvider),

@@ -101,6 +101,31 @@ class _UUIDGeneratorViewState extends State<UUIDGeneratorView> {
         AppTitleWrapper(
           title: S.of(context).uuids,
           actions: [
+            Consumer(
+              builder: (context, ref, _) {
+                Widget next = TextButton.icon(
+                  onPressed: () {
+                    ref.read(_v5NamespaceController).text = ref.read(_results);
+                    ref
+                        .read(_version.notifier)
+                        .update((state) => UUIDVersion.v5);
+                    ref.invalidate(_v5Namespace);
+                  },
+                  icon: const Icon(Icons.arrow_forward),
+                  label: const Text('UUID v5'),
+                );
+                if (ref.watch(_version) == UUIDVersion.v5) {
+                  next = const SizedBox.shrink();
+                }
+                if (ref.watch(_count) != 1) {
+                  next = const SizedBox.shrink();
+                }
+                return AnimatedSize(
+                  duration: kThemeAnimationDuration,
+                  child: next,
+                );
+              },
+            ),
             CopyButtonWidget(refText: (ref) => ref.watch(_results)),
             Consumer(
               builder: (context, ref, _) {
