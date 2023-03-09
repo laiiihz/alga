@@ -1,8 +1,8 @@
-import 'package:alga/constants/import_helper.dart';
+import 'package:alga/utils/constants/import_helper.dart';
 import 'package:alga/tools/generators/hash_generator/hash_provider.dart';
-import 'package:alga/widgets/clear_button_widget.dart';
-import 'package:alga/widgets/copy_button_widget.dart';
-import 'package:alga/widgets/paste_button_widget.dart';
+import 'package:alga/ui/widgets/clear_button_widget.dart';
+import 'package:alga/ui/widgets/copy_button_widget.dart';
+import 'package:alga/ui/widgets/paste_button_widget.dart';
 
 class HashGeneratorView extends StatefulWidget {
   const HashGeneratorView({super.key});

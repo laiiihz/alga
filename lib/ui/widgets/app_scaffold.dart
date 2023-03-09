@@ -1,6 +1,6 @@
 import 'package:multi_split_view/multi_split_view.dart';
 
-import '../constants/import_helper.dart';
+import '../../utils/constants/import_helper.dart';
 
 class AppScaffold extends StatelessWidget {
   const AppScaffold({

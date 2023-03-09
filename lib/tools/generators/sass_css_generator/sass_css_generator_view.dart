@@ -1,9 +1,9 @@
-import 'package:alga/widgets/clear_button_widget.dart';
-import 'package:alga/widgets/copy_button_widget.dart';
-import 'package:alga/widgets/paste_button_widget.dart';
+import 'package:alga/ui/widgets/clear_button_widget.dart';
+import 'package:alga/ui/widgets/copy_button_widget.dart';
+import 'package:alga/ui/widgets/paste_button_widget.dart';
 import 'package:sass/sass.dart';
 
-import 'package:alga/constants/import_helper.dart';
+import 'package:alga/utils/constants/import_helper.dart';
 
 part './sass_css_generator_provider.dart';
 

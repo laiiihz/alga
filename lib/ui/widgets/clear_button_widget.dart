@@ -1,4 +1,4 @@
-import 'package:alga/constants/import_helper.dart';
+import 'package:alga/utils/constants/import_helper.dart';
 
 import 'custom_icon_button.dart';
 

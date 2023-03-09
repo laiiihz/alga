@@ -1,7 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'package:alga/constants/import_helper.dart';
-import 'package:alga/extension/list_ext.dart';
-import 'package:alga/widgets/app_show_menu.dart';
+import 'package:alga/utils/constants/import_helper.dart';
+import 'package:alga/utils/extension/list_ext.dart';
+import 'package:alga/ui/widgets/app_show_menu.dart';
 import 'package:flutter/services.dart';
 
 class ToolViewConfig extends StatelessWidget {

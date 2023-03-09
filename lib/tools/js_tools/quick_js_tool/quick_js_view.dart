@@ -1,6 +1,6 @@
 import 'package:flutter_js_wrapper/flutter_js_wrapper.dart';
 
-import 'package:alga/constants/import_helper.dart';
+import 'package:alga/utils/constants/import_helper.dart';
 
 part './quick_js_provider.dart';
 

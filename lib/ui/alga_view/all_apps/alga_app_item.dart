@@ -1,7 +1,7 @@
-import 'package:alga/constants/import_helper.dart';
+import 'package:alga/utils/constants/import_helper.dart';
 import 'package:alga/models/app_atom.dart';
 import 'package:alga/utils/hive_boxes/favorite_box.dart';
-import 'package:alga/widgets/custom_icon_button.dart';
+import 'package:alga/ui/widgets/custom_icon_button.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:go_router/go_router.dart';
 

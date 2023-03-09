@@ -1,6 +1,6 @@
 import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 
-import 'package:alga/constants/import_helper.dart';
+import 'package:alga/utils/constants/import_helper.dart';
 
 Future<MaterialColor?> pickMaterialColor(BuildContext context) async {
   return await showDialog<MaterialColor>(

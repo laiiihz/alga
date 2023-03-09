@@ -4,7 +4,7 @@ import 'package:flutter/foundation.dart';
 
 import 'package:hotkey_manager/hotkey_manager.dart';
 
-import 'package:alga/constants/import_helper.dart';
+import 'package:alga/utils/constants/import_helper.dart';
 
 class HotkeyUtil {
   static HotkeyUtil? instance;

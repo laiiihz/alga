@@ -1,4 +1,4 @@
-import 'package:alga/constants/import_helper.dart';
+import 'package:alga/utils/constants/import_helper.dart';
 import 'package:alga/tools/info/device_info/device_info_provider.dart';
 
 class DeviceInfoView extends StatefulWidget {

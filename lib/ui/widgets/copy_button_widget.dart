@@ -1,6 +1,6 @@
-import 'package:alga/constants/import_helper.dart';
+import 'package:alga/utils/constants/import_helper.dart';
 import 'package:alga/utils/snackbar_util.dart';
-import 'package:alga/widgets/custom_icon_button.dart';
+import 'package:alga/ui/widgets/custom_icon_button.dart';
 
 class CopyButtonWidget extends ConsumerStatefulWidget {
   const CopyButtonWidget({

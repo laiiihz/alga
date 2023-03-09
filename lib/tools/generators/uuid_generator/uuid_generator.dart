@@ -1,10 +1,10 @@
-import 'package:alga/widgets/copy_button_widget.dart';
-import 'package:alga/widgets/refresh_button.dart';
+import 'package:alga/ui/widgets/copy_button_widget.dart';
+import 'package:alga/ui/widgets/refresh_button.dart';
 import 'package:flutter/services.dart';
 
 import 'package:uuid/uuid.dart';
 
-import 'package:alga/constants/import_helper.dart';
+import 'package:alga/utils/constants/import_helper.dart';
 
 part './uuid_provider.dart';
 

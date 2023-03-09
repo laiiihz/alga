@@ -1,5 +1,5 @@
-import 'package:alga/alga_view/widgets/alga_panel_item.dart';
-import 'package:alga/constants/import_helper.dart';
+import 'package:alga/ui/alga_view/widgets/alga_panel_item.dart';
+import 'package:alga/utils/constants/import_helper.dart';
 
 class AlgaPanel extends ConsumerStatefulWidget {
   const AlgaPanel({super.key});

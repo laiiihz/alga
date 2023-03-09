@@ -1,8 +1,8 @@
 import 'dart:convert';
 
-import 'package:alga/constants/import_helper.dart';
-import 'package:alga/widgets/copy_button_widget.dart';
-import 'package:alga/widgets/paste_button_widget.dart';
+import 'package:alga/utils/constants/import_helper.dart';
+import 'package:alga/ui/widgets/copy_button_widget.dart';
+import 'package:alga/ui/widgets/paste_button_widget.dart';
 
 part './uri_parser_provider.dart';
 

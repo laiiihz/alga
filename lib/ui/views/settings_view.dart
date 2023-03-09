@@ -1,10 +1,10 @@
 import 'package:alga/utils/hive_boxes/app_config_box.dart';
-import 'package:alga/widgets/app_show_menu.dart';
-import 'package:alga/widgets/setting_title.dart';
+import 'package:alga/ui/widgets/app_show_menu.dart';
+import 'package:alga/ui/widgets/setting_title.dart';
 import 'package:go_router/go_router.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
-import 'package:alga/constants/import_helper.dart';
+import 'package:alga/utils/constants/import_helper.dart';
 
 class SettingsView extends StatefulWidget {
   const SettingsView({super.key});

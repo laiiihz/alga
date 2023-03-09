@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:alga/constants/import_helper.dart';
+import 'package:alga/utils/constants/import_helper.dart';
 import 'package:flutter/foundation.dart';
 import 'package:json2yaml/json2yaml.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';

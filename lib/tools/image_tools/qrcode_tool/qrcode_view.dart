@@ -1,8 +1,8 @@
-import 'package:alga/widgets/clear_button_widget.dart';
-import 'package:alga/widgets/paste_button_widget.dart';
+import 'package:alga/ui/widgets/clear_button_widget.dart';
+import 'package:alga/ui/widgets/paste_button_widget.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 
-import 'package:alga/constants/import_helper.dart';
+import 'package:alga/utils/constants/import_helper.dart';
 
 part './qrcode_provider.dart';
 

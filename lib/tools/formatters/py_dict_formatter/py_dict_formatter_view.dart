@@ -1,6 +1,6 @@
 import 'package:py_dict_parser/py_dict_parser.dart';
 
-import 'package:alga/constants/import_helper.dart';
+import 'package:alga/utils/constants/import_helper.dart';
 import 'package:alga/tools/formatters/formatter_abstract.dart';
 import 'package:alga/tools/widgets/formatter_view.dart';
 

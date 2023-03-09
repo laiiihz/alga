@@ -1,13 +1,13 @@
 import 'package:alga/tools/text_tools/markdown_preview/markdown_view_provider.dart';
 import 'package:alga/utils/snackbar_util.dart';
-import 'package:alga/widgets/app_scaffold.dart';
-import 'package:alga/widgets/clear_button_widget.dart';
-import 'package:alga/widgets/copy_button_widget.dart';
-import 'package:alga/widgets/custom_icon_button.dart';
-import 'package:alga/widgets/paste_button_widget.dart';
+import 'package:alga/ui/widgets/app_scaffold.dart';
+import 'package:alga/ui/widgets/clear_button_widget.dart';
+import 'package:alga/ui/widgets/copy_button_widget.dart';
+import 'package:alga/ui/widgets/custom_icon_button.dart';
+import 'package:alga/ui/widgets/paste_button_widget.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 
-import 'package:alga/constants/import_helper.dart';
+import 'package:alga/utils/constants/import_helper.dart';
 import 'package:markdown/markdown.dart' as m_down;
 import 'package:url_launcher/url_launcher_string.dart';
 

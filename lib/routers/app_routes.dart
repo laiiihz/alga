@@ -1,6 +1,6 @@
-import 'package:alga/alga_view/all_apps/alga_app_view.dart';
-import 'package:alga/alga_view/alga_view.dart';
-import 'package:alga/constants/import_helper.dart';
+import 'package:alga/ui/alga_view/all_apps/alga_app_view.dart';
+import 'package:alga/ui/alga_view/alga_view.dart';
+import 'package:alga/utils/constants/import_helper.dart';
 import 'package:alga/models/app_atom.dart';
 import 'package:alga/tools/converters/abs_length_converter/abs_length_converter_view.dart';
 import 'package:alga/tools/converters/color_converter/color_converter_view.dart';
@@ -30,9 +30,9 @@ import 'package:alga/tools/server_tools/static_server_tool/static_server_tool_vi
 import 'package:alga/tools/text_tools/date_parser/date_parser_view.dart';
 import 'package:alga/tools/text_tools/markdown_preview/markdown_preview_view.dart';
 import 'package:alga/tools/text_tools/regex_tester/regex_tester_app_view.dart';
-import 'package:alga/views/favorite_view.dart';
-import 'package:alga/views/search_view.dart';
-import 'package:alga/views/settings_view.dart';
+import 'package:alga/ui/views/favorite_view.dart';
+import 'package:alga/ui/views/search_view.dart';
+import 'package:alga/ui/views/settings_view.dart';
 import 'package:go_router/go_router.dart';
 
 final GlobalKey<NavigatorState> _routerKey =

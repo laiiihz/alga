@@ -3,7 +3,7 @@ import 'dart:isolate';
 
 import 'package:file_selector/file_selector.dart' as selector;
 
-import 'package:alga/constants/import_helper.dart';
+import 'package:alga/utils/constants/import_helper.dart';
 
 part './random_file_generator_provider.dart';
 part './random_file_util.dart';

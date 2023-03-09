@@ -1,4 +1,4 @@
-import 'package:alga/constants/import_helper.dart';
+import 'package:alga/utils/constants/import_helper.dart';
 import 'package:alga/tools/server_tools/static_server_tool/static_server_tool_provider.dart';
 
 class StaticServerToolView extends StatefulWidget {

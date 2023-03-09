@@ -1,7 +1,7 @@
-import 'package:alga/constants/import_helper.dart';
-import 'package:alga/widgets/custom_icon_button.dart';
+import 'package:alga/utils/constants/import_helper.dart';
+import 'package:alga/ui/widgets/custom_icon_button.dart';
 
-import '../utils/snackbar_util.dart';
+import '../../utils/snackbar_util.dart';
 
 class PasteButtonWidget extends ConsumerStatefulWidget {
   const PasteButtonWidget(

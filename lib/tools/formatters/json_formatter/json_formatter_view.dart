@@ -1,4 +1,4 @@
-import 'package:alga/constants/import_helper.dart';
+import 'package:alga/utils/constants/import_helper.dart';
 import 'package:alga/tools/formatters/json_formatter/json_enums.dart';
 import 'package:alga/tools/formatters/json_formatter/json_provider.dart';
 import '../../widgets/formatter_view.dart';

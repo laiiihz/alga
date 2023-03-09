@@ -1,4 +1,4 @@
-import 'package:alga/constants/import_helper.dart';
+import 'package:alga/utils/constants/import_helper.dart';
 
 class DateParsedWidget extends StatelessWidget {
   final DateTime date;

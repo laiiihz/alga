@@ -1,8 +1,8 @@
 import 'dart:math';
 
-import 'package:alga/constants/import_helper.dart';
-import 'package:alga/widgets/copy_button_widget.dart';
-import 'package:alga/widgets/refresh_button.dart';
+import 'package:alga/utils/constants/import_helper.dart';
+import 'package:alga/ui/widgets/copy_button_widget.dart';
+import 'package:alga/ui/widgets/refresh_button.dart';
 
 part './password_generator_provider.dart';
 

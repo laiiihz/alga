@@ -1,5 +1,5 @@
-import 'package:alga/constants/import_helper.dart';
-import 'package:alga/extension/list_ext.dart';
+import 'package:alga/utils/constants/import_helper.dart';
+import 'package:alga/utils/extension/list_ext.dart';
 
 class ToolbarView extends StatelessWidget {
   final List<Widget> configs;

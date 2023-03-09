@@ -1,7 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'package:alga/constants/import_helper.dart';
+import 'package:alga/utils/constants/import_helper.dart';
 import 'package:alga/models/app_category.dart';
-import 'package:alga/widgets/svg_asset_icon.dart';
+import 'package:alga/ui/widgets/svg_asset_icon.dart';
 
 typedef ContextBuilder<T> = T Function(BuildContext context);
 
