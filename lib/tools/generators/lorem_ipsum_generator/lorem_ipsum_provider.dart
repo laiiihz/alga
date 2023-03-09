@@ -53,6 +53,6 @@ final loremProvider = Provider.autoDispose<LoremState>((ref) {
     case LoremIpsumType.sentences:
       return LoremState(output: LoremIpsum.sentences(count).join(' '));
     case LoremIpsumType.paragraphs:
-      return LoremState(output: LoremIpsum.paragraphs(count).join(' '));
+      return LoremState(output: LoremIpsum.paragraphs(count).join('\n'));
   }
 });

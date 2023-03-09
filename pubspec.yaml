@@ -103,6 +103,11 @@ flutter:
     - assets/logo/
     - assets/images/
 
+  fonts:
+    - family: Noto Sans Mono
+      fonts:
+        - asset: assets/fonts/NotoSansMono-Regular.ttf
+
 import_sorter:
   emojis: true
   comments: false

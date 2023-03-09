@@ -32,6 +32,7 @@ class ThemeUtil {
     ColorScheme scheme = colorScheme;
     return ThemeData.from(colorScheme: scheme).copyWith(
       splashFactory: InkSparkle.splashFactory,
+      
       inputDecorationTheme: _inputDecorationTheme.copyWith(
         contentPadding: const EdgeInsets.all(12),
       ),
