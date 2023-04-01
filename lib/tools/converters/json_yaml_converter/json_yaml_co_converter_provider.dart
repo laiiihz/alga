@@ -13,10 +13,34 @@ enum JsonYamlType {
   yaml,
 }
 
-final jsonLoadingProvider = StateProvider.autoDispose((ref) => false);
-final yamlLoadingProvider = StateProvider.autoDispose((ref) => false);
-final jsonErrorProvider = StateProvider.autoDispose<String?>((ref) => null);
-final yamlErrorProvider = StateProvider.autoDispose<String?>((ref) => null);
+@riverpod
+class JsonLoading extends _$JsonLoading {
+  @override
+  bool build() => false;
+  update(bool state) => this.state = state;
+}
+
+@riverpod
+class YamlLoading extends _$YamlLoading {
+  @override
+  bool build() => false;
+  update(bool state) => this.state = state;
+}
+
+@riverpod
+class JsonError extends _$JsonError {
+  @override
+  String? build() => null;
+  update(String? state) => this.state = state;
+}
+
+@riverpod
+class YamlError extends _$YamlError {
+  @override
+  String? build() => null;
+  update(String? state) => this.state = state;
+}
+
 @riverpod
 bool processing(ProcessingRef ref) {
   return ref.watch(jsonLoadingProvider) || ref.watch(yamlLoadingProvider);
@@ -28,7 +52,7 @@ class JsonCVTController extends _$JsonCVTController {
   RichTextController build() {
     final controller = RichTextController.lang(type: HighlightType.json);
     controller.addListener(() {
-      ref.read(jsonErrorProvider.notifier).update((state) => null);
+      ref.read(jsonErrorProvider.notifier).update(null);
     });
     ref.onDispose(controller.dispose);
     return controller;
@@ -36,9 +60,9 @@ class JsonCVTController extends _$JsonCVTController {
 
   format() async {
     if (state.text.isEmpty) return;
-    ref.read(jsonLoadingProvider.notifier).update((state) => true);
+    ref.read(jsonLoadingProvider.notifier).update(true);
     state.text = await compute(_jsonFormat, state.text);
-    ref.read(jsonLoadingProvider.notifier).update((state) => false);
+    ref.read(jsonLoadingProvider.notifier).update(false);
   }
 
   convert2yaml() async {
@@ -48,7 +72,7 @@ class JsonCVTController extends _$JsonCVTController {
           .update((state) => JsonYamlType.yaml);
       return;
     }
-    ref.read(jsonLoadingProvider.notifier).update((state) => true);
+    ref.read(jsonLoadingProvider.notifier).update(true);
     try {
       final text = await compute(_json2yaml, state.text);
       ref
@@ -57,12 +81,12 @@ class JsonCVTController extends _$JsonCVTController {
       ref.read(yamlCVTControllerProvider.notifier).updateText(text);
     } catch (e) {
       if (e is FormatException) {
-        ref.read(jsonErrorProvider.notifier).update((state) => e.message);
+        ref.read(jsonErrorProvider.notifier).update(e.message);
       } else {
-        ref.read(jsonErrorProvider.notifier).update((state) => e.toString());
+        ref.read(jsonErrorProvider.notifier).update(e.toString());
       }
     }
-    ref.read(jsonLoadingProvider.notifier).update((state) => false);
+    ref.read(jsonLoadingProvider.notifier).update(false);
   }
 
   updateText(String text) {
@@ -76,7 +100,7 @@ class YamlCVTController extends _$YamlCVTController {
   RichTextController build() {
     final controller = RichTextController.lang(type: HighlightType.yaml);
     controller.addListener(() {
-      ref.read(yamlErrorProvider.notifier).update((state) => null);
+      ref.read(yamlErrorProvider.notifier).update(null);
     });
     ref.onDispose(controller.dispose);
     return controller;
@@ -95,7 +119,7 @@ class YamlCVTController extends _$YamlCVTController {
           .update((state) => JsonYamlType.json);
       return;
     }
-    ref.read(yamlLoadingProvider.notifier).update((state) => true);
+    ref.read(yamlLoadingProvider.notifier).update(true);
     try {
       final text = await compute(_yaml2json, state.text);
       ref
@@ -104,12 +128,12 @@ class YamlCVTController extends _$YamlCVTController {
       ref.read(jsonCVTControllerProvider.notifier).updateText(text);
     } catch (e) {
       if (e is FormatException) {
-        ref.read(yamlErrorProvider.notifier).update((state) => e.message);
+        ref.read(yamlErrorProvider.notifier).update(e.message);
       } else {
-        ref.read(yamlErrorProvider.notifier).update((state) => e.toString());
+        ref.read(yamlErrorProvider.notifier).update(e.toString());
       }
     }
-    ref.read(yamlLoadingProvider.notifier).update((state) => false);
+    ref.read(yamlLoadingProvider.notifier).update(false);
   }
 
   updateText(String text) {

@@ -6,7 +6,7 @@ part of 'alga_app_view_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$appTabControllerHash() => r'291d52d5e82f24f2595cab0e4d9abca191e2b1f0';
+String _$appTabControllerHash() => r'2243ead326a480e04595aa16e29940b1e1b1498a';
 
 /// Copied from Dart SDK
 class _SystemHash {

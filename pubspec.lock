@@ -258,21 +258,29 @@ packages:
     source: hosted
     version: "1.0.5"
   custom_lint:
-    dependency: transitive
+    dependency: "direct dev"
     description:
       name: custom_lint
-      sha256: "32d120ce01a93ff145ab20ce807d68e0eac71a44fc8802d8688ab64e5bf151ad"
+      sha256: "32648ef4f1dda618d98a22bc958fa79d479895891061e63338bec510b67e821a"
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "0.3.0"
+    version: "0.3.2"
+  custom_lint_builder:
+    dependency: transitive
+    description:
+      name: custom_lint_builder
+      sha256: "5d472a901d07ab5ba0239262c340d29930aa2cfd0c73068aa4d1142a353ffee4"
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "0.3.2"
   custom_lint_core:
     dependency: transitive
     description:
       name: custom_lint_core
-      sha256: "1cf8e9148414e4d5729679268e84397a8135fe92888e8c1aaadd0fe962ecbeba"
+      sha256: cc20ce83432675abcc109b766aad2e420946eaeecc32ffd34bada389cdaa9a74
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "0.3.1"
+    version: "0.3.2"
   dart_style:
     dependency: "direct main"
     description:
@@ -604,6 +612,14 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "0.1.7"
+  hotreloader:
+    dependency: transitive
+    description:
+      name: hotreloader
+      sha256: "66b78edf340352fcdd2043ab6116e58ec018c5968cab6485cde0f1769d28e0b8"
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "3.0.5"
   http:
     dependency: transitive
     description:
@@ -1054,10 +1070,10 @@ packages:
     dependency: transitive
     description:
       name: riverpod_analyzer_utils
-      sha256: "0615fdeb806a99e8e138210941ea146639029ba52c0b9b016e88988d4c56a8e9"
+      sha256: "7c2d4de69ba06107c3d7f1b3f43dc3fbdcb2f666b480560af654b4eb89af0d6d"
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "0.1.2"
+    version: "0.2.0"
   riverpod_annotation:
     dependency: "direct main"
     description:
@@ -1070,10 +1086,18 @@ packages:
     dependency: "direct dev"
     description:
       name: riverpod_generator
-      sha256: "32e9a0137de4e2b9067e8d0e49449881e24654f51da172b4e1640070241ccce7"
+      sha256: "2c08a6fbbe80d489f1c5208e5358bfdd4d612f1777c47fdb9ff91bb7a2670529"
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "2.1.1"
+    version: "2.1.4"
+  riverpod_lint:
+    dependency: "direct dev"
+    description:
+      name: riverpod_lint
+      sha256: "11c4e23dfc0e778d66512c92933698bb74419114e62c62c29fb3638b405cc4c4"
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "1.1.6"
   rxdart:
     dependency: transitive
     description:
@@ -1359,6 +1383,14 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "2.1.4"
+  vm_service:
+    dependency: transitive
+    description:
+      name: vm_service
+      sha256: e7fb6c2282f7631712b69c19d1bff82f3767eea33a2321c14fa59ad67ea391c7
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "9.4.0"
   watcher:
     dependency: transitive
     description:

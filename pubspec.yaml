@@ -73,6 +73,7 @@ dependencies:
   file: ^6.1.4
   path_provider: ^2.0.14
   quick_actions: ^1.0.2
+ 
 
 dev_dependencies:
   flutter_test:
@@ -85,6 +86,8 @@ dev_dependencies:
       url: https://github.com/AngeloAvv/flutter_flavorizr
   msix: ^3.8.2
   riverpod_generator: ^2.1.1
+  custom_lint: ^0.3.2
+  riverpod_lint: ^1.1.6
 
 flutter:
   uses-material-design: true

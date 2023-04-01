@@ -1,10 +1,9 @@
-import 'package:pigment/pigment.dart';
+import 'package:alga/tools/converters/color_converter/color_converter.provider.dart';
+import 'package:alga/ui/widgets/copy_button_widget.dart';
 
 import 'package:alga/utils/constants/import_helper.dart';
 import 'package:alga/tools/converters/color_converter/color_view_background_patiner.dart';
 import 'package:alga/tools/converters/color_converter/material_color_widget.dart';
-
-part 'color_converter_provider.dart';
 
 class ColorConverterView extends StatelessWidget {
   const ColorConverterView({super.key});
@@ -41,7 +40,7 @@ class ColorConverterView extends StatelessWidget {
                 height: 40,
                 width: double.infinity,
                 decoration: BoxDecoration(
-                  color: ref.watch(_colorProvider),
+                  color: ref.watch(colorProvider),
                   borderRadius: BorderRadius.circular(4),
                   border: Border.all(color: lineColor),
                 ),
@@ -60,9 +59,8 @@ class ColorConverterView extends StatelessWidget {
                   if (color != null) {
                     final hex = color.value & 0xFFFFFF;
                     final opacity = color.value >> 24;
-                    ref.watch(_inputController).text =
+                    ref.watch(inputControllerProvider).text =
                         '#${hex.toRadixString(16).padLeft(6, '0')}${opacity.toRadixString(16).padLeft(2)}';
-                    return ref.refresh(_colorProvider);
                   }
                 },
                 child: const Text('Material Color'),
@@ -75,9 +73,8 @@ class ColorConverterView extends StatelessWidget {
                   if (color != null) {
                     final hex = color.value & 0xFFFFFF;
                     final opacity = color.value >> 24;
-                    ref.watch(_inputController).text =
+                    ref.watch(inputControllerProvider).text =
                         '#${hex.toRadixString(16).padLeft(6, '0')}${opacity.toRadixString(16).padLeft(2)}';
-                    return ref.refresh(_colorProvider);
                   }
                 },
                 child: const Text('Color'),
@@ -89,64 +86,53 @@ class ColorConverterView extends StatelessWidget {
           title: S.of(context).colorString,
           child: Consumer(builder: (context, ref, _) {
             return TextField(
-              controller: ref.watch(_inputController),
-              onChanged: (_) => ref.refresh(_colorProvider),
+              controller: ref.watch(inputControllerProvider),
             );
           }),
         ),
         AppTitleWrapper(
           title: 'Flutter Hex',
           actions: [
-            CopyButton(onCopy: (ref) {
-              return ref.watch(_hexValue);
-            }),
+            CopyButtonWithText(hexValueProvider),
           ],
           child: Consumer(builder: (context, ref, _) {
-            return AppTextField(text: ref.watch(_hexValue));
+            return AppTextField(text: ref.watch(hexValueProvider));
           }),
         ),
         AppTitleWrapper(
           title: 'RGB',
           actions: [
-            CopyButton(onCopy: (ref) {
-              return ref.watch(_rgbValue);
-            }),
+            CopyButtonWithText(rgbProvider),
           ],
           child: Consumer(builder: (context, ref, _) {
-            return AppTextField(text: ref.watch(_rgbValue));
+            return AppTextField(text: ref.watch(rgbProvider));
           }),
         ),
         AppTitleWrapper(
           title: 'RGBA',
           actions: [
-            CopyButton(onCopy: (ref) {
-              return ref.watch(_rgbaValue);
-            }),
+            CopyButtonWithText(rgbaProvider),
           ],
           child: Consumer(builder: (context, ref, _) {
-            return AppTextField(text: ref.watch(_rgbaValue));
+            return AppTextField(text: ref.watch(rgbaProvider));
           }),
         ),
         AppTitleWrapper(
           title: 'HSL',
           actions: [
-            CopyButton(onCopy: (ref) {
-              return ref.watch(_hslValue);
-            }),
+            CopyButtonWithText(hslProvider),
           ],
           child: Consumer(builder: (context, ref, _) {
-            return AppTextField(text: ref.watch(_hslValue));
+            return AppTextField(text: ref.watch(hslProvider));
           }),
         ),
         AppTitleWrapper(
           title: 'HSV',
           actions: [
-            CopyButton(onCopy: (ref) {
-              return ref.watch(_hsvValue);
-            }),
+            CopyButtonWithText(hsvProvider),
           ],
           child: Consumer(builder: (context, ref, _) {
-            return AppTextField(text: ref.watch(_hsvValue));
+            return AppTextField(text: ref.watch(hsvProvider));
           }),
         ),
       ],
