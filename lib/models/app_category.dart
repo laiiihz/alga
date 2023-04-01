@@ -9,8 +9,11 @@ class AppCategory {
     required this.uuid,
   });
   final String Function(BuildContext context) name;
+
   final Widget icon;
+
   final String uuid;
+
   static final items = <AppCategory>[
     generator,
     photo,
