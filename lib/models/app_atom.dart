@@ -57,7 +57,6 @@ class AppAtom {
   static final generators = <AppAtom>[
     uuidGenerator,
     hashGenerator,
-    sm3HashGenerator,
     loremIpsumGenerator,
     passwordGenerator,
     randomFileGenerator,
@@ -110,13 +109,6 @@ class AppAtom {
     title: (context) => context.tr.generatorHash,
     icon: const Icon(Icons.fingerprint),
     path: 'hash',
-    categories: [AppCategory.generator],
-  );
-
-  static final sm3HashGenerator = AppAtom(
-    title: (context) => context.tr.generatorSM3Hash,
-    icon: const Icon(Icons.fingerprint),
-    path: 'sm3',
     categories: [AppCategory.generator],
   );
 

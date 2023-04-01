@@ -1,145 +1,162 @@
 import 'dart:convert';
+import 'dart:typed_data';
 
+import 'package:alga/l10n/l10n.dart';
+import 'package:convert/convert.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
-import 'package:crypto/crypto.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+import 'package:pointycastle/export.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
+
+part 'hash_provider.g.dart';
 
 enum HashType {
   md5,
+  md4,
+  md2,
+  ripemd128,
+  ripemd160,
+  ripemd256,
+  ripemd320,
   sha1,
+  sha3,
   sha224,
   sha256,
   sha384,
   sha512,
   sha512224,
   sha512256,
-}
+  sm3,
+  tiger,
+  ;
 
-extension HashTypeExt on HashType {
   String typeName(BuildContext context) {
     switch (this) {
+      case HashType.md4:
+      case HashType.md2:
+      case HashType.ripemd128:
+      case HashType.ripemd160:
+      case HashType.ripemd256:
+      case HashType.ripemd320:
+      case HashType.sha3:
+      case HashType.tiger:
       case HashType.md5:
-        return 'md5';
       case HashType.sha1:
-        return 'sha1';
       case HashType.sha224:
-        return 'sha224';
       case HashType.sha256:
-        return 'sha256';
       case HashType.sha384:
-        return 'sha384';
       case HashType.sha512:
-        return 'sha512';
+        return name;
       case HashType.sha512224:
         return 'sha512/224';
       case HashType.sha512256:
         return 'sha512/256';
+      case HashType.sm3:
+        return context.tr.hashSM3;
     }
   }
 
-  Hash get hashObject {
+  Digest get _digest {
     switch (this) {
       case HashType.md5:
-        return md5;
+        return MD5Digest();
       case HashType.sha1:
-        return sha1;
+        return SHA1Digest();
+      case HashType.sha3:
+        return SHA3Digest();
       case HashType.sha224:
-        return sha224;
+        return SHA224Digest();
       case HashType.sha256:
-        return sha256;
+        return SHA256Digest();
       case HashType.sha384:
-        return sha384;
+        return SHA384Digest();
       case HashType.sha512:
-        return sha512;
+        return SHA512Digest();
       case HashType.sha512224:
-        return sha512224;
+        return SHA512tDigest(56);
       case HashType.sha512256:
-        return sha512256;
+        return SHA512tDigest(64);
+      case HashType.sm3:
+        return SM3Digest();
+      case HashType.md4:
+        return MD4Digest();
+      case HashType.md2:
+        return MD2Digest();
+      case HashType.ripemd128:
+        return RIPEMD128Digest();
+      case HashType.ripemd160:
+        return RIPEMD160Digest();
+      case HashType.ripemd256:
+        return RIPEMD256Digest();
+      case HashType.ripemd320:
+        return RIPEMD320Digest();
+      case HashType.tiger:
+        return TigerDigest();
     }
+  }
+
+  Uint8List convert(String data) {
+    return _digest.process(Uint8List.fromList(utf8.encode(data)));
+  }
+
+  Uint8List _utf8(String data) => utf8.encode(data) as Uint8List;
+
+  Uint8List convertHMAC(String data, String key) {
+    final hmac = HMac.withDigest(_digest)..init(KeyParameter(_utf8(key)));
+    final result = hmac.process(_utf8(data));
+    return result;
   }
 }
 
-final inputController = Provider.autoDispose<TextEditingController>((ref) {
+@riverpod
+TextEditingController inputController(InputControllerRef ref) {
   final ctrl = TextEditingController();
+  ctrl.addListener(() => ref.invalidate(inputTextProvider));
   ref.onDispose(() => ctrl.dispose());
   return ctrl;
-});
-final inputText =
-    Provider.autoDispose<String>((ref) => ref.watch(inputController).text);
-final optionalController =
-    StateProvider.autoDispose<TextEditingController>((ref) {
-  final ctrl = TextEditingController();
-  ref.onDispose(() => ctrl.dispose());
-  return ctrl;
-});
+}
 
-final optionalText =
-    Provider.autoDispose((ref) => ref.watch(optionalController).text);
+@riverpod
+String inputText(InputTextRef ref) {
+  return ref.watch(inputControllerProvider).text;
+}
+
+@riverpod
+TextEditingController saltController(SaltControllerRef ref) {
+  final ctrl = TextEditingController();
+  ctrl.addListener(() => ref.invalidate(saltTextProvider));
+  ref.onDispose(() => ctrl.dispose());
+  return ctrl;
+}
+
+@riverpod
+String saltText(SaltTextRef ref) => ref.watch(saltControllerProvider).text;
+
+final hashTypeProvider =
+    StateProvider.autoDispose<HashType>((ref) => HashType.md5);
+
+@riverpod
+String hashResult(HashResultRef ref) {
+  bool showHmacData = ref.watch(showHmac);
+  bool upperCaseData = ref.watch(hashUpperCase);
+  String inputData = ref.watch(inputTextProvider);
+  String saltData = ref.watch(saltTextProvider);
+  HashType typeData = ref.watch(hashTypeProvider);
+  late String result;
+  if (showHmacData) {
+    // result = converter.convertWithSecret(inputData, saltData).toString();
+    result = hex.encode(typeData.convertHMAC(inputData, saltData));
+  } else {
+    // result = converter.convert(inputData).toString();
+    result = hex.encode(typeData.convert(inputData));
+  }
+
+  if (upperCaseData) result = result.toUpperCase();
+
+  return result;
+}
 
 final hashUpperCase = StateProvider.autoDispose<bool>((ref) => false);
 final showHmac = StateProvider.autoDispose<bool>((ref) => false);
-
-final hashResults = Provider.autoDispose<List<HashResult>>((ref) {
-  bool showHmacData = ref.watch(showHmac);
-  bool upperCaseData = ref.watch(hashUpperCase);
-  String inputData = ref.watch(inputText);
-  String optionalData = ref.watch(optionalText);
-  if (inputData.isEmpty) return const [];
-
-  final results = <HashResult>[];
-  for (var item in HashType.values) {
-    final converter = _Converter(item);
-    if (!showHmacData) {
-      String normal = converter.convert(inputData).toString();
-      if (upperCaseData) normal = normal.toUpperCase();
-      results.add(HashResult(type: item, result: normal));
-    } else {
-      String hmacData =
-          converter.convertWithSecret(inputData, optionalData).toString();
-      if (upperCaseData) hmacData = hmacData.toUpperCase();
-      results.add(HMACResult(type: item, result: hmacData));
-    }
-  }
-
-  return results;
-});
-
-class HashResult {
-  final HashType type;
-  final String result;
-  HashResult({
-    required this.type,
-    required this.result,
-  });
-
-  String title(BuildContext context) => type.typeName(context);
-
-  copy() async {
-    await Clipboard.setData(ClipboardData(text: result));
-  }
-}
-
-class HMACResult extends HashResult {
-  HMACResult({required HashType type, required String result})
-      : super(type: type, result: result);
-  @override
-  String title(BuildContext context) => 'HMAC:${super.title(context)}';
-}
-
-class _Converter {
-  final HashType type;
-  const _Converter(this.type);
-  Digest convert(String data) {
-    final raw = utf8.encode(data);
-    return type.hashObject.convert(raw);
-  }
-
-  Digest convertWithSecret(String data, String secret) {
-    final secretBinary = utf8.encode(secret);
-    final raw = utf8.encode(data);
-    final hmac = Hmac(type.hashObject, secretBinary);
-    return hmac.convert(raw);
-  }
-}

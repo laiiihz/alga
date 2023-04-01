@@ -19,7 +19,6 @@ import 'package:alga/tools/generators/lorem_ipsum_generator/lorem_ipsum_generato
 import 'package:alga/tools/generators/password_generator/password_generator_view.dart';
 import 'package:alga/tools/generators/random_file_generator/random_file_generator_view.dart';
 import 'package:alga/tools/generators/sass_css_generator/sass_css_generator_view.dart';
-import 'package:alga/tools/generators/sm3_generator/sm3_generator_view.dart';
 import 'package:alga/tools/generators/uuid_generator/uuid_generator.dart';
 import 'package:alga/tools/image_tools/blur_hash_tool/blur_hash_tool_view.dart';
 import 'package:alga/tools/image_tools/qrcode_tool/qrcode_view.dart';
@@ -72,10 +71,6 @@ final appRouter = GoRouter(
             GoRoute(
               path: AppAtom.hashGenerator.path,
               builder: (context, state) => const HashGeneratorView(),
-            ),
-            GoRoute(
-              path: AppAtom.sm3HashGenerator.path,
-              builder: (context, state) => const SM3GeneratorView(),
             ),
             GoRoute(
               path: AppAtom.loremIpsumGenerator.path,

@@ -10,6 +10,7 @@
 * [feature] add UUID v5.
 * [feature] blurhash to image.
 * [feature] json/yaml converter add formater.
+* [feature] add more hash algorithms.
 * [fix] fix password generator algorithm.
 * [fix] fix regex tester memory leak.
 

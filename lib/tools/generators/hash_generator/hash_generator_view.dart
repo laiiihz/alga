@@ -20,74 +20,75 @@ class _HashGeneratorViewState extends State<HashGeneratorView> {
         ToolViewWrapper(
           children: [
             AlgaConfigSwitch(
-              leading: const Icon(Icons.text_fields),
-              title: Text(S.of(context).upperCase),
-              value: hashUpperCase,
-            ),
-            AlgaConfigSwitch(
+              leading: const Icon(Icons.shield_outlined),
               title: Text(S.of(context).hashHMAC),
               subtitle: Text(S.of(context).hashHMACDes),
               value: showHmac,
             ),
+            AlgaConfigSwitch(
+              leading: const Icon(Icons.text_fields),
+              title: Text(S.of(context).upperCase),
+              value: hashUpperCase,
+            ),
+            ToolViewMenuConfig<HashType>(
+              leading: const Icon(Icons.data_object_rounded),
+              title: Text(context.tr.hashAlgorithm),
+              initialValue: (ref) => ref.watch(hashTypeProvider),
+              items: HashType.values
+                  .map(
+                    (e) => PopupMenuItem(
+                      value: e,
+                      child: Text(e.typeName(context)),
+                    ),
+                  )
+                  .toList(),
+              onSelected: (type, ref) {
+                ref.read(hashTypeProvider.notifier).update((state) => type);
+              },
+              name: (ref) => ref.watch(hashTypeProvider).typeName(context),
+            )
           ],
         ),
         Consumer(builder: (context, ref, _) {
           return AppTitleWrapper(
             title: S.of(context).input,
             actions: [
-              PasteButtonWidget(
-                inputController,
-                onUpdate: (value) => ref.refresh(inputText),
-              ),
-              ClearButtonWidget(
-                inputController,
-                onUpdate: (ref) => ref.refresh(inputText),
-              ),
+              PasteButtonWidget(inputControllerProvider),
+              ClearButtonWidget(inputControllerProvider),
             ],
             child: TextField(
-              minLines: 2,
+              minLines: 1,
               maxLines: 12,
-              controller: ref.watch(inputController),
-              onChanged: (text) => ref.refresh(inputText),
+              controller: ref.watch(inputControllerProvider),
             ),
           );
         }),
         Consumer(builder: (context, ref, _) {
           if (!ref.watch(showHmac)) return const SizedBox.shrink();
           return AppTitleWrapper(
-            title: S.of(context).hashOptional,
+            title: S.of(context).hashSecretkey,
             actions: [
-              PasteButtonWidget(
-                optionalController,
-                onUpdate: (ref) => ref.refresh(optionalText),
-              ),
-              ClearButtonWidget(
-                optionalController,
-                onUpdate: (ref) => ref.refresh(optionalText),
-              ),
+              PasteButtonWidget(saltControllerProvider),
+              ClearButtonWidget(saltControllerProvider),
             ],
             child: Consumer(builder: (context, ref, _) {
               if (!ref.watch(showHmac)) return const SizedBox.shrink();
               return TextField(
                 minLines: 1,
                 maxLines: 12,
-                controller: ref.watch(optionalController),
-                onChanged: (text) => ref.refresh(optionalText),
+                controller: ref.watch(saltControllerProvider),
               );
             }),
           );
         }),
         Consumer(builder: (context, ref, _) {
-          return Column(
-            children: ref.watch(hashResults).map((e) {
-              return AppTitleWrapper(
-                title: e.title(context),
-                actions: [
-                  CopyButtonWidget(text: e.result),
-                ],
-                child: AppTextField(text: e.result),
-              );
-            }).toList(),
+          final text = ref.watch(hashResultProvider);
+          return AppTitleWrapper(
+            title: context.tr.output,
+            actions: [
+              CopyButtonWidget(text: text),
+            ],
+            child: AppTextField(text: text),
           );
         }),
       ],
