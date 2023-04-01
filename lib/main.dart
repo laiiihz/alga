@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:alga/utils/hive_boxes/app_config_box.dart';
+import 'package:alga/utils/services/app_service.dart';
 import 'package:dynamic_color/dynamic_color.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -8,17 +9,12 @@ import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:alga/l10n/l10n.dart';
-// import 'package:alga/routers/app_router.dart';
 import 'package:alga/routers/app_routes.dart';
-import 'package:alga/utils/hive_util.dart';
-import 'package:alga/utils/window_util.dart';
 import 'package:go_router/go_router.dart';
 import 'utils/theme_util.dart';
 
 void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  await HiveUtil.init();
-  await WindowUtil.init();
+  await AppService().run();
   runApp(const ProviderScope(child: MyApp()));
 }
 

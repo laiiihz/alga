@@ -1,21 +1,15 @@
-import 'dart:io';
-
 import 'package:alga/ui/alga_view/widgets/alga_navigation_bar.dart';
 import 'package:alga/ui/alga_view/widgets/alga_panel.dart';
+import 'package:alga/ui/global.provider.dart';
 import 'package:alga/utils/constants/import_helper.dart';
 
-class AlgaShellRouteView extends StatefulWidget {
+class AlgaShellRouteView extends ConsumerWidget {
   const AlgaShellRouteView({super.key, required this.child});
   final Widget child;
 
   @override
-  State<AlgaShellRouteView> createState() => _AlgaShellRouteViewState();
-}
-
-class _AlgaShellRouteViewState extends State<AlgaShellRouteView> {
-  @override
-  Widget build(BuildContext context) {
-    if (Platform.isLinux || Platform.isMacOS || Platform.isWindows) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    if (ref.watch(isDesktop)) {
       return Material(
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -24,7 +18,7 @@ class _AlgaShellRouteViewState extends State<AlgaShellRouteView> {
             const VerticalDivider(width: 1),
             Expanded(
               child: Scaffold(
-                body: ClipRect(child: widget.child),
+                body: ClipRect(child: child),
               ),
             ),
           ],
@@ -32,7 +26,7 @@ class _AlgaShellRouteViewState extends State<AlgaShellRouteView> {
       );
     } else {
       return Scaffold(
-        body: widget.child,
+        body: child,
         bottomNavigationBar: const AlgaNavigationBar(),
       );
     }

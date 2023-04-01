@@ -74,6 +74,7 @@ dependencies:
   drift: ^2.5.0
   sqlite3_flutter_libs: ^0.5.13
   file: ^6.1.4
+  path_provider: ^2.0.13
 
 dev_dependencies:
   flutter_test:
@@ -86,6 +87,7 @@ dev_dependencies:
       url: https://github.com/AngeloAvv/flutter_flavorizr
   msix: ^3.8.2
   riverpod_generator: ^2.1.1
+  drift_dev: ^2.5.2
 
 
 flutter:

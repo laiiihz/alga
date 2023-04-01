@@ -313,6 +313,14 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "2.5.0"
+  drift_dev:
+    dependency: "direct dev"
+    description:
+      name: drift_dev
+      sha256: d71542e30e27c920d5a73ccad409a0828a0c9588f5bbbc58aad6407259299a8b
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "2.5.2"
   dynamic_color:
     dependency: "direct main"
     description:
@@ -876,7 +884,7 @@ packages:
     source: hosted
     version: "1.0.1"
   path_provider:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: path_provider
       sha256: "04890b994ee89bfa80bf3080bfec40d5a92c5c7a785ebb02c13084a099d2b6f9"
@@ -1018,6 +1026,14 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "4.0.0"
+  recase:
+    dependency: transitive
+    description:
+      name: recase
+      sha256: e4eb4ec2dcdee52dcf99cb4ceabaffc631d7424ee55e56f280bc039737f89213
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "4.1.0"
   riverpod:
     dependency: transitive
     description:
@@ -1151,6 +1167,14 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "0.5.13"
+  sqlparser:
+    dependency: transitive
+    description:
+      name: sqlparser
+      sha256: "91f47610aa54d8abf9d795a7b4e49b2a788f65d7493d5a68fbf180c3cbcc6f38"
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "0.27.0"
   stack_trace:
     dependency: transitive
     description:
