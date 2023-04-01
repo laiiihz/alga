@@ -6,7 +6,7 @@ part of 'json_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$rawJsonControllerHash() => r'7548fabd5d8657896773877614cef12e76780c69';
+String _$rawJsonControllerHash() => r'4f6e6d1f3b1a8876553835ab6a1eb5ead6e8af20';
 
 /// See also [rawJsonController].
 @ProviderFor(rawJsonController)
@@ -23,7 +23,7 @@ final rawJsonControllerProvider =
 
 typedef RawJsonControllerRef = AutoDisposeProviderRef<RichTextController>;
 String _$formattedJsonControllerHash() =>
-    r'38dcaf43d755c1dcf1f3e3a27aa8a5d31040e57a';
+    r'92f6d5dd317bd6cb5cc60dcfb0b46aff82d43aa0';
 
 /// See also [formattedJsonController].
 @ProviderFor(formattedJsonController)

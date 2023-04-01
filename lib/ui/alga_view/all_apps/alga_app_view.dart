@@ -3,6 +3,7 @@ import 'package:alga/models/app_atom.dart';
 import 'package:alga/models/app_category.dart';
 
 import 'alga_app_item.dart';
+import 'alga_app_view_provider.dart';
 
 class AlgaAppView extends StatefulWidget {
   const AlgaAppView({super.key});
@@ -13,35 +14,22 @@ class AlgaAppView extends StatefulWidget {
 
 class AlgaAppViewState extends State<AlgaAppView>
     with SingleTickerProviderStateMixin {
-  late final TabController tabController;
-  @override
-  void initState() {
-    super.initState();
-    tabController = TabController(
-      length: AppCategory.items.length + 1,
-      vsync: this,
-    );
-  }
-
-  @override
-  void dispose() {
-    tabController.dispose();
-    super.dispose();
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(S.of(context).allApps),
+        centerTitle: false,
         bottom: const AppCategoriesPanel(),
       ),
-      body: TabBarView(
-        controller: tabController,
-        children: [AppCategory.allApps, ...AppCategory.items].map((e) {
-          return AppCategoryView(e);
-        }).toList(),
-      ),
+      body: Consumer(builder: (context, ref, _) {
+        return TabBarView(
+          controller: ref.watch(appTabControllerProvider(vsync: this)),
+          children: [AppCategory.allApps, ...AppCategory.items].map((e) {
+            return AppCategoryView(e);
+          }).toList(),
+        );
+      }),
     );
   }
 }
@@ -60,22 +48,19 @@ class _AppCategoriesPanelState extends State<AppCategoriesPanel> {
   @override
   Widget build(BuildContext context) {
     final parentState = context.findAncestorStateOfType<AlgaAppViewState>()!;
-    return TabBar(
-      isScrollable: true,
-      controller: parentState.tabController,
-      indicator: BoxDecoration(
-        color: Theme.of(context).colorScheme.primaryContainer,
-        borderRadius: const BorderRadius.vertical(top: Radius.circular(2)),
-      ),
-      indicatorPadding: const EdgeInsets.only(top: 44, left: 0, right: 0),
-      tabs: [
-        Tab(text: S.of(context).allApps),
-        ...AppCategory.items.map(
-          (e) => Tab(
-            text: e.name(context),
-          ),
-        ),
-      ],
+    return Align(
+      alignment: Alignment.centerLeft,
+      child: Consumer(builder: (context, ref, _) {
+        return TabBar(
+          isScrollable: true,
+          controller: ref.watch(appTabControllerProvider(vsync: parentState)),
+          indicatorPadding: const EdgeInsets.only(top: 44, left: 0, right: 0),
+          tabs: [
+            Tab(text: S.of(context).allApps),
+            ...AppCategory.items.map((e) => Tab(text: e.name(context))),
+          ],
+        );
+      }),
     );
   }
 }

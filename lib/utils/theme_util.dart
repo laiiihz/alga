@@ -32,20 +32,11 @@ class ThemeUtil {
     ColorScheme scheme = colorScheme;
     return ThemeData.from(colorScheme: scheme).copyWith(
       splashFactory: InkSparkle.splashFactory,
-      
       inputDecorationTheme: _inputDecorationTheme.copyWith(
         contentPadding: const EdgeInsets.all(12),
       ),
       listTileTheme: ListTileThemeData(
         iconColor: scheme.secondary,
-      ),
-      tabBarTheme: const TabBarTheme(
-        indicator: BoxDecoration(
-          border: Border(
-            bottom: BorderSide(width: 2),
-          ),
-        ),
-        indicatorSize: TabBarIndicatorSize.label,
       ),
       snackBarTheme: SnackBarThemeData(
         actionTextColor: scheme.background,
