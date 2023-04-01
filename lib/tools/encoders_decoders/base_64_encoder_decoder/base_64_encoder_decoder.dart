@@ -1,13 +1,16 @@
 import 'dart:convert';
 import 'dart:io';
 
-import 'package:flutter/foundation.dart';
-
+import 'package:alga/tools/encoders_decoders/base_64_encoder_decoder/base_64.provider.dart';
+import 'package:alga/ui/widgets/clear_button_widget.dart';
+import 'package:alga/ui/widgets/copy_button_widget.dart';
+import 'package:alga/ui/widgets/custom_icon_button.dart';
+import 'package:alga/ui/widgets/paste_button_widget.dart';
 import 'package:alga/utils/constants/import_helper.dart';
 import 'package:alga/utils/image_util.dart';
+import 'package:flutter/foundation.dart';
 
-part './base_64_provider.dart';
-part './base64_file_picker.dart';
+part 'base64_file_picker.dart';
 
 class Base64EncoderDecoderView extends StatefulWidget {
   const Base64EncoderDecoderView({super.key});
@@ -25,31 +28,21 @@ class _Base64EncoderDecoderViewState extends State<Base64EncoderDecoderView> {
       children: [
         ToolViewWrapper(
           children: [
-            ToolViewConfig(
+            AlgaSwitch(
               leading: const Icon(Icons.swap_horiz_sharp),
               title: Text(S.of(context).conversion),
               subtitle: Text(S.of(context).selectConversion),
-              trailing: Consumer(builder: (context, ref, _) {
-                return Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    ref.watch(_isEncode)
-                        ? Text(S.of(context).encode)
-                        : Text(S.of(context).decode),
-                    Switch(
-                      value: ref.watch(_isEncode),
-                      onChanged: (state) {
-                        ref.read(_isEncode.notifier).state = state;
-                      },
-                    ),
-                  ],
-                );
-              }),
+              value: (ref) => ref.watch(isEncodeProvider),
+              onChanged: (ref, value) =>
+                  ref.read(isEncodeProvider.notifier).update(value),
             ),
-            AlgaConfigSwitch(
-              leading: const Icon(Icons.link),
-              title: Text(S.of(context).urlSafe),
-              value: _urlSafe,
+            AlgaSwitch(
+              leading: const Icon(Icons.swap_horiz_sharp),
+              title: Text(S.of(context).conversion),
+              subtitle: Text(S.of(context).selectConversion),
+              value: (ref) => ref.watch(urlSafeProvider),
+              onChanged: (ref, value) =>
+                  ref.read(urlSafeProvider.notifier).update(value),
             ),
           ],
         ),
@@ -59,41 +52,29 @@ class _Base64EncoderDecoderViewState extends State<Base64EncoderDecoderView> {
             Consumer(builder: (context, ref, _) {
               return _Base64ImageButton(ref: ref);
             }),
-            PasteButton(onPaste: (ref, data) {
-              ref.read(_input).text = data;
-              return ref.refresh(_result);
-            }),
-            Consumer(builder: (context, ref, _) {
-              return IconButton(
-                icon: const Icon(Icons.clear),
-                onPressed: () {
-                  ref.read(_input).clear();
-                  return ref.refresh(_result);
-                },
-              );
-            }),
+            PasteButtonWidget(inputControllerProvider),
+            ClearButtonWidget(inputControllerProvider),
           ],
           child: Consumer(builder: (context, ref, _) {
             return TextField(
               minLines: 2,
               maxLines: 12,
-              controller: ref.watch(_input),
-              onChanged: (text) => ref.refresh(_result),
+              controller: ref.watch(inputControllerProvider),
             );
           }),
         ),
         AppTitleWrapper(
           title: S.of(context).output,
           actions: [
-            CopyButton(onCopy: (ref) {
-              return ref.read(_result);
+            Consumer(builder: (context, ref, _) {
+              return CopyButtonWithText.raw(ref.watch(resultProvider));
             }),
           ],
           child: Consumer(builder: (context, ref, _) {
             return AppTextField(
               minLines: 2,
               maxLines: 12,
-              text: ref.watch(_result),
+              text: ref.watch(resultProvider),
             );
           }),
         ),

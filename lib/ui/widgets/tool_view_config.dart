@@ -221,10 +221,6 @@ class _ToolViewTextFieldState extends ConsumerState<ToolViewTextField> {
   }
 }
 
-/**
- * NEW WIDGET_REF WIDGETS
- */
-
 class AlgaConfigSwitch extends ConsumerWidget {
   const AlgaConfigSwitch({
     super.key,
@@ -252,6 +248,41 @@ class AlgaConfigSwitch extends ConsumerWidget {
       ),
       onPressed: () {
         ref.read(value.notifier).update((state) => !state);
+      },
+    );
+  }
+}
+
+class AlgaSwitch extends ConsumerWidget {
+  const AlgaSwitch({
+    super.key,
+    this.subtitle,
+    this.leading,
+    required this.title,
+    required this.value,
+    required this.onChanged,
+  });
+  final Widget title;
+  final Widget? subtitle;
+  final Widget? leading;
+  final bool Function(WidgetRef ref) value;
+  final void Function(WidgetRef ref, bool value) onChanged;
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final current = value(ref);
+    return ToolViewConfig(
+      title: title,
+      subtitle: subtitle,
+      leading: leading,
+      trailing: Switch(
+        value: current,
+        onChanged: (value) {
+          onChanged(ref, value);
+        },
+      ),
+      onPressed: () {
+        onChanged(ref, !current);
       },
     );
   }

@@ -1,11 +1,9 @@
 import 'dart:io';
-import 'dart:ui';
 
 import 'package:flutter/foundation.dart';
 
 import 'package:blurhash_dart/blurhash_dart.dart';
 import 'package:file_selector/file_selector.dart' as selector;
-import 'package:flutter/rendering.dart';
 import 'package:image/image.dart' as pub_image;
 import 'package:image_picker/image_picker.dart';
 
@@ -80,13 +78,13 @@ class ImageItem {
   double get aspectRatio => image.width / image.height;
 }
 
-Future<Uint8List?> _widget2image(RenderRepaintBoundary boundary) {
-  return compute(_widget2imageCore, boundary);
-}
+// Future<Uint8List?> _widget2image(RenderRepaintBoundary boundary) {
+//   return compute(_widget2imageCore, boundary);
+// }
 
-Future<Uint8List?> _widget2imageCore(RenderRepaintBoundary boundary) async {
-  final image = await boundary.toImage(pixelRatio: 2);
-  final pngRaw = await image.toByteData(format: ImageByteFormat.png);
-  if (pngRaw == null) return null;
-  return pngRaw.buffer.asUint8List();
-}
+// Future<Uint8List?> _widget2imageCore(RenderRepaintBoundary boundary) async {
+//   final image = await boundary.toImage(pixelRatio: 2);
+//   final pngRaw = await image.toByteData(format: ImageByteFormat.png);
+//   if (pngRaw == null) return null;
+//   return pngRaw.buffer.asUint8List();
+// }

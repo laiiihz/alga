@@ -68,11 +68,12 @@ class _Base64ImageButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return IconButton(
+    return CustomIconButton(
       icon: const Icon(Icons.image),
       onPressed: () {
         _showBase64ImagePicker(context, ref);
       },
+      tooltip: '',
     );
   }
 }
