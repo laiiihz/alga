@@ -47,17 +47,12 @@ class AlgaAppItem extends StatelessWidget {
             Positioned(
               left: 4,
               top: 4,
-              child: Material(
-                color: background,
-                borderRadius: BorderRadius.circular(12),
-                child: SizedBox(
-                  height: 56,
-                  width: 56,
-                  child: Padding(
-                    padding: const EdgeInsets.all(8),
-                    child: item.icon,
-                  ),
-                  // child: item.,
+              child: SizedBox(
+                height: 56,
+                width: 56,
+                child: Padding(
+                  padding: const EdgeInsets.all(8),
+                  child: item.icon,
                 ),
               ),
             ),

@@ -5,8 +5,7 @@ import 'package:flutter_svg/svg.dart';
 class SvgAssetIcon extends StatelessWidget {
   final String svg;
   final bool colorIcon;
-  const SvgAssetIcon(this.svg, {Key? key, this.colorIcon = false})
-      : super(key: key);
+  const SvgAssetIcon(this.svg, {super.key, this.colorIcon = false});
 
   Color? _color(BuildContext context) {
     if (colorIcon) return null;
@@ -16,11 +15,17 @@ class SvgAssetIcon extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final iconSize = IconTheme.of(context).size;
+    final color = _color(context);
     return SvgPicture.asset(
       svg,
       width: iconSize,
       height: iconSize,
-      color: _color(context),
+      colorFilter: color == null
+          ? null
+          : ColorFilter.mode(
+              color,
+              BlendMode.srcIn,
+            ),
     );
   }
 }

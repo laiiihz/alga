@@ -4,6 +4,7 @@ import 'dart:io';
 import 'package:alga/utils/hive_util.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:quick_actions/quick_actions.dart';
 import 'package:window_manager/window_manager.dart';
 
 abstract class ServiceBase {
@@ -52,6 +53,7 @@ class WindowService implements ServiceBase {
   static WindowService? _instance;
   WindowService._();
   factory WindowService() => _instance ??= WindowService._();
+
   @override
   FutureOr run() async {
     if (kIsWeb) {
@@ -85,3 +87,14 @@ class WindowService implements ServiceBase {
   }
 }
 
+// class QuickActionService implements ServiceBase {
+//   static QuickActionService? _instance;
+//   QuickActionService._();
+//   factory QuickActionService() => _instance ??= QuickActionService._();
+
+//   final QuickActions quickActions = const QuickActions();
+//   @override
+//   FutureOr run() async {
+//     quickActions.setShortcutItems([]);
+//   }
+// }

@@ -2,7 +2,7 @@ name: alga
 description: A powerful tool app for all developers.
 
 publish_to: "none"
-version: 1.0.0+30-pre
+version: 1.0.4+34-pre
 
 environment:
   sdk: ">=2.19.0 <3.0.0"
@@ -72,6 +72,7 @@ dependencies:
   riverpod_annotation: ^2.0.2
   file: ^6.1.4
   path_provider: ^2.0.14
+  quick_actions: ^1.0.2
 
 dev_dependencies:
   flutter_test:
