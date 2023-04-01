@@ -1,52 +1,61 @@
-import 'package:alga/utils/constants/import_helper.dart';
-import 'package:alga/tools/formatters/json_formatter/json_enums.dart';
 import 'package:alga/tools/formatters/json_formatter/json_provider.dart';
-import '../../widgets/formatter_view.dart';
+import 'package:alga/ui/widgets/clear_button_widget.dart';
+import 'package:alga/ui/widgets/copy_button_widget.dart';
+import 'package:alga/ui/widgets/paste_button_widget.dart';
+import 'package:alga/utils/constants/import_helper.dart';
 
-class JsonFormatterView extends StatefulWidget {
+import 'json_enums.dart';
+
+class JsonFormatterView extends StatelessWidget {
   const JsonFormatterView({super.key});
 
   @override
-  State<JsonFormatterView> createState() => _JsonFormatterViewState();
-}
-
-class _JsonFormatterViewState extends State<JsonFormatterView> {
-  final provider = JsonProvider();
-  update() => setState(() {});
-
-  @override
-  void initState() {
-    super.initState();
-    provider.addListener(update);
-  }
-
-  @override
-  void dispose() {
-    provider.removeListener(update);
-    provider.dispose();
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
-    return FormatterView(
-      lang: LangHighlightType.json,
-      title: Text(S.of(context).formatterJson),
-      configs: [
-        ToolViewMenuConfig<JsonIndentType>(
-          leading: const Icon(Icons.space_bar),
-          title: Text(S.of(context).indentation),
-          name: (ref) => provider.type.name(context),
-          items: JsonIndentType.values
-              .map((e) => PopupMenuItem(value: e, child: Text(e.name(context))))
-              .toList(),
-          onSelected: (iType, ref) {
-            provider.type = iType;
-          },
-          initialValue: (ref) => provider.type,
-        ),
-      ],
-      onChanged: provider.onChanged,
+    return ToolView(
+      title: Text(context.tr.formatterJson),
+      content: ToolbarView(
+        configs: [
+          ToolViewMenuConfig<JsonIndentType>(
+            leading: const Icon(Icons.space_bar_rounded),
+            title: Text(context.tr.indentation),
+            initialValue: (ref) => ref.read(jsonIndentTypeProvider),
+            items: JsonIndentType.values
+                .map((e) =>
+                    PopupMenuItem(value: e, child: Text(e.name(context))))
+                .toList(),
+            onSelected: (type, ref) {
+              ref.read(jsonIndentTypeProvider.notifier).update((state) => type);
+            },
+            name: (ref) => ref.watch(jsonIndentTypeProvider).name(context),
+          ),
+        ],
+        inputWidget: Consumer(builder: (context, ref, _) {
+          return TextField(
+            minLines: 80,
+            maxLines: 100,
+            controller: ref.watch(rawJsonControllerProvider),
+          );
+        }),
+        outputWidget: Consumer(builder: (context, ref, _) {
+          return AppTextField(
+            minLines: 80,
+            maxLines: 100,
+            language: HighlightType.json,
+            text: ref.watch(formattedJsonControllerProvider).data ?? '',
+          );
+        }),
+        inputActions: [
+          PasteButtonWidget(rawJsonControllerProvider),
+          ClearButtonWidget(rawJsonControllerProvider),
+        ],
+        outputActions: [
+          Consumer(builder: (context, ref, _) {
+            return CopyButtonWithText.raw(
+              ref.watch(formattedJsonControllerProvider).data,
+            );
+          }),
+        ],
+      ),
     );
   }
 }

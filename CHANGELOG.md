@@ -11,6 +11,7 @@
 * [feature] blurhash to image.
 * [feature] json/yaml converter add formater.
 * [feature] add more hash algorithms.
+* [fix] rewrite date parser.
 * [fix] fix password generator algorithm.
 * [fix] fix regex tester memory leak.
 

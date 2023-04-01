@@ -6,13 +6,15 @@ class AppTextField extends StatefulWidget {
     super.key,
     required this.text,
     this.lang,
+    this.language,
     this.minLines,
     this.maxLines,
   });
 
-  final String text;
-  @Deprecated('use TextField')
+  final String? text;
+  @Deprecated('use language')
   final String? lang;
+  final HighlightType? language;
   final int? minLines;
   final int? maxLines;
 
@@ -25,12 +27,17 @@ class _AppTextFieldState extends State<AppTextField> {
   @override
   void initState() {
     super.initState();
-    _controller = TextEditingController(text: widget.text);
+    if (widget.language == null) {
+      _controller = TextEditingController(text: widget.text);
+    } else {
+      _controller =
+          RichTextController.lang(type: widget.language!, text: widget.text);
+    }
   }
 
   @override
   void didUpdateWidget(AppTextField oldWidget) {
-    _controller.text = widget.text;
+    _controller.text = widget.text ?? '';
     super.didUpdateWidget(oldWidget);
   }
 
@@ -42,15 +49,6 @@ class _AppTextFieldState extends State<AppTextField> {
 
   @override
   Widget build(BuildContext context) {
-    if (widget.lang != null) {
-      return LangTextField(
-        lang: widget.lang!,
-        controller: _controller,
-        readOnly: true,
-        minLines: widget.minLines,
-        maxLines: widget.maxLines,
-      );
-    }
     return TextField(
       readOnly: true,
       controller: _controller,

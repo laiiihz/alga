@@ -22,7 +22,7 @@ final dateControllerProvider =
 );
 
 typedef DateControllerRef = AutoDisposeProviderRef<TextEditingController>;
-String _$formatControllerHash() => r'e01e488a5dfce0160e09c839465cef369469eed5';
+String _$formatControllerHash() => r'49eb6f83c105022efea1aaab12a86e4a36e86b3e';
 
 /// See also [formatController].
 @ProviderFor(formatController)
@@ -52,7 +52,7 @@ final foramtTextProvider = AutoDisposeProvider<String>.internal(
 );
 
 typedef ForamtTextRef = AutoDisposeProviderRef<String>;
-String _$formatResultHash() => r'04d101888e9894783a4d5bfceafce0bf34a160ca';
+String _$formatResultHash() => r'aaa7ca66aa985e1aa0da41869c73dd6fde1b2df4';
 
 /// See also [formatResult].
 @ProviderFor(formatResult)
