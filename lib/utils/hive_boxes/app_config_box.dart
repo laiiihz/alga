@@ -7,11 +7,13 @@ class AppConfigBox {
   static const _localeSystem = 'system';
   static const _localeChinese = 'zh';
   static const _localeEnglish = 'en';
+  static const _localeJapanese = 'ja';
 
   static const List<String> localCodes = [
     _localeSystem,
     _localeChinese,
     _localeEnglish,
+    _localeJapanese,
   ];
 
   /// app theme mode
@@ -37,6 +39,9 @@ class AppConfigBox {
         return const Locale('zh');
       case _localeEnglish:
         return const Locale('en');
+      case _localeJapanese:
+        return const Locale('ja');
+
       default:
         return null;
     }

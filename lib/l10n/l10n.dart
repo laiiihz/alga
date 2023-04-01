@@ -22,6 +22,8 @@ class S {
         return '简体中文';
       case 'en':
         return 'English';
+      case 'ja':
+        return '日本語';
       default:
         return of(context).followSystem;
     }
