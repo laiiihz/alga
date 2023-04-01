@@ -11,6 +11,7 @@ class AppTextField extends StatefulWidget {
   });
 
   final String text;
+  @Deprecated('use TextField')
   final String? lang;
   final int? minLines;
   final int? maxLines;

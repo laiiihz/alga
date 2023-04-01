@@ -36,7 +36,7 @@ final inputTextProvider = AutoDisposeProvider<String>.internal(
 );
 
 typedef InputTextRef = AutoDisposeProviderRef<String>;
-String _$saltControllerHash() => r'a19aba5fc5f4af77e1196123bb8d882d40bde7ef';
+String _$saltControllerHash() => r'919bb0d6edff32cef4332b6ae53eda7b5a44f6be';
 
 /// See also [saltController].
 @ProviderFor(saltController)
@@ -66,7 +66,7 @@ final saltTextProvider = AutoDisposeProvider<String>.internal(
 );
 
 typedef SaltTextRef = AutoDisposeProviderRef<String>;
-String _$hashResultHash() => r'43c02d5145f66c161d284f35df2bdde14901eb9b';
+String _$hashResultHash() => r'7aa661ef5ba3841235541d6054af9048a84fcad2';
 
 /// See also [hashResult].
 @ProviderFor(hashResult)

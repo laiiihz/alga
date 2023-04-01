@@ -1,10 +1,11 @@
-import 'package:intl/intl.dart';
-
+import 'package:alga/ui/widgets/copy_button_widget.dart';
+import 'package:alga/ui/widgets/paste_button_widget.dart';
 import 'package:alga/utils/constants/import_helper.dart';
 import 'package:alga/tools/text_tools/date_parser/date_ext.dart';
 import 'package:alga/tools/text_tools/date_parser/date_parsed_widget.dart';
 
-part './date_parser_provider.dart';
+import 'date_parser_view_provider.dart';
+
 part './date_operation_widget.dart';
 
 class DateParserView extends StatefulWidget {
@@ -24,37 +25,33 @@ class _DateParserViewState extends State<DateParserView> {
           title: S.of(context).dateParserdate,
           actions: [
             HelperIconButton(
-              title: const Text('Supported Date Format'),
+              title: Text(context.tr.supportedDateFormat),
               content: Wrap(
                 spacing: 4,
                 runSpacing: 4,
                 children: [
-                  for (var item in _supportDateFormat) Chip(label: Text(item))
+                  for (var item in supportDateFormat) Chip(label: Text(item))
                 ],
               ),
             ),
             Consumer(builder: (context, ref, _) {
               return TextButton(
                 onPressed: () {
-                  ref.watch(_dateController).text =
+                  ref.read(dateControllerProvider).text =
                       DateTime.now().toIso8601String();
-                  return ref.refresh(_date);
                 },
-                child: const Text('Current'),
+                child: Text(context.tr.currentDate),
               );
             }),
           ],
           child: Consumer(builder: (context, ref, _) {
             return TextField(
-              controller: ref.read(_dateController),
-              onChanged: (_) {
-                return ref.refresh(_date);
-              },
+              controller: ref.read(dateControllerProvider),
             );
           }),
         ),
         Consumer(builder: (context, ref, _) {
-          final date = ref.watch(_date);
+          final date = ref.watch(dateParserProvider);
           if (date == null) return const SizedBox.shrink();
           return Column(
             children: [
@@ -65,38 +62,35 @@ class _DateParserViewState extends State<DateParserView> {
               AppTitleWrapper(
                 title: S.of(context).iso8601Date,
                 actions: [
-                  CopyButton(onCopy: (ref) => date.toIso8601String()),
+                  CopyButtonWidget(text: date.toIso8601String()),
                 ],
                 child: AppTextField(text: date.toIso8601String()),
               ),
             ],
           );
         }),
-        const DateOperationWidget(),
+        AppTitleWrapper(
+          title: context.tr.dateCalculation,
+          child: const DateOperationWidget(),
+        ),
         Consumer(builder: (context, ref, _) {
           return AppTitleWrapper(
-            title: S.of(context).dateCustomFormat,
+            title: context.tr.dateCustomFormat,
             actions: [
               HelperIconButton(
-                title: const Text('Date Format Help'),
+                title: Text(context.tr.dateFormatHelp),
                 content: Wrap(
                   spacing: 4,
                   runSpacing: 4,
                   children: [
-                    for (var item in _dateFormatHelp) Chip(label: Text(item))
+                    for (var item in dateFormatHelp) Chip(label: Text(item))
                   ],
                 ),
               ),
-              PasteButton(onPaste: (ref, data) {
-                ref.read(_formatController).text = data;
-                return ref.refresh(_formatResult);
-              }),
+              PasteButtonWidget(formatControllerProvider),
             ],
             child: TextField(
-              controller: ref.read(_formatController),
-              onChanged: (_) {
-                return ref.refresh(_formatResult);
-              },
+              controller: ref.read(formatControllerProvider),
             ),
           );
         }),
@@ -104,14 +98,9 @@ class _DateParserViewState extends State<DateParserView> {
           return AppTitleWrapper(
             title: S.of(context).formattedDateString,
             actions: [
-              IconButton(
-                onPressed: () {
-                  ClipboardUtil.copy(ref.watch(_formatResult) ?? '');
-                },
-                icon: const Icon(Icons.copy),
-              ),
+              CopyButtonWithText.raw(ref.watch(formatResultProvider)),
             ],
-            child: AppTextField(text: ref.watch(_formatResult) ?? ''),
+            child: AppTextField(text: ref.watch(formatResultProvider) ?? ''),
           );
         }),
       ],
