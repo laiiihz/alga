@@ -44,7 +44,7 @@ class FormatterViewState extends State<FormatterView> {
           maxLines: 100,
           controller: _inputController,
           onChanged: (text) {
-            outputText = widget.onChanged(text).result;
+            outputText = widget.onChanged(text).result ?? '';
             setState(() {});
           },
         ),
@@ -60,7 +60,7 @@ class FormatterViewState extends State<FormatterView> {
             onPressed: () async {
               final rawText = await Clipboard.getData('text/plain');
               _inputController.text = rawText?.text ?? '';
-              outputText = widget.onChanged(_inputController.text).result;
+              outputText = widget.onChanged(_inputController.text).result ?? '';
               setState(() {});
               if (mounted) SnackbarUtil(context).pasted();
             },

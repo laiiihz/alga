@@ -1,6 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
 
+import 'package:alga/tools/formatters/formatter_abstract.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import 'package:alga/utils/constants/import_helper.dart';
@@ -9,8 +10,13 @@ import 'json_enums.dart';
 
 part 'json_provider.g.dart';
 
-final jsonIndentTypeProvider =
-    StateProvider.autoDispose((ref) => JsonIndentType.space2);
+@riverpod
+class JsonIndent extends _$JsonIndent {
+  @override
+  JsonIndentType build() => JsonIndentType.space2;
+
+  update(JsonIndentType state) => this.state = state;
+}
 
 final errorTextProvider = StateProvider.autoDispose<String?>((ref) => null);
 
@@ -23,11 +29,11 @@ RichTextController rawJsonController(RawJsonControllerRef ref) {
 }
 
 @riverpod
-JsonFormatResult formattedJsonController(FormattedJsonControllerRef ref) {
+FormatResult formattedJsonController(FormattedJsonControllerRef ref) {
   final controller = ref.watch(rawJsonControllerProvider);
-  final indentation = ref.watch(jsonIndentTypeProvider);
+  final indentation = ref.watch(jsonIndentProvider);
   if (indentation == JsonIndentType.minified) {
-    return JsonFormatResult(controller.text.trim().replaceAll('\n', ''));
+    return FormatResult(controller.text.trim().replaceAll('\n', ''));
   } else {
     const decoder = JsonDecoder();
     try {
@@ -46,26 +52,9 @@ JsonFormatResult formattedJsonController(FormattedJsonControllerRef ref) {
         default:
           break;
       }
-      return JsonFormatResult(encoder.convert(rawMap));
+      return FormatResult(encoder.convert(rawMap));
     } catch (e) {
-      return JsonFormatResult(controller.text, e.toString());
+      return FormatResult(controller.text, e.toString());
     }
   }
-}
-
-class JsonFormatResult {
-  JsonFormatResult(this.data, [this.error]);
-
-  final String? data;
-  final String? error;
-
-  @override
-  bool operator ==(covariant JsonFormatResult other) {
-    if (identical(this, other)) return true;
-
-    return other.data == data && other.error == error;
-  }
-
-  @override
-  int get hashCode => Object.hash(data, error);
 }

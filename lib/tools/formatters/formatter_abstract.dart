@@ -3,7 +3,7 @@ abstract class FormatterAbstract {
 }
 
 class FormatResult {
-  final String result;
+  final String? result;
   final String? errorReson;
   const FormatResult(this.result, [this.errorReson]);
 }

@@ -13,7 +13,6 @@ import 'package:alga/tools/encoders_decoders/uri_encoder_decoder/uri_encoder_dec
 import 'package:alga/tools/encoders_decoders/uri_parser/uri_parser_view.dart';
 import 'package:alga/tools/formatters/dart_formatter/dart_formatter_view.dart';
 import 'package:alga/tools/formatters/json_formatter/json_formatter_view.dart';
-import 'package:alga/tools/formatters/py_dict_formatter/py_dict_formatter_view.dart';
 import 'package:alga/tools/generators/hash_generator/hash_generator_view.dart';
 import 'package:alga/tools/generators/lorem_ipsum_generator/lorem_ipsum_generator_view.dart';
 import 'package:alga/tools/generators/password_generator/password_generator_view.dart';
@@ -151,10 +150,6 @@ final appRouter = GoRouter(
             GoRoute(
               path: AppAtom.dartFormatter.path,
               builder: (context, state) => const DartFormtterView(),
-            ),
-            GoRoute(
-              path: AppAtom.pyDictFormatter.path,
-              builder: (context, state) => const PyDictFormatterView(),
             ),
             GoRoute(
               path: AppAtom.staticServer.path,

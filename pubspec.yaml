@@ -23,8 +23,8 @@ dependencies:
     path: ./packages/language_textfield
   flutter_js_wrapper:
     path: ./packages/flutter_js_wrapper
-  py_dict_parser:
-    path: ./packages/py_dict_parser
+  # py_dict_parser:
+  #   path: ./packages/py_dict_parser
 
   cupertino_icons: ^1.0.5
   archive: ^3.3.5

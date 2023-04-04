@@ -23,12 +23,12 @@ final rawJsonControllerProvider =
 
 typedef RawJsonControllerRef = AutoDisposeProviderRef<RichTextController>;
 String _$formattedJsonControllerHash() =>
-    r'92f6d5dd317bd6cb5cc60dcfb0b46aff82d43aa0';
+    r'71a55119af77a3d4fbe887df643b83c8d5be48f4';
 
 /// See also [formattedJsonController].
 @ProviderFor(formattedJsonController)
 final formattedJsonControllerProvider =
-    AutoDisposeProvider<JsonFormatResult>.internal(
+    AutoDisposeProvider<FormatResult>.internal(
   formattedJsonController,
   name: r'formattedJsonControllerProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
@@ -38,5 +38,20 @@ final formattedJsonControllerProvider =
   allTransitiveDependencies: null,
 );
 
-typedef FormattedJsonControllerRef = AutoDisposeProviderRef<JsonFormatResult>;
+typedef FormattedJsonControllerRef = AutoDisposeProviderRef<FormatResult>;
+String _$jsonIndentHash() => r'adfcefa1477c1e34114e3f6dad270b9b8f7f38fa';
+
+/// See also [JsonIndent].
+@ProviderFor(JsonIndent)
+final jsonIndentProvider =
+    AutoDisposeNotifierProvider<JsonIndent, JsonIndentType>.internal(
+  JsonIndent.new,
+  name: r'jsonIndentProvider',
+  debugGetCreateSourceHash:
+      const bool.fromEnvironment('dart.vm.product') ? null : _$jsonIndentHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+typedef _$JsonIndent = AutoDisposeNotifier<JsonIndentType>;
 // ignore_for_file: unnecessary_raw_strings, subtype_of_sealed_class, invalid_use_of_internal_member, do_not_use_environment, prefer_const_constructors, public_member_api_docs, avoid_private_typedef_functions

@@ -82,7 +82,6 @@ class AppAtom {
   static final formatterApps = <AppAtom>[
     jsonFormatter,
     dartFormatter,
-    pyDictFormatter,
   ];
 
   static final frontEndApps = <AppAtom>[
@@ -254,12 +253,6 @@ class AppAtom {
     icon: const SvgAssetIcon('assets/icons/dart.svg', colorIcon: true),
     title: (context) => context.tr.formatterDart,
     path: 'dart-formatter',
-    categories: [AppCategory.formatter],
-  );
-  static final pyDictFormatter = AppAtom(
-    icon: const SvgAssetIcon('assets/icons/python.svg', colorIcon: true),
-    title: (context) => context.tr.pythonDictFormatter,
-    path: 'py-dict-formatter',
     categories: [AppCategory.formatter],
   );
 

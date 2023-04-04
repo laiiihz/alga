@@ -16,16 +16,18 @@ class SvgAssetIcon extends StatelessWidget {
   Widget build(BuildContext context) {
     final iconSize = IconTheme.of(context).size;
     final color = _color(context);
-    return SvgPicture.asset(
-      svg,
-      width: iconSize,
-      height: iconSize,
-      colorFilter: color == null
-          ? null
-          : ColorFilter.mode(
-              color,
-              BlendMode.srcIn,
-            ),
+    return Center(
+      child: SvgPicture.asset(
+        svg,
+        width: iconSize,
+        height: iconSize,
+        colorFilter: color == null
+            ? null
+            : ColorFilter.mode(
+                color,
+                BlendMode.srcIn,
+              ),
+      ),
     );
   }
 }

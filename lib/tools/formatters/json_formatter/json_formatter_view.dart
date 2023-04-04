@@ -18,15 +18,15 @@ class JsonFormatterView extends StatelessWidget {
           ToolViewMenuConfig<JsonIndentType>(
             leading: const Icon(Icons.space_bar_rounded),
             title: Text(context.tr.indentation),
-            initialValue: (ref) => ref.read(jsonIndentTypeProvider),
+            initialValue: (ref) => ref.read(jsonIndentProvider),
             items: JsonIndentType.values
                 .map((e) =>
                     PopupMenuItem(value: e, child: Text(e.name(context))))
                 .toList(),
             onSelected: (type, ref) {
-              ref.read(jsonIndentTypeProvider.notifier).update((state) => type);
+              ref.read(jsonIndentProvider.notifier).update(type);
             },
-            name: (ref) => ref.watch(jsonIndentTypeProvider).name(context),
+            name: (ref) => ref.watch(jsonIndentProvider).name(context),
           ),
         ],
         inputWidget: Consumer(builder: (context, ref, _) {
@@ -41,7 +41,7 @@ class JsonFormatterView extends StatelessWidget {
             minLines: 80,
             maxLines: 100,
             language: HighlightType.json,
-            text: ref.watch(formattedJsonControllerProvider).data ?? '',
+            text: ref.watch(formattedJsonControllerProvider).result ?? '',
           );
         }),
         inputActions: [
@@ -51,7 +51,7 @@ class JsonFormatterView extends StatelessWidget {
         outputActions: [
           Consumer(builder: (context, ref, _) {
             return CopyButtonWithText.raw(
-              ref.watch(formattedJsonControllerProvider).data,
+              ref.watch(formattedJsonControllerProvider).result,
             );
           }),
         ],

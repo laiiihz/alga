@@ -796,13 +796,13 @@ packages:
     source: hosted
     version: "0.2.0"
   meta:
-    dependency: transitive
+    dependency: "direct overridden"
     description:
       name: meta
-      sha256: "6c268b42ed578a53088d834796959e4a1814b5e9e164f147f580a386e5decf42"
+      sha256: "3c74dbf8763d36539f114c799d8a2d87343b5067e9d796ca22b5eb8437090ee3"
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "1.8.0"
+    version: "1.9.1"
   mime:
     dependency: transitive
     description:
@@ -935,10 +935,10 @@ packages:
     dependency: transitive
     description:
       name: petitparser
-      sha256: "49392a45ced973e8d94a85fdb21293fbb40ba805fc49f2965101ae748a3683b4"
+      sha256: a9346a3fbba7546a28374bdbcd7f54ea48bb47772bf3a7ab4bfaadc40bc8b8c6
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "5.1.0"
+    version: "5.3.0"
   pigment:
     dependency: "direct main"
     description:
