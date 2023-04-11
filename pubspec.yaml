@@ -25,6 +25,8 @@ dependencies:
     path: ./packages/flutter_js_wrapper
   # py_dict_parser:
   #   path: ./packages/py_dict_parser
+  alga_parser:
+    path: ./packages/alga_parser
 
   cupertino_icons: ^1.0.5
   archive: ^3.3.5
