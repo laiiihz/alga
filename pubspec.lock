@@ -775,10 +775,10 @@ packages:
     dependency: "direct main"
     description:
       name: markdown
-      sha256: b3c60dee8c2af50ad0e6e90cceba98e47718a6ee0a7a6772c77846a0cc21f78b
+      sha256: d95a9d12954aafc97f984ca29baaa7690ed4d9ec4140a23ad40580bcdb6c87f5
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "7.0.1"
+    version: "7.0.2"
   matcher:
     dependency: transitive
     description:
@@ -831,10 +831,10 @@ packages:
     dependency: "direct main"
     description:
       name: network_info_plus
-      sha256: "5e31db917c9dbaaca295685d68d78810a543bd32feb6f1cb7d0c4e5dea924517"
+      sha256: bee3cee3893ec8dbfdf11604e8fea9284a9cd9c3387e054114e95c4f289aa9b0
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "3.0.2"
+    version: "3.0.3"
   network_info_plus_platform_interface:
     dependency: transitive
     description:
@@ -967,10 +967,10 @@ packages:
     dependency: "direct main"
     description:
       name: pointycastle
-      sha256: c3120a968135aead39699267f4c74bc9a08e4e909e86bc1b0af5bfd78691123c
+      sha256: "7c1e5f0d23c9016c5bbd8b1473d0d3fb3fc851b876046039509e18e0c7485f2c"
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "3.7.2"
+    version: "3.7.3"
   pool:
     dependency: transitive
     description:
@@ -1071,10 +1071,10 @@ packages:
     dependency: "direct main"
     description:
       name: riverpod_annotation
-      sha256: c0f51b3fc5a0cefcbcddb35a10ad542d6c38919c081a25279045158ac7955cfb
+      sha256: cedd6a54b6f5764ffd5c05df57b6676bfc8c01978e14ee60a2c16891038820fe
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "2.0.2"
+    version: "2.1.1"
   riverpod_generator:
     dependency: "direct dev"
     description:
@@ -1103,10 +1103,10 @@ packages:
     dependency: "direct main"
     description:
       name: sass
-      sha256: c3e37d50a372cee0fd4058b12f0167da8307c602ff8e357ebf587142b753b41a
+      sha256: "050de6ed666d3f06a45da2c51eab5764c690766ee96b47b94944e582c93315b7"
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "1.58.3"
+    version: "1.60.0"
   screen_retriever:
     dependency: transitive
     description:
@@ -1412,10 +1412,10 @@ packages:
     dependency: "direct main"
     description:
       name: window_manager
-      sha256: "492806c69879f0d28e95472bbe5e8d5940ac8c6e99cc07052fe14946974555ba"
+      sha256: "2b2572442b2a5178642730442dc625ac088244f5827b1f0811371b1b7485eb62"
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "0.3.1"
+    version: "0.3.2"
   xdg_directories:
     dependency: transitive
     description:
