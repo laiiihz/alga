@@ -1003,13 +1003,6 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "1.2.2"
-  py_dict_parser:
-    dependency: "direct main"
-    description:
-      path: "packages/py_dict_parser"
-      relative: true
-    source: path
-    version: "1.0.0"
   qr:
     dependency: transitive
     description:
