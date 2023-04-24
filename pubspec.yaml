@@ -86,7 +86,7 @@ dev_dependencies:
   flutter_flavorizr:
     git:
       url: https://github.com/AngeloAvv/flutter_flavorizr
-  msix: ^3.8.2
+  msix: ^3.10.1
   riverpod_generator: ^2.1.1
   custom_lint: ^0.3.2
   riverpod_lint: ^1.1.6
