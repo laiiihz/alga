@@ -53,7 +53,7 @@ dependencies:
   blurhash_dart: ^1.2.1
   flutter_blurhash: ^0.7.0
   image_picker: ^0.8.7+4
-  device_info_plus: ^8.2.0
+  device_info_plus: ^8.2.2
   network_info_plus: ^3.0.3
   import_sorter: ^4.6.0
   markdown: ^7.0.2
