@@ -45,7 +45,7 @@ dependencies:
   hotkey_manager: ^0.1.7
   sass: ^1.60.0
   file_selector: ^0.9.2+4
-  shelf_static: ^1.1.1
+  shelf_static: ^1.1.2
   flutter_highlight: ^0.7.0
   hive: ^2.2.3
   hive_flutter: ^1.1.0
