@@ -997,7 +997,7 @@ packages:
       name: shelf
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.4.0"
+    version: "1.4.1"
   shelf_static:
     dependency: "direct main"
     description:

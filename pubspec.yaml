@@ -64,7 +64,7 @@ dependencies:
   image: ^4.0.15
   convert: ^3.1.1
   path: ^1.8.2
-  shelf: ^1.4.0
+  shelf: ^1.4.1
   adaptive_breakpoints: ^0.1.4
   dynamic_color: ^1.6.3
   tuple: ^2.0.1
