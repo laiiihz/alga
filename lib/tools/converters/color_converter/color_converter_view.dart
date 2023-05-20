@@ -15,13 +15,13 @@ class ColorConverterView extends StatelessWidget {
       children: [
         AppTitleWrapper(
           title: S.of(context).currentColor,
-          actions: [
+          actions:const [
             HelperIconButton(
-              title: const Text('Supported Color Format'),
+              title:  Text('Supported Color Format'),
               content: Wrap(
                 spacing: 4,
                 runSpacing: 4,
-                children: const [
+                children:  [
                   Chip(label: Text('CSS Color')),
                   Chip(label: Text('Hex Color')),
                   Chip(label: Text('RGB Color')),

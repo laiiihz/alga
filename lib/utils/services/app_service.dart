@@ -4,7 +4,6 @@ import 'dart:io';
 import 'package:alga/utils/hive_util.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:quick_actions/quick_actions.dart';
 import 'package:window_manager/window_manager.dart';
 
 abstract class ServiceBase {
