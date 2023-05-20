@@ -467,10 +467,10 @@ packages:
     dependency: transitive
     description:
       name: flutter_js
-      sha256: "86922b593f80512dfe72586aab826123708992ecd07476349828e9893d7cbaff"
+      sha256: "76f7b459d2d7c8c186528a0219e6b436821a63a1accfb0f4bc4b555761893e56"
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "0.6.0"
+    version: "0.7.0"
   flutter_js_wrapper:
     dependency: "direct main"
     description:
@@ -612,14 +612,6 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "1.1.0"
-  hotkey_manager:
-    dependency: "direct main"
-    description:
-      name: hotkey_manager
-      sha256: "39b352b6dabb806fd53122d6c95ded1174df882d2db01eedc31cc046f8cc7b6c"
-      url: "https://pub.flutter-io.cn"
-    source: hosted
-    version: "0.1.7"
   hotreloader:
     dependency: transitive
     description:

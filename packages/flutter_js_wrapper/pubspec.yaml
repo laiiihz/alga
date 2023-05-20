@@ -9,8 +9,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  flutter_js: ^0.6.0
-  js: ^0.6.4
+  flutter_js: ^0.7.0
+  js: ^0.6.7
 
 dev_dependencies:
   flutter_test:

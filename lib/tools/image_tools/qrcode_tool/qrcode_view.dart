@@ -111,12 +111,13 @@ class _QrcodeViewState extends State<QrcodeView> {
               child: Consumer(builder: (context, ref, _) {
                 return RepaintBoundary(
                   key: _key,
-                  child: QrImage(
+                  child: QrImageView(
                     data: ref.watch(_inputData),
                     version: ref.watch(_version),
                     errorCorrectionLevel: ref.watch(_errorCorrectionLevel),
                     gapless: ref.watch(_gapless),
                     backgroundColor: Colors.transparent,
+                    //TODO
                     foregroundColor:
                         isDark(context) ? Colors.white : Colors.black,
                   ),
