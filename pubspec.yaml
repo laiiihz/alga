@@ -73,7 +73,7 @@ dependencies:
   riverpod_annotation: ^2.1.1
   file: ^6.1.4
   path_provider: ^2.0.15
-  quick_actions: ^1.0.3
+  quick_actions: ^1.0.5
  
 
 dev_dependencies:
