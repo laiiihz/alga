@@ -815,10 +815,10 @@ packages:
     dependency: "direct dev"
     description:
       name: msix
-      sha256: "3cc1b01dc1e8b48d3121e6f8796e99f18a17911f4deb34c97c2936f517b89d1c"
+      sha256: "5dbf26361fbff0e74abd06c80f0b446476c739eea017d833d15e093c3c778fdd"
       url: "https://pub.dev"
     source: hosted
-    version: "3.13.1"
+    version: "3.13.2"
   multi_split_view:
     dependency: "direct main"
     description:
