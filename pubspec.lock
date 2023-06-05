@@ -451,10 +451,10 @@ packages:
     description:
       path: "."
       ref: HEAD
-      resolved-ref: fa92ac8a62d8f1f11b9c057c9f57b109035e3dd5
+      resolved-ref: "22249c88eff9346b6d51b241342e36c750765d1c"
       url: "https://github.com/AngeloAvv/flutter_flavorizr"
     source: git
-    version: "2.1.6"
+    version: "2.2.0"
   flutter_highlight:
     dependency: "direct main"
     description:
