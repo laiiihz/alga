@@ -51,7 +51,7 @@ dependencies:
   qr_flutter: ^4.1.0
   blurhash_dart: ^1.2.1
   flutter_blurhash: ^0.7.0
-  image_picker: ^0.8.7+5
+  image_picker: ^0.8.8
   device_info_plus: ^9.0.2
   network_info_plus: ^4.0.1
   import_sorter: ^4.6.0
