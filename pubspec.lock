@@ -357,10 +357,18 @@ packages:
     dependency: "direct main"
     description:
       name: file_selector
-      sha256: "2b9acc3587127132da2a8d88d069172c49e32f977211cdf8f61f4b8e68e2a165"
+      sha256: "59b35aa4af7988be7ec88f9ddaa6c71c5b54bf0f8b35009389d9343b10e9c3af"
       url: "https://pub.dev"
     source: hosted
-    version: "0.9.4"
+    version: "1.0.0"
+  file_selector_android:
+    dependency: transitive
+    description:
+      name: file_selector_android
+      sha256: "59e694afad4609d689185a608958c85fbccb3e6feab12a6b8c95a2c0f90ad2f7"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.5.0+1"
   file_selector_ios:
     dependency: transitive
     description:
