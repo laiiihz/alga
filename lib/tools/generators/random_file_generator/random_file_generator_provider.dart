@@ -8,7 +8,7 @@ enum FileType {
 }
 
 Future<String?> _pickSaveDir() {
-  return selector.getSavePath();
+  return selector.getDirectoryPath();
 }
 
 final _sizeValue = StateProvider.autoDispose<TextEditingController>((ref) {
