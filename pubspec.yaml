@@ -58,7 +58,7 @@ dependencies:
   markdown: ^7.0.2
   pointycastle: ^3.7.3
   pigment: ^1.0.4
-  go_router: ^8.2.0
+  go_router: ^9.0.3
   flutter_colorpicker: ^1.0.3
   image: ^4.0.17
   convert: ^3.1.1
