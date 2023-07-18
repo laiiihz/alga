@@ -30,7 +30,8 @@ class ThemeUtil {
 
   ThemeData getTheme(Brightness brightness) {
     ColorScheme scheme = colorScheme;
-    return ThemeData.from(colorScheme: scheme).copyWith(
+    return ThemeData(
+      colorScheme: colorScheme,
       splashFactory: InkSparkle.splashFactory,
       inputDecorationTheme: _inputDecorationTheme.copyWith(
         contentPadding: const EdgeInsets.all(12),

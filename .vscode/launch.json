@@ -13,11 +13,6 @@
             ],
         },
         {
-            "name": "alga",
-            "request": "launch",
-            "type": "dart"
-        },
-        {
             "name": "alga (profile mode)",
             "request": "launch",
             "type": "dart",

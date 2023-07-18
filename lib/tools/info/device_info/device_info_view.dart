@@ -1,5 +1,5 @@
-import 'package:alga/utils/constants/import_helper.dart';
 import 'package:alga/tools/info/device_info/device_info_provider.dart';
+import 'package:alga/utils/constants/import_helper.dart';
 
 class DeviceInfoView extends StatefulWidget {
   const DeviceInfoView({super.key});

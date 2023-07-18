@@ -18,7 +18,7 @@ class AlgaAppViewState extends State<AlgaAppView>
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(S.of(context).allApps),
+        title: Text(S.of(context).appName),
         centerTitle: false,
         bottom: const AppCategoriesPanel(),
       ),

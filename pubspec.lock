@@ -454,15 +454,6 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "1.0.3"
-  flutter_flavorizr:
-    dependency: "direct dev"
-    description:
-      path: "."
-      ref: HEAD
-      resolved-ref: "80e8967e035d7d3a23a3733cfcdcb45508c6d000"
-      url: "https://github.com/AngeloAvv/flutter_flavorizr"
-    source: git
-    version: "2.2.1"
   flutter_highlight:
     dependency: "direct main"
     description:
@@ -1192,14 +1183,6 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "1.9.1"
-  sprintf:
-    dependency: transitive
-    description:
-      name: sprintf
-      sha256: "1fc9ffe69d4df602376b52949af107d8f5703b77cda567c4d7d86a0693120f23"
-      url: "https://pub.flutter-io.cn"
-    source: hosted
-    version: "7.0.0"
   stack_trace:
     dependency: transitive
     description:

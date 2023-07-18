@@ -46,6 +46,8 @@ class ScrollableToolView extends StatelessWidget {
       body: CustomScrollView(
         slivers: [
           SliverAppBar.large(
+            automaticallyImplyLeading: false,
+            leading: const BackButton(),
             title: title,
           ),
           SliverPadding(

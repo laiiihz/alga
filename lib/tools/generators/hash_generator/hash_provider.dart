@@ -21,7 +21,10 @@ enum HashType {
   ripemd256,
   ripemd320,
   sha1,
-  sha3,
+  sha3_224,
+  sha3_256,
+  sha3_384,
+  sha3_512,
   sha224,
   sha256,
   sha384,
@@ -40,7 +43,6 @@ enum HashType {
       case HashType.ripemd160:
       case HashType.ripemd256:
       case HashType.ripemd320:
-      case HashType.sha3:
       case HashType.tiger:
       case HashType.md5:
       case HashType.sha1:
@@ -55,6 +57,14 @@ enum HashType {
         return 'sha512/256';
       case HashType.sm3:
         return context.tr.hashSM3;
+      case HashType.sha3_224:
+        return 'sha3/224';
+      case HashType.sha3_256:
+        return 'sha3/256';
+      case HashType.sha3_384:
+        return 'sha3/384';
+      case HashType.sha3_512:
+        return 'sha3/512';
     }
   }
 
@@ -64,8 +74,14 @@ enum HashType {
         return MD5Digest();
       case HashType.sha1:
         return SHA1Digest();
-      case HashType.sha3:
-        return SHA3Digest();
+      case sha3_224:
+        return SHA3Digest(224);
+      case sha3_256:
+        return SHA3Digest(256);
+      case sha3_384:
+        return SHA3Digest(384);
+      case sha3_512:
+        return SHA3Digest(512);
       case HashType.sha224:
         return SHA224Digest();
       case HashType.sha256:
