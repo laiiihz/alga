@@ -1011,6 +1011,14 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.5.1"
+  protobuf:
+    dependency: transitive
+    description:
+      name: protobuf
+      sha256: "68645b24e0716782e58948f8467fd42a880f255096a821f9e7d0ec625b00c84d"
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "3.1.0"
   pub_semver:
     dependency: transitive
     description:
@@ -1127,10 +1135,10 @@ packages:
     dependency: "direct main"
     description:
       name: sass
-      sha256: "050de6ed666d3f06a45da2c51eab5764c690766ee96b47b94944e582c93315b7"
+      sha256: c3ba6203735361e1c779f0d84b650cf7f1c0c94b0e8223b944447b82fb018832
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.60.0"
+    version: "1.65.1"
   screen_retriever:
     dependency: transitive
     description:
