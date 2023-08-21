@@ -71,7 +71,7 @@ dependencies:
   auto_size_text: ^3.0.0
   filesize: ^2.0.1
   riverpod_annotation: ^2.1.2
-  file: ^6.1.4
+  file: ^7.0.0
   path_provider: ^2.0.15
   quick_actions: ^1.0.5
  
