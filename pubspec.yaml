@@ -33,16 +33,16 @@ dependencies:
   dart_style: ^2.3.1
   uuid: ^3.0.7
   flutter_svg: ^2.0.7
-  window_manager: ^0.3.4
+  window_manager: ^0.3.6
   yaml: ^3.1.2
   json2yaml:
     git:
       url: https://github.com/laiiihz/json2yaml
-  flutter_markdown: ^0.6.15
+  flutter_markdown: ^0.6.17+1
   url_launcher: ^6.1.11
   animations: ^2.0.7
-  flutter_riverpod: ^2.3.7
-  sass: ^1.60.0
+  flutter_riverpod: ^2.3.9
+  sass: ^1.66.1
   file_selector: ^1.0.0
   shelf_static: ^1.1.2
   flutter_highlight: ^0.7.0
@@ -71,10 +71,9 @@ dependencies:
   auto_size_text: ^3.0.0
   filesize: ^2.0.1
   riverpod_annotation: ^2.1.2
-  file: ^6.1.4
-  path_provider: ^2.0.15
+  file: ^7.0.0
+  path_provider: ^2.1.0
   quick_actions: ^1.0.5
- 
 
 dev_dependencies:
   flutter_test:
@@ -82,10 +81,6 @@ dev_dependencies:
 
   flutter_lints: ^2.0.2
   build_runner: ^2.4.6
-  flutter_flavorizr:
-    git:
-      url: https://github.com/AngeloAvv/flutter_flavorizr
-    version: ^2.2.1
   msix: ^3.15.0
   riverpod_generator: ^2.2.6
   custom_lint: ^0.5.2
@@ -108,75 +103,3 @@ flutter:
 import_sorter:
   emojis: true
   comments: false
-
-flavorizr:
-  app:
-    android:
-      flavorDimensions: "abi"
-    ios:
-
-  flavors:
-    dev:
-      app:
-        name: "Alga Dev"
-
-      android:
-        applicationId: "tech.laihz.alga.dev"
-      ios:
-        bundleId: "tech.laihz.alga"
-
-    arm:
-      app:
-        name: "Alga"
-
-      android:
-        applicationId: "tech.laihz.alga.arm"
-        customConfig:
-          ndk: '{ abiFilter "armeabi-v7a" }'
-
-      ios:
-        bundleId: "tech.laihz.alga"
-
-    arm64:
-      app:
-        name: "Alga"
-
-      android:
-        applicationId: "tech.laihz.alga.arm64"
-        customConfig:
-          ndk: '{ abiFilter "arm64-v8a" }'
-
-      ios:
-        bundleId: "tech.laihz.alga"
-
-    x86_64:
-      app:
-        name: "Alga"
-
-      android:
-        applicationId: "tech.laihz.alga.x86_64"
-        customConfig:
-          ndk: '{ abiFilter "x86_64" }'
-
-      ios:
-        bundleId: "tech.laihz.alga"
-
-    universal:
-      app:
-        name: "Alga"
-
-      android:
-        applicationId: "tech.laihz.alga"
-
-      ios:
-        bundleId: "tech.laihz.alga"
-
-    aab:
-      app:
-        name: "Alga"
-
-      android:
-        applicationId: "tech.laihz.alga.aab"
-
-      ios:
-        bundleId: "tech.laihz.alga"
