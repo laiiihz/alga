@@ -41,7 +41,7 @@ dependencies:
   flutter_markdown: ^0.6.17+1
   url_launcher: ^6.1.11
   animations: ^2.0.7
-  flutter_riverpod: ^2.3.9
+  flutter_riverpod: ^2.4.0
   sass: ^1.66.1
   file_selector: ^1.0.0
   shelf_static: ^1.1.2
