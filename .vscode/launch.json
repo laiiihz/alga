@@ -9,7 +9,7 @@
             "type": "dart",
             "request": "launch",
             "args": [
-                "--flavor","dev"
+                "--flavor","arm64"
             ],
         },
         {
