@@ -16,7 +16,8 @@ class AlgaPanelItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final bool active = GoRouter.of(context).location.startsWith(path);
+    final bool active =
+        GoRouterState.of(context).uri.toString().startsWith(path);
     return InkResponse(
       highlightShape: BoxShape.rectangle,
       onTap: () {

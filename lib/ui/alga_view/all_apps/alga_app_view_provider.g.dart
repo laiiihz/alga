@@ -29,8 +29,6 @@ class _SystemHash {
   }
 }
 
-typedef AppTabControllerRef = AutoDisposeProviderRef<TabController>;
-
 /// See also [appTabController].
 @ProviderFor(appTabController)
 const appTabControllerProvider = AppTabControllerFamily();
@@ -77,10 +75,10 @@ class AppTabControllerFamily extends Family<TabController> {
 class AppTabControllerProvider extends AutoDisposeProvider<TabController> {
   /// See also [appTabController].
   AppTabControllerProvider({
-    required this.vsync,
-  }) : super.internal(
+    required TickerProvider vsync,
+  }) : this._internal(
           (ref) => appTabController(
-            ref,
+            ref as AppTabControllerRef,
             vsync: vsync,
           ),
           from: appTabControllerProvider,
@@ -92,9 +90,43 @@ class AppTabControllerProvider extends AutoDisposeProvider<TabController> {
           dependencies: AppTabControllerFamily._dependencies,
           allTransitiveDependencies:
               AppTabControllerFamily._allTransitiveDependencies,
+          vsync: vsync,
         );
 
+  AppTabControllerProvider._internal(
+    super._createNotifier, {
+    required super.name,
+    required super.dependencies,
+    required super.allTransitiveDependencies,
+    required super.debugGetCreateSourceHash,
+    required super.from,
+    required this.vsync,
+  }) : super.internal();
+
   final TickerProvider vsync;
+
+  @override
+  Override overrideWith(
+    TabController Function(AppTabControllerRef provider) create,
+  ) {
+    return ProviderOverride(
+      origin: this,
+      override: AppTabControllerProvider._internal(
+        (ref) => create(ref as AppTabControllerRef),
+        from: from,
+        name: null,
+        dependencies: null,
+        allTransitiveDependencies: null,
+        debugGetCreateSourceHash: null,
+        vsync: vsync,
+      ),
+    );
+  }
+
+  @override
+  AutoDisposeProviderElement<TabController> createElement() {
+    return _AppTabControllerProviderElement(this);
+  }
 
   @override
   bool operator ==(Object other) {
@@ -109,4 +141,18 @@ class AppTabControllerProvider extends AutoDisposeProvider<TabController> {
     return _SystemHash.finish(hash);
   }
 }
-// ignore_for_file: unnecessary_raw_strings, subtype_of_sealed_class, invalid_use_of_internal_member, do_not_use_environment, prefer_const_constructors, public_member_api_docs, avoid_private_typedef_functions
+
+mixin AppTabControllerRef on AutoDisposeProviderRef<TabController> {
+  /// The parameter `vsync` of this provider.
+  TickerProvider get vsync;
+}
+
+class _AppTabControllerProviderElement
+    extends AutoDisposeProviderElement<TabController> with AppTabControllerRef {
+  _AppTabControllerProviderElement(super.provider);
+
+  @override
+  TickerProvider get vsync => (origin as AppTabControllerProvider).vsync;
+}
+// ignore_for_file: type=lint
+// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member
