@@ -1,3 +1,5 @@
+import 'package:alga/tools/formatters/dart/dart_format.dart';
+import 'package:alga/tools/formatters/json/json_format.dart';
 import 'package:alga/ui/alga_view/all_apps/alga_app_view.dart';
 import 'package:alga/ui/alga_view/alga_view.dart';
 import 'package:alga/utils/constants/import_helper.dart';
@@ -11,8 +13,6 @@ import 'package:alga/tools/encoders_decoders/gzip_compress_decompress/gzip_compr
 import 'package:alga/tools/encoders_decoders/jwt_decoder/jwt_decoder_view.dart';
 import 'package:alga/tools/encoders_decoders/uri_encoder_decoder/uri_encoder_decoder.dart';
 import 'package:alga/tools/encoders_decoders/uri_parser/uri_parser_view.dart';
-import 'package:alga/tools/formatters/dart_formatter/dart_formatter_view.dart';
-import 'package:alga/tools/formatters/json_formatter/json_formatter_view.dart';
 import 'package:alga/tools/generators/hash_generator/hash_generator_view.dart';
 import 'package:alga/tools/generators/lorem_ipsum_generator/lorem_ipsum_generator_view.dart';
 import 'package:alga/tools/generators/password_generator/password_generator_view.dart';
@@ -145,11 +145,11 @@ final appRouter = GoRouter(
             ),
             GoRoute(
               path: AppAtom.jsonFormatter.path,
-              builder: (context, state) => const JsonFormatterView(),
+              builder: (context, state) => const JsonFormatView(),
             ),
             GoRoute(
               path: AppAtom.dartFormatter.path,
-              builder: (context, state) => const DartFormtterView(),
+              builder: (context, state) => const DartFormatView(),
             ),
             GoRoute(
               path: AppAtom.staticServer.path,
@@ -168,10 +168,6 @@ final appRouter = GoRouter(
               builder: (context, state) => const QuickJsView(),
             ),
           ],
-        ),
-        GoRoute(
-          path: '/pipe',
-          builder: (context, state) => const Scaffold(),
         ),
         GoRoute(
           path: '/settings',

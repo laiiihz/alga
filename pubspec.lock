@@ -233,6 +233,22 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "1.17.2"
+  connectivity_plus:
+    dependency: "direct main"
+    description:
+      name: connectivity_plus
+      sha256: "77a180d6938f78ca7d2382d2240eb626c0f6a735d0bfdce227d8ffb80f95c48b"
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "4.0.2"
+  connectivity_plus_platform_interface:
+    dependency: transitive
+    description:
+      name: connectivity_plus_platform_interface
+      sha256: cf1d1c28f4416f8c654d7dc3cd638ec586076255d407cef3ddbdaf178272a71a
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "1.2.4"
   console:
     dependency: transitive
     description:
@@ -479,20 +495,13 @@ packages:
     source: hosted
     version: "0.7.0"
   flutter_js:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: flutter_js
       sha256: "5bf5db354fe78fe24cb90a5fa6b4423d38712440c88e3445c3dc88bc134c452f"
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "0.8.0"
-  flutter_js_wrapper:
-    dependency: "direct main"
-    description:
-      path: "packages/flutter_js_wrapper"
-      relative: true
-    source: path
-    version: "0.0.1"
   flutter_lints:
     dependency: "direct dev"
     description:
@@ -843,7 +852,7 @@ packages:
     source: hosted
     version: "0.5.0"
   meta:
-    dependency: "direct overridden"
+    dependency: transitive
     description:
       name: meta
       sha256: "3c74dbf8763d36539f114c799d8a2d87343b5067e9d796ca22b5eb8437090ee3"

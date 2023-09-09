@@ -21,8 +21,6 @@ dependencies:
     path: ./packages/highlight_textspan
   language_textfield:
     path: ./packages/language_textfield
-  flutter_js_wrapper:
-    path: ./packages/flutter_js_wrapper
   # py_dict_parser:
   #   path: ./packages/py_dict_parser
   # alga_parser:
@@ -74,6 +72,8 @@ dependencies:
   file: ^7.0.0
   path_provider: ^2.1.1
   quick_actions: ^1.0.6
+  connectivity_plus: ^4.0.2
+  flutter_js: ^0.8.0
 
 dev_dependencies:
   flutter_test:
