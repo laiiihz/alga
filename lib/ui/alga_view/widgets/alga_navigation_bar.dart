@@ -12,7 +12,7 @@ class _AlgaNavigationBarState extends State<AlgaNavigationBar> {
   @override
   Widget build(BuildContext context) {
     int getIndex() {
-      final location = GoRouter.of(context).location;
+      final location = GoRouterState.of(context).uri.toString();
       if (location.startsWith('/apps')) return 0;
       if (location.startsWith('/favorite')) return 1;
       if (location.startsWith('/search')) return 2;

@@ -120,9 +120,9 @@ class ToolViewMenuConfig<T> extends ConsumerWidget {
           title: title,
           subtitle: subtitle,
           onPressed: open,
-          trailing: Chip(
-            label: Text(name(ref)),
-            backgroundColor: Theme.of(context).colorScheme.secondaryContainer,
+          trailing: Text(
+            name(ref),
+            style: const TextStyle(fontWeight: FontWeight.bold,fontSize: 14),
           ),
         );
       },

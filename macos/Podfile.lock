@@ -57,15 +57,15 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   device_info_plus: 5401765fde0b8d062a2f8eb65510fb17e77cf07f
   dynamic_color: 2eaa27267de1ca20d879fbd6e01259773fb1670f
-  file_selector_macos: 0f85c1108e2fd597b58246bc0b0c1cb483d7593b
+  file_selector_macos: 468fb6b81fac7c0e88d71317f3eec34c3b008ff9
   flutter_js: c664361655af1d8fc24e278c7d086e9cbe0d68bc
   FlutterMacOS: 8f6f14fa908a6fb3fba0cd85dbd81ec4b251fb24
   network_info_plus: f4fbc7877ab7b3294500d9441dfa53cd54972d05
-  path_provider_foundation: eaf5b3e458fc0e5fbb9940fb09980e853fe058b8
+  path_provider_foundation: 29f094ae23ebbca9d3d0cec13889cd9060c0e943
   screen_retriever: 59634572a57080243dd1bf715e55b6c54f241a38
-  url_launcher_macos: 5335912b679c073563f29d89d33d10d459f95451
+  url_launcher_macos: d2691c7dd33ed713bf3544850a623080ec693d95
   window_manager: 3a1844359a6295ab1e47659b1a777e36773cd6e8
 
-PODFILE CHECKSUM: 353c8bcc5d5b0994e508d035b5431cfe18c1dea7
+PODFILE CHECKSUM: 236401fc2c932af29a9fcf0e97baeeb2d750d367
 
-COCOAPODS: 1.11.3
+COCOAPODS: 1.12.1
