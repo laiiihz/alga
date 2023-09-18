@@ -84,7 +84,7 @@ dev_dependencies:
   msix: ^3.15.0
   riverpod_generator: ^2.3.2
   custom_lint: ^0.5.3
-  riverpod_lint: ^2.0.4
+  riverpod_lint: ^2.1.0
 
 flutter:
   uses-material-design: true
