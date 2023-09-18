@@ -63,7 +63,7 @@ dependencies:
   path: ^1.8.2
   shelf: ^1.4.1
   adaptive_breakpoints: ^0.1.4
-  dynamic_color: ^1.6.5
+  dynamic_color: ^1.6.7
   tuple: ^2.0.1
   multi_split_view: ^2.4.0
   auto_size_text: ^3.0.0
