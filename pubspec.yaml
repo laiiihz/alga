@@ -40,7 +40,7 @@ dependencies:
   url_launcher: ^6.1.14
   animations: ^2.0.8
   flutter_riverpod: ^2.4.0
-  sass: ^1.66.1
+  sass: ^1.67.0
   file_selector: ^1.0.1
   shelf_static: ^1.1.2
   flutter_highlight: ^0.7.0
