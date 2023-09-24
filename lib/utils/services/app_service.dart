@@ -62,8 +62,12 @@ class WindowService implements ServiceBase {
     } else {
       await windowManager.ensureInitialized();
       windowManager.waitUntilReadyToShow().then((value) async {
+        TitleBarStyle style = TitleBarStyle.hidden;
+        if (Platform.isWindows) {
+          style = TitleBarStyle.normal;
+        }
         await windowManager.setTitleBarStyle(
-          TitleBarStyle.hidden,
+          style,
           windowButtonVisibility: true,
         );
 

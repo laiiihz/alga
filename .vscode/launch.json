@@ -9,8 +9,14 @@
             "type": "dart",
             "request": "launch",
             "args": [
-                "--flavor","arm64"
+                "--flavor",
+                "arm64"
             ],
+        },
+        {
+            "name": "alga",
+            "type": "dart",
+            "request": "launch",
         },
         {
             "name": "alga (profile mode)",

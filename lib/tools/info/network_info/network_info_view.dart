@@ -1,7 +1,8 @@
-import 'package:alga/tools/info/device_info/device_info_view.dart';
 import 'package:alga/tools/info/network_info/network_info.provider.dart';
 import 'package:alga/ui/widgets/scaffold/tool_scaffold.dart';
 import 'package:alga/utils/constants/import_helper.dart';
+
+import '../widgets/device_tile.dart';
 
 class NetworkInfoView extends ConsumerWidget {
   const NetworkInfoView({super.key});
@@ -18,7 +19,7 @@ class NetworkInfoView extends ConsumerWidget {
                     children: data
                         .content(context)
                         .map<Widget>(
-                            (e) => DeviceTile(title: e.$2, value: e.$1 ?? ''))
+                            (e) => DeviceTile(title: e.$2, value: e.$1))
                         .toList(),
                   );
                 },

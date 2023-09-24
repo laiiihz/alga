@@ -48,10 +48,10 @@ class _AppCategoriesPanelState extends State<AppCategoriesPanel> {
   @override
   Widget build(BuildContext context) {
     final parentState = context.findAncestorStateOfType<AlgaAppViewState>()!;
-    return Align(
-      alignment: Alignment.centerLeft,
-      child: Consumer(builder: (context, ref, _) {
+    return Consumer(
+      builder: (context, ref, _) {
         return TabBar(
+          tabAlignment: TabAlignment.start,
           isScrollable: true,
           controller: ref.watch(appTabControllerProvider(vsync: parentState)),
           indicatorPadding: const EdgeInsets.only(top: 44, left: 0, right: 0),
@@ -60,7 +60,7 @@ class _AppCategoriesPanelState extends State<AppCategoriesPanel> {
             ...AppCategory.items.map((e) => Tab(text: e.name(context))),
           ],
         );
-      }),
+      },
     );
   }
 }

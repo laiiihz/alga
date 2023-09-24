@@ -44,24 +44,27 @@ class NetworkInfoWrapper {
       String? wifiSubmask,
       String? wifiBroadcast,
       String? wifiGatewayIP,
-    ] = await Future.wait([
-      networkInfo.getWifiBSSID(),
-      networkInfo.getWifiName(),
-      networkInfo.getWifiIP(),
-      networkInfo.getWifiIPv6(),
-      networkInfo.getWifiSubmask(),
-      networkInfo.getWifiBroadcast(),
-      networkInfo.getWifiGatewayIP(),
-    ]);
+    ] = await Future.wait(
+      [
+        _try(networkInfo.getWifiBSSID),
+        _try(networkInfo.getWifiName),
+        _try(networkInfo.getWifiIP),
+        _try(networkInfo.getWifiIPv6),
+        _try(networkInfo.getWifiSubmask),
+        _try(networkInfo.getWifiBroadcast),
+        _try(networkInfo.getWifiGatewayIP),
+      ],
+    );
 
     return NetworkInfoWrapper(
-        wifiBSSID: wifiBSSID,
-        wifiName: wifiName,
-        wifiIP: wifiIP,
-        wifiIPv6: wifiIPv6,
-        wifiSubmask: wifiSubmask,
-        wifiBroadcast: wifiBroadcast,
-        wifiGatewayIP: wifiGatewayIP);
+      wifiBSSID: wifiBSSID,
+      wifiName: wifiName,
+      wifiIP: wifiIP,
+      wifiIPv6: wifiIPv6,
+      wifiSubmask: wifiSubmask,
+      wifiBroadcast: wifiBroadcast,
+      wifiGatewayIP: wifiGatewayIP,
+    );
   }
 
   List<(String? value, String l10n)> content(BuildContext context) {
@@ -74,5 +77,13 @@ class NetworkInfoWrapper {
       (wifiBroadcast, 'wifiBroadcast'),
       (wifiGatewayIP, 'wifiGatewayIP'),
     ];
+  }
+}
+
+Future<String?> _try(Future<String?> Function() func) async {
+  try {
+    return await func();
+  } catch (e) {
+    return null;
   }
 }

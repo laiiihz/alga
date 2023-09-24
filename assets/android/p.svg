@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 23.0.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd" [
+	<!ENTITY ns_extend "http://ns.adobe.com/Extensibility/1.0/">
+	<!ENTITY ns_ai "http://ns.adobe.com/AdobeIllustrator/10.0/">
+	<!ENTITY ns_graphs "http://ns.adobe.com/Graphs/1.0/">
+	<!ENTITY ns_vars "http://ns.adobe.com/Variables/1.0/">
+	<!ENTITY ns_imrep "http://ns.adobe.com/ImageReplacement/1.0/">
+	<!ENTITY ns_sfw "http://ns.adobe.com/SaveForWeb/1.0/">
+	<!ENTITY ns_custom "http://ns.adobe.com/GenericCustomNamespace/1.0/">
+	<!ENTITY ns_adobe_xpath "http://ns.adobe.com/XPath/1.0/">
+]>
+<svg version="1.1" id="Livello_1" xmlns:x="&ns_extend;" xmlns:i="&ns_ai;" xmlns:graph="&ns_graphs;"
+	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 372.6 500"
+	 enable-background="new 0 0 372.6 500" xml:space="preserve">
+<metadata>
+	<sfw  xmlns="&ns_sfw;">
+		<slices></slices>
+		<sliceSourceBounds  bottomLeftOrigin="true" height="500" width="372.6" x="342.4" y="-200.6"></sliceSourceBounds>
+	</sfw>
+</metadata>
+<g>
+	<path fill="#75BE5E" d="M156.8,500H0V186.3C0,110.7,45.1,43.2,115,14.3c69.8-28.9,149.5-13.1,203,40.4
+		c53.5,53.5,69.3,133.1,40.4,203c-28.9,69.8-96.5,115-172.1,115c0,0,0,0,0,0h-29.4V500z M156.8,215.7h29.4c0,0,0,0,0,0
+		c11.9,0,22.6-7.1,27.2-18.2c4.6-11,2.1-23.6-6.4-32c-8.4-8.4-21-10.9-32-6.4c-11,4.6-18.2,15.2-18.2,27.2V215.7z"/>
+	<path fill="#FFFFFF" d="M117.6,500H39.2V186.3c0-59.7,35.6-113,90.8-135.8c55.1-22.8,118-10.3,160.2,31.9
+		c42.2,42.2,54.7,105.1,31.9,160.2c-22.8,55.1-76.2,90.8-135.8,90.8c0,0,0,0,0,0h-29.4V255h29.4c0,0,0,0,0,0
+		c27.9,0,52.7-16.6,63.4-42.4c10.7-25.7,4.8-55.1-14.9-74.8c-19.7-19.7-49-25.5-74.8-14.9c-25.7,10.7-42.4,35.5-42.4,63.4V500z"/>
+</g>
+</svg>

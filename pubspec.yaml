@@ -2,7 +2,7 @@ name: alga
 description: A powerful tool app for all developers.
 
 publish_to: "none"
-version: 1.0.4+34-pre
+version: 1.1.0+34
 
 environment:
   sdk: ">=3.0.0 <4.0.0"
@@ -94,6 +94,7 @@ flutter:
     - assets/icons/
     - assets/logo/
     - assets/images/
+    - assets/android/
 
   fonts:
     - family: Noto Sans Mono

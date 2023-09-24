@@ -1,5 +1,6 @@
 import 'package:alga/tools/formatters/dart/dart_format.dart';
 import 'package:alga/tools/formatters/json/json_format.dart';
+import 'package:alga/tools/info/device_info/device_info.dart';
 import 'package:alga/ui/alga_view/all_apps/alga_app_view.dart';
 import 'package:alga/ui/alga_view/alga_view.dart';
 import 'package:alga/utils/constants/import_helper.dart';
@@ -21,7 +22,6 @@ import 'package:alga/tools/generators/sass_css_generator/sass_css_generator_view
 import 'package:alga/tools/generators/uuid_generator/uuid_generator.dart';
 import 'package:alga/tools/image_tools/blur_hash_tool/blur_hash_tool_view.dart';
 import 'package:alga/tools/image_tools/qrcode_tool/qrcode_view.dart';
-import 'package:alga/tools/info/device_info/device_info_view.dart';
 import 'package:alga/tools/info/network_info/network_info_view.dart';
 import 'package:alga/tools/js_tools/quick_js_tool/quick_js_view.dart';
 import 'package:alga/tools/server_tools/static_server_tool/static_server_tool_view.dart';
