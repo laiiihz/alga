@@ -27,7 +27,7 @@ FutureOr<List<Part>> deviceInfoParts(DeviceInfoPartsRef ref) async {
     case TargetPlatform.linux:
       return Part.fromLinux(await p.linuxInfo);
     case TargetPlatform.macOS:
-      return Part.fromWindows(await p.windowsInfo);
+      return Part.fromMacos(await p.macOsInfo);
     case TargetPlatform.windows:
       return Part.fromWindows(await p.windowsInfo);
   }

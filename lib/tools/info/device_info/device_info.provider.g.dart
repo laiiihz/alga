@@ -20,7 +20,7 @@ final androidInfoProvider = FutureProvider<AndroidDeviceInfo>.internal(
 );
 
 typedef AndroidInfoRef = FutureProviderRef<AndroidDeviceInfo>;
-String _$deviceInfoPartsHash() => r'07c6638478c8b5429441939ff5ec2222adf75149';
+String _$deviceInfoPartsHash() => r'a3c87b6522cec7aeb0a8915d9b1e7147a4abd086';
 
 /// See also [deviceInfoParts].
 @ProviderFor(deviceInfoParts)

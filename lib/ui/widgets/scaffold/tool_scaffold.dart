@@ -9,6 +9,8 @@ class ToolScaffold extends StatelessWidget {
     this.options,
     required this.body,
     this.padding = const EdgeInsets.all(16),
+    this.fab,
+    this.bottomNavigationBar,
   }) : isScroll = false;
 
   const ToolScaffold.scroll({
@@ -18,6 +20,8 @@ class ToolScaffold extends StatelessWidget {
     this.options,
     required this.body,
     this.padding = const EdgeInsets.all(16),
+    this.fab,
+    this.bottomNavigationBar,
   }) : isScroll = true;
 
   final Widget title;
@@ -26,6 +30,8 @@ class ToolScaffold extends StatelessWidget {
   final Widget body;
   final bool isScroll;
   final EdgeInsetsGeometry padding;
+  final Widget? fab;
+  final Widget? bottomNavigationBar;
 
   @override
   Widget build(BuildContext context) {
@@ -85,6 +91,8 @@ class ToolScaffold extends StatelessWidget {
               actions: actions,
             ),
       body: content,
+      floatingActionButton: fab,
+      bottomNavigationBar: bottomNavigationBar,
     );
   }
 }
