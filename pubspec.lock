@@ -535,10 +535,10 @@ packages:
     dependency: "direct main"
     description:
       name: flutter_riverpod
-      sha256: "1bd39b04f1bcd217a969589777ca6bd642d116e3e5de65c3e6a8e8bdd8b178ec"
+      sha256: fcea39b84b666649280f6f678bc0bb479253bf865abc0387a8b11dac6477bf92
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "2.4.0"
+    version: "2.4.1"
   flutter_svg:
     dependency: "direct main"
     description:
@@ -593,10 +593,10 @@ packages:
     dependency: "direct main"
     description:
       name: go_router
-      sha256: "24d89757552a78615d6e65c7bc206740f94ca95a12ecf189d883394d34c9d9bd"
+      sha256: a07c781bf55bf11ae85133338e4850f0b4e33e261c44a66c750fc707d65d8393
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "11.0.0"
+    version: "11.1.2"
   graphs:
     dependency: transitive
     description:
@@ -680,10 +680,10 @@ packages:
     dependency: "direct main"
     description:
       name: image
-      sha256: "93d1141eb65fe62414d5492de96ca2bff97eba0ca9218a89ad407a6f201fcadf"
+      sha256: "028f61960d56f26414eb616b48b04eb37d700cbe477b7fb09bf1d7ce57fd9271"
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "4.1.2"
+    version: "4.1.3"
   image_picker:
     dependency: "direct main"
     description:
@@ -871,10 +871,10 @@ packages:
     dependency: "direct dev"
     description:
       name: msix
-      sha256: "114d2f280b2b985f0cc11db982cdc648a1311a80340908a1a1130f42411088cd"
+      sha256: "6e76e2491d5c809d784ce2b68e6c3426097fb5c68e61fe121c8c3341ab89bf46"
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "3.16.2"
+    version: "3.16.4"
   multi_split_view:
     dependency: "direct main"
     description:
@@ -883,6 +883,14 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "2.4.0"
+  native_synchronization:
+    dependency: transitive
+    description:
+      name: native_synchronization
+      sha256: ff200fe0a64d733ff7d4dde2005271c297db81007604c8cd21037959858133ab
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "0.2.0"
   network_info_plus:
     dependency: "direct main"
     description:
@@ -1127,42 +1135,42 @@ packages:
     dependency: transitive
     description:
       name: riverpod
-      sha256: a600120d6f213a9922860eea1abc32597436edd5b2c4e73b91410f8c2af67d22
+      sha256: ff676bd8a715c7085692fe4919564f78fb90d33b10a1c5c14e740581857cc914
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "2.4.0"
+    version: "2.4.1"
   riverpod_analyzer_utils:
     dependency: transitive
     description:
       name: riverpod_analyzer_utils
-      sha256: aa216069d72f5478126029fa555874b4b38119f17e3f0f6c93fd63365f74502d
+      sha256: d72d7096964baf288b55619fe48100001fc4564ab7923ed0a7f5c7650e03c0d6
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "0.3.3"
+    version: "0.3.4"
   riverpod_annotation:
     dependency: "direct main"
     description:
       name: riverpod_annotation
-      sha256: "6294fe7e7d1875f32bdf04c8fce7620e718070273703097847df8f3bf16995ea"
+      sha256: aeeb1eb6ccf2d779f2ef730e6d96d560316b677662222316779a8cf0a94ee317
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "2.1.5"
+    version: "2.1.6"
   riverpod_generator:
     dependency: "direct dev"
     description:
       name: riverpod_generator
-      sha256: d132b1ccb476e60f99989caa6ba9b1c4d88409806c93d880d1633c60c382454d
+      sha256: "5b36ad2f2b562cffb37212e8d59390b25499bf045b732276e30a207b16a25f61"
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "2.3.2"
+    version: "2.3.3"
   riverpod_lint:
     dependency: "direct dev"
     description:
       name: riverpod_lint
-      sha256: ac720622fde22356eca69a4831c15ab811615bf256a2ce37f1fff06b7f86cacf
+      sha256: "70198738c3047ae4f6517ef1a2011a8514a980a52576c7f629a3a08810319a02"
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "2.1.0"
+    version: "2.1.1"
   rxdart:
     dependency: transitive
     description:
@@ -1175,10 +1183,10 @@ packages:
     dependency: "direct main"
     description:
       name: sass
-      sha256: "7bfca6bce091ed4b77c27cd0962fa2731f33899f1f897ccc7f7653f6385a98c3"
+      sha256: "17baec9a297c3e9a490f2c7de3373daf8eca99993f2f745e61a19459bd2e15cf"
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "1.66.1"
+    version: "1.68.0"
   screen_retriever:
     dependency: transitive
     description:
