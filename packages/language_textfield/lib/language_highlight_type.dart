@@ -18,4 +18,5 @@ enum HighlightType {
   css,
   uri,
   js,
+  jwt,
 }

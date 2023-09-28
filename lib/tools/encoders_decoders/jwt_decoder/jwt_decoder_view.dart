@@ -5,6 +5,7 @@ import 'package:alga/ui/widgets/copy_button_widget.dart';
 import 'package:alga/ui/widgets/paste_button_widget.dart';
 
 import 'package:alga/utils/constants/import_helper.dart';
+import 'package:language_textfield/lang_special_builder.dart';
 // import 'package:alga/tools/encoders_decoders/jwt_decoder/jwt_special_text_builder.dart';
 
 part './jwt_decoder_provider.dart';

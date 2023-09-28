@@ -1,7 +1,7 @@
 part of './jwt_decoder_view.dart';
 
-final _jwtInput = Provider.autoDispose<TextEditingController>((ref) {
-  final controller = TextEditingController();
+final _jwtInput = Provider.autoDispose<RichTextController>((ref) {
+  final controller = RichTextController(builder: LanguageBuilder.jwt);
   ref.onDispose(controller.dispose);
   return controller;
 });

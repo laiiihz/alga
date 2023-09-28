@@ -13,14 +13,14 @@ abstract class LanguageBuilder {
 
   static LanguageBuilder custom(
           TextSpan Function(
-    BuildContext context,
-    String text,
-    TextStyle? style,
-  )
-              value) =>
+            BuildContext context,
+            String text,
+            TextStyle? style,
+          ) value) =>
       _CustomBuilder(value);
 
   static final LanguageBuilder regex = _RegexBuilder();
+  static final LanguageBuilder jwt = _JwtBuilder();
 }
 
 class _HighlightBuilder extends LanguageBuilder {
@@ -81,5 +81,27 @@ class _RegexBuilder extends LanguageBuilder {
     }
 
     return TextSpan(children: spans);
+  }
+}
+
+class _JwtBuilder extends LanguageBuilder {
+  @override
+  TextSpan build(BuildContext context, String text, TextStyle? style) {
+    if (text.isEmpty) return const TextSpan();
+    final items = text.split('.');
+    if (items.length != 3) return TextSpan(text: text);
+    final resultSpans = <TextSpan>[];
+    resultSpans.add(
+      TextSpan(text: items[0], style: const TextStyle(color: Colors.red)),
+    );
+    resultSpans.add(const TextSpan(text: '.'));
+    resultSpans.add(
+      TextSpan(text: items[1], style: const TextStyle(color: Colors.purple)),
+    );
+    resultSpans.add(const TextSpan(text: '.'));
+    resultSpans.add(
+      TextSpan(text: items[2], style: const TextStyle(color: Colors.blue)),
+    );
+    return TextSpan(children: resultSpans);
   }
 }
