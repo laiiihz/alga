@@ -12,6 +12,13 @@ import 'package:flutter/foundation.dart';
 
 part 'base64_file_picker.dart';
 
+class Base64EncoderDecoderRoute extends GoRouteData {
+  @override
+  Widget build(BuildContext context, GoRouterState state) {
+    return const Base64EncoderDecoderView();
+  }
+}
+
 class Base64EncoderDecoderView extends StatefulWidget {
   const Base64EncoderDecoderView({super.key});
 
@@ -38,8 +45,7 @@ class _Base64EncoderDecoderViewState extends State<Base64EncoderDecoderView> {
             ),
             AlgaSwitch(
               leading: const Icon(Icons.swap_horiz_sharp),
-              title: Text(S.of(context).conversion),
-              subtitle: Text(S.of(context).selectConversion),
+              title: Text(S.of(context).urlSafe),
               value: (ref) => ref.watch(urlSafeProvider),
               onChanged: (ref, value) =>
                   ref.read(urlSafeProvider.notifier).update(value),

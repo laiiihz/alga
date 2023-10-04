@@ -85,6 +85,10 @@ dev_dependencies:
   riverpod_generator: ^2.3.3
   custom_lint: ^0.5.3
   riverpod_lint: ^2.1.1
+  go_router_builder: ^2.3.3
+
+dependency_overrides: 
+  riverpod_analyzer_utils: 0.3.3
 
 flutter:
   uses-material-design: true

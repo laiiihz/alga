@@ -7,6 +7,13 @@ import 'package:alga/utils/constants/import_helper.dart';
 
 part './sass_css_generator_provider.dart';
 
+class SassCssGeneratorRoute extends GoRouteData {
+  @override
+  Widget build(BuildContext context, GoRouterState state) {
+    return const SassCssGeneratorView();
+  }
+}
+
 class SassCssGeneratorView extends StatefulWidget {
   const SassCssGeneratorView({super.key});
 

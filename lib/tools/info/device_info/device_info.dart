@@ -6,6 +6,13 @@ import 'package:alga/tools/info/widgets/device_tile.dart';
 import 'package:alga/ui/widgets/scaffold/tool_scaffold.dart';
 import 'package:alga/utils/constants/import_helper.dart';
 
+class DeviceInfoRoute extends GoRouteData {
+  @override
+  Widget build(BuildContext context, GoRouterState state) {
+    return const DeviceInfoView();
+  }
+}
+
 class DeviceInfoView extends ConsumerWidget {
   const DeviceInfoView({super.key});
 

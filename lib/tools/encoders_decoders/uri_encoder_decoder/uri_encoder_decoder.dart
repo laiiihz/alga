@@ -5,6 +5,13 @@ import 'package:alga/ui/widgets/paste_button_widget.dart';
 
 part './uri_provider.dart';
 
+class UriEncoderDecoderRoute extends GoRouteData {
+  @override
+  Widget build(BuildContext context, GoRouterState state) {
+    return const UriEncoderDecoderView();
+  }
+}
+
 class UriEncoderDecoderView extends StatelessWidget {
   const UriEncoderDecoderView({super.key});
   @override

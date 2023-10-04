@@ -4,6 +4,14 @@ import 'package:alga/ui/alga_view/all_apps/alga_app_item.dart';
 import 'package:alga/utils/constants/import_helper.dart';
 import 'package:alga/models/app_atom.dart';
 import 'package:alga/ui/widgets/asset_svg.dart';
+import 'package:go_router/go_router.dart';
+
+class SearchRoute extends GoRouteData {
+  @override
+  Widget build(BuildContext context, GoRouterState state) {
+    return const SearchView();
+  }
+}
 
 class SearchView extends StatefulWidget {
   const SearchView({super.key});

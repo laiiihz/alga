@@ -1,4 +1,31 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:alga/routers/app_router.dart';
+import 'package:alga/tools/converters/abs_length_converter/abs_length_converter_view.dart';
+import 'package:alga/tools/converters/color_converter/color_converter_view.dart';
+import 'package:alga/tools/converters/json_yaml_converter/json_yaml_converter_view.dart';
+import 'package:alga/tools/converters/number_base_converter/number_base_converter_view.dart';
+import 'package:alga/tools/encoders_decoders/base_64_encoder_decoder/base_64_encoder_decoder.dart';
+import 'package:alga/tools/encoders_decoders/gzip_compress_decompress/gzip_compress_decompress_view.dart';
+import 'package:alga/tools/encoders_decoders/jwt_decoder/jwt_decoder_view.dart';
+import 'package:alga/tools/encoders_decoders/uri_encoder_decoder/uri_encoder_decoder.dart';
+import 'package:alga/tools/encoders_decoders/uri_parser/uri_parser_view.dart';
+import 'package:alga/tools/formatters/dart/dart_format.dart';
+import 'package:alga/tools/formatters/json/json_format.dart';
+import 'package:alga/tools/generators/hash_generator/hash_generator_view.dart';
+import 'package:alga/tools/generators/lorem_ipsum_generator/lorem_ipsum_generator_view.dart';
+import 'package:alga/tools/generators/password_generator/password_generator_view.dart';
+import 'package:alga/tools/generators/random_file_generator/random_file_generator_view.dart';
+import 'package:alga/tools/generators/sass_css_generator/sass_css_generator_view.dart';
+import 'package:alga/tools/generators/uuid_generator/uuid_generator.dart';
+import 'package:alga/tools/image_tools/blur_hash_tool/blur_hash_tool_view.dart';
+import 'package:alga/tools/image_tools/qrcode_tool/qrcode_view.dart';
+import 'package:alga/tools/info/device_info/device_info.dart';
+import 'package:alga/tools/info/network_info/network_info_view.dart';
+import 'package:alga/tools/js_tools/quick_js_tool/quick_js_view.dart';
+import 'package:alga/tools/server_tools/static_server_tool/static_server_tool_view.dart';
+import 'package:alga/tools/text_tools/date_parser/date_parser_view.dart';
+import 'package:alga/tools/text_tools/markdown_preview/markdown_preview_view.dart';
+import 'package:alga/tools/text_tools/regex_tester/regex_tester_app_view.dart';
 import 'package:alga/utils/constants/import_helper.dart';
 import 'package:alga/models/app_category.dart';
 import 'package:alga/ui/widgets/svg_asset_icon.dart';
@@ -100,35 +127,35 @@ class AppAtom {
   static final uuidGenerator = AppAtom(
     title: (context) => context.tr.generatorUUID,
     icon: const SvgAssetIcon('assets/icons/Guid.svg'),
-    path: 'uuid',
+    path: UUIDGeneratorRoute().location,
     categories: [AppCategory.generator],
   );
 
   static final hashGenerator = AppAtom(
     title: (context) => context.tr.generatorHash,
     icon: const Icon(Icons.fingerprint),
-    path: 'hash',
+    path: HashGeneratorRoute().location,
     categories: [AppCategory.generator],
   );
 
   static final loremIpsumGenerator = AppAtom(
     title: (context) => context.tr.generatorLoremIpsum,
     icon: const SvgAssetIcon('assets/icons/LoremIpsum.svg'),
-    path: 'lorem-ipsum',
+    path: LoremIpsumGeneratorRoute().location,
     categories: [AppCategory.generator],
   );
 
   static final passwordGenerator = AppAtom(
     title: (context) => context.tr.passGenerator,
     icon: const Icon(Icons.password),
-    path: 'password',
+    path: PasswordGeneratorRoute().location,
     categories: [AppCategory.generator],
   );
 
   static final randomFileGenerator = AppAtom(
     icon: const Icon(Icons.file_copy),
     title: (context) => context.tr.randomFilegenerator,
-    path: 'random-file',
+    path: RandomFileGeneratorRoute().location,
     categories: [AppCategory.generator],
     platforms: AppPlatform.except(platforms: [AppPlatform.android]),
   );
@@ -136,7 +163,7 @@ class AppAtom {
   static final sass2CssGenerator = AppAtom(
     icon: const SvgAssetIcon('assets/icons/sass.svg', colorIcon: true),
     title: (context) => context.tr.sassCssGenerator,
-    path: 'sass2css',
+    path: SassCssGeneratorRoute().location,
     categories: [
       AppCategory.generator,
       AppCategory.converter,
@@ -148,137 +175,137 @@ class AppAtom {
   static final blurhash = AppAtom(
     title: (context) => context.tr.blurHashTool,
     icon: const Icon(Icons.imagesearch_roller),
-    path: 'blurhash',
+    path: BlurHashToolRoute().location,
     categories: [AppCategory.photo],
   );
 
   static final qrcode = AppAtom(
     icon: const Icon(Icons.qr_code),
     title: (context) => context.tr.qrCodeTool,
-    path: 'qrcode',
+    path: QrcodeRoute().location,
     categories: [AppCategory.photo, AppCategory.generator],
   );
 
   static final regex = AppAtom(
     icon: const SvgAssetIcon('assets/icons/RegexTester.svg'),
     title: (context) => context.tr.regexTester,
-    path: 'regex',
+    path: RegexTestAppRoute().location,
     categories: [AppCategory.text],
   );
 
   static final markdown = AppAtom(
     icon: const SvgAssetIcon('assets/icons/MarkdownPreview.svg'),
     title: (context) => context.tr.markdownPreview,
-    path: 'markdown',
+    path: MarkdownPreviewRoute().location,
     categories: [AppCategory.text],
   );
 
   static final dateParser = AppAtom(
     icon: const Icon(Icons.date_range),
     title: (context) => context.tr.dateParser,
-    path: 'date-parser',
+    path: DateParserRoute().location,
     categories: [AppCategory.text],
   );
 
   static final jsonYamlConverter = AppAtom(
     icon: const SvgAssetIcon('assets/icons/JsonYaml.svg'),
     title: (context) => context.tr.jsonYamlConverter,
-    path: 'json-yaml',
+    path: JsonYamlConverterRoute().location,
     categories: [AppCategory.converter],
   );
 
   static final numberBaseConverter = AppAtom(
     icon: const Icon(Icons.numbers),
     title: (context) => context.tr.numberBaseConverter,
-    path: 'number-base',
+    path: NumberBaseConverterRoute().location,
     categories: [AppCategory.converter],
   );
 
   static final colorConverter = AppAtom(
     icon: const Icon(Icons.color_lens),
     title: (context) => context.tr.colorConverter,
-    path: 'color',
+    path: ColorConverterRoute().location,
     categories: [AppCategory.converter, AppCategory.design],
   );
 
   static final absLengthConverter = AppAtom(
     icon: const Icon(Icons.legend_toggle),
     title: (context) => context.tr.absoluteLengthConverter,
-    path: 'length',
+    path: AbsLengthConverterRoute().location,
     categories: [AppCategory.converter],
   );
 
   static final urlEncoderDecoder = AppAtom(
     icon: const Icon(Icons.link),
     title: (context) => context.tr.encoderDecoderURL,
-    path: 'url-codec',
+    path: UriEncoderDecoderRoute().location,
     categories: [AppCategory.encodersDecoders],
   );
 
   static final base64 = AppAtom(
     icon: const SvgAssetIcon('assets/icons/Base64.svg'),
     title: (context) => context.tr.encoderDecoderBase64,
-    path: 'base64',
+    path: Base64EncoderDecoderRoute().location,
     categories: [AppCategory.encodersDecoders],
   );
 
   static final gzip = AppAtom(
     icon: const Icon(Icons.folder_zip),
     title: (context) => context.tr.encoderDecoderGzip,
-    path: 'gzip',
+    path: GzipCompressDecompressRoute().location,
     categories: [AppCategory.encodersDecoders],
   );
 
   static final jwtDecoder = AppAtom(
     icon: const SvgAssetIcon('assets/icons/JWT.svg', colorIcon: true),
     title: (context) => context.tr.decoderJWT,
-    path: 'jwt',
+    path: JWTDecoderRoute().location,
     categories: [AppCategory.encodersDecoders],
   );
 
   static final uriParser = AppAtom(
     icon: const Icon(Icons.add_link),
     title: (context) => context.tr.uriParser,
-    path: 'uri',
+    path: UriParserRoute().location,
     categories: [AppCategory.encodersDecoders],
   );
 
   static final jsonFormatter = AppAtom(
     icon: const SvgAssetIcon('assets/icons/json.svg', colorIcon: true),
     title: (context) => context.tr.formatterJson,
-    path: 'json-formatter',
+    path: JsonFormatRoute().location,
     categories: [AppCategory.formatter],
   );
   static final dartFormatter = AppAtom(
     icon: const SvgAssetIcon('assets/icons/dart.svg', colorIcon: true),
     title: (context) => context.tr.formatterDart,
-    path: 'dart-formatter',
+    path: DartFormatRoute().location,
     categories: [AppCategory.formatter],
   );
 
   static final staticServer = AppAtom(
     icon: const Icon(Icons.file_open),
     title: (context) => context.tr.staticServerTool,
-    path: 'static-server',
+    path: StaticServerToolRoute().location,
     categories: [AppCategory.server],
   );
   // info
   static final deviceInfo = AppAtom(
     icon: const Icon(Icons.info_outline),
     title: (context) => context.tr.deviceInfo,
-    path: 'device-info',
+    path: DeviceInfoRoute().location,
     categories: [AppCategory.infomation],
   );
   static final networkInfo = AppAtom(
     icon: const Icon(Icons.network_check),
     title: (context) => context.tr.networkInfo,
-    path: 'network-info',
+    path: NetworkInfoRoute().location,
     categories: [AppCategory.infomation],
   );
   static final quickJs = AppAtom(
     icon: const SvgAssetIcon('assets/icons/js.svg', colorIcon: true),
     title: (context) => 'Quick JS Tool',
-    path: 'qjs',
+    path: QuickJsRoute().location,
     categories: [AppCategory.frontEnd],
   );
 }

@@ -1,3 +1,8 @@
+import 'package:alga/routers/app_router.dart';
+import 'package:alga/ui/alga_view/all_apps/alga_app_view.dart';
+import 'package:alga/ui/views/favorite_view.dart';
+import 'package:alga/ui/views/search_view.dart';
+import 'package:alga/ui/views/settings_view.dart';
 import 'package:alga/utils/constants/import_helper.dart';
 import 'package:go_router/go_router.dart';
 
@@ -9,36 +14,31 @@ class AlgaNavigationBar extends StatefulWidget {
 }
 
 class _AlgaNavigationBarState extends State<AlgaNavigationBar> {
+  int getIndex(BuildContext context) {
+    final location = GoRouterState.of(context).matchedLocation;
+    if (location.startsWith(AppsRoute().location)) return 0;
+    if (location.startsWith(FavoriteRoute().location)) return 1;
+    if (location.startsWith(SearchRoute().location)) return 2;
+    if (location.startsWith(SettingsRoute().location)) return 3;
+    return 0;
+  }
+
   @override
   Widget build(BuildContext context) {
-    int getIndex() {
-      final location = GoRouterState.of(context).uri.toString();
-      if (location.startsWith('/apps')) return 0;
-      if (location.startsWith('/favorite')) return 1;
-      if (location.startsWith('/search')) return 2;
-      if (location.startsWith('/settings')) return 3;
-      return 0;
-    }
-
     return NavigationBar(
-      selectedIndex: getIndex(),
-      onDestinationSelected: (value) {
-        String path = '/apps';
-        switch (value) {
+      selectedIndex: getIndex(context),
+      onDestinationSelected: (index) {
+        switch (index) {
           case 0:
-            path = '/apps';
-            break;
+            AppsRoute().go(context);
           case 1:
-            path = '/favorite';
-            break;
+            FavoriteRoute().go(context);
           case 2:
-            path = '/search';
-            break;
+            SearchRoute().go(context);
           case 3:
-            path = '/settings';
-            break;
+            SettingsRoute().go(context);
+          default:
         }
-        GoRouter.of(context).go(path);
       },
       destinations: [
         NavigationDestination(

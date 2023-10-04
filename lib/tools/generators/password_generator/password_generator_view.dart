@@ -6,6 +6,13 @@ import 'package:alga/ui/widgets/refresh_button.dart';
 
 part './password_generator_provider.dart';
 
+class PasswordGeneratorRoute extends GoRouteData {
+  @override
+  Widget build(BuildContext context, GoRouterState state) {
+    return const PasswordGeneratorView();
+  }
+}
+
 class PasswordGeneratorView extends StatelessWidget {
   const PasswordGeneratorView({super.key});
 

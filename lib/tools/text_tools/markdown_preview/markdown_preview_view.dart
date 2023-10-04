@@ -11,6 +11,13 @@ import 'package:alga/utils/constants/import_helper.dart';
 import 'package:markdown/markdown.dart' as m_down;
 import 'package:url_launcher/url_launcher_string.dart';
 
+class MarkdownPreviewRoute extends GoRouteData {
+  @override
+  Widget build(BuildContext context, GoRouterState state) {
+    return const MarkdownPreviewView();
+  }
+}
+
 class MarkdownPreviewView extends ConsumerStatefulWidget {
   const MarkdownPreviewView({super.key});
 

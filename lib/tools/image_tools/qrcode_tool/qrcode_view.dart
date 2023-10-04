@@ -6,6 +6,13 @@ import 'package:alga/utils/constants/import_helper.dart';
 
 part './qrcode_provider.dart';
 
+class QrcodeRoute extends GoRouteData {
+  @override
+  Widget build(BuildContext context, GoRouterState state) {
+    return const QrcodeView();
+  }
+}
+
 class QrcodeView extends StatefulWidget {
   const QrcodeView({super.key});
 

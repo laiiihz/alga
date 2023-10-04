@@ -2,6 +2,13 @@ import 'package:alga/tools/js_tools/quick_js_tool/quick_js.provider.dart';
 import 'package:alga/ui/widgets/scaffold/tool_scaffold.dart';
 import 'package:alga/utils/constants/import_helper.dart';
 
+class QuickJsRoute extends GoRouteData {
+  @override
+  Widget build(BuildContext context, GoRouterState state) {
+    return const QuickJsView();
+  }
+}
+
 class QuickJsView extends ConsumerWidget {
   const QuickJsView({super.key});
 

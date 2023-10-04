@@ -22,7 +22,7 @@ final dartFormatLoadingProvider =
 );
 
 typedef _$DartFormatLoading = AutoDisposeNotifier<bool>;
-String _$errorMessageHash() => r'12cde3c7c20f03d4407a9bf0a0e67fd734520f1f';
+String _$errorMessageHash() => r'0f52963ddb6e9e754bfb32bc4be309f07d4234d9';
 
 /// See also [ErrorMessage].
 @ProviderFor(ErrorMessage)

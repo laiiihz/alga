@@ -5,6 +5,13 @@ import 'package:alga/ui/widgets/scaffold/tool_copy.dart';
 import 'package:alga/ui/widgets/scaffold/tool_scaffold.dart';
 import 'package:alga/utils/constants/import_helper.dart';
 
+class DartFormatRoute extends GoRouteData {
+  @override
+  Widget build(BuildContext context, GoRouterState state) {
+    return const DartFormatView();
+  }
+}
+
 class DartFormatView extends ConsumerStatefulWidget {
   const DartFormatView({super.key});
 
@@ -36,6 +43,9 @@ class _DartFormatViewState extends ConsumerState<DartFormatView> {
           expands: true,
           minLines: null,
           maxLines: null,
+          onChanged: (value) {
+            ref.read(errorMessageProvider.notifier).clear();
+          },
           textAlignVertical: TextAlignVertical.top,
           controller: ref.watch(dartContentProvider),
           decoration: InputDecoration(

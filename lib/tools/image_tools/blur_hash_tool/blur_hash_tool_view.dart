@@ -12,6 +12,13 @@ import 'package:flutter_blurhash/flutter_blurhash.dart';
 
 part 'blur_hash_tool_provider.dart';
 
+class BlurHashToolRoute extends GoRouteData {
+  @override
+  Widget build(BuildContext context, GoRouterState state) {
+    return const BlurHashToolView();
+  }
+}
+
 class BlurHashToolView extends ConsumerStatefulWidget {
   const BlurHashToolView({super.key});
 

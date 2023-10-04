@@ -18,6 +18,7 @@ class ErrorMessage extends _$ErrorMessage {
   @override
   String? build() => null;
   void update(String? value) => state = value;
+  void clear() => state = null;
 }
 
 @riverpod

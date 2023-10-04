@@ -10,6 +10,13 @@ import 'package:language_textfield/lang_special_builder.dart';
 
 part './jwt_decoder_provider.dart';
 
+class JWTDecoderRoute extends GoRouteData {
+  @override
+  Widget build(BuildContext context, GoRouterState state) {
+    return const JWTDecoderView();
+  }
+}
+
 class JWTDecoderView extends StatefulWidget {
   const JWTDecoderView({super.key});
 

@@ -5,6 +5,13 @@ import 'package:alga/utils/constants/import_helper.dart';
 import 'package:alga/tools/converters/color_converter/color_view_background_patiner.dart';
 import 'package:alga/tools/converters/color_converter/material_color_widget.dart';
 
+class ColorConverterRoute extends GoRouteData {
+  @override
+  Widget build(BuildContext context, GoRouterState state) {
+    return const ColorConverterView();
+  }
+}
+
 class ColorConverterView extends StatelessWidget {
   const ColorConverterView({super.key});
 
@@ -15,13 +22,13 @@ class ColorConverterView extends StatelessWidget {
       children: [
         AppTitleWrapper(
           title: S.of(context).currentColor,
-          actions:const [
+          actions: const [
             HelperIconButton(
-              title:  Text('Supported Color Format'),
+              title: Text('Supported Color Format'),
               content: Wrap(
                 spacing: 4,
                 runSpacing: 4,
-                children:  [
+                children: [
                   Chip(label: Text('CSS Color')),
                   Chip(label: Text('Hex Color')),
                   Chip(label: Text('RGB Color')),

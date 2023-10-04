@@ -1,6 +1,13 @@
 import 'package:alga/utils/constants/import_helper.dart';
 import 'package:alga/tools/server_tools/static_server_tool/static_server_tool_provider.dart';
 
+class StaticServerToolRoute extends GoRouteData {
+  @override
+  Widget build(BuildContext context, GoRouterState state) {
+    return const StaticServerToolView();
+  }
+}
+
 class StaticServerToolView extends StatefulWidget {
   const StaticServerToolView({super.key});
 

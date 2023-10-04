@@ -6,6 +6,13 @@ import 'package:alga/ui/widgets/paste_button_widget.dart';
 
 part './uri_parser_provider.dart';
 
+class UriParserRoute extends GoRouteData {
+  @override
+  Widget build(BuildContext context, GoRouterState state) {
+    return const UriParserView();
+  }
+}
+
 class UriParserView extends StatefulWidget {
   const UriParserView({super.key});
 

@@ -39,7 +39,7 @@ class AlgaAppItem extends StatelessWidget {
       child: InkWell(
         borderRadius: BorderRadius.circular(12),
         onTap: () {
-          GoRouter.of(context).go('/apps/${item.path}');
+          GoRouter.of(context).go(item.path);
         },
         child: Stack(
           children: [

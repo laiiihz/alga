@@ -1,9 +1,17 @@
 import 'package:alga/utils/constants/import_helper.dart';
 import 'package:alga/models/app_atom.dart';
 import 'package:alga/models/app_category.dart';
+import 'package:go_router/go_router.dart';
 
 import 'alga_app_item.dart';
 import 'alga_app_view_provider.dart';
+
+class AppsRoute extends GoRouteData {
+  @override
+  Widget build(BuildContext context, GoRouterState state) {
+    return const AlgaAppView();
+  }
+}
 
 class AlgaAppView extends StatefulWidget {
   const AlgaAppView({super.key});

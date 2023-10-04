@@ -1,16 +1,18 @@
 import 'dart:io';
 
+import 'package:alga/l10n/l10n.dart';
+import 'package:alga/routers/app_router.dart';
+import 'package:alga/ui/alga_view/all_apps/alga_app_view.dart';
+import 'package:alga/ui/views/favorite_view.dart';
+import 'package:alga/ui/views/search_view.dart';
+import 'package:alga/ui/views/settings_view.dart';
 import 'package:alga/utils/hive_boxes/app_config_box.dart';
 import 'package:alga/utils/services/app_service.dart';
 import 'package:dynamic_color/dynamic_color.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:alga/l10n/l10n.dart';
-import 'package:alga/routers/app_routes.dart';
-import 'package:go_router/go_router.dart';
 import 'utils/theme_util.dart';
 
 void main() async {
@@ -18,11 +20,11 @@ void main() async {
   runApp(const ProviderScope(child: MyApp()));
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends ConsumerWidget {
   const MyApp({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     Widget child = ValueListenableBuilder(
       valueListenable: AppConfigBox.keys(),
       builder: (context, _, __) {
@@ -36,7 +38,7 @@ class MyApp extends StatelessWidget {
           lightScheme ??= kDefaultLightColorScheme;
           darkScheme ??= kDefaultDarkColorScheme;
           return MaterialApp.router(
-            routerConfig: appRouter,
+            routerConfig: ref.watch(appRouterProvider),
             onGenerateTitle: (context) => S.of(context).appName,
             theme: ThemeUtil(lightScheme).getTheme(Brightness.light),
             darkTheme: ThemeUtil(darkScheme).getTheme(Brightness.dark),
@@ -63,7 +65,7 @@ class MyApp extends StatelessWidget {
                   meta: true,
                 ),
                 onSelected: () {
-                  GoRouter.of(routerContext).go('/search');
+                  SearchRoute().go(routerContext);
                 },
               ),
               PlatformMenuItem(
@@ -73,7 +75,7 @@ class MyApp extends StatelessWidget {
                   meta: true,
                 ),
                 onSelected: () {
-                  GoRouter.of(routerContext).go('/apps');
+                  AppsRoute().go(routerContext);
                 },
               ),
               PlatformMenuItem(
@@ -83,7 +85,7 @@ class MyApp extends StatelessWidget {
                   meta: true,
                 ),
                 onSelected: () {
-                  GoRouter.of(routerContext).go('/favorite');
+                  FavoriteRoute().go(routerContext);
                 },
               ),
               PlatformMenuItem(
@@ -93,7 +95,7 @@ class MyApp extends StatelessWidget {
                   meta: true,
                 ),
                 onSelected: () {
-                  GoRouter.of(routerContext).go('/settings');
+                  SettingsRoute().go(routerContext);
                 },
               ),
               const PlatformMenuItemGroup(

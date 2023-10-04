@@ -4,6 +4,14 @@ import 'package:flutter/services.dart';
 
 import 'package:alga/utils/constants/import_helper.dart';
 import 'package:alga/tools/generators/lorem_ipsum_generator/lorem_ipsum_provider.dart';
+import 'package:go_router/go_router.dart';
+
+class LoremIpsumGeneratorRoute extends GoRouteData {
+  @override
+  Widget build(BuildContext context, GoRouterState state) {
+    return const LoremIpsumGeneratorView();
+  }
+}
 
 class LoremIpsumGeneratorView extends ConsumerStatefulWidget {
   const LoremIpsumGeneratorView({super.key});

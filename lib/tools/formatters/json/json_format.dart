@@ -5,6 +5,13 @@ import 'package:alga/ui/widgets/scaffold/tool_options.dart';
 import 'package:alga/ui/widgets/scaffold/tool_scaffold.dart';
 import 'package:alga/utils/constants/import_helper.dart';
 
+class JsonFormatRoute extends GoRouteData {
+  @override
+  Widget build(BuildContext context, GoRouterState state) {
+    return const JsonFormatView();
+  }
+}
+
 class JsonFormatView extends ConsumerStatefulWidget {
   const JsonFormatView({super.key});
 

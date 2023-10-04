@@ -7,6 +7,13 @@ import 'package:file_selector/file_selector.dart' as selector;
 part './random_file_generator_provider.dart';
 part './random_file_util.dart';
 
+class RandomFileGeneratorRoute extends GoRouteData {
+  @override
+  Widget build(BuildContext context, GoRouterState state) {
+    return const RandomFileGeneratorView();
+  }
+}
+
 class RandomFileGeneratorView extends StatelessWidget {
   const RandomFileGeneratorView({super.key});
 

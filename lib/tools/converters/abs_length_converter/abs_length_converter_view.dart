@@ -2,6 +2,13 @@ import 'package:alga/utils/constants/import_helper.dart';
 
 part './abs_length_converter_provider.dart';
 
+class AbsLengthConverterRoute extends GoRouteData {
+  @override
+  Widget build(BuildContext context, GoRouterState state) {
+    return const AbsLengthConverterView();
+  }
+}
+
 class AbsLengthConverterView extends StatelessWidget {
   const AbsLengthConverterView({super.key});
 

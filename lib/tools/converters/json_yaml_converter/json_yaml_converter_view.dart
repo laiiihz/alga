@@ -8,6 +8,13 @@ import 'package:alga/utils/constants/import_helper.dart';
 
 import 'json_yaml_co_converter_provider.dart';
 
+class JsonYamlConverterRoute extends GoRouteData {
+  @override
+  Widget build(BuildContext context, GoRouterState state) {
+    return const JsonYamlConverterView();
+  }
+}
+
 class JsonYamlConverterView extends ConsumerWidget {
   const JsonYamlConverterView({super.key});
 

@@ -3,6 +3,13 @@ import 'package:alga/tools/text_tools/regex_tester/regex_tester_provider.dart';
 import 'package:alga/ui/widgets/clear_button_widget.dart';
 import 'package:alga/ui/widgets/paste_button_widget.dart';
 
+class RegexTestAppRoute extends GoRouteData {
+  @override
+  Widget build(BuildContext context, GoRouterState state) {
+    return const RegexTestAppView();
+  }
+}
+
 class RegexTestAppView extends ConsumerStatefulWidget {
   const RegexTestAppView({super.key});
 

@@ -10,6 +10,13 @@ import 'package:alga/utils/constants/import_helper.dart';
 
 part './gzip_compress_decompress_provider.dart';
 
+class GzipCompressDecompressRoute extends GoRouteData {
+  @override
+  Widget build(BuildContext context, GoRouterState state) {
+    return const GzipCompressDecompressView();
+  }
+}
+
 class GzipCompressDecompressView extends StatefulWidget {
   const GzipCompressDecompressView({super.key});
 

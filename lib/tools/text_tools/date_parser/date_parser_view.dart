@@ -8,6 +8,13 @@ import 'date_parser_view_provider.dart';
 
 part './date_operation_widget.dart';
 
+class DateParserRoute extends GoRouteData {
+  @override
+  Widget build(BuildContext context, GoRouterState state) {
+    return const DateParserView();
+  }
+}
+
 class DateParserView extends StatefulWidget {
   const DateParserView({super.key});
 

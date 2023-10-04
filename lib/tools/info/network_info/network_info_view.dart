@@ -4,6 +4,13 @@ import 'package:alga/utils/constants/import_helper.dart';
 
 import '../widgets/device_tile.dart';
 
+class NetworkInfoRoute extends GoRouteData {
+  @override
+  Widget build(BuildContext context, GoRouterState state) {
+    return const NetworkInfoView();
+  }
+}
+
 class NetworkInfoView extends ConsumerWidget {
   const NetworkInfoView({super.key});
 
