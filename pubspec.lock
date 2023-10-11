@@ -895,10 +895,10 @@ packages:
     dependency: "direct main"
     description:
       name: network_info_plus
-      sha256: c0113bfd4276be3fe4ba56aeb2792d780df9f3f62aaa4afdd1cdf716b8e29545
+      sha256: b161de9c714701ac5278a71874474b827fc6e884eb915916854b339bf4d36573
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "4.0.2"
+    version: "5.0.0"
   network_info_plus_platform_interface:
     dependency: transitive
     description:
