@@ -21,13 +21,17 @@ class ToolViewConfig extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final scheme = Theme.of(context).colorScheme;
     return ListTile(
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
-      title: title,
+      title: DefaultTextStyle.merge(
+        style: TextStyle(color: scheme.onSecondaryContainer),
+        child: title,
+      ),
       subtitle: subtitle,
       leading: leading,
       trailing: trailing,
-      tileColor: Theme.of(context).colorScheme.onInverseSurface,
+      tileColor: scheme.secondaryContainer,
       onTap: onPressed,
     );
   }

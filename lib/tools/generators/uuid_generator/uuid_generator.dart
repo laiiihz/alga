@@ -1,8 +1,8 @@
+import 'package:alga/tools/generators/uuid_generator/uuid_gen.dart';
+import 'package:alga/ui/widgets/buttons/refresh_button.dart';
 import 'package:alga/ui/widgets/copy_button_widget.dart';
-import 'package:alga/ui/widgets/refresh_button.dart';
 import 'package:alga/ui/widgets/scaffold/tool_scaffold.dart';
 import 'package:flutter/services.dart';
-import 'package:go_router/go_router.dart';
 
 import 'package:uuid/uuid.dart';
 
@@ -27,6 +27,7 @@ class UUIDGeneratorView extends StatefulWidget {
 class _UUIDGeneratorViewState extends State<UUIDGeneratorView> {
   @override
   Widget build(BuildContext context) {
+    return UUIDGenPage();
     return ToolScaffold.scroll(
       title: Text(S.of(context).generatorUUID),
       body: Column(
@@ -147,7 +148,7 @@ class _UUIDGeneratorViewState extends State<UUIDGeneratorView> {
                     curve: Curves.easeInOutCubic,
                     child: isV5
                         ? const SizedBox.shrink()
-                        : RefreshButton(_results),
+                        : RefreshButton(() => ref.invalidate(_results)),
                   );
                 },
               ),
