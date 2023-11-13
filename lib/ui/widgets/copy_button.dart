@@ -19,9 +19,7 @@ class CopyButton extends StatelessWidget {
           onPressed: () async {
             final data = onCopy(ref);
             await ClipboardUtil.copy(data);
-            // TODO
-            // ignore: use_build_context_synchronously
-            SnackbarUtil(context).copied();
+            if (context.mounted) SnackbarUtil(context).copied();
           },
           icon: child!,
           tooltip: S.of(context).copy,

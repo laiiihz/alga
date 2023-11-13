@@ -3,14 +3,15 @@ part of './base_64_encoder_decoder.dart';
 Future _showBase64ImagePicker(BuildContext context, WidgetRef ref) async {
   final file = await ImageUtil.pick();
   if (file == null) {
-    // ignore: use_build_context_synchronously
-    ScaffoldMessenger.of(context)
-        .showSnackBar(const SnackBar(content: Text('empty image')));
+    if (context.mounted) {
+      ScaffoldMessenger.of(context)
+          .showSnackBar(const SnackBar(content: Text('empty image')));
+    }
     return;
   }
 
-// TODO
-  // ignore: use_build_context_synchronously
+  if (!context.mounted) return;
+
   return await showDialog(
     context: context,
     builder: (context) {
@@ -28,13 +29,11 @@ Future _showBase64ImagePicker(BuildContext context, WidgetRef ref) async {
                 TextButton(
                   onPressed: () async {
                     await ClipboardUtil.copy(data);
-                    //TODO
-                    // ignore: use_build_context_synchronously
-                    Navigator.pop(context);
-                    //TODO
-                    // ignore: use_build_context_synchronously
-                    ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(content: Text('copy success')));
+                    if (context.mounted) Navigator.pop(context);
+                    if (context.mounted) {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(content: Text('copy success')));
+                    }
                   },
                   child: Text(S.of(context).copy),
                 ),

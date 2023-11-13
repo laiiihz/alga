@@ -69,10 +69,10 @@ class RandomFileGeneratorView extends StatelessWidget {
                 return;
               } else {
                 _genFile(ref, path);
-                //TODO
-                // ignore: use_build_context_synchronously
-                ScaffoldMessenger.of(context)
-                    .showSnackBar(const SnackBar(content: Text('Success')));
+                if (context.mounted) {
+                  ScaffoldMessenger.of(context)
+                      .showSnackBar(const SnackBar(content: Text('Success')));
+                }
               }
             },
             icon: const Icon(Icons.file_copy),

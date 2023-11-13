@@ -18,9 +18,7 @@ class PasteButton extends StatelessWidget {
         return IconButton(
           onPressed: () async {
             onPaste(ref, await ClipboardUtil.paste());
-            //TODO
-            // ignore: use_build_context_synchronously
-            SnackbarUtil(context).pasted();
+            if (context.mounted) SnackbarUtil(context).pasted();
           },
           icon: child!,
           tooltip: S.of(context).paste,

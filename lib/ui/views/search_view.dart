@@ -1,10 +1,9 @@
 import 'dart:ui';
 
-import 'package:alga/ui/alga_view/all_apps/alga_app_item.dart';
-import 'package:alga/utils/constants/import_helper.dart';
 import 'package:alga/models/app_atom.dart';
+import 'package:alga/ui/alga_view/all_apps/alga_app_item.dart';
 import 'package:alga/ui/widgets/asset_svg.dart';
-import 'package:go_router/go_router.dart';
+import 'package:alga/utils/constants/import_helper.dart';
 
 class SearchRoute extends GoRouteData {
   @override
@@ -63,7 +62,7 @@ class _SearchViewState extends State<SearchView> {
     return Scaffold(
       body: CustomScrollView(
         slivers: [
-          SliverAppBar.large(title: const Text('搜索')),
+          const SliverAppBar.large(title: Text('搜索')),
           SliverPersistentHeader(
             pinned: true,
             delegate: _SearchPersistentHeader(

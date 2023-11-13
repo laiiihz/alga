@@ -4,7 +4,6 @@ import 'package:alga/ui/views/favorite_view.dart';
 import 'package:alga/ui/views/search_view.dart';
 import 'package:alga/ui/views/settings_view.dart';
 import 'package:alga/utils/constants/import_helper.dart';
-import 'package:go_router/go_router.dart';
 
 class AlgaNavigationBar extends StatefulWidget {
   const AlgaNavigationBar({super.key});
