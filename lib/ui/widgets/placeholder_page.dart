@@ -1,7 +1,7 @@
 import 'package:alga/utils/constants/import_helper.dart';
 
 class PlaceholderPage extends StatelessWidget {
-  const PlaceholderPage({Key? key}) : super(key: key);
+  const PlaceholderPage({super.key});
 
   @override
   Widget build(BuildContext context) {

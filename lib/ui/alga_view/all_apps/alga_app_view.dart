@@ -1,7 +1,6 @@
-import 'package:alga/utils/constants/import_helper.dart';
 import 'package:alga/models/app_atom.dart';
 import 'package:alga/models/app_category.dart';
-import 'package:go_router/go_router.dart';
+import 'package:alga/utils/constants/import_helper.dart';
 
 import 'alga_app_item.dart';
 import 'alga_app_view_provider.dart';
@@ -86,7 +85,7 @@ class AppCategoryView extends StatelessWidget {
       padding: const EdgeInsets.all(16),
       gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
         maxCrossAxisExtent: 200,
-        childAspectRatio: 1.618,
+        childAspectRatio: 2.0,
         mainAxisSpacing: 8,
         crossAxisSpacing: 8,
       ),

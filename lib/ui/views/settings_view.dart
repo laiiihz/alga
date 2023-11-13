@@ -1,11 +1,10 @@
 import 'package:alga/routers/app_router.dart';
-import 'package:alga/utils/hive_boxes/app_config_box.dart';
+import 'package:alga/ui/widgets/alga_logo.dart';
 import 'package:alga/ui/widgets/app_show_menu.dart';
 import 'package:alga/ui/widgets/setting_title.dart';
-import 'package:go_router/go_router.dart';
-import 'package:url_launcher/url_launcher_string.dart';
-
 import 'package:alga/utils/constants/import_helper.dart';
+import 'package:alga/utils/hive_boxes/app_config_box.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 
 class SettingsRoute extends GoRouteData {
   @override
@@ -122,11 +121,7 @@ class _SettingsViewState extends State<SettingsView> {
             },
           ),
           ListTile(
-            leading: Image.asset(
-              'assets/logo/256.webp',
-              width: 28,
-              height: 28,
-            ),
+            leading: const AlgaLogo(radius: 24),
             title: Text(context.tr.appName),
             subtitle: Text('${context.tr.version}$_buildName+$_buildNumber'),
           ),

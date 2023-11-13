@@ -5,10 +5,11 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:alga/l10n/l10n.dart';
 import 'package:alga/utils/clipboard_util.dart';
 import 'package:alga/utils/snackbar_util.dart';
+
 @Deprecated('CopyButtonWidget')
 class CopyButton extends StatelessWidget {
   final String Function(WidgetRef ref) onCopy;
-  const CopyButton({Key? key, required this.onCopy}) : super(key: key);
+  const CopyButton({super.key, required this.onCopy});
 
   @override
   Widget build(BuildContext context) {

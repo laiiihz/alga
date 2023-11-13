@@ -11,51 +11,51 @@ class DateOperationWidget extends ConsumerWidget {
       spacing: 4,
       runSpacing: 4,
       children: [
-        _Operation(
+        DateOprt(
           text: context.tr.nextDay,
           onChange: (date) => date.nextDay,
         ),
-        _Operation(
+        DateOprt(
           text: context.tr.previousDay,
           onChange: (date) => date.previousDay,
         ),
-        _Operation(
+        DateOprt(
           text: context.tr.nextMonth,
           onChange: (date) => date.nextMonth,
         ),
-        _Operation(
+        DateOprt(
           text: context.tr.previousMonth,
           onChange: (date) => date.previousMonth,
         ),
-        _Operation(
+        DateOprt(
           text: context.tr.nextYear,
           onChange: (date) => date.nextYear,
         ),
-        _Operation(
+        DateOprt(
           text: context.tr.previousYear,
           onChange: (date) => date.previousYear,
         ),
-        _Operation(
+        DateOprt(
           text: context.tr.nextHour,
           onChange: (date) => date.nextHour,
         ),
-        _Operation(
+        DateOprt(
           text: context.tr.previousHour,
           onChange: (date) => date.previousHour,
         ),
-        _Operation(
+        DateOprt(
           text: context.tr.nextMinute,
           onChange: (date) => date.nextMinute,
         ),
-        _Operation(
+        DateOprt(
           text: context.tr.previousMinute,
           onChange: (date) => date.previousMinute,
         ),
-        _Operation(
+        DateOprt(
           text: context.tr.nextSecond,
           onChange: (date) => date.nextSecond,
         ),
-        _Operation(
+        DateOprt(
           text: context.tr.previousSecond,
           onChange: (date) => date.previousSecond,
         ),
@@ -64,11 +64,10 @@ class DateOperationWidget extends ConsumerWidget {
   }
 }
 
-class _Operation extends ConsumerWidget {
+class DateOprt extends ConsumerWidget {
   final String text;
   final DateTime Function(DateTime current) onChange;
-  const _Operation({Key? key, required this.text, required this.onChange})
-      : super(key: key);
+  const DateOprt({super.key, required this.text, required this.onChange});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

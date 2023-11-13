@@ -9,14 +9,14 @@ class ToolbarView extends StatelessWidget {
   final List<Widget> outputActions;
   final List<Widget> midWidgets;
   const ToolbarView({
-    Key? key,
+    super.key,
     required this.configs,
     required this.inputWidget,
     required this.outputWidget,
     this.inputActions = const [],
     this.outputActions = const [],
     this.midWidgets = const [],
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

@@ -4,8 +4,7 @@ class AnimatedShowWidget extends StatelessWidget {
   final bool isShow;
   final Widget? child;
   const AnimatedShowWidget(
-      {Key? key, required this.isShow, required this.child})
-      : super(key: key);
+      {super.key, required this.isShow, required this.child});
 
   @override
   Widget build(BuildContext context) {

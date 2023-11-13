@@ -37,7 +37,7 @@ class ToolViewWrapper extends StatelessWidget {
   /// normally a list of [ToolViewConfig]
   final List<Widget> children;
 
-  const ToolViewWrapper({Key? key, required this.children}) : super(key: key);
+  const ToolViewWrapper({super.key, required this.children});
 
   @override
   Widget build(BuildContext context) {
@@ -122,7 +122,7 @@ class ToolViewMenuConfig<T> extends ConsumerWidget {
           onPressed: open,
           trailing: Text(
             name(ref),
-            style: const TextStyle(fontWeight: FontWeight.bold,fontSize: 14),
+            style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 14),
           ),
         );
       },

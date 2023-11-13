@@ -3,9 +3,8 @@ import 'package:alga/ui/alga_view/all_apps/alga_app_view.dart';
 import 'package:alga/ui/views/favorite_view.dart';
 import 'package:alga/ui/views/search_view.dart';
 import 'package:alga/ui/views/settings_view.dart';
+import 'package:alga/ui/widgets/alga_logo.dart';
 import 'package:alga/utils/constants/import_helper.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:go_router/go_router.dart';
 
 class AlgaPanel extends ConsumerStatefulWidget {
   const AlgaPanel({super.key});
@@ -18,16 +17,9 @@ class _AlgaPanelState extends ConsumerState<AlgaPanel> {
   @override
   Widget build(BuildContext context) {
     Widget result = NavigationRail(
-      leading: Padding(
-        padding: const EdgeInsets.only(top: 32),
-        child: FloatingActionButton(
-          onPressed: () {},
-          shape: ContinuousRectangleBorder(
-            borderRadius: BorderRadius.circular(48),
-          ),
-          child:
-              SvgPicture.asset('assets/logo/logo.svg', height: 48, width: 48),
-        ),
+      leading: const Padding(
+        padding: EdgeInsets.only(top: 32),
+        child: AlgaLogo(),
       ),
       labelType: NavigationRailLabelType.selected,
       destinations: [
@@ -47,15 +39,18 @@ class _AlgaPanelState extends ConsumerState<AlgaPanel> {
           label: Text(context.tr.search),
         ),
       ],
-      trailing: IconButton(
-        onPressed: () {
-          SettingsRoute().go(context);
-        },
-        icon: const Icon(Icons.settings_outlined),
-        selectedIcon: const Icon(Icons.settings_rounded),
-        isSelected: GoRouterState.of(context).matchedLocation ==
-            SettingsRoute().location,
-      ),
+      trailing:
+          GoRouterState.of(context).matchedLocation == SettingsRoute().location
+              ? IconButton.filledTonal(
+                  onPressed: () {},
+                  icon: const Icon(Icons.settings_rounded),
+                )
+              : IconButton(
+                  onPressed: () {
+                    SettingsRoute().go(context);
+                  },
+                  icon: const Icon(Icons.settings_outlined),
+                ),
       selectedIndex: getIndex(context),
       onDestinationSelected: (index) {
         switch (index) {

@@ -33,13 +33,13 @@ class AppTitleWrapper extends StatelessWidget {
   final List<Widget>? actions;
   final Widget child;
   final bool expand;
-  const AppTitleWrapper(
-      {Key? key,
-      required this.title,
-      this.actions,
-      required this.child,
-      this.expand = false})
-      : super(key: key);
+  const AppTitleWrapper({
+    super.key,
+    required this.title,
+    this.actions,
+    required this.child,
+    this.expand = false,
+  });
 
   @override
   Widget build(BuildContext context) {

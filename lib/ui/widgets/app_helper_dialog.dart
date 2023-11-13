@@ -27,8 +27,8 @@ Future showHelpDialog({
 class HelperIconButton extends StatelessWidget {
   final Widget title;
   final Widget content;
-  const HelperIconButton({Key? key, required this.title, required this.content})
-      : super(key: key);
+  const HelperIconButton(
+      {super.key, required this.title, required this.content});
 
   @override
   Widget build(BuildContext context) {
