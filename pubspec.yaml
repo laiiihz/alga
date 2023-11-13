@@ -36,7 +36,7 @@ dependencies:
   json2yaml:
     git:
       url: https://github.com/laiiihz/json2yaml
-  flutter_markdown: ^0.6.17+3
+  flutter_markdown: ^0.6.18
   url_launcher: ^6.1.14
   animations: ^2.0.8
   flutter_riverpod: ^2.4.1
@@ -51,7 +51,7 @@ dependencies:
   flutter_blurhash: ^0.7.0
   image_picker: ^1.0.4
   device_info_plus: ^9.0.2
-  network_info_plus: ^4.0.1
+  network_info_plus: ^5.0.0
   import_sorter: ^4.6.0
   markdown: ^7.0.2
   pointycastle: ^3.7.3
