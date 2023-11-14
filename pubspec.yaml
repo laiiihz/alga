@@ -27,7 +27,7 @@ dependencies:
   #   path: ./packages/alga_parser
 
   cupertino_icons: ^1.0.6
-  archive: ^3.4.2
+  archive: ^3.4.9
   dart_style: ^2.3.2
   uuid: ^4.2.1
   flutter_svg: ^2.0.7
@@ -36,11 +36,11 @@ dependencies:
   json2yaml:
     git:
       url: https://github.com/laiiihz/json2yaml
-  flutter_markdown: ^0.6.18
+  flutter_markdown: ^0.6.18+2
   url_launcher: ^6.1.14
   animations: ^2.0.8
-  flutter_riverpod: ^2.4.1
-  sass: ^1.68.0
+  flutter_riverpod: ^2.4.6
+  sass: ^1.69.5
   file_selector: ^1.0.1
   shelf_static: ^1.1.2
   flutter_highlight: ^0.7.0
@@ -51,7 +51,7 @@ dependencies:
   flutter_blurhash: ^0.7.0
   image_picker: ^1.0.4
   device_info_plus: ^9.0.2
-  network_info_plus: ^5.0.0
+  network_info_plus: ^4.1.0
   import_sorter: ^4.6.0
   markdown: ^7.0.2
   pointycastle: ^3.7.3
@@ -68,7 +68,7 @@ dependencies:
   multi_split_view: ^2.4.0
   auto_size_text: ^3.0.0
   filesize: ^2.0.1
-  riverpod_annotation: ^2.1.6
+  riverpod_annotation: ^2.3.1
   file: ^7.0.0
   path_provider: ^2.1.1
   quick_actions: ^1.0.6
@@ -82,7 +82,7 @@ dev_dependencies:
   flutter_lints: ^3.0.1
   build_runner: ^2.4.6
   msix: ^3.16.4
-  riverpod_generator: ^2.3.3
+  riverpod_generator: ^2.3.6
   custom_lint: ^0.5.3
   riverpod_lint: ^2.1.1
   go_router_builder: ^2.3.3
