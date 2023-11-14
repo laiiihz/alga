@@ -19,11 +19,11 @@ RouteBase get $rootRoute => ShellRouteData.$route(
           routes: [
             GoRouteData.$route(
               path: 'uuid-generator',
-              factory: $UUIDGeneratorRouteExtension._fromState,
+              factory: $UUIDGenRouteExtension._fromState,
             ),
             GoRouteData.$route(
               path: 'hash-generator',
-              factory: $HashGeneratorRouteExtension._fromState,
+              factory: $HashGenRouteExtension._fromState,
             ),
             GoRouteData.$route(
               path: 'lorem-ipsum-generator',
@@ -165,9 +165,8 @@ extension $AppsRouteExtension on AppsRoute {
   void replace(BuildContext context) => context.replace(location);
 }
 
-extension $UUIDGeneratorRouteExtension on UUIDGeneratorRoute {
-  static UUIDGeneratorRoute _fromState(GoRouterState state) =>
-      UUIDGeneratorRoute();
+extension $UUIDGenRouteExtension on UUIDGenRoute {
+  static UUIDGenRoute _fromState(GoRouterState state) => UUIDGenRoute();
 
   String get location => GoRouteData.$location(
         '/apps/uuid-generator',
@@ -183,9 +182,8 @@ extension $UUIDGeneratorRouteExtension on UUIDGeneratorRoute {
   void replace(BuildContext context) => context.replace(location);
 }
 
-extension $HashGeneratorRouteExtension on HashGeneratorRoute {
-  static HashGeneratorRoute _fromState(GoRouterState state) =>
-      HashGeneratorRoute();
+extension $HashGenRouteExtension on HashGenRoute {
+  static HashGenRoute _fromState(GoRouterState state) => HashGenRoute();
 
   String get location => GoRouteData.$location(
         '/apps/hash-generator',

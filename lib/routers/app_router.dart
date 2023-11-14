@@ -9,11 +9,12 @@ import 'package:alga/tools/encoders_decoders/uri_encoder_decoder/uri_encoder_dec
 import 'package:alga/tools/encoders_decoders/uri_parser/uri_parser_view.dart';
 import 'package:alga/tools/formatters/dart/dart_format.dart';
 import 'package:alga/tools/formatters/json/json_format.dart';
-import 'package:alga/tools/generators/hash_generator/hash_generator_view.dart';
+import 'package:alga/tools/generators/hash_generator/hash_gen.dart';
 import 'package:alga/tools/generators/lorem_ipsum_generator/lorem_ipsum_generator_view.dart';
 import 'package:alga/tools/generators/password_generator/password_generator_view.dart';
 import 'package:alga/tools/generators/random_file_generator/random_file_generator_view.dart';
 import 'package:alga/tools/generators/sass_css_generator/sass_css_generator_view.dart';
+import 'package:alga/tools/generators/uuid_generator/uuid_gen.dart';
 import 'package:alga/tools/image_tools/blur_hash_tool/blur_hash_tool_view.dart';
 import 'package:alga/tools/image_tools/qrcode_tool/qrcode_view.dart';
 import 'package:alga/tools/info/device_info/device_info.dart';
@@ -31,8 +32,6 @@ import 'package:alga/ui/views/settings_view.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-
-import '../tools/generators/uuid_generator/uuid_generator.dart';
 
 part 'app_router.g.dart';
 
@@ -53,8 +52,8 @@ GoRouter appRouter(AppRouterRef ref) {
 @TypedShellRoute<RootRoute>(
   routes: [
     TypedGoRoute<AppsRoute>(path: '/apps', routes: [
-      TypedGoRoute<UUIDGeneratorRoute>(path: 'uuid-generator'),
-      TypedGoRoute<HashGeneratorRoute>(path: 'hash-generator'),
+      TypedGoRoute<UUIDGenRoute>(path: 'uuid-generator'),
+      TypedGoRoute<HashGenRoute>(path: 'hash-generator'),
       TypedGoRoute<LoremIpsumGeneratorRoute>(path: 'lorem-ipsum-generator'),
       TypedGoRoute<PasswordGeneratorRoute>(path: 'password-generator'),
       TypedGoRoute<RandomFileGeneratorRoute>(path: 'random-file-generator'),

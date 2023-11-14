@@ -1,4 +1,5 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:alga/models/app_category.dart';
 import 'package:alga/routers/app_router.dart';
 import 'package:alga/tools/converters/abs_length_converter/abs_length_converter_view.dart';
 import 'package:alga/tools/converters/color_converter/color_converter_view.dart';
@@ -11,12 +12,12 @@ import 'package:alga/tools/encoders_decoders/uri_encoder_decoder/uri_encoder_dec
 import 'package:alga/tools/encoders_decoders/uri_parser/uri_parser_view.dart';
 import 'package:alga/tools/formatters/dart/dart_format.dart';
 import 'package:alga/tools/formatters/json/json_format.dart';
-import 'package:alga/tools/generators/hash_generator/hash_generator_view.dart';
+import 'package:alga/tools/generators/hash_generator/hash_gen.dart';
 import 'package:alga/tools/generators/lorem_ipsum_generator/lorem_ipsum_generator_view.dart';
 import 'package:alga/tools/generators/password_generator/password_generator_view.dart';
 import 'package:alga/tools/generators/random_file_generator/random_file_generator_view.dart';
 import 'package:alga/tools/generators/sass_css_generator/sass_css_generator_view.dart';
-import 'package:alga/tools/generators/uuid_generator/uuid_generator.dart';
+import 'package:alga/tools/generators/uuid_generator/uuid_gen.dart';
 import 'package:alga/tools/image_tools/blur_hash_tool/blur_hash_tool_view.dart';
 import 'package:alga/tools/image_tools/qrcode_tool/qrcode_view.dart';
 import 'package:alga/tools/info/device_info/device_info.dart';
@@ -26,9 +27,8 @@ import 'package:alga/tools/server_tools/static_server_tool/static_server_tool_vi
 import 'package:alga/tools/text_tools/date_parser/date_parser_view.dart';
 import 'package:alga/tools/text_tools/markdown_preview/markdown_preview_view.dart';
 import 'package:alga/tools/text_tools/regex_tester/regex_tester_app_view.dart';
-import 'package:alga/utils/constants/import_helper.dart';
-import 'package:alga/models/app_category.dart';
 import 'package:alga/ui/widgets/svg_asset_icon.dart';
+import 'package:alga/utils/constants/import_helper.dart';
 
 typedef ContextBuilder<T> = T Function(BuildContext context);
 
@@ -127,14 +127,14 @@ class AppAtom {
   static final uuidGenerator = AppAtom(
     title: (context) => context.tr.generatorUUID,
     icon: const SvgAssetIcon('assets/icons/Guid.svg'),
-    path: UUIDGeneratorRoute().location,
+    path: UUIDGenRoute().location,
     categories: [AppCategory.generator],
   );
 
   static final hashGenerator = AppAtom(
     title: (context) => context.tr.generatorHash,
     icon: const Icon(Icons.fingerprint),
-    path: HashGeneratorRoute().location,
+    path: HashGenRoute().location,
     categories: [AppCategory.generator],
   );
 

@@ -26,7 +26,7 @@ String _$jsonContentHash() => r'e16c178e258524cde0997beebf855756c7229a59';
 /// See also [JsonContent].
 @ProviderFor(JsonContent)
 final jsonContentProvider =
-    AutoDisposeNotifierProvider<JsonContent, RichTextController>.internal(
+    AutoDisposeNotifierProvider<JsonContent, Raw<RichTextController>>.internal(
   JsonContent.new,
   name: r'jsonContentProvider',
   debugGetCreateSourceHash:
@@ -35,7 +35,7 @@ final jsonContentProvider =
   allTransitiveDependencies: null,
 );
 
-typedef _$JsonContent = AutoDisposeNotifier<RichTextController>;
+typedef _$JsonContent = AutoDisposeNotifier<Raw<RichTextController>>;
 String _$jsonFormatLoadingHash() => r'83f5ca6966c768be50b9652b96180f5fddee039a';
 
 /// See also [JsonFormatLoading].

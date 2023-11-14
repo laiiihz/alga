@@ -16,7 +16,8 @@ class SvgAssetIcon extends StatelessWidget {
   Widget build(BuildContext context) {
     final iconSize = IconTheme.of(context).size;
     final color = _color(context);
-    return Center(
+    return SizedBox.square(
+      dimension: iconSize,
       child: SvgPicture.asset(
         svg,
         width: iconSize,

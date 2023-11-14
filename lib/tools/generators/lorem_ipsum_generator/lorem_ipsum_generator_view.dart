@@ -1,10 +1,8 @@
+import 'package:alga/tools/generators/lorem_ipsum_generator/lorem_ipsum_provider.dart';
 import 'package:alga/ui/widgets/copy_button_widget.dart';
 import 'package:alga/ui/widgets/custom_icon_button.dart';
-import 'package:flutter/services.dart';
-
 import 'package:alga/utils/constants/import_helper.dart';
-import 'package:alga/tools/generators/lorem_ipsum_generator/lorem_ipsum_provider.dart';
-import 'package:go_router/go_router.dart';
+import 'package:flutter/services.dart';
 
 class LoremIpsumGeneratorRoute extends GoRouteData {
   @override

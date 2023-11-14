@@ -10,12 +10,15 @@ class AlgaAppItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colorScheme = Theme.of(context).colorScheme;
+
+    Color iconColor = colorScheme.secondaryContainer;
+
     return ValueListenableBuilder(
       valueListenable: FavoriteBox.listener(item.path),
       builder: (context, _, child) {
         final state = FavoriteBox.get(item);
         return Material(
-          color: colorScheme.secondaryContainer,
+          color: colorScheme.surfaceVariant,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(12),
             side: state
@@ -36,10 +39,18 @@ class AlgaAppItem extends StatelessWidget {
       },
       child: Row(
         children: [
-          Padding(
-            padding: const EdgeInsets.all(8),
-            child: item.icon,
+          const SizedBox(width: 8),
+          Material(
+            shape: ContinuousRectangleBorder(
+              borderRadius: BorderRadius.circular(32),
+            ),
+            color: iconColor,
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: item.icon,
+            ),
           ),
+          const SizedBox(width: 4),
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -59,6 +70,7 @@ class AlgaAppItem extends StatelessWidget {
               ],
             ),
           ),
+          const SizedBox(width: 4),
         ],
       ),
     );

@@ -31,7 +31,7 @@ class ToolViewConfig extends StatelessWidget {
       subtitle: subtitle,
       leading: leading,
       trailing: trailing,
-      tileColor: scheme.secondaryContainer,
+      tileColor: scheme.onInverseSurface,
       onTap: onPressed,
     );
   }

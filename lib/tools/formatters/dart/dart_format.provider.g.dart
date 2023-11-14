@@ -42,7 +42,7 @@ String _$dartContentHash() => r'7cac4bd0f187ee1319d9f848c1badafa701ea252';
 /// See also [DartContent].
 @ProviderFor(DartContent)
 final dartContentProvider =
-    AutoDisposeNotifierProvider<DartContent, RichTextController>.internal(
+    AutoDisposeNotifierProvider<DartContent, Raw<RichTextController>>.internal(
   DartContent.new,
   name: r'dartContentProvider',
   debugGetCreateSourceHash:
@@ -51,6 +51,6 @@ final dartContentProvider =
   allTransitiveDependencies: null,
 );
 
-typedef _$DartContent = AutoDisposeNotifier<RichTextController>;
+typedef _$DartContent = AutoDisposeNotifier<Raw<RichTextController>>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

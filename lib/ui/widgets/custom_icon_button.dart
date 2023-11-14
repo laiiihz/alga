@@ -24,9 +24,10 @@ class CustomIconButton extends StatelessWidget {
         onTap: onPressed,
         highlightShape: BoxShape.rectangle,
         child: Padding(
-          padding: const EdgeInsets.all(16.0),
+          padding: const EdgeInsets.all(8.0),
           child: IconTheme(
             data: IconTheme.of(context).copyWith(
+              size: 16,
               color:
                   _enabled ? themeColor : Theme.of(context).colorScheme.outline,
             ),
