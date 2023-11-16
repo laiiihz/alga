@@ -1,4 +1,6 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 bool isDark(BuildContext context) =>
     Theme.of(context).brightness == Brightness.dark;
@@ -30,6 +32,12 @@ class ThemeUtil {
 
   ThemeData getTheme(Brightness brightness) {
     ColorScheme scheme = colorScheme;
+    final typo = Typography.material2021(
+        platform: defaultTargetPlatform, colorScheme: colorScheme);
+    final baseTextStyle = switch (brightness) {
+      Brightness.dark => typo.white,
+      Brightness.light => typo.black,
+    };
     return ThemeData(
       colorScheme: colorScheme,
       splashFactory: InkSparkle.splashFactory,
@@ -44,6 +52,11 @@ class ThemeUtil {
         shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.vertical(top: Radius.circular(16)),
         ),
+      ),
+      textTheme: TextTheme(
+        bodyLarge: GoogleFonts.notoSansMonoTextTheme(baseTextStyle)
+            .bodyLarge
+            ?.copyWith(fontSize: 12),
       ),
       useMaterial3: true,
     );

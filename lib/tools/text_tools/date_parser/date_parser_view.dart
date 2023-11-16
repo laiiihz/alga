@@ -1,3 +1,4 @@
+import 'package:alga/tools/text_tools/date_parser/date_parser.dart';
 import 'package:alga/ui/widgets/copy_button_widget.dart';
 import 'package:alga/ui/widgets/paste_button_widget.dart';
 import 'package:alga/utils/constants/import_helper.dart';
@@ -25,6 +26,7 @@ class DateParserView extends StatefulWidget {
 class _DateParserViewState extends State<DateParserView> {
   @override
   Widget build(BuildContext context) {
+    return DateParserPage();
     return ScrollableToolView(
       title: Text(S.of(context).dateParser),
       children: [

@@ -30,14 +30,14 @@ dependencies:
   archive: ^3.4.9
   dart_style: ^2.3.2
   uuid: ^4.2.1
-  flutter_svg: ^2.0.7
-  window_manager: ^0.3.6
+  flutter_svg: ^2.0.9
+  window_manager: ^0.3.7
   yaml: ^3.1.2
   json2yaml:
     git:
       url: https://github.com/laiiihz/json2yaml
   flutter_markdown: ^0.6.18+2
-  url_launcher: ^6.1.14
+  url_launcher: ^6.2.1
   animations: ^2.0.8
   flutter_riverpod: ^2.4.6
   sass: ^1.69.5
@@ -50,21 +50,19 @@ dependencies:
   blurhash_dart: ^1.2.1
   flutter_blurhash: ^0.7.0
   image_picker: ^1.0.4
-  device_info_plus: ^9.0.2
+  device_info_plus: ^9.1.0
   network_info_plus: ^4.1.0
-  import_sorter: ^4.6.0
-  markdown: ^7.0.2
+  markdown: ^7.1.1
   pointycastle: ^3.7.3
   pigment: ^1.0.4
   go_router: ^12.1.1
   flutter_colorpicker: ^1.0.3
   image: ^4.1.3
   convert: ^3.1.1
-  path: ^1.8.2
+  path: ^1.8.3
   shelf: ^1.4.1
-  adaptive_breakpoints: ^0.1.4
-  dynamic_color: ^1.6.7
-  tuple: ^2.0.1
+  adaptive_breakpoints: ^0.1.6
+  dynamic_color: ^1.6.8
   multi_split_view: ^2.4.0
   auto_size_text: ^3.0.0
   filesize: ^2.0.1
@@ -74,6 +72,7 @@ dependencies:
   quick_actions: ^1.0.6
   connectivity_plus: ^5.0.1
   flutter_js: ^0.8.0
+  google_fonts: ^6.1.0
 
 dev_dependencies:
   flutter_test:
@@ -81,9 +80,9 @@ dev_dependencies:
 
   flutter_lints: ^3.0.1
   build_runner: ^2.4.6
-  msix: ^3.16.4
+  msix: ^3.16.6
   riverpod_generator: ^2.3.6
-  go_router_builder: ^2.3.3
+  go_router_builder: ^2.3.4
 
 flutter:
   uses-material-design: true

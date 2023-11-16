@@ -71,6 +71,7 @@
   "hashHMACDes": "Keyed-hash message authentication code",
   "hashSM3": "Chinese SM3",
   "hashSecretkey": "Secret key",
+  "help": "Help",
   "hexdecimal": "Hexdecimal",
   "hostName": "Host Name",
   "hypens": "Hypens",

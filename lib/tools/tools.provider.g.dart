@@ -357,6 +357,147 @@ class _StringConfigProviderElement
   String get defaultValue => (origin as StringConfigProvider).defaultValue;
 }
 
+String _$errorTextHash() => r'cf9d657a8375f6cf3ea97a575fc902fe87ba62d6';
+
+abstract class _$ErrorText extends BuildlessAutoDisposeNotifier<String?> {
+  late final Key? key;
+
+  String? build(
+    Key? key,
+  );
+}
+
+/// See also [ErrorText].
+@ProviderFor(ErrorText)
+const errorTextProvider = ErrorTextFamily();
+
+/// See also [ErrorText].
+class ErrorTextFamily extends Family<String?> {
+  /// See also [ErrorText].
+  const ErrorTextFamily();
+
+  /// See also [ErrorText].
+  ErrorTextProvider call(
+    Key? key,
+  ) {
+    return ErrorTextProvider(
+      key,
+    );
+  }
+
+  @override
+  ErrorTextProvider getProviderOverride(
+    covariant ErrorTextProvider provider,
+  ) {
+    return call(
+      provider.key,
+    );
+  }
+
+  static const Iterable<ProviderOrFamily>? _dependencies = null;
+
+  @override
+  Iterable<ProviderOrFamily>? get dependencies => _dependencies;
+
+  static const Iterable<ProviderOrFamily>? _allTransitiveDependencies = null;
+
+  @override
+  Iterable<ProviderOrFamily>? get allTransitiveDependencies =>
+      _allTransitiveDependencies;
+
+  @override
+  String? get name => r'errorTextProvider';
+}
+
+/// See also [ErrorText].
+class ErrorTextProvider
+    extends AutoDisposeNotifierProviderImpl<ErrorText, String?> {
+  /// See also [ErrorText].
+  ErrorTextProvider(
+    Key? key,
+  ) : this._internal(
+          () => ErrorText()..key = key,
+          from: errorTextProvider,
+          name: r'errorTextProvider',
+          debugGetCreateSourceHash:
+              const bool.fromEnvironment('dart.vm.product')
+                  ? null
+                  : _$errorTextHash,
+          dependencies: ErrorTextFamily._dependencies,
+          allTransitiveDependencies: ErrorTextFamily._allTransitiveDependencies,
+          key: key,
+        );
+
+  ErrorTextProvider._internal(
+    super._createNotifier, {
+    required super.name,
+    required super.dependencies,
+    required super.allTransitiveDependencies,
+    required super.debugGetCreateSourceHash,
+    required super.from,
+    required this.key,
+  }) : super.internal();
+
+  final Key? key;
+
+  @override
+  String? runNotifierBuild(
+    covariant ErrorText notifier,
+  ) {
+    return notifier.build(
+      key,
+    );
+  }
+
+  @override
+  Override overrideWith(ErrorText Function() create) {
+    return ProviderOverride(
+      origin: this,
+      override: ErrorTextProvider._internal(
+        () => create()..key = key,
+        from: from,
+        name: null,
+        dependencies: null,
+        allTransitiveDependencies: null,
+        debugGetCreateSourceHash: null,
+        key: key,
+      ),
+    );
+  }
+
+  @override
+  AutoDisposeNotifierProviderElement<ErrorText, String?> createElement() {
+    return _ErrorTextProviderElement(this);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return other is ErrorTextProvider && other.key == key;
+  }
+
+  @override
+  int get hashCode {
+    var hash = _SystemHash.combine(0, runtimeType.hashCode);
+    hash = _SystemHash.combine(hash, key.hashCode);
+
+    return _SystemHash.finish(hash);
+  }
+}
+
+mixin ErrorTextRef on AutoDisposeNotifierProviderRef<String?> {
+  /// The parameter `key` of this provider.
+  Key? get key;
+}
+
+class _ErrorTextProviderElement
+    extends AutoDisposeNotifierProviderElement<ErrorText, String?>
+    with ErrorTextRef {
+  _ErrorTextProviderElement(super.provider);
+
+  @override
+  Key? get key => (origin as ErrorTextProvider).key;
+}
+
 String _$intConfigHash() => r'd051f454fac65925e9a208694606dc480ce982cd';
 
 abstract class _$IntConfig extends BuildlessAutoDisposeNotifier<int> {

@@ -1,5 +1,5 @@
 import 'package:alga/models/app_category.dart';
-import 'package:alga/utils/constants/import_helper.dart';
+import 'package:flutter/material.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'alga_app_view_provider.g.dart';

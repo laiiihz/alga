@@ -25,7 +25,7 @@ class ToolViewConfig extends StatelessWidget {
     return ListTile(
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
       title: DefaultTextStyle.merge(
-        style: TextStyle(color: scheme.onSecondaryContainer),
+        style: TextStyle(color: scheme.onSecondaryContainer, fontFamily: ''),
         child: title,
       ),
       subtitle: subtitle,
@@ -225,6 +225,7 @@ class _ToolViewTextFieldState extends ConsumerState<ToolViewTextField> {
   }
 }
 
+@Deprecated('use [ConfigSwitch]')
 class AlgaConfigSwitch extends ConsumerWidget {
   const AlgaConfigSwitch({
     super.key,

@@ -13,20 +13,20 @@ import 'package:alga/tools/encoders_decoders/uri_parser/uri_parser_view.dart';
 import 'package:alga/tools/formatters/dart/dart_format.dart';
 import 'package:alga/tools/formatters/json/json_format.dart';
 import 'package:alga/tools/generators/hash_generator/hash_gen.dart';
-import 'package:alga/tools/generators/lorem_ipsum_generator/lorem_ipsum_generator_view.dart';
-import 'package:alga/tools/generators/password_generator/password_generator_view.dart';
+import 'package:alga/tools/generators/lorem_ipsum_generator/lorem_ipsum_gen.dart';
+import 'package:alga/tools/generators/password_generator/password_gen.dart';
 import 'package:alga/tools/generators/random_file_generator/random_file_generator_view.dart';
-import 'package:alga/tools/generators/sass_css_generator/sass_css_generator_view.dart';
+import 'package:alga/tools/generators/sass_css_generator/sass2css.dart';
 import 'package:alga/tools/generators/uuid_generator/uuid_gen.dart';
-import 'package:alga/tools/image_tools/blur_hash_tool/blur_hash_tool_view.dart';
-import 'package:alga/tools/image_tools/qrcode_tool/qrcode_view.dart';
+import 'package:alga/tools/image_tools/blur_hash_tool/blur_hash.dart';
+import 'package:alga/tools/image_tools/qrcode_tool/qrcode.dart';
 import 'package:alga/tools/info/device_info/device_info.dart';
 import 'package:alga/tools/info/network_info/network_info_view.dart';
 import 'package:alga/tools/js_tools/quick_js_tool/quick_js_view.dart';
 import 'package:alga/tools/server_tools/static_server_tool/static_server_tool_view.dart';
 import 'package:alga/tools/text_tools/date_parser/date_parser_view.dart';
 import 'package:alga/tools/text_tools/markdown_preview/markdown_preview_view.dart';
-import 'package:alga/tools/text_tools/regex_tester/regex_tester_app_view.dart';
+import 'package:alga/tools/text_tools/regex_tester/regex_tester.dart';
 import 'package:alga/ui/widgets/svg_asset_icon.dart';
 import 'package:alga/utils/constants/import_helper.dart';
 
@@ -141,14 +141,14 @@ class AppAtom {
   static final loremIpsumGenerator = AppAtom(
     title: (context) => context.tr.generatorLoremIpsum,
     icon: const SvgAssetIcon('assets/icons/LoremIpsum.svg'),
-    path: LoremIpsumGeneratorRoute().location,
+    path: LoremIpsumGenRoute().location,
     categories: [AppCategory.generator],
   );
 
   static final passwordGenerator = AppAtom(
     title: (context) => context.tr.passGenerator,
     icon: const Icon(Icons.password),
-    path: PasswordGeneratorRoute().location,
+    path: PasswordGenRoute().location,
     categories: [AppCategory.generator],
   );
 
@@ -163,7 +163,7 @@ class AppAtom {
   static final sass2CssGenerator = AppAtom(
     icon: const SvgAssetIcon('assets/icons/sass.svg', colorIcon: true),
     title: (context) => context.tr.sassCssGenerator,
-    path: SassCssGeneratorRoute().location,
+    path: Sass2cssRoute().location,
     categories: [
       AppCategory.generator,
       AppCategory.converter,
@@ -175,21 +175,21 @@ class AppAtom {
   static final blurhash = AppAtom(
     title: (context) => context.tr.blurHashTool,
     icon: const Icon(Icons.imagesearch_roller),
-    path: BlurHashToolRoute().location,
+    path: BlurHashRoute().location,
     categories: [AppCategory.photo],
   );
 
   static final qrcode = AppAtom(
     icon: const Icon(Icons.qr_code),
     title: (context) => context.tr.qrCodeTool,
-    path: QrcodeRoute().location,
+    path: QrCodeRoute().location,
     categories: [AppCategory.photo, AppCategory.generator],
   );
 
   static final regex = AppAtom(
     icon: const SvgAssetIcon('assets/icons/RegexTester.svg'),
     title: (context) => context.tr.regexTester,
-    path: RegexTestAppRoute().location,
+    path: RegexTesterRoute().location,
     categories: [AppCategory.text],
   );
 

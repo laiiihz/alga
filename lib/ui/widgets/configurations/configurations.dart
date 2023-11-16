@@ -67,6 +67,9 @@ class ConfigSwitch extends ConsumerWidget {
       title: title,
       subtitle: subtitle,
       leading: leading,
+      onPressed: () {
+        ref.read(value.notifier).change();
+      },
       trailing: Switch(
         value: ref.watch(value),
         onChanged: (t) {
@@ -220,17 +223,23 @@ class ConfigNumber extends ConsumerWidget {
     required this.title,
     this.subtitle,
     this.leading,
+    this.min = 0,
     this.max = 99,
     required this.value,
+    this.displayValue,
   });
   final Widget title;
   final Widget? subtitle;
   final Widget? leading;
+  final int min;
   final int max;
   final IntConfigProvider value;
+  final String Function(int value)? displayValue;
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final current = ref.watch(value);
+    final displayText = displayValue?.call(current) ?? current.toString();
+
     return ToolViewConfig(
       title: title,
       subtitle: subtitle,
@@ -243,7 +252,7 @@ class ConfigNumber extends ConsumerWidget {
               minimumSize: const Size.square(32),
               padding: EdgeInsets.zero,
             ),
-            onPressed: current == 0
+            onPressed: current <= min
                 ? null
                 : () {
                     ref.read(value.notifier).change(current - 1);
@@ -259,7 +268,7 @@ class ConfigNumber extends ConsumerWidget {
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                 child: Text(
-                  '$current',
+                  displayText,
                   style: TextStyle(
                     fontSize: 16,
                     color: Theme.of(context).colorScheme.onPrimaryContainer,

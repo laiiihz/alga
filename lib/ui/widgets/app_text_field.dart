@@ -9,6 +9,7 @@ class AppTextField extends StatefulWidget {
     this.language,
     this.minLines,
     this.maxLines,
+    this.expands = false,
   });
 
   final String? text;
@@ -17,6 +18,7 @@ class AppTextField extends StatefulWidget {
   final HighlightType? language;
   final int? minLines;
   final int? maxLines;
+  final bool expands;
 
   @override
   State<AppTextField> createState() => _AppTextFieldState();
@@ -54,6 +56,9 @@ class _AppTextFieldState extends State<AppTextField> {
       controller: _controller,
       minLines: widget.minLines,
       maxLines: widget.maxLines,
+      expands: widget.expands,
+      textAlign: TextAlign.start,
+      textAlignVertical: TextAlignVertical.top,
     );
   }
 }

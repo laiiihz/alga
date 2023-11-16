@@ -14,10 +14,10 @@ class ToolbarPaste extends StatelessWidget {
     return CustomIconButton(
       tooltip: context.tr.paste,
       onPressed: () async {
-        Clipboard.setData(ClipboardData(text: controller.text));
-        // TODO(laiiihz): message
-        ScaffoldMessenger.of(context)
-            .showSnackBar(SnackBar(content: Text(context.tr.pasted)));
+        final data = await Clipboard.getData('text/plain');
+        if (context.mounted && data?.text != null) {
+          controller.text = data!.text!;
+        }
       },
       icon: const Icon(Icons.paste_rounded),
     );

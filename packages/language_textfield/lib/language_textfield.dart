@@ -6,6 +6,7 @@ import 'package:language_textfield/lang_special_builder.dart';
 import 'language_highlight_type.dart';
 
 export 'language_highlight_type.dart';
+
 @Deprecated('direct use TextField')
 class LangTextField extends StatelessWidget {
   const LangTextField({

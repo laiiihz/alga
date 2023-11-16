@@ -10,20 +10,19 @@ import 'package:alga/tools/encoders_decoders/uri_parser/uri_parser_view.dart';
 import 'package:alga/tools/formatters/dart/dart_format.dart';
 import 'package:alga/tools/formatters/json/json_format.dart';
 import 'package:alga/tools/generators/hash_generator/hash_gen.dart';
-import 'package:alga/tools/generators/lorem_ipsum_generator/lorem_ipsum_generator_view.dart';
-import 'package:alga/tools/generators/password_generator/password_generator_view.dart';
+import 'package:alga/tools/generators/lorem_ipsum_generator/lorem_ipsum_gen.dart';
+import 'package:alga/tools/generators/password_generator/password_gen.dart';
 import 'package:alga/tools/generators/random_file_generator/random_file_generator_view.dart';
-import 'package:alga/tools/generators/sass_css_generator/sass_css_generator_view.dart';
+import 'package:alga/tools/generators/sass_css_generator/sass2css.dart';
 import 'package:alga/tools/generators/uuid_generator/uuid_gen.dart';
-import 'package:alga/tools/image_tools/blur_hash_tool/blur_hash_tool_view.dart';
-import 'package:alga/tools/image_tools/qrcode_tool/qrcode_view.dart';
+import 'package:alga/tools/image_tools/blur_hash_tool/blur_hash.dart';
+import 'package:alga/tools/image_tools/qrcode_tool/qrcode.dart';
 import 'package:alga/tools/info/device_info/device_info.dart';
 import 'package:alga/tools/info/network_info/network_info_view.dart';
 import 'package:alga/tools/js_tools/quick_js_tool/quick_js_view.dart';
 import 'package:alga/tools/server_tools/static_server_tool/static_server_tool_view.dart';
 import 'package:alga/tools/text_tools/date_parser/date_parser_view.dart';
 import 'package:alga/tools/text_tools/markdown_preview/markdown_preview_view.dart';
-import 'package:alga/tools/text_tools/regex_tester/regex_tester_app_view.dart';
 import 'package:alga/ui/alga_view/alga_view.dart';
 import 'package:alga/ui/alga_view/all_apps/alga_app_view.dart';
 import 'package:alga/ui/views/favorite_view.dart';
@@ -32,6 +31,8 @@ import 'package:alga/ui/views/settings_view.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
+
+import '../tools/text_tools/regex_tester/regex_tester.dart';
 
 part 'app_router.g.dart';
 
@@ -54,13 +55,13 @@ GoRouter appRouter(AppRouterRef ref) {
     TypedGoRoute<AppsRoute>(path: '/apps', routes: [
       TypedGoRoute<UUIDGenRoute>(path: 'uuid-generator'),
       TypedGoRoute<HashGenRoute>(path: 'hash-generator'),
-      TypedGoRoute<LoremIpsumGeneratorRoute>(path: 'lorem-ipsum-generator'),
-      TypedGoRoute<PasswordGeneratorRoute>(path: 'password-generator'),
+      TypedGoRoute<LoremIpsumGenRoute>(path: 'lorem-ipsum-generator'),
+      TypedGoRoute<PasswordGenRoute>(path: 'password-generator'),
       TypedGoRoute<RandomFileGeneratorRoute>(path: 'random-file-generator'),
-      TypedGoRoute<SassCssGeneratorRoute>(path: 'sass-css-generator'),
-      TypedGoRoute<BlurHashToolRoute>(path: 'blur-hash-tool'),
-      TypedGoRoute<QrcodeRoute>(path: 'qrcode-tool'),
-      TypedGoRoute<RegexTestAppRoute>(path: 'regex-test'),
+      TypedGoRoute<Sass2cssRoute>(path: 'sass-css-generator'),
+      TypedGoRoute<BlurHashRoute>(path: 'blur-hash-tool'),
+      TypedGoRoute<QrCodeRoute>(path: 'qrcode-tool'),
+      TypedGoRoute<RegexTesterRoute>(path: 'regex-test'),
       TypedGoRoute<MarkdownPreviewRoute>(path: 'markdown-preview'),
       TypedGoRoute<DateParserRoute>(path: 'date-parser'),
       TypedGoRoute<JsonYamlConverterRoute>(path: 'json-yaml-converter'),

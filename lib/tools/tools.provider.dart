@@ -24,6 +24,20 @@ class StringConfig extends _$StringConfig {
 }
 
 @riverpod
+class ErrorText extends _$ErrorText {
+  @override
+  String? build(Key? key) => null;
+
+  void change(String? data) {
+    state = data;
+  }
+
+  void clear() {
+    state = null;
+  }
+}
+
+@riverpod
 class IntConfig extends _$IntConfig {
   @override
   int build(Key key, {int defaultValue = 1}) => defaultValue;

@@ -27,11 +27,11 @@ RouteBase get $rootRoute => ShellRouteData.$route(
             ),
             GoRouteData.$route(
               path: 'lorem-ipsum-generator',
-              factory: $LoremIpsumGeneratorRouteExtension._fromState,
+              factory: $LoremIpsumGenRouteExtension._fromState,
             ),
             GoRouteData.$route(
               path: 'password-generator',
-              factory: $PasswordGeneratorRouteExtension._fromState,
+              factory: $PasswordGenRouteExtension._fromState,
             ),
             GoRouteData.$route(
               path: 'random-file-generator',
@@ -39,19 +39,19 @@ RouteBase get $rootRoute => ShellRouteData.$route(
             ),
             GoRouteData.$route(
               path: 'sass-css-generator',
-              factory: $SassCssGeneratorRouteExtension._fromState,
+              factory: $Sass2cssRouteExtension._fromState,
             ),
             GoRouteData.$route(
               path: 'blur-hash-tool',
-              factory: $BlurHashToolRouteExtension._fromState,
+              factory: $BlurHashRouteExtension._fromState,
             ),
             GoRouteData.$route(
               path: 'qrcode-tool',
-              factory: $QrcodeRouteExtension._fromState,
+              factory: $QrCodeRouteExtension._fromState,
             ),
             GoRouteData.$route(
               path: 'regex-test',
-              factory: $RegexTestAppRouteExtension._fromState,
+              factory: $RegexTesterRouteExtension._fromState,
             ),
             GoRouteData.$route(
               path: 'markdown-preview',
@@ -199,9 +199,9 @@ extension $HashGenRouteExtension on HashGenRoute {
   void replace(BuildContext context) => context.replace(location);
 }
 
-extension $LoremIpsumGeneratorRouteExtension on LoremIpsumGeneratorRoute {
-  static LoremIpsumGeneratorRoute _fromState(GoRouterState state) =>
-      LoremIpsumGeneratorRoute();
+extension $LoremIpsumGenRouteExtension on LoremIpsumGenRoute {
+  static LoremIpsumGenRoute _fromState(GoRouterState state) =>
+      LoremIpsumGenRoute();
 
   String get location => GoRouteData.$location(
         '/apps/lorem-ipsum-generator',
@@ -217,9 +217,8 @@ extension $LoremIpsumGeneratorRouteExtension on LoremIpsumGeneratorRoute {
   void replace(BuildContext context) => context.replace(location);
 }
 
-extension $PasswordGeneratorRouteExtension on PasswordGeneratorRoute {
-  static PasswordGeneratorRoute _fromState(GoRouterState state) =>
-      PasswordGeneratorRoute();
+extension $PasswordGenRouteExtension on PasswordGenRoute {
+  static PasswordGenRoute _fromState(GoRouterState state) => PasswordGenRoute();
 
   String get location => GoRouteData.$location(
         '/apps/password-generator',
@@ -253,9 +252,8 @@ extension $RandomFileGeneratorRouteExtension on RandomFileGeneratorRoute {
   void replace(BuildContext context) => context.replace(location);
 }
 
-extension $SassCssGeneratorRouteExtension on SassCssGeneratorRoute {
-  static SassCssGeneratorRoute _fromState(GoRouterState state) =>
-      SassCssGeneratorRoute();
+extension $Sass2cssRouteExtension on Sass2cssRoute {
+  static Sass2cssRoute _fromState(GoRouterState state) => Sass2cssRoute();
 
   String get location => GoRouteData.$location(
         '/apps/sass-css-generator',
@@ -271,9 +269,8 @@ extension $SassCssGeneratorRouteExtension on SassCssGeneratorRoute {
   void replace(BuildContext context) => context.replace(location);
 }
 
-extension $BlurHashToolRouteExtension on BlurHashToolRoute {
-  static BlurHashToolRoute _fromState(GoRouterState state) =>
-      BlurHashToolRoute();
+extension $BlurHashRouteExtension on BlurHashRoute {
+  static BlurHashRoute _fromState(GoRouterState state) => BlurHashRoute();
 
   String get location => GoRouteData.$location(
         '/apps/blur-hash-tool',
@@ -289,8 +286,8 @@ extension $BlurHashToolRouteExtension on BlurHashToolRoute {
   void replace(BuildContext context) => context.replace(location);
 }
 
-extension $QrcodeRouteExtension on QrcodeRoute {
-  static QrcodeRoute _fromState(GoRouterState state) => QrcodeRoute();
+extension $QrCodeRouteExtension on QrCodeRoute {
+  static QrCodeRoute _fromState(GoRouterState state) => QrCodeRoute();
 
   String get location => GoRouteData.$location(
         '/apps/qrcode-tool',
@@ -306,9 +303,8 @@ extension $QrcodeRouteExtension on QrcodeRoute {
   void replace(BuildContext context) => context.replace(location);
 }
 
-extension $RegexTestAppRouteExtension on RegexTestAppRoute {
-  static RegexTestAppRoute _fromState(GoRouterState state) =>
-      RegexTestAppRoute();
+extension $RegexTesterRouteExtension on RegexTesterRoute {
+  static RegexTesterRoute _fromState(GoRouterState state) => RegexTesterRoute();
 
   String get location => GoRouteData.$location(
         '/apps/regex-test',

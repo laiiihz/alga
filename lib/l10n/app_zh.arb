@@ -71,6 +71,7 @@
   "hashHMACDes": "基于密钥的消息身份认证哈希",
   "hashSM3": "国密SM3哈希",
   "hashSecretkey": "密钥",
+  "help": "帮助",
   "hexdecimal": "十六进制",
   "hostName": "主机名",
   "hypens": "连字符",

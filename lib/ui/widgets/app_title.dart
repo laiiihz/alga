@@ -28,6 +28,7 @@ class AppTitle extends StatelessWidget {
   }
 }
 
+@Deprecated('use AlgaToolbar')
 class AppTitleWrapper extends StatelessWidget {
   final String title;
   final List<Widget>? actions;

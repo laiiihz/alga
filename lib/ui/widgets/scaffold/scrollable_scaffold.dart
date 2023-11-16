@@ -8,6 +8,7 @@ class ScrollableScaffold extends StatelessWidget {
     required this.title,
     this.configurations = const [],
     this.children = const [],
+    this.fillRemain,
     this.child,
   });
 
@@ -15,6 +16,7 @@ class ScrollableScaffold extends StatelessWidget {
   final List<Widget> configurations;
   final List<Widget> children;
   final Widget? child;
+  final Widget? fillRemain;
 
   @override
   Widget build(BuildContext context) {
@@ -40,6 +42,14 @@ class ScrollableScaffold extends StatelessWidget {
             SliverPadding(
               padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
               sliver: SliverToBoxAdapter(child: child),
+            ),
+          if (fillRemain != null)
+            SliverPadding(
+              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+              sliver: SliverFillRemaining(
+                hasScrollBody: false,
+                child: fillRemain,
+              ),
             ),
         ],
       ),

@@ -23,24 +23,24 @@ enum UUIDVersion {
 
   String getName(BuildContext context) {
     return switch (this) {
-      UUIDVersion.v1 => 'V1',
-      UUIDVersion.v4 => 'V4(GUID)',
-      UUIDVersion.v5 => 'V5',
-      UUIDVersion.v6 => 'V6',
-      UUIDVersion.v7 => 'V7',
-      UUIDVersion.v8 => 'V8',
+      v1 => 'V1',
+      v4 => 'V4(GUID)',
+      v5 => 'V5',
+      v6 => 'V6',
+      v7 => 'V7',
+      v8 => 'V8',
     };
   }
 
   String genId(bool uppercase, bool hypens,
       {String? namespace, String? nameV5}) {
     String next = switch (this) {
-      UUIDVersion.v1 => _uuid.v1(),
-      UUIDVersion.v4 => _uuid.v4(),
-      UUIDVersion.v5 => '',
-      UUIDVersion.v6 => _uuid.v6(),
-      UUIDVersion.v7 => _uuid.v7(),
-      UUIDVersion.v8 => _uuid.v8(),
+      v1 => _uuid.v1(),
+      v4 => _uuid.v4(),
+      v5 => '',
+      v6 => _uuid.v6(),
+      v7 => _uuid.v7(),
+      v8 => _uuid.v8(),
     };
     if (this == UUIDVersion.v5) {
       try {
