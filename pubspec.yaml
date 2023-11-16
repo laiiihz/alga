@@ -48,7 +48,9 @@ dependencies:
   hive_flutter: ^1.1.0
   qr_flutter: ^4.1.0
   blurhash_dart: ^1.2.1
-  flutter_blurhash: ^0.7.0
+  flutter_blurhash:
+    git:
+      url: https://github.com/MominRaza/flutter_blurhash
   image_picker: ^1.0.4
   device_info_plus: ^9.1.0
   network_info_plus: ^4.1.0
@@ -73,6 +75,7 @@ dependencies:
   connectivity_plus: ^5.0.1
   flutter_js: ^0.8.0
   google_fonts: ^6.1.0
+  two_dimensional_scrollables: ^0.0.4
 
 dev_dependencies:
   flutter_test:

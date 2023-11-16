@@ -1,5 +1,4 @@
 import 'package:alga/utils/constants/import_helper.dart';
-import 'package:flutter/cupertino.dart';
 
 class ErrorMessageWidget extends StatelessWidget {
   const ErrorMessageWidget(this.message, {super.key});
@@ -12,16 +11,27 @@ class ErrorMessageWidget extends StatelessWidget {
   final String message;
   @override
   Widget build(BuildContext context) {
-    return InkResponse(
-      onTap: () {
-        showAdaptiveDialog(
+    final colorScheme = Theme.of(context).colorScheme;
+    return TextButton.icon(
+      style: TextButton.styleFrom(
+        foregroundColor: colorScheme.error,
+        padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 2),
+        minimumSize: Size.zero,
+      ),
+      onPressed: () {
+        showDialog(
           context: context,
           builder: (context) {
-            return AlertDialog.adaptive(
+            return AlertDialog(
+              scrollable: true,
+              backgroundColor: colorScheme.errorContainer.withOpacity(0.5),
               title: const Text('Error'),
-              content: Text(message),
+              content: Text(
+                message * 3,
+                style: TextStyle(color: colorScheme.onErrorContainer),
+              ),
               actions: [
-                AdaptiveDialogAction(
+                TextButton(
                   onPressed: () => Navigator.of(context).pop(),
                   child: Text(context.mtr.okButtonLabel),
                 ),
@@ -30,36 +40,13 @@ class ErrorMessageWidget extends StatelessWidget {
           },
         );
       },
-      highlightShape: BoxShape.rectangle,
-      radius: 32,
-      child: Text(
+      icon: const Icon(Icons.error_rounded),
+      label: Text(
         message,
         maxLines: 1,
         softWrap: false,
         overflow: TextOverflow.ellipsis,
       ),
     );
-  }
-}
-
-class AdaptiveDialogAction extends StatelessWidget {
-  const AdaptiveDialogAction(
-      {super.key, required this.onPressed, required this.child});
-  final VoidCallback onPressed;
-  final Widget child;
-
-  @override
-  Widget build(BuildContext context) {
-    final ThemeData theme = Theme.of(context);
-    switch (theme.platform) {
-      case TargetPlatform.android:
-      case TargetPlatform.fuchsia:
-      case TargetPlatform.linux:
-      case TargetPlatform.windows:
-        return TextButton(onPressed: onPressed, child: child);
-      case TargetPlatform.iOS:
-      case TargetPlatform.macOS:
-        return CupertinoDialogAction(onPressed: onPressed, child: child);
-    }
   }
 }

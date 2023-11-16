@@ -164,6 +164,7 @@ class _ConfigTextFieldState extends ConsumerState<ConfigTextField> {
     _focusNode.addListener(() {
       if (!_focusNode.hasFocus) {
         widget.onEditingComplete?.call(ref);
+        ref.read(widget.provider.notifier).change(_controller.text);
       }
     });
   }
@@ -196,7 +197,6 @@ class _ConfigTextFieldState extends ConsumerState<ConfigTextField> {
         if (!_form.currentState!.validate()) {
           return;
         }
-        ref.read(widget.provider.notifier).change(_controller.text);
         _focusNode.unfocus();
       },
     );

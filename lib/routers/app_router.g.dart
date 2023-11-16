@@ -99,11 +99,11 @@ RouteBase get $rootRoute => ShellRouteData.$route(
             ),
             GoRouteData.$route(
               path: 'json-format',
-              factory: $JsonFormatRouteExtension._fromState,
+              factory: $JsonFormatterRouteExtension._fromState,
             ),
             GoRouteData.$route(
               path: 'dart-format',
-              factory: $DartFormatRouteExtension._fromState,
+              factory: $DartFormatterRouteExtension._fromState,
             ),
             GoRouteData.$route(
               path: 'static-server-tool',
@@ -515,8 +515,9 @@ extension $UriParserRouteExtension on UriParserRoute {
   void replace(BuildContext context) => context.replace(location);
 }
 
-extension $JsonFormatRouteExtension on JsonFormatRoute {
-  static JsonFormatRoute _fromState(GoRouterState state) => JsonFormatRoute();
+extension $JsonFormatterRouteExtension on JsonFormatterRoute {
+  static JsonFormatterRoute _fromState(GoRouterState state) =>
+      JsonFormatterRoute();
 
   String get location => GoRouteData.$location(
         '/apps/json-format',
@@ -532,8 +533,9 @@ extension $JsonFormatRouteExtension on JsonFormatRoute {
   void replace(BuildContext context) => context.replace(location);
 }
 
-extension $DartFormatRouteExtension on DartFormatRoute {
-  static DartFormatRoute _fromState(GoRouterState state) => DartFormatRoute();
+extension $DartFormatterRouteExtension on DartFormatterRoute {
+  static DartFormatterRoute _fromState(GoRouterState state) =>
+      DartFormatterRoute();
 
   String get location => GoRouteData.$location(
         '/apps/dart-format',

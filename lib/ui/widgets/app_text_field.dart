@@ -10,6 +10,7 @@ class AppTextField extends StatefulWidget {
     this.minLines,
     this.maxLines,
     this.expands = false,
+    this.decoration = const InputDecoration(),
   });
 
   final String? text;
@@ -19,6 +20,7 @@ class AppTextField extends StatefulWidget {
   final int? minLines;
   final int? maxLines;
   final bool expands;
+  final InputDecoration? decoration;
 
   @override
   State<AppTextField> createState() => _AppTextFieldState();
@@ -59,6 +61,7 @@ class _AppTextFieldState extends State<AppTextField> {
       expands: widget.expands,
       textAlign: TextAlign.start,
       textAlignVertical: TextAlignVertical.top,
+      decoration: widget.decoration,
     );
   }
 }

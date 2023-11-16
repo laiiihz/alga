@@ -28,6 +28,7 @@ class ToolView extends StatelessWidget {
   }
 }
 
+@Deprecated('use ScrollableScaffold')
 class ScrollableToolView extends StatelessWidget {
   const ScrollableToolView({
     super.key,

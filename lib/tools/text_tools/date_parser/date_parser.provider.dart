@@ -1,3 +1,4 @@
+import 'package:intl/intl.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import 'date_parser.dart';
@@ -30,8 +31,13 @@ const List<String> supportedDateFormat = [
 
   if (customFormat) {
     final customFormatContent = ref.watch(useCustomFormatContent);
-    //TODO
-    return (null, null);
+    try {
+      return (DateFormat(customFormatContent).parse(content), null);
+    } on FormatException catch (e) {
+      return (null, e.message);
+    } catch (e) {
+      return (null, e.toString());
+    }
   } else {
     try {
       return (DateTime.parse(content), null);
@@ -41,4 +47,13 @@ const List<String> supportedDateFormat = [
       return (null, e.toString());
     }
   }
+}
+
+@riverpod
+String formatDateResult(FormatDateResultRef ref) {
+  final format = ref.watch(useFormatContent);
+  final date = ref.watch(dateResultProvider);
+  if (date.$1 == null) return '';
+  if (format.isEmpty) return '';
+  return DateFormat(format).format(date.$1!);
 }
