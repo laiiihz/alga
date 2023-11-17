@@ -77,7 +77,7 @@ class _JsonFormatterPageState extends ConsumerState<JsonFormatterPage> {
               ),
               actions: [
                 CopyButton(() => controller.text),
-                ToolbarPaste(controller: controller),
+                PasteButton(controller: controller),
                 CustomIconButton(
                   tooltip: context.tr.format,
                   onPressed: format,

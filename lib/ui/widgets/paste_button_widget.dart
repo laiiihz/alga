@@ -3,6 +3,7 @@ import 'package:alga/ui/widgets/custom_icon_button.dart';
 
 import '../../utils/snackbar_util.dart';
 
+@Deprecated('use ToolbarPaste')
 class PasteButtonWidget extends ConsumerStatefulWidget {
   const PasteButtonWidget(
     this.controller, {

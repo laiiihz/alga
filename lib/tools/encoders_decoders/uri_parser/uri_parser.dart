@@ -59,7 +59,7 @@ class _UriParserPageState extends ConsumerState<UriParserPage> {
         AlgaToolbar(
           title: Text(context.tr.input),
           actions: [
-            ToolbarPaste(controller: _controller),
+            PasteButton(controller: _controller),
             ClearButton(controller: _controller),
           ],
         ),

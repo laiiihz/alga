@@ -1,4 +1,3 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:alga/models/app_category.dart';
 import 'package:alga/routers/app_router.dart';
 import 'package:alga/tools/tools.dart';
@@ -227,14 +226,14 @@ class AppAtom {
   static final gzip = AppAtom(
     icon: const Icon(Icons.folder_zip),
     title: (context) => context.tr.encoderDecoderGzip,
-    path: GzipCompressDecompressRoute().location,
+    path: GZipCompressRoute().location,
     categories: [AppCategory.encodersDecoders],
   );
 
   static final jwtDecoder = AppAtom(
     icon: const SvgAssetIcon('assets/icons/JWT.svg', colorIcon: true),
     title: (context) => context.tr.decoderJWT,
-    path: JWTDecoderRoute().location,
+    path: JwtDecoderRoute().location,
     categories: [AppCategory.encodersDecoders],
   );
 

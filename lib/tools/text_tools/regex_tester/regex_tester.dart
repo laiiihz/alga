@@ -84,7 +84,7 @@ class _RegexTesterPageState extends ConsumerState<RegexTesterPage> {
         AlgaToolbar(
           title: Text(context.tr.regularExpression),
           actions: [
-            ToolbarPaste(controller: _regexController),
+            PasteButton(controller: _regexController),
             ClearButton(controller: _regexController),
           ],
         ),
@@ -97,7 +97,7 @@ class _RegexTesterPageState extends ConsumerState<RegexTesterPage> {
         AlgaToolbar(
           title: Text(context.tr.regexText),
           actions: [
-            ToolbarPaste(controller: _textController),
+            PasteButton(controller: _textController),
             ClearButton(controller: _textController),
           ],
         ),

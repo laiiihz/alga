@@ -87,11 +87,11 @@ RouteBase get $rootRoute => ShellRouteData.$route(
             ),
             GoRouteData.$route(
               path: 'gzip-compress-decompress',
-              factory: $GzipCompressDecompressRouteExtension._fromState,
+              factory: $GZipCompressRouteExtension._fromState,
             ),
             GoRouteData.$route(
               path: 'jwt-decoder',
-              factory: $JWTDecoderRouteExtension._fromState,
+              factory: $JwtDecoderRouteExtension._fromState,
             ),
             GoRouteData.$route(
               path: 'uri-parser',
@@ -463,9 +463,9 @@ extension $Base64EncoderDecoderRouteExtension on Base64EncoderDecoderRoute {
   void replace(BuildContext context) => context.replace(location);
 }
 
-extension $GzipCompressDecompressRouteExtension on GzipCompressDecompressRoute {
-  static GzipCompressDecompressRoute _fromState(GoRouterState state) =>
-      GzipCompressDecompressRoute();
+extension $GZipCompressRouteExtension on GZipCompressRoute {
+  static GZipCompressRoute _fromState(GoRouterState state) =>
+      GZipCompressRoute();
 
   String get location => GoRouteData.$location(
         '/apps/gzip-compress-decompress',
@@ -481,8 +481,8 @@ extension $GzipCompressDecompressRouteExtension on GzipCompressDecompressRoute {
   void replace(BuildContext context) => context.replace(location);
 }
 
-extension $JWTDecoderRouteExtension on JWTDecoderRoute {
-  static JWTDecoderRoute _fromState(GoRouterState state) => JWTDecoderRoute();
+extension $JwtDecoderRouteExtension on JwtDecoderRoute {
+  static JwtDecoderRoute _fromState(GoRouterState state) => JwtDecoderRoute();
 
   String get location => GoRouteData.$location(
         '/apps/jwt-decoder',

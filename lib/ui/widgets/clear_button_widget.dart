@@ -2,6 +2,7 @@ import 'package:alga/utils/constants/import_helper.dart';
 
 import 'custom_icon_button.dart';
 
+@Deprecated('use ClearButton')
 class ClearButtonWidget extends ConsumerStatefulWidget {
   const ClearButtonWidget(this.controller, {super.key, this.onUpdate});
   final ProviderListenable<TextEditingController> controller;

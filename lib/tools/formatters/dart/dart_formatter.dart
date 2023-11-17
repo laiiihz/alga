@@ -64,7 +64,7 @@ class _DartFormatterPageState extends ConsumerState<DartFormatterPage> {
               ),
               actions: [
                 CopyButton(() => controller.text),
-                ToolbarPaste(controller: controller),
+                PasteButton(controller: controller),
                 CustomIconButton(
                   tooltip: context.tr.format,
                   onPressed: format,

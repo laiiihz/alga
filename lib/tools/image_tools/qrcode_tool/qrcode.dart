@@ -83,7 +83,7 @@ class _QrCodePageState extends ConsumerState<QrCodePage> {
         AlgaToolbar(
           title: Text(context.tr.input),
           actions: [
-            ToolbarPaste(controller: _input),
+            PasteButton(controller: _input),
           ],
         ),
         TextField(

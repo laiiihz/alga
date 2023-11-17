@@ -37,6 +37,7 @@ class ToolViewConfig extends StatelessWidget {
   }
 }
 
+@Deprecated('')
 class ToolViewWrapper extends StatelessWidget {
   /// normally a list of [ToolViewConfig]
   final List<Widget> children;

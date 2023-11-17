@@ -86,7 +86,7 @@ class _HashGenPageState extends ConsumerState<HashGenPage> {
         AlgaToolbar(
           title: Text(context.tr.input),
           actions: [
-            ToolbarPaste(controller: _input),
+            PasteButton(controller: _input),
             ClearButton(controller: _input),
           ],
         ),

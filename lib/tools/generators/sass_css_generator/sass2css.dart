@@ -83,7 +83,7 @@ class _Sass2cssPageState extends ConsumerState<Sass2cssPage> {
         AlgaToolbar(
           title: Text(context.tr.input),
           actions: [
-            ToolbarPaste(controller: _input),
+            PasteButton(controller: _input),
             ClearButton(controller: _input),
           ],
         ),

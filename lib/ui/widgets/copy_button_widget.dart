@@ -46,6 +46,7 @@ class _CopyButtonWidgetState extends ConsumerState<CopyButtonWidget> {
   }
 }
 
+@Deprecated('use CopyButton')
 class CopyButton2 extends ConsumerStatefulWidget {
   const CopyButton2(this.controller, {super.key});
 
@@ -96,6 +97,7 @@ class _CopyButton2State extends ConsumerState<CopyButton2> {
   }
 }
 
+@Deprecated('use CopyButton')
 class CopyButtonWithText extends ConsumerStatefulWidget {
   const CopyButtonWithText(AutoDisposeProvider<String> cText, {super.key})
       : text = cText,

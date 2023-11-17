@@ -44,9 +44,8 @@ GoRouter appRouter(AppRouterRef ref) {
       TypedGoRoute<AbsLengthConverterRoute>(path: 'abs-length-converter'),
       TypedGoRoute<UriEncoderDecoderRoute>(path: 'uri-encoder-decoder'),
       TypedGoRoute<Base64EncoderDecoderRoute>(path: 'base64-encoder-decoder'),
-      TypedGoRoute<GzipCompressDecompressRoute>(
-          path: 'gzip-compress-decompress'),
-      TypedGoRoute<JWTDecoderRoute>(path: 'jwt-decoder'),
+      TypedGoRoute<GZipCompressRoute>(path: 'gzip-compress-decompress'),
+      TypedGoRoute<JwtDecoderRoute>(path: 'jwt-decoder'),
       TypedGoRoute<UriParserRoute>(path: 'uri-parser'),
       TypedGoRoute<JsonFormatterRoute>(path: 'json-format'),
       TypedGoRoute<DartFormatterRoute>(path: 'dart-format'),
