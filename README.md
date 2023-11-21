@@ -57,6 +57,7 @@ A powerful tool app for all developers.
 
 ```shell
 dart pub get
+dart run grinder setup
 ```
 
 ### before build app
