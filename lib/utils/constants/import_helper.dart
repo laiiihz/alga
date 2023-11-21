@@ -6,7 +6,6 @@ export 'package:alga/ui/widgets/copy_button.dart';
 export 'package:alga/ui/widgets/paste_button.dart';
 export 'package:alga/ui/widgets/tool_view.dart';
 export 'package:alga/ui/widgets/tool_view_config.dart';
-export 'package:alga/ui/widgets/toolbar_view.dart';
 export 'package:alga/utils/clipboard_util.dart';
 export 'package:alga/utils/theme_util.dart';
 export 'package:flutter/material.dart';

@@ -20,12 +20,12 @@ final jsEngineProvider = Provider<JavascriptRuntime>.internal(
 );
 
 typedef JsEngineRef = ProviderRef<JavascriptRuntime>;
-String _$jsInputControllerHash() => r'b87e05e70c20da33725522d36ef4b033b1ec6ce4';
+String _$jsInputControllerHash() => r'5bd55c55e939691355ae48b14a3749a43432bbe0';
 
 /// See also [jsInputController].
 @ProviderFor(jsInputController)
 final jsInputControllerProvider =
-    AutoDisposeProvider<TextEditingController>.internal(
+    AutoDisposeProvider<Raw<TextEditingController>>.internal(
   jsInputController,
   name: r'jsInputControllerProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
@@ -35,7 +35,8 @@ final jsInputControllerProvider =
   allTransitiveDependencies: null,
 );
 
-typedef JsInputControllerRef = AutoDisposeProviderRef<TextEditingController>;
+typedef JsInputControllerRef
+    = AutoDisposeProviderRef<Raw<TextEditingController>>;
 String _$jsContentsHash() => r'8cb6199c822ff862f09106d570f7577e0bbeb95e';
 
 /// See also [JsContents].

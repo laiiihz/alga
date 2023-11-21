@@ -57,10 +57,12 @@ class ConfigSwitch extends ConsumerWidget {
     required this.title,
     required this.value,
   });
+
   final Widget title;
   final Widget? subtitle;
   final Widget? leading;
   final BooleanConfigProvider value;
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return ToolViewConfig(
@@ -217,7 +219,7 @@ class _ConfigTextFieldState extends ConsumerState<ConfigTextField> {
   }
 }
 
-class ConfigNumber extends ConsumerWidget {
+class ConfigNumber extends ConsumerStatefulWidget {
   const ConfigNumber({
     super.key,
     required this.title,
@@ -236,14 +238,44 @@ class ConfigNumber extends ConsumerWidget {
   final IntConfigProvider value;
   final String Function(int value)? displayValue;
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final current = ref.watch(value);
-    final displayText = displayValue?.call(current) ?? current.toString();
+  ConsumerState<ConfigNumber> createState() => _ConfigNumberState();
+}
+
+class _ConfigNumberState extends ConsumerState<ConfigNumber> {
+  final _controller = TextEditingController();
+  final focusNode = FocusScopeNode();
+  @override
+  void initState() {
+    super.initState();
+    setText();
+  }
+
+  void setText() {
+    final current = ref.read(widget.value);
+    _controller.text = widget.displayValue?.call(current) ?? current.toString();
+  }
+
+  @override
+  void didUpdateWidget(covariant ConfigNumber oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    setText();
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    focusNode.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final current = ref.watch(widget.value);
 
     return ToolViewConfig(
-      title: title,
-      subtitle: subtitle,
-      leading: leading,
+      title: widget.title,
+      subtitle: widget.subtitle,
+      leading: widget.leading,
       trailing: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
@@ -252,10 +284,11 @@ class ConfigNumber extends ConsumerWidget {
               minimumSize: const Size.square(32),
               padding: EdgeInsets.zero,
             ),
-            onPressed: current <= min
+            onPressed: current <= widget.min
                 ? null
                 : () {
-                    ref.read(value.notifier).change(current - 1);
+                    _controller.text = ref.read(widget.value).toString();
+                    ref.read(widget.value.notifier).change(current - 1);
                   },
             icon: const Icon(Icons.remove),
           ),
@@ -267,11 +300,35 @@ class ConfigNumber extends ConsumerWidget {
                   borderRadius: BorderRadius.circular(16)),
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-                child: Text(
-                  displayText,
-                  style: TextStyle(
-                    fontSize: 16,
-                    color: Theme.of(context).colorScheme.onPrimaryContainer,
+                child: IntrinsicWidth(
+                  child: EditableText(
+                    controller: _controller,
+                    inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+                    style: TextStyle(
+                      fontSize: 16,
+                      color: Theme.of(context).colorScheme.onPrimaryContainer,
+                    ),
+                    focusNode: focusNode,
+                    cursorColor:
+                        Theme.of(context).colorScheme.onTertiaryContainer,
+                    backgroundCursorColor:
+                        Theme.of(context).colorScheme.tertiaryContainer,
+                    onEditingComplete: () {
+                      final next = int.tryParse(_controller.text);
+                      if (next == null) {
+                        focusNode.unfocus();
+                        return;
+                      }
+                      if (next <= widget.min) {
+                        ref.read(widget.value.notifier).change(widget.min);
+                      } else if (next >= widget.max) {
+                        ref.read(widget.value.notifier).change(widget.max);
+                      } else {
+                        ref.read(widget.value.notifier).change(next);
+                      }
+
+                      focusNode.unfocus();
+                    },
                   ),
                 ),
               ),
@@ -282,10 +339,11 @@ class ConfigNumber extends ConsumerWidget {
               minimumSize: const Size.square(32),
               padding: EdgeInsets.zero,
             ),
-            onPressed: current >= max
+            onPressed: current >= widget.max
                 ? null
                 : () {
-                    ref.read(value.notifier).change(current + 1);
+                    _controller.text = ref.read(widget.value).toString();
+                    ref.read(widget.value.notifier).change(current + 1);
                   },
             icon: const Icon(Icons.add_rounded),
           ),

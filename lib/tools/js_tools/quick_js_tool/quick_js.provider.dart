@@ -40,7 +40,7 @@ class JsContents extends _$JsContents {
 }
 
 @riverpod
-TextEditingController jsInputController(JsInputControllerRef ref) {
+Raw<TextEditingController> jsInputController(JsInputControllerRef ref) {
   final controller = TextEditingController();
   ref.onDispose(controller.dispose);
   return controller;

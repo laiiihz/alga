@@ -2,6 +2,7 @@ import 'package:multi_split_view/multi_split_view.dart';
 
 import '../../utils/constants/import_helper.dart';
 
+@Deprecated('Scrollable Scaffold')
 class AppScaffold extends StatelessWidget {
   const AppScaffold({
     super.key,

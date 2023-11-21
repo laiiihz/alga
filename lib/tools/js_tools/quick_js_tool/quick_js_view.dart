@@ -1,5 +1,4 @@
 import 'package:alga/tools/js_tools/quick_js_tool/quick_js.provider.dart';
-import 'package:alga/ui/widgets/scaffold/tool_scaffold.dart';
 import 'package:alga/utils/constants/import_helper.dart';
 
 class QuickJsRoute extends GoRouteData {
@@ -15,8 +14,8 @@ class QuickJsView extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final items = ref.watch(jsContentsProvider);
-    return ToolScaffold(
-      title: Text(context.tr.jsTools),
+    return Scaffold(
+      appBar: AppBar(title: Text(context.tr.jsTools)),
       body: ListView.builder(
         itemBuilder: (context, index) {
           final item = items[index];

@@ -1,56 +1,100 @@
-import 'package:alga/utils/constants/import_helper.dart';
-import 'package:pigment/pigment.dart';
-import 'package:riverpod_annotation/riverpod_annotation.dart';
+part of 'color_converter.dart';
 
-part 'color_converter.provider.g.dart';
+class ColorResult {
+  ColorResult(this.color);
 
-@riverpod
-TextEditingController inputController(InputControllerRef ref) {
-  final controller = TextEditingController();
-  ref.onDispose(controller.dispose);
-  controller.addListener(() => ref.invalidate(colorProvider));
-  return controller;
+  final Color color;
+
+  String get cssHex {
+    final buf = StringBuffer();
+    buf.write('#');
+    buf.write(color.red.pad2hex);
+    buf.write(color.green.pad2hex);
+    buf.write(color.blue.pad2hex);
+    if (color.opacity != 1) {
+      buf.write(color.alpha.pad2hex);
+    }
+    return buf.toString();
+  }
+
+  String get flutterHex =>
+      '0x${color.value.toRadixString(16).toUpperCase().padLeft(8, '0')}';
+
+  String get cssRGB {
+    final buf = StringBuffer();
+    if (color.opacity == 1) {
+      buf.write('rgb(');
+    } else {
+      buf.write('rgba(');
+    }
+
+    buf.write(color.red);
+    buf.write(', ');
+    buf.write(color.green);
+    buf.write(', ');
+    buf.write(color.blue);
+    if (color.opacity != 1) {
+      buf.write(', ');
+      buf.write(color.opacity.toStringAsFixed(2));
+    }
+    buf.write(')');
+
+    return buf.toString();
+  }
+
+  HSLColor get hsl => HSLColor.fromColor(color);
+
+  String get cssHSL {
+    final buf = StringBuffer();
+    final hsl = HSLColor.fromColor(color);
+    if (color.opacity == 1) {
+      buf.write('hsl(');
+    } else {
+      buf.write('hsla(');
+    }
+
+    buf.write(hsl.hue);
+    buf.write(', ');
+    buf.write(hsl.saturation.toStringAsFixed(2));
+    buf.write(', ');
+    buf.write(hsl.lightness.toStringAsFixed(2));
+    if (color.opacity != 1) {
+      buf.write(', ');
+      buf.write(color.opacity.toStringAsFixed(2));
+    }
+    buf.write(')');
+
+    return buf.toString();
+  }
+
+  HSVColor get hsv => HSVColor.fromColor(color);
 }
 
 @riverpod
-Color color(ColorRef ref) {
-  final text = ref.watch(inputControllerProvider).text;
-  if (text.isEmpty) return Colors.transparent;
+(ColorResult?, String?) result(ResultRef ref) {
+  final content = ref.watch(_useContent);
+  Color? next;
+  if (content.startsWith('0x') && content.length == 10) {
+    next = _parseFlutterColor(content);
+  }
+  if (next != null) {
+    return (ColorResult(next), null);
+  }
   try {
-    return Pigment.fromString(text);
+    return (ColorResult(Pigment.fromString(content)), null);
   } catch (e) {
-    return Colors.transparent;
+    return (null, e.toString());
   }
 }
 
-@riverpod
-String hexValue(HexValueRef ref) {
-  final color = ref.watch(colorProvider);
-  return '#${color.value.toRadixString(16).padLeft(8, '0')}';
+Color? _parseFlutterColor(String content) {
+  final value = int.tryParse(content.substring(2));
+  if (value == null) return null;
+  return Color(value);
 }
 
-@riverpod
-String rgb(RgbRef ref) {
-  final color = ref.watch(colorProvider);
-  return 'rgb(${color.red}, ${color.green}, ${color.blue})';
-}
-
-@riverpod
-String rgba(RgbaRef ref) {
-  final color = ref.watch(colorProvider);
-  return 'rgba(${color.red}, ${color.green}, ${color.blue}, ${color.opacity})';
-}
-
-@riverpod
-String hsl(HslRef ref) {
-  final color = ref.watch(colorProvider);
-  final hsl = HSLColor.fromColor(color);
-  return 'hsl(${hsl.hue.toStringAsFixed(0)}, ${hsl.saturation.toStringAsFixed(2)}%, ${hsl.lightness.toStringAsFixed(2)}%)';
-}
-
-@riverpod
-String hsv(HsvRef ref) {
-  final color = ref.watch(colorProvider);
-  final hsv = HSVColor.fromColor(color);
-  return 'hsv(${hsv.hue.toStringAsFixed(0)}, ${hsv.saturation.toStringAsFixed(2)}%, ${hsv.value.toStringAsFixed(2)}%)';
+extension on int {
+  String get pad2hex {
+    return toRadixString(16).padLeft(2, '0');
+  }
 }

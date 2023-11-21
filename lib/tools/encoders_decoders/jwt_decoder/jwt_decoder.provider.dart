@@ -2,7 +2,8 @@ part of 'jwt_decoder.dart';
 
 @riverpod
 (JWTModel?, String?) results(ResultsRef ref) {
-  final content = ref.watch(_useContent);
+  final a = stringConfigProvider(const Key('content'));
+  final content = ref.watch(a);
   if (content.isEmpty) return (null, null);
   try {
     return (JWTModel.fromToken(content), null);

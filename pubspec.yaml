@@ -39,7 +39,7 @@ dependencies:
   flutter_markdown: ^0.6.18+2
   url_launcher: ^6.2.1
   animations: ^2.0.8
-  flutter_riverpod: ^2.4.6
+  flutter_riverpod: ^2.4.8
   sass: ^1.69.5
   file_selector: ^1.0.1
   shelf_static: ^1.1.2
@@ -52,13 +52,12 @@ dependencies:
     git:
       url: https://github.com/MominRaza/flutter_blurhash
   image_picker: ^1.0.4
-  device_info_plus: ^9.1.0
+  device_info_plus: ^9.1.1
   network_info_plus: ^4.1.0
   markdown: ^7.1.1
   pointycastle: ^3.7.3
   pigment: ^1.0.4
   go_router: ^12.1.1
-  flutter_colorpicker: ^1.0.3
   image: ^4.1.3
   convert: ^3.1.1
   path: ^1.8.3
@@ -68,7 +67,7 @@ dependencies:
   multi_split_view: ^2.4.0
   auto_size_text: ^3.0.0
   filesize: ^2.0.1
-  riverpod_annotation: ^2.3.1
+  riverpod_annotation: ^2.3.2
   file: ^7.0.0
   path_provider: ^2.1.1
   quick_actions: ^1.0.6
@@ -77,6 +76,8 @@ dependencies:
   google_fonts: ^6.1.0
   two_dimensional_scrollables: ^0.0.4
   gal: ^2.1.3
+  dio: ^5.3.3
+  flex_color_picker: ^3.3.0
 
 dev_dependencies:
   flutter_test:
@@ -85,8 +86,10 @@ dev_dependencies:
   flutter_lints: ^3.0.1
   build_runner: ^2.4.6
   msix: ^3.16.6
-  riverpod_generator: ^2.3.6
+  riverpod_generator: ^2.3.8
   go_router_builder: ^2.3.4
+  riverpod_lint: ^2.3.6
+  custom_lint: ^0.5.7
 
 flutter:
   uses-material-design: true

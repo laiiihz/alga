@@ -10,7 +10,7 @@ class DateFormatHelper extends StatelessWidget {
       context: context,
       useRootNavigator: false,
       builder: (context) => AlertDialog(
-        title: const Text('Foramt Table'),
+        title: Text(context.tr.formatTable),
         content: const DateFormatHelper(),
         actions: [
           TextButton(

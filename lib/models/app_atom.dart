@@ -212,14 +212,14 @@ class AppAtom {
   static final urlEncoderDecoder = AppAtom(
     icon: const Icon(Icons.link),
     title: (context) => context.tr.encoderDecoderURL,
-    path: UriEncoderDecoderRoute().location,
+    path: UriCodecRoute().location,
     categories: [AppCategory.encodersDecoders],
   );
 
   static final base64 = AppAtom(
     icon: const SvgAssetIcon('assets/icons/Base64.svg'),
     title: (context) => context.tr.encoderDecoderBase64,
-    path: Base64EncoderDecoderRoute().location,
+    path: Base64CodecRoute().location,
     categories: [AppCategory.encodersDecoders],
   );
 
@@ -260,7 +260,7 @@ class AppAtom {
   static final staticServer = AppAtom(
     icon: const Icon(Icons.file_open),
     title: (context) => context.tr.staticServerTool,
-    path: StaticServerToolRoute().location,
+    path: StaticServerRoute().location,
     categories: [AppCategory.server],
   );
   // info

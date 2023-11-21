@@ -1,0 +1,26 @@
+{
+  "ja": [
+    "colorAccent",
+    "colorBoth",
+    "colorBw",
+    "colorCustom",
+    "colorPrimary",
+    "colorWheel",
+    "emptyValue",
+    "encoded",
+    "formatException",
+    "formatTable",
+    "help",
+    "original"
+  ],
+
+  "zh": [
+    "colorAccent",
+    "colorBoth",
+    "colorBw",
+    "colorCustom",
+    "colorPrimary",
+    "colorWheel",
+    "formatTable"
+  ]
+}

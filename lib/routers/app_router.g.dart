@@ -79,11 +79,11 @@ RouteBase get $rootRoute => ShellRouteData.$route(
             ),
             GoRouteData.$route(
               path: 'uri-encoder-decoder',
-              factory: $UriEncoderDecoderRouteExtension._fromState,
+              factory: $UriCodecRouteExtension._fromState,
             ),
             GoRouteData.$route(
               path: 'base64-encoder-decoder',
-              factory: $Base64EncoderDecoderRouteExtension._fromState,
+              factory: $Base64CodecRouteExtension._fromState,
             ),
             GoRouteData.$route(
               path: 'gzip-compress-decompress',
@@ -107,7 +107,7 @@ RouteBase get $rootRoute => ShellRouteData.$route(
             ),
             GoRouteData.$route(
               path: 'static-server-tool',
-              factory: $StaticServerToolRouteExtension._fromState,
+              factory: $StaticServerRouteExtension._fromState,
             ),
             GoRouteData.$route(
               path: 'device-info',
@@ -427,9 +427,8 @@ extension $AbsLengthConverterRouteExtension on AbsLengthConverterRoute {
   void replace(BuildContext context) => context.replace(location);
 }
 
-extension $UriEncoderDecoderRouteExtension on UriEncoderDecoderRoute {
-  static UriEncoderDecoderRoute _fromState(GoRouterState state) =>
-      UriEncoderDecoderRoute();
+extension $UriCodecRouteExtension on UriCodecRoute {
+  static UriCodecRoute _fromState(GoRouterState state) => UriCodecRoute();
 
   String get location => GoRouteData.$location(
         '/apps/uri-encoder-decoder',
@@ -445,9 +444,8 @@ extension $UriEncoderDecoderRouteExtension on UriEncoderDecoderRoute {
   void replace(BuildContext context) => context.replace(location);
 }
 
-extension $Base64EncoderDecoderRouteExtension on Base64EncoderDecoderRoute {
-  static Base64EncoderDecoderRoute _fromState(GoRouterState state) =>
-      Base64EncoderDecoderRoute();
+extension $Base64CodecRouteExtension on Base64CodecRoute {
+  static Base64CodecRoute _fromState(GoRouterState state) => Base64CodecRoute();
 
   String get location => GoRouteData.$location(
         '/apps/base64-encoder-decoder',
@@ -551,9 +549,9 @@ extension $DartFormatterRouteExtension on DartFormatterRoute {
   void replace(BuildContext context) => context.replace(location);
 }
 
-extension $StaticServerToolRouteExtension on StaticServerToolRoute {
-  static StaticServerToolRoute _fromState(GoRouterState state) =>
-      StaticServerToolRoute();
+extension $StaticServerRouteExtension on StaticServerRoute {
+  static StaticServerRoute _fromState(GoRouterState state) =>
+      StaticServerRoute();
 
   String get location => GoRouteData.$location(
         '/apps/static-server-tool',

@@ -1,6 +1,15 @@
-part of './base_64_encoder_decoder.dart';
+import 'dart:convert';
+import 'dart:io';
 
-Future _showBase64ImagePicker(BuildContext context, WidgetRef ref) async {
+import 'package:alga/l10n/l10n.dart';
+import 'package:alga/ui/widgets/app_text_field.dart';
+import 'package:alga/ui/widgets/custom_icon_button.dart';
+import 'package:alga/utils/clipboard_util.dart';
+import 'package:alga/utils/image_util.dart';
+import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
+
+Future _showBase64ImagePicker(BuildContext context) async {
   final file = await ImageUtil.pick();
   if (file == null) {
     if (context.mounted) {
@@ -35,7 +44,7 @@ Future _showBase64ImagePicker(BuildContext context, WidgetRef ref) async {
                           const SnackBar(content: Text('copy success')));
                     }
                   },
-                  child: Text(S.of(context).copy),
+                  child: Text(context.tr.copy),
                 ),
               ],
             );
@@ -61,16 +70,15 @@ Future<String> _encode2Base64(File file) async {
   return const Base64Encoder.urlSafe().convert(bytes);
 }
 
-class _Base64ImageButton extends StatelessWidget {
-  final WidgetRef ref;
-  const _Base64ImageButton({required this.ref});
+class Base64ImageButton extends StatelessWidget {
+  const Base64ImageButton({super.key});
 
   @override
   Widget build(BuildContext context) {
     return CustomIconButton(
       icon: const Icon(Icons.image),
       onPressed: () {
-        _showBase64ImagePicker(context, ref);
+        _showBase64ImagePicker(context);
       },
       tooltip: '',
     );

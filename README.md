@@ -1,5 +1,4 @@
 # Alga
-
 > [WIP] a new version of `alga` is work-in-progress.
 
 A powerful tool app for all developers.

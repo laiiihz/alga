@@ -6,7 +6,7 @@ part of 'alga_app_view_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$appTabControllerHash() => r'2243ead326a480e04595aa16e29940b1e1b1498a';
+String _$appTabControllerHash() => r'd494014d9b2281bb8749069b20abd474b5cac43a';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -34,7 +34,7 @@ class _SystemHash {
 const appTabControllerProvider = AppTabControllerFamily();
 
 /// See also [appTabController].
-class AppTabControllerFamily extends Family<TabController> {
+class AppTabControllerFamily extends Family<Raw<TabController>> {
   /// See also [appTabController].
   const AppTabControllerFamily();
 
@@ -72,7 +72,7 @@ class AppTabControllerFamily extends Family<TabController> {
 }
 
 /// See also [appTabController].
-class AppTabControllerProvider extends AutoDisposeProvider<TabController> {
+class AppTabControllerProvider extends AutoDisposeProvider<Raw<TabController>> {
   /// See also [appTabController].
   AppTabControllerProvider({
     required TickerProvider vsync,
@@ -107,7 +107,7 @@ class AppTabControllerProvider extends AutoDisposeProvider<TabController> {
 
   @override
   Override overrideWith(
-    TabController Function(AppTabControllerRef provider) create,
+    Raw<TabController> Function(AppTabControllerRef provider) create,
   ) {
     return ProviderOverride(
       origin: this,
@@ -124,7 +124,7 @@ class AppTabControllerProvider extends AutoDisposeProvider<TabController> {
   }
 
   @override
-  AutoDisposeProviderElement<TabController> createElement() {
+  AutoDisposeProviderElement<Raw<TabController>> createElement() {
     return _AppTabControllerProviderElement(this);
   }
 
@@ -142,13 +142,14 @@ class AppTabControllerProvider extends AutoDisposeProvider<TabController> {
   }
 }
 
-mixin AppTabControllerRef on AutoDisposeProviderRef<TabController> {
+mixin AppTabControllerRef on AutoDisposeProviderRef<Raw<TabController>> {
   /// The parameter `vsync` of this provider.
   TickerProvider get vsync;
 }
 
 class _AppTabControllerProviderElement
-    extends AutoDisposeProviderElement<TabController> with AppTabControllerRef {
+    extends AutoDisposeProviderElement<Raw<TabController>>
+    with AppTabControllerRef {
   _AppTabControllerProviderElement(super.provider);
 
   @override
