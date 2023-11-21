@@ -61,6 +61,7 @@ class _SearchViewState extends State<SearchView> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: CustomScrollView(
+        keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
         slivers: [
           const SliverAppBar.large(title: Text('搜索')),
           SliverPersistentHeader(
@@ -93,7 +94,7 @@ class _SearchViewState extends State<SearchView> {
                   childCount: _items.length,
                 ),
                 gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-                  maxCrossAxisExtent: 200,
+                  maxCrossAxisExtent: 220,
                   childAspectRatio: 1.618,
                   mainAxisSpacing: 8,
                   crossAxisSpacing: 8,

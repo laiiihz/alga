@@ -1,4 +1,8 @@
 ## Unreleased
+### Fixed
+- fix search view not hide when scroll
+
+## 2.0.1-dev+37 - 2023-11-21
 ### Added
 - Material 3 Appbar.
 - URL encoder/decoder add more options #5 thanks @RiqueAM.

@@ -11,7 +11,7 @@ class AlgaAppItem extends StatelessWidget {
   Widget build(BuildContext context) {
     final colorScheme = Theme.of(context).colorScheme;
 
-    Color iconColor = colorScheme.secondaryContainer;
+    Color iconColor = colorScheme.onSecondaryContainer;
 
     return ValueListenableBuilder(
       valueListenable: FavoriteBox.listener(item.path),
@@ -37,40 +37,45 @@ class AlgaAppItem extends StatelessWidget {
           ),
         );
       },
-      child: Row(
+      child: Stack(
         children: [
-          const SizedBox(width: 8),
-          Material(
-            shape: ContinuousRectangleBorder(
-              borderRadius: BorderRadius.circular(32),
-            ),
-            color: iconColor,
+          Positioned(
+            left: 16 - 48,
+            bottom: 16,
             child: Padding(
               padding: const EdgeInsets.all(8.0),
-              child: item.icon,
+              child: IconTheme.merge(
+                data: IconThemeData(
+                  size: 84,
+                  color: iconColor.withOpacity(0.4),
+                ),
+                child: item.icon,
+              ),
             ),
           ),
-          const SizedBox(width: 4),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(4.0),
-                  child: AutoSizeText(
-                    item.title(context),
-                    maxLines: 2,
-                    minFontSize: 12,
-                    style: TextStyle(
-                      color: colorScheme.onSecondaryContainer,
-                    ),
+          Positioned(
+            left: 48,
+            right: 16,
+            top: 8,
+            bottom: 16,
+            child: Padding(
+              padding: const EdgeInsets.all(4.0),
+              child: Align(
+                alignment: Alignment.bottomRight,
+                child: AutoSizeText(
+                  item.title(context),
+                  maxLines: 2,
+                  minFontSize: 12,
+                  textAlign: TextAlign.end,
+                  style: TextStyle(
+                    color: colorScheme.onSecondaryContainer,
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
-              ],
+              ),
             ),
           ),
-          const SizedBox(width: 4),
         ],
       ),
     );

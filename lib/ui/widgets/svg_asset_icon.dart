@@ -15,20 +15,20 @@ class SvgAssetIcon extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final iconSize = IconTheme.of(context).size;
+    final iconColor = IconTheme.of(context).color;
     final color = _color(context);
+    final svgWidget = SvgPicture.asset(
+      svg,
+      width: iconSize,
+      height: iconSize,
+      colorFilter: color == null
+          ? null
+          : ColorFilter.mode(iconColor ?? color, BlendMode.srcIn),
+    );
     return SizedBox.square(
       dimension: iconSize,
-      child: SvgPicture.asset(
-        svg,
-        width: iconSize,
-        height: iconSize,
-        colorFilter: color == null
-            ? null
-            : ColorFilter.mode(
-                color,
-                BlendMode.srcIn,
-              ),
-      ),
+      child:
+          color == null ? Opacity(opacity: 0.4, child: svgWidget) : svgWidget,
     );
   }
 }
