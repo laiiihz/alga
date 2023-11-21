@@ -53,6 +53,12 @@ A powerful tool app for all developers.
 
 ## Getting Started
 
+### install dependencies
+
+```shell
+dart pub get
+```
+
 ### before build app
 
 #### Android

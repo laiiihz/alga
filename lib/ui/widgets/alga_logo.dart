@@ -14,7 +14,7 @@ class AlgaLogo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Material(
-      color: Theme.of(context).colorScheme.secondaryContainer,
+      color: Theme.of(context).colorScheme.primaryContainer,
       shape: ContinuousRectangleBorder(
         borderRadius: BorderRadius.circular(radius),
       ),

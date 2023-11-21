@@ -49,3 +49,6 @@ app.*.map.json
 
 # flutter_distributor generated
 /dist/
+
+/lib/l10n/generated/
+/**/*.g.dart

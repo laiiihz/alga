@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'package:flutter_gen/gen_l10n/s.dart';
+import 'generated/app.translation.g.dart';
+
 
 class S {
   static AppLocalizations of(BuildContext context) {

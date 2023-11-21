@@ -30,3 +30,5 @@ linter:
 analyzer:
   plugins:
     - custom_lint
+  exclude:
+    - "lib/l10n/generated/*.g.dart"

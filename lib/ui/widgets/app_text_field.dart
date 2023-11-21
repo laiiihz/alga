@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:language_textfield/lang_special_builder.dart';
 import 'package:language_textfield/language_textfield.dart';
 
 class AppTextField extends StatefulWidget {
@@ -42,6 +43,10 @@ class _AppTextFieldState extends State<AppTextField> {
   @override
   void didUpdateWidget(AppTextField oldWidget) {
     _controller.text = widget.text ?? '';
+    if (_controller is RichTextController && widget.language != null) {
+      (_controller as RichTextController)
+          .updateBuilder(LanguageBuilder.highlight(widget.language!));
+    }
     super.didUpdateWidget(oldWidget);
   }
 

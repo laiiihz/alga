@@ -68,7 +68,7 @@ class AppAtom {
   static final textApps = <AppAtom>[regex, markdown, dateParser];
   static final converters = <AppAtom>[
     sass2CssGenerator,
-    jsonYamlConverter,
+    commonConverter,
     numberBaseConverter,
     colorConverter,
   ];
@@ -181,10 +181,10 @@ class AppAtom {
     categories: [AppCategory.text],
   );
 
-  static final jsonYamlConverter = AppAtom(
-    icon: const SvgAssetIcon('assets/icons/JsonYaml.svg'),
-    title: (context) => context.tr.jsonYamlConverter,
-    path: JsonYamlConverterRoute().location,
+  static final commonConverter = AppAtom(
+    icon: const Icon(Icons.swap_calls),
+    title: (context) => 'Common Converter',
+    path: CommonConverterRoute().location,
     categories: [AppCategory.converter],
   );
 
@@ -200,13 +200,6 @@ class AppAtom {
     title: (context) => context.tr.colorConverter,
     path: ColorConverterRoute().location,
     categories: [AppCategory.converter, AppCategory.design],
-  );
-
-  static final absLengthConverter = AppAtom(
-    icon: const Icon(Icons.legend_toggle),
-    title: (context) => context.tr.absoluteLengthConverter,
-    path: AbsLengthConverterRoute().location,
-    categories: [AppCategory.converter],
   );
 
   static final urlEncoderDecoder = AppAtom(

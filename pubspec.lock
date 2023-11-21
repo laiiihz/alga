@@ -202,7 +202,7 @@ packages:
     source: hosted
     version: "0.2.3"
   cli_util:
-    dependency: transitive
+    dependency: "direct dev"
     description:
       name: cli_util
       sha256: b8db3080e59b2503ca9e7922c3df2072cf13992354d5e944074ffa836fba43b7
@@ -647,7 +647,7 @@ packages:
     source: hosted
     version: "2.3.1"
   grinder:
-    dependency: transitive
+    dependency: "direct dev"
     description:
       name: grinder
       sha256: e1996e485d2b56bb164a8585679758d488fbf567273f51c432c8733fee1f6188
@@ -1040,10 +1040,10 @@ packages:
     dependency: transitive
     description:
       name: petitparser
-      sha256: eeb2d1428ee7f4170e2bd498827296a18d4e7fc462b71727d111c0ac7707cfa6
+      sha256: cb3798bef7fc021ac45b308f4b51208a152792445cce0448c9a4ba5879dd8750
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "6.0.1"
+    version: "5.4.0"
   pigment:
     dependency: "direct main"
     description:
@@ -1409,6 +1409,14 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "1.0.1"
+  toml:
+    dependency: "direct main"
+    description:
+      name: toml
+      sha256: "157c5dca5160fced243f3ce984117f729c788bb5e475504f3dbcda881accee44"
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "0.14.0"
   two_dimensional_scrollables:
     dependency: "direct main"
     description:
@@ -1602,13 +1610,13 @@ packages:
     source: hosted
     version: "1.0.3"
   xml:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: xml
-      sha256: af5e77e9b83f2f4adc5d3f0a4ece1c7f45a2467b695c2540381bac793e34e556
+      sha256: "5bc72e1e45e941d825fd7468b9b4cc3b9327942649aeb6fc5cdbf135f0a86e84"
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "6.4.2"
+    version: "6.3.0"
   yaml:
     dependency: "direct main"
     description:

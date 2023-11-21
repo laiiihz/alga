@@ -1,11 +1,15 @@
+import 'package:alga/l10n/l10n.dart';
 import 'package:alga/tools/generators/uuid_generator/uuid_gen.provider.dart';
 import 'package:alga/tools/tools.provider.dart';
+import 'package:alga/ui/widgets/app_text_field.dart';
+import 'package:alga/ui/widgets/buttons/copy_button.dart';
 import 'package:alga/ui/widgets/buttons/refresh_button.dart';
 import 'package:alga/ui/widgets/configurations/configurations.dart';
-import 'package:alga/ui/widgets/copy_button_widget.dart';
 import 'package:alga/ui/widgets/scaffold/scrollable_scaffold.dart';
 import 'package:alga/ui/widgets/toolbar/alga_toolbar.dart';
-import 'package:alga/utils/constants/import_helper.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 
 final hypens = booleanConfigProvider(const Key('hypens'), defaultValue: true);
 final uppercase =
@@ -111,9 +115,7 @@ class _UUIDGenPageState extends ConsumerState<UUIDGenPage> {
                 ref.invalidate(resultsProvider);
               }),
             ),
-            CopyButtonWidget(
-              refText: (ref) => ref.read(resultsProvider),
-            ),
+            CopyButton(() => ref.read(resultsProvider)),
           ],
         ),
         AppTextField(text: ref.watch(resultsProvider)),

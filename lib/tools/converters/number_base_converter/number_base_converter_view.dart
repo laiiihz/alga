@@ -19,15 +19,13 @@ class NumberBaseConverterView extends ConsumerWidget {
     return ScrollableToolView(
       title: Text(S.of(context).numberBaseConverter),
       children: ref.watch(_controllers).map((e) {
-        return AppTitleWrapper(
-          title: e.title(context),
-          actions: [
-            IconButton(
-              icon: const Icon(Icons.copy),
-              onPressed: () => e.copy(),
-            ),
-          ],
-          child: TextField(
+        return ListTile(
+          title: Text(e.title(context)),
+          trailing: IconButton(
+            icon: const Icon(Icons.copy),
+            onPressed: () => e.copy(),
+          ),
+          subtitle: TextField(
             controller: e.controller,
             inputFormatters: e.formatter,
             minLines: 1,

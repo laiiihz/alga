@@ -19,7 +19,7 @@ final _controllers =
 class NumberBaseUtil {
   static update(
       NumberBaseController base, List<NumberBaseController> controllers) {
-    for (var item in controllers) {
+    for (var item in controllers) { 
       if (item.runtimeType != base.runtimeType) {
         item.controller.text = base.radixString(item.radix) ?? '';
       }

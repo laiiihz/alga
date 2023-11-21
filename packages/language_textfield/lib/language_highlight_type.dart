@@ -7,6 +7,7 @@ class LangHighlightType {
   static const css = 'css';
   static const uri = 'uri';
   static const js = 'javascript';
+  static const toml = 'toml';
 }
 
 enum HighlightType {
@@ -19,4 +20,5 @@ enum HighlightType {
   uri,
   js,
   jwt,
+  toml,
 }

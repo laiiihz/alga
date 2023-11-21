@@ -53,7 +53,7 @@ class ColorResult {
       buf.write('hsla(');
     }
 
-    buf.write(hsl.hue);
+    buf.write(hsl.hue.toStringAsFixed(3));
     buf.write(', ');
     buf.write(hsl.saturation.toStringAsFixed(2));
     buf.write(', ');
@@ -73,6 +73,9 @@ class ColorResult {
 @riverpod
 (ColorResult?, String?) result(ResultRef ref) {
   final content = ref.watch(_useContent);
+  if (content.isEmpty) {
+    return (null, null);
+  }
   Color? next;
   if (content.startsWith('0x') && content.length == 10) {
     next = _parseFlutterColor(content);
@@ -88,7 +91,7 @@ class ColorResult {
 }
 
 Color? _parseFlutterColor(String content) {
-  final value = int.tryParse(content.substring(2));
+  final value = int.tryParse(content.substring(2), radix: 16);
   if (value == null) return null;
   return Color(value);
 }
