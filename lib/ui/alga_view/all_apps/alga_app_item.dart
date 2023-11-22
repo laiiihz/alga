@@ -11,7 +11,7 @@ class AlgaAppItem extends StatelessWidget {
   Widget build(BuildContext context) {
     final colorScheme = Theme.of(context).colorScheme;
 
-    Color iconColor = colorScheme.onSecondaryContainer;
+    Color iconColor = colorScheme.tertiary;
 
     return ValueListenableBuilder(
       valueListenable: FavoriteBox.listener(item.path),
