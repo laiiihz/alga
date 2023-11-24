@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import 'generated/app.translation.g.dart';
 
-
 class S {
   static AppLocalizations of(BuildContext context) {
     return AppLocalizations.of(context) ??
