@@ -1,7 +1,10 @@
 import 'dart:io';
 
-import 'package:alga/utils/constants/import_helper.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-final isDesktop = StateProvider(
-  (ref) => Platform.isWindows || Platform.isLinux || Platform.isMacOS,
-);
+part 'global.provider.g.dart';
+
+@Riverpod(keepAlive: true)
+bool isDesktop(IsDesktopRef ref) {
+  return Platform.isWindows || Platform.isLinux || Platform.isMacOS;
+}

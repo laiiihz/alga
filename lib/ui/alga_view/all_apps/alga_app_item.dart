@@ -17,26 +17,29 @@ class AlgaAppItem extends StatelessWidget {
       valueListenable: FavoriteBox.listener(item.path),
       builder: (context, _, child) {
         final state = FavoriteBox.get(item);
-        return Material(
-          color: colorScheme.surfaceVariant,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(12),
-            side: state
-                ? BorderSide(color: colorScheme.primary, width: 2)
-                : BorderSide.none,
-          ),
-          clipBehavior: Clip.hardEdge,
-          child: GestureDetector(
-            onTap: () {
-              GoRouter.of(context).go(item.path);
-            },
-            onLongPressStart: (detail) {
-              _showMenu(context, detail.localPosition, state);
-            },
-            onSecondaryTapUp: (detail) {
-              _showMenu(context, detail.localPosition, state);
-            },
-            child: child,
+        return GestureDetector(
+          onLongPressStart: (detail) {},
+          child: Material(
+            color: colorScheme.surfaceVariant,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(12),
+              side: state
+                  ? BorderSide(color: colorScheme.primary, width: 2)
+                  : BorderSide.none,
+            ),
+            clipBehavior: Clip.hardEdge,
+            child: InkWell(
+              onTap: () {
+                GoRouter.of(context).go(item.path);
+              },
+              onSecondaryTapUp: (detail) {
+                _showMenu(context, detail.localPosition, state);
+              },
+              onLongPress: () {
+                _showMenuModal(context, state);
+              },
+              child: child,
+            ),
           ),
         );
       },
@@ -127,5 +130,36 @@ class AlgaAppItem extends StatelessWidget {
         FavoriteBox.update(item);
       default:
     }
+  }
+
+  _showMenuModal(BuildContext context, bool like) async {
+    final colorScheme = Theme.of(context).colorScheme;
+
+    showModalBottomSheet(
+      context: context,
+      showDragHandle: true,
+      builder: (context) {
+        return Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            ListTile(
+              title: like
+                  ? Text(
+                      context.tr.removeFavorite,
+                      style: TextStyle(color: colorScheme.error),
+                    )
+                  : Text(context.tr.addFavorite),
+              trailing: like
+                  ? Icon(Icons.delete_rounded, color: colorScheme.error)
+                  : Icon(Icons.favorite_rounded, color: colorScheme.tertiary),
+              onTap: () {
+                FavoriteBox.update(item);
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
   }
 }

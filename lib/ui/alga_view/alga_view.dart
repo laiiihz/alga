@@ -9,7 +9,7 @@ class AlgaShellRouteView extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    if (ref.watch(isDesktop)) {
+    if (ref.watch(isDesktopProvider)) {
       return Material(
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.stretch,

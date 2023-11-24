@@ -1,5 +1,10 @@
+import 'dart:io';
+
 import 'package:alga/models/app_atom.dart';
 import 'package:alga/models/app_category.dart';
+import 'package:alga/routers/app_router.dart';
+import 'package:alga/ui/global.provider.dart';
+import 'package:alga/ui/views/search_view.dart';
 import 'package:alga/utils/constants/import_helper.dart';
 
 import 'alga_app_item.dart';
@@ -12,22 +17,32 @@ class AppsRoute extends GoRouteData {
   }
 }
 
-class AlgaAppView extends StatefulWidget {
+class AlgaAppView extends ConsumerStatefulWidget {
   const AlgaAppView({super.key});
 
   @override
-  State<AlgaAppView> createState() => AlgaAppViewState();
+  ConsumerState<AlgaAppView> createState() => AlgaAppViewState();
 }
 
-class AlgaAppViewState extends State<AlgaAppView>
+class AlgaAppViewState extends ConsumerState<AlgaAppView>
     with SingleTickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
+    final isDesktop = ref.watch(isDesktopProvider);
     return Scaffold(
       appBar: AppBar(
         title: Text(S.of(context).appName),
-        centerTitle: false,
+        centerTitle: Platform.isIOS,
         bottom: const AppCategoriesPanel(),
+        actions: [
+          if (!isDesktop)
+            IconButton(
+              onPressed: () {
+                SearchRoute().push(context);
+              },
+              icon: const Icon(Icons.search_rounded),
+            ),
+        ],
       ),
       body: Consumer(builder: (context, ref, _) {
         return TabBarView(

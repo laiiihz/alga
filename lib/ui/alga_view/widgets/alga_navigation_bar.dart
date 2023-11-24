@@ -17,8 +17,8 @@ class _AlgaNavigationBarState extends State<AlgaNavigationBar> {
     final location = GoRouterState.of(context).matchedLocation;
     if (location.startsWith(AppsRoute().location)) return 0;
     if (location.startsWith(FavoriteRoute().location)) return 1;
-    if (location.startsWith(SearchRoute().location)) return 2;
-    if (location.startsWith(SettingsRoute().location)) return 3;
+    if (location.startsWith(SearchRoute().location)) return 0;
+    if (location.startsWith(SettingsRoute().location)) return 2;
     return 0;
   }
 
@@ -33,8 +33,6 @@ class _AlgaNavigationBarState extends State<AlgaNavigationBar> {
           case 1:
             FavoriteRoute().go(context);
           case 2:
-            SearchRoute().go(context);
-          case 3:
             SettingsRoute().go(context);
           default:
         }
@@ -49,11 +47,6 @@ class _AlgaNavigationBarState extends State<AlgaNavigationBar> {
           icon: const Icon(Icons.favorite_outline_rounded),
           selectedIcon: const Icon(Icons.favorite_rounded),
           label: context.tr.favorite,
-        ),
-        NavigationDestination(
-          icon: const Icon(Icons.search_outlined),
-          selectedIcon: const Icon(Icons.search_rounded),
-          label: context.tr.search,
         ),
         NavigationDestination(
           icon: const Icon(Icons.settings_outlined),
