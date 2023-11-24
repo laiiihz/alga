@@ -1,6 +1,14 @@
 ## Unreleased
+### Added
+- Full Material 3 Support
+
+### Changed
+- \[BREAK\]
+- app tile long press to open context menu
+
 ### Fixed
 - fix search view not hide when scroll
+- fix searchView title
 
 ## 2.0.1-dev+37 - 2023-11-21
 ### Added

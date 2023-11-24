@@ -63,7 +63,7 @@ class _SearchViewState extends State<SearchView> {
       body: CustomScrollView(
         keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
         slivers: [
-          const SliverAppBar.large(title: Text('搜索')),
+          SliverAppBar.large(title: Text(context.tr.search)),
           SliverPersistentHeader(
             pinned: true,
             delegate: _SearchPersistentHeader(

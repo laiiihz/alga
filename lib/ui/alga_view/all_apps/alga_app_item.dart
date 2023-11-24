@@ -25,13 +25,15 @@ class AlgaAppItem extends StatelessWidget {
                 ? BorderSide(color: colorScheme.primary, width: 2)
                 : BorderSide.none,
           ),
-          child: InkWell(
-            borderRadius: BorderRadius.circular(12),
+          child: GestureDetector(
             onTap: () {
               GoRouter.of(context).go(item.path);
             },
-            onLongPress: () {
-              FavoriteBox.update(item);
+            onLongPressStart: (detail) {
+              _showMenu(context, detail.localPosition, state);
+            },
+            onSecondaryTapUp: (detail) {
+              _showMenu(context, detail.localPosition, state);
             },
             child: child,
           ),
@@ -79,5 +81,50 @@ class AlgaAppItem extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  _showMenu(BuildContext context, Offset offset, bool like) async {
+    final widget = context.findRenderObject()! as RenderBox;
+    final RenderBox overlay =
+        Navigator.of(context).overlay!.context.findRenderObject()! as RenderBox;
+    final RelativeRect position = RelativeRect.fromRect(
+      Rect.fromPoints(
+        widget.localToGlobal(offset, ancestor: overlay),
+        widget.localToGlobal(widget.size.topLeft(Offset.zero) + offset,
+            ancestor: overlay),
+      ),
+      Offset.zero & overlay.size,
+    );
+    final colorScheme = Theme.of(context).colorScheme;
+    final state = await showMenu<int>(
+      context: context,
+      position: position,
+      items: [
+        PopupMenuItem(
+          value: 0,
+          child: Row(
+            children: [
+              like
+                  ? Text(
+                      context.tr.removeFavorite,
+                      style: TextStyle(color: colorScheme.error),
+                    )
+                  : Text(context.tr.addFavorite),
+              const Spacer(),
+              like
+                  ? Icon(Icons.delete_rounded, color: colorScheme.error)
+                  : Icon(Icons.favorite_rounded, color: colorScheme.tertiary),
+            ],
+          ),
+        ),
+      ],
+    );
+    if (!context.mounted) return;
+
+    switch (state) {
+      case 0:
+        FavoriteBox.update(item);
+      default:
+    }
   }
 }

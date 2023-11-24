@@ -1,5 +1,6 @@
 {
   "ja": [
+    "addFavorite",
     "colorAccent",
     "colorBoth",
     "colorBw",
@@ -11,7 +12,8 @@
     "formatException",
     "formatTable",
     "help",
-    "original"
+    "original",
+    "removeFavorite"
   ],
 
   "zh": [
