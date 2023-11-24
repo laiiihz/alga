@@ -1,5 +1,0 @@
-#include "Generated.xcconfig"
-
-FLUTTER_TARGET=lib/main_abi32bit.dart
-ASSET_PREFIX=abi32bit
-BUNDLE_NAME=Alga

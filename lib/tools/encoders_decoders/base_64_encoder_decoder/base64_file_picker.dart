@@ -51,7 +51,7 @@ Future _showBase64ImagePicker(BuildContext context) async {
           } else {
             return const SimpleDialog(
               children: [
-                Center(child: CircularProgressIndicator()),
+                Center(child: CircularProgressIndicator.adaptive()),
               ],
             );
           }

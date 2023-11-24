@@ -25,6 +25,7 @@ class AlgaAppItem extends StatelessWidget {
                 ? BorderSide(color: colorScheme.primary, width: 2)
                 : BorderSide.none,
           ),
+          clipBehavior: Clip.hardEdge,
           child: GestureDetector(
             onTap: () {
               GoRouter.of(context).go(item.path);
