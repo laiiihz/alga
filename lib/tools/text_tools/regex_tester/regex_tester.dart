@@ -14,7 +14,8 @@ import 'package:language_textfield/lang_special_builder.dart';
 import 'package:language_textfield/language_textfield.dart';
 
 final useMultiline = booleanConfigProvider(const Key('multiline'));
-final useCaseSensitive = booleanConfigProvider(const Key('caseSensitive'));
+final useCaseSensitive =
+    booleanConfigProvider(const Key('caseSensitive'), defaultValue: true);
 final useUnicode = booleanConfigProvider(const Key('unicode'));
 final useDotAll = booleanConfigProvider(const Key('dotAll'));
 final useRegex = stringConfigProvider(const Key('regex'));
