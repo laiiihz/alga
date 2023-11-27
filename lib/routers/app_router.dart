@@ -55,9 +55,7 @@ GoRouter appRouter(AppRouterRef ref) {
     ]),
     TypedGoRoute<FavoriteRoute>(path: '/favorite'),
     TypedGoRoute<SearchRoute>(path: '/search'),
-    TypedGoRoute<SettingsRoute>(path: '/settings', routes: [
-      TypedGoRoute<LicensesRoute>(path: 'licenses'),
-    ]),
+    TypedGoRoute<SettingsRoute>(path: '/settings'),
   ],
 )
 class RootRoute extends ShellRouteData {

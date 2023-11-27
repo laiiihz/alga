@@ -66,6 +66,46 @@ class AppConfigBox {
     }
     return HiveUtil.appConfigBox.listenable(keys: listenKeys);
   }
+
+  static String? get _languageCode =>
+      HiveUtil.appConfigBox.get(AppConfigType.languageCode.name);
+  static set _languageCode(String? data) {
+    HiveUtil.appConfigBox.put(AppConfigType.languageCode.name, data);
+  }
+
+  static String? get _countryCode =>
+      HiveUtil.appConfigBox.get(AppConfigType.countryCode.name);
+  static set _countryCode(String? data) {
+    HiveUtil.appConfigBox.put(AppConfigType.countryCode.name, data);
+  }
+
+  static Locale? get appLocale {
+    if (_languageCode == null) return null;
+    return Locale(_languageCode!, _countryCode);
+  }
+
+  static set appLocale(Locale? locale) {
+    if (locale == null) {
+      _languageCode = null;
+      _countryCode = null;
+    } else {
+      _languageCode = locale.languageCode;
+      _countryCode = locale.countryCode;
+    }
+  }
+
+  static bool get pureBlackBackground =>
+      HiveUtil.appConfigBox.get(AppConfigType.pureBlackBackground.name) ??
+      false;
+
+  static set pureBlackBackground(bool state) =>
+      HiveUtil.appConfigBox.put(AppConfigType.pureBlackBackground.name, state);
+
+  static bool get useGridLayout =>
+      HiveUtil.appConfigBox.get(AppConfigType.useGridLayout.name) ?? true;
+
+  static set useGridLayout(bool state) =>
+      HiveUtil.appConfigBox.put(AppConfigType.useGridLayout.name, state);
 }
 
 extension ThemeModeX on ThemeMode {
@@ -85,4 +125,8 @@ enum AppConfigType {
   themeColor,
   themeMode,
   locale,
+  languageCode,
+  countryCode,
+  pureBlackBackground,
+  useGridLayout,
 }

@@ -20,10 +20,7 @@ class ToolViewConfig extends StatelessWidget {
     final scheme = Theme.of(context).colorScheme;
     return ListTile(
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
-      title: DefaultTextStyle.merge(
-        style: TextStyle(color: scheme.onSecondaryContainer, fontFamily: ''),
-        child: title,
-      ),
+      title: title,
       subtitle: subtitle,
       leading: leading,
       trailing: trailing,

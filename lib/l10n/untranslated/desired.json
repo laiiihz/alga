@@ -1,28 +1,11 @@
 {
   "ja": [
-    "addFavorite",
-    "colorAccent",
-    "colorBoth",
-    "colorBw",
-    "colorCustom",
-    "colorPrimary",
-    "colorWheel",
-    "emptyValue",
-    "encoded",
-    "formatException",
-    "formatTable",
-    "help",
-    "original",
-    "removeFavorite"
+    "gridLayout",
+    "pureBlack"
   ],
 
   "zh": [
-    "colorAccent",
-    "colorBoth",
-    "colorBw",
-    "colorCustom",
-    "colorPrimary",
-    "colorWheel",
-    "formatTable"
+    "gridLayout",
+    "pureBlack"
   ]
 }

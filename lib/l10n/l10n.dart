@@ -35,3 +35,18 @@ extension L10nX on BuildContext {
 
   MaterialLocalizations get mtr => MaterialLocalizations.of(this);
 }
+
+extension LocaleExt on Locale? {
+  String getName(BuildContext context) {
+    switch (this) {
+      case const Locale('zh', null):
+        return '简体中文';
+      case const Locale('en', null):
+        return 'English';
+      case const Locale('ja', null):
+        return '日本語';
+      default:
+        return context.tr.followSystem;
+    }
+  }
+}

@@ -39,7 +39,7 @@ dependencies:
   flutter_markdown: ^0.6.18+2
   url_launcher: ^6.2.1
   animations: ^2.0.8
-  flutter_riverpod: ^2.4.8
+  flutter_riverpod: ^2.4.9
   sass: ^1.69.5
   file_selector: ^1.0.1
   shelf_static: ^1.1.2
@@ -67,7 +67,7 @@ dependencies:
   multi_split_view: ^2.4.0
   auto_size_text: ^3.0.0
   filesize: ^2.0.1
-  riverpod_annotation: ^2.3.2
+  riverpod_annotation: ^2.3.3
   file: ^7.0.0
   path_provider: ^2.1.1
   quick_actions: ^1.0.6
@@ -88,9 +88,9 @@ dev_dependencies:
   flutter_lints: ^3.0.1
   build_runner: ^2.4.6
   msix: ^3.16.6
-  riverpod_generator: ^2.3.8
+  riverpod_generator: ^2.3.9
   go_router_builder: ^2.3.4
-  riverpod_lint: ^2.3.6
+  riverpod_lint: ^2.3.7
   custom_lint: ^0.5.7
   grinder: ^0.9.5
   cli_util: ^0.4.0
@@ -104,11 +104,6 @@ flutter:
     - assets/logo/
     - assets/images/
     - assets/android/
-
-  fonts:
-    - family: Noto Sans Mono
-      fonts:
-        - asset: assets/fonts/NotoSansMono-Regular.ttf
 
 import_sorter:
   emojis: true

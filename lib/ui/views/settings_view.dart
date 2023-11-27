@@ -1,4 +1,3 @@
-import 'package:alga/routers/app_router.dart';
 import 'package:alga/ui/widgets/alga_logo.dart';
 import 'package:alga/ui/widgets/app_show_menu.dart';
 import 'package:alga/ui/widgets/setting_title.dart';
@@ -10,13 +9,6 @@ class SettingsRoute extends GoRouteData {
   @override
   Widget build(BuildContext context, GoRouterState state) {
     return const SettingsView();
-  }
-}
-
-class LicensesRoute extends GoRouteData {
-  @override
-  Widget build(BuildContext context, GoRouterState state) {
-    return const LicensePage();
   }
 }
 
@@ -41,9 +33,8 @@ class _SettingsViewState extends State<SettingsView> {
         SliverList(
             delegate: SliverChildListDelegate([
           SettingTitle(Text(context.tr.lookAndFeel)),
-          ValueListenableBuilder(
-            valueListenable: AppConfigBox.key(AppConfigType.themeMode),
-            builder: (context, _, __) {
+          Consumer(
+            builder: (context, ref, child) {
               return AppShowMenu<ThemeMode>(
                 items: ThemeMode.values
                     .map((e) => PopupMenuItem(
@@ -51,43 +42,78 @@ class _SettingsViewState extends State<SettingsView> {
                           child: Text(e.getName(context)),
                         ))
                     .toList(),
-                initialValue: AppConfigBox.themeMode,
+                initialValue: ref.watch(appThemeModeProvider),
                 onSelected: (item) {
-                  AppConfigBox.themeMode = item;
+                  ref.read(appThemeModeProvider.notifier).change(item);
                 },
                 childBuilder: (context, open) {
                   return ListTile(
                     onTap: open,
                     leading: const Icon(Icons.dark_mode),
-                    title: Text(S.of(context).themeMode),
-                    trailing: Text(AppConfigBox.themeMode.getName(context)),
+                    title: Text(context.tr.themeMode),
+                    trailing: Text(
+                      ref.watch(appThemeModeProvider).getName(context),
+                    ),
                   );
                 },
               );
             },
           ),
-          ValueListenableBuilder(
-            valueListenable: AppConfigBox.key(AppConfigType.locale),
-            builder: (context, _, __) {
-              return AppShowMenu<String>(
-                items: AppConfigBox.localCodes.map((e) {
-                  return PopupMenuItem(
-                    value: e,
-                    child: Text(S.getlang(context, e)),
-                  );
-                }).toList(),
-                initialValue: AppConfigBox.localeValue,
-                onSelected: (item) {
-                  AppConfigBox.localeValue = item;
-                },
+          Consumer(
+            builder: (context, ref, _) {
+              return AppShowMenu<Locale?>(
+                items: [
+                  PopupMenuItem(
+                    value: null,
+                    onTap: () {
+                      ref.read(appLocaleProvider.notifier).change(null);
+                    },
+                    child: Text(context.tr.followSystem),
+                  ),
+                  ...S.supportedLocales.map((e) {
+                    return PopupMenuItem(
+                      value: e,
+                      child: Text(e.getName(context)),
+                    );
+                  }),
+                ],
+                initialValue: ref.watch(appLocaleProvider),
                 childBuilder: (context, open) {
                   return ListTile(
-                    onTap: open,
                     leading: const Icon(Icons.language),
-                    title: Text(S.of(context).language),
+                    title: Text(context.tr.language),
                     trailing:
-                        Text(S.getlang(context, AppConfigBox.localeValue)),
+                        Text(ref.watch(appLocaleProvider).getName(context)),
+                    onTap: open,
                   );
+                },
+                onSelected: (t) {
+                  ref.read(appLocaleProvider.notifier).change(t);
+                },
+              );
+            },
+          ),
+          if (isDark(context))
+            Consumer(
+              builder: (context, ref, _) {
+                return SwitchListTile(
+                  secondary: const Icon(Icons.night_shelter_rounded),
+                  title: Text(context.tr.pureBlack),
+                  value: ref.watch(pureBlackBackgroundProvider),
+                  onChanged: (t) {
+                    ref.read(pureBlackBackgroundProvider.notifier).change(t);
+                  },
+                );
+              },
+            ),
+          Consumer(
+            builder: (context, ref, _) {
+              return SwitchListTile(
+                secondary: const Icon(Icons.grid_view_rounded),
+                title: Text(context.tr.gridLayout),
+                value: ref.watch(useGridLayoutProvider),
+                onChanged: (t) {
+                  ref.read(useGridLayoutProvider.notifier).change(t);
                 },
               );
             },
@@ -113,22 +139,22 @@ class _SettingsViewState extends State<SettingsView> {
               );
             },
           ),
-          ListTile(
-            leading: const Icon(Icons.info_rounded),
-            title: Text(context.tr.licenses),
-            onTap: () {
-              LicensesRoute().go(context);
-            },
-          ),
-          ListTile(
-            leading: const AlgaLogo(radius: 24),
-            title: Text(context.tr.appName),
-            subtitle: Text('${context.tr.version}$_buildName+$_buildNumber'),
+          AboutListTile(
+            icon: const AlgaLogo(radius: 24),
+            applicationName: context.tr.appName,
+            applicationIcon: const AlgaLogo(radius: 24),
+            applicationLegalese: 'MIT',
+            applicationVersion:
+                '${context.tr.version}$_buildName+$_buildNumber',
+            aboutBoxChildren: [],
           ),
         ])),
       ],
     );
-    result = Material(child: result);
+    result = Material(
+      color: Theme.of(context).scaffoldBackgroundColor,
+      child: result,
+    );
     return result;
   }
 }

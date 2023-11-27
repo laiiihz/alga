@@ -1,5 +1,6 @@
 import 'package:alga/l10n/l10n.dart';
 import 'package:alga/tools/tools.provider.dart';
+import 'package:alga/ui/widgets/app_text_field.dart';
 import 'package:alga/ui/widgets/buttons/clear_button.dart';
 import 'package:alga/ui/widgets/buttons/copy_button.dart';
 import 'package:alga/ui/widgets/toolbar/alga_toolbar.dart';
@@ -156,7 +157,7 @@ class MarkdownEditor extends StatelessWidget {
             ],
           ),
           Expanded(
-            child: TextField(
+            child: AppInput(
               controller: controller,
               expands: true,
               maxLines: null,

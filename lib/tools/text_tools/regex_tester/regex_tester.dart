@@ -2,6 +2,7 @@ import 'package:alga/l10n/l10n.dart';
 import 'package:alga/tools/text_tools/regex_tester/regex_tester.provider.dart';
 import 'package:alga/tools/text_tools/regex_tester/regex_tester_text_builder.dart';
 import 'package:alga/tools/tools.provider.dart';
+import 'package:alga/ui/widgets/app_text_field.dart';
 import 'package:alga/ui/widgets/buttons/clear_button.dart';
 import 'package:alga/ui/widgets/configurations/configurations.dart';
 import 'package:alga/ui/widgets/scaffold/scrollable_scaffold.dart';
@@ -89,7 +90,7 @@ class _RegexTesterPageState extends ConsumerState<RegexTesterPage> {
             ClearButton(controller: _regexController),
           ],
         ),
-        TextField(
+        AppInput(
           minLines: 2,
           maxLines: 4,
           controller: _regexController,
@@ -102,7 +103,7 @@ class _RegexTesterPageState extends ConsumerState<RegexTesterPage> {
             ClearButton(controller: _textController),
           ],
         ),
-        TextField(
+        AppInput(
           minLines: 2,
           maxLines: 12,
           controller: _textController,

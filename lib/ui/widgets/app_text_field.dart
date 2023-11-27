@@ -1,3 +1,4 @@
+import 'package:alga/utils/theme_util.dart';
 import 'package:flutter/material.dart';
 import 'package:language_textfield/lang_special_builder.dart';
 import 'package:language_textfield/language_textfield.dart';
@@ -67,6 +68,40 @@ class _AppTextFieldState extends State<AppTextField> {
       textAlign: TextAlign.start,
       textAlignVertical: TextAlignVertical.top,
       decoration: widget.decoration,
+      style: getMonoTextStyle(context),
+    );
+  }
+}
+
+class AppInput extends StatelessWidget {
+  const AppInput({
+    super.key,
+    required this.controller,
+    this.minLines,
+    this.maxLines = 1,
+    this.decoration = const InputDecoration(),
+    this.expands = false,
+    this.textAlignVertical = TextAlignVertical.top,
+    this.onChanged,
+  });
+  final TextEditingController controller;
+  final int? minLines;
+  final int? maxLines;
+  final bool expands;
+  final InputDecoration? decoration;
+  final TextAlignVertical textAlignVertical;
+  final ValueChanged<String>? onChanged;
+  @override
+  Widget build(BuildContext context) {
+    return TextField(
+      controller: controller,
+      minLines: minLines,
+      maxLines: maxLines,
+      style: getMonoTextStyle(context),
+      textAlignVertical: textAlignVertical,
+      decoration: decoration,
+      onChanged: onChanged,
+      expands: expands,
     );
   }
 }

@@ -90,14 +90,14 @@ class _HashGenPageState extends ConsumerState<HashGenPage> {
             ClearButton(controller: _input),
           ],
         ),
-        TextField(
+        AppInput(
           minLines: 1,
           maxLines: 12,
           controller: _input,
         ),
         CrossFade(
           state: ref.watch(useHmac),
-          first: TextField(
+          first: AppInput(
             minLines: 1,
             maxLines: 12,
             controller: _hmac,

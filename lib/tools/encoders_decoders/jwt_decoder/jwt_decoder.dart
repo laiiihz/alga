@@ -62,7 +62,7 @@ class _JwtDecoderPageState extends ConsumerState<JwtDecoderPage> {
             ClearButton(controller: _controller),
           ],
         ),
-        TextField(
+        AppInput(
           controller: _controller,
           minLines: 3,
           maxLines: 12,

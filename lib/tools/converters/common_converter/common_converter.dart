@@ -170,10 +170,9 @@ class ConverterInput extends ConsumerWidget {
             ],
           ),
           Expanded(
-            child: TextField(
+            child: AppInput(
               expands: true,
               maxLines: null,
-              textAlignVertical: TextAlignVertical.top,
               controller: CommonConverterPage.of(context),
             ),
           ),

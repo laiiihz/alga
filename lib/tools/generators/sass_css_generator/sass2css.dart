@@ -89,7 +89,7 @@ class _Sass2cssPageState extends ConsumerState<Sass2cssPage> {
         ),
         Consumer(
           builder: (context, ref, _) {
-            return TextField(
+            return AppInput(
               minLines: 3,
               maxLines: 8,
               controller: _input,

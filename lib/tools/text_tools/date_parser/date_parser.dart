@@ -102,7 +102,7 @@ class _DateParserPageState extends ConsumerState<DateParserPage> {
             ),
           ],
         ),
-        TextField(
+        AppInput(
           controller: _input,
           decoration: InputDecoration(errorText: dateResult.$2),
         ),
@@ -146,7 +146,7 @@ class _DateParserPageState extends ConsumerState<DateParserPage> {
                   HelpButton(onPressed: () => DateFormatHelper.show(context)),
                 ],
               ),
-              TextField(controller: _formatInput),
+              AppInput(controller: _formatInput),
               AlgaToolbar(
                 actions: [
                   CopyButton(() => ref.read(formatDateResultProvider)),

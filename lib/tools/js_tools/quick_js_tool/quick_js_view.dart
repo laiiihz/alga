@@ -32,7 +32,7 @@ class QuickJsView extends ConsumerWidget {
         child: Row(
           children: [
             Expanded(
-                child: TextField(
+                child: AppInput(
               maxLines: 3,
               minLines: 1,
               controller: ref.watch(jsInputControllerProvider),

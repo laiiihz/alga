@@ -40,6 +40,7 @@ class ScrollableScaffold extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: CustomScrollView(
+        keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
         slivers: [
           SliverAppBar.medium(title: title, actions: actions),
           if (configurations.isNotEmpty)

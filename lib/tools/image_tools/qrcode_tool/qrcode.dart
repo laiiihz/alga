@@ -1,5 +1,6 @@
 import 'package:alga/l10n/l10n.dart';
 import 'package:alga/tools/tools.provider.dart';
+import 'package:alga/ui/widgets/app_text_field.dart';
 import 'package:alga/ui/widgets/configurations/configurations.dart';
 import 'package:alga/ui/widgets/scaffold/scrollable_scaffold.dart';
 import 'package:alga/ui/widgets/toolbar/alga_toolbar.dart';
@@ -86,7 +87,7 @@ class _QrCodePageState extends ConsumerState<QrCodePage> {
             PasteButton(controller: _input),
           ],
         ),
-        TextField(
+        AppInput(
           maxLines: 2,
           controller: _input,
         ),

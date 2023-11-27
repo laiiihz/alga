@@ -4,22 +4,23 @@ import 'package:alga/utils/hive_boxes/favorite_box.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 
 class AlgaAppItem extends StatelessWidget {
-  const AlgaAppItem(this.item, {super.key, this.listenable = true});
+  const AlgaAppItem(this.item,
+      {super.key, this.listenable = true, this.useGrid = true});
   final AppAtom item;
   final bool listenable;
+  final bool useGrid;
   @override
   Widget build(BuildContext context) {
     final colorScheme = Theme.of(context).colorScheme;
 
-    Color iconColor = colorScheme.tertiary;
+    Color iconColor = colorScheme.primary;
+    if (useGrid) {
+      return ValueListenableBuilder(
+        valueListenable: FavoriteBox.listener(item.path),
+        builder: (context, _, child) {
+          final state = FavoriteBox.get(item);
 
-    return ValueListenableBuilder(
-      valueListenable: FavoriteBox.listener(item.path),
-      builder: (context, _, child) {
-        final state = FavoriteBox.get(item);
-        return GestureDetector(
-          onLongPressStart: (detail) {},
-          child: Material(
+          return Material(
             color: colorScheme.surfaceVariant,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(12),
@@ -40,51 +41,73 @@ class AlgaAppItem extends StatelessWidget {
               },
               child: child,
             ),
-          ),
-        );
-      },
-      child: Stack(
-        children: [
-          Positioned(
-            left: 16 - 48,
-            bottom: 16,
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: IconTheme.merge(
-                data: IconThemeData(
-                  size: 84,
-                  color: iconColor.withOpacity(0.4),
+          );
+        },
+        child: Stack(
+          children: [
+            Positioned(
+              top: 0,
+              left: 0,
+              bottom: 0,
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: IconTheme.merge(
+                  data: IconThemeData(
+                    size: 48,
+                    color: iconColor.withOpacity(0.4),
+                  ),
+                  child: item.icon,
                 ),
-                child: item.icon,
               ),
             ),
-          ),
-          Positioned(
-            left: 48,
-            right: 16,
-            top: 8,
-            bottom: 16,
-            child: Padding(
-              padding: const EdgeInsets.all(4.0),
-              child: Align(
-                alignment: Alignment.bottomRight,
-                child: AutoSizeText(
-                  item.title(context),
-                  maxLines: 2,
-                  minFontSize: 12,
-                  textAlign: TextAlign.end,
-                  style: TextStyle(
-                    color: colorScheme.onSecondaryContainer,
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold,
+            Positioned(
+              left: 56,
+              right: 16,
+              top: 8,
+              bottom: 16,
+              child: Padding(
+                padding: const EdgeInsets.all(4.0),
+                child: Align(
+                  alignment: Alignment.bottomRight,
+                  child: AutoSizeText(
+                    item.title(context),
+                    maxLines: 2,
+                    minFontSize: 12,
+                    textAlign: TextAlign.end,
+                    style: TextStyle(
+                      color: colorScheme.onSecondaryContainer,
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ),
               ),
             ),
-          ),
-        ],
-      ),
-    );
+          ],
+        ),
+      );
+    } else {
+      return ValueListenableBuilder(
+          valueListenable: FavoriteBox.listener(item.path),
+          builder: (context, _, __) {
+            final state = FavoriteBox.get(item);
+            return GestureDetector(
+              onSecondaryTapUp: (detail) {
+                _showMenu(context, detail.localPosition, state);
+              },
+              child: ListTile(
+                leading: item.icon,
+                title: Text(item.title(context)),
+                onTap: () {
+                  GoRouter.of(context).go(item.path);
+                },
+                onLongPress: () {
+                  _showMenuModal(context, state);
+                },
+              ),
+            );
+          });
+    }
   }
 
   _showMenu(BuildContext context, Offset offset, bool like) async {
@@ -138,6 +161,7 @@ class AlgaAppItem extends StatelessWidget {
     showModalBottomSheet(
       context: context,
       showDragHandle: true,
+      useSafeArea: false,
       builder: (context) {
         return Column(
           mainAxisSize: MainAxisSize.min,

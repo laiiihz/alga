@@ -1,4 +1,5 @@
 import 'package:alga/l10n/l10n.dart';
+import 'package:alga/ui/widgets/app_text_field.dart';
 import 'package:alga/ui/widgets/buttons/copy_button.dart';
 import 'package:alga/ui/widgets/configurations/configurations.dart';
 import 'package:alga/ui/widgets/custom_icon_button.dart';
@@ -76,7 +77,7 @@ class _DartFormatterPageState extends ConsumerState<DartFormatterPage> {
               child: ValueListenableBuilder(
                   valueListenable: _errorMessage,
                   builder: (context, message, _) {
-                    return TextField(
+                    return AppInput(
                       expands: true,
                       maxLines: null,
                       minLines: null,

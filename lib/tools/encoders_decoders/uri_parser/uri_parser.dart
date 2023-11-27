@@ -63,7 +63,7 @@ class _UriParserPageState extends ConsumerState<UriParserPage> {
             ClearButton(controller: _controller),
           ],
         ),
-        TextField(
+        AppInput(
           controller: _controller,
           decoration: InputDecoration(errorText: result.$2),
         ),

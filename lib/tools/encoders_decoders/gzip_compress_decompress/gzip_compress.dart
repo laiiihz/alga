@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:alga/l10n/l10n.dart';
+import 'package:alga/ui/widgets/app_text_field.dart';
 import 'package:alga/ui/widgets/buttons/clear_button.dart';
 import 'package:alga/ui/widgets/buttons/copy_button.dart';
 import 'package:alga/ui/widgets/toolbar/alga_toolbar.dart';
@@ -61,7 +62,7 @@ class _GZipCompressPageState extends State<GZipCompressPage> {
               ],
             ),
             Expanded(
-              child: TextField(
+              child: AppInput(
                 expands: true,
                 maxLines: null,
                 controller: _originalInput,
@@ -85,7 +86,7 @@ class _GZipCompressPageState extends State<GZipCompressPage> {
               ],
             ),
             Expanded(
-              child: TextField(
+              child: AppInput(
                 expands: true,
                 maxLines: null,
                 controller: _encodedInput,

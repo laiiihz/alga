@@ -135,7 +135,7 @@ class AppAtom {
   );
 
   static final sass2CssGenerator = AppAtom(
-    icon: const SvgAssetIcon('assets/icons/sass.svg', colorIcon: true),
+    icon: const SvgAssetIcon('assets/icons/sass.svg'),
     title: (context) => context.tr.sassCssGenerator,
     path: Sass2cssRoute().location,
     categories: [
@@ -224,7 +224,7 @@ class AppAtom {
   );
 
   static final jwtDecoder = AppAtom(
-    icon: const SvgAssetIcon('assets/icons/JWT.svg', colorIcon: true),
+    icon: const SvgAssetIcon('assets/icons/JWT.svg'),
     title: (context) => context.tr.decoderJWT,
     path: JwtDecoderRoute().location,
     categories: [AppCategory.encodersDecoders],
@@ -238,13 +238,13 @@ class AppAtom {
   );
 
   static final jsonFormatter = AppAtom(
-    icon: const SvgAssetIcon('assets/icons/json.svg', colorIcon: true),
+    icon: const SvgAssetIcon('assets/icons/json.svg'),
     title: (context) => context.tr.formatterJson,
     path: JsonFormatterRoute().location,
     categories: [AppCategory.formatter],
   );
   static final dartFormatter = AppAtom(
-    icon: const SvgAssetIcon('assets/icons/dart.svg', colorIcon: true),
+    icon: const SvgAssetIcon('assets/icons/dart.svg'),
     title: (context) => context.tr.formatterDart,
     path: DartFormatterRoute().location,
     categories: [AppCategory.formatter],
@@ -270,7 +270,7 @@ class AppAtom {
     categories: [AppCategory.infomation],
   );
   static final quickJs = AppAtom(
-    icon: const SvgAssetIcon('assets/icons/js.svg', colorIcon: true),
+    icon: const SvgAssetIcon('assets/icons/js.svg'),
     title: (context) => 'Quick JS Tool',
     path: QuickJsRoute().location,
     categories: [AppCategory.frontEnd],

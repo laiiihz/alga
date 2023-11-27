@@ -8,8 +8,7 @@ class SvgAssetIcon extends StatelessWidget {
   const SvgAssetIcon(this.svg, {super.key, this.colorIcon = false});
 
   Color? _color(BuildContext context) {
-    if (colorIcon) return null;
-    return Theme.of(context).colorScheme.secondary;
+    return Theme.of(context).colorScheme.primary;
   }
 
   @override
@@ -21,9 +20,8 @@ class SvgAssetIcon extends StatelessWidget {
       svg,
       width: iconSize,
       height: iconSize,
-      colorFilter: color == null
-          ? null
-          : ColorFilter.mode(iconColor ?? color, BlendMode.srcIn),
+      colorFilter:
+          colorIcon ? null : ColorFilter.mode(iconColor!, BlendMode.srcIn),
     );
     return SizedBox.square(
       dimension: iconSize,

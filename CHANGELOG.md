@@ -1,14 +1,18 @@
 ## Unreleased
 ### Added
 - Full Material 3 Support
+- add pure dark background option
+- add use gridview option
 
 ### Changed
-- \[BREAK\]
+- \[BREAK CHANGE\] ⚠️ App signature changed. Uninstall old app and install new one. (REALLY SORRY FOR THIS CHANGE)
 - app tile long press to open context menu
+- all tools use monochrome icons
 
 ### Fixed
 - fix search view not hide when scroll
 - fix searchView title
+- use wrong mono font
 
 ## 2.0.1-dev+37 - 2023-11-21
 ### Added

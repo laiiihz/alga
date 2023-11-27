@@ -29,20 +29,14 @@ class MyApp extends ConsumerWidget {
       valueListenable: AppConfigBox.keys(),
       builder: (context, _, __) {
         return DynamicColorBuilder(builder: (light, dark) {
-          ColorScheme? lightScheme;
-          ColorScheme? darkScheme;
-          if (light != null && dark != null) {
-            lightScheme = light.harmonized();
-            darkScheme = dark.harmonized();
-          }
-          lightScheme ??= kDefaultLightColorScheme;
-          darkScheme ??= kDefaultDarkColorScheme;
+          light = light?.harmonized() ?? kDefaultLightColorScheme;
+          dark = dark?.harmonized() ?? kDefaultDarkColorScheme;
           return MaterialApp.router(
             routerConfig: ref.watch(appRouterProvider),
             onGenerateTitle: (context) => S.of(context).appName,
-            theme: ThemeUtil(lightScheme).getTheme(Brightness.light),
-            darkTheme: ThemeUtil(darkScheme).getTheme(Brightness.dark),
-            themeMode: AppConfigBox.themeMode,
+            theme: ref.watch(appThemeDataProvider(light, Brightness.light)),
+            darkTheme: ref.watch(appThemeDataProvider(dark, Brightness.dark)),
+            themeMode: ref.watch(appThemeModeProvider),
             localizationsDelegates: S.localizationsDelegates,
             supportedLocales: S.supportedLocales,
             locale: AppConfigBox.locale,

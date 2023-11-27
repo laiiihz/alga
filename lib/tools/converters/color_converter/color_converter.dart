@@ -2,6 +2,7 @@ import 'package:alga/l10n/l10n.dart';
 import 'package:alga/tools/converters/color_converter/color_picker.dart';
 import 'package:alga/tools/converters/color_converter/color_view_background_patiner.dart';
 import 'package:alga/tools/tools.provider.dart';
+import 'package:alga/ui/widgets/app_text_field.dart';
 import 'package:alga/ui/widgets/configurations/configurations.dart';
 import 'package:alga/ui/widgets/custom_icon_button.dart';
 import 'package:alga/ui/widgets/scaffold/scrollable_scaffold.dart';
@@ -71,7 +72,7 @@ class _ColorConverterPageState extends ConsumerState<ColorConverterPage> {
             ),
           ],
         ),
-        TextField(
+        AppInput(
           controller: _controller,
           decoration: InputDecoration(errorText: result.$2),
         ),

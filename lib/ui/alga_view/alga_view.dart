@@ -1,7 +1,7 @@
-import 'package:alga/ui/alga_view/widgets/alga_navigation_bar.dart';
 import 'package:alga/ui/alga_view/widgets/alga_panel.dart';
 import 'package:alga/ui/global.provider.dart';
-import 'package:alga/utils/constants/import_helper.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class AlgaShellRouteView extends ConsumerWidget {
   const AlgaShellRouteView({super.key, required this.child});
@@ -25,9 +25,9 @@ class AlgaShellRouteView extends ConsumerWidget {
         ),
       );
     } else {
-      return Scaffold(
-        body: child,
-        bottomNavigationBar: const AlgaNavigationBar(),
+      return Material(
+        color: Theme.of(context).scaffoldBackgroundColor,
+        child: child,
       );
     }
   }

@@ -16,10 +16,10 @@ class SearchView extends StatefulWidget {
   const SearchView({super.key});
 
   @override
-  State<SearchView> createState() => _SearchViewState();
+  State<SearchView> createState() => SearchViewState();
 }
 
-class _SearchViewState extends State<SearchView> {
+class SearchViewState extends State<SearchView> {
   final _textController = TextEditingController();
 
   List<AppAtom> _items = <AppAtom>[];
@@ -27,10 +27,10 @@ class _SearchViewState extends State<SearchView> {
   @override
   void initState() {
     super.initState();
-    _items = _findAtom(_textController.text);
+    _items = findAtom(context, _textController.text);
 
     _textController.addListener(() {
-      _items = _findAtom(_textController.text);
+      _items = findAtom(context, _textController.text);
       if (mounted) setState(() {});
     });
   }
@@ -41,7 +41,7 @@ class _SearchViewState extends State<SearchView> {
     super.dispose();
   }
 
-  List<AppAtom> _findAtom(String query) {
+  static List<AppAtom> findAtom(BuildContext context, String query) {
     if (query.isEmpty) return AppAtom.items.toList();
     query = query.toLowerCase();
     final results = <AppAtom>{};

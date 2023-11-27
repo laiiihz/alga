@@ -203,7 +203,7 @@ class _DecodeViewState extends State<DecodeView> {
     return ListView(
       padding: const EdgeInsets.all(8),
       children: <Widget>[
-        TextField(
+        AppInput(
           controller: controller,
           decoration: InputDecoration(
             errorText: result.$2,

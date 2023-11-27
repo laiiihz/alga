@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:alga/l10n/l10n.dart';
 import 'package:alga/tools/tools.provider.dart';
+import 'package:alga/ui/widgets/app_text_field.dart';
 import 'package:alga/ui/widgets/buttons/clear_button.dart';
 import 'package:alga/ui/widgets/buttons/copy_button.dart';
 import 'package:alga/ui/widgets/configurations/configurations.dart';
@@ -72,7 +73,7 @@ class _Base64CodecPageState extends ConsumerState<Base64CodecPage> {
               ],
             ),
             Expanded(
-              child: TextField(
+              child: AppInput(
                 expands: true,
                 maxLines: null,
                 controller: _originalInput,
@@ -96,7 +97,7 @@ class _Base64CodecPageState extends ConsumerState<Base64CodecPage> {
               ],
             ),
             Expanded(
-              child: TextField(
+              child: AppInput(
                 expands: true,
                 maxLines: null,
                 controller: _encodedInput,
