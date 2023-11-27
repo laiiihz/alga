@@ -88,7 +88,7 @@ dev_dependencies:
   flutter_lints: ^3.0.1
   build_runner: ^2.4.6
   msix: ^3.16.6
-  riverpod_generator: ^2.3.8
+  riverpod_generator: ^2.3.9
   go_router_builder: ^2.3.4
   riverpod_lint: ^2.3.6
   custom_lint: ^0.5.7
