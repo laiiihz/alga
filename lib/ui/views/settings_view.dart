@@ -155,6 +155,23 @@ class _SettingsViewState extends State<SettingsView> {
             },
           ),
         ])),
+        const SliverFillRemaining(
+          hasScrollBody: false,
+          child: SafeArea(
+            child: Align(
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  FlutterLogo(size: 24),
+                  Text(
+                    ' ╳ 💙',
+                    style: TextStyle(fontSize: 24),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
       ],
     );
     result = Material(
