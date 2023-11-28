@@ -1,0 +1,11 @@
+Alga is a development toolbox for all developers.
+
+It supports several tools, including:
+
+* encoders and decoders
+* image tools
+* text tools
+* multi-converters
+* formatters
+* generators
+* and more...

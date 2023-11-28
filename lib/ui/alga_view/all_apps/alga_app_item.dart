@@ -101,6 +101,7 @@ class AlgaAppItem extends StatelessWidget {
                 onTap: () {
                   GoRouter.of(context).go(item.path);
                 },
+                selected: state,
                 onLongPress: () {
                   _showMenuModal(context, state);
                 },

@@ -15,19 +15,6 @@ class S {
 
   static LocalizationsDelegate<AppLocalizations> get delegate =>
       AppLocalizations.delegate;
-
-  static String getlang(BuildContext context, String? localeCode) {
-    switch (localeCode) {
-      case 'zh':
-        return '简体中文';
-      case 'en':
-        return 'English';
-      case 'ja':
-        return '日本語';
-      default:
-        return of(context).followSystem;
-    }
-  }
 }
 
 extension L10nX on BuildContext {

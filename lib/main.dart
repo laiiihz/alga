@@ -6,7 +6,6 @@ import 'package:alga/ui/alga_view/all_apps/alga_app_view.dart';
 import 'package:alga/ui/views/favorite_view.dart';
 import 'package:alga/ui/views/search_view.dart';
 import 'package:alga/ui/views/settings_view.dart';
-import 'package:alga/utils/hive_boxes/app_config_box.dart';
 import 'package:alga/utils/services/app_service.dart';
 import 'package:dynamic_color/dynamic_color.dart';
 import 'package:flutter/material.dart';
@@ -25,26 +24,21 @@ class MyApp extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    Widget child = ValueListenableBuilder(
-      valueListenable: AppConfigBox.keys(),
-      builder: (context, _, __) {
-        return DynamicColorBuilder(builder: (light, dark) {
-          light = light?.harmonized() ?? kDefaultLightColorScheme;
-          dark = dark?.harmonized() ?? kDefaultDarkColorScheme;
-          return MaterialApp.router(
-            routerConfig: ref.watch(appRouterProvider),
-            onGenerateTitle: (context) => S.of(context).appName,
-            theme: ref.watch(appThemeDataProvider(light, Brightness.light)),
-            darkTheme: ref.watch(appThemeDataProvider(dark, Brightness.dark)),
-            themeMode: ref.watch(appThemeModeProvider),
-            localizationsDelegates: S.localizationsDelegates,
-            supportedLocales: S.supportedLocales,
-            locale: AppConfigBox.locale,
-            debugShowCheckedModeBanner: false,
-          );
-        });
-      },
-    );
+    Widget child = DynamicColorBuilder(builder: (light, dark) {
+      light = light?.harmonized() ?? kDefaultLightColorScheme;
+      dark = dark?.harmonized() ?? kDefaultDarkColorScheme;
+      return MaterialApp.router(
+        routerConfig: ref.watch(appRouterProvider),
+        onGenerateTitle: (context) => context.tr.appName,
+        theme: ref.watch(appThemeDataProvider(light, Brightness.light)),
+        darkTheme: ref.watch(appThemeDataProvider(dark, Brightness.dark)),
+        themeMode: ref.watch(appThemeModeProvider),
+        localizationsDelegates: S.localizationsDelegates,
+        supportedLocales: S.supportedLocales,
+        locale: ref.watch(appLocaleProvider),
+        debugShowCheckedModeBanner: false,
+      );
+    });
 
     if (Platform.isMacOS) {
       child = PlatformMenuBar(
