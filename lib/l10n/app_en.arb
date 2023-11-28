@@ -103,6 +103,7 @@
   "jwtPayload": "Payload",
   "kernelVersion": "KernelVersion",
   "language": "language",
+  "legalese": "Copyright © {year} laihz.dev",
   "licenses": "LICENSES",
   "links": "Links",
   "localHostName": "Local Host Name",

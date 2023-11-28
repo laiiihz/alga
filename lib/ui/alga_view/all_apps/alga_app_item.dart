@@ -158,31 +158,32 @@ class AlgaAppItem extends StatelessWidget {
 
   _showMenuModal(BuildContext context, bool like) async {
     final colorScheme = Theme.of(context).colorScheme;
-
     showModalBottomSheet(
       context: context,
       showDragHandle: true,
       useSafeArea: false,
       builder: (context) {
-        return Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            ListTile(
-              title: like
-                  ? Text(
-                      context.tr.removeFavorite,
-                      style: TextStyle(color: colorScheme.error),
-                    )
-                  : Text(context.tr.addFavorite),
-              trailing: like
-                  ? Icon(Icons.delete_rounded, color: colorScheme.error)
-                  : Icon(Icons.favorite_rounded, color: colorScheme.tertiary),
-              onTap: () {
-                FavoriteBox.update(item);
-                Navigator.of(context).pop();
-              },
-            ),
-          ],
+        return SafeArea(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              ListTile(
+                title: like
+                    ? Text(
+                        context.tr.removeFavorite,
+                        style: TextStyle(color: colorScheme.error),
+                      )
+                    : Text(context.tr.addFavorite),
+                trailing: like
+                    ? Icon(Icons.delete_rounded, color: colorScheme.error)
+                    : Icon(Icons.favorite_rounded, color: colorScheme.tertiary),
+                onTap: () {
+                  FavoriteBox.update(item);
+                  Navigator.of(context).pop();
+                },
+              ),
+            ],
+          ),
         );
       },
     );

@@ -80,6 +80,7 @@ dependencies:
   flex_color_picker: ^3.3.0
   toml: ^0.14.0
   xml: ^6.3.0
+  package_info_plus: ^5.0.1
 
 dev_dependencies:
   flutter_test:

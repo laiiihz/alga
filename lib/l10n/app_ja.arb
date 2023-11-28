@@ -102,6 +102,7 @@
   "jwtPayload": "ペイロード",
   "kernelVersion": "カーネルバージョン",
   "language": "言語",
+  "legalese": "Copyright © {year} laihz.dev",
   "licenses": "オープンソースのライセンス",
   "links": "リンク",
   "localHostName": "ローカルホスト名",

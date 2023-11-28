@@ -1,3 +1,4 @@
+import 'package:alga/ui/global.provider.dart';
 import 'package:alga/ui/widgets/alga_logo.dart';
 import 'package:alga/ui/widgets/app_show_menu.dart';
 import 'package:alga/ui/widgets/setting_title.dart';
@@ -20,9 +21,6 @@ class SettingsView extends StatefulWidget {
 }
 
 class _SettingsViewState extends State<SettingsView> {
-  static const String _buildName = String.fromEnvironment('FLUTTER_BUILD_NAME');
-  static const String _buildNumber =
-      String.fromEnvironment('FLUTTER_BUILD_NUMBER');
   @override
   Widget build(BuildContext context) {
     Widget result = CustomScrollView(
@@ -139,14 +137,22 @@ class _SettingsViewState extends State<SettingsView> {
               );
             },
           ),
-          AboutListTile(
-            icon: const AlgaLogo(radius: 24),
-            applicationName: context.tr.appName,
-            applicationIcon: const AlgaLogo(radius: 24),
-            applicationLegalese: 'MIT',
-            applicationVersion:
-                '${context.tr.version}$_buildName+$_buildNumber',
-            aboutBoxChildren: [],
+          Consumer(
+            builder: (context, ref, _) {
+              return ref.watch(appVersionProvider).when(
+                    data: (d) {
+                      return AboutListTile(
+                        icon: const AlgaLogo(radius: 24),
+                        applicationName: context.tr.appName,
+                        applicationLegalese:
+                            context.tr.legalese(DateTime.now().year),
+                        applicationVersion: d,
+                      );
+                    },
+                    error: (e, s) => const SizedBox.shrink(),
+                    loading: () => const CircularProgressIndicator.adaptive(),
+                  );
+            },
           ),
         ])),
       ],
