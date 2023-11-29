@@ -1,7 +1,6 @@
 import 'package:alga/routers/app_router.dart';
 import 'package:alga/ui/alga_view/all_apps/alga_app_view.dart';
 import 'package:alga/ui/views/favorite_view.dart';
-import 'package:alga/ui/views/search_view.dart';
 import 'package:alga/ui/views/settings_view.dart';
 import 'package:alga/ui/widgets/alga_logo.dart';
 import 'package:alga/utils/constants/import_helper.dart';
@@ -34,23 +33,11 @@ class _AlgaPanelState extends ConsumerState<AlgaPanel> {
           label: Text(context.tr.favorite),
         ),
         NavigationRailDestination(
-          icon: const Icon(Icons.search_outlined),
-          selectedIcon: const Icon(Icons.search_rounded),
-          label: Text(context.tr.search),
+          icon: const Icon(Icons.settings_outlined),
+          selectedIcon: const Icon(Icons.settings_rounded),
+          label: Text(context.tr.settings),
         ),
       ],
-      trailing:
-          GoRouterState.of(context).matchedLocation == SettingsRoute().location
-              ? IconButton.filledTonal(
-                  onPressed: () {},
-                  icon: const Icon(Icons.settings_rounded),
-                )
-              : IconButton(
-                  onPressed: () {
-                    SettingsRoute().go(context);
-                  },
-                  icon: const Icon(Icons.settings_outlined),
-                ),
       selectedIndex: getIndex(context),
       onDestinationSelected: (index) {
         switch (index) {
@@ -59,7 +46,7 @@ class _AlgaPanelState extends ConsumerState<AlgaPanel> {
           case 1:
             FavoriteRoute().go(context);
           case 2:
-            SearchRoute().go(context);
+            SettingsRoute().go(context);
           default:
         }
       },
@@ -72,8 +59,7 @@ class _AlgaPanelState extends ConsumerState<AlgaPanel> {
     final location = GoRouterState.of(context).matchedLocation;
     if (location.startsWith(AppsRoute().location)) return 0;
     if (location.startsWith(FavoriteRoute().location)) return 1;
-    if (location.startsWith(SearchRoute().location)) return 2;
-    if (location.startsWith(SettingsRoute().location)) return null;
+    if (location.startsWith(SettingsRoute().location)) return 2;
     return null;
   }
 }

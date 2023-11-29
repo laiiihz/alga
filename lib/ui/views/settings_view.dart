@@ -1,7 +1,10 @@
+import 'dart:io';
+
 import 'package:alga/ui/global.provider.dart';
 import 'package:alga/ui/widgets/alga_logo.dart';
 import 'package:alga/ui/widgets/app_show_menu.dart';
 import 'package:alga/ui/widgets/setting_title.dart';
+import 'package:alga/ui/widgets/svg_asset_icon.dart';
 import 'package:alga/utils/constants/import_helper.dart';
 import 'package:alga/utils/hive_boxes/app_config_box.dart';
 import 'package:url_launcher/url_launcher_string.dart';
@@ -118,7 +121,7 @@ class _SettingsViewState extends State<SettingsView> {
           ),
           SettingTitle(Text(context.tr.about)),
           ListTile(
-            leading: const Icon(Icons.code_rounded),
+            leading: const SvgAssetIcon('assets/icons/github.svg'),
             title: Text(S.of(context).github),
             onTap: () {
               launchUrlString(
@@ -147,6 +150,17 @@ class _SettingsViewState extends State<SettingsView> {
                         applicationLegalese:
                             context.tr.legalese(DateTime.now().year),
                         applicationVersion: d,
+                        aboutBoxChildren: [
+                          ConstrainedBox(
+                            constraints: const BoxConstraints(maxWidth: 320),
+                            child: Padding(
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 24),
+                              child:
+                                  Text('build with Dart ${Platform.version}'),
+                            ),
+                          ),
+                        ],
                       );
                     },
                     error: (e, s) => const SizedBox.shrink(),

@@ -3,6 +3,7 @@
 - Full Material 3 Support
 - add pure dark background option
 - add use gridview option
+- qr tool add save feature(long press or right click)
 
 ### Changed
 - \[BREAK CHANGE\] ⚠️ App signature changed. Uninstall old app and install new one. (REALLY SORRY FOR THIS CHANGE)

@@ -2,8 +2,8 @@ import 'package:alga/tools/tools.dart';
 import 'package:alga/ui/alga_view/alga_view.dart';
 import 'package:alga/ui/alga_view/all_apps/alga_app_view.dart';
 import 'package:alga/ui/views/favorite_view.dart';
-import 'package:alga/ui/views/search_view.dart';
 import 'package:alga/ui/views/settings_view.dart';
+import 'package:bot_toast/bot_toast.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
@@ -20,6 +20,7 @@ GoRouter appRouter(AppRouterRef ref) {
   return GoRouter(
     navigatorKey: _routerKey,
     routes: $appRoutes,
+    observers: [BotToastNavigatorObserver()],
     initialLocation: '/apps',
   );
 }
@@ -54,7 +55,6 @@ GoRouter appRouter(AppRouterRef ref) {
       TypedGoRoute<QuickJsRoute>(path: 'quick-js'),
     ]),
     TypedGoRoute<FavoriteRoute>(path: '/favorite'),
-    TypedGoRoute<SearchRoute>(path: '/search'),
     TypedGoRoute<SettingsRoute>(path: '/settings'),
   ],
 )

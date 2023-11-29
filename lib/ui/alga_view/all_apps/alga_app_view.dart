@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:io';
 
 import 'package:alga/models/app_atom.dart';
@@ -5,7 +6,6 @@ import 'package:alga/models/app_category.dart';
 import 'package:alga/routers/app_router.dart';
 import 'package:alga/ui/global.provider.dart';
 import 'package:alga/ui/views/favorite_view.dart';
-import 'package:alga/ui/views/search_view.dart';
 import 'package:alga/ui/views/settings_view.dart';
 import 'package:alga/utils/constants/import_helper.dart';
 
@@ -34,13 +34,16 @@ class AlgaAppViewState extends ConsumerState<AlgaAppView>
     return Scaffold(
       appBar: isDesktop
           ? AppBar(
-              title: Text(S.of(context).appName),
+              title: Text(context.tr.appName),
               centerTitle: Platform.isIOS,
               bottom: const AppCategoriesPanel(),
+              actions: const [
+                AppSearchBar(false),
+                SizedBox(width: 8),
+              ],
             )
           : AppBar(
-              // title: Text(S.of(context).appName),
-              title: const MobileSearchBar(),
+              title: const AppSearchBar(true),
               centerTitle: Platform.isIOS,
               bottom: const AppCategoriesPanel(),
             ),
@@ -56,46 +59,81 @@ class AlgaAppViewState extends ConsumerState<AlgaAppView>
   }
 }
 
-class MobileSearchBar extends StatelessWidget {
-  const MobileSearchBar({super.key});
+class AppSearchBar extends StatelessWidget {
+  const AppSearchBar(this.useBar, {super.key});
+  final bool useBar;
+
+  List<AppAtom> findAtom(BuildContext context, String query) {
+    if (query.isEmpty) return AppAtom.items.toList();
+    query = query.toLowerCase();
+    final results = <AppAtom>{};
+
+    for (var element in AppAtom.items) {
+      if (element.path.contains(query)) {
+        results.add(element);
+      }
+      if (element.title(context).contains(query)) {
+        results.add(element);
+      }
+    }
+    return results.toList();
+  }
+
+  FutureOr<Iterable<Widget>> suggestionsBuilder(
+      BuildContext context, SearchController controller) {
+    final items = findAtom(context, controller.text);
+    return items
+        .map(
+          (e) => ListTile(
+            leading: e.icon,
+            title: Text(e.title(context)),
+            onTap: () {
+              controller.closeView(controller.text);
+              GoRouter.of(context).go(e.path);
+            },
+          ),
+        )
+        .toList();
+  }
 
   @override
   Widget build(BuildContext context) {
-    return SearchAnchor.bar(
-      barHintText: '${context.tr.appName} ${context.tr.search}',
-      isFullScreen: true,
-      suggestionsBuilder: (BuildContext context, SearchController controller) {
-        final items = SearchViewState.findAtom(context, controller.text);
-        return items
-            .map(
-              (e) => ListTile(
-                leading: e.icon,
-                title: Text(e.title(context)),
-                onTap: () {
-                  GoRouter.of(context).go(e.path);
-                },
-              ),
-            )
-            .toList();
-      },
-      barElevation: const MaterialStatePropertyAll(0),
-      barBackgroundColor: MaterialStateProperty.all(
-          Theme.of(context).colorScheme.surfaceVariant),
-      barTrailing: [
-        IconButton(
-          onPressed: () {
-            FavoriteRoute().push(context);
-          },
-          icon: const Icon(Icons.favorite_outline_rounded),
-        ),
-        IconButton(
-          onPressed: () {
-            SettingsRoute().push(context);
-          },
-          icon: const Icon(Icons.settings_outlined),
-        ),
-      ],
-    );
+    if (useBar) {
+      return SearchAnchor.bar(
+        barHintText: '${context.tr.appName} ${context.tr.search}',
+        isFullScreen: false,
+        suggestionsBuilder: suggestionsBuilder,
+        barElevation: const MaterialStatePropertyAll(0),
+        barBackgroundColor: MaterialStateProperty.all(
+            Theme.of(context).colorScheme.surfaceVariant),
+        barTrailing: [
+          IconButton(
+            onPressed: () {
+              FavoriteRoute().push(context);
+            },
+            icon: const Icon(Icons.favorite_outline_rounded),
+          ),
+          IconButton(
+            onPressed: () {
+              SettingsRoute().push(context);
+            },
+            icon: const Icon(Icons.settings_outlined),
+          ),
+        ],
+      );
+    } else {
+      return SearchAnchor(
+        builder: (context, controller) {
+          return IconButton.filledTonal(
+            onPressed: () {
+              controller.openView();
+            },
+            icon: const Icon(Icons.search_rounded),
+          );
+        },
+        suggestionsBuilder: suggestionsBuilder,
+      );
+    }
   }
 }
 

@@ -4,9 +4,9 @@ import 'package:alga/l10n/l10n.dart';
 import 'package:alga/routers/app_router.dart';
 import 'package:alga/ui/alga_view/all_apps/alga_app_view.dart';
 import 'package:alga/ui/views/favorite_view.dart';
-import 'package:alga/ui/views/search_view.dart';
 import 'package:alga/ui/views/settings_view.dart';
 import 'package:alga/utils/services/app_service.dart';
+import 'package:bot_toast/bot_toast.dart';
 import 'package:dynamic_color/dynamic_color.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -36,6 +36,7 @@ class MyApp extends ConsumerWidget {
         localizationsDelegates: S.localizationsDelegates,
         supportedLocales: S.supportedLocales,
         locale: ref.watch(appLocaleProvider),
+        builder: BotToastInit(),
         debugShowCheckedModeBanner: false,
       );
     });
@@ -46,16 +47,6 @@ class MyApp extends ConsumerWidget {
           PlatformMenu(
             label: 'Alga',
             menus: [
-              PlatformMenuItem(
-                label: context.tr.search,
-                shortcut: const SingleActivator(
-                  LogicalKeyboardKey.keyF,
-                  meta: true,
-                ),
-                onSelected: () {
-                  SearchRoute().go(routerContext);
-                },
-              ),
               PlatformMenuItem(
                 label: context.tr.allApps,
                 shortcut: const SingleActivator(

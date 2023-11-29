@@ -91,3 +91,72 @@ class AppMenuWrapper<T> extends StatelessWidget {
     return childBuilder(context, showMenu);
   }
 }
+
+class AppCrossMenu<T> extends StatelessWidget {
+  const AppCrossMenu({
+    super.key,
+    required this.items,
+    required this.getName,
+    required this.onSelected,
+    required this.child,
+  });
+  final List<T> items;
+  final String Function(T) getName;
+  final ValueChanged<T> onSelected;
+  final Widget child;
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onLongPress: () async {
+        final value = await showModalBottomSheet(
+          context: context,
+          showDragHandle: true,
+          builder: (context) {
+            return SafeArea(
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: items.map((e) {
+                  return ListTile(
+                    onTap: () {
+                      Navigator.of(context).pop(e);
+                    },
+                    title: Text(getName(e)),
+                  );
+                }).toList(),
+              ),
+            );
+          },
+        );
+        if (value != null && context.mounted) {
+          onSelected(value);
+        }
+      },
+      onSecondaryTapUp: (detail) async {
+        final widget = context.findRenderObject()! as RenderBox;
+        final RenderBox overlay = Navigator.of(context)
+            .overlay!
+            .context
+            .findRenderObject()! as RenderBox;
+        final RelativeRect position = RelativeRect.fromRect(
+          Rect.fromPoints(
+            widget.localToGlobal(detail.localPosition, ancestor: overlay),
+            widget.localToGlobal(widget.size.bottomRight(Offset.zero),
+                ancestor: overlay),
+          ),
+          Offset.zero & overlay.size,
+        );
+        final result = await showMenu(
+          context: context,
+          position: position,
+          items: items
+              .map((e) => PopupMenuItem(value: e, child: Text(getName(e))))
+              .toList(),
+        );
+        if (result != null && context.mounted) {
+          onSelected(result);
+        }
+      },
+      child: child,
+    );
+  }
+}
