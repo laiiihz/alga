@@ -1,7 +1,9 @@
+import 'package:alga/l10n/l10n.dart';
 import 'package:alga/ui/alga_view/all_apps/alga_app_item.dart';
 import 'package:alga/ui/widgets/asset_svg.dart';
-import 'package:alga/utils/constants/import_helper.dart';
 import 'package:alga/utils/hive_boxes/favorite_box.dart';
+import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class FavoriteRoute extends GoRouteData {
   @override

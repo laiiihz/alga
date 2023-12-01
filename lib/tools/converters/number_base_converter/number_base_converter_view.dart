@@ -1,6 +1,12 @@
+import 'package:alga/l10n/l10n.dart';
+import 'package:alga/ui/widgets/tool_view.dart';
+import 'package:alga/utils/clipboard_util.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 
-import 'package:alga/utils/constants/import_helper.dart';
+import 'number_base.dart';
 
 part './number_base_converter_provider.dart';
 
@@ -16,8 +22,9 @@ class NumberBaseConverterView extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    return NumberBasePage();
     return ScrollableToolView(
-      title: Text(S.of(context).numberBaseConverter),
+      title: Text(context.tr.numberBaseConverter),
       children: ref.watch(_controllers).map((e) {
         return ListTile(
           title: Text(e.title(context)),

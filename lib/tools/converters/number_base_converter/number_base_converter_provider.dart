@@ -57,7 +57,7 @@ class HexController extends NumberBaseController {
   HexController() : super(16, 15);
 
   @override
-  String title(context) => S.of(context).hexdecimal;
+  String title(context) => context.tr.hexdecimal;
   @override
   List<TextInputFormatter> get formatter =>
       [FilteringTextInputFormatter.allow(RegExp(r'[0-9a-fA-F]'))];
@@ -67,7 +67,7 @@ class DecController extends NumberBaseController {
   DecController() : super(10, 18);
 
   @override
-  String title(context) => S.of(context).decimal;
+  String title(context) => context.tr.decimal;
 
   @override
   List<TextInputFormatter> get formatter =>
@@ -78,7 +78,7 @@ class OctController extends NumberBaseController {
   OctController() : super(8, 20);
 
   @override
-  String title(context) => S.of(context).octal;
+  String title(context) => context.tr.octal;
 
   @override
   List<TextInputFormatter> get formatter =>
@@ -89,7 +89,7 @@ class BinController extends NumberBaseController {
   BinController() : super(2, 60);
 
   @override
-  String title(context) => S.of(context).binary;
+  String title(context) => context.tr.binary;
 
   @override
   List<TextInputFormatter> get formatter =>

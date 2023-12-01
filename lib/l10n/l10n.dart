@@ -3,11 +3,6 @@ import 'package:flutter/material.dart';
 import 'generated/app.translation.g.dart';
 
 class S {
-  static AppLocalizations of(BuildContext context) {
-    return AppLocalizations.of(context) ??
-        lookupAppLocalizations(const Locale('zh'));
-  }
-
   static List<LocalizationsDelegate> get localizationsDelegates =>
       AppLocalizations.localizationsDelegates;
 
@@ -18,7 +13,8 @@ class S {
 }
 
 extension L10nX on BuildContext {
-  AppLocalizations get tr => S.of(this);
+  AppLocalizations get tr =>
+      AppLocalizations.of(this) ?? lookupAppLocalizations(const Locale('zh'));
 
   MaterialLocalizations get mtr => MaterialLocalizations.of(this);
 }

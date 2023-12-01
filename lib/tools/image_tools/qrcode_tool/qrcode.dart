@@ -18,8 +18,8 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gal/gal.dart';
 import 'package:go_router/go_router.dart';
-import 'package:qr_flutter/qr_flutter.dart';
 import 'package:path/path.dart' as p;
+import 'package:qr_flutter/qr_flutter.dart';
 
 final useErrorLevel = intConfigProvider(const ValueKey('errorLevel'),
     defaultValue: QrErrorCorrectLevel.L);

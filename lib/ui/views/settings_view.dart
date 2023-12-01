@@ -1,12 +1,16 @@
 import 'dart:io';
 
+import 'package:alga/l10n/l10n.dart';
 import 'package:alga/ui/global.provider.dart';
 import 'package:alga/ui/widgets/alga_logo.dart';
 import 'package:alga/ui/widgets/app_show_menu.dart';
 import 'package:alga/ui/widgets/setting_title.dart';
 import 'package:alga/ui/widgets/svg_asset_icon.dart';
-import 'package:alga/utils/constants/import_helper.dart';
 import 'package:alga/utils/hive_boxes/app_config_box.dart';
+import 'package:alga/utils/theme_util.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
 class SettingsRoute extends GoRouteData {
@@ -29,7 +33,7 @@ class _SettingsViewState extends State<SettingsView> {
     Widget result = CustomScrollView(
       slivers: [
         SliverAppBar.large(
-          title: Text(S.of(context).settings),
+          title: Text(context.tr.settings),
         ),
         SliverList(
             delegate: SliverChildListDelegate([
@@ -122,7 +126,7 @@ class _SettingsViewState extends State<SettingsView> {
           SettingTitle(Text(context.tr.about)),
           ListTile(
             leading: const SvgAssetIcon('assets/icons/github.svg'),
-            title: Text(S.of(context).github),
+            title: Text(context.tr.github),
             onTap: () {
               launchUrlString(
                 'https://github.com/laiiihz/alga',
@@ -132,7 +136,7 @@ class _SettingsViewState extends State<SettingsView> {
           ),
           ListTile(
             leading: const Icon(Icons.bug_report_rounded),
-            title: Text(S.of(context).issues),
+            title: Text(context.tr.issues),
             onTap: () {
               launchUrlString(
                 'https://github.com/laiiihz/alga/issues',

@@ -1,6 +1,7 @@
-import 'package:alga/utils/constants/import_helper.dart';
+import 'package:alga/l10n/l10n.dart';
 import 'package:alga/utils/hive_util.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
 class AppConfigBox {
@@ -112,11 +113,11 @@ extension ThemeModeX on ThemeMode {
   String getName(BuildContext context) {
     switch (this) {
       case ThemeMode.system:
-        return S.of(context).followSystem;
+        return context.tr.followSystem;
       case ThemeMode.light:
-        return S.of(context).themeLight;
+        return context.tr.themeLight;
       case ThemeMode.dark:
-        return S.of(context).themeDark;
+        return context.tr.themeDark;
     }
   }
 }

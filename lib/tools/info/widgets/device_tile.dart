@@ -1,4 +1,4 @@
-import 'package:alga/utils/constants/import_helper.dart';
+import 'package:flutter/material.dart';
 
 class DeviceTile extends StatelessWidget {
   const DeviceTile({super.key, required this.title, required this.value});

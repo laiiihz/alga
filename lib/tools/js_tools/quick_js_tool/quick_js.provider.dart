@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:flutter_js/flutter_js.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
+
 part 'quick_js.provider.g.dart';
 
 sealed class JsContent {

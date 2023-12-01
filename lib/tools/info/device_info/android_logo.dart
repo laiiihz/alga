@@ -1,6 +1,7 @@
 import 'package:alga/tools/info/device_info/device_info.provider.dart';
 import 'package:alga/ui/widgets/svg_asset_icon.dart';
-import 'package:alga/utils/constants/import_helper.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
 
 class AndroidLogo extends ConsumerWidget {

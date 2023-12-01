@@ -1,5 +1,7 @@
 import 'package:alga/ui/widgets/app_show_menu.dart';
-import 'package:alga/utils/constants/import_helper.dart';
+import 'package:alga/ui/widgets/tool_view_config.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class ToolOptionsEnum<T extends Enum> extends ConsumerWidget {
   const ToolOptionsEnum({

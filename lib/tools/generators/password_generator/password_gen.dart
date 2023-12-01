@@ -45,27 +45,27 @@ class _PasswordGenPageState extends ConsumerState<PasswordGenPage> {
       title: Text(context.tr.passGenerator),
       configurations: [
         ConfigSwitch(
-          title: Text(S.of(context).passUppercaseCharacters),
+          title: Text(context.tr.passUppercaseCharacters),
           subtitle: const Text('[A-Z]'),
           value: useUppercase,
         ),
         ConfigSwitch(
-          title: Text(S.of(context).passLowercaseCharacters),
+          title: Text(context.tr.passLowercaseCharacters),
           subtitle: const Text('[a-z]'),
           value: useLowercase,
         ),
         ConfigSwitch(
-          title: Text(S.of(context).passNumbersCharacters),
+          title: Text(context.tr.passNumbersCharacters),
           subtitle: const Text('[0-9]'),
           value: useDigit,
         ),
         ConfigSwitch(
-          title: Text(S.of(context).passSpecialCharacters),
+          title: Text(context.tr.passSpecialCharacters),
           subtitle: const Text(r'!@#$%^&*'),
           value: useSpecial,
         ),
         ConfigNumber(
-          title: Text(S.of(context).passPasswordLength),
+          title: Text(context.tr.passPasswordLength),
           value: useCount,
           min: 4,
         ),

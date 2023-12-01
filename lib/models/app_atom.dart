@@ -1,8 +1,9 @@
+import 'package:alga/l10n/l10n.dart';
 import 'package:alga/models/app_category.dart';
 import 'package:alga/routers/app_router.dart';
 import 'package:alga/tools/tools.dart';
 import 'package:alga/ui/widgets/svg_asset_icon.dart';
-import 'package:alga/utils/constants/import_helper.dart';
+import 'package:flutter/material.dart';
 
 typedef ContextBuilder<T> = T Function(BuildContext context);
 

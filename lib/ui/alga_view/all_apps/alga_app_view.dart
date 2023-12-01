@@ -1,13 +1,17 @@
 import 'dart:async';
 import 'dart:io';
 
+import 'package:alga/l10n/l10n.dart';
 import 'package:alga/models/app_atom.dart';
 import 'package:alga/models/app_category.dart';
 import 'package:alga/routers/app_router.dart';
 import 'package:alga/ui/global.provider.dart';
 import 'package:alga/ui/views/favorite_view.dart';
 import 'package:alga/ui/views/settings_view.dart';
-import 'package:alga/utils/constants/import_helper.dart';
+import 'package:alga/utils/theme_util.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 
 import 'alga_app_item.dart';
 import 'alga_app_view_provider.dart';
@@ -159,7 +163,7 @@ class _AppCategoriesPanelState extends State<AppCategoriesPanel> {
           controller: ref.watch(appTabControllerProvider(vsync: parentState)),
           indicatorPadding: const EdgeInsets.only(top: 44, left: 0, right: 0),
           tabs: [
-            Tab(text: S.of(context).allApps),
+            Tab(text: context.tr.allApps),
             ...AppCategory.items.map((e) => Tab(text: e.name(context))),
           ],
         );

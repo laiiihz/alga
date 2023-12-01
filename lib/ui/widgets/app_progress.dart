@@ -1,7 +1,7 @@
 import 'dart:async';
 
-import 'package:alga/utils/constants/import_helper.dart';
 import 'package:bot_toast/bot_toast.dart';
+import 'package:flutter/material.dart';
 
 Future<T> progress<T>(Future<T> Function() runner, {String? message}) async {
   final cancel = BotToast.showCustomLoading(

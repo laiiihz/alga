@@ -95,7 +95,7 @@ class ColorResultWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
-      children: [
+      children: <Widget>[
         AlgaToolbar(
           title: Text(context.tr.currentColor),
         ),

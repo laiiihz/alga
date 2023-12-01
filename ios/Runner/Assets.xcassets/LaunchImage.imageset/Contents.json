@@ -1,34 +1,19 @@
 {
   "images" : [
     {
+      "filename" : "alga@1x.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "alga@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "idiom" : "universal",
-      "scale" : "3x"
-    },
-    {
-      "filename" : "alga@1x.png",
-      "idiom" : "universal",
-      "scale" : "1x",
-      "unassigned" : true
-    },
-    {
-      "filename" : "alga@2x.png",
-      "idiom" : "universal",
-      "scale" : "2x",
-      "unassigned" : true
-    },
-    {
       "filename" : "alga@3x.png",
       "idiom" : "universal",
-      "scale" : "3x",
-      "unassigned" : true
+      "scale" : "3x"
     }
   ],
   "info" : {

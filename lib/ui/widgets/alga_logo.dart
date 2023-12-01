@@ -1,4 +1,4 @@
-import 'package:alga/utils/constants/import_helper.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 class AlgaLogo extends StatelessWidget {

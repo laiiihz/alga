@@ -46,8 +46,8 @@ class _LoremIpsumGenPageState extends ConsumerState<LoremIpsumGenPage> {
         ),
         ConfigNumber(
           leading: const Icon(Icons.numbers),
-          title: Text(S.of(context).loremLength),
-          subtitle: Text(S.of(context).loremLengthDes),
+          title: Text(context.tr.loremLength),
+          subtitle: Text(context.tr.loremLengthDes),
           value: useCount,
         ),
       ],

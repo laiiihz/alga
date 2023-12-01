@@ -1,9 +1,10 @@
 import 'dart:convert';
 import 'dart:typed_data';
 
+import 'package:alga/l10n/l10n.dart';
 import 'package:alga/tools/generators/hash_generator/hash_gen.dart';
-import 'package:alga/utils/constants/import_helper.dart';
 import 'package:convert/convert.dart';
+import 'package:flutter/material.dart';
 import 'package:pointycastle/export.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 part 'hash_gen.provider.g.dart';

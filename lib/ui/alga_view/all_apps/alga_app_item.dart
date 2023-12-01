@@ -1,7 +1,9 @@
+import 'package:alga/l10n/l10n.dart';
 import 'package:alga/models/app_atom.dart';
-import 'package:alga/utils/constants/import_helper.dart';
 import 'package:alga/utils/hive_boxes/favorite_box.dart';
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class AlgaAppItem extends StatelessWidget {
   const AlgaAppItem(this.item,

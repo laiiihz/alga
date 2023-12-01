@@ -1,9 +1,12 @@
+import 'package:alga/l10n/l10n.dart';
 import 'package:alga/routers/app_router.dart';
 import 'package:alga/ui/alga_view/all_apps/alga_app_view.dart';
 import 'package:alga/ui/views/favorite_view.dart';
 import 'package:alga/ui/views/settings_view.dart';
 import 'package:alga/ui/widgets/alga_logo.dart';
-import 'package:alga/utils/constants/import_helper.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 
 class AlgaPanel extends ConsumerStatefulWidget {
   const AlgaPanel({super.key});

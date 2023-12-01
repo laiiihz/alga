@@ -1,4 +1,5 @@
-import 'package:alga/utils/constants/import_helper.dart';
+import 'package:alga/l10n/l10n.dart';
+import 'package:flutter/material.dart';
 
 class AlgaToolbar extends StatelessWidget {
   const AlgaToolbar({

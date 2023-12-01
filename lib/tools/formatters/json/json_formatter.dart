@@ -137,10 +137,10 @@ enum JsonIndentType {
 
   String name(BuildContext context) {
     return switch (this) {
-      space2 => S.of(context).json2spaces,
-      space4 => S.of(context).json4spaces,
-      tab => S.of(context).json1tab,
-      minified => S.of(context).jsonMinified,
+      space2 => context.tr.json2spaces,
+      space4 => context.tr.json4spaces,
+      tab => context.tr.json1tab,
+      minified => context.tr.jsonMinified,
     };
   }
 }

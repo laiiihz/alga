@@ -56,7 +56,7 @@ class _Sass2cssPageState extends ConsumerState<Sass2cssPage> {
       configurations: [
         ConfigSwitch(
           leading: const Icon(Icons.compress),
-          title: Text(S.of(context).compress),
+          title: Text(context.tr.compress),
           value: useCompress,
         ),
         ConfigMenu<Syntax>(

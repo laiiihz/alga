@@ -1,6 +1,5 @@
-import 'package:flutter/material.dart';
-
 import 'package:alga/l10n/l10n.dart';
+import 'package:flutter/material.dart';
 
 class SnackbarUtil {
   final BuildContext context;
@@ -13,7 +12,7 @@ class SnackbarUtil {
         content: Text(text),
         backgroundColor: scheme.secondary,
         action: SnackBarAction(
-          label: S.of(context).confirm,
+          label: context.tr.confirm,
           onPressed: () {
             ScaffoldMessenger.of(context).clearSnackBars();
           },
@@ -29,7 +28,7 @@ class SnackbarUtil {
         content: Text(text),
         backgroundColor: scheme.error,
         action: SnackBarAction(
-          label: S.of(context).confirm,
+          label: context.tr.confirm,
           onPressed: () {
             ScaffoldMessenger.of(context).clearSnackBars();
           },
@@ -39,14 +38,14 @@ class SnackbarUtil {
   }
 
   copied() {
-    success(S.of(context).copied);
+    success(context.tr.copied);
   }
 
   pasted() {
-    success(S.of(context).pasted);
+    success(context.tr.pasted);
   }
 
   cleared() {
-    success(S.of(context).cleared);
+    success(context.tr.cleared);
   }
 }

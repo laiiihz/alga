@@ -1,11 +1,14 @@
 import 'dart:io';
 
+import 'package:alga/l10n/l10n.dart';
 import 'package:alga/tools/info/device_info/android_logo.dart';
 import 'package:alga/tools/info/device_info/device_info.provider.dart';
 import 'package:alga/tools/info/widgets/device_tile.dart';
 import 'package:alga/ui/widgets/scaffold/scrollable_scaffold.dart';
 import 'package:alga/ui/widgets/toolbar/alga_toolbar.dart';
-import 'package:alga/utils/constants/import_helper.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 
 class DeviceInfoRoute extends GoRouteData {
   @override
