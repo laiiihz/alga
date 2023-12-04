@@ -76,7 +76,7 @@ dependencies:
   google_fonts: ^6.1.0
   two_dimensional_scrollables: ^0.0.4
   gal: ^2.1.3
-  dio: ^5.3.4
+  dio: ^5.4.0
   flex_color_picker: ^3.3.0
   toml: ^0.14.0
   xml: ^6.3.0
