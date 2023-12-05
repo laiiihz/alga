@@ -75,7 +75,7 @@ dependencies:
   flutter_js: ^0.8.0
   google_fonts: ^6.1.0
   two_dimensional_scrollables: ^0.0.4
-  gal: ^2.1.3
+  gal: ^2.1.4
   dio: ^5.3.4
   flex_color_picker: ^3.3.0
   toml: ^0.14.0
@@ -89,7 +89,7 @@ dev_dependencies:
 
   flutter_lints: ^3.0.1
   build_runner: ^2.4.7
-  msix: ^3.16.6
+  msix: ^3.16.7
   riverpod_generator: ^2.3.9
   go_router_builder: ^2.3.4
   riverpod_lint: ^2.3.7
