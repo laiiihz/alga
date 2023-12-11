@@ -74,7 +74,7 @@ dependencies:
   connectivity_plus: ^5.0.2
   flutter_js: ^0.8.0
   google_fonts: ^6.1.0
-  two_dimensional_scrollables: ^0.0.4
+  two_dimensional_scrollables: ^0.0.5
   gal: ^2.1.4
   dio: ^5.3.4
   flex_color_picker: ^3.3.0
