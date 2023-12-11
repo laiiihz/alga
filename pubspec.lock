@@ -1064,10 +1064,10 @@ packages:
     dependency: transitive
     description:
       name: petitparser
-      sha256: cb3798bef7fc021ac45b308f4b51208a152792445cce0448c9a4ba5879dd8750
+      sha256: c15605cd28af66339f8eb6fbe0e541bfe2d1b72d5825efc6598f3e0a31b9ad27
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "5.4.0"
+    version: "6.0.2"
   pigment:
     dependency: "direct main"
     description:
@@ -1437,10 +1437,10 @@ packages:
     dependency: "direct main"
     description:
       name: toml
-      sha256: "157c5dca5160fced243f3ce984117f729c788bb5e475504f3dbcda881accee44"
+      sha256: "9968de24e45b632bf1a654fe1ac7b6fe5261c349243df83fd262397799c45a2d"
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.14.0"
+    version: "0.15.0"
   two_dimensional_scrollables:
     dependency: "direct main"
     description:
@@ -1637,10 +1637,10 @@ packages:
     dependency: "direct main"
     description:
       name: xml
-      sha256: "5bc72e1e45e941d825fd7468b9b4cc3b9327942649aeb6fc5cdbf135f0a86e84"
+      sha256: b015a8ad1c488f66851d762d3090a21c600e479dc75e68328c52774040cf9226
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "6.3.0"
+    version: "6.5.0"
   yaml:
     dependency: "direct main"
     description:
