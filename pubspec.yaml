@@ -38,7 +38,7 @@ dependencies:
       url: https://github.com/laiiihz/json2yaml
   flutter_markdown: ^0.6.18+2
   url_launcher: ^6.2.1
-  animations: ^2.0.8
+  animations: ^2.0.10
   flutter_riverpod: ^2.4.9
   sass: ^1.69.5
   file_selector: ^1.0.1
