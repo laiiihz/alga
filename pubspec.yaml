@@ -78,7 +78,7 @@ dependencies:
   gal: ^2.1.4
   dio: ^5.3.4
   flex_color_picker: ^3.3.0
-  toml: ^0.14.0
+  toml: ^0.15.0
   xml: ^6.3.0
   package_info_plus: ^5.0.1
   bot_toast: ^4.1.3
