@@ -1445,10 +1445,10 @@ packages:
     dependency: "direct main"
     description:
       name: two_dimensional_scrollables
-      sha256: "5c3d971cd9eff7d730f7e350355eb5fa7c75e2f0d87228eef23208f4cb4910aa"
+      sha256: "68bac88608c1152d2a4fe8f6ee7607fb7a0a55dd9df6f86febd81c0bed314ae4"
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.0.4"
+    version: "0.0.5"
   typed_data:
     dependency: transitive
     description:
