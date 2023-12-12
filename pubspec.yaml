@@ -91,7 +91,7 @@ dev_dependencies:
   build_runner: ^2.4.7
   msix: ^3.16.7
   riverpod_generator: ^2.3.9
-  go_router_builder: ^2.3.4
+  go_router_builder: ^2.4.0
   riverpod_lint: ^2.3.7
   custom_lint: ^0.5.7
   grinder: ^0.9.5
