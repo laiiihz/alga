@@ -1,5 +1,7 @@
 name: alga
 description: A powerful tool app for all developers.
+homepage: https://github.com/laiiihz/alga
+repository: https://github.com/laiiihz/alga
 
 publish_to: "none"
 version: 2.0.2-dev+39
@@ -48,9 +50,7 @@ dependencies:
   hive_flutter: ^1.1.0
   qr_flutter: ^4.1.0
   blurhash_dart: ^1.2.1
-  flutter_blurhash:
-    git:
-      url: https://github.com/MominRaza/flutter_blurhash
+  flutter_blurhash: ^0.8.1
   image_picker: ^1.0.4
   device_info_plus: ^9.1.1
   network_info_plus: ^4.1.0
