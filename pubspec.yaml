@@ -95,7 +95,7 @@ dev_dependencies:
   riverpod_lint: ^2.3.7
   custom_lint: ^0.5.7
   grinder: ^0.9.5
-  cli_util: ^0.4.0
+  cli_util: ^0.4.1
 
 flutter:
   uses-material-design: true
