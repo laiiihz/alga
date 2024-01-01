@@ -1239,10 +1239,10 @@ packages:
     dependency: "direct main"
     description:
       name: sass
-      sha256: "2b2bfbde0ccb493bc50520ab35a93821404dbec51f65e5f561ccdaf506cab50f"
+      sha256: "942dbd249e54977e8d554ab846fb1efe71d919ba2eb55ff890f909c3c453ffa7"
       url: "https://pub.dev"
     source: hosted
-    version: "1.69.5"
+    version: "1.69.6"
   screen_retriever:
     dependency: transitive
     description:
